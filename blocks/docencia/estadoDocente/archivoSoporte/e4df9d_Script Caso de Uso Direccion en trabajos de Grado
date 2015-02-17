@@ -1,0 +1,85 @@
+
+ DROP TABLE docencia.direccion_trabajos;
+
+CREATE TABLE docencia.direccion_trabajos
+(
+  id_direccion serial NOT NULL,
+  docente_direccion character varying(100),
+  titulo_direccion character varying(2000),
+  num_autores integer,
+  tipo_direccion integer,
+  categoria_direccion integer,
+  anio_direccion integer,
+  numacta_direccion numeric(19,0),
+  fechacta_direccion date,
+  numcaso_direccion numeric(19,0),
+  puntaje_direccion character varying(20),
+  CONSTRAINT pk_direcciontrabajos PRIMARY KEY (id_direccion)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE docencia.direccion_trabajos
+  OWNER TO kyron_frame;
+
+COMMENT ON TABLE docencia.direccion_trabajos
+  IS 'Tabla que permite Registro de Direccion en Trabajos de Grado del Docente';
+
+ DROP TABLE docencia.direccion_tipo;
+
+CREATE TABLE docencia.direccion_tipo
+(
+  id_tipodireccion serial NOT NULL,
+  nombre_tipodireccion character varying(100),
+  descripcion_direccion character varying(100),
+  CONSTRAINT pk_direccion PRIMARY KEY (id_tipodireccion)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE docencia.direccion_tipo
+  OWNER TO kyron_frame;
+
+
+
+
+ DROP TABLE docencia.autors_direccion;
+
+CREATE TABLE docencia.autors_direccion
+(
+  id_autors serial NOT NULL,
+  id_direccion integer,
+  nom_autor character varying(2000),
+  CONSTRAINT nom_direccion_docencia_pkey PRIMARY KEY (id_autors)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE docencia.autors_direccion
+  OWNER TO kyron_frame;
+COMMENT ON TABLE docencia.autors_direccion
+  IS 'Tabla que permite Registro Autores de trabajo de grado';
+
+
+
+INSERT INTO docencia.direccion_tipo(
+            id_tipodireccion, nombre_tipodireccion, descripcion_direccion)
+    VALUES ('1', 'Trabajo de Doctorado','Hace referencia al trabajo de doctorado');
+
+
+
+
+INSERT INTO docencia.direccion_tipo(
+            id_tipodireccion, nombre_tipodireccion, descripcion_direccion)
+    VALUES ('2', 'Trabajo de Maestria','Hace referencia al trabajo de master');
+
+
+INSERT INTO docencia.direccion_tipo(
+            id_tipodireccion, nombre_tipodireccion, descripcion_direccion)
+    VALUES ('3', 'Trabajo de Pregrado','Hace referencia al trabajo de Pregrado');
+
+
+
+
+
+

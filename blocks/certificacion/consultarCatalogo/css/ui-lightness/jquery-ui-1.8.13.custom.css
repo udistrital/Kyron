@@ -1,0 +1,30 @@
+
+
+.ui-widget { font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif; font-size: 14px; }/*tamaño de la letra  */
+.ui-widget-content { border: 1px solid #dddddd; background: #eeeeee/*linea del cuadro  */ url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x; color: #333333; }
+.ui-widget-content a { color: #999; }/*color de la letra  */
+
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus,
+/*muestra el efecto naranja */ 
+.ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #fbcb09; background:  #3C9 url(images/ui-bg_glass_100_fdf5ce_1x400.png) 50% 50% repeat-x; font-weight: lighter; color:  #660; }/*color de la letra  */
+/*borde al momento de seleccionarlo */
+
+
+.ui-autocomplete { position: absolute; cursor: default; }	
+
+* html .ui-autocomplete { width:1px; } /* tamaño del menu desplegable*/
+
+.ui-menu {/*acomoda  */
+	list-style:none;/*esto agrega viñetas*/
+	padding: 3px;
+	margin: 1;
+	display: compact;
+	float: right;
+}
+.ui-menu .ui-menu-item a {/*rellena toda la fila */
+	text-decoration:none;
+	display:block;
+	padding:.2em .4em;
+	line-height:1;
+	zoom:1;

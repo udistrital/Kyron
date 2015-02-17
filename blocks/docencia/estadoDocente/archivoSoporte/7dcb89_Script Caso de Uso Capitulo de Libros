@@ -1,0 +1,126 @@
+INSERT INTO kyron_bloque(
+          id_bloque, nombre, descripcion, grupo)
+    VALUES (42,'capituloLibros','Bloque que permite la gestion de capítulos de libros Docente','docencia');
+
+INSERT INTO kyron_pagina(
+         id_pagina,nombre, descripcion, modulo, nivel, parametro)
+    VALUES (42,'capituloLibros','Pagina que permite el registro de capítulos de libros del docente','docencia','3','jquery=true');
+
+
+   INSERT INTO kyron_bloque_pagina(
+            id_pagina, id_bloque, seccion, posicion)
+    VALUES ('42','42','C',1);
+INSERT INTO kyron_bloque_pagina(
+            id_pagina, id_bloque, seccion, posicion)
+    VALUES ('42','2','A',1);
+INSERT INTO kyron_bloque_pagina(
+            id_pagina, id_bloque, seccion, posicion)
+    VALUES ('42','4','A',2);
+
+    INSERT INTO kyron_bloque_pagina(
+            id_pagina, id_bloque, seccion, posicion)
+    VALUES ('42','3','E',1);
+
+
+
+
+ DROP TABLE docencia.tipo_libro;
+
+CREATE TABLE docencia.tipo_libro
+(
+  id_tipo_libro serial NOT NULL,
+  tipo_libro character varying(20),
+  descripcion_libro character varying(100),
+  CONSTRAINT tipo_libro_pkey PRIMARY KEY (id_tipo_libro)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE docencia.tipo_libro
+  OWNER TO kyron_frame;
+COMMENT ON TABLE docencia.tipo_libro
+  IS 'Tabla la que permite caracterizar el tipo de libro en un registro de Capítulo de libro del Docente';
+
+
+  INSERT INTO docencia.tipo_libro(
+            id_tipo_libro, tipo_libro, descripcion_libro)
+    VALUES ('1','Investigación','Tipo de libro el cual registra  el capitulo del docente para redimir puntos');
+
+INSERT INTO docencia.tipo_libro(
+            id_tipo_libro, tipo_libro, descripcion_libro)
+    VALUES ('2','Ensayo','Tipo de libro el cual registra  el capitulo del docente para redimir puntos');
+INSERT INTO docencia.tipo_libro(
+            id_tipo_libro, tipo_libro, descripcion_libro)
+    VALUES ('3','Texto','Tipo de libro el cual registra el doente para redimir puntos');
+
+
+-- Table: docencia.capitulo_libros
+
+-- DROP TABLE docencia.capitulo_libros;
+
+CREATE TABLE docencia.capitulo_libros
+(
+  id_capitulo serial NOT NULL,
+  id_docente character varying(50),
+  titulo_capitulo character varying(2000),
+  titulo_libro character varying(2000),
+  tipo_libro integer,
+  codigo_nunm numeric(30,0),
+  editorial character varying(2000),
+  anio_libro integer,
+  volumen numeric(30,0),
+  num_autor_cap numeric(30,0),
+  num_autor_cap_univ numeric(30,0),
+  num_autor_libro numeric(30,0),
+  num_autor_libro_univ numeric(30,0),
+  num_evaluadores integer,
+  numacta numeric(30,0),
+  fechacta date,
+  numcaso numeric(30,0),
+  puntaje double precision,
+  CONSTRAINT capitulos_libros_pkey PRIMARY KEY (id_capitulo)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE docencia.capitulo_libros
+  OWNER TO kyron_frame;
+COMMENT ON TABLE docencia.capitulo_libros
+  IS 'Tabla que permite Registro de Capítulos de libros del Docente';
+
+
+
+
+
+
+-- Table: docencia.evaluador_capitulos
+
+-- DROP TABLE docencia.evaluador_capitulos;
+
+CREATE TABLE docencia.evaluador_capitulos
+(
+  id_evaluador serial NOT NULL,
+  id_capitulo integer,
+  nom_evaluador character varying(2000),
+  enti_univer integer,
+  puntaje double precision,
+  CONSTRAINT evaluador_capitulo_pkey PRIMARY KEY (id_evaluador)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE docencia.evaluador_capitulos
+  OWNER TO kyron_frame;
+COMMENT ON TABLE docencia.evaluador_capitulos
+  IS 'Tabla que permite Registro de Evaluadores de Capítulo de libros del Docente';
+
+
+
+
+
+
+
+
+
+
+

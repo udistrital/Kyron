@@ -1,0 +1,78 @@
+CREATE TABLE docencia.tipo_traduccion
+(
+   id_tipo_traduccion serial, 
+   descr_tipo_traduccion character varying(50), 
+   CONSTRAINT pk_id_tipo_traduccion PRIMARY KEY (id_tipo_traduccion)
+) 
+WITH (
+  OIDS = FALSE
+)
+;
+COMMENT ON TABLE docencia.tipo_traduccion
+  IS 'Tabla estatica que permite elegir el tipo de traduccion.';
+
+
+CREATE TABLE docencia.tipo_revista_trd
+(
+   id_tipo_revista_trd serial, 
+   descr_tipo_revista_trd character varying(50), 
+   CONSTRAINT pk_id_tipo_revista_trd PRIMARY KEY (id_tipo_revista_trd)
+) 
+WITH (
+  OIDS = FALSE
+)
+;
+COMMENT ON TABLE docencia.tipo_revista_trd
+  IS 'Tabla estatica que permite elegir el tipo de revista de traduccion.'; 
+
+
+
+
+
+
+CREATE TABLE docencia.traduccion_docente
+(
+  id_traduccion serial NOT NULL,
+  id_docente character varying(50),
+  titulo_traduccion character varying(50),
+  revista_traduccion character varying(50),
+tipo_traduccion integer,
+tipo_revista integer,
+fecha date,
+  nume_acta integer,
+  fech_acta date,
+  nume_caso integer,
+  puntaje integer,
+  CONSTRAINT traducciones_docencia_pkey PRIMARY KEY (id_traduccion)
+)
+WITH (
+  OIDS=FALSE
+);
+COMMENT ON TABLE docencia.traduccion_docente
+  IS 'Tabla la que permite regitro de las Traducciones  del Docente ';
+
+
+
+CREATE TABLE docencia.obrasll_docente
+(
+  id_obrasll serial NOT NULL,
+  id_docente character varying(50),
+  tipo_obra integer,
+  titulo_obra character varying(50),
+  medio_public character varying(50),
+  fecha_obra date,
+  nume_acta integer,
+  fech_acta date,
+  nume_caso integer,
+  puntaje integer,
+  CONSTRAINT obrall_docencia_pkey PRIMARY KEY (id_obrasll)
+)
+WITH (
+  OIDS=FALSE
+);
+
+COMMENT ON TABLE docencia.obrasll_docente
+  IS 'Tabla que permite Registro de Obras Artisticas de Docente';
+
+
+

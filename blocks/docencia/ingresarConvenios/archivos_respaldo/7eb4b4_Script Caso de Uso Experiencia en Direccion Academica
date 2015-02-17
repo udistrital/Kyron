@@ -1,0 +1,53 @@
+INSERT INTO kyron_bloque(
+          id_bloque, nombre, descripcion, grupo)
+    VALUES (41,'experienciaDireccion','Bloque que permite la gestion de la experiencia en direccion academica del Docente','docencia');
+
+INSERT INTO kyron_pagina(
+         id_pagina,nombre, descripcion, modulo, nivel, parametro)
+    VALUES (41,'experienciaDireccion','Pagina que permite el registro de experiencia en dirección academica del docente','docencia','3','jquery=true');
+
+
+   INSERT INTO kyron_bloque_pagina(
+            id_pagina, id_bloque, seccion, posicion)
+    VALUES ('41','41','C',1);
+INSERT INTO kyron_bloque_pagina(
+            id_pagina, id_bloque, seccion, posicion)
+    VALUES ('41','2','A',1);
+INSERT INTO kyron_bloque_pagina(
+            id_pagina, id_bloque, seccion, posicion)
+    VALUES ('41','4','A',2);
+
+    INSERT INTO kyron_bloque_pagina(
+            id_pagina, id_bloque, seccion, posicion)
+    VALUES ('41','3','E',1);
+
+
+
+
+--DROP TABLE docencia.experiencia_direccion_acade;
+
+CREATE TABLE docencia.experiencia_direccion_acade
+(
+  id_experiencia serial NOT NULL,
+  id_docente character varying(50),
+  entidad integer,
+  otra_entidad character varying(2000),
+  tipo_entidad integer,
+  num_horas integer,
+  fecha_inicio date,
+  fecha_fin date,
+  duracion_dias integer,
+  nume_acta numeric(31,0),
+  fecha_acta date,
+  nume_caso numeric(31,0),
+  puntaje double precision,
+  CONSTRAINT experiencia_direccion_academica_pkey PRIMARY KEY (id_experiencia)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE docencia.experiencia_direccion_acade
+  OWNER TO kyron_frame;
+COMMENT ON TABLE docencia.experiencia_direccion_acade
+  IS 'Tabla la que permite registro de experiencia en dirección académica del docente ';
+

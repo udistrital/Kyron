@@ -1,0 +1,12 @@
+
+#slidePrincipal{
+
+    background: url(../imagen/banner.png) no-repeat; 
+    display: block;  
+    height: 400px;
+    overflow: hidden;
+    text-align: center;
+    text-indent: -9999%;
+    width: 995px;
+}
+

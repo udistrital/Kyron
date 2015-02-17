@@ -1,0 +1,22 @@
+  _________   _____ __________    _____   
+ /   _____/  /  _  \\______   \  /  _  \  
+ \_____  \  /  /_\  \|       _/ /  /_\  \ 
+ /        \/    |    \    |   \/    |    \
+/_______  /\____|__  /____|_  /\____|__  /
+        \/         \/       \/         \/ 
+
+		    	Framework
+	------------------------------
+UNIVERSIDAD DISTRITAL Francisco José de Caldas
+Oficina asesora de Sistemas 2012
+
+Descripción
+-----------------
+
+Se recomienda que en la carpeta classes se almacenen las clases
+específicas de la aplicación. 
+
+En la carpeta core solo deben ir las clases que están relacionadas
+con SARA, es decir, aquellas que potencialmente podrán ser reutilizadas
+por cualquier aplicación.
+

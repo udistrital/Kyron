@@ -1,0 +1,70 @@
+-- Table: docencia.tecn_sotf_docente
+
+DROP TABLE docencia.tecn_sotf_docente;
+
+CREATE TABLE docencia.tecn_sotf_docente
+(
+  id_tecn_soft serial NOT NULL,
+  id_docente character varying(50),
+  tipo_produccion integer,
+  nume_certificado numeric(30,0),
+  nume_evaluadores numeric(30,0),
+  nume_acta numeric(30,0),
+  fech_acta date,
+  nume_caso numeric(30,0),
+  puntaje double precision,
+  CONSTRAINT tecn_sotf_docencia_pkey PRIMARY KEY (id_tecn_soft)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE docencia.tecn_sotf_docente
+  OWNER TO kyron_frame;
+COMMENT ON TABLE docencia.tecn_sotf_docente
+  IS 'Tabla que permite el registro de Tecnologia y software del docente';
+-- DROP TABLE docencia.tipo_produc_teg_soft;
+
+CREATE TABLE docencia.tipo_produc_teg_soft
+(
+  id_tipo_producc serial NOT NULL,
+  descr_tipo_producc character varying(50),
+  CONSTRAINT pk_id_tipo_producc PRIMARY KEY (id_tipo_producc)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE docencia.tipo_produc_teg_soft
+  OWNER TO kyron_frame;
+COMMENT ON TABLE docencia.tipo_produc_teg_soft
+  IS 'Tabla que permite seleccionar el tipo de produccion tegnologica y software del docente.';
+
+INSERT INTO docencia.tipo_produc_teg_soft(
+            id_tipo_producc, descr_tipo_producc)
+    VALUES ('1','Innovación');
+INSERT INTO docencia.tipo_produc_teg_soft(
+            id_tipo_producc, descr_tipo_producc)
+    VALUES ('2','Adaptación');
+INSERT INTO docencia.tipo_produc_teg_soft(
+            id_tipo_producc, descr_tipo_producc)
+    VALUES ('3','Software');
+
+
+-- Table: docencia.evaluador_tec_sotf
+
+ DROP TABLE docencia.evaluador_tec_sotf;
+
+CREATE TABLE docencia.evaluador_tec_sotf
+(
+  id_evaluador serial NOT NULL,
+  id_tecn_soft integer,
+  nombre_evaluador character varying(2000),
+  puntaje_evaluador double precision,
+  CONSTRAINT pk_id_eval_tec_soft PRIMARY KEY (id_evaluador)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE docencia.evaluador_tec_sotf
+  OWNER TO kyron_frame;
+COMMENT ON TABLE docencia.evaluador_tec_sotf
+  IS 'Tabla que permite registrar los evaluadores de Tecnologia y software del docente.';

@@ -1,0 +1,201 @@
+a {
+	text-decoration: none
+}
+
+.container {
+	width: 262px;
+	margin: 0 auto;
+	padding-top: 200px;
+}
+
+#bar {
+	width: 100%;
+	height: 35px;
+	padding: 15px 0;
+	background: url(../imagen/bar.png) repeat-x;
+}
+
+#container {
+	width: 90%;
+	margin: 0 auto;
+}
+
+/*-------LOGIN STARTS HERE -------*/
+
+/* Login Container (default to float:right) */
+#loginContainer {
+	position: relative;
+	float: right;
+	font-size: 12px;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+/* Login Button */
+#loginButton {
+	display: inline-block;
+	float: right;
+	background: #cccccc url(../imagen/buttonbg.png) repeat-x;
+	border: 1px solid #777777;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	position: relative;
+	z-index: 30;
+	cursor: pointer;
+}
+
+/* Login Button Text */
+#loginButton span {
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 7px 39px 9px 20px;
+	background: url(../imagen/loginArrow.png) no-repeat 83px 7px;
+	display: block
+}
+
+#loginButton:hover {
+	background: url(../imagen/buttonbgHover.png) repeat-x;
+}
+
+#loginButton span:hover {
+	color: #444444;
+	text-shadow: 1px 1px #fff;
+}
+
+/* Login Box */
+#loginBox {
+	position: absolute;
+	top: 34px;
+	right: 0;
+	display: none;
+	z-index: 29;
+}
+
+/* If the Login Button has been clicked */
+#loginButton.active {
+	border-radius: 3px 3px 0 0;
+	border: 1px solid #fec425;
+	background: url(../imagen/buttonbgHover.png) repeat-x;
+}
+
+#loginButton.active span {
+	background-position: 83px -76px;
+	color: #444444;
+}
+
+/* A Line added to overlap the border */
+#loginButton.active em {
+	position: absolute;
+	width: 100%;
+	height: 1px;
+	background: #fec425;
+	bottom: -1px;
+}
+
+/* Login Form */
+#loginForm {
+	width: 248px;
+	border: 1px solid #fec425;
+	border-radius: 3px 0 3px 3px;
+	-moz-border-radius: 3px 0 3px 3px;
+	margin-top: -1px;
+	background: #fec425;
+	padding: 6px;
+}
+
+#loginForm fieldset {
+	margin: 0 0 12px 0;
+	display: block;
+	border: 0;
+	padding: 0;
+}
+
+fieldset#bodyForm {
+	background: #fff;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	padding: 10px 13px;
+	margin: 0;
+}
+
+#loginForm #checkbox {
+	width: auto;
+	margin: 1px 9px 0 0;
+	float: left;
+	padding: 0;
+	border: 0;
+	*margin: -3px 9px 0 0; /* IE7 Fix */
+}
+
+#bodyForm label {
+	color: #444444;
+	margin: 9px 0 0 0;
+	display: block;
+	float: left;
+}
+
+#loginForm #bodyForm fieldset label {
+	display: block;
+	float: none;
+	margin: 0 0 6px 0;
+}
+
+/* Default Input */
+#loginForm input {
+	width: 92%;
+	border: 1px solid #DDDDDD;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	color: #3a454d;
+	font-weight: bold;
+	padding: 8px 8px;
+	box-shadow: inset 0px 1px 3px #bbb;
+	-webkit-box-shadow: inset 0px 1px 3px #bbb;
+	-moz-box-shadow: inset 0px 1px 3px #bbb;
+	font-size: 12px;
+}
+
+/* Sign In Button */
+#loginForm #botonAceptar {
+	width: auto;
+	float: left;
+	background: #339cdf url(../imagen/loginbuttonbg.png) repeat-x;
+	color: #fff;
+	padding: 7px 10px 8px 10px;
+	text-shadow: 0px -1px #278db8;
+	border: 1px solid #339cdf;
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	margin: 0 12px 0 0;
+	cursor: pointer;
+	*padding: 7px 2px 8px 2px; /* IE7 Fix */
+}
+
+#loginForm button {
+	font-weight: bold;
+	font-size: 12px;
+}
+
+/* Forgot your password */
+#loginForm span {
+	text-align: center;
+	display: block;
+	padding: 7px 0 4px 0;
+}
+
+#loginForm a span {
+	color: #444444;
+	font-size: 12px;
+}
+
+input:focus {
+	outline: none;
+}
+
+.encabezadoBarra {
+	padding: 10px 10px 10px 0px;
+	float: left;
+	color: #eeeeee;
+	font-weight: bold;
+}

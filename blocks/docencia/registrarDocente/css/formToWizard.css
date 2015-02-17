@@ -1,0 +1,83 @@
+/* required css for formToWizard plugin */
+
+.prev, .next 
+{ 
+	background-color:#e6e6e6; 
+	padding:5px 10px; 
+	color:#fff; 
+	text-decoration:none;
+	border: 2px solid white;
+    border-radius: 100px 100px 100px 100px;
+}
+
+.prev:hover, .next:hover 
+{ 
+	background-color:#FBBE15; 
+	text-decoration:none;
+	
+}
+        
+.prev 
+{ 
+	float:left;
+}
+
+.next 
+{ 
+	float:right;
+}
+
+.steps {
+    list-style:none;
+    width:100%;
+    overflow:hidden;
+    margin:0px;
+    padding:0px;
+}
+.steps li {
+    color: #b0b1b3;
+    font-size: 24px;
+    float: left;
+    padding: 10px;
+    
+    transition: all .3s;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+}
+.steps li span {
+    font-size:11px; display:block;
+}
+.steps li.current {
+    color:#000;
+}
+
+.steps li.realizado {
+    color:#000;
+    background-color: #88D58C;
+}
+
+.breadcrumb {
+    height: 37px;
+}
+.breadcrumb li {
+    background: #eee;
+    font-size: 14px;
+}
+.breadcrumb li.current:after {
+    border-top: 18px solid transparent;
+    border-bottom: 18px solid transparent;
+    border-left: 6px solid #666;
+    content: ' ';
+    position: absolute;
+    top: 0;
+    right: -6px;
+}
+.breadcrumb li.current {
+    background: #666;
+    color: #eee;
+    position: relative;
+}
+.breadcrumb li:last-child:after {
+    border: none;
+}

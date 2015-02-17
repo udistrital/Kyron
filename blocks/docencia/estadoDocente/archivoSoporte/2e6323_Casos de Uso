@@ -1,0 +1,94 @@
+Tablas a crear
+	contexto ponencia
+	pais
+	ponencia_docente
+	publ_impr_univ_docente
+
+copy docencia.pais from '/usr/local/apache/htdocs/kyron/blocks/docencia/ponenciaDocente/paises.csv' WITH DELIMITER ';';
+
+CREATE TABLE docencia.contexto_ponencia
+(
+  id_contexto serial NOT NULL,
+  descripcion_contexto character varying(50),
+  CONSTRAINT pk_identificador_contexto_ponencia PRIMARY KEY (id_contexto)
+)
+WITH (
+  OIDS=FALSE
+);
+
+COMMENT ON TABLE docencia.contexto_ponencia
+  IS 'Tabla  estatica que permite discriminar el contexto de la ponencia del Docente  sean a nivel regional, nacional y  Internacional.';
+
+
+
+
+CREATE TABLE docencia.pais
+(
+  id_pais serial NOT NULL,
+  nombre_pais character varying(50),
+  CONSTRAINT pk_identificador_pais PRIMARY KEY (id_pais)
+)
+WITH (
+  OIDS=FALSE
+);
+
+COMMENT ON TABLE docencia.pais
+  IS 'Tabla  estatica que permite discriminar el pais dado cualquier parametro.';
+
+
+
+CREATE TABLE docencia.ponencia_docente
+(
+  id_ponencia serial NOT NULL,
+  id_docente character varying(50),
+  nombre_ponencia character varying(50),
+  fecha date,
+  contexto_ponencia integer,
+  evento_ponencia character varying(50),
+  ciudad character varying(50),
+  pais integer,
+  nume_certificado integer,
+  nume_acta integer,
+  fech_acta date,
+  nume_caso integer,
+  puntaje integer,
+  CONSTRAINT ponencias_docencia_pkey PRIMARY KEY (id_ponencia)
+)
+WITH (
+  OIDS=FALSE
+);
+
+COMMENT ON TABLE docencia.ponencia_docente
+  IS 'Tabla la que permite regitro de las Ponencias  del Docente ';
+
+
+
+
+
+
+
+CREATE TABLE docencia.publ_impr_univ_docente
+(
+  id_publicacion serial NOT NULL,
+  id_docente character varying(50),
+  titulo_publicacion character varying(50),
+  fecha_publicacion date,
+  codigo_revista character varying(50),
+  nombre_revista character varying(50),
+  num_revista integer,
+  categoria_revista character varying(50),
+  nume_acta integer,
+  fech_acta date,
+  nume_caso integer,
+  puntaje integer,
+  CONSTRAINT publ_impr_univ_docencia_pkey PRIMARY KEY (id_publicacion)
+)
+WITH (
+  OIDS=FALSE
+);
+
+COMMENT ON TABLE docencia.publ_impr_univ_docente
+  IS 'Tabla la que permite regitro Publicaciones Impresas Universitarias  del Docente ';
+
+
+

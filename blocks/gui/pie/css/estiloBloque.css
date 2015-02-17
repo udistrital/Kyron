@@ -1,0 +1,18 @@
+ #pie{
+ 
+ font-family:Arial;
+ font-size:11px;
+ margin:0 auto;
+ text-align:center; 
+ 
+ }
+
+ 
+ #escudo{
+    clear:both;
+    width: 50px;
+    height: 85px;
+    display: block;
+    margin: auto;
+    background: url(../imagen/escudo.jpg) no-repeat; 
+} 

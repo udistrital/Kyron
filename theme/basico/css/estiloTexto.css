@@ -1,0 +1,107 @@
+/*-------------Efectos Texto-------------------------*/
+
+.textoCentrar {
+    text-align: center;
+}
+
+.textoJustificar {
+    text-align: justify;
+}
+
+.textoIzquierda {
+    text-align: left;
+}
+
+.textoDerecha {
+    text-align: right;
+}
+
+.textoNegrita {
+    font-weight: bold;
+}
+
+.textoCursiva {
+    font-style:italic;
+}
+
+.textoSubrayado {
+    text-decoration:underline;
+}
+
+
+.textoSubtitulo
+{
+    border-width: 0px;
+    font-size: 14;
+    font-family: "Arial", Verdana, Trebuchet MS, Helvetica, sans-serif;
+    text-align: left; 
+}
+
+.textoElegante
+{
+    border-width: 0px;
+    font-size: 14;
+    font-family: "Arial", Verdana, Trebuchet MS, Helvetica, sans-serif;
+    text-align: left;
+}
+
+.textoTitilar
+{
+    text-decoration:blink;
+
+}
+
+.textoTitulo
+{
+    border-width: 0px;
+    font-size: 18;
+    font-family: "Arial", Verdana, Trebuchet MS, Helvetica, sans-serif;
+    text-align: left;
+    font-weight: bold;
+}
+
+.textoPie
+{
+	font-size: 10px;
+	font-family: "Arial";
+	text-align: center;
+}
+
+.textoPequenno
+{
+    font-size: 13px;
+    font-family: "Arial", Verdana, Trebuchet MS, Helvetica, sans-serif;
+}
+
+.textoMediano
+{
+    font-size: 14px;
+    font-family: "Arial", Verdana, Trebuchet MS, Helvetica, sans-serif;
+}
+
+.textoGrande
+{
+    font-size: 16px;
+    font-family: "Arial", Verdana, Trebuchet MS, Helvetica, sans-serif;
+}
+
+.textoEnorme
+{
+    font-size: 20px;
+    font-family: "Arial", Verdana, Trebuchet MS, Helvetica, sans-serif;
+}
+
+.textoGris
+{
+    color: #555555;
+}
+
+.textoAzul
+{
+    color: #103F9D;
+}
+
+.textoRojo
+{
+    color: #FF0000;
+}

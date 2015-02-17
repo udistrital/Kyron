@@ -1,0 +1,24 @@
+INSERT INTO kyron_bloque(
+            id_bloque, nombre, descripcion, grupo)
+    VALUES ('38','reporteEstudios', 'Bloque que permite consultar y generar reportes de Estudios del docente','docencia/Reportes');
+
+
+
+INSERT INTO kyron_pagina(
+            id_pagina, nombre, descripcion, modulo, nivel, parametro)
+    VALUES ('38','reporteEstudios', 'Pagina que permite consultar y generar reportes de Estudios del docente', 'docencia/Reportes', 3, 'jquery=true');
+
+
+INSERT INTO kyron_bloque_pagina(
+            id_pagina, id_bloque, seccion, posicion)
+    VALUES ('38','38','C',1);
+INSERT INTO kyron_bloque_pagina(
+            id_pagina, id_bloque, seccion, posicion)
+    VALUES ('38','2','A',1);
+INSERT INTO kyron_bloque_pagina(
+            id_pagina, id_bloque, seccion, posicion)
+    VALUES ('38','4','A',2);
+
+    INSERT INTO kyron_bloque_pagina(
+            id_pagina, id_bloque, seccion, posicion)
+    VALUES ('38','3','E',1);

@@ -1,0 +1,65 @@
+
+
+
+CREATE TABLE docencia.convenio_rol
+(
+  id_rol Serial NOT NULL,
+  rol_convenio character varying(20),
+  descripcion_rol character varying(50),
+  CONSTRAINT convenios_rol_pkey PRIMARY KEY (id_rol)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE docencia.convenio_rol
+  OWNER TO kyron_frame;
+
+  COMMENT ON TABLE docencia.convenio_rol
+  IS 'Tabla la que permite caracterizar el rol de un docente en un convenio';
+
+INSERT INTO docencia.convenio_rol(
+            rol_convenio, descripcion_rol)
+    VALUES ('Director','Rol de docente en el Ingreso del Convenio');
+
+
+INSERT INTO docencia.convenio_rol(
+            rol_convenio, descripcion_rol)
+    VALUES ('Co- Investigador','Rol de docente en el Ingreso del Convenio');
+
+
+
+-- Table: docencia.convenios
+
+DROP TABLE docencia.convenios;
+
+CREATE TABLE docencia.convenios
+(
+  id_convenio Serial NOT NULL ,
+  id_docente character varying(50),
+  convenio_nombre character varying(2000),
+  convenio_monto numeric (40,0),
+  convenio_rol integer,
+  nombre_documento character varying(2000),
+  ruta_documento character varying(2000),
+  
+  CONSTRAINT convenios_pkey PRIMARY KEY (id_convenio)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE docencia.convenios
+  OWNER TO kyron_frame;
+
+
+COMMENT ON TABLE docencia.convenios
+  IS 'Tabla que permite Ingreso de lo Convenio del Docente.';
+
+
+
+
+
+
+
+
+
+

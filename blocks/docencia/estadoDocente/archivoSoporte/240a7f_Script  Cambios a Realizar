@@ -1,0 +1,22 @@
+Realizar de acuerdo con el servidor local cambios en tabla (pruebas): 
+traduccion_docente
+
+
+
+
+
+CREATE TABLE docencia.codigo_numeracion
+(
+  id_codigo serial NOT NULL,
+  desc_codigo_numeracion text NOT NULL,
+  CONSTRAINT codigo_numeracion_pkey PRIMARY KEY (id_codigo)
+)
+WITH (
+  OIDS=FALSE
+);
+
+COMMENT ON TABLE docencia.codigo_numeracion
+  IS 'Tabla estatica que permite seleccionar en Númeración Internacional de la Publicación .';
+
+
+
