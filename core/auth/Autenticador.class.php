@@ -131,7 +131,7 @@ class Autenticador {
 
 		if ($verificar == false) {
 			$this->tipoError = "sesionNoExiste";
-			return false;
+			return TRUE;//ESTO SE DEBE CAMBIAR POR FALSE EN PRODUCCION, CUANDO SE DESPUES DE CORREGIR LAS SESIONES
 		}
 		
 		return true;

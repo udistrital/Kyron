@@ -153,6 +153,7 @@ if (!isset($GLOBALS ["autorizado"])) {
                 $miSesion->getSesionUsuarioId(),
                 $argumento
             );
+            var_dump($arregloFinalLogEvento);exit;
 
             $cadena_sql = $this->sql->cadena_sql("registrarEvento", $arregloFinalLogEvento);
             $registroAcceso = $esteRecursoDB->ejecutarAcceso($cadena_sql, "acceso");

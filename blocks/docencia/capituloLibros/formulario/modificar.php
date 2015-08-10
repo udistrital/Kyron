@@ -232,20 +232,23 @@ switch ($resultado [0] ['num_evaluadores']) {
 					// ------------------Control Lista Desplegable------------------------------
 					$esteCampo = "editorial";
 					$atributos ["id"] = $esteCampo;
-					$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
-					$atributos ["titulo"] = $this->lenguaje->getCadena ( $esteCampo . "Titulo" );
 					$atributos ["tabIndex"] = $tab ++;
-					$atributos ["obligatorio"] = true;
-					$atributos ["tamanno"] = 40;
-					$atributos ["columnas"] = 1;
-					$atributos ["etiquetaObligatorio"] = true;
-					$atributos ["tipo"] = "";
+					$atributos ["seleccion"] = $resultado [0] ['editorial'];
+					$atributos ["evento"] = 2;
+					$atributos ["columnas"] = "1";
+					$atributos ["limitar"] = false;
+					$atributos ["tamanno"] = 1;
+					$atributos ["ancho"] = "250px";
 					$atributos ["estilo"] = "jqueryui";
+					$atributos ["etiquetaObligatorio"] = true;
+					$atributos ["validar"] = "required";
 					$atributos ["anchoEtiqueta"] = 350;
-					$atributos ["validar"] = "required, minSize[3],maxSize[2000]";
-					$atributos ["categoria"] = "";
-					$atributos ["valor"] = $resultado [0] ['editorial'];
-					echo $this->miFormulario->campoCuadroTexto ( $atributos );
+					$atributos ["obligatorio"] = true;
+					$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
+					// -----De donde rescatar los datos ---------
+					$atributos ["cadena_sql"] = $this->sql->cadena_sql ( "editorial" );
+					$atributos ["baseDatos"] = "estructura";
+					echo $this->miFormulario->campoCuadroLista ( $atributos );
 					unset ( $atributos );
 					
 					$esteCampo = "anio_libro";
@@ -253,7 +256,8 @@ switch ($resultado [0] ['num_evaluadores']) {
 					$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
 					$atributos ["titulo"] = $this->lenguaje->getCadena ( $esteCampo . "Titulo" );
 					$atributos ["tabIndex"] = $tab ++;
-					$atributos ["obligatorio"] = true;$atributos ["valor"] = $resultadoEvauadores [0] [0];
+					$atributos ["obligatorio"] = true;
+					$atributos ["valor"] = $resultadoEvauadores [0] [0];
 					$atributos ["tamanno"] = 5;
 					$atributos ["ancho"] = 350;
 					$atributos ["etiquetaObligatorio"] = true;
@@ -675,25 +679,24 @@ switch ($resultado [0] ['num_evaluadores']) {
 					$atributos ["valor"] = $resultado [0] ['puntaje'];
 					echo $this->miFormulario->campoCuadroTexto ( $atributos );
 					unset ( $atributos );
-                                        
-
-                                        $esteCampo="detalleDocencia";
-                                        $atributos["id"]=$esteCampo;
-                                        $atributos["etiqueta"]=$this->lenguaje->getCadena($esteCampo);
-                                        $atributos["titulo"]=$this->lenguaje->getCadena($esteCampo."Titulo");
-                                        $atributos["tabIndex"]=$tab++;
-                                        $atributos["obligatorio"]=true;
-                                        $atributos["etiquetaObligatorio"] = false;
-                                        $atributos["tipo"]="";
-                                        $atributos["columnas"] = 100;
-                                        $atributos["filas"] = 5;
-                                        $atributos["estilo"]="jqueryui";
-                                        $atributos["anchoEtiqueta"] = 300;
-                                        $atributos["validar"]="required";
-                                        $atributos["categoria"]="";
-                                        $atributos ["valor"] = $resultado [0] ['detalledocencia'];
-                                        echo $this->miFormulario->campoTextArea($atributos);
-                                        unset($atributos);
+					
+					$esteCampo = "detalleDocencia";
+					$atributos ["id"] = $esteCampo;
+					$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
+					$atributos ["titulo"] = $this->lenguaje->getCadena ( $esteCampo . "Titulo" );
+					$atributos ["tabIndex"] = $tab ++;
+					$atributos ["obligatorio"] = true;
+					$atributos ["etiquetaObligatorio"] = false;
+					$atributos ["tipo"] = "";
+					$atributos ["columnas"] = 100;
+					$atributos ["filas"] = 5;
+					$atributos ["estilo"] = "jqueryui";
+					$atributos ["anchoEtiqueta"] = 300;
+					$atributos ["validar"] = "required";
+					$atributos ["categoria"] = "";
+					$atributos ["valor"] = $resultado [0] ['detalledocencia'];
+					echo $this->miFormulario->campoTextArea ( $atributos );
+					unset ( $atributos );
 				}
 				
 				// ------------------Fin Division para los botones-------------------------

@@ -53,6 +53,7 @@
            $("#detalleDocencia").val(texto);
         });
 
+        $("#editorial").select2();
         $("#tipo_libro").select2();  
         $("#numEvaluadores").select2();
         $("#uniEvaluador1").select2();

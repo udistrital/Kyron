@@ -43,10 +43,9 @@ $atributos ["estilo"] = "marcoBotones";
 // $atributos["estiloEnLinea"]="display:none";
 // echo $this->miFormulario->division("inicio",$atributos);
 
-
 // ------------------Control Lista Desplegable------------------------------
 $esteCampo = "identificacionFinalCrear";
-$atributos ["id"] = $esteCampo;				
+$atributos ["id"] = $esteCampo;
 $atributos ["tipo"] = "hidden";
 echo $this->miFormulario->campoCuadroTexto ( $atributos );
 unset ( $atributos );
@@ -65,7 +64,6 @@ $atributos ["validar"] = "minSize[3], maxSize[2000]";
 $atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
 echo $this->miFormulario->campoCuadroTexto ( $atributos );
 unset ( $atributos );
-
 
 // ------------------Control Lista Desplegable------------------------------
 $esteCampo = "titulolibro";
@@ -581,22 +579,22 @@ $atributos ["categoria"] = "";
 echo $this->miFormulario->campoCuadroTexto ( $atributos );
 unset ( $atributos );
 
-$esteCampo="detalleDocencia";
-$atributos["id"]=$esteCampo;
-$atributos["etiqueta"]=$this->lenguaje->getCadena($esteCampo);
-$atributos["titulo"]=$this->lenguaje->getCadena($esteCampo."Titulo");
-$atributos["tabIndex"]=$tab++;
-$atributos["obligatorio"]=true;
-$atributos["etiquetaObligatorio"] = false;
-$atributos["tipo"]="";
-$atributos["columnas"] = 100;
-$atributos["filas"] = 5;
-$atributos["estilo"]="jqueryui";
-$atributos["anchoEtiqueta"] = 310;
-$atributos["validar"]="required";
-$atributos["categoria"]="";
-echo $this->miFormulario->campoTextArea($atributos);
-unset($atributos);
+$esteCampo = "detalleDocencia";
+$atributos ["id"] = $esteCampo;
+$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
+$atributos ["titulo"] = $this->lenguaje->getCadena ( $esteCampo . "Titulo" );
+$atributos ["tabIndex"] = $tab ++;
+$atributos ["obligatorio"] = true;
+$atributos ["etiquetaObligatorio"] = false;
+$atributos ["tipo"] = "";
+$atributos ["columnas"] = 100;
+$atributos ["filas"] = 5;
+$atributos ["estilo"] = "jqueryui";
+$atributos ["anchoEtiqueta"] = 310;
+$atributos ["validar"] = "required";
+$atributos ["categoria"] = "";
+echo $this->miFormulario->campoTextArea ( $atributos );
+unset ( $atributos );
 
 // ------------------Fin Division para los botones-------------------------
 // echo $this->miFormulario->division("fin");
