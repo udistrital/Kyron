@@ -32,14 +32,21 @@ class SqlcapituloLibros extends sql {
 				$cadena_sql .= "ORDER BY id_tipo_libro";
 				break;
 			
-                         case "buscarProyectos" :
-
-                            $cadena_sql = "SELECT codigo_proyecto, nombre_proyecto ";
-                            $cadena_sql .= "FROM docencia.proyectocurricular ";
-                            $cadena_sql .= " WHERE id_facultad = '".$variable."' ";
-                            $cadena_sql .= "ORDER BY nombre_proyecto";
-                            break;    
-                            
+			case "buscarProyectos" :
+				
+				$cadena_sql = "SELECT codigo_proyecto, nombre_proyecto ";
+				$cadena_sql .= "FROM docencia.proyectocurricular ";
+				$cadena_sql .= " WHERE id_facultad = '" . $variable . "' ";
+				$cadena_sql .= "ORDER BY nombre_proyecto";
+				break;
+			
+			case "editorial" :
+				
+				$cadena_sql = "SELECT id_editorial, nombre_editorial ";
+				$cadena_sql .= "FROM docencia.editoriales ";
+				$cadena_sql .= "ORDER BY id_editorial";
+				break;
+			
 			case "universidad" :
 				
 				$cadena_sql = "SELECT id_universidad, nombre_universidad ";
@@ -79,18 +86,14 @@ class SqlcapituloLibros extends sql {
 				$cadena_sql .= "docencia.docente_informacion ";
 				$cadena_sql .= "WHERE ";
 				$cadena_sql .= "informacion_estadoregistro = TRUE  ";
-                                
-                                if($variable != '')
-                                    {
-                                        if(is_numeric($variable))
-                                        {
-                                            $cadena_sql .= " AND  informacion_numeroidentificacion like '%".$variable."%'  ";
-                                        }else
-                                            {
-                                                $cadena_sql .= " AND  ((UPPER(informacion_nombres) like '%".strtoupper($variable)."%') OR (UPPER(informacion_apellidos) like '%".strtoupper($variable)."%'))  ";
-                                            }
-                                    }
-                                
+				
+				if ($variable != '') {
+					if (is_numeric ( $variable )) {
+						$cadena_sql .= " AND  informacion_numeroidentificacion like '%" . $variable . "%'  ";
+					} else {
+						$cadena_sql .= " AND  ((UPPER(informacion_nombres) like '%" . strtoupper ( $variable ) . "%') OR (UPPER(informacion_apellidos) like '%" . strtoupper ( $variable ) . "%'))  ";
+					}
+				}
 				
 				break;
 			

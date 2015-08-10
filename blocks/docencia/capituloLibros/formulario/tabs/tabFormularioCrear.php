@@ -141,23 +141,29 @@ $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conex
 				echo $this->miFormulario->campoCuadroTexto ( $atributos );
 				unset ( $atributos );
 				
-				// ------------------Control Lista Desplegable------------------------------
+				// ------------------Control Lista Desplegable------------------------------			
+				
 				$esteCampo = "editorial";
 				$atributos ["id"] = $esteCampo;
-				$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
-				$atributos ["titulo"] = $this->lenguaje->getCadena ( $esteCampo . "Titulo" );
 				$atributos ["tabIndex"] = $tab ++;
-				$atributos ["obligatorio"] = true;
-				$atributos ["tamanno"] = 40;
-				$atributos ["columnas"] = 1;
-				$atributos ["etiquetaObligatorio"] = true;
-				$atributos ["tipo"] = "";
+				$atributos ["seleccion"] = - 1;
+				$atributos ["evento"] = 2;
+				$atributos ["columnas"] = "1";
+				$atributos ["limitar"] = false;
+				$atributos ["tamanno"] = 1;
+				$atributos ["ancho"] = "250px";
 				$atributos ["estilo"] = "jqueryui";
+				$atributos ["etiquetaObligatorio"] = true;
+				$atributos ["validar"] = "required";
 				$atributos ["anchoEtiqueta"] = 350;
-				$atributos ["validar"] = "required, minSize[3],maxSize[2000]";
-				$atributos ["categoria"] = "";
-				echo $this->miFormulario->campoCuadroTexto ( $atributos );
+				$atributos ["obligatorio"] = true;
+				$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
+				// -----De donde rescatar los datos ---------
+				$atributos ["cadena_sql"] = $this->sql->cadena_sql ( "editorial" );
+				$atributos ["baseDatos"] = "estructura";
+				echo $this->miFormulario->campoCuadroLista ( $atributos );
 				unset ( $atributos );
+				
 				
 				$esteCampo = "anio_libro";
 				$atributos ["id"] = $esteCampo;
