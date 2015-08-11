@@ -13,55 +13,31 @@ $this->idioma["identificacionFinalConsulta"]="Docente:";
 
 $this->idioma["mensajeGeneral"]="Si no se selecciona ningun filtro en la busqueda el sistema realizara una consulta general.";
 
-
-
+//Evaluadores
+$this->idioma["numEvaluadores"]="Número de Evaluadores: ";
 $this->idioma["grupoEvaludadores"]="Evaluadores ";
 
-$this->idioma["nomEvaluador1"]="Nombres y Apellidos Evaluador 1:  ";
 
-$this->idioma["nomEvaluador1Titulo"]="Ingrese Evaluador";
-
-$this->idioma["nomEvaluador2"]="Nombres y Apellidos Evaluador 2:  ";
-
-$this->idioma["nomEvaluador2Titulo"]="Ingrese Evaluador";
-
-$this->idioma["nomEvaluador3"]="Nombres y Apellidos Evaluador 3:  ";
-
-$this->idioma["nomEvaluador3Titulo"]="Ingrese Evaluador";
-
-
-$this->idioma["uniEvaluador1"]="Entidad o Institución :  ";
-
-$this->idioma["uniEvaluador1Titulo"]="Seleccione Entidad o Institución";
-
-
-$this->idioma["puntEvaluador1"]="Puntaje Sugerido :  ";
-
-$this->idioma["puntEvaluador1Titulo"]="Ingrese Puntaje Sugerido por el Evaluador";
+/**
+ * Asigna mensajes a los campos cambiando el sufijo 1,2...5
+ */
+for ($i = 1; $i < 4; $i++) {
+	
+	$this->idioma["infoEv".$i]="Información Evaluador ".$i.":";
+	$this->idioma["idEvaluador".$i]="Documento";
+	$this->idioma["nomEvaluador".$i]="Nombres y Apellidos:  ";
+	$this->idioma["uniEvaluador".$i]="Entidad o Institución:  ";
+	$this->idioma["puntEvaluador".$i]="Puntaje sugerido:  ";
+	
+}
 
 
 
-$this->idioma["uniEvaluador2"]="Entidad o Institución :  ";
-
-$this->idioma["uniEvaluador2Titulo"]="Seleccione Entidad o Institución";
-
-
-$this->idioma["puntEvaluador2"]="Puntaje Sugerido :  ";
-
-$this->idioma["puntEvaluador2Titulo"]="Ingrese Puntaje Sugerido por el Evaluador";
-
-$this->idioma["uniEvaluador3"]="Entidad o Institución :  ";
-
-$this->idioma["uniEvaluador3Titulo"]="Seleccione Entidad o Institución";
-
-
-$this->idioma["puntEvaluador3"]="Puntaje Sugerido :  ";
-
-$this->idioma["puntEvaluador3Titulo"]="Ingrese Puntaje Sugerido por el Evaluador";
 
 
 
-$this->idioma["numEvaluadores"]="Número de Evaluadores: ";
+
+
 
 $this->idioma["numAutoTitulo"]="Seleccione Evaluadores";
 

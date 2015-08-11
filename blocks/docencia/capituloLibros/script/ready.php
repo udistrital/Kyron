@@ -124,36 +124,38 @@ var lockDate = new Date($('#fechaActa').datepicker('getDate'));
         
                 
         // Validacion para el numero de Evaluadores
+   
+   //Inicia presentando solamente el divEv1
+           $("#divEv1").show();
+           $("#divEv2").hide();
+           $("#divEv3").hide(); 
           
-         $( "#numEvaluadores" ).change(function() {
+          
+         $( "#numEvaluadores" ).change(function() {         
+
             switch($("#numEvaluadores").val())
             {
                 case '1':
-                    $("#divEv2").css('display','none');
-                    $("#divEv3").css('display','none');
-                    
-      
-                                       
+                		$("#divEv1").show();
+                        $("#divEv2").hide();
+                        $("#divEv3").hide();              
    
                 break;
             
-                case '2':
-                    
-                    $("#divEv2").css('display','block');
-                    $("#divEv3").css('display','none');
-                                        
-        
+                case '2':                   		                 
+                		$("#divEv1").show();
+                        $("#divEv2").show();
+                        $("#divEv3").hide(); 
                    
-                    
                 break;
-                case '3':
                 
-                    $("#divEv2").css('display','block');
-                    $("#divEv3").css('display','block');
-                    
-                                        
+                case '3':               
+                		$("#divEv1").show();
+                        $("#divEv2").show();
+                        $("#divEv3").show();                                         
                                      
-                break;
+                break;               
+                
             }
           });
         

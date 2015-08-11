@@ -41,7 +41,7 @@ $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conex
     <?php
 				
 				$esteCampo = "identificacionFinalCrear";
-				$atributos ["id"] = $esteCampo;				
+				$atributos ["id"] = $esteCampo;
 				$atributos ["tipo"] = "hidden";
 				echo $this->miFormulario->campoCuadroTexto ( $atributos );
 				unset ( $atributos );
@@ -143,15 +143,15 @@ $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conex
 					$atributos ["id"] = "divEv1";
 					$atributos ["estiloEnLinea"] = "display:block";
 					echo $this->miFormulario->division ( "inicio", $atributos );
-                                        
-                                        $esteCampo = "infoEv1";
+					
+					$esteCampo = "infoEv1";
 					$atributos ["id"] = $esteCampo;
 					$atributos ["estilo"] = "jqueryui";
 					$atributos ["leyenda"] = $this->lenguaje->getCadena ( $esteCampo );
 					echo $this->miFormulario->marcoAgrupacion ( "inicio", $atributos );
 					unset ( $atributos );
-					                                        
-                                        $esteCampo = "idEvaluador1";
+					
+					$esteCampo = "idEvaluador1";
 					$atributos ["id"] = $esteCampo;
 					$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
 					$atributos ["titulo"] = $this->lenguaje->getCadena ( $esteCampo . "Titulo" );
@@ -167,7 +167,7 @@ $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conex
 					$atributos ["categoria"] = "";
 					echo $this->miFormulario->campoCuadroTexto ( $atributos );
 					unset ( $atributos );
-                                        
+					
 					$esteCampo = "nomEvaluador1";
 					$atributos ["id"] = $esteCampo;
 					$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
@@ -185,27 +185,27 @@ $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conex
 					echo $this->miFormulario->campoCuadroTexto ( $atributos );
 					unset ( $atributos );
 					
-                                        //------------------Control Lista Desplegable------------------------------
-                                        $esteCampo = "univEva1";
-                                        $atributos["id"] = $esteCampo;
-                                        $atributos["tabIndex"] = $tab++;
-                                        $atributos["seleccion"] = -1;
-                                        $atributos["evento"] = 2;
-                                        $atributos["columnas"] = "1";
-                                        $atributos["limitar"] = false;
-                                        $atributos["tamanno"] = 1;
-                                        $atributos["ancho"] = "250px";
-                                        $atributos["estilo"] = "jqueryui";
-                                        $atributos["etiquetaObligatorio"] = true;
-                                        $atributos["validar"] = "required";
-                                        $atributos["anchoEtiqueta"] = 350;
-                                        $atributos["obligatorio"] = true;
-                                        $atributos["etiqueta"] = $this->lenguaje->getCadena($esteCampo);
-                                        //-----De donde rescatar los datos ---------
-                                        $atributos["cadena_sql"] = $this->sql->cadena_sql("universidad");
-                                        $atributos["baseDatos"] = "estructura";
-                                        echo $this->miFormulario->campoCuadroLista($atributos);
-                                        unset($atributos);
+					// ------------------Control Lista Desplegable------------------------------
+					$esteCampo = "univEva1";
+					$atributos ["id"] = $esteCampo;
+					$atributos ["tabIndex"] = $tab ++;
+					$atributos ["seleccion"] = - 1;
+					$atributos ["evento"] = 2;
+					$atributos ["columnas"] = "1";
+					$atributos ["limitar"] = false;
+					$atributos ["tamanno"] = 1;
+					$atributos ["ancho"] = "250px";
+					$atributos ["estilo"] = "jqueryui";
+					$atributos ["etiquetaObligatorio"] = true;
+					$atributos ["validar"] = "required";
+					$atributos ["anchoEtiqueta"] = 350;
+					$atributos ["obligatorio"] = true;
+					$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
+					// -----De donde rescatar los datos ---------
+					$atributos ["cadena_sql"] = $this->sql->cadena_sql ( "universidad" );
+					$atributos ["baseDatos"] = "estructura";
+					echo $this->miFormulario->campoCuadroLista ( $atributos );
+					unset ( $atributos );
 					
 					$esteCampo = "puntEvaluador1";
 					$atributos ["id"] = $esteCampo;
@@ -223,8 +223,8 @@ $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conex
 					$atributos ["categoria"] = "";
 					echo $this->miFormulario->campoCuadroTexto ( $atributos );
 					unset ( $atributos );
-                                        
-                                        echo $this->miFormulario->marcoAgrupacion ( "fin" );
+					
+					echo $this->miFormulario->marcoAgrupacion ( "fin" );
 					
 					echo $this->miFormulario->division ( "fin" );
 					
@@ -232,14 +232,14 @@ $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conex
 					$atributos ["estiloEnLinea"] = "display:block";
 					echo $this->miFormulario->division ( "inicio", $atributos );
 					
-                                        $esteCampo = "infoEv2";
+					$esteCampo = "infoEv2";
 					$atributos ["id"] = $esteCampo;
 					$atributos ["estilo"] = "jqueryui";
 					$atributos ["leyenda"] = $this->lenguaje->getCadena ( $esteCampo );
 					echo $this->miFormulario->marcoAgrupacion ( "inicio", $atributos );
 					unset ( $atributos );
-                                        
-                                        $esteCampo = "idEvaluador2";
+					
+					$esteCampo = "idEvaluador2";
 					$atributos ["id"] = $esteCampo;
 					$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
 					$atributos ["titulo"] = $this->lenguaje->getCadena ( $esteCampo . "Titulo" );
@@ -255,7 +255,7 @@ $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conex
 					$atributos ["categoria"] = "";
 					echo $this->miFormulario->campoCuadroTexto ( $atributos );
 					unset ( $atributos );
-                                        
+					
 					$esteCampo = "nomEvaluador2";
 					$atributos ["id"] = $esteCampo;
 					$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
@@ -273,27 +273,27 @@ $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conex
 					echo $this->miFormulario->campoCuadroTexto ( $atributos );
 					unset ( $atributos );
 					
-                                        //------------------Control Lista Desplegable------------------------------
-                                        $esteCampo = "univEva2";
-                                        $atributos["id"] = $esteCampo;
-                                        $atributos["tabIndex"] = $tab++;
-                                        $atributos["seleccion"] = -1;
-                                        $atributos["evento"] = 2;
-                                        $atributos["columnas"] = "1";
-                                        $atributos["limitar"] = false;
-                                        $atributos["tamanno"] = 1;
-                                        $atributos["ancho"] = "250px";
-                                        $atributos["estilo"] = "jqueryui";
-                                        $atributos["etiquetaObligatorio"] = true;
-                                        $atributos["validar"] = "required";
-                                        $atributos["anchoEtiqueta"] = 350;
-                                        $atributos["obligatorio"] = true;
-                                        $atributos["etiqueta"] = $this->lenguaje->getCadena($esteCampo);
-                                        //-----De donde rescatar los datos ---------
-                                        $atributos["cadena_sql"] = $this->sql->cadena_sql("universidad");
-                                        $atributos["baseDatos"] = "estructura";
-                                        echo $this->miFormulario->campoCuadroLista($atributos);
-                                        unset($atributos);
+					// ------------------Control Lista Desplegable------------------------------
+					$esteCampo = "univEva2";
+					$atributos ["id"] = $esteCampo;
+					$atributos ["tabIndex"] = $tab ++;
+					$atributos ["seleccion"] = - 1;
+					$atributos ["evento"] = 2;
+					$atributos ["columnas"] = "1";
+					$atributos ["limitar"] = false;
+					$atributos ["tamanno"] = 1;
+					$atributos ["ancho"] = "250px";
+					$atributos ["estilo"] = "jqueryui";
+					$atributos ["etiquetaObligatorio"] = true;
+					$atributos ["validar"] = "required";
+					$atributos ["anchoEtiqueta"] = 350;
+					$atributos ["obligatorio"] = true;
+					$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
+					// -----De donde rescatar los datos ---------
+					$atributos ["cadena_sql"] = $this->sql->cadena_sql ( "universidad" );
+					$atributos ["baseDatos"] = "estructura";
+					echo $this->miFormulario->campoCuadroLista ( $atributos );
+					unset ( $atributos );
 					
 					$esteCampo = "puntEvaluador2";
 					$atributos ["id"] = $esteCampo;
@@ -312,22 +312,22 @@ $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conex
 					echo $this->miFormulario->campoCuadroTexto ( $atributos );
 					unset ( $atributos );
 					
-                                        echo $this->miFormulario->marcoAgrupacion ( "fin" );
-                                        
+					echo $this->miFormulario->marcoAgrupacion ( "fin" );
+					
 					echo $this->miFormulario->division ( "fin" );
 					
 					$atributos ["id"] = "divEv3";
 					$atributos ["estiloEnLinea"] = "display:none";
 					echo $this->miFormulario->division ( "inicio", $atributos );
-                                        
-                                        $esteCampo = "infoEv3";
+					
+					$esteCampo = "infoEv3";
 					$atributos ["id"] = $esteCampo;
 					$atributos ["estilo"] = "jqueryui";
 					$atributos ["leyenda"] = $this->lenguaje->getCadena ( $esteCampo );
 					echo $this->miFormulario->marcoAgrupacion ( "inicio", $atributos );
 					unset ( $atributos );
-                                        
-                                        $esteCampo = "idEvaluador3";
+					
+					$esteCampo = "idEvaluador3";
 					$atributos ["id"] = $esteCampo;
 					$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
 					$atributos ["titulo"] = $this->lenguaje->getCadena ( $esteCampo . "Titulo" );
@@ -361,28 +361,27 @@ $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conex
 					echo $this->miFormulario->campoCuadroTexto ( $atributos );
 					unset ( $atributos );
 					
-                                        //------------------Control Lista Desplegable------------------------------
-                                        $esteCampo = "univEva3";
-                                        $atributos["id"] = $esteCampo;
-                                        $atributos["tabIndex"] = $tab++;
-                                        $atributos["seleccion"] = -1;
-                                        $atributos["evento"] = 2;
-                                        $atributos["columnas"] = "1";
-                                        $atributos["limitar"] = false;
-                                        $atributos["tamanno"] = 1;
-                                        $atributos["ancho"] = "250px";
-                                        $atributos["estilo"] = "jqueryui";
-                                        $atributos["etiquetaObligatorio"] = true;
-                                        $atributos["validar"] = "required";
-                                        $atributos["anchoEtiqueta"] = 350;
-                                        $atributos["obligatorio"] = true;
-                                        $atributos["etiqueta"] = $this->lenguaje->getCadena($esteCampo);
-                                        //-----De donde rescatar los datos ---------
-                                        $atributos["cadena_sql"] = $this->sql->cadena_sql("universidad");
-                                        $atributos["baseDatos"] = "estructura";
-                                        echo $this->miFormulario->campoCuadroLista($atributos);
-                                        unset($atributos);
-	
+					// ------------------Control Lista Desplegable------------------------------
+					$esteCampo = "univEva3";
+					$atributos ["id"] = $esteCampo;
+					$atributos ["tabIndex"] = $tab ++;
+					$atributos ["seleccion"] = - 1;
+					$atributos ["evento"] = 2;
+					$atributos ["columnas"] = "1";
+					$atributos ["limitar"] = false;
+					$atributos ["tamanno"] = 1;
+					$atributos ["ancho"] = "250px";
+					$atributos ["estilo"] = "jqueryui";
+					$atributos ["etiquetaObligatorio"] = true;
+					$atributos ["validar"] = "required";
+					$atributos ["anchoEtiqueta"] = 350;
+					$atributos ["obligatorio"] = true;
+					$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
+					// -----De donde rescatar los datos ---------
+					$atributos ["cadena_sql"] = $this->sql->cadena_sql ( "universidad" );
+					$atributos ["baseDatos"] = "estructura";
+					echo $this->miFormulario->campoCuadroLista ( $atributos );
+					unset ( $atributos );
 					
 					$esteCampo = "puntEvaluador3";
 					$atributos ["id"] = $esteCampo;
@@ -400,7 +399,7 @@ $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conex
 					$atributos ["categoria"] = "";
 					echo $this->miFormulario->campoCuadroTexto ( $atributos );
 					unset ( $atributos );
-                                        echo $this->miFormulario->marcoAgrupacion ( "fin" );
+					echo $this->miFormulario->marcoAgrupacion ( "fin" );
 					
 					echo $this->miFormulario->division ( "fin" );
 					
@@ -425,7 +424,6 @@ $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conex
 				$atributos ["categoria"] = "fecha";
 				echo $this->miFormulario->campoCuadroTexto ( $atributos );
 				unset ( $atributos );
-				
 				
 				$esteCampo = "numeActa";
 				$atributos ["id"] = $esteCampo;
@@ -497,23 +495,23 @@ $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conex
 				echo $this->miFormulario->campoCuadroTexto ( $atributos );
 				unset ( $atributos );
 				
-                                $esteCampo="detalleDocencia";
-                                $atributos["id"]=$esteCampo;
-                                $atributos["etiqueta"]=$this->lenguaje->getCadena($esteCampo);
-                                $atributos["titulo"]=$this->lenguaje->getCadena($esteCampo."Titulo");
-                                $atributos["tabIndex"]=$tab++;
-                                $atributos["obligatorio"]=true;
-                                $atributos["etiquetaObligatorio"] = false;
-                                $atributos["tipo"]="";
-                                $atributos["columnas"] = 100;
-                                $atributos["filas"] = 5;
-                                $atributos["estilo"]="jqueryui";
-                                $atributos["anchoEtiqueta"] = 350;
-                                $atributos["validar"]="required";
-                                $atributos["categoria"]="";
-                                echo $this->miFormulario->campoTextArea($atributos);
-                                unset($atributos);
-                                
+				$esteCampo = "detalleDocencia";
+				$atributos ["id"] = $esteCampo;
+				$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
+				$atributos ["titulo"] = $this->lenguaje->getCadena ( $esteCampo . "Titulo" );
+				$atributos ["tabIndex"] = $tab ++;
+				$atributos ["obligatorio"] = true;
+				$atributos ["etiquetaObligatorio"] = false;
+				$atributos ["tipo"] = "";
+				$atributos ["columnas"] = 100;
+				$atributos ["filas"] = 5;
+				$atributos ["estilo"] = "jqueryui";
+				$atributos ["anchoEtiqueta"] = 350;
+				$atributos ["validar"] = "required";
+				$atributos ["categoria"] = "";
+				echo $this->miFormulario->campoTextArea ( $atributos );
+				unset ( $atributos );
+				
 				// ------------------Fin Division para los botones-------------------------
 				// echo $this->miFormulario->division("fin");
 				
