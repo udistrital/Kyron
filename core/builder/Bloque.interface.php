@@ -1,11 +1,9 @@
 <?php
 
+interface Bloque {
+    
+    function bloque();
 
- interface Bloque{
- 	
- 	function bloque(); 
- 	
- 	
- }
- 
- ?>
+}
+
+?>

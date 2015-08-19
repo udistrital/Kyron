@@ -1,46 +1,41 @@
 /* ----------------Estructura de la página ----------------- */
-
-body{
-	width:100%;		
-	margin:0;
+body {
+	width: 100%;
+	margin: 0;
 }
 
 #marcoGeneral {
-	
 	width: 95%;
 	margin: 0 auto;
 	border: 1px solid #EEEEEE;
-	background-color:#FFFFFF;
-	padding: 5px;
+	background-color: #FFFFFF;
+	padding: 0px 10px;
 	display: table;
-	
 }
 
-#seccionAmplia {
+.seccionAmplia {
 	width: 100%;
-	float: left;	
+	float: left;
 }
 
-#seccionB {
+.seccionB {
 	width: 20%;
-	float: left;	
+	float: left;
 }
 
-#seccionCentral {
+.seccionCentral {
 	width: 70%;
-	float: left;	
+	float: left;
 }
 
-#seccionCentralAmpliada {
+.seccionCentralAmpliada {
 	width: 80%;
 	float: left;
-		
 }
 
-
-#seccionD {
+.seccionD {
 	width: 15%;
-	float: left;	
+	float: left;
 }
 
 /* ------Fin Estilos de Estructura de la página ------------ */
@@ -54,7 +49,7 @@ body{
 }
 
 .centrar {
-	margin: 0 auto 0 auto;	
+	margin: 0 auto 0 auto;
 }
 
 .shadow {
@@ -62,3 +57,19 @@ body{
 	-webkit-box-shadow: 3px 3px 5px 6px #ccc;
 	box-shadow: 3px 3px 5px 6px #ccc;
 }
+
+
+.listaMenu{
+	
+	list-style-type:none;
+	
+}
+
+a.enlaceMenu{
+    
+     text-decoration:none; 
+    
+}
+
+
+
