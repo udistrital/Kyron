@@ -1,0 +1,17 @@
+ #pie{
+ 
+ font-family:Arial;
+ font-size:11px;
+ margin: auto;
+ text-align: center; 
+ 
+ }
+
+ 
+ #sabio{
+    width: 50px;
+    height: 85px;
+    display: block;
+    margin: auto;
+    <--background: url(../imagenes/escudo.jpg) no-repeat;--> 
+} 

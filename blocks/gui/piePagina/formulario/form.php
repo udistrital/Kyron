@@ -1,6 +1,6 @@
 <?php
 
-namespace gui\bannerKyron\formulario;
+namespace gui\piePagina\formulario;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
     include ("../index.php");
@@ -96,91 +96,46 @@ class Formulario {
         // ---------------- SECCION: Controles del Formulario -----------------------------------------------
            
         
-        $atributos ["id"] = "bannerBackground";
+        $atributos ["id"] = "sabio";
         echo $this->miFormulario->division("inicio", $atributos);
-        unset($atributos);
-        
-	        $atributos ["id"] = "bannerImagen";
-	        echo $this->miFormulario->division("inicio", $atributos);
-	        unset($atributos);
+        unset($atributos);        
 	        
-		        // ---------------- CONTROL: Imagen --------------------------------------------------------
-		        $esteCampo = 'bannerSuperior';
-		        $atributos ['id'] = $esteCampo;
-		        $atributos ['nombre'] = $esteCampo;
-		        $atributos ['estiloMarco'] = '';
-		        $atributos ["imagen"] = $rutaBloque . "/imagenes/kyron.png";
-		        $atributos ['alto'] = 150;
-		        $atributos ['ancho'] = 125;
-		        $atributos ["borde"] = 0;
-		        $atributos ['tabIndex'] = $tab++;
-		        $atributos = array_merge ( $atributos, $atributosGlobales );		        
-		        echo $this->miFormulario->campoImagen($atributos);
-		        unset($atributos);
-		        //--------------------FIN CONTROL: Imagen--------------------------------------------------------
+		    // ---------------- CONTROL: Imagen Escudo --------------------------------------------------------
+			$esteCampo = 'escudo';
+		    $atributos ['id'] = $esteCampo;
+		    $atributos ['nombre'] = $esteCampo;
+		    $atributos ['estiloMarco'] = '';
+		    $atributos ["imagen"] = $rutaBloque . "/imagenes/escudo.jpg";
+		    $atributos ['alto'] = 65;
+		    $atributos ['ancho'] = 52;
+		    $atributos ["borde"] = 0;
+		    $atributos ['tabIndex'] = $tab++;
+		    $atributos = array_merge ( $atributos, $atributosGlobales );		        
+		    echo $this->miFormulario->campoImagen($atributos);
+		    unset($atributos);
+		    //--------------------FIN CONTROL: Imagen Escudo--------------------------------------------------------
 	                  
-        	echo $this->miFormulario->division("fin");
+        echo $this->miFormulario->division("fin");
         
-	      	$atributos ["id"] = "bannerDatos";
-	      	echo $this->miFormulario->division("inicio", $atributos);
-	      	unset($atributos);
+	    $atributos ["id"] = "pie";
+	    echo $this->miFormulario->division("inicio", $atributos);
+	    unset($atributos);
 	      	
-		      	// ---------------- CONTROL: Campo de Texto Funcionario--------------------------------------------------------
+		   	// ---------------- CONTROL: Campo de Texto Mensaje Pie Página--------------------------------------------------------
 		      	
-		      	$esteCampo = 'campoUsuario';
-		      	$atributos ["id"] = $esteCampo;
-		      	$atributos ["estilo"] = $esteCampo;
-		      	$atributos ['columnas'] = 1;
-		      	$atributos ["estilo"] = $esteCampo;
-		      	$atributos ['texto'] = 'Administrador'; // Aqui se deberealizar la consulta  para mostrar el usuario del sistema.
-		      	$atributos ['tabIndex'] = $tab++;
-		      	echo $this->miFormulario->campoTexto($atributos);
-		      	unset($atributos);
+		 	$esteCampo = 'mensajePie';
+		   	$atributos ["id"] = $esteCampo;
+		   	$atributos ["estilo"] = $esteCampo;
+		   	$atributos ['columnas'] = '0';
+		   	$atributos ["estilo"] = $esteCampo;
+		   	$atributos ['texto'] = $this->lenguaje->getCadena($esteCampo);
+		  	$atributos ['tabIndex'] = $tab++;
+		   	echo $this->miFormulario->campoTexto($atributos);
+		   	unset($atributos);
 		      	 
-		      	//--------------------FIN CONTROL: Campo de Texto Funcionario--------------------------------------------------------
+		   	//--------------------FIN CONTROL: Campo de Texto Mensaje Pie Página--------------------------------------------------------	      	
 	      	
-		      	// ---------------- CONTROL: Campo de Texto Fecha--------------------------------------------------------
-	      		setlocale(LC_ALL, "es_ES");
-		      	$fecha = strftime("%A %d de %B del %Y");
-		      	
-		      	$esteCampo = 'campoFechaSistema';
-		      	$atributos ["id"] = $esteCampo;
-		      	$atributos ["estilo"] = $esteCampo;
-		      	$atributos ['columnas'] = 1;
-		      	$atributos ["estilo"] = $esteCampo;
-		      	$atributos ['texto'] = utf8_encode(ucwords($fecha));
-		      	$atributos ['tabIndex'] = $tab++;
-		      	echo $this->miFormulario->campoTexto($atributos);
-		      	unset($atributos);
-		      	
-		      	//--------------------FIN CONTROL: Campo de Texto Fecha--------------------------------------------------------
-	      	      	
-		      	$atributos ["id"] = "bannerReloj";
-		      	echo $this->miFormulario->division("inicio", $atributos);
-		      	unset($atributos);
-		      		// ---------------- CONTROL: Campo de Texto Hora--------------------------------------------------------
-			      	$esteCampo = 'campoHora';
-			      	$atributos ["id"] = $esteCampo;
-			      	$atributos ["estilo"] = $esteCampo;
-			      	$atributos ['columnas'] = 1;
-			      	$atributos ["estilo"] = $esteCampo;
-			      	$atributos ['texto'] = '';
-			      	$atributos ['tabIndex'] = $tab++;
-			      	echo $this->miFormulario->campoTexto($atributos);
-			      	unset($atributos);
-	
-		      		//--------------------FIN CONTROL: Campo de Texto Hora--------------------------------------------------------
-		      		      	
-		      	echo $this->miFormulario->division("fin");
-	      	
-		      	
-	      	
-	      	echo $this->miFormulario->division("fin");
-	      	
-	    echo $this->miFormulario->division("fin");    
-	      	 
-	      	
-        // ------------------Fin Division para los botones-------------------------
+	 
         echo $this->miFormulario->division ( "fin" );
         
         // ------------------- SECCION: Paso de variables ------------------------------------------------
