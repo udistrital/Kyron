@@ -33,3 +33,4 @@ $miProcesador = new FormProcessor ( $this->lenguaje, $this->sql );
 
 $resultado= $miProcesador->procesarFormulario ();
 
+?>
