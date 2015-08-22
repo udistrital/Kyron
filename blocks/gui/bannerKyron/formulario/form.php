@@ -114,7 +114,6 @@ class Formulario {
 		        $atributos ['ancho'] = 125;
 		        $atributos ["borde"] = 0;
 		        $atributos ['tabIndex'] = $tab++;
-		        $atributos = array_merge ( $atributos, $atributosGlobales );		        
 		        echo $this->miFormulario->campoImagen($atributos);
 		        unset($atributos);
 		        //--------------------FIN CONTROL: Imagen--------------------------------------------------------

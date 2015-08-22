@@ -1,7 +1,12 @@
-    .row {
-    margin-right: -150px;
-    margin-left: -50px;
+
+.navbar {
+  position: static;
+  min-height: 50px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  background:#OOO;
 }
+   
     .titulo {
     background: #c6b589;
     aling-text:center;
@@ -9,17 +14,17 @@
     .dropdown-menu {
     min-width: 200px;
     background: #e5e5e5;
-    font-size: 90%;
+    font-size: 80%;
     }
     .dropdown-menu.columns-2 {
     min-width: 400px;
     background: #e5e5e5;
-    font-size: 90%;
+    font-size: 80%;
     }
     .dropdown-menu.columns-3 {
     min-width: 600px;
     background: #e5e5e5;
-    font-size: 90%;
+    font-size: 80%;
     }
     .dropdown-menu li a {
     padding: 5px 5px;
@@ -39,7 +44,14 @@
     text-decoration: none;
     color: #ffffff;
     background-color: #7f7f7f;
-    font-weight: bold;
+    
+    }
+    
+    .dropdown-menu li a:hover {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #7f7f7f;
+    
     }
      
     @media (max-width: 760px) {

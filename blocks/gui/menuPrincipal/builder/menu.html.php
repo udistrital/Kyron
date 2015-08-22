@@ -3,7 +3,7 @@
  *  Sintaxis recomendada para las plantillas PHP
  */ 
 ?>
-<br /><br /><br /><br /><br /><br /><br /><br /><br />		
+
 <nav class="navbar navbar-inverse" role="navigation">
 <ul class="nav navbar-nav">	 
 	<?php foreach ( $this->atributos['enlaces']  as $nombrePagina => $enlace ): ?>
