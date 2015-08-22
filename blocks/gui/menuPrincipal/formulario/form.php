@@ -141,7 +141,7 @@ class Formulario {
 			
 		foreach ($grupo as $datos=>$grupos){
 			foreach ($grupos as $paginas=>$descripcion){
-				var_dump ($descripcion);
+				
 			}
 		}
 		
