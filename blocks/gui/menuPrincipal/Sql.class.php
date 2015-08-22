@@ -22,7 +22,7 @@ function __construct() {
 
 }
 
-function cadena_sql($tipo, $variable = "") {
+function getCadenaSql($tipo, $variable = "") {
     
     /**
      * 1.
@@ -149,6 +149,32 @@ function cadena_sql($tipo, $variable = "") {
             $cadenaSql .= "WHERE ";
             $cadenaSql .= "id_sesion='" . $idSesion . "'";
             break;
+            
+            
+            /**
+         * Clausulas Menú.
+         * Mediante estas sentencias se generan los diferentes menus del aplicativo         
+         */
+                  
+       	case "datosMenu" :
+			$cadenaSql = "SELECT";
+			$cadenaSql .= " item.id_menu as menu,";
+			$cadenaSql .= " item.descripcion as descripcion,";
+			$cadenaSql .= " item.grupo as grupo,";
+			$cadenaSql .= " item.columna as columna,";
+			$cadenaSql .= " tipo_item.descripcion as tipo_item";			
+			$cadenaSql .= " FROM";
+			$cadenaSql .= " item";
+			$cadenaSql .= " inner join menu";
+			$cadenaSql .= " on menu.id_menu = item.id_menu";
+			$cadenaSql .= " inner join tipo_item";
+			$cadenaSql .= " on item.id_tipo_item = tipo_item.id_tipo_item";			
+			$cadenaSql .= " WHERE ";
+			$cadenaSql .= " menu.estado_registro= true";
+			$cadenaSql .= " and item.estado_registro = true";
+			$cadenaSql .= " and menu.perfil_usuario =". $variable;
+			$cadenaSql .= " order by item.grupo, item.columna, item.id_tipo_item";
+			break;
     }
     
     return $cadenaSql;

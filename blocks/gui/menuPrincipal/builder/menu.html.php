@@ -36,7 +36,7 @@
 		    					<?php if ($items=='title'):?>
 		      						<li><a class="titulo" href='#'><?php echo $links ?></a></li>
 		      					<?php else:?>
-		      		 				<li><a href='<?php echo $enlace ?>'><?php echo $items ?></a></li>
+		      		 				<li><a href='<?php echo $links; ?>'><?php echo $items; ?></a></li>
 		      					<?php endif; ?>							
 								
 					<?php endforeach; ?>
