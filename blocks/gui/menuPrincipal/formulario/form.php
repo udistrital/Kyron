@@ -4,8 +4,8 @@ namespace gui\menuPrincipal\formulario;
 
 include_once ($this->ruta . "/builder/DibujarMenu.class.php");
 use gui\menuPrincipal\builder\Dibujar;
-// // include_once ($this -> ruta . 'funcion/GetLink.php');
-// // use gui\menuPrincipal\funcion\GetLink;
+// include_once ($this -> ruta . 'funcion/GetLink.php');
+// use gui\menuPrincipal\funcion\GetLink;
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
 	exit ();
@@ -61,7 +61,7 @@ class Formulario {
 		
 		// -------------------------------------------------------------------------------------------------
 		
-		$conexion = "estructura";
+		$conexion = "menu";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
@@ -96,102 +96,34 @@ class Formulario {
 		echo $this->miFormulario->formulario ( $atributos );
 		unset ( $atributos );
 		// ---------------- SECCION: Controles del Formulario -----------------------------------------------
-		
-		$paginas = [ 
-				'inicio' 
-		];
-		
-		$enlaces = array ();
-		
-		foreach ( $paginas as $pagina ) {
-			$enlace = 'pagina=' . $pagina;
-			$enlace = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlace, $directorio );
-			// $enlace = GetLink::obtener($pagina);
-			$nombrePagina = $this->lenguaje->getCadena ( $pagina );
-			$enlaces [$nombrePagina] = $enlace;
-		}
-		
-		// $enlaces[$this->lenguaje->getCadena ( 'sesion' )]=array(
-		
-		// 'usuario registrado'=>'#',
-		// 'logout'=>'#',
-		// );
-		
+						
 		$cadenaSql = $this->miSql->getCadenaSql ( "datosMenu", 0 );
-		$datosMenu = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+		$datosMenu = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );	
 		
-		// var_dump($enlaces[$this->lenguaje->getCadena ( 'sesion' )]);
-		
-		$enlaces [$this->lenguaje->getCadena ( 'hojaVida' )] = array (
-				$this->lenguaje->getCadena ( 'crearDocente' ) => '#',
-				$this->lenguaje->getCadena ( 'titulosAcademicos' ) => '#',
-				$this->lenguaje->getCadena ( 'sinTitulosAcademicos' ) => '#',
-				$this->lenguaje->getCadena ( 'consultarActividadDocente' ) => '#' 
-		);
-
-		//Pendiente crear la tabla Grupo en las Tablas.
-		
-		foreach ( $datosMenu as $datos => $menu ) {
-			$grupo ['grupo' . $menu ['grupo']]['columna'. $menu ['columna']][$menu ['descripcion']] = array ();
-			$columna ['columna'. $menu ['columna']] = array ();
+		foreach ( $datosMenu as $menu => $item ) {
+			$enlaces [$this->lenguaje->getCadena ($item ['grupo'])]['columna'. $item ['columna']][$item ['tipo_item']][$this->lenguaje->getCadena ($item ['descripcion'])] = array ();
 		}
-		foreach ( $datosMenu as $datos => $menu ) {
-			$grupo ['grupo' . $menu ['grupo']]['columna'. $menu ['columna']][$menu ['descripcion']] = "#";
-		}
-			
-		foreach ($grupo as $datos=>$grupos){
-			foreach ($grupos as $paginas=>$descripcion){
-				
+		foreach ( $datosMenu as $menu => $item ) {			
+			if(strcmp($item['tipo_item'], 'tittle') == 0){
+				$enlace = '#';	
+				$enlaces [$this->lenguaje->getCadena ($item ['grupo'])]['columna'. $item ['columna']][$item ['tipo_item']][$this->lenguaje->getCadena ($item ['descripcion'])] = $enlace;				
+			}elseif(strcmp($item['tipo_item'], 'item') == 0){
+				$enlace = 'pagina=' . $item ['descripcion'];
+				$enlace = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlace, $directorio );
+				$enlaces [$this->lenguaje->getCadena ($item ['grupo'])]['columna'. $item ['columna']][$item ['tipo_item']][$this->lenguaje->getCadena ($item ['descripcion'])] = $enlace;						
+			}
+			elseif(strcmp($item['tipo_item'], 'menu') == 0){
+				$enlace = 'pagina=' . $item ['grupo'];
+				$enlace = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlace, $directorio );
+				$nombrePagina = $this->lenguaje->getCadena ( $item ['grupo'] );
+				$enlaces [$nombrePagina] = $enlace;
+			}elseif(strcmp($item['tipo_item'], 'link') == 0){
+				$enlace = $item ['link'];
+				//$enlace = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlace, $directorio );
+				$enlaces [$this->lenguaje->getCadena ($item ['grupo'])]['columna'. $item ['columna']][$item ['tipo_item']][$this->lenguaje->getCadena ($item ['descripcion'])] = $enlace;						
 			}
 		}
-		
-		
-		$enlaces [$this->lenguaje->getCadena ( 'asignacionPuntajes' )] = array (
-				'columnas' => array (
-						'columna1' => array (
-								'title' => $this->lenguaje->getCadena ( 'tituloSalariales' ),
-								$this->lenguaje->getCadena ( 'capituloLibros' ) => '#',
-								$this->lenguaje->getCadena ( 'cartasEditor' ) => '#',
-								$this->lenguaje->getCadena ( 'direccionTrabajosGrado' ) => '#',
-								$this->lenguaje->getCadena ( 'experienciaDireccionAcademica' ) => '#',
-								$this->lenguaje->getCadena ( 'experienciaInvestigacion' ) => '#',
-								$this->lenguaje->getCadena ( 'experienciaDocencia' ) => '#',
-								$this->lenguaje->getCadena ( 'experienciaProfesional' ) => '#',
-								$this->lenguaje->getCadena ( 'experienciaCalificada' ) => '#',
-								$this->lenguaje->getCadena ( 'excelenciaAcademica' ) => '#',
-								$this->lenguaje->getCadena ( 'revistasindexadas' ) => '#',
-								$this->lenguaje->getCadena ( 'comunicacionCorta' ) => '#',
-								$this->lenguaje->getCadena ( 'obrasArtisticasDocente' ) => '#',
-								$this->lenguaje->getCadena ( 'patentes' ) => '#',
-								$this->lenguaje->getCadena ( 'PremiosDocente' ) => '#',
-								$this->lenguaje->getCadena ( 'produccionVideosDocente' ) => '#',
-								$this->lenguaje->getCadena ( 'produccionLibros' ) => '#',
-								$this->lenguaje->getCadena ( 'traducciones' ) => '#',
-								$this->lenguaje->getCadena ( 'registroTecnicaSoftware' ) => '#' 
-						),
-						'columna2' => array (
-								'title' => $this->lenguaje->getCadena ( 'tituloBonificacion' ),
-								$this->lenguaje->getCadena ( 'crearDocente' ) => '#',
-								$this->lenguaje->getCadena ( 'titulosAcademicos' ) => '#',
-								$this->lenguaje->getCadena ( 'sinTitulosAcademicos' ) => '#',
-								$this->lenguaje->getCadena ( 'consultarActividadDocente' ) => '#' 
-						),
-						'columna3' => array (
-								'title' => $this->lenguaje->getCadena ( 'tituloNovedades' ),
-								$this->lenguaje->getCadena ( 'crearDocente' ) => '#',
-								$this->lenguaje->getCadena ( 'titulosAcademicos' ) => '#',
-								$this->lenguaje->getCadena ( 'sinTitulosAcademicos' ) => '#',
-								$this->lenguaje->getCadena ( 'consultarActividadDocente' ) => '#' 
-						) 
-				) 
-		);
-		
-		$enlaces [$this->lenguaje->getCadena ( 'reportesDocencia' )] = array (
-				'title' => $this->lenguaje->getCadena ( 'tituloConsultaReportes' ),
-				$this->lenguaje->getCadena ( 'consultaReportes' ) => '#',
-				$this->lenguaje->getCadena ( 'estadoCuentaDocente' ) => '#' 
-		);
-		
+
 		$atributos ['enlaces'] = $enlaces;
 		
 		$crearMenu = new Dibujar ();
@@ -289,106 +221,3 @@ $miFormulario->formulario ();
 $miFormulario->mensaje ();
 
 ?>
-
-<?php
-// include_once ($this->ruta . "/builder/DibujarMenu.class.php");
-// use gui\menuPrincipal\builder\Dibujar;
-// // include_once ($this -> ruta . 'funcion/GetLink.php');
-// // use gui\menuPrincipal\funcion\GetLink;
-
-// $directorio = $this->miConfigurador->getVariableConfiguracion ( "host" );
-// $directorio .= $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/index.php?";
-// $directorio .= $this->miConfigurador->getVariableConfiguracion ( "enlace" );
-
-// $esteBloque=$this->miConfigurador->getVariableConfiguracion ( 'esteBloque' );
-
-// $this->miSql = $sql;
-// $this->miConfigurador->fabricaConexiones->setRecursoDB ( 'principal' );
-
-// $conexion = "estructura";
-// $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
-
-// $paginas = [
-// 'inicio',
-// ];
-
-// $enlaces = array ();
-
-// foreach ( $paginas as $pagina ) {
-// $enlace = 'pagina=' . $pagina;
-// $enlace = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlace, $directorio );
-// //$enlace = GetLink::obtener($pagina);
-// $nombrePagina = $this->lenguaje->getCadena ( $pagina );
-// $enlaces[$nombrePagina] = $enlace;
-// }
-
-// // $enlaces[$this->lenguaje->getCadena ( 'sesion' )]=array(
-
-// // 'usuario registrado'=>'#',
-// // 'logout'=>'#',
-// // );
-
-// $cadenaSQL = $this->miSql->getCadenaSql("$cadenaSql", 0);
-// $datosMenu = $esteRecursoDB->ejecutarAcceso($cadenaSQL, "busqueda");
-
-// var_dump($datosMenu);
-
-// $enlaces[$this->lenguaje->getCadena ( 'hojaVida' )]=array(
-// $this->lenguaje->getCadena ( 'crearDocente' ) => '#',
-// $this->lenguaje->getCadena ( 'titulosAcademicos' ) => '#',
-// $this->lenguaje->getCadena ( 'sinTitulosAcademicos' ) => '#',
-// $this->lenguaje->getCadena ( 'consultarActividadDocente' ) => '#',
-// );
-
-// $enlaces[$this->lenguaje->getCadena ( 'asignacionPuntajes' )]=array(
-// 'columnas' => array(
-// 'columna1' => array(
-// 'title'=>$this->lenguaje->getCadena ( 'tituloSalariales' ),
-// $this->lenguaje->getCadena ( 'capituloLibros' ) => '#',
-// $this->lenguaje->getCadena ( 'cartasEditor' ) => '#',
-// $this->lenguaje->getCadena ( 'direccionTrabajosGrado' ) => '#',
-// $this->lenguaje->getCadena ( 'experienciaDireccionAcademica' ) => '#',
-// $this->lenguaje->getCadena ( 'experienciaInvestigacion' ) => '#',
-// $this->lenguaje->getCadena ( 'experienciaDocencia' ) => '#',
-// $this->lenguaje->getCadena ( 'experienciaProfesional' ) => '#',
-// $this->lenguaje->getCadena ( 'experienciaCalificada' ) => '#',
-// $this->lenguaje->getCadena ( 'excelenciaAcademica' ) => '#',
-// $this->lenguaje->getCadena ( 'revistasindexadas' ) => '#',
-// $this->lenguaje->getCadena ( 'comunicacionCorta' ) => '#',
-// $this->lenguaje->getCadena ( 'obrasArtisticasDocente' ) => '#',
-// $this->lenguaje->getCadena ( 'patentes' ) => '#',
-// $this->lenguaje->getCadena ( 'PremiosDocente' ) => '#',
-// $this->lenguaje->getCadena ( 'produccionVideosDocente' ) => '#',
-// $this->lenguaje->getCadena ( 'produccionLibros' ) => '#',
-// $this->lenguaje->getCadena ( 'traducciones' ) => '#',
-// $this->lenguaje->getCadena ( 'registroTecnicaSoftware' ) => '#',
-// ),
-// 'columna2' => array(
-// 'title'=>$this->lenguaje->getCadena ( 'tituloBonificacion' ),
-// $this->lenguaje->getCadena ( 'crearDocente' ) => '#',
-// $this->lenguaje->getCadena ( 'titulosAcademicos' ) => '#',
-// $this->lenguaje->getCadena ( 'sinTitulosAcademicos' ) => '#',
-// $this->lenguaje->getCadena ( 'consultarActividadDocente' ) => '#',
-// ),
-// 'columna3' => array(
-// 'title'=>$this->lenguaje->getCadena ( 'tituloNovedades' ),
-// $this->lenguaje->getCadena ( 'crearDocente' ) => '#',
-// $this->lenguaje->getCadena ( 'titulosAcademicos' ) => '#',
-// $this->lenguaje->getCadena ( 'sinTitulosAcademicos' ) => '#',
-// $this->lenguaje->getCadena ( 'consultarActividadDocente' ) => '#',
-// ),
-// ),
-// );
-
-// $enlaces[$this->lenguaje->getCadena ( 'reportesDocencia' )]=array(
-// 'title'=>$this->lenguaje->getCadena ( 'tituloConsultaReportes' ),
-// $this->lenguaje->getCadena ( 'consultaReportes' ) => '#',
-// $this->lenguaje->getCadena ( 'estadoCuentaDocente' ) => '#',
-// );
-
-// $atributos ['enlaces'] = $enlaces;
-
-// $crearMenu = new Dibujar ();
-// echo $crearMenu->html ( $atributos );
-
-// ?>

@@ -1,16 +1,12 @@
-.navbar {
-  position: static;
-  min-height: 50px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  background:#OOO;
-}
-   
+	.row {
+	margin-right: -0px;
+	margin-left: -40px;
+	}
     .titulo {
     background: #c6b589;
-    aling-text:center;
-    }
-    .dropdown-menu {
+	font: italic bold 12px/30px Georgia, serif;   
+	}    
+    .dropdown-menu.columns-1 {
     min-width: 200px;
     background: #e5e5e5;
     font-size: 80%;
@@ -31,6 +27,7 @@
     }
     .multi-column-dropdown {
     list-style: none;
+    aling-text:right;
     }
     .multi-column-dropdown li a {
     display: block;

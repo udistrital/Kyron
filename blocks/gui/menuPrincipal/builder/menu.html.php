@@ -3,53 +3,48 @@
  *  Sintaxis recomendada para las plantillas PHP
  */ 
 ?>
-
 <nav class="navbar navbar-inverse" role="navigation">
-<ul class="nav navbar-nav">	 
-	<?php foreach ( $this->atributos['enlaces']  as $nombrePagina => $enlace ): ?>
-		<?php if (is_array($enlace)): ?>				
-			<?php if (!isset($enlace['columnas']) ):?>
-				<li class="dropdown"><a class="dropdown-toggle"
-				data-toggle="dropdown" href="#">
-		     	<?php echo $nombrePagina ?><b class="caret"></b></a>				
-				<ul class="dropdown-menu">
-		      	<?php foreach ( $enlace  as $nombrePagina => $enlace ) : ?>
-		      		<?php if ($nombrePagina=='title'):?>
-		      			<li><a class="titulo" href='#'><?php echo $enlace ?></a></li>
-		      		<?php else:?>
-		      		 	<li><a href='<?php echo $enlace ?>'><?php echo $nombrePagina ?></a></li>
-		      		<?php endif; ?>		
-					
-				<?php endforeach; ?>
-		      </ul></li>
-		    <?php elseif (isset($enlace['columnas']) ):?>
-		    	<?php $columns = count($enlace['columnas']);?>
-		    	<li class="dropdown"><a href="#" class="dropdown-toggle"
-				data-toggle="dropdown">
-		    	<?php echo $nombrePagina ?><span class="caret"></span></a>	
-		    	<ul class="dropdown-menu multi-column columns-<?php echo $columns;?>">
-				<div class="row">
-		    	<?php foreach ( $enlace['columnas']  as $nombrePagina => $enlace ):?>		
-		    		<div class="col-sm-<?php echo (12/$columns); ?>">
-					<ul class="multi-column-dropdown">
-		    		<?php foreach ( $enlace as $items => $links):?>	
-		    					<?php if ($items=='title'):?>
-		      						<li><a class="titulo" href='#'><?php echo $links ?></a></li>
-		      					<?php else:?>
-		      		 				<li><a href='<?php echo $links; ?>'><?php echo $items; ?></a></li>
-		      					<?php endif; ?>							
-								
-					<?php endforeach; ?>
-					</ul>
+	<ul class="nav navbar-nav">	 
+	<?php foreach ( $this->atributos['enlaces']  as $nombrePagina => $columnas ): ?>	
+		<?php if (is_array($columnas)): ?>	
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">	
+			<?php echo $nombrePagina ?><span class="caret"></span></a>
+				<?php $numColumnas = count($columnas);?>
+				<ul class="dropdown-menu multi-column columns-<?php echo $numColumnas;?>">
+					<div class="row">		
+				<?php foreach ( $columnas as $col=>$item): ?>
+					<div class="col-sm-<?php echo (12/$numColumnas);?>">
+						<ul class="multi-column-dropdown">								
+					<?php foreach ( $item as $titulo=>$paginas): ?>		
+						<?php foreach ( $paginas as $nombrePagina=>$enlace): ?>								
+							<?php if ($titulo=='tittle'):?>
+				      			<li><a class="titulo" href='#'><?php echo $nombrePagina ?></a></li>
+				      		<?php else:?>
+				      		 	<li><a href='<?php echo $enlace ?>'><?php echo $nombrePagina ?></a></li>
+				      		<?php endif; ?>			      							
+						<?php endforeach; ?> 											
+				<?php endforeach; ?> 	
+						</ul>
+					</div>					
+			<?php endforeach; ?> 
 					</div>
-				<?php endforeach; ?>
-				</div>
-				</ul></li>
-		    <?php endif; ?>		    
+				</ul>	
+			</li>
 		<?php else: ?>
-			<li class='linkMenu'><a href='<?php echo $enlace ?>'><?php echo $nombrePagina ?></a></li>
+			<?php if ($nombrePagina=='Cerrar Sesión'):?>
+				<?php $cerrar = 1; $linkCerrar = $columnas; $nombrePaginaCerrar = $nombrePagina; ?>
+			<?php else: ?>
+				<li class='linkMenu'><a href='<?php echo $columnas ?>'><?php echo $nombrePagina ?></a></li>
+			<?php endif; ?>			
 		<?php endif; ?>
-	<?php endforeach; ?>
-  </ul>
+	<?php endforeach; ?>	
+	</ul>  		
+	<?php if (isset($cerrar) && $cerrar == 1):?>
+		<div class="container-fluid">    
+      		<ul class="nav navbar-nav navbar-right">
+        		<li><a href=<?php echo $linkCerrar ?>'><span class="glyphicon glyphicon-log-in"></span><?php echo $nombrePaginaCerrar ?></a></li>
+      		</ul>
+  		</div>	
+  	<?php endif; ?>
 </nav>
-<br />
+
