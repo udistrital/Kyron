@@ -172,10 +172,6 @@ class Formulario {
 		      		      	
 		      	echo $this->miFormulario->division("fin");
 	      	
-		      	
-	      	
-	      	echo $this->miFormulario->division("fin");
-	      	
 	    echo $this->miFormulario->division("fin");    
 	      	 
 	      	

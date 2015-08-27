@@ -1,7 +1,7 @@
 <?php
 $indice = 0;
 
-$funcion [$indice ++] = "jquery.dataTables.min.js";
+// $funcion [$indice ++] = "jquery.dataTables.min.js";
 $funcion [$indice ++] = "select2.js";
 $funcion [$indice ++] = "select2_locale_es.js";
 
