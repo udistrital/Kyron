@@ -78,36 +78,45 @@ class Formulario {
 		echo $this->miFormulario->formulario ( $atributos );
 			
 			// ---------------- CONTROL: Lista Docente--------------------------------------------------------
-			$esteCampo = "docente";
-			$atributos ['id'] = $esteCampo;
+			$esteCampo = 'docente';
 			$atributos ['nombre'] = $esteCampo;
-			$atributos ['tipo'] = 'text';
-			$atributos ['estilo'] = 'jqueryui';
-			$atributos ['marco'] = true;
-			$atributos ['estiloMarco'] = '';
-			$atributos ["etiquetaObligatorio"] = false;
-			$atributos ['columnas'] = 1;
-			$atributos ['dobleLinea'] = 0;
-			$atributos ['tabIndex'] = $tab;
+			$atributos ['id'] = $esteCampo;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ['validar'] = '  ';
-			$atributos ['textoFondo'] = 'Ingrese Mínimo 3 Caracteres de Búsqueda';
-				
+			$atributos ["etiquetaObligatorio"] = false;
+			$atributos ['tab'] = $tab ++;
+			$atributos ['seleccion'] = - 1;
+			$atributos ['anchoEtiqueta'] = 280;
+			$atributos ['evento'] = '';
 			if (isset ( $_REQUEST [$esteCampo] )) {
 				$atributos ['valor'] = $_REQUEST [$esteCampo];
 			} else {
 				$atributos ['valor'] = '';
 			}
-			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 			$atributos ['deshabilitado'] = false;
-			$atributos ['tamanno'] = 51;
-			$atributos ['maximoTamanno'] = '';
-			$atributos ['anchoEtiqueta'] = 280;
-			$tab ++;
-				
-			// Aplica atributos globales al control
+			$atributos ['columnas'] = 1;
+			$atributos ['tamanno'] = 1;
+			$atributos ['ajax_function'] = "";
+			$atributos ['ajax_control'] = $esteCampo;
+			$atributos ['estilo'] = "jqueryui";
+			$atributos ['validar'] = "required";
+			$atributos ['limitar'] = true;
+			$atributos ['anchoCaja'] = 24;
+			$atributos ['miEvento'] = '';
+			$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "docente" );
+			$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
+			
+			$arreglo = array (
+					array (
+							'',
+							'Sin Entradas Registradas' 
+					) 
+			);
+			
+			$matrizItems = $matrizItems [0] [0] != '' ? $matrizItems : $arreglo;
+			$atributos ['matrizItems'] = $matrizItems;
+			
 			$atributos = array_merge ( $atributos, $atributosGlobales );
-			echo $this->miFormulario->campoCuadroTexto ( $atributos );
+			echo $this->miFormulario->campoCuadroLista ( $atributos );
 			unset ( $atributos );
 			// ----------------FIN CONTROL: Lista Docente--------------------------------------------------------
 			
@@ -122,12 +131,11 @@ class Formulario {
 			if (isset ( $_REQUEST [$esteCampo] )) {
 				$atributos ['valor'] = $_REQUEST [$esteCampo];
 			} else {
-				$atributos ['valor'] = '';
+				$atributos ['valor'] = "required";
 			}
 			$atributos = array_merge ( $atributos, $atributosGlobales );
 			echo $this->miFormulario->campoCuadroTexto ( $atributos );
 			unset ( $atributos );
-			
 			
 			
 			
@@ -153,7 +161,7 @@ class Formulario {
 			$atributos ['estilo'] = "jqueryui";
 			$atributos ['validar'] = "";
 			$atributos ['limitar'] = false;
-			$atributos ['anchoCaja'] = 200;
+			$atributos ['anchoCaja'] = 24;
 			$atributos ['miEvento'] = '';
 			$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "facultad" );
 			$matrizItems = array (
@@ -213,7 +221,7 @@ class Formulario {
 			$atributos ['estilo'] = "jqueryui";
 			$atributos ['validar'] = "";
 			$atributos ['limitar'] = true;
-			$atributos ['anchoCaja'] = 200;
+			$atributos ['anchoCaja'] = 24;
 			$atributos ['miEvento'] = '';
 			$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "proyectoCurricular" );
 			$matrizItems = array (
@@ -224,11 +232,6 @@ class Formulario {
 			);
 			$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 			$atributos ['matrizItems'] = $matrizItems;
-			// $atributos['miniRegistro']=;
-			$atributos ['baseDatos'] = "inventarios";
-			// $atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "clase_entrada" );
-			
-			// Aplica atributos globales al control
 			$atributos = array_merge ( $atributos, $atributosGlobales );
 			echo $this->miFormulario->campoCuadroLista ( $atributos );
 			unset ( $atributos );

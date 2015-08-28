@@ -28,7 +28,6 @@ $urlFinalDocente = $url . $cadena;
 ?>
 <script type='text/javascript'>
 
-alert($("#<?php echo $this->campoSeguro('docente')?>").val());        
 $( "#<?php echo $this->campoSeguro('docente')?>" ).keyup(function() {
 	$('#<?php echo $this->campoSeguro('docente') ?>').val($('#<?php echo $this->campoSeguro('docente') ?>').val().toUpperCase());
 });

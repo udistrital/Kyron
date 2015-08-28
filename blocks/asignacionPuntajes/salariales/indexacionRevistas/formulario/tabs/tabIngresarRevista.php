@@ -151,6 +151,47 @@ class registrarForm {
 		// ----------------FIN CONTROL: Campo de Texto Nombre Revista--------------------------------------------------------
 		
 		// ----------------INICIO CONTROL: Campo de Texto Contexto Revista--------------------------------------------------------
+		
+		$esteCampo = 'contextoRevista';
+		$atributos ['nombre'] = $esteCampo;
+		$atributos ['id'] = $esteCampo;
+		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+		$atributos ["etiquetaObligatorio"] = false;
+		$atributos ['tab'] = $tab ++;
+		$atributos ['anchoEtiqueta'] = 280;
+		$atributos ['evento'] = '';
+		if (isset ( $_REQUEST [$esteCampo] )) {
+			$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+		} else {
+			$atributos ['seleccion'] = - 1;
+		}
+		$atributos ['deshabilitado'] = false;
+		$atributos ['columnas'] = 1;
+		$atributos ['tamanno'] = 1;
+		$atributos ['ajax_function'] = "";
+		$atributos ['ajax_control'] = $esteCampo;
+		$atributos ['estilo'] = "jqueryui";
+		$atributos ['limitar'] = true;
+		$atributos ['anchoCaja'] = 200;
+		$atributos ['miEvento'] = '';
+		$atributos ['validar'] = 'required';
+		// $atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "funcionarios" );
+		$matrizItems = array (
+				array (
+						0,
+						'Nacional'
+				),
+				array (
+						1,
+						'Internacional'
+				)
+		);
+		$atributos ['matrizItems'] = $matrizItems;
+		// Aplica atributos globales al control
+		$atributos = array_merge ( $atributos, $atributosGlobales );
+		echo $this->miFormulario->campoCuadroLista ( $atributos );
+		unset ( $atributos );
+		
 		$esteCampo = 'contextoRevista';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
