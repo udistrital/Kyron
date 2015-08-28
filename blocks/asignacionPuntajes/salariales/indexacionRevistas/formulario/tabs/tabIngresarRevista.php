@@ -74,7 +74,7 @@ class registrarForm {
 		unset ( $atributos );
 		
 		// ---------------- CONTROL: Lista Docente--------------------------------------------------------
-		$esteCampo = 'docente';
+		$esteCampo = 'docente2';
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['id'] = $esteCampo;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
@@ -668,9 +668,7 @@ class registrarForm {
 		$valorCodificado .= "&campoSeguro=" . $_REQUEST ['tiempo'];
 		
 		// Paso 2: codificar la cadena resultante
-		var_dump($valorCodificado);
 		$valorCodificado = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $valorCodificado );
-		var_dump($valorCodificado);
 		
 		$atributos ["id"] = "formSaraData"; // No cambiar este nombre
 		$atributos ["tipo"] = "hidden";

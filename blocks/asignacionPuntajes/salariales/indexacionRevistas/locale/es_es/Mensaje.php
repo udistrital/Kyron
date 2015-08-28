@@ -7,7 +7,9 @@ $this->idioma["noDefinido"] = "No definido";
 $this->idioma["consultarRevistas"] = "Consultar Revistas Indexadas";
 $this->idioma["ingresarRevistas"] = "Ingresar Revistas Indexadas";
 
-$this->idioma["fecha_final_r"] = "Botón";
+$this->idioma["facultad"] = "Facultad";
+$this->idioma["proyectoCurricular"] = "Proyecto Curricular";
+
 $this->idioma["botonConsultar"] = "Consultar";
 $this->idioma["docente"] = "Indentificación o nombre del docente:";
 

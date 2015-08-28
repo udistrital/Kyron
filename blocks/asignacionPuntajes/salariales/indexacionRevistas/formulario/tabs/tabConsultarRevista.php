@@ -29,6 +29,10 @@ class Formulario {
 		 * Por tanto en el archivo ready.php se delaran algunas funciones js
 		 * que lo complementan.
 		 */
+		
+		$conexion = "docencia";
+		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+		
 		// Rescatar los datos de este bloque
 		$esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );
 		
@@ -75,47 +79,56 @@ class Formulario {
 			
 			// ---------------- CONTROL: Lista Docente--------------------------------------------------------
 			$esteCampo = "docente";
-			$atributos ['nombre'] = $esteCampo;
 			$atributos ['id'] = $esteCampo;
-			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+			$atributos ['nombre'] = $esteCampo;
+			$atributos ['tipo'] = 'text';
+			$atributos ['estilo'] = 'jqueryui';
+			$atributos ['marco'] = true;
+			$atributos ['estiloMarco'] = '';
 			$atributos ["etiquetaObligatorio"] = false;
-			$atributos ['tab'] = $tab ++;
-			$atributos ['anchoEtiqueta'] = 280;
-			$atributos ['evento'] = '';
-			if (isset ( $_REQUEST [$esteCampo] )) {
-				$atributos ['seleccion'] = $_REQUEST [$esteCampo];
-			} else {
-				$atributos ['seleccion'] = - 1;
-			}
-			$atributos ['deshabilitado'] = false;
 			$atributos ['columnas'] = 1;
-			$atributos ['tamanno'] = 1;
-			$atributos ['ajax_function'] = "";
-			$atributos ['ajax_control'] = $esteCampo;
-			$atributos ['estilo'] = "jqueryui";
-			$atributos ['validar'] = "";
-			$atributos ['limitar'] = true;
-			$atributos ['anchoCaja'] = 1;
-			$atributos ['miEvento'] = '';
-			// $atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "funcionarios" );
-			$matrizItems = array (
-					array (
-							0,
-							' ' 
-					) 
-			);
-			// $matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
-			$atributos ['matrizItems'] = $matrizItems;
-			// $atributos['miniRegistro']=;
-			$atributos ['baseDatos'] = "inventarios";
-				// $atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "clase_entrada" );
-					
-				// Aplica atributos globales al control
+			$atributos ['dobleLinea'] = 0;
+			$atributos ['tabIndex'] = $tab;
+			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+			$atributos ['validar'] = '  ';
+			$atributos ['textoFondo'] = 'Ingrese Mínimo 3 Caracteres de Búsqueda';
+				
+			if (isset ( $_REQUEST [$esteCampo] )) {
+				$atributos ['valor'] = $_REQUEST [$esteCampo];
+			} else {
+				$atributos ['valor'] = '';
+			}
+			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+			$atributos ['deshabilitado'] = false;
+			$atributos ['tamanno'] = 51;
+			$atributos ['maximoTamanno'] = '';
+			$atributos ['anchoEtiqueta'] = 280;
+			$tab ++;
+				
+			// Aplica atributos globales al control
 			$atributos = array_merge ( $atributos, $atributosGlobales );
-			echo $this->miFormulario->campoCuadroLista ( $atributos );
+			echo $this->miFormulario->campoCuadroTexto ( $atributos );
 			unset ( $atributos );
-	
 			// ----------------FIN CONTROL: Lista Docente--------------------------------------------------------
+			
+			
+			$esteCampo = 'id_proveedor';
+			$atributos ["id"] = $esteCampo; // No cambiar este nombre
+			$atributos ["tipo"] = "hidden";
+			$atributos ['estilo'] = '';
+			$atributos ["obligatorio"] = false;
+			$atributos ['marco'] = true;
+			$atributos ["etiqueta"] = "";
+			if (isset ( $_REQUEST [$esteCampo] )) {
+				$atributos ['valor'] = $_REQUEST [$esteCampo];
+			} else {
+				$atributos ['valor'] = '';
+			}
+			$atributos = array_merge ( $atributos, $atributosGlobales );
+			echo $this->miFormulario->campoCuadroTexto ( $atributos );
+			unset ( $atributos );
+			
+			
 			
 			
 			// ---------------- CONTROL: Lista Facultad--------------------------------------------------------
@@ -139,36 +152,51 @@ class Formulario {
 			$atributos ['ajax_control'] = $esteCampo;
 			$atributos ['estilo'] = "jqueryui";
 			$atributos ['validar'] = "";
-			$atributos ['limitar'] = true;
-			$atributos ['anchoCaja'] = 1;
+			$atributos ['limitar'] = false;
+			$atributos ['anchoCaja'] = 200;
 			$atributos ['miEvento'] = '';
-			// $atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "funcionarios" );
+			$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "facultad" );
 			$matrizItems = array (
 					array (
 							0,
 							' '
 					)
 			);
-			// $matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
+			$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 			$atributos ['matrizItems'] = $matrizItems;
-			// $atributos['miniRegistro']=;
-			$atributos ['baseDatos'] = "inventarios";
-			// $atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "clase_entrada" );
 			
-			// Aplica atributos globales al control
 			$atributos = array_merge ( $atributos, $atributosGlobales );
 			echo $this->miFormulario->campoCuadroLista ( $atributos );
 			unset ( $atributos );
+			
+			$esteCampo = 'id_proveedor';
+			$atributos ["id"] = $esteCampo; // No cambiar este nombre
+			$atributos ["tipo"] = "hidden";
+			$atributos ['estilo'] = '';
+			$atributos ["obligatorio"] = false;
+			$atributos ['marco'] = true;
+			$atributos ["etiqueta"] = "";
+			if (isset ( $_REQUEST [$esteCampo] )) {
+				$atributos ['valor'] = $_REQUEST [$esteCampo];
+			} else {
+				$atributos ['valor'] = '';
+			}
+			$atributos = array_merge ( $atributos, $atributosGlobales );
+			echo $this->miFormulario->campoCuadroTexto ( $atributos );
+			unset ( $atributos );
+				
+			
+			
 				
 			// ----------------FIN CONTROL: Lista Facultad--------------------------------------------------------
 			
 			
 			// ----------------INICIO CONTROL: Lista Proyecto Curricular--------------------------------------------------------
-			$esteCampo = "proyecto";
+			$esteCampo = "proyectoCurricular";
 			$atributos ['nombre'] = $esteCampo;
 			$atributos ['id'] = $esteCampo;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ["etiquetaObligatorio"] = false;
+			$atributos ["etiquetaObligatorio"] = true;
 			$atributos ['tab'] = $tab ++;
 			$atributos ['anchoEtiqueta'] = 280;
 			$atributos ['evento'] = '';
@@ -185,16 +213,16 @@ class Formulario {
 			$atributos ['estilo'] = "jqueryui";
 			$atributos ['validar'] = "";
 			$atributos ['limitar'] = true;
-			$atributos ['anchoCaja'] = 1;
+			$atributos ['anchoCaja'] = 200;
 			$atributos ['miEvento'] = '';
-			// $atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "funcionarios" );
+			$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "proyectoCurricular" );
 			$matrizItems = array (
 					array (
 							0,
 							' '
 					)
 			);
-			// $matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
+			$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 			$atributos ['matrizItems'] = $matrizItems;
 			// $atributos['miniRegistro']=;
 			$atributos ['baseDatos'] = "inventarios";
@@ -204,8 +232,6 @@ class Formulario {
 			$atributos = array_merge ( $atributos, $atributosGlobales );
 			echo $this->miFormulario->campoCuadroLista ( $atributos );
 			unset ( $atributos );
-				
-			// ----------------FIN CONTROL: Lista Proyecto Curricular--------------------------------------------------------
 				
 				// ------------------Division para los botones-------------------------
 				$atributos ["id"] = "botones";

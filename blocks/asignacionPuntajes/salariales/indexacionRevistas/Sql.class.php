@@ -17,7 +17,7 @@ class Sql extends \Sql {
 	function __construct() {
 		$this->miConfigurador = \Configurador::singleton ();
 	}
-	function cadena_sql($tipo, $variable = "") {
+	function getCadenaSql($tipo, $variable = "") {
 		
 		/**
 		 * 1.
@@ -263,6 +263,33 @@ class Sql extends \Sql {
 				$cadenaSql .= "WHERE ";
 				$cadenaSql .= "id_sesion='" . $idSesion . "'";
 				break;
+			
+			/* Consultas del desarrollo */
+			
+			case "docente" :
+				$cadenaSql = "SELECT";
+				$cadenaSql .= " informacion_numeroidentificacion,";
+				$cadenaSql .= "	informacion_nombres";
+				$cadenaSql .= " FROM ";
+				$cadenaSql .= " docencia.docente_informacion";
+				break;
+			
+			case "facultad" :
+				$cadenaSql = "SELECT";
+				$cadenaSql .= " id_facultad,";
+				$cadenaSql .= "	nombre_facultad";
+				$cadenaSql .= " FROM ";
+				$cadenaSql .= " docencia.facultades";
+				break;
+				
+			case "proyectoCurricular" :
+				$cadenaSql = "SELECT";
+				$cadenaSql .= " id_facultad,";
+				$cadenaSql .= "	nombre_proyecto";
+				$cadenaSql .= " FROM ";
+				$cadenaSql .= " docencia.proyectocurricular";
+				break;
+						
 		}
 		
 		return $cadenaSql;

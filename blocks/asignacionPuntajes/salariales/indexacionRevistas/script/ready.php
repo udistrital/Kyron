@@ -1,11 +1,27 @@
-<?php
-// Se coloca esta condición para evitar cargar algunos scripts en el formulario de confirmación de entrada de datos.
-// if(!isset($_REQUEST["opcion"])||(isset($_REQUEST["opcion"]) && $_REQUEST["opcion"]!="confirmar")){
 
-?>
-
-// Asociar el widget tabs a la división cuyo id es tabs
 $(function() {
-$("#tabs").tabs();
+	$("#tabs").tabs();
 }); 
 
+// Asociar el widget de validación al formulario
+$("#indexacionRevista").validationEngine({
+	promptPosition : "centerRight", 
+    scroll: false,
+    autoHidePrompt: true,
+    autoHideDelay: 2000
+});
+	
+
+$(function() {
+	$("#indexacionRevista").submit(function() {
+    	$resultado=$("#indexacionRevista").validationEngine("validate");
+	    if ($resultado) {
+	    	return true;
+        }
+    	return false;
+    });
+});
+
+
+$("#<?php echo $this->campoSeguro('facultad')?>").select2();
+$("#<?php echo $this->campoSeguro('proyectoCurricular')?>").select2();
