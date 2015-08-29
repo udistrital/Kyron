@@ -23,6 +23,28 @@ $(function() {
 });
 
 
+//////Esta sección del código permite ocultar los dias del menú del datePicker.//////
+
+$( "#<?php echo $this->campoSeguro('annoRevista')?>" ).click(function() {
+	$(".ui-datepicker-calendar").hide();
+	$(".ui-datepicker-prev").hide();
+	$(".ui-datepicker-next").hide();
+	$(".ui-datepicker-month").hide();
+	$(".ui-datepicker-year").change(function() {
+		$( "#<?php echo $this->campoSeguro('annoRevista')?>" ).val($(".ui-datepicker-year").val());
+		$( "#ui-datepicker-div" ).hide();
+		$( "#<?php echo $this->campoSeguro('annoRevista')?>" ).datepicker("hide");
+		$( "#<?php echo $this->campoSeguro('annoRevista')?>" ).blur();		
+	});
+	$(".ui-datepicker-current").click(function() {
+		$( "#<?php echo $this->campoSeguro('annoRevista')?>" ).val($(".ui-datepicker-year").val());
+		$( "#ui-datepicker-div" ).hide();
+		$( "#<?php echo $this->campoSeguro('annoRevista')?>" ).datepicker("hide");
+		$( "#<?php echo $this->campoSeguro('annoRevista')?>" ).blur();	
+	});
+});
+
+/////////////////////////////////////////////////////////////////////////////////////
 
 
 $("#<?php echo $this->campoSeguro('docente')?>").select2();
@@ -36,7 +58,6 @@ $('#<?php echo $this->campoSeguro('annoRevista')?>').datepicker({
 	prevText: '&#x3c;Ant',
 	nextText: 'Sig&#x3e;',
 	currentText: 'Hoy',
-	
 	dateFormat: 'yy',
 	firstDay: 1,
 	isRTL: false,
@@ -48,7 +69,7 @@ $('#<?php echo $this->campoSeguro('annoRevista')?>').datepicker({
 	/* hasta aca*/
 	showMonthAfterYear: true,
 	yearSuffix: '',
-	showButtonPanel: true,
+	showButtonPanel: true
 });
 
 $('#<?php echo $this->campoSeguro('fechaPublicacionrevista')?>').datepicker({
