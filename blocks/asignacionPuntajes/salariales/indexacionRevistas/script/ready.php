@@ -1,4 +1,14 @@
 
+$(function () {
+    $("button").button().click(function (event) {
+        event.preventDefault();
+    });
+});
+
+$('#tablaTitulos').dataTable( {
+	"sPaginationType": "full_numbers"
+});
+        
 $(function() {
 	$("#tabs").tabs();
 }); 
@@ -23,6 +33,40 @@ $(function() {
 });
 
 
+/////////Se define el ancho de los campos de listas desplegables///////
+
+$('#<?php echo $this->campoSeguro('docente')?>').width(450);      
+$('#<?php echo $this->campoSeguro('facultad')?>').width(450);      
+$('#<?php echo $this->campoSeguro('proyectoCurricular')?>').width(450);      
+
+$('#<?php echo $this->campoSeguro('docente2')?>').width(450);
+$('#<?php echo $this->campoSeguro('contextoRevista')?>').width(450);
+
+///////////////////////////////////////////////////////////////////////
+      
+      
+//////Se definen los campos que requieren campos de autocompletar//////
+
+$("#<?php echo $this->campoSeguro('docente')?>").select2();
+$("#<?php echo $this->campoSeguro('facultad')?>").select2();
+$("#<?php echo $this->campoSeguro('proyectoCurricular')?>").select2();
+$("#<?php echo $this->campoSeguro('contextoRevista')?>").select2();
+$("#<?php echo $this->campoSeguro('docente2')?>").select2();
+
+///////////////////////////////////////////////////////////////////////
+
+
+
+
+
+$("#<?php echo $this->campoSeguro('docente')?>").select2({
+             	 placeholder: "Ingrese Mínimo 3 Caracteres de Búsqueda",
+              	 minimumInputLength: 3,
+              	 });     
+              	 
+              	 
+              	 
+
 //////Esta sección del código permite ocultar los dias del menú del datePicker.//////
 
 $( "#<?php echo $this->campoSeguro('annoRevista')?>" ).click(function() {
@@ -46,13 +90,6 @@ $( "#<?php echo $this->campoSeguro('annoRevista')?>" ).click(function() {
 
 /////////////////////////////////////////////////////////////////////////////////////
 
-
-$("#<?php echo $this->campoSeguro('docente')?>").select2();
-$("#<?php echo $this->campoSeguro('facultad')?>").select2();
-$("#<?php echo $this->campoSeguro('proyectoCurricular')?>").select2();
-$("#<?php echo $this->campoSeguro('contextoRevista')?>").select2();
-$("#<?php echo $this->campoSeguro('docente2')?>").select2();
-
 $('#<?php echo $this->campoSeguro('annoRevista')?>').datepicker({
 	closeText: 'Cerrar',
 	prevText: '&#x3c;Ant',
@@ -74,7 +111,8 @@ $('#<?php echo $this->campoSeguro('annoRevista')?>').datepicker({
 
 $('#<?php echo $this->campoSeguro('fechaPublicacionrevista')?>').datepicker({
 	dateFormat: 'yy-mm-dd',
-	maxDate: 0,
+	maxDate: -1,
+	yearRange: '-50:+0',
 	changeYear: true,
 	changeMonth: true,
 	monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
@@ -97,7 +135,8 @@ $('#<?php echo $this->campoSeguro('fechaPublicacionrevista')?>').datepicker({
 
 $('#<?php echo $this->campoSeguro('fechaActaRevista')?>').datepicker({
 	dateFormat: 'yy-mm-dd',
-	maxDate: 0,
+	maxDate: -1,
+	yearRange: '-50:+0',
 	changeYear: true,
 	changeMonth: true,
 	changeDay: true,

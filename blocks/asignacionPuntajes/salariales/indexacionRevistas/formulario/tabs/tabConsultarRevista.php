@@ -79,45 +79,45 @@ class Formulario {
 			
 			// ---------------- CONTROL: Lista Docente--------------------------------------------------------
 			$esteCampo = 'docente';
-			$atributos ['nombre'] = $esteCampo;
-			$atributos ['id'] = $esteCampo;
-			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ["etiquetaObligatorio"] = false;
-			$atributos ['tab'] = $tab ++;
-			$atributos ['seleccion'] = - 1;
-			$atributos ['anchoEtiqueta'] = 280;
-			$atributos ['evento'] = '';
-			if (isset ( $_REQUEST [$esteCampo] )) {
-				$atributos ['valor'] = $_REQUEST [$esteCampo];
-			} else {
-				$atributos ['valor'] = '';
-			}
-			$atributos ['deshabilitado'] = false;
-			$atributos ['columnas'] = 1;
-			$atributos ['tamanno'] = 1;
-			$atributos ['ajax_function'] = "";
-			$atributos ['ajax_control'] = $esteCampo;
-			$atributos ['estilo'] = "jqueryui";
-			$atributos ['validar'] = "required";
-			$atributos ['limitar'] = true;
-			$atributos ['anchoCaja'] = 24;
-			$atributos ['miEvento'] = '';
-			$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "docente" );
-			$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
-			
-			$arreglo = array (
-					array (
-							'',
-							'Sin Entradas Registradas' 
-					) 
-			);
-			
-			$matrizItems = $matrizItems [0] [0] != '' ? $matrizItems : $arreglo;
-			$atributos ['matrizItems'] = $matrizItems;
-			
-			$atributos = array_merge ( $atributos, $atributosGlobales );
-			echo $this->miFormulario->campoCuadroLista ( $atributos );
-			unset ( $atributos );
+		$atributos ['nombre'] = $esteCampo;
+		$atributos ['id'] = $esteCampo;
+		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+		$atributos ["etiquetaObligatorio"] = false;
+		$atributos ['tab'] = $tab ++;
+		$atributos ['seleccion'] = - 1;
+		$atributos ['anchoEtiqueta'] = 280;
+		$atributos ['evento'] = '';
+		if (isset ( $_REQUEST [$esteCampo] )) {
+			$atributos ['valor'] = $_REQUEST [$esteCampo];
+		} else {
+			$atributos ['valor'] = '';
+		}
+		$atributos ['deshabilitado'] = false;
+		$atributos ['columnas'] = 1;
+		$atributos ['tamanno'] = 1;
+		$atributos ['ajax_function'] = "";
+		$atributos ['ajax_control'] = $esteCampo;
+		$atributos ['estilo'] = "jqueryui";
+		$atributos ['validar'] = "required";
+		$atributos ['limitar'] = true;
+		$atributos ['anchoCaja'] = 60;
+		$atributos ['miEvento'] = '';
+		$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "docente" );
+		$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
+		
+		$arreglo = array (
+				array (
+						'',
+						'Sin Entradas Registradas' 
+				) 
+		);
+		
+		$matrizItems = $matrizItems [0] [0] != '' ? $matrizItems : $arreglo;
+		$atributos ['matrizItems'] = $matrizItems;
+		
+		$atributos = array_merge ( $atributos, $atributosGlobales );
+		echo $this->miFormulario->campoCuadroLista ( $atributos );
+		unset ( $atributos );
 			// ----------------FIN CONTROL: Lista Docente--------------------------------------------------------
 			
 			
@@ -161,7 +161,7 @@ class Formulario {
 			$atributos ['estilo'] = "jqueryui";
 			$atributos ['validar'] = "";
 			$atributos ['limitar'] = false;
-			$atributos ['anchoCaja'] = 24;
+			$atributos ['anchoCaja'] = 60;
 			$atributos ['miEvento'] = '';
 			$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "facultad" );
 			$matrizItems = array (
@@ -219,9 +219,9 @@ class Formulario {
 			$atributos ['ajax_function'] = "";
 			$atributos ['ajax_control'] = $esteCampo;
 			$atributos ['estilo'] = "jqueryui";
-			$atributos ['validar'] = "";
+			$atributos ['validar'] = "required";
 			$atributos ['limitar'] = true;
-			$atributos ['anchoCaja'] = 24;
+			$atributos ['anchoCaja'] = 60;
 			$atributos ['miEvento'] = '';
 			$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "proyectoCurricular" );
 			$matrizItems = array (
