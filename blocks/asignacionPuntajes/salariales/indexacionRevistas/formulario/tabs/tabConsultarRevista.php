@@ -192,10 +192,7 @@ class Formulario {
 			$atributos = array_merge ( $atributos, $atributosGlobales );
 			echo $this->miFormulario->campoCuadroTexto ( $atributos );
 			unset ( $atributos );
-				
-			
-			
-				
+							
 			// ----------------FIN CONTROL: Lista Facultad--------------------------------------------------------
 			
 			

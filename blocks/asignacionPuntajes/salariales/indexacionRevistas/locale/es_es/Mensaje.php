@@ -16,6 +16,7 @@ $this->idioma["docente"] = "Indentificación o nombre del docente:";
 $this->idioma["docente"] = "Identificación o Nombre del Docente";
 $this->idioma["nombreRevista"] = "Nombre de Revista";
 $this->idioma["contextoRevista"] = "Contexto de la Revista";
+$this->idioma["pais"] = "País";
 $this->idioma["issnRevista"] = "ISSN";
 $this->idioma["annoRevista"] = "Año";
 $this->idioma["volumenRevista"] = "Volumen";
