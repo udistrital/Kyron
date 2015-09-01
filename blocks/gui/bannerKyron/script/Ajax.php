@@ -17,11 +17,6 @@ function hora(){
 fecha = new Date(); 
 hora();
 
-
-$( "#<?php echo $this->campoSeguro('nitproveedor')?>" ).keyup(function() {alert("hola");
-	$('#<?php echo $this->campoSeguro('nitproveedor') ?>').val($('#<?php echo $this->campoSeguro('nitproveedor') ?>').val().toUpperCase());
-});
-
 </script>
   
    

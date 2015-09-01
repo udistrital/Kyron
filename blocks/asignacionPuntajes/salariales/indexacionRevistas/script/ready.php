@@ -9,9 +9,11 @@ $('#tablaTitulos').dataTable( {
 	"sPaginationType": "full_numbers"
 });
         
+////////////Función que organiza los tabs en la interfaz gráfica//////////////
 $(function() {
 	$("#tabs").tabs();
 }); 
+//////////////////////////////////////////////////////////////////////////////
 
 // Asociar el widget de validación al formulario
 $("#indexacionRevista").validationEngine({
@@ -39,41 +41,31 @@ $('#<?php echo $this->campoSeguro('docente')?>').width(450);
 $('#<?php echo $this->campoSeguro('facultad')?>').width(450);      
 $('#<?php echo $this->campoSeguro('proyectoCurricular')?>').width(450);      
 
-$('#<?php echo $this->campoSeguro('docente2')?>').width(450);
+
+$('#<?php echo $this->campoSeguro('docenteRegistrar')?>').width(450);
 $('#<?php echo $this->campoSeguro('contextoRevista')?>').width(450);
-$('#<?php echo $this->campoSeguro('pais')?>').width(450);
-$('#<?php echo $this->campoSeguro('categoria')?>').width(450);
 
-///////////////////////////////////////////////////////////////////////
-      
-      
-//////Se definen los campos que requieren campos de autocompletar//////
 
-$("#<?php echo $this->campoSeguro('docente')?>").select2();
+///*********El ancho (width) de los siguientes campos es mayor debido a que se encuentran dentro de un div****///
+$('#<?php echo $this->campoSeguro('pais')?>').width(465);
+$('#<?php echo $this->campoSeguro('categoria')?>').width(465);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////**********Se definen los campos que requieren campos de autocompletar**********////////////////
+
 $("#<?php echo $this->campoSeguro('facultad')?>").select2();
 $("#<?php echo $this->campoSeguro('proyectoCurricular')?>").select2();
 
-$("#<?php echo $this->campoSeguro('docente2')?>").select2();
 $("#<?php echo $this->campoSeguro('contextoRevista')?>").select2();
 
-
-///////////////////////////////////////////////////////////////////////
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
-
-$("#<?php echo $this->campoSeguro('docente')?>").select2({
-             	 placeholder: "Ingrese Mínimo 3 Caracteres de Búsqueda",
-              	 minimumInputLength: 3,
-              	 });     
+           	 
               	 
-              	 
-      
-      
 
-
-//////Esta sección del código permite ocultar los dias del menú del datePicker.//////
+//////********Esta sección del código permite ocultar los dias del menú del datePicker.*********//////
 
 $( "#<?php echo $this->campoSeguro('annoRevista')?>" ).click(function() {
 	$(".ui-datepicker-calendar").hide();
@@ -94,7 +86,8 @@ $( "#<?php echo $this->campoSeguro('annoRevista')?>" ).click(function() {
 	});
 });
 
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 $('#<?php echo $this->campoSeguro('annoRevista')?>').datepicker({
 	closeText: 'Cerrar',

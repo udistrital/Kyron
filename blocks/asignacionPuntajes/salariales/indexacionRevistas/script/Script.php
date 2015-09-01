@@ -15,6 +15,8 @@ $funcion [$indice ++] = "jquery.dataTables.min.js";
 $funcion [$indice ++] = "timepicker.js";
 $funcion[$indice ++]="modernizr.custom.js";
 $funcion[$indice ++]="jquery.dlmenu.js";
+$funcion [$indice ++] = "jquery.autocomplete.js";
+$funcion [$indice ++] = "jquery.autocomplete.min.js";
 
 $rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "host" );
 $rutaBloque .= $this->miConfigurador->getVariableConfiguracion ( "site" );

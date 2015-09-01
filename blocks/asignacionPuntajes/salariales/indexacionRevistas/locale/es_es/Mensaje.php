@@ -13,7 +13,7 @@ $this->idioma["proyectoCurricular"] = "Proyecto Curricular";
 $this->idioma["botonConsultar"] = "Consultar";
 $this->idioma["docente"] = "Indentificación o nombre del docente:";
 
-$this->idioma["docente"] = "Identificación o Nombre del Docente";
+$this->idioma["docenteRegistrar"] = "Identificación o Nombre del Docente";
 $this->idioma["nombreRevista"] = "Nombre de Revista";
 $this->idioma["contextoRevista"] = "Contexto de la Revista";
 $this->idioma["pais"] = "País";
@@ -32,6 +32,7 @@ $this->idioma["fechaActaRevista"] = "Fecha de Acta CIARP-UD";
 $this->idioma["numeroCasoActaRevista"] = "Número de Caso de Acta";
 $this->idioma["puntajeRevistas"] = "Puntaje	";
 
+$this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";
 $this->idioma["docenteTitulo"] = "Identificación o Nombre del Docente.";
 $this->idioma["nombreRevistaTitulo"] = "Nombre de Revista Públicada.";
 $this->idioma["contextoRevistaTitulo"] = "Contexto de la Revista.";
