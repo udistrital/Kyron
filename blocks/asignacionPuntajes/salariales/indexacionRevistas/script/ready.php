@@ -42,6 +42,7 @@ $('#<?php echo $this->campoSeguro('proyectoCurricular')?>').width(450);
 $('#<?php echo $this->campoSeguro('docente2')?>').width(450);
 $('#<?php echo $this->campoSeguro('contextoRevista')?>').width(450);
 $('#<?php echo $this->campoSeguro('pais')?>').width(450);
+$('#<?php echo $this->campoSeguro('categoria')?>').width(450);
 
 ///////////////////////////////////////////////////////////////////////
       
@@ -58,7 +59,8 @@ $("#<?php echo $this->campoSeguro('contextoRevista')?>").select2();
 
 ///////////////////////////////////////////////////////////////////////
 
-$("#<?php echo $this->campoSeguro('pais')?>").hide();
+
+
 
 
 $("#<?php echo $this->campoSeguro('docente')?>").select2({
@@ -69,23 +71,7 @@ $("#<?php echo $this->campoSeguro('docente')?>").select2({
               	 
       
       
-///////////////Función que se encarga de hacer dinámico el campo país////////////////   
 
-$("#<?php echo $this->campoSeguro('contextoRevista')?>").change(function() {
-	$("#<?php echo $this->campoSeguro('pais')?>").select2();
-	if($("#<?php echo $this->campoSeguro('contextoRevista')?>").val() == 0){
-		$("#<?php echo $this->campoSeguro('pais')?>").show();
-		$("#<?php echo $this->campoSeguro('pais')?>").html("");
-		$("#<?php echo $this->campoSeguro('pais')?>").val("Colombia");
-	}else if($("#<?php echo $this->campoSeguro('contextoRevista')?>").val() == 1){
-		$("#<?php echo $this->campoSeguro('pais')?>").show();
-		
-	}
-});
-
-
-///////////////////////////////////////////////////////////////////////////////////// 
-    	 
 
 //////Esta sección del código permite ocultar los dias del menú del datePicker.//////
 

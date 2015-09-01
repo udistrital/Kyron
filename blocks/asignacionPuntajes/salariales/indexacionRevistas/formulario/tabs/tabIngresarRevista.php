@@ -197,44 +197,98 @@ class registrarForm {
 		// ----------------FIN CONTROL: Campo de Texto Contexto Revista--------------------------------------------------------
 		
 		// ---------------- CONTROL: Lista País--------------------------------------------------------
-		$esteCampo = "pais";
-		$atributos ['nombre'] = $esteCampo;
-		$atributos ['id'] = $esteCampo;
-		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ["etiquetaObligatorio"] = false;		
-		$atributos ['tab'] = $tab ++;
-		$atributos ['anchoEtiqueta'] = 280;
-		$atributos ['evento'] = '';
-		if (isset ( $_REQUEST [$esteCampo] )) {
-			$atributos ['seleccion'] = $_REQUEST [$esteCampo];
-		} else {
-			$atributos ['seleccion'] = - 1;
-		}
-		$atributos ['deshabilitado'] = false;
-		$atributos ['columnas'] = 1;
-		$atributos ['tamanno'] = 1;
-		$atributos ['ajax_function'] = "";
-		$atributos ['ajax_control'] = $esteCampo;
-		$atributos ['estilo'] = "jqueryui";
-		$atributos ['validar'] = "";
-		$atributos ['limitar'] = false;
-		$atributos ['anchoCaja'] = 60;
-		$atributos ['miEvento'] = '';
-		$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "pais" );
-		$matrizItems = array (
-				array (
-						0,
-						' '
-				)
-		);
-		$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
-		$atributos ['matrizItems'] = $matrizItems;
-			
+		
+		$atributos ["id"] = "pais_div";
+		$atributos ["estiloEnLinea"] = "display:none";
 		$atributos = array_merge ( $atributos, $atributosGlobales );
-		echo $this->miFormulario->campoCuadroLista ( $atributos );
+		echo $this->miFormulario->division ( "inicio", $atributos );
 		unset ( $atributos );
 		
+			$esteCampo = "pais";
+			$atributos ['nombre'] = $esteCampo;
+			$atributos ['id'] = $esteCampo;
+			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+			$atributos ["etiquetaObligatorio"] = false;		
+			$atributos ['tab'] = $tab ++;
+			$atributos ['anchoEtiqueta'] = 280;
+			$atributos ['evento'] = '';
+			if (isset ( $_REQUEST [$esteCampo] )) {
+				$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+			} else {
+				$atributos ['seleccion'] = - 1;
+			}
+			$atributos ['deshabilitado'] = false;
+			$atributos ['columnas'] = 1;
+			$atributos ['tamanno'] = 1;
+			$atributos ['ajax_function'] = "";
+			$atributos ['ajax_control'] = $esteCampo;
+			$atributos ['estilo'] = "jqueryui";
+			$atributos ['validar'] = "";
+			$atributos ['limitar'] = false;
+			$atributos ['anchoCaja'] = 60;
+			$atributos ['miEvento'] = '';
+			$matrizItems = array (
+					array (
+							0,
+							' '
+					)
+			);
+			$atributos ['matrizItems'] = $matrizItems;
+				
+			$atributos = array_merge ( $atributos, $atributosGlobales );
+			echo $this->miFormulario->campoCuadroLista ( $atributos );
+			unset ( $atributos );
+		
+		echo $this->miFormulario->division ( "fin" );
+			
 		// ----------------FIN CONTROL: Lista País--------------------------------------------------------
+		
+		// ---------------- CONTROL: Lista Categoria--------------------------------------------------------
+		
+		$atributos ["id"] = "categoria_div";
+		$atributos ["estiloEnLinea"] = "display:none";
+		$atributos = array_merge ( $atributos, $atributosGlobales );
+		echo $this->miFormulario->division ( "inicio", $atributos );
+		unset ( $atributos );
+		
+			$esteCampo = "categoria";
+			$atributos ['nombre'] = $esteCampo;
+			$atributos ['id'] = $esteCampo;
+			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+			$atributos ["etiquetaObligatorio"] = false;
+			$atributos ['tab'] = $tab ++;
+			$atributos ['anchoEtiqueta'] = 280;
+			$atributos ['evento'] = '';
+			if (isset ( $_REQUEST [$esteCampo] )) {
+				$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+			} else {
+				$atributos ['seleccion'] = - 1;
+			}
+			$atributos ['deshabilitado'] = false;
+			$atributos ['columnas'] = 1;
+			$atributos ['tamanno'] = 1;
+			$atributos ['ajax_function'] = "";
+			$atributos ['ajax_control'] = $esteCampo;
+			$atributos ['estilo'] = "jqueryui";
+			$atributos ['validar'] = "";
+			$atributos ['limitar'] = false;
+			$atributos ['anchoCaja'] = 60;
+			$atributos ['miEvento'] = '';
+			$matrizItems = array (
+					array (
+							0,
+							' '
+					)
+			);
+			$atributos ['matrizItems'] = $matrizItems;
+				
+			$atributos = array_merge ( $atributos, $atributosGlobales );
+			echo $this->miFormulario->campoCuadroLista ( $atributos );
+			unset ( $atributos );
+			
+		echo $this->miFormulario->division ( "fin" );
+		
+		// ----------------FIN CONTROL: Lista Tipo Indexación--------------------------------------------------------
 		
 		// ----------------INICIO CONTROL: Campo de Texto ISSN Revista--------------------------------------------------------
 		$esteCampo = 'issnRevista';

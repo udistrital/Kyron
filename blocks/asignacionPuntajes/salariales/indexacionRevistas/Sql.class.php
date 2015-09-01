@@ -299,6 +299,16 @@ class Sql extends \Sql {
 				$cadenaSql .= " WHERE";
 				$cadenaSql .= " lower(nombre_pais) != 'colombia'";
 				break;
+				
+			case "categoria_revista" :
+				$cadenaSql = "select";
+				$cadenaSql .= " id_tipo_indexacion,";
+				$cadenaSql .= "	descripcion";
+				$cadenaSql .= " FROM ";
+				$cadenaSql .= " docencia.categoria_revista";
+				$cadenaSql .= " WHERE";
+				$cadenaSql .= " contexto_revista =" . $variable;
+				break;
 						
 		}
 		
