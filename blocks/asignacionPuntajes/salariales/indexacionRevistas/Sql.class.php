@@ -136,6 +136,31 @@ class Sql extends \Sql {
 				$cadenaSql .= " OR informacion_nombres LIKE '%" . $variable . "%' LIMIT 10;";
 				
 				break;
+				
+			case "consultarIndexacion" :			
+				$cadenaSql = "SELECT  id_indexacion_revista, id_revista_docente, ";
+				$cadenaSql .= " informacion_nombres, informacion_apellidos,  ";
+				$cadenaSql .= " revista_nombre, titulo_articulo, paisnombre,   ";
+				$cadenaSql .= "item_nombre, numero_issn, ";
+				$cadenaSql .= "anno_publicacion, ";
+				$cadenaSql .= " volumen_revista, numero_volumen, paginas_revista, fecha_publicacion ";
+				$cadenaSql .= "FROM docencia.dependencia_docente ";
+				$cadenaSql .= "JOIN docencia.categoria_docente ON categoria_iddocente = dependencia_iddocente ";
+				$cadenaSql .= "JOIN docencia.docente_informacion ON informacion_numeroidentificacion = dependencia_iddocente ";
+				$cadenaSql .= "JOIN docencia.indexacion_revistas ON id_revista_docente = dependencia_iddocente ";
+				$cadenaSql .= "LEFT JOIN docencia.parametros_indexacion ON item_id = revista_indexacion ";
+				$cadenaSql .= "LEFT JOIN docencia.pais_kyron ON paiscodigo = pais_publicacion ";
+				$cadenaSql .= "WHERE 1=1";
+// 				if ($variable [0] != '') {
+// 					$cadena_sql .= " AND dependencia_iddocente = '" . $variable [0] . "'";
+// 				}
+// 				if ($variable [1] != '') {
+// 					$cadena_sql .= " AND dependencia_facultad = '" . $variable [1] . "'";
+// 				}
+// 				if ($variable [2] != '') {
+// 					$cadena_sql .= " AND dependencia_proyectocurricular = '" . $variable [2] . "'";
+// 				}
+				break;
 						
 		}
 		

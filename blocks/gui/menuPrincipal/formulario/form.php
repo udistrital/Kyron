@@ -62,7 +62,7 @@ class Formulario {
 		// -------------------------------------------------------------------------------------------------
 		
 		$conexion = "menu";
-		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+		var_dump($esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion ));
 		
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
 		$esteCampo = $esteBloque ['nombre'];

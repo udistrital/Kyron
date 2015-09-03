@@ -3,12 +3,15 @@ namespace asignacionPuntajes\salariales\indexacionRevistas\formulario;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
+	
 	exit ();
 }
 class Formulario {
 	var $miConfigurador;
 	var $lenguaje;
 	var $miFormulario;
+	var $miSql;
+	
 	function __construct($lenguaje, $formulario, $sql) {
 		
 		$this->miConfigurador = \Configurador::singleton ();
@@ -87,12 +90,12 @@ class Formulario {
 			$atributos ['estilo'] = 'jqueryui';
 			$atributos ['marco'] = true;
 			$atributos ['estiloMarco'] = '';
-			$atributos ["etiquetaObligatorio"] = true;
+			$atributos ["etiquetaObligatorio"] = false;
 			$atributos ['columnas'] = 1;
 			$atributos ['dobleLinea'] = 0;
 			$atributos ['tabIndex'] = $tab;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ['validar'] = ' ';
+			$atributos ['validar'] = '';
 			$atributos ['textoFondo'] = 'Ingrese Mínimo 3 Caracteres de Búsqueda';
 				
 			if (isset ( $_REQUEST [$esteCampo] )) {
@@ -176,7 +179,7 @@ class Formulario {
 			$atributos ['nombre'] = $esteCampo;
 			$atributos ['id'] = $esteCampo;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ["etiquetaObligatorio"] = true;
+			$atributos ["etiquetaObligatorio"] = false;
 			$atributos ['tab'] = $tab ++;
 			$atributos ['anchoEtiqueta'] = 280;
 			$atributos ['evento'] = '';
@@ -191,7 +194,7 @@ class Formulario {
 			$atributos ['ajax_function'] = "";
 			$atributos ['ajax_control'] = $esteCampo;
 			$atributos ['estilo'] = "jqueryui";
-			$atributos ['validar'] = "required";
+			$atributos ['validar'] = '';
 			$atributos ['limitar'] = true;
 			$atributos ['anchoCaja'] = 60;
 			$atributos ['miEvento'] = '';
@@ -232,11 +235,12 @@ class Formulario {
 					// Aplica atributos globales al control
 					$atributos = array_merge ( $atributos, $atributosGlobales );
 					echo $this->miFormulario->campoBoton ( $atributos );
-					unset ( $atributos );
+					
 					// -----------------FIN CONTROL: Botón -----------------------------------------------------------
 				}
 	// 			------------------Fin Division para los botones-------------------------
-				echo $this->miFormulario->division ( "fin" );
+				echo $this->miFormulario->division( "fin" );
+				
 				
 				// ------------------- SECCION: Paso de variables ------------------------------------------------
 				
@@ -263,6 +267,7 @@ class Formulario {
 				 * codificar el nombre de cada campo.
 				 */
 				$valorCodificado .= "&campoSeguro=" . $_REQUEST ['tiempo'];
+				$valorCodificado .= "&tiempo=" . time();
 				
 				// Paso 2: codificar la cadena resultante
 				$valorCodificado = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $valorCodificado );
@@ -277,15 +282,15 @@ class Formulario {
 				echo $this->miFormulario->campoCuadroTexto ( $atributos );
 				unset ( $atributos );
 				
+				$atributos ['marco'] = true;
+				$atributos ['tipoEtiqueta'] = 'fin';
+				echo $this->miFormulario->formulario ( $atributos );
+								
 				// ----------------FIN SECCION: Paso de variables -------------------------------------------------
 				// ---------------- FIN SECCION: Controles del Formulario -------------------------------------------
 			// ----------------FINALIZAR EL FORMULARIO ----------------------------------------------------------
 			// Se debe declarar el mismo atributo de marco con que se inició el formulario.
-			$atributos ['marco'] = true;
-			$atributos ['tipoEtiqueta'] = 'fin';
-			echo $this->miFormulario->formulario ( $atributos );	
 		
-		return true;
 	}
 	function mensaje() {
 		

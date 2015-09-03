@@ -29,15 +29,15 @@ table.dataTable td.dataTables_empty {
 	text-align: center;
 }
 
-table.dataTable tr.odd { background-color: #ffffff; }
-table.dataTable tr.even { background-color: #c2dcea; }
+table.dataTable tr.odd { background-color: #fcefa1; }
+table.dataTable tr.even { background-color: #fdf5ce; }
 
-table.dataTable tr.odd td.sorting_1 { background-color: #ffffff; }
-table.dataTable tr.odd td.sorting_2 { background-color: #ffffff; }
-table.dataTable tr.odd td.sorting_3 { background-color: #ffffff; }
-table.dataTable tr.even td.sorting_1 { background-color: #c2dcea; }
-table.dataTable tr.even td.sorting_2 { background-color: #c2dcea; }
-table.dataTable tr.even td.sorting_3 { background-color: #c2dcea; }
+table.dataTable tr.odd td.sorting_1 { background-color: #fcefa1; }
+table.dataTable tr.odd td.sorting_2 { background-color: #fcefa1; }
+table.dataTable tr.odd td.sorting_3 { background-color: #fcefa1; }
+table.dataTable tr.even td.sorting_1 { background-color: #fdf5ce; }
+table.dataTable tr.even td.sorting_2 { background-color: #fdf5ce; }
+table.dataTable tr.even td.sorting_3 { background-color: #fdf5ce; }
 
 
 /*
@@ -70,7 +70,7 @@ table.dataTable tr.even td.sorting_3 { background-color: #c2dcea; }
 .dataTables_filter {
 	float: right;
 	text-align: right;
-        background-color: ##c5c5c5;
+        background-color: #fcefa1;
         padding: 5px;
 }
 

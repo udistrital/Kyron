@@ -1,3 +1,47 @@
+$("#indexacionRevistas").validationEngine({
+promptPosition : "centerRight", 
+scroll: false,
+autoHidePrompt: true,
+autoHideDelay: 2000
+});
+
+$(function() {
+$("#indexacionRevistas").submit(function() {
+$resultado=$("#indexacionRevistas").validationEngine("validate");
+
+if ($resultado) {
+
+return true;
+}
+return false;
+});
+});
+
+
+
+
+$("#indexacionRevistas2").validationEngine({
+promptPosition : "centerRight", 
+scroll: false,
+autoHidePrompt: true,
+autoHideDelay: 2000
+});
+
+$(function() {
+$("#indexacionRevistas2").submit(function() {
+$resultado=$("#indexacionRevistas2").validationEngine("validate");
+
+if ($resultado) {
+
+return true;
+}
+return false;
+});
+});
+
+
+
+
 
 $(function () {
     $("button").button().click(function (event) {
@@ -16,23 +60,6 @@ $(function() {
 //////////////////////////////////////////////////////////////////////////////
 
 // Asociar el widget de validación al formulario
-$("#indexacionRevista").validationEngine({
-	promptPosition : "centerRight", 
-    scroll: false,
-    autoHidePrompt: true,
-    autoHideDelay: 2000
-});
-	
-
-$(function() {
-	$("#indexacionRevista").submit(function() {
-    	$resultado=$("#indexacionRevista").validationEngine("validate");
-	    if ($resultado) {
-	    	return true;
-        }
-    	return false;
-    });
-});
 
 
 /////////Se define el ancho de los campos de listas desplegables///////

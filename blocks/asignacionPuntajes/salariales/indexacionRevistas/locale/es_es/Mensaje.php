@@ -13,6 +13,7 @@ $this->idioma["proyectoCurricular"] = "Proyecto Curricular";
 $this->idioma["botonConsultar"] = "Consultar";
 $this->idioma["docente"] = "Indentificación o nombre del docente:";
 
+$this->idioma["botonRegresar"] = "Regresar";
 $this->idioma["docenteRegistrar"] = "Identificación o Nombre del Docente";
 $this->idioma["nombreRevista"] = "Nombre de Revista";
 $this->idioma["contextoRevista"] = "Contexto de la Revista";
