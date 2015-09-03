@@ -31,9 +31,6 @@ class Formulario {
 		 * que lo complementan.
 		 */
 		
-		$conexion = "docencia";
-		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
-		
 		// Rescatar los datos de este bloque
 		$esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );
 		$miPaginaActual = $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
@@ -55,8 +52,8 @@ class Formulario {
 		 * Si se utiliza esta técnica es necesario realizar un mezcla entre este arreglo y el específico en cada control:
 		 * $atributos= array_merge($atributos,$atributosGlobales);
 		 */
-		$atributosGlobales ['campoSeguro'] = 'true';
-		$_REQUEST ['tiempo'] = time ();
+// 		$atributosGlobales ['campoSeguro'] = 'true';
+// 		$_REQUEST ['tiempo'] = time ();
 		
 		// -------------------------------------------------------------------------------------------------
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
@@ -80,6 +77,13 @@ class Formulario {
 		$tab = 1;
 		
 		// ---------------- FIN SECCION: de Parámetros Generales del Formulario ----------------------------
+		
+		// ----------------INICIAR EL FORMULARIO ------------------------------------------------------------
+		$atributos ['tipoEtiqueta'] = 'inicio';
+		echo $this->miFormulario->formulario ( $atributos );
+		unset ( $atributos );
+		// ---------------- SECCION: Controles del Formulario -----------------------------------------------
+		
 		
 		$atributos ["id"] = "bannerBackground";
         echo $this->miFormulario->division("inicio", $atributos);
@@ -158,6 +162,8 @@ class Formulario {
 		      	echo $this->miFormulario->division("fin");
 	      	
 	    echo $this->miFormulario->division("fin");    
+	    
+	    echo $this->miFormulario->division("fin");
 	      	 
 	      	
 		      	 

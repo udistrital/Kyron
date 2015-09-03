@@ -79,7 +79,8 @@ class Formulario {
 		$atributos ['tipoEtiqueta'] = 'inicio';
 				// Aplica atributos globales al control
 		echo $this->miFormulario->formulario ( $atributos );
-			
+		unset ( $atributos );
+		
 		// ---------------- CONTROL: Lista Docente--------------------------------------------------------
 
 			$esteCampo = 'docente';

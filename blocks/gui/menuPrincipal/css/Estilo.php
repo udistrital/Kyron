@@ -1,6 +1,7 @@
 <?php
 $indice=0;
-$estilo[$indice++]="estiloBloque.css";
+$estilo[$indice++]="dcmegamenu.css";
+$estilo[$indice++]="skins/black.css";
 
 $rutaBloque=$this->miConfigurador->getVariableConfiguracion("host");
 $rutaBloque.=$this->miConfigurador->getVariableConfiguracion("site");

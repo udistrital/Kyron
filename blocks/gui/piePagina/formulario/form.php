@@ -31,9 +31,6 @@ class Formulario {
 		 * que lo complementan.
 		 */
 		
-		$conexion = "docencia";
-		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
-		
 		// Rescatar los datos de este bloque
 		$esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );
 		$miPaginaActual = $this->miConfigurador->getVariableConfiguracion ( 'pagina' );

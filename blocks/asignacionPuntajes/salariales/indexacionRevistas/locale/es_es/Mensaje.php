@@ -1,6 +1,7 @@
 <?php
 
 $this->idioma["botonAceptar"] = "Aceptar";
+$this->idioma["botonRegistrar"] = "Registrar";
 $this->idioma["botonCancelar"] = "Cancelar";
 $this->idioma["noDefinido"] = "No definido";
 
