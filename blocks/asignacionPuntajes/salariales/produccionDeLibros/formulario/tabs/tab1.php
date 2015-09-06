@@ -35,12 +35,12 @@ class Formulario {
 		$conexion = 'menu';
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
 		
-		var_dump($conexion,$esteRecursoDB);
+		//var_dump($conexion,$esteRecursoDB);
 		
 		$conexion = 'docencia';
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
 		
-		var_dump($conexion,$esteRecursoDB);
+		//var_dump($conexion,$esteRecursoDB);
 		
 		// Rescatar los datos de este bloque
 		$esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );

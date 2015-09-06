@@ -1,6 +1,6 @@
 <?php
 
-namespace desarrollo\bloqueBase\formulario;
+use asignacionPuntajes\salariales\indexacionRevistas\formulario;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -46,12 +46,12 @@ class Formulario {
 		
 		$esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );
 		
-		$conexion = "inventarios";
-		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+// 		$conexion = "inventarios";
+// 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
-		$cadena_sql = $this->miSql->cadena_sql ( "consultarContratoParticular", $_REQUEST ['identificador_contrato'] );
+// 		$cadena_sql = $this->miSql->cadena_sql ( "consultarContratoParticular", $_REQUEST ['identificador_contrato'] );
 		
-		$resultadoContratos = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
+// 		$resultadoContratos = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
 		
 		
 		

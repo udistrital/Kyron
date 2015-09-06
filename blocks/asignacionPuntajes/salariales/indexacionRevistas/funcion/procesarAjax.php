@@ -8,7 +8,7 @@ $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conex
 //Estas funciones se llaman desde ajax.php y estas a la vez realizan las consultas de Sql.class.php 
 
 if ($_REQUEST ['funcion'] == 'consultarPais') {
-	$cadenaSql = $this->sql->getCadenaSql ( 'pais');
+	$cadenaSql = $this->sql->getCadenaSql ( 'pais', $_REQUEST["valor"]);
 	$datos = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 	echo json_encode( $datos );
 }

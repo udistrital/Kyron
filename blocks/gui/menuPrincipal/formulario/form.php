@@ -88,7 +88,7 @@ class FormularioMenu {
 		// ---------------- FIN SECCION: de Parámetros Generales del Formulario ----------------------------
 		
 		$conexion = "menu";
-		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
 		
 		// ----------------INICIAR EL FORMULARIO ------------------------------------------------------------
 		$atributos ['tipoEtiqueta'] = 'inicio';
@@ -146,77 +146,77 @@ class FormularioMenu {
 		
 		// Paso 1: crear el listado de variables
 		
-// 		$valorCodificado = "actionBloque=" . $esteBloque ["nombre"];
-// 		$valorCodificado .= "&pagina=" . $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
-// 		$valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
-// 		$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
-// 		$valorCodificado .= "&opcion=registrarBloque";
-// 		/**
-// 		 * SARA permite que los nombres de los campos sean dinámicos.
-// 		 * Para ello utiliza la hora en que es creado el formulario para
-// 		 * codificar el nombre de cada campo.
-// 		 */
-// 		$valorCodificado .= "&campoSeguro=" . $_REQUEST ['tiempo'];
-// 		$valorCodificado .= "&tiempo=" . time();
-// 		// Paso 2: codificar la cadena resultante
-// 		$valorCodificado = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $valorCodificado );
+		$valorCodificado = "actionBloque=" . $esteBloque ["nombre"];
+		$valorCodificado .= "&pagina=" . $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
+		$valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
+		$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
+		$valorCodificado .= "&opcion=registrarBloque";
+		/**
+		 * SARA permite que los nombres de los campos sean dinámicos.
+		 * Para ello utiliza la hora en que es creado el formulario para
+		 * codificar el nombre de cada campo.
+		 */
+		$valorCodificado .= "&campoSeguro=" . $_REQUEST ['tiempo'];
+		$valorCodificado .= "&tiempo=" . time();
+		// Paso 2: codificar la cadena resultante
+		$valorCodificado = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $valorCodificado );
 		
-// 		$atributos ["id"] = "formSaraData"; // No cambiar este nombre
-// 		$atributos ["tipo"] = "hidden";
-// 		$atributos ['estilo'] = '';
-// 		$atributos ["obligatorio"] = false;
-// 		$atributos ['marco'] = true;
-// 		$atributos ["etiqueta"] = "";
-// 		$atributos ["valor"] = $valorCodificado;
-// 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
-// 		unset ( $atributos );
+		$atributos ["id"] = "formSaraData"; // No cambiar este nombre
+		$atributos ["tipo"] = "hidden";
+		$atributos ['estilo'] = '';
+		$atributos ["obligatorio"] = false;
+		$atributos ['marco'] = true;
+		$atributos ["etiqueta"] = "";
+		$atributos ["valor"] = $valorCodificado;
+		echo $this->miFormulario->campoCuadroTexto ( $atributos );
+		unset ( $atributos );
 		
-// 		// ----------------FIN SECCION: Paso de variables -------------------------------------------------
+		// ----------------FIN SECCION: Paso de variables -------------------------------------------------
 		
-// 		// ---------------- FIN SECCION: Controles del Formulario -------------------------------------------
+		// ---------------- FIN SECCION: Controles del Formulario -------------------------------------------
 		
-// 		// ----------------FINALIZAR EL FORMULARIO ----------------------------------------------------------
-// 		// Se debe declarar el mismo atributo de marco con que se inició el formulario.
-// 		$atributos ['marco'] = true;
-// 		$atributos ['tipoEtiqueta'] = 'fin';
-// 		echo $this->miFormulario->formulario ( $atributos );
-// 	}
-// 	function mensaje() {
+		// ----------------FINALIZAR EL FORMULARIO ----------------------------------------------------------
+		// Se debe declarar el mismo atributo de marco con que se inició el formulario.
+		$atributos ['marco'] = true;
+		$atributos ['tipoEtiqueta'] = 'fin';
+		echo $this->miFormulario->formulario ( $atributos );
+	}
+	function mensaje() {
 		
-// 		// Si existe algun tipo de error en el login aparece el siguiente mensaje
-// 		$mensaje = $this->miConfigurador->getVariableConfiguracion ( 'mostrarMensaje' );
-// 		$this->miConfigurador->setVariableConfiguracion ( 'mostrarMensaje', null );
+		// Si existe algun tipo de error en el login aparece el siguiente mensaje
+		$mensaje = $this->miConfigurador->getVariableConfiguracion ( 'mostrarMensaje' );
+		$this->miConfigurador->setVariableConfiguracion ( 'mostrarMensaje', null );
 		
-// 		if ($mensaje) {
+		if ($mensaje) {
 			
-// 			$tipoMensaje = $this->miConfigurador->getVariableConfiguracion ( 'tipoMensaje' );
+			$tipoMensaje = $this->miConfigurador->getVariableConfiguracion ( 'tipoMensaje' );
 			
-// 			if ($tipoMensaje == 'json') {
+			if ($tipoMensaje == 'json') {
 				
-// 				$atributos ['mensaje'] = $mensaje;
-// 				$atributos ['json'] = true;
-// 			} else {
-// 				$atributos ['mensaje'] = $this->lenguaje->getCadena ( $mensaje );
-// 			}
-// 			// -------------Control texto-----------------------
-// 			$esteCampo = 'divMensaje';
-// 			$atributos ['id'] = $esteCampo;
-// 			$atributos ["tamanno"] = '';
-// 			$atributos ["estilo"] = 'information';
-// 			$atributos ['efecto'] = 'desvanecer';
-// 			$atributos ["etiqueta"] = '';
-// 			$atributos ["columnas"] = ''; // El control ocupa 47% del tamaño del formulario
-// 			echo $this->miFormulario->campoMensaje ( $atributos );
-// 			unset ( $atributos );
-// 		}
+				$atributos ['mensaje'] = $mensaje;
+				$atributos ['json'] = true;
+			} else {
+				$atributos ['mensaje'] = $this->lenguaje->getCadena ( $mensaje );
+			}
+			// -------------Control texto-----------------------
+			$esteCampo = 'divMensaje';
+			$atributos ['id'] = $esteCampo;
+			$atributos ["tamanno"] = '';
+			$atributos ["estilo"] = 'information';
+			$atributos ['efecto'] = 'desvanecer';
+			$atributos ["etiqueta"] = '';
+			$atributos ["columnas"] = ''; // El control ocupa 47% del tamaño del formulario
+			echo $this->miFormulario->campoMensaje ( $atributos );
+			unset ( $atributos );
+		}
 		
-// 		return true;
+		return true;
 	}
 }
 
 $miFormulario = new FormularioMenu ( $this->lenguaje, $this->miFormulario, $this->sql );
 
 $miFormulario->formulario ();
-// $miFormulario->mensaje ();
+$miFormulario->mensaje ();
 
 ?>

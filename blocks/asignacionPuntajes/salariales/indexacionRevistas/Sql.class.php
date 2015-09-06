@@ -111,12 +111,16 @@ class Sql extends \Sql {
 				
 			case "pais" :
 				$cadenaSql = "SELECT";
-				$cadenaSql .= " id_pais,";
-				$cadenaSql .= "	nombre_pais";
+				$cadenaSql .= " paiscodigo,";
+				$cadenaSql .= "	paisnombre";
 				$cadenaSql .= " FROM ";
-				$cadenaSql .= " docencia.pais";
-				$cadenaSql .= " WHERE";
-				$cadenaSql .= " lower(nombre_pais) != 'colombia'";
+				$cadenaSql .= " docencia.pais_kyron";
+				$cadenaSql .= " WHERE 1=1";
+				if($variable == 0){
+					$cadenaSql .= " and lower(paisnombre) = 'colombia'";
+				}elseif ($variable == 1){
+					$cadenaSql .= " and lower(paisnombre) != 'colombia'";
+				}
 				break;
 				
 			case "categoria_revista" :
