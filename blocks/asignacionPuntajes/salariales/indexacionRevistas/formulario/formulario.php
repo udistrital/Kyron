@@ -49,7 +49,7 @@ unset ( $atributos );
 	unset ( $atributos );
 	{
 		
-		include ($this->ruta . "formulario/tabs/tabConsultarRevista.php");
+		include ($this->ruta . "formulario/tabs/tabConsultar.php");
 		
 		// -----------------Fin Division para la pestaña 2-------------------------
 	}
@@ -63,7 +63,7 @@ unset ( $atributos );
 	unset ( $atributos );
 	{
 		
-		include ($this->ruta . "formulario/tabs/tabIngresarRevista.php");
+		include ($this->ruta . "formulario/tabs/tabRegistrar.php");
 		// -----------------Fin Division para la pestaña 1-------------------------
 	}
 	echo $this->miFormulario->agrupacion ( 'fin' );

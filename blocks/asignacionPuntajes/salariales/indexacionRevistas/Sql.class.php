@@ -1,6 +1,6 @@
 <?php
 
-namespace asignacionPuntajes\salariales;
+namespace asignacionPuntajes\salariales\indexacionRevistas;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -161,7 +161,33 @@ class Sql extends \Sql {
 // 					$cadena_sql .= " AND dependencia_proyectocurricular = '" . $variable [2] . "'";
 // 				}
 				break;
-						
+				
+				case "insertarIndexacion" :
+					$cadenaSql = "INSERT INTO docencia.indexacion_revistas( ";
+					$cadenaSql .= "id_revista_docente, revista_nombre, revista_tipo, pais_publicacion, ";
+					$cadenaSql .= "revista_indexacion, ";
+					$cadenaSql .= "numero_issn, anno_publicacion, volumen_revista, numero_volumen, paginas_revista, ";
+					$cadenaSql .= "titulo_articulo, numero_autores, numero_autores_ud, fecha_publicacion, ";
+					$cadenaSql .= "acta_numero, fecha_acto, numero_caso, puntaje) ";
+					$cadenaSql .= " VALUES (" . $variable [0] . ",";
+					$cadenaSql .= " '" . $variable [1] . "',";
+					$cadenaSql .= " '" . $variable [2] . "',";
+					$cadenaSql .= "'" . $variable [3] . "',";
+					$cadenaSql .= " '" . $variable [4] . "',";
+					$cadenaSql .= " " . $variable [5] . ",";
+					$cadenaSql .= " '" . $variable [6] . "',";
+					$cadenaSql .= " '" . $variable [7] . "',";
+					$cadenaSql .= " '" . $variable [8] . "',";
+					$cadenaSql .= " '" . $variable [9] . "',";
+					$cadenaSql .= " '" . $variable [10] . "',";
+					$cadenaSql .= " '" . $variable [11] . "',";
+					$cadenaSql .= " '" . $variable [12] . "',";
+					$cadenaSql .= "' " . $variable [13] . "' ,";
+					$cadenaSql .= "' " . $variable [14] . "',";
+					$cadenaSql .= " '" . $variable [15] . "',";
+					$cadenaSql .= "' " . $variable [16] . "',";
+					$cadenaSql .= " '" . $variable [17] . "')";
+					break;
 		}
 		
 		return $cadenaSql;

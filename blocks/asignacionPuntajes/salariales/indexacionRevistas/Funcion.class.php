@@ -1,6 +1,6 @@
 <?php
 
-namespace asignacionPuntajes\salariales;
+namespace asignacionPuntajes\salariales\indexacionRevistas;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -35,7 +35,7 @@ class Funcion {
 // 		}
 // 	}
 	function formProcessor() {
-		include_once ($this->ruta . "/funcion/funcionEjemplo.php");
+		include_once ($this->ruta . "/funcion/registrar.php");
 	}
 	function procesarAjax() {
 		include_once ($this->ruta . "funcion/procesarAjax.php");
@@ -72,13 +72,12 @@ class Funcion {
 		if (isset ( $_REQUEST ['procesarAjax'] )) {
 			$this->procesarAjax ();
 		} else if (isset ( $_REQUEST ["opcion"] )) {
-			
 			switch ($_REQUEST ["opcion"]) {
 				case 'consultar' :
 					$this->consultarContrato ();
 					break;
 				
-				case 'documento' :
+				case 'registrar' :
 					$this->formProcessor ();
 					break;
 				

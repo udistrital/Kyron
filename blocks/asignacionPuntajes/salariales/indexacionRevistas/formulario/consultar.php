@@ -179,7 +179,7 @@ class registrarForm {
 					
 					for($i = 0; $i < count ( $indexacion ); $i ++) {
 						$variable = "pagina=" . $miPaginaActual; // pendiente la pagina para modificar parametro
-						$variable .= "&opcion=Entrada";
+						$variable .= "&opcion=modificar";
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
 						$variable .= "&numero_acta=" . $indexacion [$i] ['id_revista_docente'];
 						

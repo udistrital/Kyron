@@ -20,7 +20,7 @@ return false;
 
 
 
-$("#indexacionRevistas2").validationEngine({
+$("#indexacionRevistasRegistrar").validationEngine({
 promptPosition : "centerRight", 
 scroll: false,
 autoHidePrompt: true,
@@ -28,8 +28,8 @@ autoHideDelay: 2000
 });
 
 $(function() {
-$("#indexacionRevistas2").submit(function() {
-$resultado=$("#indexacionRevistas2").validationEngine("validate");
+$("#indexacionRevistasRegistrar").submit(function() {
+$resultado=$("#indexacionRevistasRegistrar").validationEngine("validate");
 
 if ($resultado) {
 
@@ -64,12 +64,12 @@ $(function() {
 
 /////////Se define el ancho de los campos de listas desplegables///////
 
-$('#<?php echo $this->campoSeguro('docente')?>').width(450);      
+$('#<?php echo $this->campoSeguro('docente')?>').width(465);      
 $('#<?php echo $this->campoSeguro('facultad')?>').width(450);      
 $('#<?php echo $this->campoSeguro('proyectoCurricular')?>').width(450);      
 
 
-$('#<?php echo $this->campoSeguro('docenteRegistrar')?>').width(450);
+$('#<?php echo $this->campoSeguro('docenteRegistrar')?>').width(465);
 $('#<?php echo $this->campoSeguro('contextoRevista')?>').width(450);
 
 

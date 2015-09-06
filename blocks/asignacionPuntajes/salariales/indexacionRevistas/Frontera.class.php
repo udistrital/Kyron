@@ -1,13 +1,11 @@
 <?php
 
-namespace asignacionPuntajes\salariales;
+namespace asignacionPuntajes\salariales\indexacionRevistas;
 
 if (!isset($GLOBALS ["autorizado"])) {
     include ("../index.php");
     exit();
 }
-
-
 
 include_once ("core/manager/Configurador.class.php");
 
@@ -66,11 +64,11 @@ class Frontera {
                     break;
                 
                 case "consultar":
-                    include_once($this->ruta . "/formulario/consultarRevistas.php");
+                    include_once($this->ruta . "/formulario/consultar.php");
                     break;
                 
                 case "nuevo":
-                     include_once($this->ruta . "/formulario/nuevo.php");
+                     include_once($this->ruta . "/formulario/formulario.php");
                     break;
                 
                  case "modificar":
@@ -79,7 +77,7 @@ class Frontera {
             }
         } else {
             $_REQUEST['opcion'] = "mostrar";
-            include_once($this->ruta . "/formulario/nuevo.php");
+            include_once($this->ruta . "/formulario/formulario.php");
         }
     }
 

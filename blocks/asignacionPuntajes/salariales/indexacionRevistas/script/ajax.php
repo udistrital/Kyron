@@ -51,11 +51,16 @@ $("#<?php echo $this->campoSeguro('docente') ?>").autocomplete({
 $("#<?php echo $this->campoSeguro('contextoRevista')?>").change(function() {
 
 	if($("#<?php echo $this->campoSeguro('contextoRevista')?>").val() == ''){
+
+		$("<option value=''>Seleccione .....</option>").appendTo("#<?php echo $this->campoSeguro('pais')?>");
 		
 		$("#<?php echo $this->campoSeguro('pais_div')?>").css('display','none'); 
 		$("#<?php echo $this->campoSeguro('categoria_div')?>").css('display','none');
 		 		
 	}else{
+
+		$("<option value=''>Seleccione .....</option>").appendTo("#<?php echo $this->campoSeguro('pais')?>");
+
 		 
 		if($("#<?php echo $this->campoSeguro('contextoRevista')?>").val() == 0){
 			
@@ -136,46 +141,6 @@ function consultarPais(elem, request, response){
 //////////////////////Para que esta función se ejecute correctamente debe agregar//
 <?php
 // Variables
-$cadenaACodificarDocente = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
-$cadenaACodificarDocente .= "&procesarAjax=true";
-$cadenaACodificarDocente .= "&action=index.php";
-$cadenaACodificarDocente .= "&bloqueNombre=" . $esteBloque ["nombre"];
-$cadenaACodificarDocente .= "&bloqueGrupo=" . $esteBloque ["grupo"];
-$cadenaACodificarDocente .= "&funcion=consultarDocente";
-$cadenaACodificarDocente .= "&tiempo=" . $_REQUEST ['tiempo'];
-// Codificar las variables
-$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
-$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificarDocente, $enlace );
-
-// URL definitiva
-$urlFinalDocente = $url . $cadena;
-
-
-?>
-
-
-$(function () {
-
-    $( "#<?php echo $this->campoSeguro('docente')?>" ).keyup(function() {
-		$('#<?php echo $this->campoSeguro('docente') ?>').val($('#<?php echo $this->campoSeguro('docente') ?>').val().toUpperCase());
-    });
-    $("#<?php echo $this->campoSeguro('docente') ?>").autocomplete({
-    	minChars: 3,
-    	serviceUrl: '<?php echo $urlFinalDocente; ?>',
-    	onSelect: function (suggestion) {
-    	        $("#<?php echo $this->campoSeguro('id_docente') ?>").val(suggestion.data);
-    	    }
-    });
-
-});
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-//////////////*******Función que permite enviar los caracteres a medida que se van ingresando e ir recibiendo una respuesta para ir mostrando posibles docentes*******/////////////// 
-//////////////////////ver en procecarajax.php la función consultarDocente y en sql.class.php ver la sentencia docente.////////////////////////////////////////////////////////////////
-//////////////////////Para que esta función se ejecute correctamente debe agregar//
-<?php
-// Variables
 $cadenaACodificarDocenteReg = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
 $cadenaACodificarDocenteReg .= "&procesarAjax=true";
 $cadenaACodificarDocenteReg .= "&action=index.php";
@@ -198,7 +163,7 @@ $(function () {
     $("#<?php echo $this->campoSeguro('docenteRegistrar') ?>").autocomplete({
     	minChars: 3,
     	serviceUrl: '<?php echo $urlFinalDocente; ?>',
-    	onSelect: function (suggestion) {
+    	onSelect: function (suggestion) {        		
     	        $("#<?php echo $this->campoSeguro('id_docenteRegistrar') ?>").val(suggestion.data);
     	    }
     });
