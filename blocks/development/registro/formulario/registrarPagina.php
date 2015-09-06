@@ -38,8 +38,9 @@ class RegistradorPagina {
          * Si se utiliza esta técnica es necesario realizar un mezcla entre este arreglo y el específico en cada control:
          * $atributos= array_merge($atributos,$atributosGlobales);
          */
-        $atributosGlobales ['tiempo'] = time();
         $atributosGlobales ['campoSeguro'] = 'true';
+        $_REQUEST ['tiempo'] = time();        
+        
         
         // -------------------------------------------------------------------------------------------------
         
@@ -290,7 +291,7 @@ class RegistradorPagina {
          * (a) invocando a la variable $atributosGlobales ['tiempo'] que se ha declarado en ready.php o
          * (b) asociando el tiempo en que se está creando el formulario
          */
-        $valorCodificado .= "&campoSeguro=" . $atributosGlobales ['tiempo'];
+        $valorCodificado .= "&campoSeguro=" . $_REQUEST ['tiempo'];
         // Paso 2: codificar la cadena resultante
         $valorCodificado = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $valorCodificado );
         

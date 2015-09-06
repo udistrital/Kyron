@@ -31,6 +31,7 @@ class RegistradorPagina {
                 $_REQUEST ['nombrePagina']=='' || 
                 $_REQUEST ['nivelPagina']=='')
         {
+        	error_log ('REGISTRAR PAGINA: No estan todos los datos');
             $resultado = false;
         }else
         

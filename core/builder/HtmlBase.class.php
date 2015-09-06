@@ -202,6 +202,8 @@ class HtmlBase {
         
         if (isset ( $_REQUEST ['tiempo'] )) {
             $this->atributos ['tiempo'] = $_REQUEST ['tiempo'];
+        }else{
+        	$this->atributos ['tiempo'] = '';
         }
         
         if (isset ( $this->atributos ['campoSeguro'] ) && $this->atributos ['campoSeguro'] && $this->atributos [self::ID] != 'formSaraData') {
