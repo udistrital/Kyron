@@ -40,7 +40,7 @@ class RegistradorBloque {
          * $atributos= array_merge($atributos,$atributosGlobales);
          */
         $atributosGlobales ['tiempo'] = time();
-        $atributosGlobales ['campoSeguro'] = 'true';
+        $_REQUEST ['campoSeguro'] = 'true';
         
         // -------------------------------------------------------------------------------------------------
         
@@ -231,7 +231,7 @@ class RegistradorBloque {
          * (a) invocando a la variable $$atributosGlobales ['tiempo'] o
          * (b) asociando el tiempo en que se está creando el formulario
          */
-        $valorCodificado .= "&campoSeguro=" . $atributosGlobales ['tiempo'];
+        $valorCodificado .= "&campoSeguro=" . $_REQUEST ['tiempo'];
         // Paso 2: codificar la cadena resultante
         $valorCodificado = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $valorCodificado );
         
