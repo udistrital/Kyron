@@ -59,20 +59,9 @@ $("#<?php echo $this->campoSeguro('contextoRevista')?>").change(function() {
 		 		
 	}else{
 
-		$("<option value=''>Seleccione .....</option>").appendTo("#<?php echo $this->campoSeguro('pais')?>");
-
-		 
-		if($("#<?php echo $this->campoSeguro('contextoRevista')?>").val() == 0){
-			
-			$("#<?php echo $this->campoSeguro('pais')?>").html("");
-			$("<option value=''>Seleccione .....</option>").appendTo("#<?php echo $this->campoSeguro('pais')?>");
-			$("<option value=''>Colombia</option>").appendTo("#<?php echo $this->campoSeguro('pais')?>");
-			
-		}else if($("#<?php echo $this->campoSeguro('contextoRevista')?>").val() == 1){
 			
 			consultarPais();
 			
-		}
 
 		$("#<?php echo $this->campoSeguro('categoria')?>").html("");
 		$("<option value=''>Seleccione .....</option>").appendTo("#<?php echo $this->campoSeguro('categoria')?>");

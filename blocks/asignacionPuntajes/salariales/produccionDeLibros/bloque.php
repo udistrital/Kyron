@@ -1,6 +1,6 @@
 <?php
 
-namespace asignacionPuntajes\salariales;
+namespace asignacionPuntajes\salariales\produccionDeLibros;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -29,7 +29,7 @@ include_once ("Lenguaje.class.php");
 // Para evitar redefiniciones de clases el nombre de la clase del archivo bloque debe corresponder al nombre del bloque
 // precedida por la palabra Bloque
 
-if (! class_exists ( '\\asignacionPuntajes\\salariales\\Bloque' )) {
+if (! class_exists ( '\\asignacionPuntajes\\salariales\\produccionDeLibros\\Bloque' )) {
 	class Bloque implements \Bloque {
 		var $nombreBloque;
 		var $miFuncion;
