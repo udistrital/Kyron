@@ -51,38 +51,28 @@ class registrarForm {
 		$conexion = "docencia";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
-// 		if (isset ( $_REQUEST ['fecha_inicio'] ) && $_REQUEST ['fecha_inicio'] != '') {
-// 			$fechaInicio = $_REQUEST ['fecha_inicio'];
-// 		} else {
-// 			$fechaInicio = '';
-// 		}
+		if (isset ( $_REQUEST ['id_docente'] ) && $_REQUEST ['id_docente'] != '') {
+			$id_docente = $_REQUEST ['id_docente'];
+		} else {
+			$id_docente = '';
+		}
 		
-// 		if (isset ( $_REQUEST ['fecha_final'] ) && $_REQUEST ['fecha_final'] != '') {
-// 			$fechaFinal = $_REQUEST ['fecha_final'];
-// 		} else {
-// 			$fechaFinal = '';
-// 		}
+		if (isset ( $_REQUEST ['facultad'] ) && $_REQUEST ['facultad'] != '') {
+			$facultad = $_REQUEST ['facultad'];
+		} else {
+			$facultad = '';
+		}
 		
-// 		if (isset ( $_REQUEST ['numero_acta'] ) && $_REQUEST ['numero_acta'] != '') {
-// 			$numeroActa = $_REQUEST ['numero_acta'];
-// 		} else {
-// 			$numeroActa = '';
-// 		}
-		
-// 		if (isset ( $_REQUEST ['id_proveedor'] ) && $_REQUEST ['id_proveedor'] != '') {
-// 			$proveedor = $_REQUEST ['id_proveedor'];
-// 		} else {
-// 			$proveedor = '';
-// 		}
-		
-// 		$arreglo = array (
-// 				$numeroActa,
-// 				$proveedor,
-// 				$fechaInicio,
-// 				$fechaFinal 
-// 		);
+		if (isset ( $_REQUEST ['proyectoCurricular'] ) && $_REQUEST ['proyectoCurricular'] != '') {
+			$proyectoCurricular = $_REQUEST ['proyectoCurricular'];
+		} else {
+			$proyectoCurricular = '';
+		}
 		
 		$arreglo = array (
+				$id_docente,
+				$facultad,
+				$proyectoCurricular 
 		);
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'consultarIndexacion', $arreglo );
@@ -135,25 +125,15 @@ class registrarForm {
 		echo $this->miFormulario->enlace ( $atributos );
 			
 		unset ( $atributos );
-			
-			
 		
-		
-// 		$esteCampo = "marcoDatosBasicos";
-// 		$atributos ['id'] = $esteCampo;
-// 		$atributos ["estilo"] = "jqueryui";
-// 		$atributos ['tipoEtiqueta'] = 'inicio';
-// // 		$atributos ["leyenda"] = "Registro Entradas";
-// 		echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
-		
-// 			$esteCampo = "AgrupacionSolicitante";
-// 			$atributos ['id'] = $esteCampo;
-// 			$atributos ['leyenda'] = "Información Referente Actas Recibido";
-// 			echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
-// 			{
-	
-				
 				if ($indexacion) {
+					
+					$esteCampo = "marcoDatosBasicos";
+					$atributos ['id'] = $esteCampo;
+					$atributos ["estilo"] = "jqueryui";
+					$atributos ['tipoEtiqueta'] = 'inicio';
+					$atributos ["leyenda"] = "Revistas Indexadas";					
+					echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
 					
 					echo "<table id='tablaTitulos'>";
 					
@@ -181,23 +161,13 @@ class registrarForm {
 						$variable = "pagina=" . $miPaginaActual; // pendiente la pagina para modificar parametro
 						$variable .= "&opcion=modificar";
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
-						$variable .= "&numero_acta=" . $indexacion [$i] ['id_revista_docente'];
-						
-						$arreglo = array (
-								$indexacion [$i] [0],
-								$indexacion [$i] [1],
-								$indexacion [$i] [2],
-								$indexacion [$i] [3] 
-						);
-						$arreglo=serialize($arreglo);
-						$variable .= "&datosGenerales=" .$arreglo;
-						
+						$variable .= "&numero_indexacion=" . $indexacion [$i] ['id_indexacion_revista'];					
 						$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 						
 						$mostrarHtml = "<tr>
-	                    <td><center>" . $indexacion [$i] ['id_revista_docente'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['informacion_nombres'] . $indexacion [$i] ['informacion_apellidos'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['revista_nombre'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['identificacion_docente'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['nombre_docente'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['nombre_revista'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['titulo_articulo'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['paisnombre'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['item_nombre'] . "</center></td>
@@ -221,17 +191,17 @@ class registrarForm {
 					echo "</tbody>";
 					
 					echo "</table>";
-					
-					// Fin de Conjunto de Controles
-					// echo $this->miFormulario->marcoAgrupacion("fin");
+
+					echo $this->miFormulario->marcoAgrupacion ( 'fin' );
+
 				} else {
 					
-					$mensaje = "No Se Encontraron<br>Actas de Recibido Registradas y/o Actas de Recibido con Elementos Registrados.";
+					$mensaje = "No Se Encontraron<br> Registros de Revistas Indexadas.";
 					
 					// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
 					$esteCampo = 'mensajeRegistro';
 					$atributos ['id'] = $esteCampo;
-					$atributos ['tipo'] = 'error';
+					$atributos ['tipo'] = 'information';
 					$atributos ['estilo'] = 'textoCentrar';
 					$atributos ['mensaje'] = $mensaje;
 					
@@ -245,7 +215,6 @@ class registrarForm {
 // 		}
 // 		echo $this->miFormulario->agrupacion ( 'fin' );
 		
-// 		echo $this->miFormulario->marcoAgrupacion ( 'fin' );
 		
 		// ------------------- SECCION: Paso de variables ------------------------------------------------
 		

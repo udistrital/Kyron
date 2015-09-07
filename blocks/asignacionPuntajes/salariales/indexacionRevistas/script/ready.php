@@ -6,25 +6,20 @@ autoHideDelay: 2000
 });
 
 $(function() {
-$("#indexacionRevistas").submit(function() {
-$resultado=$("#indexacionRevistas").validationEngine("validate");
-
-if ($resultado) {
-
-return true;
-}
-return false;
+	$("#indexacionRevistas").submit(function() {
+		$resultado=$("#indexacionRevistas").validationEngine("validate");
+		if ($resultado) {
+			return true;
+		}
+		return false;
+	});
 });
-});
-
-
-
 
 $("#indexacionRevistasRegistrar").validationEngine({
-promptPosition : "centerRight", 
-scroll: false,
-autoHidePrompt: true,
-autoHideDelay: 2000
+	promptPosition : "centerRight", 
+	scroll: false,
+	autoHidePrompt: true,
+	autoHideDelay: 2000
 });
 
 $(function() {
@@ -39,14 +34,27 @@ return false;
 });
 });
 
-
-
-
-
 $(function () {
     $("button").button().click(function (event) {
         event.preventDefault();
     });
+});
+
+$(function() {
+	$("#indexacionRevistasModificar").submit(function() {
+		$resultado=$("#indexacionRevistasModificar").validationEngine("validate");
+		if ($resultado) {
+			return true;
+		}
+		return false;
+	});
+});
+
+$("#indexacionRevistasModificar").validationEngine({
+	promptPosition : "centerRight", 
+	scroll: false,
+	autoHidePrompt: true,
+	autoHideDelay: 2000
 });
 
 $('#tablaTitulos').dataTable( {
@@ -68,14 +76,13 @@ $('#<?php echo $this->campoSeguro('docente')?>').width(465);
 $('#<?php echo $this->campoSeguro('facultad')?>').width(450);      
 $('#<?php echo $this->campoSeguro('proyectoCurricular')?>').width(450);      
 
-
 $('#<?php echo $this->campoSeguro('docenteRegistrar')?>').width(465);
 $('#<?php echo $this->campoSeguro('contextoRevista')?>').width(450);
 
 
 ///*********El ancho (width) de los siguientes campos es mayor debido a que se encuentran dentro de un div****///
-$('#<?php echo $this->campoSeguro('pais')?>').width(465);
-$('#<?php echo $this->campoSeguro('categoria')?>').width(465);
+$('#<?php echo $this->campoSeguro('pais')?>').width(470);
+$('#<?php echo $this->campoSeguro('categoria')?>').width(470);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 

@@ -154,7 +154,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -187,7 +187,7 @@ class FormularioRegistro {
 		$atributos ['ajax_control'] = $esteCampo;
 		$atributos ['estilo'] = "jqueryui";
 		$atributos ['limitar'] = true;
-		$atributos ['anchoCaja'] = 45;
+		$atributos ['anchoCaja'] = 57;
 		$atributos ['miEvento'] = '';
 		$atributos ['validar'] = 'required';
 		// $atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "funcionarios" );
@@ -325,7 +325,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -358,7 +358,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = true;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -391,7 +391,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -424,7 +424,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -457,7 +457,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -490,7 +490,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -523,7 +523,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -556,7 +556,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -589,7 +589,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = true;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -622,7 +622,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -655,7 +655,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = true;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -688,7 +688,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -721,7 +721,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;

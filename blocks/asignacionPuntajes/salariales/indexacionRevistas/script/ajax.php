@@ -59,20 +59,9 @@ $("#<?php echo $this->campoSeguro('contextoRevista')?>").change(function() {
 		 		
 	}else{
 
+		$("#<?php echo $this->campoSeguro('pais')?>").html("");
 		$("<option value=''>Seleccione .....</option>").appendTo("#<?php echo $this->campoSeguro('pais')?>");
-
-		 
-		if($("#<?php echo $this->campoSeguro('contextoRevista')?>").val() == 0){
-			
-			$("#<?php echo $this->campoSeguro('pais')?>").html("");
-			$("<option value=''>Seleccione .....</option>").appendTo("#<?php echo $this->campoSeguro('pais')?>");
-			$("<option value=''>Colombia</option>").appendTo("#<?php echo $this->campoSeguro('pais')?>");
-			
-		}else if($("#<?php echo $this->campoSeguro('contextoRevista')?>").val() == 1){
-			
-			consultarPais();
-			
-		}
+		consultarPais();
 
 		$("#<?php echo $this->campoSeguro('categoria')?>").html("");
 		$("<option value=''>Seleccione .....</option>").appendTo("#<?php echo $this->campoSeguro('categoria')?>");
@@ -83,6 +72,10 @@ $("#<?php echo $this->campoSeguro('contextoRevista')?>").change(function() {
 		
 		$("#<?php echo $this->campoSeguro('pais')?>").select2();
 		$("#<?php echo $this->campoSeguro('categoria')?>").select2();
+
+		if($("#<?php echo $this->campoSeguro('contextoRevista')?>").val() == 0){
+			$("#<?php echo $this->campoSeguro('pais')?>").val(1);
+		}
 		
 	}
 	
@@ -122,13 +115,13 @@ function consultarPais(elem, request, response){
 	$.ajax({
 		url: "<?php echo $urlFinalPais?>",
 		dataType: "json",
-		data: { valor:$("#<?php echo $this->campoSeguro('pais')?>").val()},
+		data: { valor:$("#<?php echo $this->campoSeguro('contextoRevista')?>").val()},
 		success: function(data){
 			if(data[0]!=" "){
 				$("#<?php echo $this->campoSeguro('pais')?>").html('');
 				$("<option value=''>Seleccione .....</option>").appendTo("#<?php echo $this->campoSeguro('pais')?>");
 				$.each(data , function(indice,valor){
-					$("<option value='"+data[ indice ].id_pais+"'>"+data[ indice ].nombre_pais+"</option>").appendTo("#<?php echo $this->campoSeguro('pais')?>");
+					$("<option value='"+data[ indice ].paiscodigo+"'>"+data[ indice ].paisnombre+"</option>").appendTo("#<?php echo $this->campoSeguro('pais')?>");
 				});
 			}
 		}
@@ -213,5 +206,13 @@ function consultarCategoria(elem, request, response){
 ///////////////////////////////////////////////////////////////////////////////////// 
     	 
 
+
+if($("#<?php echo $this->campoSeguro('contextoRevista')?>").val() == 0 || $("#<?php echo $this->campoSeguro('contextoRevista')?>").val() == 1){
+	$('#<?php echo $this->campoSeguro('contextoRevista')?>').width(400);
+	$('#<?php echo $this->campoSeguro('pais')?>').width(470);
+	$('#<?php echo $this->campoSeguro('categoria')?>').width(470);
+	$("#<?php echo $this->campoSeguro('pais')?>").select2();
+	$("#<?php echo $this->campoSeguro('categoria')?>").select2();
+}
 </script>
 
