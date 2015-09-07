@@ -16,6 +16,7 @@ $this->idioma ['consultarActividadDocente'] = 'Consultar Actividad Académica Do
 
 //Asignación de Puntajes////////////////////////
 $this->idioma ['tituloSalariales'] = 'SALARIALES';
+$this->idioma ['produccionDeLibros'] = 'Producción de Libros';
 	//SALARIALES////////////////////////////////	
 	$this->idioma ['capituloLibros'] = 'Capítulos de Libros';
 	$this->idioma ['cartasEditor'] = 'Cartas al Editor';

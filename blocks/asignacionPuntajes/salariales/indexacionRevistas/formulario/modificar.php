@@ -1,5 +1,10 @@
 <?php
+<<<<<<< HEAD
 namespace asignacionPuntajes\salariales\indexacionRevistas\formulario;
+=======
+
+use asignacionPuntajes\salariales\indexacionRevistas\formulario;
+>>>>>>> d0a1ef023beecf35dc53a58be27304ca37d0d0a9
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -50,6 +55,35 @@ class FormularioModificar {
 		$atributosGlobales ['campoSeguro'] = 'true';
 		$_REQUEST ['tiempo'] = time ();
 		
+<<<<<<< HEAD
+=======
+		$esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );
+		
+// 		$conexion = "inventarios";
+// 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+		
+// 		$cadena_sql = $this->miSql->cadena_sql ( "consultarContratoParticular", $_REQUEST ['identificador_contrato'] );
+		
+// 		$resultadoContratos = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
+		
+		
+		
+		
+		$arreglo = array (
+				"num_contrato" => $resultadoContratos [0] [1],
+				"fecha_contrato" => $resultadoContratos [0] [2],
+				"nombre_contratista" => $resultadoContratos [0] ['nom_razon'],
+				"id_contratista" => $resultadoContratos [0] [0],
+				"id_documento" => $resultadoContratos [0] [3] 
+		);
+		
+		$_REQUEST = array_merge ( $_REQUEST, $arreglo );
+		
+		$conexion = "sicapital";
+		
+		$esteRecursoDBO = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+		
+>>>>>>> d0a1ef023beecf35dc53a58be27304ca37d0d0a9
 		// -------------------------------------------------------------------------------------------------
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
 		$esteCampo = $esteBloque ['nombre']."Modificar";

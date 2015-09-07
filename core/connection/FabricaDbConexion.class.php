@@ -153,7 +153,11 @@ class FabricaDbConexion {
                            password as dbclave, 
                            dbms as dbsys ';
             $cadenaSql .= "FROM ";
-            $cadenaSql .= $this->configuracion ["dbprefijo"] . "dbms ";
+            $esquema = '';
+	    if($this->configuracion ["dbesquema"]!=''){
+		$esquema = $this->configuracion ["dbesquema"] . '.';
+	    }
+            $cadenaSql .= $esquema . $this->configuracion ["dbprefijo"] . "dbms ";
             $cadenaSql .= "WHERE ";
             return $cadenaSql .= "nombre='" . $variable . "'";
         
