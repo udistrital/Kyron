@@ -5,8 +5,8 @@ $this->idioma["botonRegistrar"] = "Registrar";
 $this->idioma["botonCancelar"] = "Cancelar";
 $this->idioma["noDefinido"] = "No definido";
 
-$this->idioma["consultarRevistas"] = "Consultar producción de libros";
-$this->idioma["ingresarRevistas"] = "Ingresar Revistas Indexadas";
+$this->idioma["consultarLibros"] = "Consultar producción de libros";
+$this->idioma["registrarLibros"] = "Ingresar Producción de Libros";
 
 $this->idioma["facultad"] = "Facultad";
 $this->idioma["proyectoCurricular"] = "Proyecto Curricular";

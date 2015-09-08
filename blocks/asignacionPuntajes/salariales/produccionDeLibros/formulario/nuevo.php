@@ -14,8 +14,8 @@ unset ( $atributos );
 // -------------------- Listado de Pestañas (Como lista No Ordenada) -------------------------------
 
 $items = array (
-	"tabConsultarRevistas" => $this->lenguaje->getCadena ( "consultarRevistas" ),
-	"tabIngresarRevistas" => $this->lenguaje->getCadena ( "ingresarRevistas" ) 
+	"tabConsultarLibros" => $this->lenguaje->getCadena ( "consultarLibros" ),
+	"tabRegistrarLibros" => $this->lenguaje->getCadena ( "registrarLibros" ) 
 );
 
 
@@ -31,19 +31,19 @@ $atributos ['tipoEtiqueta'] = 'inicio';
 echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
 unset ( $atributos );
 
-require ($this->ruta . "formulario/tabs/tab1.php");
+require ($this->ruta . "formulario/tabs/tabConsultar.php");
 	
 // -----------------Fin Division para la pestaña 2-------------------------
 echo $this->miFormulario->agrupacion ( 'fin' );
 
-$esteCampo = "tabIngresarRevistas";
+$esteCampo = "tabRegistrarLibros";
 $atributos ['id'] = $esteCampo;
 $atributos ["estilo"] = "";
 $atributos ['tipoEtiqueta'] = 'inicio';
 echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
 unset ( $atributos );		
 
-require ($this->ruta . "formulario/tabs/tab2.php");
+require ($this->ruta . "formulario/tabs/tabRegistrar.php");
 
 // -----------------Fin Division para la pestaña 1-------------------------
 echo $this->miFormulario->agrupacion ( 'fin' );

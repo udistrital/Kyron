@@ -41,7 +41,7 @@ class Funcion {
 		include_once ($this->ruta . "funcion/procesarAjax.php");
 	}
 	function consultarContrato() {
-		include_once ($this->ruta . "/funcion/consultarContrato.php");
+		include_once ($this->ruta . "/funcion/consultarLibro.php");
 	}
 	function modificarContrato() {
 		include_once ($this->ruta . "/funcion/modificarContrato.php");

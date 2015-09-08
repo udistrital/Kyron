@@ -27,7 +27,6 @@ class RegistrarIndexacionRevista {
 		$this->miFuncion = $funcion;
 	}
 	function procesarFormulario() {
-
 		$conexion = "docencia";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
@@ -244,7 +243,7 @@ class RegistrarIndexacionRevista {
 // 				($_REQUEST ['identificacion_ordenador'] == '') ? NULL : $_REQUEST ['identificacion_ordenador'], // obligatorio donacion
 // 				$idEntradamax 
 // 		);
-// 		var_dump($_REQUEST);exit;
+						
 		$arregloDatos = array (
 			$_REQUEST['id_docenteRegistrar'],
 			$_REQUEST['nombreRevista'],

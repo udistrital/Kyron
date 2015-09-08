@@ -1,5 +1,5 @@
 <?php
-namespace asignacionPuntajes\salariales\produccionDeLibros\formulario;
+namespace asignacionPuntajes\salariales\indexacionRevistas\formulario;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -32,15 +32,9 @@ class Formulario {
 		 * Por tanto en el archivo ready.php se delaran algunas funciones js
 		 * que lo complementan.
 		 */
-		$conexion = 'menu';
-		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
 		
-		//var_dump($conexion,$esteRecursoDB);
-		
-		$conexion = 'docencia';
-		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
-		
-		//var_dump($conexion,$esteRecursoDB);
+		$conexion = "docencia";
+		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
 		// Rescatar los datos de este bloque
 		$esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );

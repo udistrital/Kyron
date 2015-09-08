@@ -206,5 +206,13 @@ function consultarCategoria(elem, request, response){
 ///////////////////////////////////////////////////////////////////////////////////// 
     	 
 
+
+if($("#<?php echo $this->campoSeguro('contextoRevista')?>").val() == 0 || $("#<?php echo $this->campoSeguro('contextoRevista')?>").val() == 1){
+	$('#<?php echo $this->campoSeguro('contextoRevista')?>').width(400);
+	$('#<?php echo $this->campoSeguro('pais')?>').width(470);
+	$('#<?php echo $this->campoSeguro('categoria')?>').width(470);
+	$("#<?php echo $this->campoSeguro('pais')?>").select2();
+	$("#<?php echo $this->campoSeguro('categoria')?>").select2();
+}
 </script>
 

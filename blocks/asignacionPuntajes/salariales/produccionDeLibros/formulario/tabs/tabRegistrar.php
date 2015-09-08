@@ -1,5 +1,5 @@
 <?php
-namespace asignacionPuntajes\salariales\produccionDeLibros\formulario;
+namespace asignacionPuntajes\salariales\indexacionRevistas\formulario;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -52,7 +52,7 @@ class FormularioRegistro {
 		
 		// -------------------------------------------------------------------------------------------------
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
-		$esteCampo = $esteBloque ['nombre']."2";
+		$esteCampo = $esteBloque ['nombre']."Registrar";
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		
@@ -114,7 +114,7 @@ class FormularioRegistro {
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
 			
-		$esteCampo = 'id_docenteregistar';
+		$esteCampo = 'id_docenteRegistrar';
 		$atributos ["id"] = $esteCampo; // No cambiar este nombre
 		$atributos ["tipo"] = "hidden";
 		$atributos ['estilo'] = '';
@@ -154,7 +154,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -187,7 +187,7 @@ class FormularioRegistro {
 		$atributos ['ajax_control'] = $esteCampo;
 		$atributos ['estilo'] = "jqueryui";
 		$atributos ['limitar'] = true;
-		$atributos ['anchoCaja'] = 45;
+		$atributos ['anchoCaja'] = 57;
 		$atributos ['miEvento'] = '';
 		$atributos ['validar'] = 'required';
 		// $atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "funcionarios" );
@@ -236,7 +236,7 @@ class FormularioRegistro {
 		$atributos ['ajax_function'] = "";
 		$atributos ['ajax_control'] = $esteCampo;
 		$atributos ['estilo'] = "jqueryui";
-		$atributos ['validar'] = "";
+		$atributos ['validar'] = "required";
 		$atributos ['limitar'] = false;
 		$atributos ['anchoCaja'] = 60;
 		$atributos ['miEvento'] = '';
@@ -283,7 +283,7 @@ class FormularioRegistro {
 		$atributos ['ajax_function'] = "";
 		$atributos ['ajax_control'] = $esteCampo;
 		$atributos ['estilo'] = "jqueryui";
-		$atributos ['validar'] = "";
+		$atributos ['validar'] = "required";
 		$atributos ['limitar'] = false;
 		$atributos ['anchoCaja'] = 60;
 		$atributos ['miEvento'] = '';
@@ -325,7 +325,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -358,7 +358,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = true;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -391,7 +391,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -424,7 +424,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -457,7 +457,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -490,7 +490,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -523,7 +523,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -556,7 +556,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -589,7 +589,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = true;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -622,7 +622,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -655,7 +655,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = true;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -688,7 +688,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -721,7 +721,7 @@ class FormularioRegistro {
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 45;
+		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
@@ -739,7 +739,7 @@ class FormularioRegistro {
 				echo $this->miFormulario->division ( "inicio", $atributos );
 				{
 					// -----------------CONTROL: Botón ----------------------------------------------------------------
-					$esteCampo = 'botonConsultar';
+					$esteCampo = 'botonRegistrar';
 					$atributos ["id"] = $esteCampo;
 					$atributos ["tabIndex"] = $tab;
 					$atributos ["tipo"] = 'boton';
@@ -751,7 +751,7 @@ class FormularioRegistro {
 					$atributos ["verificar"] = '';
 					$atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
 					$atributos ["valor"] = $this->lenguaje->getCadena ( $esteCampo );
-					$atributos ['nombreFormulario'] = $esteBloque ['nombre'];
+					$atributos ['nombreFormulario'] = $esteBloque ['nombre']."Registrar";
 					$tab ++;
 					
 					// Aplica atributos globales al control
@@ -779,11 +779,12 @@ class FormularioRegistro {
 				// En este formulario se utiliza el mecanismo (b) para pasar las siguientes variables:
 				// Paso 1: crear el listado de variables
 				
-				$valorCodificado = "action=" . $esteBloque ["nombre"];
-				$valorCodificado = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
+				$valorCodificado  = "action=" . $esteBloque ["nombre"];
+				$valorCodificado .= "&pagina=" . $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
 				$valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
 				$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
-				$valorCodificado .= "&opcion=documento";
+				$valorCodificado .= "&opcion=registrar";
+				
 				/**
 				 * SARA permite que los nombres de los campos sean dinámicos.
 				 * Para ello utiliza la hora en que es creado el formulario para
