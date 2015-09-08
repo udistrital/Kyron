@@ -178,7 +178,11 @@ class Sql extends \Sql {
 				$cadenaSql .= " '" . $variable [2] . "',";
 				$cadenaSql .= "'" . $variable [3] . "',";
 				$cadenaSql .= " '" . $variable [4] . "',";
+<<<<<<< HEAD
 				$cadenaSql .= " '" . $variable [5] . "',";
+=======
+				$cadenaSql .= " " . $variable [5] . ",";
+>>>>>>> 13d151412ab5a02d436af63393e8724490c51830
 				$cadenaSql .= " '" . $variable [6] . "',";
 				$cadenaSql .= " '" . $variable [7] . "',";
 				$cadenaSql .= " '" . $variable [8] . "',";
@@ -207,6 +211,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "LEFT JOIN docencia.pais_kyron pk ON pk.paiscodigo = ir.paiscodigo ";
 				$cadenaSql .= "WHERE id_indexacion_revista =" . $variable;
 				break;
+<<<<<<< HEAD
 				
 			case "actualizarIndexacion" :
 				$cadena_sql = "UPDATE ";
@@ -233,6 +238,8 @@ class Sql extends \Sql {
 				$cadena_sql .= "WHERE ";
 				$cadena_sql .= "id_indexacion_revista ='" . $variable [0] . "' ";
 				break;
+=======
+>>>>>>> 13d151412ab5a02d436af63393e8724490c51830
 		}
 		
 		return $cadenaSql;

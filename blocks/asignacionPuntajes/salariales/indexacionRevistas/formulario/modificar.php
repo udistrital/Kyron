@@ -1,5 +1,14 @@
 <?php
+<<<<<<< HEAD
 namespace asignacionPuntajes\salariales\indexacionRevistas\formulario;
+=======
+<<<<<<< HEAD
+namespace asignacionPuntajes\salariales\indexacionRevistas\formulario;
+=======
+
+use asignacionPuntajes\salariales\indexacionRevistas\formulario;
+>>>>>>> d0a1ef023beecf35dc53a58be27304ca37d0d0a9
+>>>>>>> 13d151412ab5a02d436af63393e8724490c51830
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -50,6 +59,38 @@ class FormularioModificar {
 		$atributosGlobales ['campoSeguro'] = 'true';
 		$_REQUEST ['tiempo'] = time ();
 		
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+		$esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );
+		
+// 		$conexion = "inventarios";
+// 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+		
+// 		$cadena_sql = $this->miSql->cadena_sql ( "consultarContratoParticular", $_REQUEST ['identificador_contrato'] );
+		
+// 		$resultadoContratos = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
+		
+		
+		
+		
+		$arreglo = array (
+				"num_contrato" => $resultadoContratos [0] [1],
+				"fecha_contrato" => $resultadoContratos [0] [2],
+				"nombre_contratista" => $resultadoContratos [0] ['nom_razon'],
+				"id_contratista" => $resultadoContratos [0] [0],
+				"id_documento" => $resultadoContratos [0] [3] 
+		);
+		
+		$_REQUEST = array_merge ( $_REQUEST, $arreglo );
+		
+		$conexion = "sicapital";
+		
+		$esteRecursoDBO = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+		
+>>>>>>> d0a1ef023beecf35dc53a58be27304ca37d0d0a9
+>>>>>>> 13d151412ab5a02d436af63393e8724490c51830
 		// -------------------------------------------------------------------------------------------------
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
 		$esteCampo = $esteBloque ['nombre']."Modificar";
@@ -82,7 +123,11 @@ class FormularioModificar {
 		// ---------------- CONTROL: Lista Docente--------------------------------------------------------
 		
 		$id_indexacion = $_REQUEST ['numero_indexacion'];
+<<<<<<< HEAD
 		 
+=======
+
+>>>>>>> 13d151412ab5a02d436af63393e8724490c51830
 		$cadena_sql = $this->miSql->getCadenaSql ( "consultarRevistas", $id_indexacion );
 		$resultadoIndexacion = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
 		
@@ -280,6 +325,7 @@ class FormularioModificar {
 			
 			$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "pais" , 0 );
 			$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
+<<<<<<< HEAD
 			
 			$atributos ['matrizItems'] = $matrizItems;
 				
@@ -337,6 +383,65 @@ class FormularioModificar {
 			echo $this->miFormulario->campoCuadroLista ( $atributos );
 			unset ( $atributos );
 			
+=======
+			
+			$atributos ['matrizItems'] = $matrizItems;
+				
+			$atributos = array_merge ( $atributos, $atributosGlobales );
+			echo $this->miFormulario->campoCuadroLista ( $atributos );
+			unset ( $atributos );
+				
+			echo $this->miFormulario->division ( "fin" );
+			
+			// ----------------FIN CONTROL: Lista País--------------------------------------------------------
+				
+			// ---------------- CONTROL: Lista Categoria--------------------------------------------------------
+				
+			$atributos ["id"] = "categoria_div";
+			$atributos ["estiloEnLinea"] = "display:block";
+			$atributos = array_merge ( $atributos, $atributosGlobales );
+			echo $this->miFormulario->division ( "inicio", $atributos );
+			unset ( $atributos );
+				
+			$esteCampo = "categoria";
+			$atributos ['nombre'] = $esteCampo;
+			$atributos ['id'] = $esteCampo;
+			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+			$atributos ["etiquetaObligatorio"] = true;
+			$atributos ['tab'] = $tab ++;
+			$atributos ['anchoEtiqueta'] = 280;
+			$atributos ['evento'] = '';
+			if (isset ( $_REQUEST [$esteCampo] )) {
+				$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+			} else {
+				$atributos ['seleccion'] = -1;
+			}
+			$atributos ['deshabilitado'] = false;
+			$atributos ['columnas'] = 1;
+			$atributos ['tamanno'] = 1;
+			$atributos ['ajax_function'] = "";
+			$atributos ['ajax_control'] = $esteCampo;
+			$atributos ['estilo'] = "jqueryui";
+			$atributos ['validar'] = "required";
+			$atributos ['limitar'] = false;
+			$atributos ['anchoCaja'] = 60;
+			$atributos ['miEvento'] = '';
+			$matrizItems = array (
+					array (
+							0,
+							' '
+					)
+			);
+			$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "categoria_revista" , 0 );
+			$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
+			
+			$atributos ['matrizItems'] = $matrizItems;
+				
+			$atributos = array_merge ( $atributos, $atributosGlobales );
+			echo $this->miFormulario->campoCuadroLista ( $atributos );
+			unset ( $atributos );
+			
+>>>>>>> 13d151412ab5a02d436af63393e8724490c51830
 			echo $this->miFormulario->division ( "fin" );
 				
 			// ----------------FIN CONTROL: Lista Tipo Indexación--------------------------------------------------------
@@ -846,9 +951,13 @@ class FormularioModificar {
 				$valorCodificado .= "&pagina=" . $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
 				$valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
 				$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
+<<<<<<< HEAD
 				$valorCodificado .= "&opcion=actualizar";
 				$valorCodificado .= "&numero_indexacion=".$_REQUEST['numero_indexacion'];
 				$valorCodificado .= "&arreglo=".$_REQUEST['arreglo'];
+=======
+				$valorCodificado .= "&opcion=modificar";
+>>>>>>> 13d151412ab5a02d436af63393e8724490c51830
 				
 				/**
 				 * SARA permite que los nombres de los campos sean dinámicos.
