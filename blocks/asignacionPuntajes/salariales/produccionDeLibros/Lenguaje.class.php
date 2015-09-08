@@ -1,11 +1,10 @@
 <?php
-namespace asignacionPuntajes\salariales\produccionDeLibros;
+namespace asignacionPuntajes\salariales\indexacionRevistas;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
     include ("../index.php");
     exit ();
 }
-
 
 class Lenguaje{
 

@@ -59,20 +59,9 @@ $("#<?php echo $this->campoSeguro('contextoRevista')?>").change(function() {
 		 		
 	}else{
 
+		$("#<?php echo $this->campoSeguro('pais')?>").html("");
 		$("<option value=''>Seleccione .....</option>").appendTo("#<?php echo $this->campoSeguro('pais')?>");
-
-		 
-		if($("#<?php echo $this->campoSeguro('contextoRevista')?>").val() == 0){
-			
-			$("#<?php echo $this->campoSeguro('pais')?>").html("");
-			$("<option value=''>Seleccione .....</option>").appendTo("#<?php echo $this->campoSeguro('pais')?>");
-			$("<option value=''>Colombia</option>").appendTo("#<?php echo $this->campoSeguro('pais')?>");
-			
-		}else if($("#<?php echo $this->campoSeguro('contextoRevista')?>").val() == 1){
-			
-			consultarPais();
-			
-		}
+		consultarPais();
 
 		$("#<?php echo $this->campoSeguro('categoria')?>").html("");
 		$("<option value=''>Seleccione .....</option>").appendTo("#<?php echo $this->campoSeguro('categoria')?>");
@@ -83,6 +72,10 @@ $("#<?php echo $this->campoSeguro('contextoRevista')?>").change(function() {
 		
 		$("#<?php echo $this->campoSeguro('pais')?>").select2();
 		$("#<?php echo $this->campoSeguro('categoria')?>").select2();
+
+		if($("#<?php echo $this->campoSeguro('contextoRevista')?>").val() == 0){
+			$("#<?php echo $this->campoSeguro('pais')?>").val(1);
+		}
 		
 	}
 	
@@ -122,58 +115,18 @@ function consultarPais(elem, request, response){
 	$.ajax({
 		url: "<?php echo $urlFinalPais?>",
 		dataType: "json",
-		data: { valor:$("#<?php echo $this->campoSeguro('pais')?>").val()},
+		data: { valor:$("#<?php echo $this->campoSeguro('contextoRevista')?>").val()},
 		success: function(data){
 			if(data[0]!=" "){
 				$("#<?php echo $this->campoSeguro('pais')?>").html('');
 				$("<option value=''>Seleccione .....</option>").appendTo("#<?php echo $this->campoSeguro('pais')?>");
 				$.each(data , function(indice,valor){
-					$("<option value='"+data[ indice ].id_pais+"'>"+data[ indice ].nombre_pais+"</option>").appendTo("#<?php echo $this->campoSeguro('pais')?>");
+					$("<option value='"+data[ indice ].paiscodigo+"'>"+data[ indice ].paisnombre+"</option>").appendTo("#<?php echo $this->campoSeguro('pais')?>");
 				});
 			}
 		}
 	});
 };
-
-
-//////////////*******Función que permite enviar los caracteres a medida que se van ingresando e ir recibiendo una respuesta para ir mostrando posibles docentes*******/////////////// 
-//////////////////////ver en procecarajax.php la función consultarDocente y en sql.class.php ver la sentencia docente.////////////////////////////////////////////////////////////////
-//////////////////////Para que esta función se ejecute correctamente debe agregar//
-<?php
-// Variables
-$cadenaACodificarDocente = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
-$cadenaACodificarDocente .= "&procesarAjax=true";
-$cadenaACodificarDocente .= "&action=index.php";
-$cadenaACodificarDocente .= "&bloqueNombre=" . $esteBloque ["nombre"];
-$cadenaACodificarDocente .= "&bloqueGrupo=" . $esteBloque ["grupo"];
-$cadenaACodificarDocente .= "&funcion=consultarDocente";
-$cadenaACodificarDocente .= "&tiempo=" . $_REQUEST ['tiempo'];
-// Codificar las variables
-$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
-$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificarDocente, $enlace );
-
-// URL definitiva
-$urlFinalDocente = $url . $cadena;
-
-
-?>
-
-
-$(function () {
-
-    $( "#<?php echo $this->campoSeguro('docente')?>" ).keyup(function() {
-		$('#<?php echo $this->campoSeguro('docente') ?>').val($('#<?php echo $this->campoSeguro('docente') ?>').val().toUpperCase());
-    });
-    $("#<?php echo $this->campoSeguro('docente') ?>").autocomplete({
-    	minChars: 3,
-    	serviceUrl: '<?php echo $urlFinalDocente; ?>',
-    	onSelect: function (suggestion) {
-    	        $("#<?php echo $this->campoSeguro('id_docente') ?>").val(suggestion.data);
-    	    }
-    });
-
-});
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 //////////////*******Función que permite enviar los caracteres a medida que se van ingresando e ir recibiendo una respuesta para ir mostrando posibles docentes*******/////////////// 
@@ -203,7 +156,7 @@ $(function () {
     $("#<?php echo $this->campoSeguro('docenteRegistrar') ?>").autocomplete({
     	minChars: 3,
     	serviceUrl: '<?php echo $urlFinalDocente; ?>',
-    	onSelect: function (suggestion) {
+    	onSelect: function (suggestion) {        		
     	        $("#<?php echo $this->campoSeguro('id_docenteRegistrar') ?>").val(suggestion.data);
     	    }
     });
@@ -253,5 +206,13 @@ function consultarCategoria(elem, request, response){
 ///////////////////////////////////////////////////////////////////////////////////// 
     	 
 
+
+if($("#<?php echo $this->campoSeguro('contextoRevista')?>").val() == 0 || $("#<?php echo $this->campoSeguro('contextoRevista')?>").val() == 1){
+	$('#<?php echo $this->campoSeguro('contextoRevista')?>').width(400);
+	$('#<?php echo $this->campoSeguro('pais')?>').width(470);
+	$('#<?php echo $this->campoSeguro('categoria')?>').width(470);
+	$("#<?php echo $this->campoSeguro('pais')?>").select2();
+	$("#<?php echo $this->campoSeguro('categoria')?>").select2();
+}
 </script>
 

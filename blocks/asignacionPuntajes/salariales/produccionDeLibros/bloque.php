@@ -1,6 +1,6 @@
 <?php
 
-namespace asignacionPuntajes\salariales\produccionDeLibros;
+namespace asignacionPuntajes\salariales\indexacionRevistas;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -25,11 +25,15 @@ include_once ("Sql.class.php");
 // Mensajes
 include_once ("Lenguaje.class.php");
 
+include_once ('funcion/redireccionar.php');
+
+use asignacionPuntajes\salariales\indexacionRevistas\funcion\redireccion;
+
 // Esta clase actua como control del bloque en un patron FCE
 // Para evitar redefiniciones de clases el nombre de la clase del archivo bloque debe corresponder al nombre del bloque
 // precedida por la palabra Bloque
 
-if (! class_exists ( '\\asignacionPuntajes\\salariales\\produccionDeLibros\\Bloque' )) {
+if (! class_exists ( '\\asignacionPuntajes\\salariales\\Bloque' )) {
 	class Bloque implements \Bloque {
 		var $nombreBloque;
 		var $miFuncion;
@@ -61,8 +65,8 @@ if (! class_exists ( '\\asignacionPuntajes\\salariales\\produccionDeLibros\\Bloq
 		}
 		public function bloque() {
 			if (isset ( $_REQUEST ['botonCancelar'] ) && $_REQUEST ['botonCancelar'] == "true") {
-				$this->miFuncion->redireccionar ( "paginaPrincipal" );
-			} else {
+				$this->miFuncion->Redireccionador ( "paginaPrincipal" );
+			} else  {
 				
 				$this->miFrontera->setSql ( $this->miSql );
 				$this->miFrontera->setFuncion ( $this->miFuncion );

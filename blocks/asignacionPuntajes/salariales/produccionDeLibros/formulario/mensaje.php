@@ -72,10 +72,10 @@ if (!isset($GLOBALS["autorizado"])) {
     if ($_REQUEST['mensaje'] == 'confirma') {
 
         $tipo = 'success';
-        $mensaje = "Se ha Registrado Contrato.<br>Se subió el archivo correctamente";
+        $mensaje = "Registro Exitoso.<br>Ha sido indexada correctamente la revista para el docente <br>" . $_REQUEST ['docente'] . ".";
         $boton = "continuar";
-
-        $valorCodificado = "pagina=gestionContrato";
+		
+        $valorCodificado = "pagina=revistasIndexadas";
         $valorCodificado.="&opcion=nuevo";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
@@ -83,10 +83,10 @@ if (!isset($GLOBALS["autorizado"])) {
         
     } else if($_REQUEST['mensaje'] == 'error') {
         $tipo = 'error';
-        $mensaje = "Error en el cargue. No se subió el archivo correctamente";
+        $mensaje = "Error al tratar de indexar la revista.";
         $boton = "regresar";
 
-        $valorCodificado = "pagina=gestionContrato";
+        $valorCodificado = "pagina=revistasIndexadas";
         $valorCodificado.="&opcion=nuevo";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];

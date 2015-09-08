@@ -1,6 +1,8 @@
 <?php
 
-namespace asignacionPuntajes\salariales\produccionDeLibros;
+namespace asignacionPuntajes\salariales\indexacionRevistas;
+
+use asignacionPuntajes\salariales\indexacionRevistas\funcion\redireccion;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -26,25 +28,23 @@ class Funcion {
 	var $error;
 	var $miRecursoDB;
 	var $crypto;
-// 	function verificarCampos() {
-// 		include_once ($this->ruta . "/funcion/verificarCampos.php");
-// 		if ($this->error == true) {
-// 			return false;
-// 		} else {
-// 			return true;
-// 		}
-// 	}
-	function formProcessor() {
-		include_once ($this->ruta . "/funcion/funcionEjemplo.php");
-	}
+	// function verificarCampos() {
+	// include_once ($this->ruta . "/funcion/verificarCampos.php");
+	// if ($this->error == true) {
+	// return false;
+	// } else {
+	// return true;
+	// }
+	// }
+	
 	function procesarAjax() {
 		include_once ($this->ruta . "funcion/procesarAjax.php");
 	}
-	function consultarContrato() {
-		include_once ($this->ruta . "/funcion/consultarLibro.php");
+	function registrar() {
+		include_once ($this->ruta . "/funcion/registrar.php");
 	}
-	function modificarContrato() {
-		include_once ($this->ruta . "/funcion/modificarContrato.php");
+	function actualizar() {
+		include_once ($this->ruta . "/funcion/actualizar.php");
 	}
 	function action() {
 		
@@ -78,12 +78,19 @@ class Funcion {
 					$this->consultarContrato ();
 					break;
 				
-				case 'documento' :
-					$this->formProcessor ();
+				case 'registrar' :
+					$this->registrar ();
 					break;
 				
-				case 'documentoModificar' :
-					$this->modificarContrato ();
+				case 'actualizar' :
+					case 'actualizar' :
+					if (isset ( $_REQUEST ["botonRegresar"] ) && $_REQUEST ["botonRegresar"] == 'true') {
+						$arreglo = unserialize ( $_REQUEST ['arreglo'] );	
+						redireccion::redireccionar ( "paginaConsulta", $arreglo );
+						exit();
+					} else if (isset ( $_REQUEST ["botonGuardar"] ) && $_REQUEST ["botonGuardar"] == 'true') {
+						$this->actualizar();
+					}
 					break;
 			}
 		} else {
@@ -122,9 +129,6 @@ class Funcion {
 	}
 	public function setFormulario($formulario) {
 		$this->formulario = $formulario;
-	}
-	function Redireccionador($opcion, $valor = "") {
-		include_once ($this->ruta . "/funcion/Redireccionador.php");
 	}
 }
 
