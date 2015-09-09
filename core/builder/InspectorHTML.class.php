@@ -56,5 +56,9 @@ class InspectorHTML {
         return $arreglo;
     
     }
+    
+    function validacionCampos($arreglo, $a){
+    	
+    }
 
 }

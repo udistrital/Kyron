@@ -17,7 +17,6 @@ require_once ("core/builder/controleshtml/TextArea.class.php");
 
 class FormularioHtml extends Agregador{
     
-    
     function __construct(){
         
         $this->aggregate('BotonHtml');
