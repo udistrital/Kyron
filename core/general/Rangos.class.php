@@ -4,7 +4,19 @@ if (! isset ( $GLOBALS ["autorizado"] )) {
 	exit ();
 }
 class Rangos {
+	private static $arrayAlias;
 	function __construct() {
+		self::$arrayAlias = array (
+				"boleano" => "Boleano",
+				"entero" => "Entero",
+				"doble" => "Doble",
+				"porcentaje" => "Porcentaje",
+				"fecha" => "Fecha",
+				"stringFecha" => "StringFecha",
+				"texto" => "Texto",
+				"lista" => "Lista",
+				"nulo" => "Nulo" 
+		);
 	}
 	private function validarBoleano($valor, $rango = '') {
 		$valor = ( bool ) $valor;
@@ -22,7 +34,6 @@ class Rangos {
 			if ($val >= $restriccionArray [0] && $val <= $restriccionArray [1])
 				return false;
 		} else {
-			
 			$val = ( integer ) $valor;
 			if ($val == $restriccion)
 				return false;
@@ -182,33 +193,24 @@ class Rangos {
 		$valor = null;
 		return is_null ( $valor );
 	}
+	public static function getAlias($tipo = "") {
+		$arrayAlias = self::$arrayAlias;
+		if (isset ( $arrayAlias [$tipo] )) {
+			return $arrayAlias [$tipo];
+		}
+		return $tipo;
+	}
 	public static function validarRango($valor = "", $tipo = "", $rango = "", $restriccion = "") {
-		$arrayDatos = self::setAmbiente ( $tipo );
-		
-		if ($arrayDatos) {
-			
-			$idTipo = $arrayDatos ['id'];
-			$nombreTipo = $arrayDatos ['nombre'];
-			$aliasTipo = $arrayDatos ['alias'];
-			$metodo = "validar" . strtoupper ( $aliasTipo );
-			
-			switch ($tipo) {
-				case $idTipo :
-					if (method_exists ( get_class (), $metodo ))
-						return call_user_func_array ( array (
-								get_class (),
-								$metodo 
-						), array (
-								$valor,
-								$rango,
-								$restriccion 
-						) );
-					return false;
-					break;
-				default :
-					return false;
-					break;
-			}
+		$metodo = "validar" . strtoupper ( self::getAlias ( $tipo ) );
+		if (method_exists ( get_class (), $metodo )) {
+			return call_user_func_array ( array (
+					get_class (),
+					$metodo 
+			), array (
+					$valor,
+					$rango,
+					$restriccion 
+			) );
 		}
 		return false;
 	}

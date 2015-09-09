@@ -6,6 +6,13 @@ if (! isset ( $GLOBALS ["autorizado"] )) {
 	
 	exit ();
 }
+
+// use core\general\ValidadorCampos;
+// include ('core/general/ValidadorCampos.class.php');
+
+// $miValidador = new ValidadorCampos();
+// var_dump($miValidador->evaluarTipo('10/02/2013',"fecha"));
+
 class Formulario {
 	var $miConfigurador;
 	var $lenguaje;
