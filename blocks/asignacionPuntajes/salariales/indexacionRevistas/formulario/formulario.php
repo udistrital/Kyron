@@ -33,15 +33,15 @@ unset ( $atributos );
 	
 	$items = array (
 			
-			"tabConsultarRevistas" => $this->lenguaje->getCadena ( "consultarRevistas" ),
-			"tabIngresarRevistas" => $this->lenguaje->getCadena ( "ingresarRevistas" ) 
+			"tabConsultar" => $this->lenguaje->getCadena ( "consultarRevistas" ),
+			"tabIngresar" => $this->lenguaje->getCadena ( "ingresarRevistas" ) 
 	);
 	$atributos ["items"] = $items;
 	$atributos ["estilo"] = "";
 	$atributos ["pestañas"] = "true";
 	echo $this->miFormulario->listaNoOrdenada ( $atributos );
 	
-	$esteCampo = "tabConsultarRevistas";
+	$esteCampo = "tabConsultar";
 	$atributos ['id'] = $esteCampo;
 	$atributos ["estilo"] = "";
 	$atributos ['tipoEtiqueta'] = 'inicio';
@@ -55,7 +55,7 @@ unset ( $atributos );
 	}
 	echo $this->miFormulario->agrupacion ( 'fin' );
 	
-	$esteCampo = "tabIngresarRevistas";
+	$esteCampo = "tabIngresar";
 	$atributos ['id'] = $esteCampo;
 	$atributos ["estilo"] = "";
 	$atributos ['tipoEtiqueta'] = 'inicio';

@@ -35,7 +35,7 @@ $this->idioma["fechaPublicacionrevista"] = "Fecha de Publicación";
 $this->idioma["numeroActaRevista"] = "Número de Acta CIARP-UD";
 $this->idioma["fechaActaRevista"] = "Fecha de Acta CIARP-UD";
 $this->idioma["numeroCasoActaRevista"] = "Número de Caso de Acta";
-$this->idioma["puntajeRevistas"] = "Puntaje	";
+$this->idioma["puntajeRevista"] = "Puntaje	";
 
 $this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";
 $this->idioma["docenteTitulo"] = "Identificación o Nombre del Docente.";

@@ -35,7 +35,7 @@ return false;
 });
 
 $(function () {
-    $("button").button().click(function (event) {
+    $("button").button().click(function (event) { 
         event.preventDefault();
     });
 });
@@ -78,6 +78,7 @@ $('#<?php echo $this->campoSeguro('proyectoCurricular')?>').width(450);
 
 $('#<?php echo $this->campoSeguro('docenteRegistrar')?>').width(465);
 $('#<?php echo $this->campoSeguro('contextoRevista')?>').width(450);
+$('#<?php echo $this->campoSeguro('annoRevista')?>').width(450);
 
 
 ///*********El ancho (width) de los siguientes campos es mayor debido a que se encuentran dentro de un div****///
@@ -92,55 +93,9 @@ $("#<?php echo $this->campoSeguro('facultad')?>").select2();
 $("#<?php echo $this->campoSeguro('proyectoCurricular')?>").select2();
 
 $("#<?php echo $this->campoSeguro('contextoRevista')?>").select2();
+$("#<?php echo $this->campoSeguro('annoRevista')?>").select2();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-           	 
-              	 
-
-//////********Esta sección del código permite ocultar los dias del menú del datePicker.*********//////
-
-$( "#<?php echo $this->campoSeguro('annoRevista')?>" ).click(function() {
-	$(".ui-datepicker-calendar").hide();
-	$(".ui-datepicker-prev").hide();
-	$(".ui-datepicker-next").hide();
-	$(".ui-datepicker-month").hide();
-	$(".ui-datepicker-year").change(function() {
-		$( "#<?php echo $this->campoSeguro('annoRevista')?>" ).val($(".ui-datepicker-year").val());
-		$( "#ui-datepicker-div" ).hide();
-		$( "#<?php echo $this->campoSeguro('annoRevista')?>" ).datepicker("hide");
-		$( "#<?php echo $this->campoSeguro('annoRevista')?>" ).blur();		
-	});
-	$(".ui-datepicker-current").click(function() {
-		$( "#<?php echo $this->campoSeguro('annoRevista')?>" ).val($(".ui-datepicker-year").val());
-		$( "#ui-datepicker-div" ).hide();
-		$( "#<?php echo $this->campoSeguro('annoRevista')?>" ).datepicker("hide");
-		$( "#<?php echo $this->campoSeguro('annoRevista')?>" ).blur();	
-	});
-});
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-$('#<?php echo $this->campoSeguro('annoRevista')?>').datepicker({
-	closeText: 'Cerrar',
-	prevText: '&#x3c;Ant',
-	nextText: 'Sig&#x3e;',
-	currentText: 'Hoy',
-	dateFormat: 'yy',
-	firstDay: 1,
-	isRTL: false,
-	/* esto agrege */
-	changeYear: true,
-	changeMonth: false,
-	changeDay: false,
-	yearRange: '-50:+0',
-	/* hasta aca*/
-	showMonthAfterYear: true,
-	yearSuffix: '',
-	showButtonPanel: true
-});
 
 $('#<?php echo $this->campoSeguro('fechaPublicacionrevista')?>').datepicker({
 	dateFormat: 'yy-mm-dd',
@@ -189,5 +144,91 @@ $('#<?php echo $this->campoSeguro('fechaActaRevista')?>').datepicker({
             	$('#<?php echo $this->campoSeguro('fechaActaRevista')?>').attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all ");
             }
 		}
+});
+
+var puntaje = $("#<?php echo $this->campoSeguro('puntajeRevista')?>" ).val();
+
+$( "#<?php echo $this->campoSeguro('puntajeRevista')?>" ).keyup(function() {
+	if(!isNaN($( "#<?php echo $this->campoSeguro('puntajeRevista')?>" ).val())){
+			puntaje = $( "#<?php echo $this->campoSeguro('puntajeRevista')?>" ).val();
+			$('#<?php echo $this->campoSeguro('puntajeRevista') ?>').val(puntaje);
+	}else{
+		$('#<?php echo $this->campoSeguro('puntajeRevista') ?>').val(puntaje);
+	}
+	
+});
+
+var numeroCasoActaRevista = $("#<?php echo $this->campoSeguro('numeroCasoActaRevista')?>" ).val();
+
+$( "#<?php echo $this->campoSeguro('numeroCasoActaRevista')?>" ).keyup(function() {
+	if(!isNaN($( "#<?php echo $this->campoSeguro('numeroCasoActaRevista')?>" ).val())){
+			numeroCasoActaRevista = $( "#<?php echo $this->campoSeguro('numeroCasoActaRevista')?>" ).val();
+			$('#<?php echo $this->campoSeguro('numeroCasoActaRevista') ?>').val(numeroCasoActaRevista);
+	}else{
+		$('#<?php echo $this->campoSeguro('numeroCasoActaRevista') ?>').val(numeroCasoActaRevista);
+	}
+	
+});
+
+var numeroAutoresUniversidad = $("#<?php echo $this->campoSeguro('numeroAutoresUniversidad')?>" ).val();
+
+$( "#<?php echo $this->campoSeguro('numeroAutoresUniversidad')?>" ).keyup(function() {
+	if(!isNaN($( "#<?php echo $this->campoSeguro('numeroAutoresUniversidad')?>" ).val())){
+			numeroAutoresUniversidad = $( "#<?php echo $this->campoSeguro('numeroAutoresUniversidad')?>" ).val();
+			$('#<?php echo $this->campoSeguro('numeroAutoresUniversidad') ?>').val(numeroAutoresUniversidad);
+	}else{
+		$('#<?php echo $this->campoSeguro('numeroAutoresUniversidad') ?>').val(numeroAutoresUniversidad);
+	}
+	
+});
+
+var numeroAutoresRevista = $("#<?php echo $this->campoSeguro('numeroAutoresRevista')?>" ).val();
+
+$( "#<?php echo $this->campoSeguro('numeroAutoresRevista')?>" ).keyup(function() {
+	if(!isNaN($( "#<?php echo $this->campoSeguro('numeroAutoresRevista')?>" ).val())){
+			numeroAutoresRevista = $( "#<?php echo $this->campoSeguro('numeroAutoresRevista')?>" ).val();
+			$('#<?php echo $this->campoSeguro('numeroAutoresRevista') ?>').val(numeroAutoresRevista);
+	}else{
+		$('#<?php echo $this->campoSeguro('numeroAutoresRevista') ?>').val(numeroAutoresRevista);
+	}
+	
+});
+
+var paginasRevista = $("#<?php echo $this->campoSeguro('paginasRevista')?>" ).val();
+
+$( "#<?php echo $this->campoSeguro('paginasRevista')?>" ).keyup(function() {
+	if(!isNaN($( "#<?php echo $this->campoSeguro('paginasRevista')?>" ).val())){
+			paginasRevista = $( "#<?php echo $this->campoSeguro('paginasRevista')?>" ).val();
+			$('#<?php echo $this->campoSeguro('paginasRevista') ?>').val(paginasRevista);
+	}else{
+		$('#<?php echo $this->campoSeguro('paginasRevista') ?>').val(paginasRevista);
+	}
+	
+});
+
+
+var numeroRevista = $("#<?php echo $this->campoSeguro('numeroRevista')?>" ).val();
+
+$( "#<?php echo $this->campoSeguro('numeroRevista')?>" ).keyup(function() {
+	if(!isNaN($( "#<?php echo $this->campoSeguro('numeroRevista')?>" ).val())){
+			numeroRevista = $( "#<?php echo $this->campoSeguro('numeroRevista')?>" ).val();
+			$('#<?php echo $this->campoSeguro('numeroRevista') ?>').val(numeroRevista);
+	}else{
+		$('#<?php echo $this->campoSeguro('numeroRevista') ?>').val(numeroRevista);
+	}
+	
+});
+
+
+var volumenRevista = $("#<?php echo $this->campoSeguro('volumenRevista')?>" ).val();
+
+$( "#<?php echo $this->campoSeguro('volumenRevista')?>" ).keyup(function() {
+	if(!isNaN($( "#<?php echo $this->campoSeguro('volumenRevista')?>" ).val())){
+			volumenRevista = $( "#<?php echo $this->campoSeguro('volumenRevista')?>" ).val();
+			$('#<?php echo $this->campoSeguro('volumenRevista') ?>').val(volumenRevista);
+	}else{
+		$('#<?php echo $this->campoSeguro('volumenRevista') ?>').val(volumenRevista);
+	}
+	
 });
 
