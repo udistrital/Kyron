@@ -57,30 +57,29 @@ class Frontera {
 
         if (isset($_REQUEST['opcion'])) {
 
-            switch ($_REQUEST['opcion']) {
-
-                case "mensaje":
-                    include_once($this->ruta . "/formulario/mensaje.php");
-                    break;
-                
-                case "consultar":
-                    include_once($this->ruta . "/formulario/consultar.php");
-                    break;
-                
-                case "nuevo":
-                     include_once($this->ruta . "/formulario/formulario.php");
-                    break;
-                
-                 case "modificar":
-                     include_once($this->ruta . "/formulario/modificar.php");
-                    break;
-            }
-        } else {
-            $_REQUEST['opcion'] = "mostrar";
-            include_once($this->ruta . "/formulario/formulario.php");
-        }
-    }
-
+            switch ($_REQUEST ['opcion']) {
+				
+				case "mensaje" :
+					include_once ($this->ruta . "/formulario/mensaje.php");
+					break;
+				
+				case "consultar" :
+					include_once ($this->ruta . "/formulario/consultar.php");
+					break;
+				
+				case "nuevo" :
+					include_once ($this->ruta . "/formulario/formulario.php");
+					break;
+				
+				case "modificar" :
+					include_once ($this->ruta . "/formulario/modificar.php");
+					break;
+			}
+		} else {
+			$_REQUEST ['opcion'] = "mostrar";
+			include_once ($this->ruta . "/formulario/formulario.php");
+		}
+	}
 }
 
 ?>

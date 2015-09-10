@@ -3,7 +3,15 @@ if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
 	exit ();
 }
+/**
+ * Esta clase permite validar rangos de datos normales de un $_REQUEST
+ */
 class Rangos {
+	/**
+	 * El array de alias permite hacer alias de las funciones para mayor versatilidad.
+	 * Para contectar con jquery.validationEngine se podría usar date como alias y el valor real
+	 * para cargar la funcion es Fecha
+	 */
 	private static $arrayAlias;
 	function __construct() {
 		self::$arrayAlias = array (

@@ -51,6 +51,13 @@ class registrarForm {
 		$conexion = "docencia";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
+		/*
+		 * Se realiza la decodificacion del arreglo "validadorCampos"
+		 */
+		$validadorCampos = $this->miFormulario->decodificarCampos($_REQUEST['validadorCampos']);
+		
+		var_dump($validadorCampos);
+		
 		if (isset ( $_REQUEST ['id_docente'] ) && $_REQUEST ['id_docente'] != '') {
 			$id_docente = $_REQUEST ['id_docente'];
 		} else {

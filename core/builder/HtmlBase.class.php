@@ -10,6 +10,8 @@ include_once ("core/manager/Configurador.class.php");
  */
 class HtmlBase {
     
+	var $instanciaFormulario;
+	
     var $conexion_id;
     
     var $cuadro_registro;
@@ -138,8 +140,9 @@ class HtmlBase {
     
     const HTMLENDLABEL = '</label>';
     
-    function __construct() {
-        
+    function __construct(&$instanciaAgregador='') {
+    	//Se hace una referencia a la instancia del Agregador que es de la que hereda el FormularioHtml
+    	$this->instanciaFormulario = $instanciaAgregador;  
         $this->miConfigurador = Configurador::singleton ();
     
     }

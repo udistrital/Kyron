@@ -69,6 +69,11 @@ class Funcion {
 		// $this->Redireccionador( "exito" );
 		// }
 		
+		/*
+		 * Debe permitir que los valores enviados $_REQUEST se validen del lado del servidor
+		 */
+		$_REQUEST = $this->miInspectorHTML->validacionCampos ( $_REQUEST , '');
+		
 		if (isset ( $_REQUEST ['procesarAjax'] )) {
 			$this->procesarAjax ();
 		} else if (isset ( $_REQUEST ["opcion"] )) {
