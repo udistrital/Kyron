@@ -81,8 +81,8 @@ class FormularioModificar {
 
 		// ---------------- CONTROL: Lista Docente--------------------------------------------------------
 		$datos = array(
-				'documento_docente' =>  $_REQUEST ['documento_docente'],
-				'numero_issn' => $_REQUEST ['numero_issn'],
+				0 =>  $_REQUEST ['documento_docente'],
+				1 => $_REQUEST ['numero_issn'],
 		
 		);
 		 
@@ -762,7 +762,7 @@ class FormularioModificar {
 			$atributos ['dobleLinea'] = 0;
 			$atributos ['tabIndex'] = $tab;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ['validar'] = 'required, custom[number]';
+			$atributos ['validar'] = 'required, custom[onlyNumberSp]';
 				
 			if (isset ( $_REQUEST [$esteCampo] )) {
 				$atributos ['valor'] = $_REQUEST [$esteCampo];

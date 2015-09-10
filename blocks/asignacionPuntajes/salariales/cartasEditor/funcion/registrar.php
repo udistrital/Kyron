@@ -38,24 +38,24 @@ class RegistrarIndexacionRevista {
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
 		
 		$arregloDatos = array (
-			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
-			'nombreRevista' => $_REQUEST['nombreRevista'],
-			'contextoRevista' => $_REQUEST['contextoRevista'],
-			'pais' => $_REQUEST['pais'],
-			'categoria' => $_REQUEST['categoria'],
-			'issnRevista' => $_REQUEST['issnRevista'],
-			'annoRevista' => $_REQUEST['annoRevista'],
-			'volumenRevista' => $_REQUEST['volumenRevista'],
-			'numeroRevista' => $_REQUEST['numeroRevista'],
-			'paginasRevista' => $_REQUEST['paginasRevista'],
-			'tituloArticuloRevista' => $_REQUEST['tituloArticuloRevista'],
-			'numeroAutoresRevista' => $_REQUEST['numeroAutoresRevista'],
-			'numeroAutoresUniversidad' => $_REQUEST['numeroAutoresUniversidad'],
-			'fechaPublicacionrevista' => $_REQUEST['fechaPublicacionrevista'],
-			'numeroActaRevista' => $_REQUEST['numeroActaRevista'],
-			'fechaActaRevista' => $_REQUEST['fechaActaRevista'],
-			'numeroCasoActaRevista' => $_REQUEST['numeroCasoActaRevista'],
-			'puntajeRevista' => $_REQUEST['puntajeRevista']
+			$_REQUEST['id_docenteRegistrar'],
+			$_REQUEST['nombreRevista'],
+			$_REQUEST['contextoRevista'],
+			$_REQUEST['pais'],
+			$_REQUEST['categoria'],
+			$_REQUEST['issnRevista'],
+			$_REQUEST['annoRevista'],
+			$_REQUEST['volumenRevista'],
+			$_REQUEST['numeroRevista'],
+			$_REQUEST['paginasRevista'],
+			$_REQUEST['tituloArticuloRevista'],
+			$_REQUEST['numeroAutoresRevista'],
+			$_REQUEST['numeroAutoresUniversidad'],
+			$_REQUEST['fechaPublicacionrevista'],
+			$_REQUEST['numeroActaRevista'],
+			$_REQUEST['fechaActaRevista'],
+			$_REQUEST['numeroCasoActaRevista'],
+			$_REQUEST['puntajeRevista']
 		);
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'insertarIndexacion', $arregloDatos );

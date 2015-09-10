@@ -146,3 +146,89 @@ $('#<?php echo $this->campoSeguro('fechaActaRevista')?>').datepicker({
 		}
 });
 
+var puntaje = $("#<?php echo $this->campoSeguro('puntajeRevista')?>" ).val();
+
+$( "#<?php echo $this->campoSeguro('puntajeRevista')?>" ).keyup(function() {
+	if(!isNaN($( "#<?php echo $this->campoSeguro('puntajeRevista')?>" ).val())){
+			puntaje = $( "#<?php echo $this->campoSeguro('puntajeRevista')?>" ).val();
+			$('#<?php echo $this->campoSeguro('puntajeRevista') ?>').val(puntaje);
+	}else{
+		$('#<?php echo $this->campoSeguro('puntajeRevista') ?>').val(puntaje);
+	}
+	
+});
+
+var numeroCasoActaRevista = $("#<?php echo $this->campoSeguro('numeroCasoActaRevista')?>" ).val();
+
+$( "#<?php echo $this->campoSeguro('numeroCasoActaRevista')?>" ).keyup(function() {
+	if(!isNaN($( "#<?php echo $this->campoSeguro('numeroCasoActaRevista')?>" ).val())){
+			numeroCasoActaRevista = $( "#<?php echo $this->campoSeguro('numeroCasoActaRevista')?>" ).val();
+			$('#<?php echo $this->campoSeguro('numeroCasoActaRevista') ?>').val(numeroCasoActaRevista);
+	}else{
+		$('#<?php echo $this->campoSeguro('numeroCasoActaRevista') ?>').val(numeroCasoActaRevista);
+	}
+	
+});
+
+var numeroAutoresUniversidad = $("#<?php echo $this->campoSeguro('numeroAutoresUniversidad')?>" ).val();
+
+$( "#<?php echo $this->campoSeguro('numeroAutoresUniversidad')?>" ).keyup(function() {
+	if(!isNaN($( "#<?php echo $this->campoSeguro('numeroAutoresUniversidad')?>" ).val())){
+			numeroAutoresUniversidad = $( "#<?php echo $this->campoSeguro('numeroAutoresUniversidad')?>" ).val();
+			$('#<?php echo $this->campoSeguro('numeroAutoresUniversidad') ?>').val(numeroAutoresUniversidad);
+	}else{
+		$('#<?php echo $this->campoSeguro('numeroAutoresUniversidad') ?>').val(numeroAutoresUniversidad);
+	}
+	
+});
+
+var numeroAutoresRevista = $("#<?php echo $this->campoSeguro('numeroAutoresRevista')?>" ).val();
+
+$( "#<?php echo $this->campoSeguro('numeroAutoresRevista')?>" ).keyup(function() {
+	if(!isNaN($( "#<?php echo $this->campoSeguro('numeroAutoresRevista')?>" ).val())){
+			numeroAutoresRevista = $( "#<?php echo $this->campoSeguro('numeroAutoresRevista')?>" ).val();
+			$('#<?php echo $this->campoSeguro('numeroAutoresRevista') ?>').val(numeroAutoresRevista);
+	}else{
+		$('#<?php echo $this->campoSeguro('numeroAutoresRevista') ?>').val(numeroAutoresRevista);
+	}
+	
+});
+
+var paginasRevista = $("#<?php echo $this->campoSeguro('paginasRevista')?>" ).val();
+
+$( "#<?php echo $this->campoSeguro('paginasRevista')?>" ).keyup(function() {
+	if(!isNaN($( "#<?php echo $this->campoSeguro('paginasRevista')?>" ).val())){
+			paginasRevista = $( "#<?php echo $this->campoSeguro('paginasRevista')?>" ).val();
+			$('#<?php echo $this->campoSeguro('paginasRevista') ?>').val(paginasRevista);
+	}else{
+		$('#<?php echo $this->campoSeguro('paginasRevista') ?>').val(paginasRevista);
+	}
+	
+});
+
+
+var numeroRevista = $("#<?php echo $this->campoSeguro('numeroRevista')?>" ).val();
+
+$( "#<?php echo $this->campoSeguro('numeroRevista')?>" ).keyup(function() {
+	if(!isNaN($( "#<?php echo $this->campoSeguro('numeroRevista')?>" ).val())){
+			numeroRevista = $( "#<?php echo $this->campoSeguro('numeroRevista')?>" ).val();
+			$('#<?php echo $this->campoSeguro('numeroRevista') ?>').val(numeroRevista);
+	}else{
+		$('#<?php echo $this->campoSeguro('numeroRevista') ?>').val(numeroRevista);
+	}
+	
+});
+
+
+var volumenRevista = $("#<?php echo $this->campoSeguro('volumenRevista')?>" ).val();
+
+$( "#<?php echo $this->campoSeguro('volumenRevista')?>" ).keyup(function() {
+	if(!isNaN($( "#<?php echo $this->campoSeguro('volumenRevista')?>" ).val())){
+			volumenRevista = $( "#<?php echo $this->campoSeguro('volumenRevista')?>" ).val();
+			$('#<?php echo $this->campoSeguro('volumenRevista') ?>').val(volumenRevista);
+	}else{
+		$('#<?php echo $this->campoSeguro('volumenRevista') ?>').val(volumenRevista);
+	}
+	
+});
+

@@ -117,7 +117,6 @@ class FormularioRegistro {
 		$atributos ["id"] = $esteCampo; // No cambiar este nombre
 		$atributos ["tipo"] = "hidden";
 		$atributos ['estilo'] = '';
-		$atributos ['validar'] = 'required';
 		$atributos ["obligatorio"] = true;
 		$atributos ['marco'] = true;
 		$atributos ["etiqueta"] = "";
@@ -807,9 +806,6 @@ class FormularioRegistro {
 				
 				// Paso 2: codificar la cadena resultante
 				$valorCodificado = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $valorCodificado );
-				
-				var_dump($this->miFormulario->validadorCampos);
-				
 				
 				$atributos ["id"] = "formSaraData"; // No cambiar este nombre
 				$atributos ["tipo"] = "hidden";
