@@ -31,6 +31,13 @@ class Input extends HtmlBase {
     
     function campoCuadroTexto($atributos) {
         
+    	/*
+    	 * Estas 2 líneas hacen el paso de atributos de los componentes que heredan de la clase HtmlBase
+    	 * en este caso de pasan del componente a la instancia de FormularioHtml
+    	 */
+    	$campoValidar = (isset($atributos ["validar"]))?$atributos ["validar"]:'';
+    	$this->instanciaFormulario->validadorCampos[$atributos ["id"]] = $campoValidar;
+    	
         $this->cadenaHTML='';
         
         $this->setAtributos ( $atributos );

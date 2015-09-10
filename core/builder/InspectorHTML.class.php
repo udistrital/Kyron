@@ -1,5 +1,5 @@
 <?php
-
+use core\general\ValidadorCampos;
 class InspectorHTML {
     
     private static $instance;
@@ -57,8 +57,16 @@ class InspectorHTML {
     
     }
     
-    function validacionCampos($arreglo, $a){
+    /*
+     * Permite que los valores de $_REQUEST se validen del lado del servidor con el módulo
+     * ValidadorCampos de los componentes generales del CORE de SARA
+     */
+    function validacionCampos($variables, $validadorCampos){
     	
+    	include ('core/general/ValidadorCampos.class.php');
+    	
+    	$miValidador = new ValidadorCampos();
+    	var_dump($miValidador->evaluarTipo('10/02/2013',"fecha"));
     }
 
 }

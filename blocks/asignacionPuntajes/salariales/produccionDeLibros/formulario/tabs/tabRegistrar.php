@@ -144,7 +144,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, minSize[6],maxSize[50],date';
+		$atributos ['validar'] = 'required, minSize[6],maxSize[50],custom[date]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -805,7 +805,6 @@ class FormularioRegistro {
 				$valorCodificado .= "&tiempo=" . time();
 				
 				// Paso 2: codificar la cadena resultante
-				$valorCodificado = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $valorCodificado );
 				
 				$atributos ["id"] = "formSaraData"; // No cambiar este nombre
 				$atributos ["tipo"] = "hidden";

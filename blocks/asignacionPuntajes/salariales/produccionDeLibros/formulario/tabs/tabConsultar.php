@@ -103,7 +103,7 @@ class Formulario {
 			$atributos ['dobleLinea'] = 0;
 			$atributos ['tabIndex'] = $tab;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ['validar'] = '';
+			$atributos ['validar'] = 'required';
 			$atributos ['textoFondo'] = 'Ingrese Mínimo 3 Caracteres de Búsqueda';
 				
 			if (isset ( $_REQUEST [$esteCampo] )) {
@@ -276,6 +276,13 @@ class Formulario {
 				 */
 				$valorCodificado .= "&campoSeguro=" . $_REQUEST ['tiempo'];
 				$valorCodificado .= "&tiempo=" . time();
+				/*
+				 * Sara permite validar los campos en el formulario o funcion destino.
+				 * Para ello se envía los datos atributos["validadar"] de los componentes del formulario
+				 * Estos se pueden obtener en el atributo $this->miFormulario->validadorCampos del formulario
+				 * La función $this->miFormulario->codificarCampos() codifica automáticamente el atributo validadorCampos
+				 */
+				$valorCodificado .= "&validadorCampos=" . $this->miFormulario->codificarCampos();
 				
 				// Paso 2: codificar la cadena resultante
 				$valorCodificado = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $valorCodificado );
