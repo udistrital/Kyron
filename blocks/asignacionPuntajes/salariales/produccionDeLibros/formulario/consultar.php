@@ -51,13 +51,6 @@ class registrarForm {
 		$conexion = "docencia";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
-		/*
-		 * Se realiza la decodificacion del arreglo "validadorCampos"
-		 */
-		$validadorCampos = $this->miFormulario->decodificarCampos($_REQUEST['validadorCampos']);
-		
-		var_dump($validadorCampos);
-		
 		if (isset ( $_REQUEST ['id_docente'] ) && $_REQUEST ['id_docente'] != '') {
 			$id_docente = $_REQUEST ['id_docente'];
 		} else {
@@ -169,16 +162,17 @@ class registrarForm {
 						$variable .= "&opcion=modificar";
 						$variable .= "&arreglo=".$arreglo;
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
-						$variable .= "&numero_indexacion=" . $indexacion [$i] ['id_indexacion_revista'];					
+						$variable .= "&documento_docente=" . $indexacion [$i] ['documento_docente'];
+						$variable .= "&numero_issn=" . $indexacion [$i] ['numero_issn'];
 						$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 						
 						$mostrarHtml = "<tr>
-	                    <td><center>" . $indexacion [$i] ['identificacion_docente'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['documento_docente'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['nombre_docente'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['nombre_revista'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['titulo_articulo'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['paisnombre'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['item_nombre'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['tipo_indexacion'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_issn'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['anno_publicacion'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['volumen_revista'] . "</center></td>

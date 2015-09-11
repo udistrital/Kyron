@@ -35,6 +35,11 @@ class FormularioModificar {
 		$conexion = "docencia";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
+		/*
+		 * Se realiza la decodificacion del arreglo "validadorCampos"
+		 */
+		//$validadorCampos = $this->miFormulario->decodificarCampos($_REQUEST['validadorCampos']);
+		
 		// Rescatar los datos de este bloque
 		$esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );
 		
@@ -80,16 +85,19 @@ class FormularioModificar {
 		echo $this->miFormulario->formulario ( $atributos );
 
 		// ---------------- CONTROL: Lista Docente--------------------------------------------------------
+		$datos = array(
+				'documento_docente' =>  $_REQUEST ['documento_docente'],
+				'numero_issn' => $_REQUEST ['numero_issn'],
 		
-		$id_indexacion = $_REQUEST ['numero_indexacion'];
+		);
 		 
-		$cadena_sql = $this->miSql->getCadenaSql ( "consultarRevistas", $id_indexacion );
+		$cadena_sql = $this->miSql->getCadenaSql ( "consultarRevistas", $datos );		
 		$resultadoIndexacion = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
 		
-				$_REQUEST['docenteRegistrar'] =  $resultadoIndexacion[0]['identificacion_docente'] . " - " . $resultadoIndexacion[0]['nombre_docente'];
-				$_REQUEST['id_docenteRegistrar'] =  $resultadoIndexacion[0]['identificacion_docente'];
+				$_REQUEST['docenteRegistrar'] =  $resultadoIndexacion[0]['documento_docente'] . " - " . $resultadoIndexacion[0]['nombre_docente'];
+				$_REQUEST['id_docenteRegistrar'] =  $resultadoIndexacion[0]['documento_docente'];
 				$_REQUEST['nombreRevista'] =  $resultadoIndexacion[0]['nombre_revista'];
-				$_REQUEST['contextoRevista'] =  $resultadoIndexacion[0]['id_contexto_revista'];
+				$_REQUEST['contextoRevista'] =  $resultadoIndexacion[0]['id_contexto'];
 				$_REQUEST['pais'] =  $resultadoIndexacion[0]['paiscodigo'];
 				$_REQUEST['categoria'] =  $resultadoIndexacion[0]['id_tipo_indexacion'];
 				$_REQUEST['issnRevista'] =  $resultadoIndexacion[0]['numero_issn'];
@@ -759,7 +767,7 @@ class FormularioModificar {
 			$atributos ['dobleLinea'] = 0;
 			$atributos ['tabIndex'] = $tab;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ['validar'] = 'required, custom[onlyNumberSp]';
+			$atributos ['validar'] = 'required, custom[number]';
 				
 			if (isset ( $_REQUEST [$esteCampo] )) {
 				$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -856,8 +864,8 @@ class FormularioModificar {
 				$valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
 				$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 				$valorCodificado .= "&opcion=actualizar";
-				$valorCodificado .= "&numero_indexacion=".$_REQUEST['numero_indexacion'];
 				$valorCodificado .= "&arreglo=".$_REQUEST['arreglo'];
+				$valorCodificado .= "&numero_issn_old=".$_REQUEST['numero_issn'];
 				
 				/**
 				 * SARA permite que los nombres de los campos sean dinámicos.

@@ -115,23 +115,21 @@ class Sql extends \Sql {
 				$cadenaSql .= "	paisnombre";
 				$cadenaSql .= " FROM ";
 				$cadenaSql .= " docencia.pais";
-				$cadenaSql .= " WHERE 1=1";
 				if($variable == 0){
-					$cadenaSql .= " and lower(paisnombre) = 'colombia'";
+					$cadenaSql .= " WHERE paiscodigo = 'COL'";
 				}elseif ($variable == 1){
-					$cadenaSql .= " and lower(paisnombre) != 'colombia'";
+					$cadenaSql .= " WHERE paiscodigo != 'COL'";
 				}
 				$cadenaSql .= "order by paisnombre";
 				break;
 				
-			case "categoria_revista" :
+			case "tipoLibro" :
 				$cadenaSql = "select";
-				$cadenaSql .= " id_tipo_indexacion,";
+				$cadenaSql .= " id_tipo_libro, tipo_libro";
 				$cadenaSql .= "	descripcion";
 				$cadenaSql .= " FROM ";
-				$cadenaSql .= " docencia.tipo_indexacion";
-				$cadenaSql .= " WHERE";
-				$cadenaSql .= " id_contexto =" . $variable;
+				$cadenaSql .= " docencia.tipo_libro ORDER BY";
+				$cadenaSql .= " tipo_libro ASC";
 				break;
 				
 			case "docente" :
@@ -143,96 +141,111 @@ class Sql extends \Sql {
 				break;
 								
 			case "consultarIndexacion" :			
-				$cadenaSql = "SELECT  id_indexacion_revista, ir.identificacion_docente, ";
-				$cadenaSql .= " nombre_docente, ";
-				$cadenaSql .= " nombre_revista, titulo_articulo, paisnombre,   ";
-				$cadenaSql .= " ti.descripcion as item_nombre, numero_issn, ";
-				$cadenaSql .= "anno_publicacion, ";
-				$cadenaSql .= " volumen_revista, numero_revista, paginas_revista, fecha_publicacion ";
-				$cadenaSql .= "FROM docencia.dependencia_docente as dd ";
-				$cadenaSql .= "JOIN docencia.categoria_docente as cd ON cd.categoria_iddocente = dd.dependencia_iddocente ";
-				$cadenaSql .= "JOIN docencia.docente as dt ON dt.identificacion_docente = dd.dependencia_iddocente ";
-				$cadenaSql .= "JOIN docencia.indexacion_revista as ir ON ir.identificacion_docente = dd.dependencia_iddocente ";
-				$cadenaSql .= "LEFT JOIN docencia.tipo_indexacion as ti ON ti.id_tipo_indexacion = ir.id_tipo_indexacion ";
-				$cadenaSql .= "LEFT JOIN docencia.pais_kyron pk ON pk.paiscodigo = ir.paiscodigo ";
-				$cadenaSql .= "WHERE 1=1";
+				$cadenaSql=" select ";
+				$cadenaSql.=" ri.documento_docente, ";
+				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
+				$cadenaSql.=" ri.nombre_revista, ri.titulo_articulo, pi.paisnombre, ti.descripcion as tipo_indexacion,";
+				$cadenaSql.=" ri.numero_issn, ri.anno_publicacion,";
+				$cadenaSql.=" ri.volumen_revista, ri.numero_revista,";
+				$cadenaSql.=" ri.paginas_revista,";
+				$cadenaSql.=" ri.fecha_publicacion ";
+				$cadenaSql.=" from ";
+				$cadenaSql.=" docencia.revista_indexada ri ";
+				$cadenaSql.=" left join docencia.docente dc on ri.documento_docente=dc.documento_docente ";
+				$cadenaSql.=" left join docencia.docente_proyectocurricular dc_pc on ri.documento_docente=dc_pc.documento_docente ";
+				$cadenaSql.=" left join docencia.proyectocurricular pc on dc_pc.id_proyectocurricular=pc.id_proyectocurricular ";
+				$cadenaSql.=" left join docencia.facultad fc on pc.id_facultad=fc.id_facultad ";
+				$cadenaSql.=" left join docencia.pais pi on ri.paiscodigo=pi.paiscodigo ";
+				$cadenaSql.=" left join docencia.tipo_indexacion ti ON ti.id_tipo_indexacion = ri.id_tipo_indexacion";
+				$cadenaSql.=" where 1=1";
 				if ($variable [0] != '') {
-					$cadenaSql .= " AND dd.dependencia_iddocente = '" . $variable [0] . "'";
+					$cadenaSql .= " AND dc.documento_docente = '" . $variable ['documento_docente'] . "'";
 				}
 				if ($variable [1] != '') {
-					$cadenaSql .= " AND dd.dependencia_facultad = '" . $variable [1] . "'";
+					$cadenaSql .= " AND fc.id_facultad = '" . $variable ['id_facultad'] . "'";
 				}
 				if ($variable [2] != '') {
-					$cadenaSql .= " AND dd.dependencia_proyectocurricular = '" . $variable [2] . "'";
+					$cadenaSql .= " AND pc.id_proyectocurricular = '" . $variable ['id_proyectocurricular'] . "'";
 				}
 				break;
 				
 			case "insertarIndexacion" :
-				$cadenaSql = "INSERT INTO docencia.indexacion_revista( ";
-				$cadenaSql .= "identificacion_docente, nombre_revista, id_contexto_revista, paiscodigo, ";
+				$cadenaSql = "INSERT INTO docencia.revista_indexada( ";
+				$cadenaSql .= "documento_docente, nombre_revista, id_contexto, paiscodigo, ";
 				$cadenaSql .= "id_tipo_indexacion, ";
 				$cadenaSql .= "numero_issn, anno_publicacion, volumen_revista, numero_revista, paginas_revista, ";
 				$cadenaSql .= "titulo_articulo, numero_autores, numero_autores_ud, fecha_publicacion, ";
 				$cadenaSql .= "numero_acta, fecha_acta, numero_caso, puntaje) ";
-				$cadenaSql .= " VALUES (" . $variable [0] . ",";
-				$cadenaSql .= " '" . $variable [1] . "',";
-				$cadenaSql .= " '" . $variable [2] . "',";
-				$cadenaSql .= "'" . $variable [3] . "',";
-				$cadenaSql .= " '" . $variable [4] . "',";
-				$cadenaSql .= " '" . $variable [5] . "',";
-				$cadenaSql .= " '" . $variable [6] . "',";
-				$cadenaSql .= " '" . $variable [7] . "',";
-				$cadenaSql .= " '" . $variable [8] . "',";
-				$cadenaSql .= " '" . $variable [9] . "',";
-				$cadenaSql .= " '" . $variable [10] . "',";
-				$cadenaSql .= " '" . $variable [11] . "',";
-				$cadenaSql .= " '" . $variable [12] . "',";
-				$cadenaSql .= "' " . $variable [13] . "' ,";
-				$cadenaSql .= "' " . $variable [14] . "',";
-				$cadenaSql .= " '" . $variable [15] . "',";
-				$cadenaSql .= "' " . $variable [16] . "',";
-				$cadenaSql .= " '" . $variable [17] . "')";
+				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
+				$cadenaSql .= " '" . $variable ['nombreRevista'] . "',";
+				$cadenaSql .= " '" . $variable ['contextoRevista'] . "',";
+				$cadenaSql .= "'" . $variable ['pais'] . "',";
+				$cadenaSql .= " '" . $variable ['categoria'] . "',";
+				$cadenaSql .= " '" . $variable ['issnRevista'] . "',";
+				$cadenaSql .= " '" . $variable ['annoRevista'] . "',";
+				$cadenaSql .= " '" . $variable ['volumenRevista'] . "',";
+				$cadenaSql .= " '" . $variable ['numeroRevista'] . "',";
+				$cadenaSql .= " '" . $variable ['paginasRevista'] . "',";
+				$cadenaSql .= " '" . $variable ['tituloArticuloRevista'] . "',";
+				$cadenaSql .= " '" . $variable ['numeroAutoresRevista'] . "',";
+				$cadenaSql .= " '" . $variable ['numeroAutoresUniversidad'] . "',";
+				$cadenaSql .= "' " . $variable ['fechaPublicacionrevista'] . "' ,";
+				$cadenaSql .= "' " . $variable ['numeroActaRevista'] . "',";
+				$cadenaSql .= " '" . $variable ['fechaActaRevista'] . "',";
+				$cadenaSql .= "' " . $variable ['numeroCasoActaRevista'] . "',";
+				$cadenaSql .= " '" . $variable ['puntajeRevista'] . "')";
 				break;
 				
 			case "consultarRevistas" :
-				$cadenaSql  = "SELECT ir.identificacion_docente, dt.nombre_docente, ir.nombre_revista, ir.id_contexto_revista, ir.paiscodigo, ";
-				$cadenaSql .= "ir.id_tipo_indexacion, ";
-				$cadenaSql .= "ir.numero_issn, ir.anno_publicacion, ir.volumen_revista, ir.numero_revista, ir.paginas_revista, ";
-				$cadenaSql .= "ir.titulo_articulo, ir.numero_autores, ir.numero_autores_ud, ir.fecha_publicacion, ";
-				$cadenaSql .= "ir.numero_acta, ir.fecha_acta, ir.numero_caso, ir.puntaje ";
-				$cadenaSql .= "FROM docencia.dependencia_docente as dd ";
-				$cadenaSql .= "JOIN docencia.categoria_docente as cd ON cd.categoria_iddocente = dd.dependencia_iddocente ";
-				$cadenaSql .= "JOIN docencia.docente as dt ON dt.identificacion_docente = dd.dependencia_iddocente ";
-				$cadenaSql .= "JOIN docencia.indexacion_revista as ir ON ir.identificacion_docente = dd.dependencia_iddocente ";
-				$cadenaSql .= "LEFT JOIN docencia.tipo_indexacion as ti ON ti.id_tipo_indexacion = ir.id_tipo_indexacion ";
-				$cadenaSql .= "LEFT JOIN docencia.pais_kyron pk ON pk.paiscodigo = ir.paiscodigo ";
-				$cadenaSql .= "WHERE id_indexacion_revista =" . $variable;
+				$cadenaSql=" SELECT ri.documento_docente,";
+				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
+				$cadenaSql.=" ri.nombre_revista, ";
+				$cadenaSql.=" ri.id_contexto, ";
+				$cadenaSql.=" ri.paiscodigo, ";
+				$cadenaSql.=" ri.id_tipo_indexacion, ";
+				$cadenaSql.=" ri.numero_issn, ";
+				$cadenaSql.=" ri.anno_publicacion, ";
+				$cadenaSql.=" ri.volumen_revista, ";
+				$cadenaSql.=" ri.numero_revista, ";
+				$cadenaSql.=" ri.paginas_revista, ";
+				$cadenaSql.=" ri.titulo_articulo, ";
+				$cadenaSql.=" ri.numero_autores, ";
+				$cadenaSql.=" ri.numero_autores_ud, ";
+				$cadenaSql.=" ri.fecha_publicacion, ";
+				$cadenaSql.=" ri.numero_acta, ";
+				$cadenaSql.=" ri.fecha_acta, ";
+				$cadenaSql.=" ri.numero_caso, ";
+				$cadenaSql.=" ri.puntaje ";
+				$cadenaSql.=" FROM docencia.revista_indexada ri ";
+				$cadenaSql.=" left join docencia.docente dc on ri.documento_docente=dc.documento_docente ";
+				$cadenaSql.=" WHERE ri.documento_docente ='" . $variable['documento_docente']. "'";
+				$cadenaSql.=" and ri.numero_issn ='" . $variable['numero_issn']. "'";
 				break;
 				
 			case "actualizarIndexacion" :
-				$cadena_sql = "UPDATE ";
-				$cadena_sql .= "docencia.indexacion_revista ";
-				$cadena_sql .= "SET ";
-				$cadena_sql .= "nombre_revista = '" . $variable [1] . "', ";
-				$cadena_sql .= "id_contexto_revista = '" . $variable [2] . "', ";
-				$cadena_sql .= "revista_indexacion = '" . $variable [4] . "', ";
-				$cadena_sql .= "pais_publicacion = '" . $variable [3] . "', ";
-				$cadena_sql .= "numero_issn = '" . $variable [5] . "', ";
-				$cadena_sql .= "anno_publicacion = '" . $variable [6] . "', ";
-				$cadena_sql .= "volumen_revista = '" . $variable [7] . "', ";
-				$cadena_sql .= "numero_volumen = '" . $variable [8] . "', ";
-				$cadena_sql .= "paginas_revista = '" . $variable [9] . "', ";
-				$cadena_sql .= "titulo_articulo = '" . $variable [10] . "', ";
-				$cadena_sql .= "numero_autores = '" . $variable [11] . "', ";
-				$cadena_sql .= "numero_autores_ud = '" . $variable [12] . "', ";
-				$cadena_sql .= "fecha_publicacion = '" . $variable [13] . "', ";
-				$cadena_sql .= "acta_numero = '" . $variable [14] . "', ";
-				$cadena_sql .= "fecha_acto = '" . $variable [15] . "', ";
-				$cadena_sql .= "numero_caso = '" . $variable [16] . "', ";
-				$cadena_sql .= "puntaje = '" . $variable [17] . "', ";
-				$cadena_sql .= "detalledocencia = '" . $variable [18] . "' ";
-				$cadena_sql .= "WHERE ";
-				$cadena_sql .= "id_indexacion_revista ='" . $variable [0] . "' ";
+				$cadenaSql = "UPDATE ";
+				$cadenaSql .= "docencia.revista_indexada ";
+				$cadenaSql .= "SET ";
+				$cadenaSql .= "nombre_revista = '" . $variable ['nombreRevista'] . "', ";
+				$cadenaSql .= "id_contexto = '" . $variable ['contextoRevista'] . "', ";
+				$cadenaSql .= "paiscodigo = '" . $variable ['pais'] . "', ";
+				$cadenaSql .= "id_tipo_indexacion = '" . $variable ['categoria'] . "', ";
+				$cadenaSql .= "numero_issn = '" . $variable ['issnRevista'] . "', ";
+				$cadenaSql .= "anno_publicacion = '" . $variable ['annoRevista'] . "', ";
+				$cadenaSql .= "volumen_revista = '" . $variable ['volumenRevista'] . "', ";
+				$cadenaSql .= "numero_revista = '" . $variable ['numeroRevista'] . "', ";
+				$cadenaSql .= "paginas_revista = '" . $variable ['paginasRevista'] . "', ";
+				$cadenaSql .= "titulo_articulo = '" . $variable ['tituloArticuloRevista'] . "', ";
+				$cadenaSql .= "numero_autores = '" . $variable ['numeroAutoresRevista'] . "', ";
+				$cadenaSql .= "numero_autores_ud = '" . $variable ['numeroAutoresUniversidad'] . "', ";
+				$cadenaSql .= "fecha_publicacion = '" . $variable ['fechaPublicacionrevista'] . "', ";
+				$cadenaSql .= "numero_acta = '" . $variable ['numeroActaRevista'] . "', ";
+				$cadenaSql .= "fecha_acta = '" . $variable ['fechaActaRevista'] . "', ";
+				$cadenaSql .= "numero_caso = '" . $variable ['numeroCasoActaRevista'] . "', ";
+				$cadenaSql .= "puntaje = '" . $variable ['puntajeRevista'] . "'";
+				$cadenaSql .= "WHERE ";
+				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";
+				$cadenaSql .= "and numero_issn ='" . $variable ['numero_issn_old'] . "' ";
 				break;
 		}
 		

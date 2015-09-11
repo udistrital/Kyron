@@ -42,6 +42,19 @@ class redireccion {
 			case "regresar" :
 				$variable = "pagina=" . $miPaginaActual;
 				break;
+				
+			case "actualizo" :
+				$variable = "pagina=" . $miPaginaActual;
+				$variable .= "&opcion=mensaje";
+				$variable .= "&mensaje=actualizo";
+				$variable .= "&docente=" . $valor;
+				break;
+			
+			case "noActualizo" :
+				$variable = "pagina=" . $miPaginaActual;
+				$variable .= "&opcion=noActualizo";
+				$variable .= "&mensaje=error";
+				break;
 			
 			case "registrar" :
 				$variable = "pagina=" . $miPaginaActual;

@@ -1,26 +1,29 @@
 <?php
 
+$this->idioma["botonRegresar"] = "Regresar";
+$this->idioma["botonGuardar"] = "Guardar";
+$this->idioma["continuar"] = "Continuar";
 $this->idioma["botonAceptar"] = "Aceptar";
 $this->idioma["botonRegistrar"] = "Registrar";
 $this->idioma["botonCancelar"] = "Cancelar";
 $this->idioma["noDefinido"] = "No definido";
 
-$this->idioma["consultarLibros"] = "Consultar producción de libros";
+$this->idioma["consultarLibros"] = "Consultar Producción de Libros";
 $this->idioma["ingresarLibros"] = "Ingresar Producción de Libros";
 
 $this->idioma["facultad"] = "Facultad";
 $this->idioma["proyectoCurricular"] = "Proyecto Curricular";
 
 $this->idioma["botonConsultar"] = "Consultar";
-$this->idioma["docente"] = "Indentificación o nombre del docente:";
+$this->idioma["docente"] = "Identificación o nombre del docente:";
 
 $this->idioma["botonRegresar"] = "Regresar";
-$this->idioma["docenteRegistrar"] = "Identificación o Nombre del Docente";
-$this->idioma["nombreRevista"] = "Nombre de Revista";
-$this->idioma["contextoRevista"] = "Contexto de la Revista";
+$this->idioma["docenteRegistrar"] = "Identificación o nombre del docente:";
+$this->idioma["nombreLibro"] = "Título del libro:";
+$this->idioma["tipoLibro"] = "Tipo de libro:";
 $this->idioma["pais"] = "País";
 $this->idioma["categoria"] = "Categorías";
-$this->idioma["issnRevista"] = "ISSN";
+$this->idioma["isbnLibro"] = "Código de numeración (ISBN):";
 $this->idioma["annoRevista"] = "Año";
 $this->idioma["volumenRevista"] = "Volumen";
 $this->idioma["numeroRevista"] = "Número de Revista";
@@ -32,7 +35,7 @@ $this->idioma["fechaPublicacionrevista"] = "Fecha de Publicación";
 $this->idioma["numeroActaRevista"] = "Número de Acta CIARP-UD";
 $this->idioma["fechaActaRevista"] = "Fecha de Acta CIARP-UD";
 $this->idioma["numeroCasoActaRevista"] = "Número de Caso de Acta";
-$this->idioma["puntajeRevistas"] = "Puntaje	";
+$this->idioma["puntajeRevista"] = "Puntaje	";
 
 $this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";
 $this->idioma["docenteTitulo"] = "Identificación o Nombre del Docente.";

@@ -91,17 +91,19 @@ if (!isset($GLOBALS["autorizado"])) {
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
        
-    } else if($_REQUEST['mensaje'] == 'mensajeActualizacion') {
+    } else if($_REQUEST['mensaje'] == 'actualizo') {
         $tipo = 'success';
-        $mensaje = "Se actualizo correctamente el registro del contrato.<br>";
-        $boton = "regresar";
+        $mensaje = "Actualización Exitosa </br> Han sido actualizados los datos de la revista indexada para el docente <br>" . $_REQUEST ['docente'] . ".";
+        $boton = "continuar";
 
-        $valorCodificado = "pagina=gestionContrato";
+        $valorCodificado = "pagina=revistasIndexadas";
         $valorCodificado.="&opcion=nuevo";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
        
     }
+    
+    
 
 
     /**

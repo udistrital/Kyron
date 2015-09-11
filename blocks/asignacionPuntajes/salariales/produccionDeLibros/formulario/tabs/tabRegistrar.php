@@ -117,6 +117,7 @@ class FormularioRegistro {
 		$atributos ["id"] = $esteCampo; // No cambiar este nombre
 		$atributos ["tipo"] = "hidden";
 		$atributos ['estilo'] = '';
+		$atributos ['validar'] = 'required';
 		$atributos ["obligatorio"] = true;
 		$atributos ['marco'] = true;
 		$atributos ["etiqueta"] = "";
@@ -132,7 +133,7 @@ class FormularioRegistro {
 		// ----------------FIN CONTROL: Lista Docente--------------------------------------------------------
 			
 		// ----------------INICIO CONTROL: Campo de Texto Nombre Revista--------------------------------------------------------
-		$esteCampo = 'nombreRevista';
+		$esteCampo = 'nombreLibro';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -144,7 +145,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, minSize[6],maxSize[50],custom[date]';
+		$atributos ['validar'] = 'required, minSize[6],maxSize[50]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -166,7 +167,7 @@ class FormularioRegistro {
 			
 		// ----------------INICIO CONTROL: Campo de Texto Contexto Revista--------------------------------------------------------
 			
-		$esteCampo = 'contextoRevista';
+		$esteCampo = 'tipoLibro';
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['id'] = $esteCampo;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
@@ -189,17 +190,14 @@ class FormularioRegistro {
 		$atributos ['anchoCaja'] = 57;
 		$atributos ['miEvento'] = '';
 		$atributos ['validar'] = 'required';
-		// $atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "funcionarios" );
+		$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( $esteCampo );
 		$matrizItems = array (
 				array (
 						0,
-						'Nacional'
-				),
-				array (
-						1,
-						'Internacional'
+						' '
 				)
-		);
+		);var_dump($atributos ['cadena_sql']);
+		$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 		$atributos ['matrizItems'] = $matrizItems;
 		// Aplica atributos globales al control
 		$atributos = array_merge ( $atributos, $atributosGlobales );
@@ -254,7 +252,7 @@ class FormularioRegistro {
 		echo $this->miFormulario->division ( "fin" );
 		
 		// ----------------FIN CONTROL: Lista País--------------------------------------------------------
-			
+		//???por qué está esta lista categoría ahí?????
 		// ---------------- CONTROL: Lista Categoria--------------------------------------------------------
 			
 		$atributos ["id"] = "categoria_div";
@@ -303,7 +301,7 @@ class FormularioRegistro {
 		// ----------------FIN CONTROL: Lista Tipo Indexación--------------------------------------------------------
 			
 		// ----------------INICIO CONTROL: Campo de Texto ISSN Revista--------------------------------------------------------
-		$esteCampo = 'issnRevista';
+		$esteCampo = 'isbnLibro';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -803,8 +801,16 @@ class FormularioRegistro {
 				 */
 				$valorCodificado .= "&campoSeguro=" . $_REQUEST ['tiempo'];
 				$valorCodificado .= "&tiempo=" . time();
+				/*
+				 * Sara permite validar los campos en el formulario o funcion destino.
+				 * Para ello se envía los datos atributos["validadar"] de los componentes del formulario
+				 * Estos se pueden obtener en el atributo $this->miFormulario->validadorCampos del formulario
+				 * La función $this->miFormulario->codificarCampos() codifica automáticamente el atributo validadorCampos
+				 */
+				$valorCodificado .= "&validadorCampos=" . $this->miFormulario->codificarCampos();
 				
 				// Paso 2: codificar la cadena resultante
+				$valorCodificado = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $valorCodificado );
 				
 				$atributos ["id"] = "formSaraData"; // No cambiar este nombre
 				$atributos ["tipo"] = "hidden";
