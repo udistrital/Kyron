@@ -45,6 +45,13 @@ class Select extends HtmlBase {
      * @return string
      */
     function campoCuadroLista($atributos) {
+    	/*
+    	 * Estas 2 líneas hacen el paso de atributos de los componentes que heredan de la clase HtmlBase
+    	 * en este caso de pasan del componente a la instancia de FormularioHtml
+    	 */
+    	$campoValidar = (isset($atributos ["validar"]))?$atributos ["validar"]:'';
+    	$this->instanciaFormulario->validadorCampos[$atributos ["id"]] = $campoValidar;
+    	
         if (isset($atributos [self::COLUMNAS]) && $atributos [self::COLUMNAS] != '' && is_numeric($atributos [self::COLUMNAS])) {
 
             $this->cadenaHTML = "<div class='campoCuadroLista anchoColumna" . $atributos [self::COLUMNAS] . "'>\n";
