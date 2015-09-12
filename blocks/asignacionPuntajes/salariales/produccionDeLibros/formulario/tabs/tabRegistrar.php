@@ -1,5 +1,5 @@
 <?php
-namespace asignacionPuntajes\salariales\indexacionRevistas\formulario;
+namespace asignacionPuntajes\salariales\produccionDeLibros\formulario;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -132,7 +132,7 @@ class FormularioRegistro {
 		
 		// ----------------FIN CONTROL: Lista Docente--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto Nombre Revista--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Nombre Libro--------------------------------------------------------
 		$esteCampo = 'nombreLibro';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -163,9 +163,9 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Nombre Revista--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Nombre Libro--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto Contexto Revista--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Contexto Libro--------------------------------------------------------
 			
 		$esteCampo = 'tipoLibro';
 		$atributos ['nombre'] = $esteCampo;
@@ -196,7 +196,7 @@ class FormularioRegistro {
 						0,
 						' '
 				)
-		);var_dump($atributos ['cadena_sql']);
+		);
 		$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 		$atributos ['matrizItems'] = $matrizItems;
 		// Aplica atributos globales al control
@@ -204,7 +204,7 @@ class FormularioRegistro {
 		echo $this->miFormulario->campoCuadroLista ( $atributos );
 		unset ( $atributos );
 			
-		// ----------------FIN CONTROL: Campo de Texto Contexto Revista--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Contexto Libro--------------------------------------------------------
 			
 		// ---------------- CONTROL: Lista País--------------------------------------------------------
 			
@@ -300,7 +300,7 @@ class FormularioRegistro {
 			
 		// ----------------FIN CONTROL: Lista Tipo Indexación--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto ISSN Revista--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto ISSN Libro--------------------------------------------------------
 		$esteCampo = 'isbnLibro';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -331,11 +331,11 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto ISSN Revista--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto ISSN Libro--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto Año Publicación Revista--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Año Publicación Libro--------------------------------------------------------
 		
-		$esteCampo = "annoRevista";
+		$esteCampo = "annoLibro";
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['id'] = $esteCampo;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
@@ -375,11 +375,11 @@ class FormularioRegistro {
 		echo $this->miFormulario->campoCuadroLista ( $atributos );
 		unset ( $atributos );
 		
-		// ----------------FIN CONTROL: Campo de Texto Año Publicación Revista--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Año Publicación Libro--------------------------------------------------------
 			
 		
-		// ----------------INICIO CONTROL: Campo de Texto Volumen Revista--------------------------------------------------------
-		$esteCampo = 'volumenRevista';
+	    // ----------------INICIO CONTROL: Campo de Texto Número Autores Libro--------------------------------------------------------
+		$esteCampo = 'numeroAutoresLibro';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -409,141 +409,9 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Volumen Revista--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Número Autores Libro--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto Número Revista--------------------------------------------------------
-		$esteCampo = 'numeroRevista';
-		$atributos ['id'] = $esteCampo;
-		$atributos ['nombre'] = $esteCampo;
-		$atributos ['tipo'] = 'text';
-		$atributos ['estilo'] = 'jqueryui';
-		$atributos ['marco'] = true;
-		$atributos ['estiloMarco'] = '';
-		$atributos ["etiquetaObligatorio"] = true;
-		$atributos ['columnas'] = 1;
-		$atributos ['dobleLinea'] = 0;
-		$atributos ['tabIndex'] = $tab;
-		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, custom[onlyNumberSp]';
-			
-		if (isset ( $_REQUEST [$esteCampo] )) {
-			$atributos ['valor'] = $_REQUEST [$esteCampo];
-		} else {
-			$atributos ['valor'] = '';
-		}
-		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '';
-		$atributos ['anchoEtiqueta'] = 280;
-		$tab ++;
-			
-		// Aplica atributos globales al control
-		$atributos = array_merge ( $atributos, $atributosGlobales );
-		echo $this->miFormulario->campoCuadroTexto ( $atributos );
-		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Número Revista--------------------------------------------------------
-			
-		// ----------------INICIO CONTROL: Campo de Texto Páginas Revista--------------------------------------------------------
-		$esteCampo = 'paginasRevista';
-		$atributos ['id'] = $esteCampo;
-		$atributos ['nombre'] = $esteCampo;
-		$atributos ['tipo'] = 'text';
-		$atributos ['estilo'] = 'jqueryui';
-		$atributos ['marco'] = true;
-		$atributos ['estiloMarco'] = '';
-		$atributos ["etiquetaObligatorio"] = true;
-		$atributos ['columnas'] = 1;
-		$atributos ['dobleLinea'] = 0;
-		$atributos ['tabIndex'] = $tab;
-		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, custom[onlyNumberSp]';
-			
-		if (isset ( $_REQUEST [$esteCampo] )) {
-			$atributos ['valor'] = $_REQUEST [$esteCampo];
-		} else {
-			$atributos ['valor'] = '';
-		}
-		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '';
-		$atributos ['anchoEtiqueta'] = 280;
-		$tab ++;
-			
-		// Aplica atributos globales al control
-		$atributos = array_merge ( $atributos, $atributosGlobales );
-		echo $this->miFormulario->campoCuadroTexto ( $atributos );
-		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Páginas Revista--------------------------------------------------------
-			
-		// ----------------INICIO CONTROL: Campo de Texto Título Artículo Revista--------------------------------------------------------
-		$esteCampo = 'tituloArticuloRevista';
-		$atributos ['id'] = $esteCampo;
-		$atributos ['nombre'] = $esteCampo;
-		$atributos ['tipo'] = 'text';
-		$atributos ['estilo'] = 'jqueryui';
-		$atributos ['marco'] = true;
-		$atributos ['estiloMarco'] = '';
-		$atributos ["etiquetaObligatorio"] = true;
-		$atributos ['columnas'] = 1;
-		$atributos ['dobleLinea'] = 0;
-		$atributos ['tabIndex'] = $tab;
-		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, minSize[6],maxSize[200]';
-			
-		if (isset ( $_REQUEST [$esteCampo] )) {
-			$atributos ['valor'] = $_REQUEST [$esteCampo];
-		} else {
-			$atributos ['valor'] = '';
-		}
-		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '';
-		$atributos ['anchoEtiqueta'] = 280;
-		$tab ++;
-			
-		// Aplica atributos globales al control
-		$atributos = array_merge ( $atributos, $atributosGlobales );
-		echo $this->miFormulario->campoCuadroTexto ( $atributos );
-		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Título Artículo Revista--------------------------------------------------------
-			
-		// ----------------INICIO CONTROL: Campo de Texto Número Autores Revista--------------------------------------------------------
-		$esteCampo = 'numeroAutoresRevista';
-		$atributos ['id'] = $esteCampo;
-		$atributos ['nombre'] = $esteCampo;
-		$atributos ['tipo'] = 'text';
-		$atributos ['estilo'] = 'jqueryui';
-		$atributos ['marco'] = true;
-		$atributos ['estiloMarco'] = '';
-		$atributos ["etiquetaObligatorio"] = true;
-		$atributos ['columnas'] = 1;
-		$atributos ['dobleLinea'] = 0;
-		$atributos ['tabIndex'] = $tab;
-		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, custom[onlyNumberSp]';
-			
-		if (isset ( $_REQUEST [$esteCampo] )) {
-			$atributos ['valor'] = $_REQUEST [$esteCampo];
-		} else {
-			$atributos ['valor'] = '';
-		}
-		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '';
-		$atributos ['anchoEtiqueta'] = 280;
-		$tab ++;
-			
-		// Aplica atributos globales al control
-		$atributos = array_merge ( $atributos, $atributosGlobales );
-		echo $this->miFormulario->campoCuadroTexto ( $atributos );
-		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Número Autores Revista--------------------------------------------------------
-			
-		// ----------------INICIO CONTROL: Campo de Texto Número Autores Revista UD--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Número Autores Libro UD--------------------------------------------------------
 		$esteCampo = 'numeroAutoresUniversidad';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -574,10 +442,10 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Número Autores Revista UD--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Número Autores Libro UD--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto Fecha Publicación Revista--------------------------------------------------------
-		$esteCampo = 'fechaPublicacionrevista';
+		// ----------------INICIO CONTROL: Campo de Texto Fecha Publicación Libro--------------------------------------------------------
+		$esteCampo = 'fechaPublicacionLibro';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -607,10 +475,10 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Fecha Publicación Revista--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Fecha Publicación Libro--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto Número Acta Revista--------------------------------------------------------
-		$esteCampo = 'numeroActaRevista';
+		// ----------------INICIO CONTROL: Campo de Texto Número Acta Libro--------------------------------------------------------
+		$esteCampo = 'numeroActaLibro';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -623,7 +491,6 @@ class FormularioRegistro {
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 		$atributos ['validar'] = 'required';
-			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
 		} else {
@@ -638,12 +505,13 @@ class FormularioRegistro {
 			
 		// Aplica atributos globales al control
 		$atributos = array_merge ( $atributos, $atributosGlobales );
+		//var_dump($atributos);
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Numero Acta Revista--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Numero Acta Libro--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto Fecha Acta Revista--------------------------------------------------------
-		$esteCampo = 'fechaActaRevista';
+		// ----------------INICIO CONTROL: Campo de Texto Fecha Acta Libro--------------------------------------------------------
+		$esteCampo = 'fechaActaLibro';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -673,10 +541,10 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Fecha Acta Revista--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Fecha Acta Libro--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto Número Caso Acta Revista--------------------------------------------------------
-		$esteCampo = 'numeroCasoActaRevista';
+		// ----------------INICIO CONTROL: Campo de Texto Número Caso Acta Libro--------------------------------------------------------
+		$esteCampo = 'numeroCasoActaLibro';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -706,10 +574,10 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Número Caso Acta Revista--------------------------------------------------------
-			
-		// ----------------INICIO CONTROL: Campo de Texto Puntaje Revista--------------------------------------------------------
-		$esteCampo = 'puntajeRevista';
+		// ----------------FIN CONTROL: Campo de Texto Número Caso Acta Libro--------------------------------------------------------
+		//echo 'Evaluadores';
+		// ----------------INICIO CONTROL: Campo de Texto Puntaje Libro--------------------------------------------------------
+		$esteCampo = 'puntajeLibro';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -739,38 +607,38 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Puntaje Revista--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Puntaje Libro--------------------------------------------------------
 		
-				
-				// ------------------Division para los botones-------------------------
-				$atributos ["id"] = "botones";
-				$atributos ["estilo"] = "marcoBotones";
-				echo $this->miFormulario->division ( "inicio", $atributos );
-				{
-					// -----------------CONTROL: Botón ----------------------------------------------------------------
-					$esteCampo = 'botonRegistrar';
-					$atributos ["id"] = $esteCampo;
-					$atributos ["tabIndex"] = $tab;
-					$atributos ["tipo"] = 'boton';
-					// submit: no se coloca si se desea un tipo button genérico
-					$atributos ['submit'] = 'true';
-					$atributos ["estiloMarco"] = '';
-					$atributos ["estiloBoton"] = 'jqueryui';
-					// verificar: true para verificar el formulario antes de pasarlo al servidor.
-					$atributos ["verificar"] = '';
-					$atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
-					$atributos ["valor"] = $this->lenguaje->getCadena ( $esteCampo );
-					$atributos ['nombreFormulario'] = $esteBloque ['nombre']."Registrar";
-					$tab ++;
-					
-					// Aplica atributos globales al control
-					$atributos = array_merge ( $atributos, $atributosGlobales );
-					echo $this->miFormulario->campoBoton ( $atributos );
-					
-					// -----------------FIN CONTROL: Botón -----------------------------------------------------------
-				}
-	// 			------------------Fin Division para los botones-------------------------
-				echo $this->miFormulario->division( "fin" );
+		//echo 'Detalles';
+		// ------------------Division para los botones-------------------------
+		$atributos ["id"] = "botones";
+		$atributos ["estilo"] = "marcoBotones";
+		echo $this->miFormulario->division ( "inicio", $atributos );
+		
+        // -----------------CONTROL: Botón ----------------------------------------------------------------
+		$esteCampo = 'botonRegistrar';
+		$atributos ["id"] = $esteCampo;
+		$atributos ["tabIndex"] = $tab;
+		$atributos ["tipo"] = 'boton';
+		// submit: no se coloca si se desea un tipo button genérico
+		$atributos ['submit'] = 'true';
+		$atributos ["estiloMarco"] = '';
+		$atributos ["estiloBoton"] = 'jqueryui';
+		// verificar: true para verificar el formulario antes de pasarlo al servidor.
+		$atributos ["verificar"] = '';
+		$atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
+		$atributos ["valor"] = $this->lenguaje->getCadena ( $esteCampo );
+		$atributos ['nombreFormulario'] = $esteBloque ['nombre']."Registrar";
+		$tab ++;
+		
+		// Aplica atributos globales al control
+		$atributos = array_merge ( $atributos, $atributosGlobales );
+		echo $this->miFormulario->campoBoton ( $atributos );
+		
+    	// -----------------FIN CONTROL: Botón -----------------------------------------------------------
+    	
+    	// -------------------Fin Division para los botones-------------------------
+		echo $this->miFormulario->division( "fin" );
 				
 				
 				// ------------------- SECCION: Paso de variables ------------------------------------------------
@@ -807,6 +675,7 @@ class FormularioRegistro {
 				 * Estos se pueden obtener en el atributo $this->miFormulario->validadorCampos del formulario
 				 * La función $this->miFormulario->codificarCampos() codifica automáticamente el atributo validadorCampos
 				 */
+				//var_dump($this->miFormulario->validadorCampos);
 				$valorCodificado .= "&validadorCampos=" . $this->miFormulario->codificarCampos();
 				
 				// Paso 2: codificar la cadena resultante
