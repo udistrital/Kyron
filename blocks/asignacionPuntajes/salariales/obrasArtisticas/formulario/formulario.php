@@ -33,8 +33,8 @@ unset ( $atributos );
 	
 	$items = array (
 			
-			"tabConsultar" => $this->lenguaje->getCadena ( "consultarCartas" ),
-			"tabIngresar" => $this->lenguaje->getCadena ( "ingresarCartas" ) 
+			"tabConsultar" => $this->lenguaje->getCadena ( "consultarObrasArtisticas" ),
+			"tabIngresar" => $this->lenguaje->getCadena ( "ingresarObrasArtisticas" ) 
 	);
 	$atributos ["items"] = $items;
 	$atributos ["estilo"] = "";
