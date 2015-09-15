@@ -158,7 +158,7 @@ function getCadenaSql($tipo, $variable = "") {
                   
        	case "datosMenu" :
 			$cadenaSql = "SELECT";
-			$cadenaSql .= " item.id_menu as menu,";
+			$cadenaSql .= " item.id_menu as menu, item.parametros,";
 			$cadenaSql .= " item.descripcion as descripcion,";
 			$cadenaSql .= " grupo.descripcion as grupo,";
 			$cadenaSql .= " item.columna as columna,";

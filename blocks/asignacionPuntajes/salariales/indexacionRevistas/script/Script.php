@@ -36,5 +36,7 @@ if (isset ( $funcion [0] )) {
 
 include ("ajax.php");
 include ("validarCampoNumerico.js");
+include ("campoFecha.js");
+
 
 ?>

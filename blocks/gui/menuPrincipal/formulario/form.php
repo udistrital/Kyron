@@ -108,7 +108,7 @@ class FormularioMenu {
 				$enlace = '#';	
 				$enlaces [$this->lenguaje->getCadena ($item ['grupo'])]['columna'. $item ['columna']][$item ['tipo_item']][$this->lenguaje->getCadena ($item ['descripcion'])] = $enlace;				
 			}elseif(strcmp($item['tipo_item'], 'item') == 0){
-				$enlace = 'pagina=' . $item ['descripcion'];
+				$enlace = 'pagina=' . $item ['link'].$item['parametros'];				
 				$enlace = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlace, $directorio );
 				$enlaces [$this->lenguaje->getCadena ($item ['grupo'])]['columna'. $item ['columna']][$item ['tipo_item']][$this->lenguaje->getCadena ($item ['descripcion'])] = $enlace;						
 			}

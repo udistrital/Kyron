@@ -159,13 +159,13 @@ class Sql extends \Sql {
 				$cadenaSql.=" left join docencia.pais pi on ri.paiscodigo=pi.paiscodigo ";
 				$cadenaSql.=" left join docencia.tipo_indexacion ti ON ti.id_tipo_indexacion = ri.id_tipo_indexacion";
 				$cadenaSql.=" where 1=1";
-				if ($variable [0] != '') {
+				if ($variable ['documento_docente'] != '') {
 					$cadenaSql .= " AND dc.documento_docente = '" . $variable ['documento_docente'] . "'";
 				}
-				if ($variable [1] != '') {
+				if ($variable ['id_facultad'] != '') {
 					$cadenaSql .= " AND fc.id_facultad = '" . $variable ['id_facultad'] . "'";
 				}
-				if ($variable [2] != '') {
+				if ($variable ['id_proyectocurricular'] != '') {
 					$cadenaSql .= " AND pc.id_proyectocurricular = '" . $variable ['id_proyectocurricular'] . "'";
 				}
 				break;
