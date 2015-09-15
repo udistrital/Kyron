@@ -35,6 +35,7 @@ class FormularioHtml extends Agregador{
      * Permite decodificar los campos de $_REQUEST que hayan sido enviados codificados
      * con la funcion "codificarCampos". Esta se puede acceder cuando se envía a un Formulario
      * y no a una Función o petición Ajax. Hay que revisar en estos la forma correcta de hacerlo.
+	 * Hasta donde se deja la funcionalidad se hace con una instanacia de core/builder/InspectorHTML.class.php
      */
     function decodificarCampos($valor){
     	return unserialize(base64_decode($valor));
