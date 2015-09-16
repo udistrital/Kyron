@@ -4,7 +4,7 @@ namespace core\general;
 
 require_once ("Rangos.class.php");
 require_once ("Tipos.class.php");
-
+require_once ("Agregador.class.php");
 /*
  * Se contruye una clase que reune las funciones de las clases Rangos y Tipos
  * con esto se busca hacer que las funciones privadas se puedan llamar de la misma forma

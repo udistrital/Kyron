@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.3.9
 -- Dumped by pg_dump version 9.3.9
--- Started on 2015-09-10 23:30:40 COT
+-- Started on 2015-09-15 17:31:57 COT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -14,7 +14,7 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- TOC entry 8 (class 2615 OID 59652)
+-- TOC entry 7 (class 2615 OID 59652)
 -- Name: docencia; Type: SCHEMA; Schema: -; Owner: -
 --
 
@@ -22,7 +22,7 @@ CREATE SCHEMA docencia;
 
 
 --
--- TOC entry 7 (class 2615 OID 59517)
+-- TOC entry 6 (class 2615 OID 59517)
 -- Name: kyron; Type: SCHEMA; Schema: -; Owner: -
 --
 
@@ -30,7 +30,7 @@ CREATE SCHEMA kyron;
 
 
 --
--- TOC entry 9 (class 2615 OID 59801)
+-- TOC entry 8 (class 2615 OID 59801)
 -- Name: menu; Type: SCHEMA; Schema: -; Owner: -
 --
 
@@ -38,7 +38,7 @@ CREATE SCHEMA menu;
 
 
 --
--- TOC entry 213 (class 3079 OID 11789)
+-- TOC entry 212 (class 3079 OID 11789)
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -46,8 +46,8 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2272 (class 0 OID 0)
--- Dependencies: 213
+-- TOC entry 2270 (class 0 OID 0)
+-- Dependencies: 212
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
 --
 
@@ -59,7 +59,7 @@ SET search_path = docencia, pg_catalog;
 SET default_with_oids = false;
 
 --
--- TOC entry 195 (class 1259 OID 59653)
+-- TOC entry 192 (class 1259 OID 59653)
 -- Name: comunicacion_corta; Type: TABLE; Schema: docencia; Owner: -
 --
 
@@ -86,7 +86,7 @@ CREATE TABLE comunicacion_corta (
 
 
 --
--- TOC entry 196 (class 1259 OID 59659)
+-- TOC entry 193 (class 1259 OID 59659)
 -- Name: contexto; Type: TABLE; Schema: docencia; Owner: -
 --
 
@@ -97,7 +97,7 @@ CREATE TABLE contexto (
 
 
 --
--- TOC entry 197 (class 1259 OID 59665)
+-- TOC entry 194 (class 1259 OID 59665)
 -- Name: docente; Type: TABLE; Schema: docencia; Owner: -
 --
 
@@ -114,7 +114,7 @@ CREATE TABLE docente (
 
 
 --
--- TOC entry 198 (class 1259 OID 59672)
+-- TOC entry 195 (class 1259 OID 59672)
 -- Name: docente_proyectocurricular; Type: TABLE; Schema: docencia; Owner: -
 --
 
@@ -126,7 +126,7 @@ CREATE TABLE docente_proyectocurricular (
 
 
 --
--- TOC entry 199 (class 1259 OID 59679)
+-- TOC entry 196 (class 1259 OID 59679)
 -- Name: facultad; Type: TABLE; Schema: docencia; Owner: -
 --
 
@@ -138,7 +138,58 @@ CREATE TABLE facultad (
 
 
 --
--- TOC entry 200 (class 1259 OID 59685)
+-- TOC entry 210 (class 1259 OID 59891)
+-- Name: obra_artistica; Type: TABLE; Schema: docencia; Owner: -
+--
+
+CREATE TABLE obra_artistica (
+    id_obra_artistica integer NOT NULL,
+    documento_docente character varying(50),
+    tipo_obra integer,
+    titulo character varying(2000),
+    certifica character varying(2000),
+    contexto integer,
+    anio integer,
+    nume_acta character varying,
+    fech_acta date,
+    nume_caso numeric(19,0),
+    puntaje numeric
+);
+
+
+--
+-- TOC entry 2271 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: TABLE obra_artistica; Type: COMMENT; Schema: docencia; Owner: -
+--
+
+COMMENT ON TABLE obra_artistica IS 'Tabla contiene permite el registro de las Obras Artisticas del Docente';
+
+
+--
+-- TOC entry 211 (class 1259 OID 59897)
+-- Name: obra_artistica_id_obra_artistica_seq; Type: SEQUENCE; Schema: docencia; Owner: -
+--
+
+CREATE SEQUENCE obra_artistica_id_obra_artistica_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2272 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: obra_artistica_id_obra_artistica_seq; Type: SEQUENCE OWNED BY; Schema: docencia; Owner: -
+--
+
+ALTER SEQUENCE obra_artistica_id_obra_artistica_seq OWNED BY obra_artistica.id_obra_artistica;
+
+
+--
+-- TOC entry 197 (class 1259 OID 59685)
 -- Name: pais; Type: TABLE; Schema: docencia; Owner: -
 --
 
@@ -162,7 +213,7 @@ CREATE TABLE pais (
 
 
 --
--- TOC entry 201 (class 1259 OID 59688)
+-- TOC entry 198 (class 1259 OID 59688)
 -- Name: proyectocurricular; Type: TABLE; Schema: docencia; Owner: -
 --
 
@@ -175,7 +226,7 @@ CREATE TABLE proyectocurricular (
 
 
 --
--- TOC entry 202 (class 1259 OID 59695)
+-- TOC entry 199 (class 1259 OID 59695)
 -- Name: revista_indexada; Type: TABLE; Schema: docencia; Owner: -
 --
 
@@ -202,7 +253,7 @@ CREATE TABLE revista_indexada (
 
 
 --
--- TOC entry 203 (class 1259 OID 59701)
+-- TOC entry 200 (class 1259 OID 59701)
 -- Name: tipo_documento; Type: TABLE; Schema: docencia; Owner: -
 --
 
@@ -214,7 +265,7 @@ CREATE TABLE tipo_documento (
 
 
 --
--- TOC entry 204 (class 1259 OID 59707)
+-- TOC entry 201 (class 1259 OID 59707)
 -- Name: tipo_indexacion; Type: TABLE; Schema: docencia; Owner: -
 --
 
@@ -228,7 +279,7 @@ CREATE TABLE tipo_indexacion (
 SET search_path = kyron, pg_catalog;
 
 --
--- TOC entry 175 (class 1259 OID 59518)
+-- TOC entry 172 (class 1259 OID 59518)
 -- Name: kyron_bloque; Type: TABLE; Schema: kyron; Owner: -
 --
 
@@ -241,7 +292,7 @@ CREATE TABLE kyron_bloque (
 
 
 --
--- TOC entry 176 (class 1259 OID 59525)
+-- TOC entry 173 (class 1259 OID 59525)
 -- Name: kyron_bloque_id_bloque_seq; Type: SEQUENCE; Schema: kyron; Owner: -
 --
 
@@ -255,7 +306,7 @@ CREATE SEQUENCE kyron_bloque_id_bloque_seq
 
 --
 -- TOC entry 2273 (class 0 OID 0)
--- Dependencies: 176
+-- Dependencies: 173
 -- Name: kyron_bloque_id_bloque_seq; Type: SEQUENCE OWNED BY; Schema: kyron; Owner: -
 --
 
@@ -263,7 +314,7 @@ ALTER SEQUENCE kyron_bloque_id_bloque_seq OWNED BY kyron_bloque.id_bloque;
 
 
 --
--- TOC entry 177 (class 1259 OID 59527)
+-- TOC entry 174 (class 1259 OID 59527)
 -- Name: kyron_bloque_pagina; Type: TABLE; Schema: kyron; Owner: -
 --
 
@@ -277,7 +328,7 @@ CREATE TABLE kyron_bloque_pagina (
 
 
 --
--- TOC entry 178 (class 1259 OID 59533)
+-- TOC entry 175 (class 1259 OID 59533)
 -- Name: kyron_bloque_pagina_idrelacion_seq; Type: SEQUENCE; Schema: kyron; Owner: -
 --
 
@@ -291,7 +342,7 @@ CREATE SEQUENCE kyron_bloque_pagina_idrelacion_seq
 
 --
 -- TOC entry 2274 (class 0 OID 0)
--- Dependencies: 178
+-- Dependencies: 175
 -- Name: kyron_bloque_pagina_idrelacion_seq; Type: SEQUENCE OWNED BY; Schema: kyron; Owner: -
 --
 
@@ -299,7 +350,7 @@ ALTER SEQUENCE kyron_bloque_pagina_idrelacion_seq OWNED BY kyron_bloque_pagina.i
 
 
 --
--- TOC entry 193 (class 1259 OID 59641)
+-- TOC entry 190 (class 1259 OID 59641)
 -- Name: kyron_configuracion; Type: TABLE; Schema: kyron; Owner: -
 --
 
@@ -311,7 +362,7 @@ CREATE TABLE kyron_configuracion (
 
 
 --
--- TOC entry 194 (class 1259 OID 59647)
+-- TOC entry 191 (class 1259 OID 59647)
 -- Name: kyron_configuracion_id_parametro_seq; Type: SEQUENCE; Schema: kyron; Owner: -
 --
 
@@ -325,7 +376,7 @@ CREATE SEQUENCE kyron_configuracion_id_parametro_seq
 
 --
 -- TOC entry 2275 (class 0 OID 0)
--- Dependencies: 194
+-- Dependencies: 191
 -- Name: kyron_configuracion_id_parametro_seq; Type: SEQUENCE OWNED BY; Schema: kyron; Owner: -
 --
 
@@ -333,7 +384,7 @@ ALTER SEQUENCE kyron_configuracion_id_parametro_seq OWNED BY kyron_configuracion
 
 
 --
--- TOC entry 179 (class 1259 OID 59543)
+-- TOC entry 176 (class 1259 OID 59543)
 -- Name: kyron_dbms; Type: TABLE; Schema: kyron; Owner: -
 --
 
@@ -352,7 +403,7 @@ CREATE TABLE kyron_dbms (
 
 
 --
--- TOC entry 180 (class 1259 OID 59549)
+-- TOC entry 177 (class 1259 OID 59549)
 -- Name: kyron_dbms_idconexion_seq; Type: SEQUENCE; Schema: kyron; Owner: -
 --
 
@@ -366,7 +417,7 @@ CREATE SEQUENCE kyron_dbms_idconexion_seq
 
 --
 -- TOC entry 2276 (class 0 OID 0)
--- Dependencies: 180
+-- Dependencies: 177
 -- Name: kyron_dbms_idconexion_seq; Type: SEQUENCE OWNED BY; Schema: kyron; Owner: -
 --
 
@@ -374,7 +425,7 @@ ALTER SEQUENCE kyron_dbms_idconexion_seq OWNED BY kyron_dbms.idconexion;
 
 
 --
--- TOC entry 181 (class 1259 OID 59551)
+-- TOC entry 178 (class 1259 OID 59551)
 -- Name: kyron_estilo; Type: TABLE; Schema: kyron; Owner: -
 --
 
@@ -385,7 +436,7 @@ CREATE TABLE kyron_estilo (
 
 
 --
--- TOC entry 182 (class 1259 OID 59555)
+-- TOC entry 179 (class 1259 OID 59555)
 -- Name: kyron_logger; Type: TABLE; Schema: kyron; Owner: -
 --
 
@@ -397,7 +448,7 @@ CREATE TABLE kyron_logger (
 
 
 --
--- TOC entry 183 (class 1259 OID 59558)
+-- TOC entry 180 (class 1259 OID 59558)
 -- Name: kyron_logger_id_seq; Type: SEQUENCE; Schema: kyron; Owner: -
 --
 
@@ -411,7 +462,7 @@ CREATE SEQUENCE kyron_logger_id_seq
 
 --
 -- TOC entry 2277 (class 0 OID 0)
--- Dependencies: 183
+-- Dependencies: 180
 -- Name: kyron_logger_id_seq; Type: SEQUENCE OWNED BY; Schema: kyron; Owner: -
 --
 
@@ -419,7 +470,7 @@ ALTER SEQUENCE kyron_logger_id_seq OWNED BY kyron_logger.id;
 
 
 --
--- TOC entry 184 (class 1259 OID 59560)
+-- TOC entry 181 (class 1259 OID 59560)
 -- Name: kyron_pagina; Type: TABLE; Schema: kyron; Owner: -
 --
 
@@ -434,7 +485,7 @@ CREATE TABLE kyron_pagina (
 
 
 --
--- TOC entry 185 (class 1259 OID 59570)
+-- TOC entry 182 (class 1259 OID 59570)
 -- Name: kyron_pagina_id_pagina_seq; Type: SEQUENCE; Schema: kyron; Owner: -
 --
 
@@ -448,7 +499,7 @@ CREATE SEQUENCE kyron_pagina_id_pagina_seq
 
 --
 -- TOC entry 2278 (class 0 OID 0)
--- Dependencies: 185
+-- Dependencies: 182
 -- Name: kyron_pagina_id_pagina_seq; Type: SEQUENCE OWNED BY; Schema: kyron; Owner: -
 --
 
@@ -456,7 +507,7 @@ ALTER SEQUENCE kyron_pagina_id_pagina_seq OWNED BY kyron_pagina.id_pagina;
 
 
 --
--- TOC entry 186 (class 1259 OID 59572)
+-- TOC entry 183 (class 1259 OID 59572)
 -- Name: kyron_subsistema; Type: TABLE; Schema: kyron; Owner: -
 --
 
@@ -470,7 +521,7 @@ CREATE TABLE kyron_subsistema (
 
 
 --
--- TOC entry 187 (class 1259 OID 59579)
+-- TOC entry 184 (class 1259 OID 59579)
 -- Name: kyron_subsistema_id_subsistema_seq; Type: SEQUENCE; Schema: kyron; Owner: -
 --
 
@@ -484,7 +535,7 @@ CREATE SEQUENCE kyron_subsistema_id_subsistema_seq
 
 --
 -- TOC entry 2279 (class 0 OID 0)
--- Dependencies: 187
+-- Dependencies: 184
 -- Name: kyron_subsistema_id_subsistema_seq; Type: SEQUENCE OWNED BY; Schema: kyron; Owner: -
 --
 
@@ -492,7 +543,7 @@ ALTER SEQUENCE kyron_subsistema_id_subsistema_seq OWNED BY kyron_subsistema.id_s
 
 
 --
--- TOC entry 188 (class 1259 OID 59581)
+-- TOC entry 185 (class 1259 OID 59581)
 -- Name: kyron_tempformulario; Type: TABLE; Schema: kyron; Owner: -
 --
 
@@ -506,7 +557,7 @@ CREATE TABLE kyron_tempformulario (
 
 
 --
--- TOC entry 189 (class 1259 OID 59587)
+-- TOC entry 186 (class 1259 OID 59587)
 -- Name: kyron_usuario; Type: TABLE; Schema: kyron; Owner: -
 --
 
@@ -526,7 +577,7 @@ CREATE TABLE kyron_usuario (
 
 
 --
--- TOC entry 190 (class 1259 OID 59602)
+-- TOC entry 187 (class 1259 OID 59602)
 -- Name: kyron_usuario_id_usuario_seq; Type: SEQUENCE; Schema: kyron; Owner: -
 --
 
@@ -540,7 +591,7 @@ CREATE SEQUENCE kyron_usuario_id_usuario_seq
 
 --
 -- TOC entry 2280 (class 0 OID 0)
--- Dependencies: 190
+-- Dependencies: 187
 -- Name: kyron_usuario_id_usuario_seq; Type: SEQUENCE OWNED BY; Schema: kyron; Owner: -
 --
 
@@ -548,7 +599,7 @@ ALTER SEQUENCE kyron_usuario_id_usuario_seq OWNED BY kyron_usuario.id_usuario;
 
 
 --
--- TOC entry 191 (class 1259 OID 59604)
+-- TOC entry 188 (class 1259 OID 59604)
 -- Name: kyron_usuario_subsistema; Type: TABLE; Schema: kyron; Owner: -
 --
 
@@ -560,7 +611,7 @@ CREATE TABLE kyron_usuario_subsistema (
 
 
 --
--- TOC entry 192 (class 1259 OID 59610)
+-- TOC entry 189 (class 1259 OID 59610)
 -- Name: kyron_valor_sesion; Type: TABLE; Schema: kyron; Owner: -
 --
 
@@ -575,7 +626,7 @@ CREATE TABLE kyron_valor_sesion (
 SET search_path = menu, pg_catalog;
 
 --
--- TOC entry 205 (class 1259 OID 59802)
+-- TOC entry 202 (class 1259 OID 59802)
 -- Name: grupo; Type: TABLE; Schema: menu; Owner: -
 --
 
@@ -586,7 +637,7 @@ CREATE TABLE grupo (
 
 
 --
--- TOC entry 206 (class 1259 OID 59808)
+-- TOC entry 203 (class 1259 OID 59808)
 -- Name: grupo_id_grupo_seq; Type: SEQUENCE; Schema: menu; Owner: -
 --
 
@@ -600,7 +651,7 @@ CREATE SEQUENCE grupo_id_grupo_seq
 
 --
 -- TOC entry 2281 (class 0 OID 0)
--- Dependencies: 206
+-- Dependencies: 203
 -- Name: grupo_id_grupo_seq; Type: SEQUENCE OWNED BY; Schema: menu; Owner: -
 --
 
@@ -608,7 +659,7 @@ ALTER SEQUENCE grupo_id_grupo_seq OWNED BY grupo.id_grupo;
 
 
 --
--- TOC entry 207 (class 1259 OID 59810)
+-- TOC entry 204 (class 1259 OID 59810)
 -- Name: item; Type: TABLE; Schema: menu; Owner: -
 --
 
@@ -626,7 +677,7 @@ CREATE TABLE item (
 
 
 --
--- TOC entry 208 (class 1259 OID 59819)
+-- TOC entry 205 (class 1259 OID 59819)
 -- Name: item_id_item_seq; Type: SEQUENCE; Schema: menu; Owner: -
 --
 
@@ -640,7 +691,7 @@ CREATE SEQUENCE item_id_item_seq
 
 --
 -- TOC entry 2282 (class 0 OID 0)
--- Dependencies: 208
+-- Dependencies: 205
 -- Name: item_id_item_seq; Type: SEQUENCE OWNED BY; Schema: menu; Owner: -
 --
 
@@ -648,7 +699,7 @@ ALTER SEQUENCE item_id_item_seq OWNED BY item.id_item;
 
 
 --
--- TOC entry 209 (class 1259 OID 59821)
+-- TOC entry 206 (class 1259 OID 59821)
 -- Name: menu; Type: TABLE; Schema: menu; Owner: -
 --
 
@@ -661,7 +712,7 @@ CREATE TABLE menu (
 
 
 --
--- TOC entry 210 (class 1259 OID 59829)
+-- TOC entry 207 (class 1259 OID 59829)
 -- Name: menu_id_menu_seq; Type: SEQUENCE; Schema: menu; Owner: -
 --
 
@@ -675,7 +726,7 @@ CREATE SEQUENCE menu_id_menu_seq
 
 --
 -- TOC entry 2283 (class 0 OID 0)
--- Dependencies: 210
+-- Dependencies: 207
 -- Name: menu_id_menu_seq; Type: SEQUENCE OWNED BY; Schema: menu; Owner: -
 --
 
@@ -683,7 +734,7 @@ ALTER SEQUENCE menu_id_menu_seq OWNED BY menu.id_menu;
 
 
 --
--- TOC entry 211 (class 1259 OID 59831)
+-- TOC entry 208 (class 1259 OID 59831)
 -- Name: tipo_item; Type: TABLE; Schema: menu; Owner: -
 --
 
@@ -694,7 +745,7 @@ CREATE TABLE tipo_item (
 
 
 --
--- TOC entry 212 (class 1259 OID 59837)
+-- TOC entry 209 (class 1259 OID 59837)
 -- Name: tipo_item_id_tipo_item_seq; Type: SEQUENCE; Schema: menu; Owner: -
 --
 
@@ -708,54 +759,17 @@ CREATE SEQUENCE tipo_item_id_tipo_item_seq
 
 --
 -- TOC entry 2284 (class 0 OID 0)
--- Dependencies: 212
+-- Dependencies: 209
 -- Name: tipo_item_id_tipo_item_seq; Type: SEQUENCE OWNED BY; Schema: menu; Owner: -
 --
 
 ALTER SEQUENCE tipo_item_id_tipo_item_seq OWNED BY tipo_item.id_tipo_item;
 
 
-SET search_path = public, pg_catalog;
-
---
--- TOC entry 173 (class 1259 OID 59507)
--- Name: kyron_bloque; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE kyron_bloque (
-    id_bloque integer NOT NULL,
-    nombre character(50) NOT NULL,
-    descripcion character(255) DEFAULT NULL::bpchar,
-    grupo character(200) NOT NULL
-);
-
-
---
--- TOC entry 174 (class 1259 OID 59514)
--- Name: kyron_bloque_id_bloque_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE kyron_bloque_id_bloque_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- TOC entry 2285 (class 0 OID 0)
--- Dependencies: 174
--- Name: kyron_bloque_id_bloque_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE kyron_bloque_id_bloque_seq OWNED BY kyron_bloque.id_bloque;
-
-
 SET search_path = kyron, pg_catalog;
 
 --
--- TOC entry 2015 (class 2604 OID 59614)
+-- TOC entry 2013 (class 2604 OID 59614)
 -- Name: id_bloque; Type: DEFAULT; Schema: kyron; Owner: -
 --
 
@@ -763,7 +777,7 @@ ALTER TABLE ONLY kyron_bloque ALTER COLUMN id_bloque SET DEFAULT nextval('kyron_
 
 
 --
--- TOC entry 2019 (class 2604 OID 59615)
+-- TOC entry 2017 (class 2604 OID 59615)
 -- Name: idrelacion; Type: DEFAULT; Schema: kyron; Owner: -
 --
 
@@ -771,7 +785,7 @@ ALTER TABLE ONLY kyron_bloque_pagina ALTER COLUMN idrelacion SET DEFAULT nextval
 
 
 --
--- TOC entry 2044 (class 2604 OID 59649)
+-- TOC entry 2042 (class 2604 OID 59649)
 -- Name: id_parametro; Type: DEFAULT; Schema: kyron; Owner: -
 --
 
@@ -779,7 +793,7 @@ ALTER TABLE ONLY kyron_configuracion ALTER COLUMN id_parametro SET DEFAULT nextv
 
 
 --
--- TOC entry 2020 (class 2604 OID 59617)
+-- TOC entry 2018 (class 2604 OID 59617)
 -- Name: idconexion; Type: DEFAULT; Schema: kyron; Owner: -
 --
 
@@ -787,7 +801,7 @@ ALTER TABLE ONLY kyron_dbms ALTER COLUMN idconexion SET DEFAULT nextval('kyron_d
 
 
 --
--- TOC entry 2022 (class 2604 OID 59618)
+-- TOC entry 2020 (class 2604 OID 59618)
 -- Name: id; Type: DEFAULT; Schema: kyron; Owner: -
 --
 
@@ -795,7 +809,7 @@ ALTER TABLE ONLY kyron_logger ALTER COLUMN id SET DEFAULT nextval('kyron_logger_
 
 
 --
--- TOC entry 2027 (class 2604 OID 59619)
+-- TOC entry 2025 (class 2604 OID 59619)
 -- Name: id_pagina; Type: DEFAULT; Schema: kyron; Owner: -
 --
 
@@ -803,7 +817,7 @@ ALTER TABLE ONLY kyron_pagina ALTER COLUMN id_pagina SET DEFAULT nextval('kyron_
 
 
 --
--- TOC entry 2029 (class 2604 OID 59620)
+-- TOC entry 2027 (class 2604 OID 59620)
 -- Name: id_subsistema; Type: DEFAULT; Schema: kyron; Owner: -
 --
 
@@ -811,7 +825,7 @@ ALTER TABLE ONLY kyron_subsistema ALTER COLUMN id_subsistema SET DEFAULT nextval
 
 
 --
--- TOC entry 2039 (class 2604 OID 59621)
+-- TOC entry 2037 (class 2604 OID 59621)
 -- Name: id_usuario; Type: DEFAULT; Schema: kyron; Owner: -
 --
 
@@ -821,7 +835,7 @@ ALTER TABLE ONLY kyron_usuario ALTER COLUMN id_usuario SET DEFAULT nextval('kyro
 SET search_path = menu, pg_catalog;
 
 --
--- TOC entry 2048 (class 2604 OID 59839)
+-- TOC entry 2046 (class 2604 OID 59839)
 -- Name: id_grupo; Type: DEFAULT; Schema: menu; Owner: -
 --
 
@@ -829,7 +843,7 @@ ALTER TABLE ONLY grupo ALTER COLUMN id_grupo SET DEFAULT nextval('grupo_id_grupo
 
 
 --
--- TOC entry 2052 (class 2604 OID 59840)
+-- TOC entry 2050 (class 2604 OID 59840)
 -- Name: id_item; Type: DEFAULT; Schema: menu; Owner: -
 --
 
@@ -837,7 +851,7 @@ ALTER TABLE ONLY item ALTER COLUMN id_item SET DEFAULT nextval('item_id_item_seq
 
 
 --
--- TOC entry 2055 (class 2604 OID 59841)
+-- TOC entry 2053 (class 2604 OID 59841)
 -- Name: id_menu; Type: DEFAULT; Schema: menu; Owner: -
 --
 
@@ -845,7 +859,7 @@ ALTER TABLE ONLY menu ALTER COLUMN id_menu SET DEFAULT nextval('menu_id_menu_seq
 
 
 --
--- TOC entry 2056 (class 2604 OID 59842)
+-- TOC entry 2054 (class 2604 OID 59842)
 -- Name: id_tipo_item; Type: DEFAULT; Schema: menu; Owner: -
 --
 
@@ -855,16 +869,16 @@ ALTER TABLE ONLY tipo_item ALTER COLUMN id_tipo_item SET DEFAULT nextval('tipo_i
 SET search_path = docencia, pg_catalog;
 
 --
--- TOC entry 2248 (class 0 OID 59653)
--- Dependencies: 195
+-- TOC entry 2245 (class 0 OID 59653)
+-- Dependencies: 192
 -- Data for Name: comunicacion_corta; Type: TABLE DATA; Schema: docencia; Owner: -
 --
 
 
 
 --
--- TOC entry 2249 (class 0 OID 59659)
--- Dependencies: 196
+-- TOC entry 2246 (class 0 OID 59659)
+-- Dependencies: 193
 -- Data for Name: contexto; Type: TABLE DATA; Schema: docencia; Owner: -
 --
 
@@ -873,8 +887,8 @@ INSERT INTO contexto (id_contexto, descripcion) VALUES (1, 'Internacional');
 
 
 --
--- TOC entry 2250 (class 0 OID 59665)
--- Dependencies: 197
+-- TOC entry 2247 (class 0 OID 59665)
+-- Dependencies: 194
 -- Data for Name: docente; Type: TABLE DATA; Schema: docencia; Owner: -
 --
 
@@ -1567,8 +1581,8 @@ INSERT INTO docente (documento_docente, id_tipo_documento, primer_apellido, segu
 
 
 --
--- TOC entry 2251 (class 0 OID 59672)
--- Dependencies: 198
+-- TOC entry 2248 (class 0 OID 59672)
+-- Dependencies: 195
 -- Data for Name: docente_proyectocurricular; Type: TABLE DATA; Schema: docencia; Owner: -
 --
 
@@ -2260,8 +2274,8 @@ INSERT INTO docente_proyectocurricular (documento_docente, id_proyectocurricular
 
 
 --
--- TOC entry 2252 (class 0 OID 59679)
--- Dependencies: 199
+-- TOC entry 2249 (class 0 OID 59679)
+-- Dependencies: 196
 -- Data for Name: facultad; Type: TABLE DATA; Schema: docencia; Owner: -
 --
 
@@ -2273,8 +2287,25 @@ INSERT INTO facultad (id_facultad, nombre, abreviatura) VALUES (32, 'FACULTAD TE
 
 
 --
--- TOC entry 2253 (class 0 OID 59685)
--- Dependencies: 200
+-- TOC entry 2263 (class 0 OID 59891)
+-- Dependencies: 210
+-- Data for Name: obra_artistica; Type: TABLE DATA; Schema: docencia; Owner: -
+--
+
+
+
+--
+-- TOC entry 2285 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: obra_artistica_id_obra_artistica_seq; Type: SEQUENCE SET; Schema: docencia; Owner: -
+--
+
+SELECT pg_catalog.setval('obra_artistica_id_obra_artistica_seq', 1, false);
+
+
+--
+-- TOC entry 2250 (class 0 OID 59685)
+-- Dependencies: 197
 -- Data for Name: pais; Type: TABLE DATA; Schema: docencia; Owner: -
 --
 
@@ -2520,8 +2551,8 @@ INSERT INTO pais (paiscodigo, paisnombre, paiscontinente, paisregion, paisarea, 
 
 
 --
--- TOC entry 2254 (class 0 OID 59688)
--- Dependencies: 201
+-- TOC entry 2251 (class 0 OID 59688)
+-- Dependencies: 198
 -- Data for Name: proyectocurricular; Type: TABLE DATA; Schema: docencia; Owner: -
 --
 
@@ -2678,8 +2709,8 @@ INSERT INTO proyectocurricular (id_proyectocurricular, id_facultad, nombre, esta
 
 
 --
--- TOC entry 2255 (class 0 OID 59695)
--- Dependencies: 202
+-- TOC entry 2252 (class 0 OID 59695)
+-- Dependencies: 199
 -- Data for Name: revista_indexada; Type: TABLE DATA; Schema: docencia; Owner: -
 --
 
@@ -2690,8 +2721,8 @@ INSERT INTO revista_indexada (documento_docente, nombre_revista, id_contexto, pa
 
 
 --
--- TOC entry 2256 (class 0 OID 59701)
--- Dependencies: 203
+-- TOC entry 2253 (class 0 OID 59701)
+-- Dependencies: 200
 -- Data for Name: tipo_documento; Type: TABLE DATA; Schema: docencia; Owner: -
 --
 
@@ -2704,8 +2735,8 @@ INSERT INTO tipo_documento (id_tipo_documento, descripcion, abreviatura) VALUES 
 
 
 --
--- TOC entry 2257 (class 0 OID 59707)
--- Dependencies: 204
+-- TOC entry 2254 (class 0 OID 59707)
+-- Dependencies: 201
 -- Data for Name: tipo_indexacion; Type: TABLE DATA; Schema: docencia; Owner: -
 --
 
@@ -2722,8 +2753,8 @@ INSERT INTO tipo_indexacion (id_tipo_indexacion, descripcion, id_contexto) VALUE
 SET search_path = kyron, pg_catalog;
 
 --
--- TOC entry 2228 (class 0 OID 59518)
--- Dependencies: 175
+-- TOC entry 2225 (class 0 OID 59518)
+-- Dependencies: 172
 -- Data for Name: kyron_bloque; Type: TABLE DATA; Schema: kyron; Owner: -
 --
 
@@ -2745,20 +2776,21 @@ INSERT INTO kyron_bloque (id_bloque, nombre, descripcion, grupo) VALUES (4, 'ind
 INSERT INTO kyron_bloque (id_bloque, nombre, descripcion, grupo) VALUES (5, 'bloqueModelo1                                     ', 'Módulo prueba                                                                                                                                                                                                                                                  ', 'bloquesModelo                                                                                                                                                                                           ');
 INSERT INTO kyron_bloque (id_bloque, nombre, descripcion, grupo) VALUES (6, 'produccionDeLibros                                ', 'Producción de libros                                                                                                                                                                                                                                           ', 'asignacionPuntajes/salariales                                                                                                                                                                           ');
 INSERT INTO kyron_bloque (id_bloque, nombre, descripcion, grupo) VALUES (7, 'cartasEditor                                      ', 'Cartas al Editor                                                                                                                                                                                                                                               ', 'asignacionPuntajes/salariales                                                                                                                                                                           ');
+INSERT INTO kyron_bloque (id_bloque, nombre, descripcion, grupo) VALUES (8, 'obrasArtisticas                                   ', 'Obras artísticas puntos salariales                                                                                                                                                                                                                             ', 'asignacionPuntajes/salariales                                                                                                                                                                           ');
 
 
 --
 -- TOC entry 2286 (class 0 OID 0)
--- Dependencies: 176
+-- Dependencies: 173
 -- Name: kyron_bloque_id_bloque_seq; Type: SEQUENCE SET; Schema: kyron; Owner: -
 --
 
-SELECT pg_catalog.setval('kyron_bloque_id_bloque_seq', 7, true);
+SELECT pg_catalog.setval('kyron_bloque_id_bloque_seq', 9, true);
 
 
 --
--- TOC entry 2230 (class 0 OID 59527)
--- Dependencies: 177
+-- TOC entry 2227 (class 0 OID 59527)
+-- Dependencies: 174
 -- Data for Name: kyron_bloque_pagina; Type: TABLE DATA; Schema: kyron; Owner: -
 --
 
@@ -2809,20 +2841,24 @@ INSERT INTO kyron_bloque_pagina (idrelacion, id_pagina, id_bloque, seccion, posi
 INSERT INTO kyron_bloque_pagina (idrelacion, id_pagina, id_bloque, seccion, posicion) VALUES (38, 2, 2, 'E', 1);
 INSERT INTO kyron_bloque_pagina (idrelacion, id_pagina, id_bloque, seccion, posicion) VALUES (33, 1, 1, 'A', 1);
 INSERT INTO kyron_bloque_pagina (idrelacion, id_pagina, id_bloque, seccion, posicion) VALUES (40, 2, 4, 'C', 1);
+INSERT INTO kyron_bloque_pagina (idrelacion, id_pagina, id_bloque, seccion, posicion) VALUES (50, 5, 1, 'A', 1);
+INSERT INTO kyron_bloque_pagina (idrelacion, id_pagina, id_bloque, seccion, posicion) VALUES (51, 5, 2, 'E', 1);
+INSERT INTO kyron_bloque_pagina (idrelacion, id_pagina, id_bloque, seccion, posicion) VALUES (52, 5, 3, 'A', 2);
+INSERT INTO kyron_bloque_pagina (idrelacion, id_pagina, id_bloque, seccion, posicion) VALUES (53, 5, 8, 'C', 1);
 
 
 --
 -- TOC entry 2287 (class 0 OID 0)
--- Dependencies: 178
+-- Dependencies: 175
 -- Name: kyron_bloque_pagina_idrelacion_seq; Type: SEQUENCE SET; Schema: kyron; Owner: -
 --
 
-SELECT pg_catalog.setval('kyron_bloque_pagina_idrelacion_seq', 49, true);
+SELECT pg_catalog.setval('kyron_bloque_pagina_idrelacion_seq', 51, true);
 
 
 --
--- TOC entry 2246 (class 0 OID 59641)
--- Dependencies: 193
+-- TOC entry 2243 (class 0 OID 59641)
+-- Dependencies: 190
 -- Data for Name: kyron_configuracion; Type: TABLE DATA; Schema: kyron; Owner: -
 --
 
@@ -2850,7 +2886,7 @@ INSERT INTO kyron_configuracion (id_parametro, parametro, valor) VALUES (20, 'ho
 
 --
 -- TOC entry 2288 (class 0 OID 0)
--- Dependencies: 194
+-- Dependencies: 191
 -- Name: kyron_configuracion_id_parametro_seq; Type: SEQUENCE SET; Schema: kyron; Owner: -
 --
 
@@ -2858,8 +2894,8 @@ SELECT pg_catalog.setval('kyron_configuracion_id_parametro_seq', 20, true);
 
 
 --
--- TOC entry 2232 (class 0 OID 59543)
--- Dependencies: 179
+-- TOC entry 2229 (class 0 OID 59543)
+-- Dependencies: 176
 -- Data for Name: kyron_dbms; Type: TABLE DATA; Schema: kyron; Owner: -
 --
 
@@ -2870,7 +2906,7 @@ INSERT INTO kyron_dbms (idconexion, nombre, dbms, servidor, puerto, conexionssh,
 
 --
 -- TOC entry 2289 (class 0 OID 0)
--- Dependencies: 180
+-- Dependencies: 177
 -- Name: kyron_dbms_idconexion_seq; Type: SEQUENCE SET; Schema: kyron; Owner: -
 --
 
@@ -2878,16 +2914,16 @@ SELECT pg_catalog.setval('kyron_dbms_idconexion_seq', 8, true);
 
 
 --
--- TOC entry 2234 (class 0 OID 59551)
--- Dependencies: 181
+-- TOC entry 2231 (class 0 OID 59551)
+-- Dependencies: 178
 -- Data for Name: kyron_estilo; Type: TABLE DATA; Schema: kyron; Owner: -
 --
 
 
 
 --
--- TOC entry 2235 (class 0 OID 59555)
--- Dependencies: 182
+-- TOC entry 2232 (class 0 OID 59555)
+-- Dependencies: 179
 -- Data for Name: kyron_logger; Type: TABLE DATA; Schema: kyron; Owner: -
 --
 
@@ -2895,7 +2931,7 @@ SELECT pg_catalog.setval('kyron_dbms_idconexion_seq', 8, true);
 
 --
 -- TOC entry 2290 (class 0 OID 0)
--- Dependencies: 183
+-- Dependencies: 180
 -- Name: kyron_logger_id_seq; Type: SEQUENCE SET; Schema: kyron; Owner: -
 --
 
@@ -2903,8 +2939,8 @@ SELECT pg_catalog.setval('kyron_logger_id_seq', 1, false);
 
 
 --
--- TOC entry 2237 (class 0 OID 59560)
--- Dependencies: 184
+-- TOC entry 2234 (class 0 OID 59560)
+-- Dependencies: 181
 -- Data for Name: kyron_pagina; Type: TABLE DATA; Schema: kyron; Owner: -
 --
 
@@ -2920,20 +2956,21 @@ INSERT INTO kyron_pagina (id_pagina, nombre, descripcion, modulo, nivel, paramet
 INSERT INTO kyron_pagina (id_pagina, nombre, descripcion, modulo, nivel, parametro) VALUES (4, 'cartasEditor                                      ', 'Página que contiene el módulo de cartas al editor                                                                                                                                                                                                         ', '                                                  ', 0, 'jquery=true&jquery-ui=true&jquery-validation=true                                                                                                                                                                                                              ');
 INSERT INTO kyron_pagina (id_pagina, nombre, descripcion, modulo, nivel, parametro) VALUES (1, 'index                                             ', 'Página principal del proyecto Kyrón.                                                                                                                                                                                                                      ', '                                                  ', 0, 'jquery=true&jquery-ui=true&jquery-validation=true                                                                                                                                                                                                              ');
 INSERT INTO kyron_pagina (id_pagina, nombre, descripcion, modulo, nivel, parametro) VALUES (2, 'revistasIndexadas                                 ', 'Página que contiene el módulo de revistas indexadas.                                                                                                                                                                                                      ', '                                                  ', 0, 'jquery=true&jquery-ui=true&jquery-validation=true                                                                                                                                                                                                              ');
+INSERT INTO kyron_pagina (id_pagina, nombre, descripcion, modulo, nivel, parametro) VALUES (5, 'obrasArtisticas                                   ', 'Página que contiene el módulo de obras artísticas puntos salariales                                                                                                                                                                                       ', '                                                  ', 0, 'jquery=true&jquery-ui=true&jquery-validation=true                                                                                                                                                                                                              ');
 
 
 --
 -- TOC entry 2291 (class 0 OID 0)
--- Dependencies: 185
+-- Dependencies: 182
 -- Name: kyron_pagina_id_pagina_seq; Type: SEQUENCE SET; Schema: kyron; Owner: -
 --
 
-SELECT pg_catalog.setval('kyron_pagina_id_pagina_seq', 6, true);
+SELECT pg_catalog.setval('kyron_pagina_id_pagina_seq', 8, true);
 
 
 --
--- TOC entry 2239 (class 0 OID 59572)
--- Dependencies: 186
+-- TOC entry 2236 (class 0 OID 59572)
+-- Dependencies: 183
 -- Data for Name: kyron_subsistema; Type: TABLE DATA; Schema: kyron; Owner: -
 --
 
@@ -2941,7 +2978,7 @@ SELECT pg_catalog.setval('kyron_pagina_id_pagina_seq', 6, true);
 
 --
 -- TOC entry 2292 (class 0 OID 0)
--- Dependencies: 187
+-- Dependencies: 184
 -- Name: kyron_subsistema_id_subsistema_seq; Type: SEQUENCE SET; Schema: kyron; Owner: -
 --
 
@@ -2949,16 +2986,16 @@ SELECT pg_catalog.setval('kyron_subsistema_id_subsistema_seq', 1, false);
 
 
 --
--- TOC entry 2241 (class 0 OID 59581)
--- Dependencies: 188
+-- TOC entry 2238 (class 0 OID 59581)
+-- Dependencies: 185
 -- Data for Name: kyron_tempformulario; Type: TABLE DATA; Schema: kyron; Owner: -
 --
 
 
 
 --
--- TOC entry 2242 (class 0 OID 59587)
--- Dependencies: 189
+-- TOC entry 2239 (class 0 OID 59587)
+-- Dependencies: 186
 -- Data for Name: kyron_usuario; Type: TABLE DATA; Schema: kyron; Owner: -
 --
 
@@ -2966,7 +3003,7 @@ SELECT pg_catalog.setval('kyron_subsistema_id_subsistema_seq', 1, false);
 
 --
 -- TOC entry 2293 (class 0 OID 0)
--- Dependencies: 190
+-- Dependencies: 187
 -- Name: kyron_usuario_id_usuario_seq; Type: SEQUENCE SET; Schema: kyron; Owner: -
 --
 
@@ -2974,16 +3011,16 @@ SELECT pg_catalog.setval('kyron_usuario_id_usuario_seq', 1, false);
 
 
 --
--- TOC entry 2244 (class 0 OID 59604)
--- Dependencies: 191
+-- TOC entry 2241 (class 0 OID 59604)
+-- Dependencies: 188
 -- Data for Name: kyron_usuario_subsistema; Type: TABLE DATA; Schema: kyron; Owner: -
 --
 
 
 
 --
--- TOC entry 2245 (class 0 OID 59610)
--- Dependencies: 192
+-- TOC entry 2242 (class 0 OID 59610)
+-- Dependencies: 189
 -- Data for Name: kyron_valor_sesion; Type: TABLE DATA; Schema: kyron; Owner: -
 --
 
@@ -2992,8 +3029,8 @@ SELECT pg_catalog.setval('kyron_usuario_id_usuario_seq', 1, false);
 SET search_path = menu, pg_catalog;
 
 --
--- TOC entry 2258 (class 0 OID 59802)
--- Dependencies: 205
+-- TOC entry 2255 (class 0 OID 59802)
+-- Dependencies: 202
 -- Data for Name: grupo; Type: TABLE DATA; Schema: menu; Owner: -
 --
 
@@ -3006,7 +3043,7 @@ INSERT INTO grupo (id_grupo, descripcion) VALUES (5, 'cerrarSesion');
 
 --
 -- TOC entry 2294 (class 0 OID 0)
--- Dependencies: 206
+-- Dependencies: 203
 -- Name: grupo_id_grupo_seq; Type: SEQUENCE SET; Schema: menu; Owner: -
 --
 
@@ -3014,8 +3051,8 @@ SELECT pg_catalog.setval('grupo_id_grupo_seq', 5, true);
 
 
 --
--- TOC entry 2260 (class 0 OID 59810)
--- Dependencies: 207
+-- TOC entry 2257 (class 0 OID 59810)
+-- Dependencies: 204
 -- Data for Name: item; Type: TABLE DATA; Schema: menu; Owner: -
 --
 
@@ -3025,7 +3062,6 @@ INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna
 INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (4, 1, 2, 3, 'consultarActividadDocente', 1, 4, NULL, true);
 INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (5, 1, 3, 2, 'tituloSalariales', 1, 0, NULL, true);
 INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (16, 1, 3, 3, 'comunicacionCorta', 1, 11, NULL, true);
-INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (17, 1, 3, 3, 'obrasArtisticasDocente', 1, 12, NULL, true);
 INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (18, 1, 3, 3, 'patentes', 1, 13, NULL, true);
 INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (19, 1, 3, 3, 'PremiosDocente', 1, 14, NULL, true);
 INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (20, 1, 3, 3, 'produccionVideosDocente', 1, 15, NULL, true);
@@ -3055,11 +3091,12 @@ INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna
 INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (14, 1, 3, 3, 'excelenciaAcademica', 1, 10, NULL, true);
 INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (15, 1, 3, 3, 'revistasIndexadas', 1, 1, NULL, true);
 INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (21, 1, 3, 3, 'produccionDeLibros', 1, 16, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (17, 1, 3, 3, 'obrasArtisticas', 1, 12, NULL, true);
 
 
 --
 -- TOC entry 2295 (class 0 OID 0)
--- Dependencies: 208
+-- Dependencies: 205
 -- Name: item_id_item_seq; Type: SEQUENCE SET; Schema: menu; Owner: -
 --
 
@@ -3067,8 +3104,8 @@ SELECT pg_catalog.setval('item_id_item_seq', 37, true);
 
 
 --
--- TOC entry 2262 (class 0 OID 59821)
--- Dependencies: 209
+-- TOC entry 2259 (class 0 OID 59821)
+-- Dependencies: 206
 -- Data for Name: menu; Type: TABLE DATA; Schema: menu; Owner: -
 --
 
@@ -3077,7 +3114,7 @@ INSERT INTO menu (id_menu, descripcion, perfil_usuario, estado_registro) VALUES 
 
 --
 -- TOC entry 2296 (class 0 OID 0)
--- Dependencies: 210
+-- Dependencies: 207
 -- Name: menu_id_menu_seq; Type: SEQUENCE SET; Schema: menu; Owner: -
 --
 
@@ -3085,8 +3122,8 @@ SELECT pg_catalog.setval('menu_id_menu_seq', 1, true);
 
 
 --
--- TOC entry 2264 (class 0 OID 59831)
--- Dependencies: 211
+-- TOC entry 2261 (class 0 OID 59831)
+-- Dependencies: 208
 -- Data for Name: tipo_item; Type: TABLE DATA; Schema: menu; Owner: -
 --
 
@@ -3098,36 +3135,17 @@ INSERT INTO tipo_item (id_tipo_item, descripcion) VALUES (4, 'link');
 
 --
 -- TOC entry 2297 (class 0 OID 0)
--- Dependencies: 212
+-- Dependencies: 209
 -- Name: tipo_item_id_tipo_item_seq; Type: SEQUENCE SET; Schema: menu; Owner: -
 --
 
 SELECT pg_catalog.setval('tipo_item_id_tipo_item_seq', 4, true);
 
 
-SET search_path = public, pg_catalog;
-
---
--- TOC entry 2226 (class 0 OID 59507)
--- Dependencies: 173
--- Data for Name: kyron_bloque; Type: TABLE DATA; Schema: public; Owner: -
---
-
-
-
---
--- TOC entry 2298 (class 0 OID 0)
--- Dependencies: 174
--- Name: kyron_bloque_id_bloque_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('kyron_bloque_id_bloque_seq', 1, false);
-
-
 SET search_path = docencia, pg_catalog;
 
 --
--- TOC entry 2076 (class 2606 OID 59714)
+-- TOC entry 2074 (class 2606 OID 59714)
 -- Name: comunicacion_corta_pkey; Type: CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3136,7 +3154,7 @@ ALTER TABLE ONLY comunicacion_corta
 
 
 --
--- TOC entry 2078 (class 2606 OID 59716)
+-- TOC entry 2076 (class 2606 OID 59716)
 -- Name: contexto_pkey; Type: CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3145,7 +3163,7 @@ ALTER TABLE ONLY contexto
 
 
 --
--- TOC entry 2080 (class 2606 OID 59718)
+-- TOC entry 2078 (class 2606 OID 59718)
 -- Name: docente_pkey; Type: CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3154,7 +3172,7 @@ ALTER TABLE ONLY docente
 
 
 --
--- TOC entry 2082 (class 2606 OID 59720)
+-- TOC entry 2080 (class 2606 OID 59720)
 -- Name: docente_proyectocurricular_pkey; Type: CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3163,7 +3181,7 @@ ALTER TABLE ONLY docente_proyectocurricular
 
 
 --
--- TOC entry 2084 (class 2606 OID 59722)
+-- TOC entry 2082 (class 2606 OID 59722)
 -- Name: facultad_pkey; Type: CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3172,7 +3190,7 @@ ALTER TABLE ONLY facultad
 
 
 --
--- TOC entry 2086 (class 2606 OID 59724)
+-- TOC entry 2084 (class 2606 OID 59724)
 -- Name: pais_k_pkey; Type: CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3181,7 +3199,7 @@ ALTER TABLE ONLY pais
 
 
 --
--- TOC entry 2088 (class 2606 OID 59726)
+-- TOC entry 2086 (class 2606 OID 59726)
 -- Name: proyectocurricular_pkey; Type: CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3190,7 +3208,7 @@ ALTER TABLE ONLY proyectocurricular
 
 
 --
--- TOC entry 2090 (class 2606 OID 59728)
+-- TOC entry 2088 (class 2606 OID 59728)
 -- Name: revista_indexada_pkey; Type: CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3199,7 +3217,7 @@ ALTER TABLE ONLY revista_indexada
 
 
 --
--- TOC entry 2092 (class 2606 OID 59730)
+-- TOC entry 2090 (class 2606 OID 59730)
 -- Name: tipo_documento_pkey; Type: CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3208,7 +3226,7 @@ ALTER TABLE ONLY tipo_documento
 
 
 --
--- TOC entry 2094 (class 2606 OID 59732)
+-- TOC entry 2092 (class 2606 OID 59732)
 -- Name: tipo_indexacion_pkey; Type: CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3219,7 +3237,7 @@ ALTER TABLE ONLY tipo_indexacion
 SET search_path = kyron, pg_catalog;
 
 --
--- TOC entry 2060 (class 2606 OID 59623)
+-- TOC entry 2058 (class 2606 OID 59623)
 -- Name: kyron_bloque_pagina_pkey; Type: CONSTRAINT; Schema: kyron; Owner: -
 --
 
@@ -3228,7 +3246,7 @@ ALTER TABLE ONLY kyron_bloque_pagina
 
 
 --
--- TOC entry 2058 (class 2606 OID 59625)
+-- TOC entry 2056 (class 2606 OID 59625)
 -- Name: kyron_bloque_pkey; Type: CONSTRAINT; Schema: kyron; Owner: -
 --
 
@@ -3237,7 +3255,7 @@ ALTER TABLE ONLY kyron_bloque
 
 
 --
--- TOC entry 2074 (class 2606 OID 59651)
+-- TOC entry 2072 (class 2606 OID 59651)
 -- Name: kyron_configuracion_pkey; Type: CONSTRAINT; Schema: kyron; Owner: -
 --
 
@@ -3246,7 +3264,7 @@ ALTER TABLE ONLY kyron_configuracion
 
 
 --
--- TOC entry 2062 (class 2606 OID 59629)
+-- TOC entry 2060 (class 2606 OID 59629)
 -- Name: kyron_dbms_pkey; Type: CONSTRAINT; Schema: kyron; Owner: -
 --
 
@@ -3255,7 +3273,7 @@ ALTER TABLE ONLY kyron_dbms
 
 
 --
--- TOC entry 2064 (class 2606 OID 59631)
+-- TOC entry 2062 (class 2606 OID 59631)
 -- Name: kyron_estilo_pkey; Type: CONSTRAINT; Schema: kyron; Owner: -
 --
 
@@ -3264,7 +3282,7 @@ ALTER TABLE ONLY kyron_estilo
 
 
 --
--- TOC entry 2066 (class 2606 OID 59633)
+-- TOC entry 2064 (class 2606 OID 59633)
 -- Name: kyron_pagina_pkey; Type: CONSTRAINT; Schema: kyron; Owner: -
 --
 
@@ -3273,7 +3291,7 @@ ALTER TABLE ONLY kyron_pagina
 
 
 --
--- TOC entry 2068 (class 2606 OID 59635)
+-- TOC entry 2066 (class 2606 OID 59635)
 -- Name: kyron_subsistema_pkey; Type: CONSTRAINT; Schema: kyron; Owner: -
 --
 
@@ -3282,7 +3300,7 @@ ALTER TABLE ONLY kyron_subsistema
 
 
 --
--- TOC entry 2070 (class 2606 OID 59637)
+-- TOC entry 2068 (class 2606 OID 59637)
 -- Name: kyron_usuario_pkey; Type: CONSTRAINT; Schema: kyron; Owner: -
 --
 
@@ -3291,7 +3309,7 @@ ALTER TABLE ONLY kyron_usuario
 
 
 --
--- TOC entry 2072 (class 2606 OID 59639)
+-- TOC entry 2070 (class 2606 OID 59639)
 -- Name: kyron_valor_sesion_pkey; Type: CONSTRAINT; Schema: kyron; Owner: -
 --
 
@@ -3302,7 +3320,7 @@ ALTER TABLE ONLY kyron_valor_sesion
 SET search_path = menu, pg_catalog;
 
 --
--- TOC entry 2096 (class 2606 OID 59844)
+-- TOC entry 2094 (class 2606 OID 59844)
 -- Name: grupo_pkey; Type: CONSTRAINT; Schema: menu; Owner: -
 --
 
@@ -3311,7 +3329,7 @@ ALTER TABLE ONLY grupo
 
 
 --
--- TOC entry 2098 (class 2606 OID 59846)
+-- TOC entry 2096 (class 2606 OID 59846)
 -- Name: item_pkey; Type: CONSTRAINT; Schema: menu; Owner: -
 --
 
@@ -3320,7 +3338,7 @@ ALTER TABLE ONLY item
 
 
 --
--- TOC entry 2100 (class 2606 OID 59848)
+-- TOC entry 2098 (class 2606 OID 59848)
 -- Name: menu_pkey; Type: CONSTRAINT; Schema: menu; Owner: -
 --
 
@@ -3329,7 +3347,7 @@ ALTER TABLE ONLY menu
 
 
 --
--- TOC entry 2102 (class 2606 OID 59850)
+-- TOC entry 2100 (class 2606 OID 59850)
 -- Name: tipo_item_pkey; Type: CONSTRAINT; Schema: menu; Owner: -
 --
 
@@ -3340,7 +3358,7 @@ ALTER TABLE ONLY tipo_item
 SET search_path = docencia, pg_catalog;
 
 --
--- TOC entry 2103 (class 2606 OID 59733)
+-- TOC entry 2101 (class 2606 OID 59733)
 -- Name: comunicacion_corta_documento_docente_fkey; Type: FK CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3349,7 +3367,7 @@ ALTER TABLE ONLY comunicacion_corta
 
 
 --
--- TOC entry 2104 (class 2606 OID 59738)
+-- TOC entry 2102 (class 2606 OID 59738)
 -- Name: comunicacion_corta_id_contexto_fkey; Type: FK CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3358,7 +3376,7 @@ ALTER TABLE ONLY comunicacion_corta
 
 
 --
--- TOC entry 2105 (class 2606 OID 59743)
+-- TOC entry 2103 (class 2606 OID 59743)
 -- Name: comunicacion_corta_id_tipo_indexacion_fkey; Type: FK CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3367,7 +3385,7 @@ ALTER TABLE ONLY comunicacion_corta
 
 
 --
--- TOC entry 2106 (class 2606 OID 59748)
+-- TOC entry 2104 (class 2606 OID 59748)
 -- Name: comunicacion_corta_paiscodigo_fkey; Type: FK CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3376,7 +3394,7 @@ ALTER TABLE ONLY comunicacion_corta
 
 
 --
--- TOC entry 2107 (class 2606 OID 59753)
+-- TOC entry 2105 (class 2606 OID 59753)
 -- Name: docente_id_tipo_documento_fkey; Type: FK CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3385,7 +3403,7 @@ ALTER TABLE ONLY docente
 
 
 --
--- TOC entry 2108 (class 2606 OID 59758)
+-- TOC entry 2106 (class 2606 OID 59758)
 -- Name: docente_proyectocurricular_documento_docente_fkey; Type: FK CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3394,7 +3412,7 @@ ALTER TABLE ONLY docente_proyectocurricular
 
 
 --
--- TOC entry 2109 (class 2606 OID 59763)
+-- TOC entry 2107 (class 2606 OID 59763)
 -- Name: docente_proyectocurricular_id_proyectocurricular_fkey; Type: FK CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3403,7 +3421,16 @@ ALTER TABLE ONLY docente_proyectocurricular
 
 
 --
--- TOC entry 2110 (class 2606 OID 59768)
+-- TOC entry 2117 (class 2606 OID 59900)
+-- Name: obra_artistica_documento_docente_fk; Type: FK CONSTRAINT; Schema: docencia; Owner: -
+--
+
+ALTER TABLE ONLY obra_artistica
+    ADD CONSTRAINT obra_artistica_documento_docente_fk FOREIGN KEY (documento_docente) REFERENCES docente(documento_docente);
+
+
+--
+-- TOC entry 2108 (class 2606 OID 59768)
 -- Name: proyectocurricular_id_facultad_fkey; Type: FK CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3412,7 +3439,7 @@ ALTER TABLE ONLY proyectocurricular
 
 
 --
--- TOC entry 2111 (class 2606 OID 59773)
+-- TOC entry 2109 (class 2606 OID 59773)
 -- Name: revista_indexada_documento_docente_fkey; Type: FK CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3421,7 +3448,7 @@ ALTER TABLE ONLY revista_indexada
 
 
 --
--- TOC entry 2112 (class 2606 OID 59778)
+-- TOC entry 2110 (class 2606 OID 59778)
 -- Name: revista_indexada_id_contexto_fkey; Type: FK CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3430,7 +3457,7 @@ ALTER TABLE ONLY revista_indexada
 
 
 --
--- TOC entry 2113 (class 2606 OID 59783)
+-- TOC entry 2111 (class 2606 OID 59783)
 -- Name: revista_indexada_id_tipo_indexacion_fkey; Type: FK CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3439,7 +3466,7 @@ ALTER TABLE ONLY revista_indexada
 
 
 --
--- TOC entry 2114 (class 2606 OID 59788)
+-- TOC entry 2112 (class 2606 OID 59788)
 -- Name: revista_indexada_paiscodigo_fkey; Type: FK CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3448,7 +3475,7 @@ ALTER TABLE ONLY revista_indexada
 
 
 --
--- TOC entry 2115 (class 2606 OID 59793)
+-- TOC entry 2113 (class 2606 OID 59793)
 -- Name: tipo_indexacion_id_contexto_fkey; Type: FK CONSTRAINT; Schema: docencia; Owner: -
 --
 
@@ -3459,7 +3486,7 @@ ALTER TABLE ONLY tipo_indexacion
 SET search_path = menu, pg_catalog;
 
 --
--- TOC entry 2116 (class 2606 OID 59851)
+-- TOC entry 2114 (class 2606 OID 59851)
 -- Name: item_id_grupo_fkey; Type: FK CONSTRAINT; Schema: menu; Owner: -
 --
 
@@ -3468,7 +3495,7 @@ ALTER TABLE ONLY item
 
 
 --
--- TOC entry 2117 (class 2606 OID 59856)
+-- TOC entry 2115 (class 2606 OID 59856)
 -- Name: item_id_menu_fkey; Type: FK CONSTRAINT; Schema: menu; Owner: -
 --
 
@@ -3477,7 +3504,7 @@ ALTER TABLE ONLY item
 
 
 --
--- TOC entry 2118 (class 2606 OID 59861)
+-- TOC entry 2116 (class 2606 OID 59861)
 -- Name: item_id_tipo_item_fkey; Type: FK CONSTRAINT; Schema: menu; Owner: -
 --
 
@@ -3485,7 +3512,7 @@ ALTER TABLE ONLY item
     ADD CONSTRAINT item_id_tipo_item_fkey FOREIGN KEY (id_tipo_item) REFERENCES tipo_item(id_tipo_item);
 
 
--- Completed on 2015-09-10 23:30:41 COT
+-- Completed on 2015-09-15 17:31:57 COT
 
 --
 -- PostgreSQL database dump complete

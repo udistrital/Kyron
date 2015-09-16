@@ -1,6 +1,6 @@
 <?php
-if (! isset ( $GLOBALS ["autorizado"] )) {
-	include ("../index.php");
+if (! isset ( $GLOBALS ['autorizado'] )) {
+	include ('../index.php');
 	exit ();
 }
 /**
@@ -19,15 +19,24 @@ class Tipos {
 	private static $arrayAlias;
 	function __construct() {
 		self::$arrayAlias = array (
-				"boleano" => "Boleano",
-				"entero" => "Entero",
-				"doble" => "Doble",
-				"porcentaje" => "Porcentaje",
-				"fecha" => "Fecha",
-				"stringFecha" => "StringFecha",
-				"texto" => "Texto",
-				"lista" => "Lista",
-				"nulo" => "Nulo" 
+				'boleano' => 'Boleano',
+				'entero' => 'Entero',
+				'doble' => 'Doble',
+				'porcentaje' => 'Porcentaje',
+				'fecha' => 'Fecha',
+				'stringFecha' => 'StringFecha',
+				'texto' => 'Texto',
+				'lista' => 'Lista',
+				'nulo' => 'Nulo',
+				'email' => 'Correo',
+				'phone' => 'Telefono',
+				'url' => 'Url',
+				'date' => 'Fecha',
+				'number' => 'Doble',
+				'integer' => 'Entero',
+				'onlyNumberSp' => 'NumerosYEspacios',
+				'onlyLetterSp' => 'LetrasYEspacios',
+				'onlyLetterNumber' => 'LetrasYNumeros'
 		);
 	}
 	/**
@@ -90,10 +99,10 @@ class Tipos {
 		return is_string ( $valor ) ? ( string ) $valor : false;
 	}
 	private function validarLista($valor) {
-		return is_array ( explode ( ",", $valor ) );
+		return is_array ( explode ( ',', $valor ) );
 	}
 	private function evaluarLista($valor) {
-		return is_array ( explode ( ",", $valor ) ) ? $valor : false;
+		return is_array ( explode ( ',', $valor ) ) ? $valor : false;
 	}
 	private function validarNulo($valor) {
 		$valor = null;
@@ -102,17 +111,65 @@ class Tipos {
 	private function evaluarNulo($valor) {
 		return null;
 	}
+	//http://www.phpliveregex.com/
+	private function validarNumerosYEspacios($valor){
+		if (preg_match('/^([[:digit:]]|[[:space:]])*$/',$valor)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	private function evaluarNumerosYEspacios($valor){
+		if (preg_match('/^([[:digit:]]|[[:space:]])*$/',$valor)) {
+			return $valor;
+		} else {
+			return false;
+		}
+	}
+	
+	private function validarLetrasYEspacios($valor){
+		if (preg_match('/^([[:alpha:]]|[[:space:]])*$/',$valor)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	private function evaluarLetrasYEspacios($valor){
+		if (preg_match('/^([[:alpha:]]|[[:space:]])*$/',$valor)) {
+			return $valor;
+		} else {
+			return false;
+		}
+	}
+	
+	private function validarLetrasYNumeros($valor){
+		if (preg_match('/^([[:alnum:]])*$/',$valor)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	private function evaluarLetrasYNumeros($valor){
+		if (preg_match('/^([[:alnum:]])*$/',$valor)) {
+			return $valor;
+		} else {
+			return false;
+		}
+	}
 	
 	// http://www.sergiomejias.com/2007/09/validar-una-fecha-con-expresiones-regulares-en-php/
 	public function validarStringFecha($fecha) {
-		if (ereg ( "(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)[0-9]{2}", $fecha )) {
+		if (ereg ( '(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)[0-9]{2}', $fecha )) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 	public function evaluarStringFecha($fecha) {
-		if (ereg ( "(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)[0-9]{2}", $fecha )) {
+		if (ereg ( '(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)[0-9]{2}', $fecha )) {
 			return $fecha;
 		} else {
 			return false;
@@ -123,7 +180,7 @@ class Tipos {
 	 * se pueda llamar al decir que el tipo de dato es "fecha", "date", "Date" o cualquier otra asignación
 	 * esto permite una mejor integración con otras convenciones de frameworks PHP o Javascript. 
 	 */
-	public static function getAlias($tipo = "") {
+	public static function getAlias($tipo = '') {
 		$arrayAlias = self::$arrayAlias;
 		if (isset ( $arrayAlias [$tipo] )) {
 			return $arrayAlias [$tipo];
@@ -133,11 +190,11 @@ class Tipos {
 	/*
 	 * Evalua el tipo de dato especificando el valor del dato y el alias del tipo de dato de PHP
 	 * por ejemplo:
-	 * objetoInstanciado->evaluarTipo("09/09/2015","fecha");
+	 * objetoInstanciado->evaluarTipo('09/09/2015','fecha');
 	 * Debería retornar el valor de la fecha como variable del tipo time de PHP.
 	 */
-	public static function evaluarTipo($valor = "", $tipo = "") {
-		$metodo = "evaluar" . strtoupper ( self::getAlias ( $tipo ) );
+	public static function evaluarTipo($valor = '', $tipo = '') {
+		$metodo = 'evaluar' . self::getAlias ( $tipo );
 		if (method_exists ( get_class (), $metodo )) {
 			return call_user_func_array ( array (
 					get_class (),
@@ -151,11 +208,11 @@ class Tipos {
 	/*
 	 * Evalua el tipo de dato especificando el valor del dato y el alias del tipo de dato de PHP
 	 * por ejemplo:
-	 * objetoInstanciado->validarTipo("09/09/2015","fecha");
+	 * objetoInstanciado->validarTipo('09/09/2015','fecha');
 	 * Debería retornar el valor true ya que se reconoce como un string de fecha.
 	 */
-	public static function validarTipo($valor = "", $tipo = "") {
-		$metodo = "validar" . strtoupper ( self::getAlias ( $tipo ) );
+	public static function validarTipo($valor = '', $tipo = '') {
+		$metodo = 'validar' . self::getAlias ( $tipo );
 		if (method_exists ( get_class (), $metodo )) {
 			return call_user_func_array ( array (
 					get_class (),

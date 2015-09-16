@@ -1,72 +1,163 @@
 <?php
 use core\general\ValidadorCampos;
 class InspectorHTML {
-    
-    private static $instance;
-    
-    // Constructor
-    function __construct() {
-    
-    }
-    
-    public static function singleton() {
-        
-        if (! isset ( self::$instance )) {
-            $className = __CLASS__;
-            self::$instance = new $className ();
-        }
-        return self::$instance;
-    
-    }
-    
-    function limpiarPHPHTML($arreglo, $excluir = "") {
-        
-        if ($excluir != "") {
-            $variables = explode ( "|", $excluir );
-        } else {
-            $variables [0] = "";
-        }
-        
-        foreach ( $arreglo as $clave => $valor ) {
-            if (! in_array ( $clave, $variables )) {
-                
-                $arreglo [$clave] = strip_tags ( $valor );
-            }
-        }
-        
-        return $arreglo;
-    
-    }
-    
-    function limpiarSQL($arreglo, $excluir = "") {
-        
-        if ($excluir != "") {
-            $variables = explode ( "|", $excluir );
-        } else {
-            $variables [0] = "";
-        }
-        
-        foreach ( $arreglo as $clave => $valor ) {
-            if (! in_array ( $clave, $variables )) {
-                
-                $arreglo [$clave] = addcslashes ( $valor, '%_' );
-            }
-        }
-        
-        return $arreglo;
-    
-    }
-    
-    /*
-     * Permite que los valores de $_REQUEST se validen del lado del servidor con el módulo
-     * ValidadorCampos de los componentes generales del CORE de SARA
-     */
-    function validacionCampos($variables, $validadorCampos){
-    	
-    	include ('core/general/ValidadorCampos.class.php');
-    	
-    	$miValidador = new ValidadorCampos();
-    	var_dump($miValidador->evaluarTipo('10/02/2013',"fecha"));
-    }
+
+	private static $instance;
+
+	// Constructor
+	function __construct() {
+
+	}
+
+	public static function singleton() {
+
+		if (!isset(self::$instance)) {
+			$className = __CLASS__;
+			self::$instance = new $className();
+		}
+		return self::$instance;
+
+	}
+
+	function limpiarPHPHTML($arreglo, $excluir = "") {
+
+		if ($excluir != "") {
+			$variables = explode("|", $excluir);
+		} else {
+			$variables[0] = "";
+		}
+
+		foreach ($arreglo as $clave => $valor) {
+			if (!in_array($clave, $variables)) {
+
+				$arreglo[$clave] = strip_tags($valor);
+			}
+		}
+
+		return $arreglo;
+
+	}
+
+	function limpiarSQL($arreglo, $excluir = "") {
+
+		if ($excluir != "") {
+			$variables = explode("|", $excluir);
+		} else {
+			$variables[0] = "";
+		}
+
+		foreach ($arreglo as $clave => $valor) {
+			if (!in_array($clave, $variables)) {
+
+				$arreglo[$clave] = addcslashes($valor, '%_');
+			}
+		}
+
+		return $arreglo;
+
+	}
+
+	/*
+	 * Permite validar un campo con un arreglo de parámetros al estilo jquery-validation-engine
+	 */
+	function validarCampo($valorCampo, $parametros, $corregir=false) {
+		
+		if (isset($parametros['required'])) {
+			$campoVacio = ($valorCampo == '') ? false : true;
+			if (!$campoVacio) {
+				return false;
+			}
+		}
+
+		if (isset($parametros['minSize'])) {
+			$tamannoCampo = strlen($valorCampo);
+			if ($tamannoCampo<$parametros['minSize']) {
+				if(!$corregir){
+					return false;
+				}
+				$faltante = $parametros['minSize'] - $tamannoCampo;
+				$faltante = str_repeat('',$faltante);
+				$valorCampo .= $faltante; 
+			}
+		}
+		
+		if (isset($parametros['maxSize'])) {
+			$tamannoCampo = strlen($valorCampo);
+			if ($tamannoCampo>$parametros['maxSize']) {
+				if(!$corregir){
+					return false;
+				}
+				$sobrante = $parametros['minSize'] - $tamannoCampo;
+				$valorCampo = substr($valorCampo, 0, $faltante);
+			}
+		}
+		
+		if (isset($parametros['custom'])) {
+			include_once ('core/general/ValidadorCampos.class.php');
+			$miValidador = new ValidadorCampos();
+			$valido = $miValidador->validarTipo($valorCampo,$parametros['custom']);
+		}
+		
+		return $valorCampo;
+	}
+
+	/*
+	 * Permite que los valores de $_REQUEST se validen del lado del servidor con el módulo
+	 * ValidadorCampos de los componentes generales del CORE de SARA
+	 */
+	function validacionCampos($variables, $validadorCampos, $corregir=false) {
+
+		function get_string_between($string, $start, $end) {
+			$string = " " . $string;
+			$ini = strpos($string, $start);
+			if ($ini == 0)
+				return "";
+			$ini += strlen($start);
+			$len = strpos($string, $end, $ini) - $ini;
+			return substr($string, $ini, $len);
+		}
+
+		function get_string_before_char($string, $char) {
+			$str = strstr($string, $char, true);
+			return ($str == '') ? $string : $str;
+		}
+
+		function erase_string_spaces($string) {
+			return str_replace(' ', '', $string);
+		}
+
+		function separarParametros($texto = '') {
+			$valores = explode(",", $texto);
+			$parametros = array();
+			foreach ($valores as $valor) {
+				$clave = erase_string_spaces(get_string_before_char($valor, "["));
+				$valor = erase_string_spaces(get_string_between($valor, "[", "]"));
+				$parametros[$clave] = $valor;
+			}
+			return $parametros;
+		}
+
+		foreach ($validadorCampos as $nombreCampo => $validador) {
+			if (isset($variables[$nombreCampo])) {
+				$parametros = separarParametros($validador);
+				$validez = $this -> validarCampo($variables[$nombreCampo], $parametros, $corregir);
+				if ($validez==false) {
+					return false;
+				} elseif ($corregir) {
+					$variables[$campo] = $validez;
+				}
+			}
+		}
+
+		return $variables;
+	}
+
+	/*
+	 * Permite decodificar los campos de $_REQUEST que hayan sido enviados codificados
+	 * con la funcion "codificarCampos" del las instancias FormularioHtml.class.php.
+	 */
+	function decodificarCampos($valor) {
+		return unserialize(base64_decode($valor));
+	}
 
 }
