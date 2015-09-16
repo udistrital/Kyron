@@ -69,7 +69,7 @@ class Funcion {
 		// $this->Redireccionador( "exito" );
 		// }
 		/*
-		 * En estas 2 líneas se realiza la decodificación de los campos "validador" de los 
+		 * Se realiza la decodificación de los campos "validador" de los 
 		 * componentes del FormularioHtml. Se realiza la validación. En caso de que algún parámetro
 		 * sea ingresado fuera de lo correspondiente en el campo "validador", este será ajustado
 		 * (o convertido a) a un parámetro permisible o simplemente de no ser válido se devolverá 
@@ -88,8 +88,8 @@ class Funcion {
 				echo "Usted ha ingresado parámetros de forma incorrecta al sistema.
 				 El acceso incorrecto ha sido registrado en el sistema con la IP: ".$_SERVER['REMOTE_ADDR'];
 				die;
-				//sleep(60);
-				//redireccion::redireccionar ( "index" );
+				$url = $miConfigurador->configuracion ["host"] . $miConfigurador->configuracion ["site"] . "/index.php";
+				echo "<script>location.replace('" . $url . "')</script>";
 			}
 		}
 		
