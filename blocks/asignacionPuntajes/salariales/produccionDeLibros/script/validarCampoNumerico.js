@@ -6,14 +6,15 @@ var campoValidarPunto = [];
 var indiceA = 0;
 var indiceB = 0;
 
-campoValidar[indiceA++] = "#<?php echo $this->campoSeguro('numeroCasoActaRevista')?>";
+campoValidar[indiceA++] = "#<?php echo $this->campoSeguro('numeroAutoresLibro')?>";
 campoValidar[indiceA++] = "#<?php echo $this->campoSeguro('numeroAutoresUniversidad')?>";
-campoValidar[indiceA++] = "#<?php echo $this->campoSeguro('numeroAutoresRevista')?>";
-campoValidar[indiceA++] = "#<?php echo $this->campoSeguro('paginasRevista')?>";
-campoValidar[indiceA++] = "#<?php echo $this->campoSeguro('numeroRevista')?>";
-campoValidar[indiceA++] = "#<?php echo $this->campoSeguro('volumenRevista')?>";
+campoValidar[indiceA++] = "#<?php echo $this->campoSeguro('numeroActaLibro')?>";
 
-campoValidarPunto[indiceB++] = "#<?php echo $this->campoSeguro('puntajeRevista')?>";
+campoValidarPunto[indiceB++] = "#<?php echo $this->campoSeguro('puntajeSugeridoEvaluador1')?>";
+campoValidarPunto[indiceB++] = "#<?php echo $this->campoSeguro('puntajeSugeridoEvaluador2')?>";
+campoValidarPunto[indiceB++] = "#<?php echo $this->campoSeguro('puntajeSugeridoEvaluador3')?>";
+campoValidarPunto[indiceB++] = "#<?php echo $this->campoSeguro('puntajeLibro')?>";
+
 
 $(campoValidar).each(function(){
 	jQuery(this.valueOf()).keypress(function(tecla) {

@@ -58,10 +58,20 @@ $this->idioma["puntajeLibrosTitulo"] = "Ingrese Puntaje.";
 
 
 //CAPITULO PRODUCCIÓN DE LIBROS
-$this->idioma["documentoEvaluador"] = "Identificacón Evaluador";
-$this->idioma["nombreEvaluador"] = "Nombre del Evaluador";
-$this->idioma["entidadEvaluador"] = "Entidad o Institución";
-$this->idioma["puntajeSugeridoEvaluador"] = "Puntaje Sugerido";
+$this->idioma["documentoEvaluador1"] = "Identificacón Evaluador";
+$this->idioma["nombreEvaluador1"] = "Nombre del Evaluador";
+$this->idioma["entidadEvaluador1"] = "Entidad o Institución";
+$this->idioma["puntajeSugeridoEvaluador1"] = "Puntaje Sugerido";
+
+$this->idioma["documentoEvaluador2"] = "Identificacón Evaluador";
+$this->idioma["nombreEvaluador2"] = "Nombre del Evaluador";
+$this->idioma["entidadEvaluador2"] = "Entidad o Institución";
+$this->idioma["puntajeSugeridoEvaluador2"] = "Puntaje Sugerido";
+
+$this->idioma["documentoEvaluador3"] = "Identificacón Evaluador";
+$this->idioma["nombreEvaluador3"] = "Nombre del Evaluador";
+$this->idioma["entidadEvaluador3"] = "Entidad o Institución";
+$this->idioma["puntajeSugeridoEvaluador3"] = "Puntaje Sugerido";
 
 
 

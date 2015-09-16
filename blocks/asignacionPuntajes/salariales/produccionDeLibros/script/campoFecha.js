@@ -7,11 +7,11 @@ var indiceA = 0;
 var indiceB= 0;
 var cont = 0;
 
-campoFecha[indiceA++] = "#<?php echo $this->campoSeguro('fechaPublicacionrevista')?>";
-campoFechaInput[indiceB++] = "input#<?php echo $this->campoSeguro('fechaPublicacionrevista')?>";
+campoFecha[indiceA++] = "#<?php echo $this->campoSeguro('fechaPublicacionLibro')?>";
+campoFechaInput[indiceB++] = "input#<?php echo $this->campoSeguro('fechaPublicacionLibro')?>";
 
-campoFecha[indiceA++] = "#<?php echo $this->campoSeguro('fechaActaRevista')?>";
-campoFechaInput[indiceB++] = "input#<?php echo $this->campoSeguro('fechaActaRevista')?>";
+campoFecha[indiceA++] = "#<?php echo $this->campoSeguro('fechaActaLibro')?>";
+campoFechaInput[indiceB++] = "input#<?php echo $this->campoSeguro('fechaActaLibro')?>";
 
 
 $(campoFecha).each(function(){

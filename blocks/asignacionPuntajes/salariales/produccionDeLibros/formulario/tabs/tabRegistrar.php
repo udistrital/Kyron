@@ -454,12 +454,6 @@ class FormularioRegistro {
 		unset ( $atributos );
 		// ----------------FIN CONTROL: Campo de Texto Número Autores Libro UD--------------------------------------------------------
 			
-		
-		
-		
-		
-		
-		
 		$esteCampo = "marcoEvaluadores";
 		$atributos ['id'] = $esteCampo;
 		$atributos ["estilo"] = "jqueryui";
@@ -517,7 +511,7 @@ class FormularioRegistro {
 				$atributos ['deshabilitado'] = false;
 				$atributos ['tamanno'] = 30;
 				$atributos ['maximoTamanno'] = '';
-				$atributos ['anchoEtiqueta'] = 265;
+				$atributos ['anchoEtiqueta'] = 250;
 				$tab ++;
 					
 				// Aplica atributos globales al control
@@ -551,7 +545,7 @@ class FormularioRegistro {
 				$atributos ['deshabilitado'] = false;
 				$atributos ['tamanno'] = 30;
 				$atributos ['maximoTamanno'] = '';
-				$atributos ['anchoEtiqueta'] = 265;
+				$atributos ['anchoEtiqueta'] = 250;
 				$tab ++;
 					
 				// Aplica atributos globales al control
@@ -561,7 +555,7 @@ class FormularioRegistro {
 				unset ( $atributos );
 				// ----------------FIN CONTROL: Campo de Texto Nombre del Evaluador--------------------------------------------------------
 						
-				// ----------------INICIO CONTROL: Campo de Texto Documento del Evaluador--------------------------------------------------------
+				// ----------------INICIO CONTROL: Campo de Texto Entidad o institucion a la que pertenece el evaluador--------------------------------------------------------
 				$esteCampo = 'entidadEvaluador' . $i;
 				$atributos ['id'] = $esteCampo;
 				$atributos ['nombre'] = $esteCampo;
@@ -584,7 +578,7 @@ class FormularioRegistro {
 				$atributos ['deshabilitado'] = false;
 				$atributos ['tamanno'] = 30;
 				$atributos ['maximoTamanno'] = '';
-				$atributos ['anchoEtiqueta'] = 265;
+				$atributos ['anchoEtiqueta'] = 250;
 				$tab ++;
 					
 				// Aplica atributos globales al control
@@ -592,9 +586,9 @@ class FormularioRegistro {
 				//var_dump($atributos);
 				echo $this->miFormulario->campoCuadroTexto ( $atributos );
 				unset ( $atributos );
-				// ----------------FIN CONTROL: Campo de Texto Documento del Evaluador--------------------------------------------------------
+				// ----------------FIN CONTROL: Campo de Texto Entidad o institucion a la que pertenece el evaluador--------------------------------------------------------
 								
-				// ----------------INICIO CONTROL: Campo de Texto Documento del Evaluador--------------------------------------------------------
+				// ----------------INICIO CONTROL: Campo de Puntaje sugerido por Evaluador--------------------------------------------------------
 				$esteCampo = 'puntajeSugeridoEvaluador' . $i;
 				$atributos ['id'] = $esteCampo;
 				$atributos ['nombre'] = $esteCampo;
@@ -617,7 +611,7 @@ class FormularioRegistro {
 				$atributos ['deshabilitado'] = false;
 				$atributos ['tamanno'] = 30;
 				$atributos ['maximoTamanno'] = '';
-				$atributos ['anchoEtiqueta'] = 265;
+				$atributos ['anchoEtiqueta'] = 250;
 				$tab ++;
 					
 				// Aplica atributos globales al control
@@ -625,7 +619,7 @@ class FormularioRegistro {
 				//var_dump($atributos);
 				echo $this->miFormulario->campoCuadroTexto ( $atributos );
 				unset ( $atributos );
-				// ----------------FIN CONTROL: Campo de Texto Documento del Evaluador--------------------------------------------------------
+				// ----------------FIN CONTROL: Campo de Texto Entidad o institucion a la que pertenece el evaluador--------------------------------------------------------
 				
 					
 			echo $this->miFormulario->marcoAgrupacion ( 'fin' );
@@ -643,7 +637,7 @@ class FormularioRegistro {
 		$atributos ["imagen"] = $rutaBloque . "/imagenes/add_list_256.png";
 		echo $this->miFormulario->campoImagen ( $atributos );
 		unset ( $atributos );
-		// -------------FIN CONTROL: Imagen Agregar Evaluador----------------------
+		// -------------FIN CONTROL: de Puntaje sugerido por Evaluador----------------------
 		
 		echo $this->miFormulario->marcoAgrupacion ( 'fin' );	
 		
