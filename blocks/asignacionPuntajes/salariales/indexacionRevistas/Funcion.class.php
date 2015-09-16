@@ -68,6 +68,16 @@ class Funcion {
 		// Validar las variables para evitar un tipo insercion de SQL
 		// $this->Redireccionador( "exito" );
 		// }
+		/*
+		 * En estas 2 líneas se realiza la decodificación de los campos "validador" de los 
+		 * componentes del FormularioHtml. Se realiza la validación. En caso de que algún parámetro
+		 * sea ingresado fuera de lo correspondiente en el campo "validador", este será ajustado
+		 * (o convertido a) a un parámetro permisible o simplemente de no ser válido se devolverá 
+		 * el valor false. Si lo que se quiere es saber si los parámetros son correctos o no, se
+		 * puede introducir un tercer parámetro.
+		 */
+		$validadorCampos = $this->miInspectorHTML->decodificarCampos($_REQUEST['validadorCampos']);
+		$_REQUEST = $this->miInspectorHTML->validacionCampos($_REQUEST,$validadorCampos);
 		
 		if (isset ( $_REQUEST ['procesarAjax'] )) {
 			$this->procesarAjax ();
@@ -83,7 +93,7 @@ class Funcion {
 					break;
 				
 				case 'actualizar' :
-					case 'actualizar' :
+					case 'actualizar':
 					if (isset ( $_REQUEST ["botonRegresar"] ) && $_REQUEST ["botonRegresar"] == 'true') {
 						$arreglo = unserialize ( $_REQUEST ['arreglo'] );	
 						redireccion::redireccionar ( "paginaConsulta", $arreglo );

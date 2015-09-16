@@ -1,5 +1,16 @@
 <?php
 
+///************ SECCIÓN DE NOMBRES DE TABS *****************//
+
+$this->idioma["consultarRevistas"] = "Consultar Revistas Indexadas";
+$this->idioma["ingresarRevistas"] = "Ingresar Revistas Indexadas";
+
+$this->idioma["consultarCartas"] = "Consultar Cartas al Editor";
+$this->idioma["ingresarCartas"] = "Ingresar Cartas al Editor";
+
+//////////////////////////////////////////////////////////////
+
+
 $this->idioma["botonRegresar"] = "Regresar";
 $this->idioma["botonGuardar"] = "Guardar";
 $this->idioma["continuar"] = "Continuar";
@@ -8,8 +19,7 @@ $this->idioma["botonRegistrar"] = "Registrar";
 $this->idioma["botonCancelar"] = "Cancelar";
 $this->idioma["noDefinido"] = "No definido";
 
-$this->idioma["consultarRevistas"] = "Consultar Revistas Indexadas";
-$this->idioma["ingresarRevistas"] = "Ingresar Revistas Indexadas";
+
 
 $this->idioma["facultad"] = "Facultad";
 $this->idioma["proyectoCurricular"] = "Proyecto Curricular";

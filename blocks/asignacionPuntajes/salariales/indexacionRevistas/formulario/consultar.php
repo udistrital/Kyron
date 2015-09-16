@@ -46,6 +46,18 @@ class registrarForm {
 		 */
 		
 		$atributosGlobales ['campoSeguro'] = 'true';
+		/*
+		 * Se propone un tipo de validación diferente a la convencional estructura:
+		 *	 if (isset ( $_REQUEST ['id_docente'] ) && $_REQUEST ['id_docente'] != '') {
+		 *		$id_docente = $_REQUEST ['id_docente'];
+		 *	} else {
+		 *		$id_docente = '';
+		 *	}
+		 * Se crea una función que valida todo de acuerdo a el campo validarCampos que corresponde
+		 * a las entradas puestas en el string jquery.validationEngine
+		 */
+		$validadorCampos = $this->miInspectorHTML->decodificarCampos($_REQUEST['validadorCampos']);
+		$_REQUEST = $this->miInspectorHTML->validacionCampos($_REQUEST,$validadorCampos);
 		
 		// -------------------------------------------------------------------------------------------------
 		$conexion = "docencia";
@@ -70,15 +82,20 @@ class registrarForm {
 		}
 		
 		$arreglo = array (
-				$id_docente,
-				$facultad,
-				$proyectoCurricular 
+				'documento_docente' => $id_docente,
+				'id_facultad' => $facultad,
+				'id_proyectocurricular' => $proyectoCurricular
 		);
 		
+		$arregloSerialize = array (
+				$id_docente,
+				$facultad,
+				$proyectoCurricular
+		);
+
 		$cadenaSql = $this->miSql->getCadenaSql ( 'consultarIndexacion', $arreglo );
 		$indexacion = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
-		$arreglo=serialize($arreglo);
-		
+		$arreglo=serialize($arregloSerialize);
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
 		$esteCampo = $esteBloque ['nombre'];
 		$atributos ['id'] = $esteCampo;
@@ -160,7 +177,7 @@ class registrarForm {
 					for($i = 0; $i < count ( $indexacion ); $i ++) {
 						$variable = "pagina=" . $miPaginaActual; // pendiente la pagina para modificar parametro
 						$variable .= "&opcion=modificar";
-						$variable .= "&arreglo=".$arreglo;
+						$variable .= "&arreglo=" . $arreglo;
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
 						$variable .= "&documento_docente=" . $indexacion [$i] ['documento_docente'];
 						$variable .= "&numero_issn=" . $indexacion [$i] ['numero_issn'];

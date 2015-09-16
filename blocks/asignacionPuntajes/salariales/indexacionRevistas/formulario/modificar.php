@@ -35,6 +35,11 @@ class FormularioModificar {
 		$conexion = "docencia";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
+		/*
+		 * Se realiza la decodificacion del arreglo "validadorCampos"
+		 */
+		//$validadorCampos = $this->miFormulario->decodificarCampos($_REQUEST['validadorCampos']);
+		
 		// Rescatar los datos de este bloque
 		$esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );
 		
