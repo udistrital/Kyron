@@ -31,7 +31,7 @@ class Tipos {
 				'email' => 'Correo',
 				'phone' => 'Telefono',
 				'url' => 'Url',
-				'date' => 'Fecha',
+				'date' => 'StringFecha',
 				'number' => 'Doble',
 				'integer' => 'Entero',
 				'onlyNumberSp' => 'NumerosYEspacios',
@@ -162,14 +162,22 @@ class Tipos {
 	
 	// http://www.sergiomejias.com/2007/09/validar-una-fecha-con-expresiones-regulares-en-php/
 	public function validarStringFecha($fecha) {
-		if (ereg ( '(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)[0-9]{2}', $fecha )) {
+		$fecha = explode('-', $fecha);
+		$anno = $fecha[0];
+		$mes = $fecha[1];
+		$dia = $fecha[2];
+		if (checkdate($mes,$dia,$anno)) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 	public function evaluarStringFecha($fecha) {
-		if (ereg ( '(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)[0-9]{2}', $fecha )) {
+		$separado = explode('-', $fecha);
+		$anno = $separado[0];
+		$mes = $separado[1];
+		$dia = $separado[2];
+		if (checkdate($mes,$dia,$anno)) {
 			return $fecha;
 		} else {
 			return false;

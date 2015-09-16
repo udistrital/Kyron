@@ -96,7 +96,30 @@ class InspectorHTML {
 			include_once ('core/general/ValidadorCampos.class.php');
 			$miValidador = new ValidadorCampos();
 			$valido = $miValidador->validarTipo($valorCampo,$parametros['custom']);
+			if (!$valido) {
+				return false;
+			}
 		}
+		
+		/*
+		 * Como se supone que ya superó la barrera de inyeccion SQl en la funcion limpiarSQL.
+		 * Se quitan ', y " para que pueda ejecutarse el SQL. No se hace un tipo de corrección
+		 * de ' (simple quote) con '' (doble simple quotes) para evitar los casos de inyección
+		 * SQL y no fomentar la inserción de carácteres raros en nombres de funciones. 
+		 */
+	    /*
+		 * "'" - simple 
+		 * "\0" - NULL
+	     * "\t" - tab
+	     * "\n" - new line
+	     * "\x0B" - vertical tab
+	     * "\r" - carriage return
+	     * " " - ordinary white space
+		 * "\x00" - NULL
+		 * "\x1a" - EOF
+		 */
+		$valorCampo = trim($valorCampo);var_dump($valorCampo);
+		$valorCampo = str_replace(array('\'','"'), ' " ', $valorCampo);
 		
 		return $valorCampo;
 	}
@@ -141,14 +164,13 @@ class InspectorHTML {
 			if (isset($variables[$nombreCampo])) {
 				$parametros = separarParametros($validador);
 				$validez = $this -> validarCampo($variables[$nombreCampo], $parametros, $corregir);
-				if ($validez==false) {
+				if ($validez===false) {
 					return false;
-				} elseif ($corregir) {
-					$variables[$campo] = $validez;
-				}
+				} 
+				$variables[$nombreCampo] = $validez;
 			}
 		}
-
+		
 		return $variables;
 	}
 
