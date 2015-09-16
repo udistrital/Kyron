@@ -16,15 +16,15 @@ $("#botonEliminarEvaluador3").click(function( event ) { eliminarEvaluador3(); })
 function eliminarEvaluador1()  {
 	confirmar=confirm("¿Desea eliminar a esté evaluador?");  
     if (confirmar){
-       	<?php for($i=1; $i<=3; $i++):?>        	 
+       	<?php for($i=1; $i<=3; $i++):?>      
         	$('#<?php echo $this->campoSeguro('documentoEvaluador'.$i)?>').val($('#<?php echo $this->campoSeguro('documentoEvaluador'.($i+1))?>').val());
        		$('#<?php echo $this->campoSeguro('nombreEvaluador'.$i)?>').val($('#<?php echo $this->campoSeguro('nombreEvaluador'.($i+1))?>').val());
-       		$('#<?php echo $this->campoSeguro('entidadEvaluador'.$i)?>').val($('#<?php echo $this->campoSeguro('entidadEvaluador'.($i+1))?>').val());
+       		$('#<?php echo $this->campoSeguro('entidadCertificadora'.$i)?>').select2('val',$('#<?php echo $this->campoSeguro('entidadCertificadora'.($i+1))?>').val());
        		$('#<?php echo $this->campoSeguro('puntajeSugeridoEvaluador'.$i)?>').val($('#<?php echo $this->campoSeguro('puntajeSugeridoEvaluador'.($i+1))?>').val());
             <?php if($i==3): ?>
            	   	$('#<?php echo $this->campoSeguro('documentoEvaluador'.$i)?>').val("");
            		$('#<?php echo $this->campoSeguro('nombreEvaluador'.$i)?>').val("");
-           		$('#<?php echo $this->campoSeguro('entidadEvaluador'.$i)?>').val("");
+           		$('#<?php echo $this->campoSeguro('entidadCertificadora'.$i)?>').select2('val', '');
            		$('#<?php echo $this->campoSeguro('puntajeSugeridoEvaluador'.$i)?>').val("");
             <?php endif; ?>
         <?php endfor; ?>
@@ -43,12 +43,12 @@ function eliminarEvaluador2()  {
        	<?php for($i=2; $i<=3; $i++):?>        	 
         	$('#<?php echo $this->campoSeguro('documentoEvaluador'.$i)?>').val($('#<?php echo $this->campoSeguro('documentoEvaluador'.($i+1))?>').val());
        		$('#<?php echo $this->campoSeguro('nombreEvaluador'.$i)?>').val($('#<?php echo $this->campoSeguro('nombreEvaluador'.($i+1))?>').val());
-       		$('#<?php echo $this->campoSeguro('entidadEvaluador'.$i)?>').val($('#<?php echo $this->campoSeguro('entidadEvaluador'.($i+1))?>').val());
+       		$('#<?php echo $this->campoSeguro('entidadCertificadora'.$i)?>').select2('val',$('#<?php echo $this->campoSeguro('entidadCertificadora'.($i+1))?>').val());
        		$('#<?php echo $this->campoSeguro('puntajeSugeridoEvaluador'.$i)?>').val($('#<?php echo $this->campoSeguro('puntajeSugeridoEvaluador'.($i+1))?>').val());
             <?php if($i==3): ?>
            	   	$('#<?php echo $this->campoSeguro('documentoEvaluador'.$i)?>').val("");
            		$('#<?php echo $this->campoSeguro('nombreEvaluador'.$i)?>').val("");
-           		$('#<?php echo $this->campoSeguro('entidadEvaluador'.$i)?>').val("");
+           		$('#<?php echo $this->campoSeguro('entidadCertificadora'.$i)?>').select2('val', '');
            		$('#<?php echo $this->campoSeguro('puntajeSugeridoEvaluador'.$i)?>').val("");
             <?php endif; ?>
         <?php endfor; ?>
@@ -68,7 +68,7 @@ function eliminarEvaluador3()  {
             <?php if($i==3): ?>
            	   	$('#<?php echo $this->campoSeguro('documentoEvaluador'.$i)?>').val("");
            		$('#<?php echo $this->campoSeguro('nombreEvaluador'.$i)?>').val("");
-           		$('#<?php echo $this->campoSeguro('entidadEvaluador'.$i)?>').val("");
+           		$('#<?php echo $this->campoSeguro('entidadCertificadora'.$i)?>').select2('val', '');
            		$('#<?php echo $this->campoSeguro('puntajeSugeridoEvaluador'.$i)?>').val("");
             <?php endif; ?>
         <?php endfor; ?>
@@ -85,7 +85,7 @@ $(function() {
 	$("#botonAgregarEvaluador").click(function( event ) {		
 		if(numEvaluadores < 3){
 			numEvaluadores++;
- 			$("#marcoEvaluador"+ numEvaluadores).show();
+ 			$("#marcoEvaluador"+ numEvaluadores).show(); 			
 		}
 	});
 }); 	

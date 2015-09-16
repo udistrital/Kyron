@@ -80,25 +80,27 @@ $('#<?php echo $this->campoSeguro('docenteRegistrar')?>').width(465);
 $('#<?php echo $this->campoSeguro('tipoLibro')?>').width(450);
 $('#<?php echo $this->campoSeguro('annoLibro')?>').width(450);
 
+$('#<?php echo $this->campoSeguro('editorial')?>').width(450);
 
-///*********El ancho (width) de los siguientes campos es mayor debido a que se encuentran dentro de un div****///
-$('#<?php echo $this->campoSeguro('pais')?>').width(470);
-$('#<?php echo $this->campoSeguro('categoria')?>').width(470);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$('#<?php echo $this->campoSeguro('entidadCertificadora1')?>').width(300);
+$('#<?php echo $this->campoSeguro('entidadCertificadora2')?>').width(300);
+$('#<?php echo $this->campoSeguro('entidadCertificadora3')?>').width(300);
 
 
-//////////////////**********Se definen los campos que requieren campos de autocompletar**********////////////////
+//////////////////**********Se definen los campos que requieren campos de Select2**********////////////////
 
 $("#<?php echo $this->campoSeguro('facultad')?>").select2();
 $("#<?php echo $this->campoSeguro('proyectoCurricular')?>").select2();
 
-$("#<?php echo $this->campoSeguro('contextoRevista')?>").select2();
-$("#<?php echo $this->campoSeguro('annoRevista')?>").select2();
 
 $("#<?php echo $this->campoSeguro('tipoLibro')?>").select2();
 $("#<?php echo $this->campoSeguro('annoLibro')?>").select2();
+$("#<?php echo $this->campoSeguro('editorial')?>").select2();
 
 
+$("#<?php echo $this->campoSeguro('entidadCertificadora1')?>").select2();
+$("#<?php echo $this->campoSeguro('entidadCertificadora2')?>").select2();
+$("#<?php echo $this->campoSeguro('entidadCertificadora3')?>").select2();
 
 <!-- document.getElementsByTagName('label')[5].firstChild.data.innerHTML="Hola"; -->
 
