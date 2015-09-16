@@ -55,4 +55,15 @@ $this->idioma["numeroCasoActaLibroTitulo"] = "Ingrese el Número de Caso de Acta
 $this->idioma["puntajeLibrosTitulo"] = "Ingrese Puntaje.";
 
 
+
+
+//CAPITULO PRODUCCIÓN DE LIBROS
+$this->idioma["documentoEvaluador"] = "Identificacón Evaluador";
+$this->idioma["nombreEvaluador"] = "Nombre del Evaluador";
+$this->idioma["entidadEvaluador"] = "Entidad o Institución";
+$this->idioma["puntajeSugeridoEvaluador"] = "Puntaje Sugerido";
+
+
+
+
 ?>

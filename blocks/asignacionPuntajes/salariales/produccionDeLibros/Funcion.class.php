@@ -40,7 +40,7 @@ class Funcion {
 	function procesarAjax() {
 		include_once ($this->ruta . "funcion/procesarAjax.php");
 	}
-	function registrar() {
+	function registrar() {var_dump($_REQUEST);exit;
 		include_once ($this->ruta . "/funcion/registrar.php");
 	}
 	function actualizar() {

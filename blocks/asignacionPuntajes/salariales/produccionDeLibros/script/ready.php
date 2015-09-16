@@ -77,8 +77,8 @@ $('#<?php echo $this->campoSeguro('facultad')?>').width(450);
 $('#<?php echo $this->campoSeguro('proyectoCurricular')?>').width(450);      
 
 $('#<?php echo $this->campoSeguro('docenteRegistrar')?>').width(465);
-$('#<?php echo $this->campoSeguro('contextoRevista')?>').width(450);
-$('#<?php echo $this->campoSeguro('annoRevista')?>').width(450);
+$('#<?php echo $this->campoSeguro('tipoLibro')?>').width(450);
+$('#<?php echo $this->campoSeguro('annoLibro')?>').width(450);
 
 
 ///*********El ancho (width) de los siguientes campos es mayor debido a que se encuentran dentro de un div****///
@@ -95,10 +95,13 @@ $("#<?php echo $this->campoSeguro('proyectoCurricular')?>").select2();
 $("#<?php echo $this->campoSeguro('contextoRevista')?>").select2();
 $("#<?php echo $this->campoSeguro('annoRevista')?>").select2();
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$("#<?php echo $this->campoSeguro('tipoLibro')?>").select2();
+$("#<?php echo $this->campoSeguro('annoLibro')?>").select2();
 
-document.getElementsByTagName('label')[5].firstChild.data.innerHTML="Hola";
 
-var label = document.querySelector('label[for="categoria"]');
-// change it's content
-label.textContent = 'Emmanuel'
+
+<!-- document.getElementsByTagName('label')[5].firstChild.data.innerHTML="Hola"; -->
+
+<!-- var label = document.querySelector('label[for="categoria"]'); -->
+<!-- // change it's content -->
+<!-- label.textContent = 'Emmanuel' -->
