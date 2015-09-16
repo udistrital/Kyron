@@ -56,8 +56,8 @@ class registrarForm {
 		 * Se crea una función que valida todo de acuerdo a el campo validarCampos que corresponde
 		 * a las entradas puestas en el string jquery.validationEngine
 		 */
-		$validadorCampos = $this->miInspectorHTML->decodificarCampos($_REQUEST['validadorCampos']);
-		$_REQUEST = $this->miInspectorHTML->validacionCampos($_REQUEST,$validadorCampos);
+		//$validadorCampos = $this->miInspectorHTML->decodificarCampos($_REQUEST['validadorCampos']);
+		//$_REQUEST = $this->miInspectorHTML->validacionCampos($_REQUEST,$validadorCampos);
 		
 		// -------------------------------------------------------------------------------------------------
 		$conexion = "docencia";

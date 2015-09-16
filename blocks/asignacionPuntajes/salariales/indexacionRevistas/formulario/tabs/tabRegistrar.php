@@ -117,7 +117,7 @@ class FormularioRegistro {
 		$atributos ["id"] = $esteCampo; // No cambiar este nombre
 		$atributos ["tipo"] = "hidden";
 		$atributos ['estilo'] = '';
-		$atributos ['validar'] = 'required';
+		$atributos ['validar'] = '';//decia required
 		$atributos ["obligatorio"] = true;
 		$atributos ['marco'] = true;
 		$atributos ["etiqueta"] = "";
