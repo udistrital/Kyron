@@ -32,22 +32,11 @@ echo $this->miFormulario->division ( "inicio", $atributos );
 unset ( $atributos );
 {
 	// -------------------- Listado de Pestañas (Como lista No Ordenada) -------------------------------
-	
-	if(isset($_REQUEST['tab1']) && $_REQUEST['tab1'] != ''){
-		$tabConsultar = $_REQUEST['tab1'];
-	}else{
-		$tabConsultar = ''; // Aquí se ingresa el valor que se requiera.
-	}
-	if(isset($_REQUEST['tab2']) && $_REQUEST['tab2'] != ''){
-		$tabRegistrar = $_REQUEST['tab2'];
-	}else{
-		$tabRegistrar = ''; // Aquí se ingresa el valor que se requiera.
-	}
 
 	$items = array (
 			
-			"tabConsultar" => $this->lenguaje->getCadena ( $tabConsultar ),
-			"tabIngresar" => $this->lenguaje->getCadena ( $tabRegistrar ) 
+			"tabConsultar" => $this->lenguaje->getCadena ( 'consultarRevistas' ),
+			"tabIngresar" => $this->lenguaje->getCadena ( 'ingresarRevistas' ) 
 	);
 	$atributos ["items"] = $items;
 	$atributos ["estilo"] = "";

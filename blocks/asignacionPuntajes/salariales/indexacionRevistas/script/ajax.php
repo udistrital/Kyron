@@ -75,6 +75,11 @@ $("#<?php echo $this->campoSeguro('contextoRevista')?>").change(function() {
 
 		if($("#<?php echo $this->campoSeguro('contextoRevista')?>").val() == 0){
 			$("#<?php echo $this->campoSeguro('pais')?>").val(1);
+			var label = document.querySelector('label[for="categoria"]');
+			label.textContent = 'Categorías';
+		}else if($("#<?php echo $this->campoSeguro('contextoRevista')?>").val() == 1){
+			var label = document.querySelector('label[for="categoria"]');
+			label.textContent = 'Tipo de Indexación';
 		}
 		
 	}

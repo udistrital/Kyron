@@ -71,7 +71,6 @@ $(function() {
 
 
 /////////Se define el ancho de los campos de listas desplegables///////
-
 $('#<?php echo $this->campoSeguro('docente')?>').width(465);      
 $('#<?php echo $this->campoSeguro('facultad')?>').width(450);      
 $('#<?php echo $this->campoSeguro('proyectoCurricular')?>').width(450);      

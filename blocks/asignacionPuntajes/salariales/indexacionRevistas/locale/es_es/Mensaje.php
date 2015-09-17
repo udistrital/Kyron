@@ -5,9 +5,6 @@
 $this->idioma["consultarRevistas"] = "Consultar Revistas Indexadas";
 $this->idioma["ingresarRevistas"] = "Ingresar Revistas Indexadas";
 
-$this->idioma["consultarCartas"] = "Consultar Cartas al Editor";
-$this->idioma["ingresarCartas"] = "Ingresar Cartas al Editor";
-
 //////////////////////////////////////////////////////////////
 
 
@@ -32,7 +29,8 @@ $this->idioma["docenteRegistrar"] = "Identificación o Nombre del Docente";
 $this->idioma["nombreRevista"] = "Nombre de Revista";
 $this->idioma["contextoRevista"] = "Contexto de la Revista";
 $this->idioma["pais"] = "País";
-$this->idioma["categoria"] = "Categorías";
+$this->idioma["categoria0"] = "Categorías";
+$this->idioma["categoria1"] = "Tipo de Indexación";
 $this->idioma["issnRevista"] = "ISSN";
 $this->idioma["annoRevista"] = "Año";
 $this->idioma["volumenRevista"] = "Volumen";
