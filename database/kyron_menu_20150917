@@ -1,0 +1,383 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.3.9
+-- Dumped by pg_dump version 9.3.9
+-- Started on 2015-09-17 12:35:24 COT
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 8 (class 2615 OID 59801)
+-- Name: menu; Type: SCHEMA; Schema: -; Owner: -
+--
+
+CREATE SCHEMA menu;
+
+
+SET search_path = menu, pg_catalog;
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 202 (class 1259 OID 59802)
+-- Name: grupo; Type: TABLE; Schema: menu; Owner: -
+--
+
+CREATE TABLE grupo (
+    id_grupo integer NOT NULL,
+    descripcion text NOT NULL
+);
+
+
+--
+-- TOC entry 203 (class 1259 OID 59808)
+-- Name: grupo_id_grupo_seq; Type: SEQUENCE; Schema: menu; Owner: -
+--
+
+CREATE SEQUENCE grupo_id_grupo_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2128 (class 0 OID 0)
+-- Dependencies: 203
+-- Name: grupo_id_grupo_seq; Type: SEQUENCE OWNED BY; Schema: menu; Owner: -
+--
+
+ALTER SEQUENCE grupo_id_grupo_seq OWNED BY grupo.id_grupo;
+
+
+--
+-- TOC entry 204 (class 1259 OID 59810)
+-- Name: item; Type: TABLE; Schema: menu; Owner: -
+--
+
+CREATE TABLE item (
+    id_item integer NOT NULL,
+    id_menu smallint NOT NULL,
+    id_grupo smallint NOT NULL,
+    id_tipo_item smallint NOT NULL,
+    descripcion text NOT NULL,
+    columna smallint DEFAULT 1 NOT NULL,
+    orden_item smallint DEFAULT 0 NOT NULL,
+    link text,
+    estado_registro boolean DEFAULT true NOT NULL
+);
+
+
+--
+-- TOC entry 205 (class 1259 OID 59819)
+-- Name: item_id_item_seq; Type: SEQUENCE; Schema: menu; Owner: -
+--
+
+CREATE SEQUENCE item_id_item_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2129 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: item_id_item_seq; Type: SEQUENCE OWNED BY; Schema: menu; Owner: -
+--
+
+ALTER SEQUENCE item_id_item_seq OWNED BY item.id_item;
+
+
+--
+-- TOC entry 206 (class 1259 OID 59821)
+-- Name: menu; Type: TABLE; Schema: menu; Owner: -
+--
+
+CREATE TABLE menu (
+    id_menu integer NOT NULL,
+    descripcion text NOT NULL,
+    perfil_usuario smallint DEFAULT 0 NOT NULL,
+    estado_registro boolean DEFAULT true NOT NULL
+);
+
+
+--
+-- TOC entry 207 (class 1259 OID 59829)
+-- Name: menu_id_menu_seq; Type: SEQUENCE; Schema: menu; Owner: -
+--
+
+CREATE SEQUENCE menu_id_menu_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2130 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: menu_id_menu_seq; Type: SEQUENCE OWNED BY; Schema: menu; Owner: -
+--
+
+ALTER SEQUENCE menu_id_menu_seq OWNED BY menu.id_menu;
+
+
+--
+-- TOC entry 208 (class 1259 OID 59831)
+-- Name: tipo_item; Type: TABLE; Schema: menu; Owner: -
+--
+
+CREATE TABLE tipo_item (
+    id_tipo_item integer NOT NULL,
+    descripcion text NOT NULL
+);
+
+
+--
+-- TOC entry 209 (class 1259 OID 59837)
+-- Name: tipo_item_id_tipo_item_seq; Type: SEQUENCE; Schema: menu; Owner: -
+--
+
+CREATE SEQUENCE tipo_item_id_tipo_item_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2131 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: tipo_item_id_tipo_item_seq; Type: SEQUENCE OWNED BY; Schema: menu; Owner: -
+--
+
+ALTER SEQUENCE tipo_item_id_tipo_item_seq OWNED BY tipo_item.id_tipo_item;
+
+
+--
+-- TOC entry 1989 (class 2604 OID 59839)
+-- Name: id_grupo; Type: DEFAULT; Schema: menu; Owner: -
+--
+
+ALTER TABLE ONLY grupo ALTER COLUMN id_grupo SET DEFAULT nextval('grupo_id_grupo_seq'::regclass);
+
+
+--
+-- TOC entry 1993 (class 2604 OID 59840)
+-- Name: id_item; Type: DEFAULT; Schema: menu; Owner: -
+--
+
+ALTER TABLE ONLY item ALTER COLUMN id_item SET DEFAULT nextval('item_id_item_seq'::regclass);
+
+
+--
+-- TOC entry 1996 (class 2604 OID 59841)
+-- Name: id_menu; Type: DEFAULT; Schema: menu; Owner: -
+--
+
+ALTER TABLE ONLY menu ALTER COLUMN id_menu SET DEFAULT nextval('menu_id_menu_seq'::regclass);
+
+
+--
+-- TOC entry 1997 (class 2604 OID 59842)
+-- Name: id_tipo_item; Type: DEFAULT; Schema: menu; Owner: -
+--
+
+ALTER TABLE ONLY tipo_item ALTER COLUMN id_tipo_item SET DEFAULT nextval('tipo_item_id_tipo_item_seq'::regclass);
+
+
+--
+-- TOC entry 2116 (class 0 OID 59802)
+-- Dependencies: 202
+-- Data for Name: grupo; Type: TABLE DATA; Schema: menu; Owner: -
+--
+
+INSERT INTO grupo (id_grupo, descripcion) VALUES (1, 'inicio');
+INSERT INTO grupo (id_grupo, descripcion) VALUES (2, 'hojaVida');
+INSERT INTO grupo (id_grupo, descripcion) VALUES (3, 'asignacionPuntajes');
+INSERT INTO grupo (id_grupo, descripcion) VALUES (4, 'reportesDocencia');
+INSERT INTO grupo (id_grupo, descripcion) VALUES (5, 'cerrarSesion');
+
+
+--
+-- TOC entry 2132 (class 0 OID 0)
+-- Dependencies: 203
+-- Name: grupo_id_grupo_seq; Type: SEQUENCE SET; Schema: menu; Owner: -
+--
+
+SELECT pg_catalog.setval('grupo_id_grupo_seq', 5, true);
+
+
+--
+-- TOC entry 2118 (class 0 OID 59810)
+-- Dependencies: 204
+-- Data for Name: item; Type: TABLE DATA; Schema: menu; Owner: -
+--
+
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (1, 1, 2, 3, 'crearDocente', 1, 1, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (2, 1, 2, 3, 'titulosAcademicos', 1, 2, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (3, 1, 2, 3, 'sinTitulosAcademicos', 1, 3, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (4, 1, 2, 3, 'consultarActividadDocente', 1, 4, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (5, 1, 3, 2, 'tituloSalariales', 1, 0, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (16, 1, 3, 3, 'comunicacionCorta', 1, 11, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (18, 1, 3, 3, 'patentes', 1, 13, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (19, 1, 3, 3, 'PremiosDocente', 1, 14, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (20, 1, 3, 3, 'produccionVideosDocente', 1, 15, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (22, 1, 3, 3, 'traducciones', 1, 17, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (23, 1, 3, 3, 'registroTecnicaSoftware', 1, 18, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (24, 1, 3, 2, 'tituloBonificacion', 2, 0, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (25, 1, 3, 3, 'publicacionesImpresas', 2, 1, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (26, 1, 3, 3, 'estudiosPostdoctorales', 2, 2, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (27, 1, 3, 3, 'resenaCritica', 2, 3, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (28, 1, 3, 3, 'traduccionArticulo', 2, 4, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (29, 1, 3, 3, 'ponenciasArticulos', 2, 5, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (30, 1, 3, 2, 'tituloNovedades', 3, 0, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (31, 1, 3, 3, 'novedades', 3, 1, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (32, 1, 4, 2, 'tituloConsultaReportes', 1, 0, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (33, 1, 4, 3, 'consultaReportes', 1, 1, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (34, 1, 4, 3, 'estadoCuentaDocente', 1, 2, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (35, 1, 1, 1, '''', 1, 0, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (36, 1, 5, 1, '''', 1, 0, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (6, 1, 3, 3, 'capituloLibros', 1, 2, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (7, 1, 3, 3, 'cartasEditor', 1, 3, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (8, 1, 3, 3, 'direccionTrabajosGrado', 1, 4, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (9, 1, 3, 3, 'experienciaDireccionAcademica', 1, 5, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (10, 1, 3, 3, 'experienciaInvestigacion', 1, 6, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (11, 1, 3, 3, 'experienciaDocencia', 1, 7, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (12, 1, 3, 3, 'experienciaProfesional', 1, 8, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (13, 1, 3, 3, 'experienciaCalificada', 1, 9, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (14, 1, 3, 3, 'excelenciaAcademica', 1, 10, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (15, 1, 3, 3, 'revistasIndexadas', 1, 1, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (21, 1, 3, 3, 'produccionDeLibros', 1, 16, NULL, true);
+INSERT INTO item (id_item, id_menu, id_grupo, id_tipo_item, descripcion, columna, orden_item, link, estado_registro) VALUES (17, 1, 3, 3, 'obrasArtisticas', 1, 12, NULL, true);
+
+
+--
+-- TOC entry 2133 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: item_id_item_seq; Type: SEQUENCE SET; Schema: menu; Owner: -
+--
+
+SELECT pg_catalog.setval('item_id_item_seq', 37, true);
+
+
+--
+-- TOC entry 2120 (class 0 OID 59821)
+-- Dependencies: 206
+-- Data for Name: menu; Type: TABLE DATA; Schema: menu; Owner: -
+--
+
+INSERT INTO menu (id_menu, descripcion, perfil_usuario, estado_registro) VALUES (1, 'principal', 0, true);
+
+
+--
+-- TOC entry 2134 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: menu_id_menu_seq; Type: SEQUENCE SET; Schema: menu; Owner: -
+--
+
+SELECT pg_catalog.setval('menu_id_menu_seq', 1, true);
+
+
+--
+-- TOC entry 2122 (class 0 OID 59831)
+-- Dependencies: 208
+-- Data for Name: tipo_item; Type: TABLE DATA; Schema: menu; Owner: -
+--
+
+INSERT INTO tipo_item (id_tipo_item, descripcion) VALUES (1, 'menu');
+INSERT INTO tipo_item (id_tipo_item, descripcion) VALUES (2, 'tittle');
+INSERT INTO tipo_item (id_tipo_item, descripcion) VALUES (3, 'item');
+INSERT INTO tipo_item (id_tipo_item, descripcion) VALUES (4, 'link');
+
+
+--
+-- TOC entry 2135 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: tipo_item_id_tipo_item_seq; Type: SEQUENCE SET; Schema: menu; Owner: -
+--
+
+SELECT pg_catalog.setval('tipo_item_id_tipo_item_seq', 4, true);
+
+
+--
+-- TOC entry 1999 (class 2606 OID 59844)
+-- Name: grupo_pkey; Type: CONSTRAINT; Schema: menu; Owner: -
+--
+
+ALTER TABLE ONLY grupo
+    ADD CONSTRAINT grupo_pkey PRIMARY KEY (id_grupo);
+
+
+--
+-- TOC entry 2001 (class 2606 OID 59846)
+-- Name: item_pkey; Type: CONSTRAINT; Schema: menu; Owner: -
+--
+
+ALTER TABLE ONLY item
+    ADD CONSTRAINT item_pkey PRIMARY KEY (id_item);
+
+
+--
+-- TOC entry 2003 (class 2606 OID 59848)
+-- Name: menu_pkey; Type: CONSTRAINT; Schema: menu; Owner: -
+--
+
+ALTER TABLE ONLY menu
+    ADD CONSTRAINT menu_pkey PRIMARY KEY (id_menu);
+
+
+--
+-- TOC entry 2005 (class 2606 OID 59850)
+-- Name: tipo_item_pkey; Type: CONSTRAINT; Schema: menu; Owner: -
+--
+
+ALTER TABLE ONLY tipo_item
+    ADD CONSTRAINT tipo_item_pkey PRIMARY KEY (id_tipo_item);
+
+
+--
+-- TOC entry 2006 (class 2606 OID 59851)
+-- Name: item_id_grupo_fkey; Type: FK CONSTRAINT; Schema: menu; Owner: -
+--
+
+ALTER TABLE ONLY item
+    ADD CONSTRAINT item_id_grupo_fkey FOREIGN KEY (id_grupo) REFERENCES grupo(id_grupo);
+
+
+--
+-- TOC entry 2007 (class 2606 OID 59856)
+-- Name: item_id_menu_fkey; Type: FK CONSTRAINT; Schema: menu; Owner: -
+--
+
+ALTER TABLE ONLY item
+    ADD CONSTRAINT item_id_menu_fkey FOREIGN KEY (id_menu) REFERENCES menu(id_menu);
+
+
+--
+-- TOC entry 2008 (class 2606 OID 59861)
+-- Name: item_id_tipo_item_fkey; Type: FK CONSTRAINT; Schema: menu; Owner: -
+--
+
+ALTER TABLE ONLY item
+    ADD CONSTRAINT item_id_tipo_item_fkey FOREIGN KEY (id_tipo_item) REFERENCES tipo_item(id_tipo_item);
+
+
+-- Completed on 2015-09-17 12:35:24 COT
+
+--
+-- PostgreSQL database dump complete
+--
+
