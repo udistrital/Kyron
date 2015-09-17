@@ -27,7 +27,7 @@ class RegistrarIndexacionRevista {
 		$this->miFuncion = $funcion;
 	}
 	function procesarFormulario() {
-		//var_dump($_REQUEST);die;
+		var_dump($_REQUEST);
 		$conexion = "docencia";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
@@ -58,7 +58,7 @@ class RegistrarIndexacionRevista {
 			'puntajeRevista' => $_REQUEST['puntajeRevista']
 		);
 		
-		$cadenaSql = $this->miSql->getCadenaSql ( 'insertarIndexacion', $arregloDatos );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'insertarIndexacion', $arregloDatos );echo $cadenaSql;die;
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
 		
 		if ($resultado) {

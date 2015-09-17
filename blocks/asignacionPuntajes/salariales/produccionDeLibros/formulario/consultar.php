@@ -51,6 +51,18 @@ class registrarForm {
 		$conexion = "docencia";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
+		/*
+		 * Se propone un tipo de validación diferente a la convencional estructura:
+		 *	 if (isset ( $_REQUEST ['id_docente'] ) && $_REQUEST ['id_docente'] != '') {
+		 *		$id_docente = $_REQUEST ['id_docente'];
+		 *	} else {
+		 *		$id_docente = '';
+		 *	}
+		 * Se crea una función que valida todo de acuerdo a el campo validarCampos que corresponde
+		 * a las entradas puestas en el string jquery.validationEngine
+		 */
+		
+		
 		if (isset ( $_REQUEST ['id_docente'] ) && $_REQUEST ['id_docente'] != '') {
 			$id_docente = $_REQUEST ['id_docente'];
 		} else {

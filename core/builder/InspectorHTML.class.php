@@ -58,11 +58,78 @@ class InspectorHTML {
 	}
 
 	/*
+	 * Permite validar un campo con un arreglo de parámetros al estilo jquery-validation-engine
+	 */
+	function validarCampo($valorCampo, $parametros, $corregir=false) {
+		
+		if (isset($parametros['required'])) {
+			$campoVacio = ($valorCampo == '') ? false : true;
+			if (!$campoVacio) {
+				return false;
+			}
+		}
+
+		if (isset($parametros['minSize'])) {
+			$tamannoCampo = strlen($valorCampo);
+			if ($tamannoCampo<$parametros['minSize']) {
+				if(!$corregir){
+					return false;
+				}
+				$faltante = $parametros['minSize'] - $tamannoCampo;
+				$faltante = str_repeat('',$faltante);
+				$valorCampo .= $faltante; 
+			}
+		}
+		
+		if (isset($parametros['maxSize'])) {
+			$tamannoCampo = strlen($valorCampo);
+			if ($tamannoCampo>$parametros['maxSize']) {
+				if(!$corregir){
+					return false;
+				}
+				$sobrante = $parametros['minSize'] - $tamannoCampo;
+				$valorCampo = substr($valorCampo, 0, $faltante);
+			}
+		}
+		
+		if (isset($parametros['custom'])) {
+			include_once ('core/general/ValidadorCampos.class.php');
+			$miValidador = new ValidadorCampos();
+			$valido = $miValidador->validarTipo($valorCampo,$parametros['custom']);
+			if (!$valido) {
+				return false;
+			}
+		}
+		
+		/*
+		 * Como se supone que ya superó la barrera de inyeccion SQl en la funcion limpiarSQL.
+		 * Se quitan ', y " para que pueda ejecutarse el SQL. No se hace un tipo de corrección
+		 * de ' (simple quote) con '' (doble simple quotes) para evitar los casos de inyección
+		 * SQL y no fomentar la inserción de carácteres raros en nombres de funciones. 
+		 */
+	    /*
+		 * "'" - simple 
+		 * "\0" - NULL
+	     * "\t" - tab
+	     * "\n" - new line
+	     * "\x0B" - vertical tab
+	     * "\r" - carriage return
+	     * " " - ordinary white space
+		 * "\x00" - NULL
+		 * "\x1a" - EOF
+		 */
+		$valorCampo = trim($valorCampo);var_dump($valorCampo);
+		$valorCampo = str_replace(array('\'','"'), ' " ', $valorCampo);
+		
+		return $valorCampo;
+	}
+
+	/*
 	 * Permite que los valores de $_REQUEST se validen del lado del servidor con el módulo
 	 * ValidadorCampos de los componentes generales del CORE de SARA
 	 */
-	function validacionCampos($variables, $validadorCampos) {
-		include ('core/general/ValidadorCampos.class.php');
+	function validacionCampos($variables, $validadorCampos, $corregir=false) {
+
 		function get_string_between($string, $start, $end) {
 			$string = " " . $string;
 			$ini = strpos($string, $start);
@@ -72,33 +139,39 @@ class InspectorHTML {
 			$len = strpos($string, $end, $ini) - $ini;
 			return substr($string, $ini, $len);
 		}
-		
+
 		function get_string_before_char($string, $char) {
-			$string = explode($char, $string);
-			return str_replace(' ','',$string[0]);
+			$str = strstr($string, $char, true);
+			return ($str == '') ? $string : $str;
+		}
+
+		function erase_string_spaces($string) {
+			return str_replace(' ', '', $string);
 		}
 
 		function separarParametros($texto = '') {
 			$valores = explode(",", $texto);
 			$parametros = array();
 			foreach ($valores as $valor) {
-				$clave = get_string_before_char($valor,"[");
-				$valor = get_string_between($valor,"[","]");
+				$clave = erase_string_spaces(get_string_before_char($valor, "["));
+				$valor = erase_string_spaces(get_string_between($valor, "[", "]"));
 				$parametros[$clave] = $valor;
 			}
 			return $parametros;
 		}
 
-		var_dump($variables, $validadorCampos);
-		foreach ($validadorCampos as $campo => $validador) {
-			if (isset($variables[$campo])) {
+		foreach ($validadorCampos as $nombreCampo => $validador) {
+			if (isset($variables[$nombreCampo])) {
 				$parametros = separarParametros($validador);
-				var_dump($campo, $parametros);
+				$validez = $this -> validarCampo($variables[$nombreCampo], $parametros, $corregir);
+				if ($validez===false) {
+					return false;
+				} 
+				$variables[$nombreCampo] = $validez;
 			}
 		}
-
-		$miValidador = new ValidadorCampos();
-		var_dump($miValidador -> evaluarTipo('10/02/2013', "fecha"));
+		
+		return $variables;
 	}
 
 	/*
