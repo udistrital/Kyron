@@ -1,21 +1,4 @@
-$("#indexacionRevistas").validationEngine({
-promptPosition : "centerRight", 
-scroll: false,
-autoHidePrompt: true,
-autoHideDelay: 2000
-});
-
-$(function() {
-	$("#indexacionRevistas").submit(function() {
-		$resultado=$("#indexacionRevistas").validationEngine("validate");
-		if ($resultado) {
-			return true;
-		}
-		return false;
-	});
-});
-
-$("#indexacionRevistasRegistrar").validationEngine({
+$("#produccionDeLibros").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,
@@ -23,15 +6,30 @@ $("#indexacionRevistasRegistrar").validationEngine({
 });
 
 $(function() {
-$("#indexacionRevistasRegistrar").submit(function() {
-$resultado=$("#indexacionRevistasRegistrar").validationEngine("validate");
-
-if ($resultado) {
-
-return true;
-}
-return false;
+	$("#produccionDeLibros").submit(function() {
+		$resultado=$("#produccionDeLibros").validationEngine("validate");
+		if ($resultado) {
+			return true;
+		}
+		return false;
+	});
 });
+
+$("#produccionDeLibrosRegistrar").validationEngine({
+	promptPosition : "centerRight", 
+	scroll: false,
+	autoHidePrompt: true,
+	autoHideDelay: 2000
+});
+
+$(function() {
+	$("#produccionDeLibrosRegistrar").submit(function() {
+		$resultado=$("#produccionDeLibrosRegistrar").validationEngine("validate");		
+		if ($resultado) {
+			return true;
+		}
+		return false;
+	});
 });
 
 $(function () {
@@ -41,8 +39,8 @@ $(function () {
 });
 
 $(function() {
-	$("#indexacionRevistasModificar").submit(function() {
-		$resultado=$("#indexacionRevistasModificar").validationEngine("validate");
+	$("#produccionDeLibrosModificar").submit(function() {
+		$resultado=$("#produccionDeLibrosModificar").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -50,7 +48,7 @@ $(function() {
 	});
 });
 
-$("#indexacionRevistasModificar").validationEngine({
+$("#produccionDeLibrosModificar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,
@@ -61,16 +59,20 @@ $('#tablaTitulos').dataTable( {
 	"sPaginationType": "full_numbers"
 });
         
-////////////Función que organiza los tabs en la interfaz gráfica//////////////
+/*
+ * Función que organiza los tabs en la interfaz gráfica
+ */
 $(function() {
 	$("#tabs").tabs();
 }); 
-//////////////////////////////////////////////////////////////////////////////
 
-// Asociar el widget de validación al formulario
+/*
+ * Asociar el widget de validación al formulario
+ */
 
-
-/////////Se define el ancho de los campos de listas desplegables///////
+/*
+ * Se define el ancho de los campos de listas desplegables
+ */
 
 $('#<?php echo $this->campoSeguro('docente')?>').width(465);      
 $('#<?php echo $this->campoSeguro('facultad')?>').width(450);      
@@ -87,8 +89,9 @@ $('#<?php echo $this->campoSeguro('entidadCertificadora2')?>').width(300);
 $('#<?php echo $this->campoSeguro('entidadCertificadora3')?>').width(300);
 
 
-//////////////////**********Se definen los campos que requieren campos de Select2**********////////////////
-
+/*
+ * Se definen los campos que requieren campos de Select2
+ */
 $("#<?php echo $this->campoSeguro('facultad')?>").select2();
 $("#<?php echo $this->campoSeguro('proyectoCurricular')?>").select2();
 
@@ -102,8 +105,8 @@ $("#<?php echo $this->campoSeguro('entidadCertificadora1')?>").select2();
 $("#<?php echo $this->campoSeguro('entidadCertificadora2')?>").select2();
 $("#<?php echo $this->campoSeguro('entidadCertificadora3')?>").select2();
 
-<!-- document.getElementsByTagName('label')[5].firstChild.data.innerHTML="Hola"; -->
+//<!-- document.getElementsByTagName('label')[5].firstChild.data.innerHTML="Hola"; -->
 
-<!-- var label = document.querySelector('label[for="categoria"]'); -->
-<!-- // change it's content -->
-<!-- label.textContent = 'Emmanuel' -->
+//<!-- var label = document.querySelector('label[for="categoria"]'); -->
+//<!-- // change it's content -->
+//<!-- label.textContent = 'Emmanuel' -->
