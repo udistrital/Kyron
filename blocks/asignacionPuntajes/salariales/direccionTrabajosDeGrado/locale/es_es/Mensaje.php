@@ -27,6 +27,16 @@ $this->idioma["numeroActaTitulo"] = "Ingrese el Número de Acta CIARP-UD.";
 $this->idioma["fechaActaTitulo"] = "Seleccione la Fecha de Acta CIARP-UD.";
 $this->idioma["numeroCasoActaTitulo"] = "Ingrese el Número de Caso de Acta.";
 $this->idioma["puntajeTitulo"] = "Ingrese Puntaje.";
+
+$this->idioma["nombreEstudiante1"] = "Estudiante";
+$this->idioma["nombreEstudiante2"] = "Estudiante";
+$this->idioma["nombreEstudiante3"] = "Estudiante";
+
+$this->idioma["nombreEstudiante1Titulo"] = "Nombre del Estudiante";
+$this->idioma["nombreEstudiante2Titulo"] = "Nombre del Estudiante";
+$this->idioma["nombreEstudiante3Titulo"] = "Nombre del Estudiante";
+
+
 ///////////////////////////////////////////////////////////////////
 
 //***************** SECCIÓN BOTONES ******************//

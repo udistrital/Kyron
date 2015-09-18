@@ -158,7 +158,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" left join docencia.facultad fc on pc.id_facultad=fc.id_facultad ";
 				$cadenaSql.=" left join docencia.pais pi on ce.paiscodigo=pi.paiscodigo ";
 				$cadenaSql.=" left join docencia.tipo_indexacion ti ON ti.id_tipo_indexacion = ce.id_tipo_indexacion";
-				$cadenaSql.=" where 1=1";
+				$cadenaSql.=" where ce.estado=true";
 				if ($variable ['documento_docente'] != '') {
 					$cadenaSql .= " AND dc.documento_docente = '" . $variable ['documento_docente'] . "'";
 				}
