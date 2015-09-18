@@ -36,6 +36,9 @@ class RegistrarIndexacionRevista {
 		$rutaBloque .= $esteBloque ['nombre'];
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
 
+		$_REQUEST['contextoRevista'] = 0;
+		$_REQUEST['pais'] = 'COL';
+		
 		$arregloDatos = array (
 			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
 			'nombreRevista' => $_REQUEST['nombreRevista'],
@@ -50,17 +53,17 @@ class RegistrarIndexacionRevista {
 			'tituloArticuloRevista' => $_REQUEST['tituloArticuloRevista'],
 			'numeroAutoresRevista' => $_REQUEST['numeroAutoresRevista'],
 			'numeroAutoresUniversidad' => $_REQUEST['numeroAutoresUniversidad'],
-			'fechaPublicacionrevista' => $_REQUEST['fechaPublicacionrevista'],
 			'numeroActaRevista' => $_REQUEST['numeroActaRevista'],
 			'fechaActaRevista' => $_REQUEST['fechaActaRevista'],
 			'numeroCasoActaRevista' => $_REQUEST['numeroCasoActaRevista'],
 			'puntajeRevista' => $_REQUEST['puntajeRevista'],
+			'normatividad' => $_REQUEST['normatividad'],
 			'numero_issn_old' => $_REQUEST['numero_issn_old']
 		);
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizarIndexacion', $arregloDatos );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
-		
+
 		if ($resultado) {
 			redireccion::redireccionar ( 'actualizo',  $_REQUEST['docenteRegistrar']);
 			exit ();

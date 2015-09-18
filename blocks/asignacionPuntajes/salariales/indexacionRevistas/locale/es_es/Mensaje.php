@@ -29,6 +29,12 @@ $this->idioma["docenteRegistrar"] = "Identificación o Nombre del Docente";
 $this->idioma["nombreRevista"] = "Nombre de Revista";
 $this->idioma["contextoRevista"] = "Contexto de la Revista";
 $this->idioma["pais"] = "País";
+
+$this->idioma["categoria"] = "Categorías";
+
+$this->idioma["normatividad"] = "Normatividad";
+$this->idioma["normatividadTitulo"] = "Normatividad";
+
 $this->idioma["categoria0"] = "Categorías";
 $this->idioma["categoria1"] = "Tipo de Indexación";
 $this->idioma["issnRevista"] = "ISSN";

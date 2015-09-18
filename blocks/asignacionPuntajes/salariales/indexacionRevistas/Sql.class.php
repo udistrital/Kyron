@@ -148,8 +148,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ri.nombre_revista, ri.titulo_articulo, pi.paisnombre, ti.descripcion as tipo_indexacion,";
 				$cadenaSql.=" ri.numero_issn, ri.anno_publicacion,";
 				$cadenaSql.=" ri.volumen_revista, ri.numero_revista,";
-				$cadenaSql.=" ri.paginas_revista,";
-				$cadenaSql.=" ri.fecha_publicacion ";
+				$cadenaSql.=" ri.paginas_revista ";
 				$cadenaSql.=" from ";
 				$cadenaSql.=" docencia.revista_indexada ri ";
 				$cadenaSql.=" left join docencia.docente dc on ri.documento_docente=dc.documento_docente ";
@@ -158,7 +157,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" left join docencia.facultad fc on pc.id_facultad=fc.id_facultad ";
 				$cadenaSql.=" left join docencia.pais pi on ri.paiscodigo=pi.paiscodigo ";
 				$cadenaSql.=" left join docencia.tipo_indexacion ti ON ti.id_tipo_indexacion = ri.id_tipo_indexacion";
-				$cadenaSql.=" where 1=1";
+				$cadenaSql.=" where ri.estado=true";
 				if ($variable ['documento_docente'] != '') {
 					$cadenaSql .= " AND dc.documento_docente = '" . $variable ['documento_docente'] . "'";
 				}
@@ -175,8 +174,8 @@ class Sql extends \Sql {
 				$cadenaSql .= "documento_docente, nombre_revista, id_contexto, paiscodigo, ";
 				$cadenaSql .= "id_tipo_indexacion, ";
 				$cadenaSql .= "numero_issn, anno_publicacion, volumen_revista, numero_revista, paginas_revista, ";
-				$cadenaSql .= "titulo_articulo, numero_autores, numero_autores_ud, fecha_publicacion, ";
-				$cadenaSql .= "numero_acta, fecha_acta, numero_caso, puntaje) ";
+				$cadenaSql .= "titulo_articulo, numero_autores, numero_autores_ud, ";
+				$cadenaSql .= "numero_acta, fecha_acta, numero_caso, puntaje, normatividad) ";
 				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
 				$cadenaSql .= " '" . $variable ['nombreRevista'] . "',";
 				$cadenaSql .= " '" . $variable ['contextoRevista'] . "',";
@@ -190,11 +189,11 @@ class Sql extends \Sql {
 				$cadenaSql .= " '" . $variable ['tituloArticuloRevista'] . "',";
 				$cadenaSql .= " '" . $variable ['numeroAutoresRevista'] . "',";
 				$cadenaSql .= " '" . $variable ['numeroAutoresUniversidad'] . "',";
-				$cadenaSql .= "' " . $variable ['fechaPublicacionrevista'] . "' ,";
 				$cadenaSql .= "' " . $variable ['numeroActaRevista'] . "',";
 				$cadenaSql .= " '" . $variable ['fechaActaRevista'] . "',";
 				$cadenaSql .= "' " . $variable ['numeroCasoActaRevista'] . "',";
-				$cadenaSql .= " '" . $variable ['puntajeRevista'] . "')";
+				$cadenaSql .= "' " . $variable ['puntajeRevista'] . "',";
+				$cadenaSql .= " '" . $variable ['normatividad'] . "')";
 				break;
 				
 			case "consultarRevistas" :
@@ -212,11 +211,11 @@ class Sql extends \Sql {
 				$cadenaSql.=" ri.titulo_articulo, ";
 				$cadenaSql.=" ri.numero_autores, ";
 				$cadenaSql.=" ri.numero_autores_ud, ";
-				$cadenaSql.=" ri.fecha_publicacion, ";
 				$cadenaSql.=" ri.numero_acta, ";
 				$cadenaSql.=" ri.fecha_acta, ";
 				$cadenaSql.=" ri.numero_caso, ";
-				$cadenaSql.=" ri.puntaje ";
+				$cadenaSql.=" ri.puntaje, ";
+				$cadenaSql.=" ri.normatividad ";
 				$cadenaSql.=" FROM docencia.revista_indexada ri ";
 				$cadenaSql.=" left join docencia.docente dc on ri.documento_docente=dc.documento_docente ";
 				$cadenaSql.=" WHERE ri.documento_docente ='" . $variable['documento_docente']. "'";
@@ -239,11 +238,11 @@ class Sql extends \Sql {
 				$cadenaSql .= "titulo_articulo = '" . $variable ['tituloArticuloRevista'] . "', ";
 				$cadenaSql .= "numero_autores = '" . $variable ['numeroAutoresRevista'] . "', ";
 				$cadenaSql .= "numero_autores_ud = '" . $variable ['numeroAutoresUniversidad'] . "', ";
-				$cadenaSql .= "fecha_publicacion = '" . $variable ['fechaPublicacionrevista'] . "', ";
 				$cadenaSql .= "numero_acta = '" . $variable ['numeroActaRevista'] . "', ";
 				$cadenaSql .= "fecha_acta = '" . $variable ['fechaActaRevista'] . "', ";
 				$cadenaSql .= "numero_caso = '" . $variable ['numeroCasoActaRevista'] . "', ";
-				$cadenaSql .= "puntaje = '" . $variable ['puntajeRevista'] . "'";
+				$cadenaSql .= "puntaje = '" . $variable ['puntajeRevista'] . "', ";
+				$cadenaSql .= "normatividad = '" . $variable ['normatividad'] . "'";
 				$cadenaSql .= "WHERE ";
 				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";
 				$cadenaSql .= "and numero_issn ='" . $variable ['numero_issn_old'] . "' ";

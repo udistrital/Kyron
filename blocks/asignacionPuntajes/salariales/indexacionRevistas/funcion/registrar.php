@@ -27,7 +27,6 @@ class RegistrarIndexacionRevista {
 		$this->miFuncion = $funcion;
 	}
 	function procesarFormulario() {
-		var_dump($_REQUEST);
 		$conexion = "docencia";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
@@ -36,6 +35,9 @@ class RegistrarIndexacionRevista {
 		$rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "raizDocumento" ) . "/blocks/asignacionPuntajes/salariales/";
 		$rutaBloque .= $esteBloque ['nombre'];
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
+		
+		$_REQUEST['contextoRevista'] = 0;
+		$_REQUEST['pais'] = 'COL';
 		
 		$arregloDatos = array (
 			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
@@ -51,14 +53,14 @@ class RegistrarIndexacionRevista {
 			'tituloArticuloRevista' => $_REQUEST['tituloArticuloRevista'],
 			'numeroAutoresRevista' => $_REQUEST['numeroAutoresRevista'],
 			'numeroAutoresUniversidad' => $_REQUEST['numeroAutoresUniversidad'],
-			'fechaPublicacionrevista' => $_REQUEST['fechaPublicacionrevista'],
 			'numeroActaRevista' => $_REQUEST['numeroActaRevista'],
 			'fechaActaRevista' => $_REQUEST['fechaActaRevista'],
 			'numeroCasoActaRevista' => $_REQUEST['numeroCasoActaRevista'],
-			'puntajeRevista' => $_REQUEST['puntajeRevista']
+			'puntajeRevista' => $_REQUEST['puntajeRevista'],
+			'normatividad' => $_REQUEST['normatividad']
 		);
 		
-		$cadenaSql = $this->miSql->getCadenaSql ( 'insertarIndexacion', $arregloDatos );echo $cadenaSql;die;
+		$cadenaSql = $this->miSql->getCadenaSql ( 'insertarIndexacion', $arregloDatos );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
 		
 		if ($resultado) {

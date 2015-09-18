@@ -193,7 +193,6 @@ class registrarForm {
 						<th>Año</th>
 						<th>Volumen</th>
 						<th>Número Paginas</th>
-						<th>Fecha Publicación</th>
 						<th>Modificar</th>
 							
 	                </tr>
@@ -220,7 +219,6 @@ class registrarForm {
 	                    <td><center>" . $indexacion [$i] ['anno_publicacion'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['volumen_revista'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['paginas_revista'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['fecha_publicacion'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>
 	                            <img src='" . $rutaBloque . "/css/images/Entrada.png' width='15px'>

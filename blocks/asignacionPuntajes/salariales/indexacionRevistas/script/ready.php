@@ -78,11 +78,14 @@ $('#<?php echo $this->campoSeguro('proyectoCurricular')?>').width(450);
 $('#<?php echo $this->campoSeguro('docenteRegistrar')?>').width(465);
 $('#<?php echo $this->campoSeguro('contextoRevista')?>').width(450);
 $('#<?php echo $this->campoSeguro('annoRevista')?>').width(450);
+$('#<?php echo $this->campoSeguro('categoria')?>').width(450);
+$('#<?php echo $this->campoSeguro('categoria')?>').select2();
 
 
 ///*********El ancho (width) de los siguientes campos es mayor debido a que se encuentran dentro de un div****///
 $('#<?php echo $this->campoSeguro('pais')?>').width(470);
 $('#<?php echo $this->campoSeguro('categoria')?>').width(470);
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
