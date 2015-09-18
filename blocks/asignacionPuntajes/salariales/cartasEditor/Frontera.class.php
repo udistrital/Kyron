@@ -1,6 +1,6 @@
 <?php
 
-namespace asignacionPuntajes\salariales\indexacionRevistas;
+namespace asignacionPuntajes\salariales\cartasEditor;
 
 if (!isset($GLOBALS ["autorizado"])) {
     include ("../index.php");

@@ -1,36 +1,33 @@
-/* 
-    Document   : miestilo
-    Created on : 29/08/2013, 12:11:16 PM
-    Author     : esanchez
-    Description:
-        Purpose of the stylesheet follows.
-*/
-#scroll {
-     width:600px;
-     height:270px;
-     background-color:#F2F2F2;
-     overflow:auto;
-}
-
-.contenedor-tabla{
-
-display: table;
-
-}
-
-.contenedor-fila{
-
-display: table-row;
-
-}
-
-.contenedor-columna{
-
-display: table-cell;
-
-}
-
-#tablaCandidatos{	border: solid 1px #333;	width: 100%; }
-#tablaCandidatos tbody tr{ background: #E0F0FA; }
-.fila-base{ display: none; } /* fila base oculta */
-.eliminar{ cursor: pointer; color: #000; }
+#botonRegresar
+  {
+  border: 1px solid #DBE1EB;
+  font-size: 18px;
+  font-family: Arial, Verdana;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  background: #4972B5;
+  background: linear-gradient(left, #4972B5, #618ACB);
+  background: -moz-linear-gradient(left, #4972B5, #618ACB);
+  background: -webkit-linear-gradient(left, #4972B5, #618ACB);
+  background: -o-linear-gradient(left, #4972B5, #618ACB);
+  color: #FFFFFF;
+  }
+  
+  #botonRegresar:hover
+  {
+  background: #365D9D;
+  background: linear-gradient(left, #365D9D, #436CAD);
+  background: -moz-linear-gradient(left, #365D9D, #436CAD);
+  background: -webkit-linear-gradient(left, #365D9D, #436CAD);
+  background: -o-linear-gradient(left, #365D9D, #436CAD);
+  color: #FFFFFF;
+  border-color: #FBFFAD;
+  }

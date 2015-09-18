@@ -1,5 +1,5 @@
 <?php
-namespace asignacionPuntajes\salariales\indexacionRevistas\formulario;
+namespace asignacionPuntajes\salariales\cartasEditor\formulario;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -93,7 +93,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required';
+		$atributos ['validar'] = 'required, maxSize[200]';
 		$atributos ['textoFondo'] = 'Ingrese Mínimo 3 Caracteres de Búsqueda';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
@@ -104,7 +104,7 @@ class FormularioRegistro {
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
 		$atributos ['tamanno'] = 80;
-		$atributos ['maximoTamanno'] = '';
+		$atributos ['maximoTamanno'] = '200';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
 			
@@ -117,6 +117,7 @@ class FormularioRegistro {
 		$atributos ["id"] = $esteCampo; // No cambiar este nombre
 		$atributos ["tipo"] = "hidden";
 		$atributos ['estilo'] = '';
+		$atributos ['validar'] = '';//decia required
 		$atributos ["obligatorio"] = true;
 		$atributos ['marco'] = true;
 		$atributos ["etiqueta"] = "";
@@ -132,7 +133,7 @@ class FormularioRegistro {
 		// ----------------FIN CONTROL: Lista Docente--------------------------------------------------------
 			
 		// ----------------INICIO CONTROL: Campo de Texto Nombre Revista--------------------------------------------------------
-		$esteCampo = 'nombreRevista';
+		$esteCampo = 'nombre';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -154,7 +155,7 @@ class FormularioRegistro {
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
 		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '';
+		$atributos ['maximoTamanno'] = '50';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
 			
@@ -166,7 +167,7 @@ class FormularioRegistro {
 			
 		// ----------------INICIO CONTROL: Campo de Texto Contexto Revista--------------------------------------------------------
 			
-		$esteCampo = 'contextoRevista';
+		$esteCampo = 'contexto';
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['id'] = $esteCampo;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
@@ -303,7 +304,7 @@ class FormularioRegistro {
 		// ----------------FIN CONTROL: Lista Tipo Indexación--------------------------------------------------------
 			
 		// ----------------INICIO CONTROL: Campo de Texto ISSN Revista--------------------------------------------------------
-		$esteCampo = 'issnRevista';
+		$esteCampo = 'identificadorColeccion'; //Corresponde al ISSN
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -325,7 +326,7 @@ class FormularioRegistro {
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
 		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '';
+		$atributos ['maximoTamanno'] = '30';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
 			
@@ -337,7 +338,7 @@ class FormularioRegistro {
 			
 		// ----------------INICIO CONTROL: Campo de Texto Año Publicación Revista--------------------------------------------------------
 		
-		$esteCampo = "annoRevista";
+		$esteCampo = "anno";
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['id'] = $esteCampo;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
@@ -381,7 +382,7 @@ class FormularioRegistro {
 			
 		
 		// ----------------INICIO CONTROL: Campo de Texto Volumen Revista--------------------------------------------------------
-		$esteCampo = 'volumenRevista';
+		$esteCampo = 'volumen';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -393,7 +394,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, custom[onlyNumberSp]';
+		$atributos ['validar'] = 'required, custom[onlyNumberSp], maxSize[2]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -403,7 +404,7 @@ class FormularioRegistro {
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
 		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '';
+		$atributos ['maximoTamanno'] = '2';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
 			
@@ -414,7 +415,7 @@ class FormularioRegistro {
 		// ----------------FIN CONTROL: Campo de Texto Volumen Revista--------------------------------------------------------
 			
 		// ----------------INICIO CONTROL: Campo de Texto Número Revista--------------------------------------------------------
-		$esteCampo = 'numeroRevista';
+		$esteCampo = 'numero';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -426,7 +427,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, custom[onlyNumberSp]';
+		$atributos ['validar'] = 'required, custom[onlyNumberSp], maxSize[15]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -436,7 +437,7 @@ class FormularioRegistro {
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
 		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '';
+		$atributos ['maximoTamanno'] = '15';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
 			
@@ -447,7 +448,7 @@ class FormularioRegistro {
 		// ----------------FIN CONTROL: Campo de Texto Número Revista--------------------------------------------------------
 			
 		// ----------------INICIO CONTROL: Campo de Texto Páginas Revista--------------------------------------------------------
-		$esteCampo = 'paginasRevista';
+		$esteCampo = 'paginas';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -459,7 +460,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, custom[onlyNumberSp]';
+		$atributos ['validar'] = 'required, custom[onlyNumberSp], maxSize[3]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -469,7 +470,7 @@ class FormularioRegistro {
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
 		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '';
+		$atributos ['maximoTamanno'] = '3';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
 			
@@ -480,7 +481,7 @@ class FormularioRegistro {
 		// ----------------FIN CONTROL: Campo de Texto Páginas Revista--------------------------------------------------------
 			
 		// ----------------INICIO CONTROL: Campo de Texto Título Artículo Revista--------------------------------------------------------
-		$esteCampo = 'tituloArticuloRevista';
+		$esteCampo = 'tituloArticulo';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -502,7 +503,7 @@ class FormularioRegistro {
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
 		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '';
+		$atributos ['maximoTamanno'] = '200';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
 			
@@ -513,7 +514,7 @@ class FormularioRegistro {
 		// ----------------FIN CONTROL: Campo de Texto Título Artículo Revista--------------------------------------------------------
 			
 		// ----------------INICIO CONTROL: Campo de Texto Número Autores Revista--------------------------------------------------------
-		$esteCampo = 'numeroAutoresRevista';
+		$esteCampo = 'numeroAutores';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -525,7 +526,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, custom[onlyNumberSp]';
+		$atributos ['validar'] = 'required, custom[onlyNumberSp], maxSize[2]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -535,7 +536,7 @@ class FormularioRegistro {
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
 		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '';
+		$atributos ['maximoTamanno'] = '2';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
 			
@@ -557,8 +558,8 @@ class FormularioRegistro {
 		$atributos ['columnas'] = 1;
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
-		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, custom[onlyNumberSp]';
+		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo);
+		$atributos ['validar'] = 'required, custom[onlyNumberSp], maxSize[2]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -568,7 +569,7 @@ class FormularioRegistro {
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
 		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '';
+		$atributos ['maximoTamanno'] = '2';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
 			
@@ -579,7 +580,7 @@ class FormularioRegistro {
 		// ----------------FIN CONTROL: Campo de Texto Número Autores Revista UD--------------------------------------------------------
 			
 		// ----------------INICIO CONTROL: Campo de Texto Fecha Publicación Revista--------------------------------------------------------
-		$esteCampo = 'fechaPublicacionrevista';
+		$esteCampo = 'fechaPublicacion';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -591,7 +592,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required';
+		$atributos ['validar'] = 'required, custom[date]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -612,7 +613,7 @@ class FormularioRegistro {
 		// ----------------FIN CONTROL: Campo de Texto Fecha Publicación Revista--------------------------------------------------------
 			
 		// ----------------INICIO CONTROL: Campo de Texto Número Acta Revista--------------------------------------------------------
-		$esteCampo = 'numeroActaRevista';
+		$esteCampo = 'numeroActa';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -624,7 +625,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required';
+		$atributos ['validar'] = 'required, maxSize[15]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -634,7 +635,7 @@ class FormularioRegistro {
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
 		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '';
+		$atributos ['maximoTamanno'] = '15';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
 			
@@ -645,7 +646,7 @@ class FormularioRegistro {
 		// ----------------FIN CONTROL: Campo de Texto Numero Acta Revista--------------------------------------------------------
 			
 		// ----------------INICIO CONTROL: Campo de Texto Fecha Acta Revista--------------------------------------------------------
-		$esteCampo = 'fechaActaRevista';
+		$esteCampo = 'fechaActa';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -657,7 +658,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required';
+		$atributos ['validar'] = 'required, custom[date]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -678,7 +679,7 @@ class FormularioRegistro {
 		// ----------------FIN CONTROL: Campo de Texto Fecha Acta Revista--------------------------------------------------------
 			
 		// ----------------INICIO CONTROL: Campo de Texto Número Caso Acta Revista--------------------------------------------------------
-		$esteCampo = 'numeroCasoActaRevista';
+		$esteCampo = 'numeroCasoActa';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -690,7 +691,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, custom[onlyNumberSp]';
+		$atributos ['validar'] = 'required, custom[onlyNumberSp], maxSize[15]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -711,7 +712,7 @@ class FormularioRegistro {
 		// ----------------FIN CONTROL: Campo de Texto Número Caso Acta Revista--------------------------------------------------------
 			
 		// ----------------INICIO CONTROL: Campo de Texto Puntaje Revista--------------------------------------------------------
-		$esteCampo = 'puntajeRevista';
+		$esteCampo = 'puntaje';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -733,7 +734,7 @@ class FormularioRegistro {
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
 		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '';
+		$atributos ['maximoTamanno'] = '4';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
 			
@@ -803,6 +804,13 @@ class FormularioRegistro {
 				 */
 				$valorCodificado .= "&campoSeguro=" . $_REQUEST ['tiempo'];
 				$valorCodificado .= "&tiempo=" . time();
+				/*
+				 * Sara permite validar los campos en el formulario o funcion destino.
+				 * Para ello se envía los datos atributos["validadar"] de los componentes del formulario
+				 * Estos se pueden obtener en el atributo $this->miFormulario->validadorCampos del formulario
+				 * La función $this->miFormulario->codificarCampos() codifica automáticamente el atributo validadorCampos
+				 */
+				$valorCodificado .= "&validadorCampos=" . $this->miFormulario->codificarCampos();
 				
 				// Paso 2: codificar la cadena resultante
 				$valorCodificado = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $valorCodificado );

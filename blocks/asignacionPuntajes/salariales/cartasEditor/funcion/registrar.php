@@ -1,15 +1,15 @@
 <?php
 
-namespace asignacionPuntajes\salariales\indexacionRevistas\funcion;
+namespace asignacionPuntajes\salariales\cartasEditor\funcion;
 
-use asignacionPuntajes\salariales\indexacionRevistas\funcion\redireccionar;
+use asignacionPuntajes\salariales\cartasEditor\funcion\redireccionar;
 
 include_once ('redireccionar.php');
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
 	exit ();
 }
-class RegistrarIndexacionRevista {
+class Registrar {
 	
 	var $miConfigurador;
 	var $lenguaje;
@@ -27,7 +27,6 @@ class RegistrarIndexacionRevista {
 		$this->miFuncion = $funcion;
 	}
 	function procesarFormulario() {
-
 		$conexion = "docencia";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
@@ -38,27 +37,27 @@ class RegistrarIndexacionRevista {
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
 		
 		$arregloDatos = array (
-			$_REQUEST['id_docenteRegistrar'],
-			$_REQUEST['nombreRevista'],
-			$_REQUEST['contextoRevista'],
-			$_REQUEST['pais'],
-			$_REQUEST['categoria'],
-			$_REQUEST['issnRevista'],
-			$_REQUEST['annoRevista'],
-			$_REQUEST['volumenRevista'],
-			$_REQUEST['numeroRevista'],
-			$_REQUEST['paginasRevista'],
-			$_REQUEST['tituloArticuloRevista'],
-			$_REQUEST['numeroAutoresRevista'],
-			$_REQUEST['numeroAutoresUniversidad'],
-			$_REQUEST['fechaPublicacionrevista'],
-			$_REQUEST['numeroActaRevista'],
-			$_REQUEST['fechaActaRevista'],
-			$_REQUEST['numeroCasoActaRevista'],
-			$_REQUEST['puntajeRevista']
+			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
+			'nombre' => $_REQUEST['nombre'],
+			'contexto' => $_REQUEST['contexto'],
+			'pais' => $_REQUEST['pais'],
+			'categoria' => $_REQUEST['categoria'],
+			'identificadorColeccion' => $_REQUEST['identificadorColeccion'],
+			'anno' => $_REQUEST['anno'],
+			'volumen' => $_REQUEST['volumen'],
+			'numero' => $_REQUEST['numero'],
+			'paginas' => $_REQUEST['paginas'],
+			'tituloArticulo' => $_REQUEST['tituloArticulo'],
+			'numeroAutores' => $_REQUEST['numeroAutores'],
+			'numeroAutoresUniversidad' => $_REQUEST['numeroAutoresUniversidad'],
+			'fechaPublicacion' => $_REQUEST['fechaPublicacion'],
+			'numeroActa' => $_REQUEST['numeroActa'],
+			'fechaActa' => $_REQUEST['fechaActa'],
+			'numeroCasoActa' => $_REQUEST['numeroCasoActa'],
+			'puntaje' => $_REQUEST['puntaje']
 		);
 		
-		$cadenaSql = $this->miSql->getCadenaSql ( 'insertarIndexacion', $arregloDatos );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'registrar', $arregloDatos );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
 		
 		if ($resultado) {
@@ -80,7 +79,7 @@ class RegistrarIndexacionRevista {
 	}
 }
 
-$miRegistrador = new RegistrarIndexacionRevista ( $this->lenguaje, $this->sql, $this->funcion );
+$miRegistrador = new Registrar ( $this->lenguaje, $this->sql, $this->funcion );
 
 $resultado = $miRegistrador->procesarFormulario ();
 

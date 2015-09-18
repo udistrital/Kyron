@@ -1,5 +1,5 @@
 <?php
-namespace asignacionPuntajes\salariales\indexacionRevistas\formulario;
+namespace asignacionPuntajes\salariales\cartasEditor\formulario;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -35,6 +35,11 @@ class FormularioModificar {
 		$conexion = "docencia";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
+		/*
+		 * Se realiza la decodificacion del arreglo "validadorCampos"
+		 */
+		//$validadorCampos = $this->miFormulario->decodificarCampos($_REQUEST['validadorCampos']);
+		
 		// Rescatar los datos de este bloque
 		$esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );
 		
@@ -52,7 +57,7 @@ class FormularioModificar {
 		
 		// -------------------------------------------------------------------------------------------------
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
-		$esteCampo = $esteBloque ['nombre']."Modificar";
+		$esteCampo = $esteBloque ['nombre']."Registrar";
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		
@@ -81,39 +86,39 @@ class FormularioModificar {
 
 		// ---------------- CONTROL: Lista Docente--------------------------------------------------------
 		$datos = array(
-				0 =>  $_REQUEST ['documento_docente'],
-				1 => $_REQUEST ['numero_issn'],
+				'documento_docente' =>  $_REQUEST ['documento_docente'],
+				'identificadorColeccion' => $_REQUEST ['identificadorColeccion'],
 		
 		);
 		 
-		$cadena_sql = $this->miSql->getCadenaSql ( "consultarRevistas", $datos );		
+		$cadena_sql = $this->miSql->getCadenaSql ( "publicacionActualizar", $datos );		
 		$resultadoIndexacion = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
 		
 				$_REQUEST['docenteRegistrar'] =  $resultadoIndexacion[0]['documento_docente'] . " - " . $resultadoIndexacion[0]['nombre_docente'];
 				$_REQUEST['id_docenteRegistrar'] =  $resultadoIndexacion[0]['documento_docente'];
-				$_REQUEST['nombreRevista'] =  $resultadoIndexacion[0]['nombre_revista'];
-				$_REQUEST['contextoRevista'] =  $resultadoIndexacion[0]['id_contexto'];
+				$_REQUEST['nombre'] =  $resultadoIndexacion[0]['nombre_revista'];
+				$_REQUEST['contexto'] =  $resultadoIndexacion[0]['id_contexto'];
 				$_REQUEST['pais'] =  $resultadoIndexacion[0]['paiscodigo'];
 				$_REQUEST['categoria'] =  $resultadoIndexacion[0]['id_tipo_indexacion'];
-				$_REQUEST['issnRevista'] =  $resultadoIndexacion[0]['numero_issn'];
+				$_REQUEST['identificadorColeccion'] =  $resultadoIndexacion[0]['numero_issn'];
 				$_REQUEST['annoRevista'] =  $resultadoIndexacion[0]['anno_publicacion'];
-				$_REQUEST['volumenRevista'] =  $resultadoIndexacion[0]['volumen_revista'];
-				$_REQUEST['numeroRevista'] =  $resultadoIndexacion[0]['numero_revista'];
-				$_REQUEST['paginasRevista'] =  $resultadoIndexacion[0]['paginas_revista'];
-				$_REQUEST['tituloArticuloRevista'] =  $resultadoIndexacion[0]['titulo_articulo'];
-				$_REQUEST['numeroAutoresRevista'] =  $resultadoIndexacion[0]['numero_autores'];
+				$_REQUEST['volumen'] =  $resultadoIndexacion[0]['volumen_revista'];
+				$_REQUEST['numero'] =  $resultadoIndexacion[0]['numero_revista'];
+				$_REQUEST['paginas'] =  $resultadoIndexacion[0]['paginas_revista'];
+				$_REQUEST['tituloArticulo'] =  $resultadoIndexacion[0]['titulo_articulo'];
+				$_REQUEST['numeroAutores'] =  $resultadoIndexacion[0]['numero_autores'];
 				$_REQUEST['numeroAutoresUniversidad'] =  $resultadoIndexacion[0]['numero_autores_ud'];
-				$_REQUEST['fechaPublicacionrevista'] =  $resultadoIndexacion[0]['fecha_publicacion'];
-				$_REQUEST['numeroActaRevista'] =  $resultadoIndexacion[0]['numero_acta'];
-				$_REQUEST['fechaActaRevista'] =  $resultadoIndexacion[0]['fecha_acta'];
-				$_REQUEST['numeroCasoActaRevista'] =  $resultadoIndexacion[0]['numero_caso'];
-				$_REQUEST['puntajeRevista'] =  $resultadoIndexacion[0]['puntaje'];
+				$_REQUEST['fechaPublicacion'] =  $resultadoIndexacion[0]['fecha_publicacion'];
+				$_REQUEST['numeroActa'] =  $resultadoIndexacion[0]['numero_acta'];
+				$_REQUEST['fechaActa'] =  $resultadoIndexacion[0]['fecha_acta'];
+				$_REQUEST['numeroCasoActa'] =  $resultadoIndexacion[0]['numero_caso'];
+				$_REQUEST['puntaje'] =  $resultadoIndexacion[0]['puntaje'];
 		
-		$esteCampo = "marcoDatosBasicos";
+		$esteCampo = "marcoModificarRegistro";
 		$atributos ['id'] = $esteCampo;
 		$atributos ["estilo"] = "jqueryui";
 		$atributos ['tipoEtiqueta'] = 'inicio';
-		$atributos ["leyenda"] = "Modificar Información de Revistas Indexadas";
+		$atributos ["leyenda"] = $this->lenguaje->getCadena ( $esteCampo );
 		echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
 		
 			$esteCampo = 'docenteRegistrar';
@@ -129,7 +134,7 @@ class FormularioModificar {
 			$atributos ['dobleLinea'] = 0;
 			$atributos ['tabIndex'] = $tab;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ['validar'] = 'required';
+			$atributos ['validar'] = 'required, maxSize[200]';
 			$atributos ['textoFondo'] = 'Ingrese Mínimo 3 Caracteres de Búsqueda';
 				
 			if (isset ( $_REQUEST [$esteCampo] )) {
@@ -140,7 +145,7 @@ class FormularioModificar {
 			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 			$atributos ['deshabilitado'] = true;
 			$atributos ['tamanno'] = 80;
-			$atributos ['maximoTamanno'] = '';
+			$atributos ['maximoTamanno'] = '200';
 			$atributos ['anchoEtiqueta'] = 280;
 			$tab ++;
 				
@@ -168,7 +173,7 @@ class FormularioModificar {
 			// ----------------FIN CONTROL: Lista Docente--------------------------------------------------------
 				
 			// ----------------INICIO CONTROL: Campo de Texto Nombre Revista--------------------------------------------------------
-			$esteCampo = 'nombreRevista';
+			$esteCampo = 'nombre';
 			$atributos ['id'] = $esteCampo;
 			$atributos ['nombre'] = $esteCampo;
 			$atributos ['tipo'] = 'text';
@@ -190,7 +195,7 @@ class FormularioModificar {
 			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 			$atributos ['deshabilitado'] = false;
 			$atributos ['tamanno'] = 57;
-			$atributos ['maximoTamanno'] = '';
+			$atributos ['maximoTamanno'] = '50';
 			$atributos ['anchoEtiqueta'] = 280;
 			$tab ++;
 				
@@ -202,7 +207,7 @@ class FormularioModificar {
 				
 			// ----------------INICIO CONTROL: Campo de Texto Contexto Revista--------------------------------------------------------
 				
-			$esteCampo = 'contextoRevista';
+			$esteCampo = 'contexto';
 			$atributos ['nombre'] = $esteCampo;
 			$atributos ['id'] = $esteCampo;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
@@ -233,7 +238,7 @@ class FormularioModificar {
 					array (
 							1,
 							'Internacional'
-					)
+					),
 			);
 			$atributos ['matrizItems'] = $matrizItems;
 			// Aplica atributos globales al control
@@ -281,7 +286,7 @@ class FormularioModificar {
 					)
 			);
 			
-			$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "pais" , 0 );
+			$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ("pais" , $_REQUEST['contexto']);
 			$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 			
 			$atributos ['matrizItems'] = $matrizItems;
@@ -305,7 +310,7 @@ class FormularioModificar {
 			$esteCampo = "categoria";
 			$atributos ['nombre'] = $esteCampo;
 			$atributos ['id'] = $esteCampo;
-			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo . $_REQUEST ['contexto'] );
 			$atributos ["etiquetaObligatorio"] = true;
 			$atributos ['tab'] = $tab ++;
 			$atributos ['anchoEtiqueta'] = 280;
@@ -331,7 +336,7 @@ class FormularioModificar {
 							' '
 					)
 			);
-			$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "categoria_revista" , 0 );
+			$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "categoria_revista" , $_REQUEST['contexto'] );
 			$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 			
 			$atributos ['matrizItems'] = $matrizItems;
@@ -345,7 +350,7 @@ class FormularioModificar {
 			// ----------------FIN CONTROL: Lista Tipo Indexación--------------------------------------------------------
 				
 			// ----------------INICIO CONTROL: Campo de Texto ISSN Revista--------------------------------------------------------
-			$esteCampo = 'issnRevista';
+			$esteCampo = 'identificadorColeccion';
 			$atributos ['id'] = $esteCampo;
 			$atributos ['nombre'] = $esteCampo;
 			$atributos ['tipo'] = 'text';
@@ -367,7 +372,7 @@ class FormularioModificar {
 			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 			$atributos ['deshabilitado'] = false;
 			$atributos ['tamanno'] = 57;
-			$atributos ['maximoTamanno'] = '';
+			$atributos ['maximoTamanno'] = '30';
 			$atributos ['anchoEtiqueta'] = 280;
 			$tab ++;
 				
@@ -378,7 +383,7 @@ class FormularioModificar {
 			// ----------------FIN CONTROL: Campo de Texto ISSN Revista--------------------------------------------------------
 				
 			// ----------------INICIO CONTROL: Campo de Texto Año Publicación Revista--------------------------------------------------------
-			$esteCampo = "annoRevista";
+			$esteCampo = "anno";
 			$atributos ['nombre'] = $esteCampo;
 			$atributos ['id'] = $esteCampo;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
@@ -420,7 +425,7 @@ class FormularioModificar {
 			// ----------------FIN CONTROL: Campo de Texto Año Publicación Revista--------------------------------------------------------
 				
 			// ----------------INICIO CONTROL: Campo de Texto Volumen Revista--------------------------------------------------------
-			$esteCampo = 'volumenRevista';
+			$esteCampo = 'volumen';
 			$atributos ['id'] = $esteCampo;
 			$atributos ['nombre'] = $esteCampo;
 			$atributos ['tipo'] = 'text';
@@ -442,7 +447,7 @@ class FormularioModificar {
 			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 			$atributos ['deshabilitado'] = false;
 			$atributos ['tamanno'] = 57;
-			$atributos ['maximoTamanno'] = '';
+			$atributos ['maximoTamanno'] = '2';
 			$atributos ['anchoEtiqueta'] = 280;
 			$tab ++;
 				
@@ -453,7 +458,7 @@ class FormularioModificar {
 			// ----------------FIN CONTROL: Campo de Texto Volumen Revista--------------------------------------------------------
 				
 			// ----------------INICIO CONTROL: Campo de Texto Número Revista--------------------------------------------------------
-			$esteCampo = 'numeroRevista';
+			$esteCampo = 'numero';
 			$atributos ['id'] = $esteCampo;
 			$atributos ['nombre'] = $esteCampo;
 			$atributos ['tipo'] = 'text';
@@ -465,7 +470,7 @@ class FormularioModificar {
 			$atributos ['dobleLinea'] = 0;
 			$atributos ['tabIndex'] = $tab;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ['validar'] = 'required, custom[onlyNumberSp]';
+			$atributos ['validar'] = 'required, custom[onlyNumberSp], maxSize[15]';
 				
 			if (isset ( $_REQUEST [$esteCampo] )) {
 				$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -475,7 +480,7 @@ class FormularioModificar {
 			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 			$atributos ['deshabilitado'] = false;
 			$atributos ['tamanno'] = 57;
-			$atributos ['maximoTamanno'] = '';
+			$atributos ['maximoTamanno'] = '15';
 			$atributos ['anchoEtiqueta'] = 280;
 			$tab ++;
 				
@@ -486,7 +491,7 @@ class FormularioModificar {
 			// ----------------FIN CONTROL: Campo de Texto Número Revista--------------------------------------------------------
 				
 			// ----------------INICIO CONTROL: Campo de Texto Páginas Revista--------------------------------------------------------
-			$esteCampo = 'paginasRevista';
+			$esteCampo = 'paginas';
 			$atributos ['id'] = $esteCampo;
 			$atributos ['nombre'] = $esteCampo;
 			$atributos ['tipo'] = 'text';
@@ -498,7 +503,7 @@ class FormularioModificar {
 			$atributos ['dobleLinea'] = 0;
 			$atributos ['tabIndex'] = $tab;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ['validar'] = 'required, custom[onlyNumberSp]';
+			$atributos ['validar'] = 'required, custom[onlyNumberSp], maxSize[3]';
 				
 			if (isset ( $_REQUEST [$esteCampo] )) {
 				$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -519,7 +524,7 @@ class FormularioModificar {
 			// ----------------FIN CONTROL: Campo de Texto Páginas Revista--------------------------------------------------------
 				
 			// ----------------INICIO CONTROL: Campo de Texto Título Artículo Revista--------------------------------------------------------
-			$esteCampo = 'tituloArticuloRevista';
+			$esteCampo = 'tituloArticulo';
 			$atributos ['id'] = $esteCampo;
 			$atributos ['nombre'] = $esteCampo;
 			$atributos ['tipo'] = 'text';
@@ -541,7 +546,7 @@ class FormularioModificar {
 			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 			$atributos ['deshabilitado'] = false;
 			$atributos ['tamanno'] = 57;
-			$atributos ['maximoTamanno'] = '';
+			$atributos ['maximoTamanno'] = '200';
 			$atributos ['anchoEtiqueta'] = 280;
 			$tab ++;
 				
@@ -552,7 +557,7 @@ class FormularioModificar {
 			// ----------------FIN CONTROL: Campo de Texto Título Artículo Revista--------------------------------------------------------
 				
 			// ----------------INICIO CONTROL: Campo de Texto Número Autores Revista--------------------------------------------------------
-			$esteCampo = 'numeroAutoresRevista';
+			$esteCampo = 'numeroAutores';
 			$atributos ['id'] = $esteCampo;
 			$atributos ['nombre'] = $esteCampo;
 			$atributos ['tipo'] = 'text';
@@ -564,7 +569,7 @@ class FormularioModificar {
 			$atributos ['dobleLinea'] = 0;
 			$atributos ['tabIndex'] = $tab;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ['validar'] = 'required, custom[onlyNumberSp]';
+			$atributos ['validar'] = 'required, custom[onlyNumberSp], maxSize[2]';
 				
 			if (isset ( $_REQUEST [$esteCampo] )) {
 				$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -574,7 +579,7 @@ class FormularioModificar {
 			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 			$atributos ['deshabilitado'] = false;
 			$atributos ['tamanno'] = 57;
-			$atributos ['maximoTamanno'] = '';
+			$atributos ['maximoTamanno'] = '2';
 			$atributos ['anchoEtiqueta'] = 280;
 			$tab ++;
 				
@@ -597,7 +602,7 @@ class FormularioModificar {
 			$atributos ['dobleLinea'] = 0;
 			$atributos ['tabIndex'] = $tab;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ['validar'] = 'required, custom[onlyNumberSp]';
+			$atributos ['validar'] = 'required, custom[onlyNumberSp], maxSize[2]';
 				
 			if (isset ( $_REQUEST [$esteCampo] )) {
 				$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -607,7 +612,7 @@ class FormularioModificar {
 			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 			$atributos ['deshabilitado'] = false;
 			$atributos ['tamanno'] = 57;
-			$atributos ['maximoTamanno'] = '';
+			$atributos ['maximoTamanno'] = '2';
 			$atributos ['anchoEtiqueta'] = 280;
 			$tab ++;
 				
@@ -618,7 +623,7 @@ class FormularioModificar {
 			// ----------------FIN CONTROL: Campo de Texto Número Autores Revista UD--------------------------------------------------------
 				
 			// ----------------INICIO CONTROL: Campo de Texto Fecha Publicación Revista--------------------------------------------------------
-			$esteCampo = 'fechaPublicacionrevista';
+			$esteCampo = 'fechaPublicacion';
 			$atributos ['id'] = $esteCampo;
 			$atributos ['nombre'] = $esteCampo;
 			$atributos ['tipo'] = 'text';
@@ -651,7 +656,7 @@ class FormularioModificar {
 			// ----------------FIN CONTROL: Campo de Texto Fecha Publicación Revista--------------------------------------------------------
 				
 			// ----------------INICIO CONTROL: Campo de Texto Número Acta Revista--------------------------------------------------------
-			$esteCampo = 'numeroActaRevista';
+			$esteCampo = 'numeroActa';
 			$atributos ['id'] = $esteCampo;
 			$atributos ['nombre'] = $esteCampo;
 			$atributos ['tipo'] = 'text';
@@ -663,12 +668,12 @@ class FormularioModificar {
 			$atributos ['dobleLinea'] = 0;
 			$atributos ['tabIndex'] = $tab;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ['validar'] = 'required';
+			$atributos ['validar'] = 'required, maxSize[15]';
 				
 			if (isset ( $_REQUEST [$esteCampo] )) {
 				$atributos ['valor'] = $_REQUEST [$esteCampo];
 			} else {
-				$atributos ['valor'] = '';
+				$atributos ['valor'] = '15';
 			}
 			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 			$atributos ['deshabilitado'] = false;
@@ -684,7 +689,7 @@ class FormularioModificar {
 			// ----------------FIN CONTROL: Campo de Texto Numero Acta Revista--------------------------------------------------------
 				
 			// ----------------INICIO CONTROL: Campo de Texto Fecha Acta Revista--------------------------------------------------------
-			$esteCampo = 'fechaActaRevista';
+			$esteCampo = 'fechaActa';
 			$atributos ['id'] = $esteCampo;
 			$atributos ['nombre'] = $esteCampo;
 			$atributos ['tipo'] = 'text';
@@ -717,7 +722,7 @@ class FormularioModificar {
 			// ----------------FIN CONTROL: Campo de Texto Fecha Acta Revista--------------------------------------------------------
 				
 			// ----------------INICIO CONTROL: Campo de Texto Número Caso Acta Revista--------------------------------------------------------
-			$esteCampo = 'numeroCasoActaRevista';
+			$esteCampo = 'numeroCasoActa';
 			$atributos ['id'] = $esteCampo;
 			$atributos ['nombre'] = $esteCampo;
 			$atributos ['tipo'] = 'text';
@@ -750,7 +755,7 @@ class FormularioModificar {
 			// ----------------FIN CONTROL: Campo de Texto Número Caso Acta Revista--------------------------------------------------------
 				
 			// ----------------INICIO CONTROL: Campo de Texto Puntaje Revista--------------------------------------------------------
-			$esteCampo = 'puntajeRevista';
+			$esteCampo = 'puntaje';
 			$atributos ['id'] = $esteCampo;
 			$atributos ['nombre'] = $esteCampo;
 			$atributos ['tipo'] = 'text';
@@ -762,7 +767,7 @@ class FormularioModificar {
 			$atributos ['dobleLinea'] = 0;
 			$atributos ['tabIndex'] = $tab;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ['validar'] = 'required, custom[onlyNumberSp]';
+			$atributos ['validar'] = 'required, min[0.1], max[15], custom[number]';
 				
 			if (isset ( $_REQUEST [$esteCampo] )) {
 				$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -772,7 +777,7 @@ class FormularioModificar {
 			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 			$atributos ['deshabilitado'] = false;
 			$atributos ['tamanno'] = 57;
-			$atributos ['maximoTamanno'] = '';
+			$atributos ['maximoTamanno'] = '4';
 			$atributos ['anchoEtiqueta'] = 280;
 			$tab ++;
 				
@@ -802,7 +807,7 @@ class FormularioModificar {
 					$atributos ["verificar"] = '';
 					$atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
 					$atributos ["valor"] = $this->lenguaje->getCadena ( $esteCampo );
-					$atributos ['nombreFormulario'] = $esteBloque ['nombre']."Modificar";
+					$atributos ['nombreFormulario'] = $esteBloque ['nombre']."Registrar";
 					$tab ++;
 					
 					// Aplica atributos globales al control
@@ -822,7 +827,7 @@ class FormularioModificar {
 					$atributos ["verificar"] = '';
 					$atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
 					$atributos ["valor"] = $this->lenguaje->getCadena ( $esteCampo );
-					$atributos ['nombreFormulario'] = $esteBloque ['nombre']."Modificar";
+					$atributos ['nombreFormulario'] = $esteBloque ['nombre']."Registrar";
 					$tab ++;
 						
 					// Aplica atributos globales al control
@@ -860,7 +865,7 @@ class FormularioModificar {
 				$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 				$valorCodificado .= "&opcion=actualizar";
 				$valorCodificado .= "&arreglo=".$_REQUEST['arreglo'];
-				$valorCodificado .= "&numero_issn_old=".$_REQUEST['numero_issn'];
+				$valorCodificado .= "&identificadorColeccion_old=".$_REQUEST['identificadorColeccion'];
 				
 				/**
 				 * SARA permite que los nombres de los campos sean dinámicos.

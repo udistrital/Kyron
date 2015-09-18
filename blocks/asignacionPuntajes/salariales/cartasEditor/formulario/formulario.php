@@ -1,4 +1,6 @@
 <?php
+
+
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
 	exit ();
@@ -30,11 +32,11 @@ echo $this->miFormulario->division ( "inicio", $atributos );
 unset ( $atributos );
 {
 	// -------------------- Listado de Pestañas (Como lista No Ordenada) -------------------------------
-	
+
 	$items = array (
 			
-			"tabConsultar" => $this->lenguaje->getCadena ( "consultarCartas" ),
-			"tabIngresar" => $this->lenguaje->getCadena ( "ingresarCartas" ) 
+			"tabConsultar" => $this->lenguaje->getCadena ( 'tabConsultar' ),
+			"tabIngresar" => $this->lenguaje->getCadena ( 'tabIngresar' ) 
 	);
 	$atributos ["items"] = $items;
 	$atributos ["estilo"] = "";

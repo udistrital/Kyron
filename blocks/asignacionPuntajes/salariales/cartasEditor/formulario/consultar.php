@@ -5,13 +5,18 @@ if (! isset ( $GLOBALS ["autorizado"] )) {
 	exit ();
 }
 
+include_once ("core/builder/InspectorHTML.class.php");
+
 class registrarForm {
 	var $miConfigurador;
+	var $miInspectorHTML;
 	var $lenguaje;
 	var $miFormulario;
 	var $miSql;
 	function __construct($lenguaje, $formulario, $sql) {
 		$this->miConfigurador = \Configurador::singleton ();
+		
+		$this->miInspectorHTML = \InspectorHTML::singleton ();
 		
 		$this->miConfigurador->fabricaConexiones->setRecursoDB ( 'principal' );
 		
@@ -46,6 +51,39 @@ class registrarForm {
 		 */
 		
 		$atributosGlobales ['campoSeguro'] = 'true';
+		/*
+		 * Se propone un tipo de validación diferente a la convencional estructura:
+		 *	 if (isset ( $_REQUEST ['id_docente'] ) && $_REQUEST ['id_docente'] != '') {
+		 *		$id_docente = $_REQUEST ['id_docente'];
+		 *	} else {
+		 *		$id_docente = '';
+		 *	}
+		 * Se crea una función que valida todo de acuerdo a el campo validarCampos que corresponde
+		 * a las entradas puestas en el string jquery.validationEngine
+		 */
+		/*
+		 * Se realiza la decodificación de los campos "validador" de los 
+		 * componentes del FormularioHtml. Se realiza la validación. En caso de que algún parámetro
+		 * sea ingresado fuera de lo correspondiente en el campo "validador", este será ajustado
+		 * (o convertido a) a un parámetro permisible o simplemente de no ser válido se devolverá 
+		 * el valor false. Si lo que se quiere es saber si los parámetros son correctos o no, se
+		 * puede introducir un tercer parámetro $arreglar, que es un parámetro booleano que indica,
+		 * si es pertinente o no realizar un recorte de los datos "string" para que cumpla los requerimientos
+		 * de longitud (tamaño) del campo.
+		 */
+		if(isset($_REQUEST['validadorCampos'])){
+			$validadorCampos = $this->miInspectorHTML->decodificarCampos($_REQUEST['validadorCampos']);
+			$respuesta = $this->miInspectorHTML->validacionCampos($_REQUEST,$validadorCampos,false);
+			if ($respuesta != false){
+				$_REQUEST = $respuesta;
+			} else {
+				//Lo que se desea hacer si los parámetros son inválidos
+				echo "<h1>Usted ha ingresado parámetros de forma incorrecta al sistema.
+				 El acceso incorrecto ha sido registrado en el sistema con la IP: ".$_SERVER['REMOTE_ADDR'] . '</h1>';
+				//sleep(60);
+				//redireccion::redireccionar ( "index" );
+			}
+		}
 		
 		// -------------------------------------------------------------------------------------------------
 		$conexion = "docencia";
@@ -70,15 +108,20 @@ class registrarForm {
 		}
 		
 		$arreglo = array (
-				$id_docente,
-				$facultad,
-				$proyectoCurricular 
+				'documento_docente' => $id_docente,
+				'id_facultad' => $facultad,
+				'id_proyectocurricular' => $proyectoCurricular
 		);
 		
-		$cadenaSql = $this->miSql->getCadenaSql ( 'consultarIndexacion', $arreglo );
+		$arregloSerialize = array (
+				$id_docente,
+				$facultad,
+				$proyectoCurricular
+		);
+
+		$cadenaSql = $this->miSql->getCadenaSql ( 'consultar', $arreglo );
 		$indexacion = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
-		$arreglo=serialize($arreglo);
-		
+		$arreglo=serialize($arregloSerialize);
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
 		$esteCampo = $esteBloque ['nombre'];
 		$atributos ['id'] = $esteCampo;
@@ -128,11 +171,11 @@ class registrarForm {
 		
 				if ($indexacion) {
 					
-					$esteCampo = "marcoDatosBasicos";
+					$esteCampo = "marcoConsultaGeneral";
 					$atributos ['id'] = $esteCampo;
 					$atributos ["estilo"] = "jqueryui";
 					$atributos ['tipoEtiqueta'] = 'inicio';
-					$atributos ["leyenda"] = "Revistas Indexadas";					
+					$atributos ["leyenda"] = $this->lenguaje->getCadena ( $esteCampo );		
 					echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
 					
 					echo "<table id='tablaTitulos'>";
@@ -160,10 +203,10 @@ class registrarForm {
 					for($i = 0; $i < count ( $indexacion ); $i ++) {
 						$variable = "pagina=" . $miPaginaActual; // pendiente la pagina para modificar parametro
 						$variable .= "&opcion=modificar";
-						$variable .= "&arreglo=".$arreglo;
+						$variable .= "&arreglo=" . $arreglo;
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
 						$variable .= "&documento_docente=" . $indexacion [$i] ['documento_docente'];
-						$variable .= "&numero_issn=" . $indexacion [$i] ['numero_issn'];
+						$variable .= "&identificadorColeccion=" . $indexacion [$i] ['numero_issn'];
 						$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 						
 						$mostrarHtml = "<tr>
