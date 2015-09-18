@@ -37,7 +37,7 @@ class RegistrarIndexacionRevista {
 		$rutaBloque .= $esteBloque ['nombre'];
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
 		var_dump($_REQUEST);
-		$cadenaSql = $this->miSql->getCadenaSql ( 'insertarLibro', $_REQUEST );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'insertarLibroDocente', $_REQUEST );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
 		var_dump($resultado); exit;
 		if ($resultado) {

@@ -103,23 +103,26 @@ class InspectorHTML {
 		
 		/*
 		 * Como se supone que ya superó la barrera de inyeccion SQl en la funcion limpiarSQL.
-		 * Se quitan ', y " para que pueda ejecutarse el SQL. No se hace un tipo de corrección
-		 * de ' (simple quote) con '' (doble simple quotes) para evitar los casos de inyección
-		 * SQL y no fomentar la inserción de carácteres raros en nombres de funciones. 
+		 * Se hace la corrección al insertar campos de texto con ' con el comodín ''. 
 		 */
-	    /*
+		/*
 		 * "'" - simple 
 		 * "\0" - NULL
-	     * "\t" - tab
-	     * "\n" - new line
-	     * "\x0B" - vertical tab
-	     * "\r" - carriage return
-	     * " " - ordinary white space
+		 * "\t" - tab
+		 * "\n" - new line
+		 * "\x0B" - vertical tab
+		 * "\r" - carriage return
+		 * " " - ordinary white space
 		 * "\x00" - NULL
 		 * "\x1a" - EOF
 		 */
-		$valorCampo = trim($valorCampo);var_dump($valorCampo);
-		$valorCampo = str_replace(array('\'','"'), ' " ', $valorCampo);
+		$valorCampo = trim($valorCampo);
+		$valorCampo = str_replace('\'', '\'\'', $valorCampo);
+		//Se propone guardar el string de los campos como carácteres html y luego si se necesita
+		//Decodificarlos con htmlspecialchars_decode
+		//$valorCampo = htmlspecialchars(nl2br($valorCampo),ENT_QUOTES);
+		//http://php.net/manual/en/pdo.quote.php
+		//http://php.net/manual/en/pdo.prepare.php
 		
 		return $valorCampo;
 	}

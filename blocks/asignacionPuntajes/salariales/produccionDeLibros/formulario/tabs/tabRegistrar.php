@@ -772,7 +772,28 @@ class FormularioRegistro {
 		unset ( $atributos );
 		// ----------------FIN CONTROL: Campo de Texto Puntaje Libro--------------------------------------------------------
 		
-		//echo 'Detalles';
+		
+		// ----------------INICIO CONTROL: Campo Área de Texto Detalles Libro--------------------------------------------------------
+		$esteCampo="detallesLibro";
+		$atributos["id"]=$esteCampo;
+		$atributos["etiqueta"]=$this->lenguaje->getCadena($esteCampo);
+		$atributos["titulo"]=$this->lenguaje->getCadena($esteCampo."Titulo");
+		$atributos["tabIndex"]=$tab++;
+		$atributos["etiquetaObligatorio"] = true;
+		$atributos["tipo"]="";
+		$atributos["columnas"] = 100;
+		$atributos["filas"] = 5;
+		$atributos["estilo"]="jqueryui";
+		$atributos["anchoEtiqueta"] = 310;
+		$atributos["validar"]="required";
+		$atributos["categoria"]="";
+		// Aplica atributos globales al control
+		$atributos = array_merge ( $atributos, $atributosGlobales );
+		echo $this->miFormulario->campoTextArea($atributos);
+		unset($atributos);		
+		// ----------------FIN CONTROL: Campo Área de Texto Detalles Libro--------------------------------------------------------
+		
+		
 		// ------------------Division para los botones-------------------------
 		$atributos ["id"] = "botones";
 		$atributos ["estilo"] = "marcoBotones";

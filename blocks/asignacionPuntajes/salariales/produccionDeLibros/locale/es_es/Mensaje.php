@@ -35,6 +35,7 @@ $this->idioma["numeroActaLibro"] = "Número de Acta CIARP-UD:";
 $this->idioma["fechaActaLibro"] = "Fecha de Acta CIARP-UD:";
 $this->idioma["numeroCasoActaLibro"] = "Número de Caso de Acta:";
 $this->idioma["puntajeLibro"] = "Puntaje:";
+$this->idioma["detallesLibro"] = "Detalles:";
 
 $this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";
 $this->idioma["docenteTitulo"] = "Identificación o Nombre del Docente.";
