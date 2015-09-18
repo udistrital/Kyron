@@ -4,7 +4,7 @@ var campoFecha = [];
 var campoFechaInput = [];
 
 var indiceA = 0;
-var indiceB= 0;
+var indiceB = 0;
 var cont = 0;
 
 campoFecha[indiceA++] = "#<?php echo $this->campoSeguro('fechaPublicacionLibro')?>";

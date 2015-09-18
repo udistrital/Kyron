@@ -87,7 +87,7 @@ class registrarForm {
 				$proyectoCurricular 
 		);
 		
-		$cadenaSql = $this->miSql->getCadenaSql ( 'consultarIndexacion', $arreglo );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'consultarLibros', $arreglo );
 		$indexacion = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 		$arreglo=serialize($arreglo);
 		

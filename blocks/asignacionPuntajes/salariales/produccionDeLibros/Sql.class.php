@@ -142,7 +142,7 @@ class Sql extends \Sql {
 				
 				break;
 								
-			case "consultarIndexacion" :			
+			case "consultarLibros" :			
 				$cadenaSql=" select ";
 				$cadenaSql.=" ri.documento_docente, ";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
@@ -171,60 +171,60 @@ class Sql extends \Sql {
 				}
 				break;
 				
-			case "insertarIndexacion" :
-				$cadenaSql = "INSERT INTO docencia.revista_indexada( ";
-				$cadenaSql .= "documento_docente, nombre_revista, id_contexto, paiscodigo, ";
-				$cadenaSql .= "id_tipo_indexacion, ";
-				$cadenaSql .= "numero_issn, anno_publicacion, volumen_revista, numero_revista, paginas_revista, ";
-				$cadenaSql .= "titulo_articulo, numero_autores, numero_autores_ud, fecha_publicacion, ";
-				$cadenaSql .= "numero_acta, fecha_acta, numero_caso, puntaje) ";
-				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
-				$cadenaSql .= " '" . $variable ['nombreRevista'] . "',";
-				$cadenaSql .= " '" . $variable ['contextoRevista'] . "',";
-				$cadenaSql .= "'" . $variable ['pais'] . "',";
-				$cadenaSql .= " '" . $variable ['categoria'] . "',";
-				$cadenaSql .= " '" . $variable ['issnRevista'] . "',";
-				$cadenaSql .= " '" . $variable ['annoRevista'] . "',";
-				$cadenaSql .= " '" . $variable ['volumenRevista'] . "',";
-				$cadenaSql .= " '" . $variable ['numeroRevista'] . "',";
-				$cadenaSql .= " '" . $variable ['paginasRevista'] . "',";
-				$cadenaSql .= " '" . $variable ['tituloArticuloRevista'] . "',";
-				$cadenaSql .= " '" . $variable ['numeroAutoresRevista'] . "',";
-				$cadenaSql .= " '" . $variable ['numeroAutoresUniversidad'] . "',";
-				$cadenaSql .= "' " . $variable ['fechaPublicacionrevista'] . "' ,";
-				$cadenaSql .= "' " . $variable ['numeroActaRevista'] . "',";
-				$cadenaSql .= " '" . $variable ['fechaActaRevista'] . "',";
-				$cadenaSql .= "' " . $variable ['numeroCasoActaRevista'] . "',";
-				$cadenaSql .= " '" . $variable ['puntajeRevista'] . "')";
+			case "insertarLibroDocente" :
+				$cadenaSql=" with rows as (";
+				$cadenaSql.=" INSERT INTO docencia.libro_docente (";
+				$cadenaSql.=" documento_docente, ";
+				$cadenaSql.=" titulo, ";
+				$cadenaSql.=" id_tipo_libro, ";
+				$cadenaSql.=" id_universidad, ";
+				$cadenaSql.=" codigo_isbn, ";
+				$cadenaSql.=" anno_publicacion,";
+				$cadenaSql.=" numero_autores, ";
+				$cadenaSql.=" numero_autores_ud, ";
+				$cadenaSql.=" id_editorial, ";
+				$cadenaSql.=" numero_acta,";
+				$cadenaSql.=" fecha_acta, ";
+				$cadenaSql.=" numero_caso, ";
+				$cadenaSql.=" puntaje, ";
+				$cadenaSql.=" detalles";
+				$cadenaSql.=" )";
+				$cadenaSql.=" VALUES (";
+				$cadenaSql.=" '" . $variable ['id_docenteRegistrar'] . "',";
+				$cadenaSql.=" '" . $variable [''] . "',";
+				$cadenaSql.=" '" . $variable [''] . "',";
+				$cadenaSql.=" '" . $variable [''] . "',";
+				$cadenaSql.=" '" . $variable [''] . "',";
+				$cadenaSql.=" '" . $variable [''] . "',";
+				$cadenaSql.=" '" . $variable [''] . "',";
+				$cadenaSql.=" '" . $variable [''] . "',";
+				$cadenaSql.=" '" . $variable [''] . "',";
+				$cadenaSql.=" '" . $variable [''] . "',";
+				$cadenaSql.=" '" . $variable [''] . "',";
+				$cadenaSql.=" '" . $variable [''] . "',";
+				$cadenaSql.=" '" . $variable [''] . "',";
+				$cadenaSql.=" '" . $variable [''] . "'";
+				$cadenaSql.=" ) returning documento_docente, codigo_isbn";
+				$cadenaSql.=" )";
+				$cadenaSql.=" INSERT INTO docencia.evaluador_libro_docente (";
+				$cadenaSql.=" documento_evaluador,";
+				$cadenaSql.=" nombre,";
+				$cadenaSql.=" codigo_isbn,";
+				$cadenaSql.=" documento_docente,";
+				$cadenaSql.=" id_universidad,";
+				$cadenaSql.=" puntaje";
+				$cadenaSql.=" )";
+				$cadenaSql.=" VALUES (";
+				$cadenaSql.=" '" . $variable [''] . "',";
+				$cadenaSql.=" '" . $variable [''] . "',";
+				$cadenaSql.=" (SELECT codigo_isbn FROM rows),";
+				$cadenaSql.=" (SELECT documento_docente FROM rows),";
+				$cadenaSql.=" '" . $variable [''] . "',";
+				$cadenaSql.=" '" . $variable [''] . "'";
+				$cadenaSql.=" );";
 				break;
 				
-			case "consultarRevistas" :
-				$cadenaSql=" SELECT ri.documento_docente,";
-				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
-				$cadenaSql.=" ri.nombre_revista, ";
-				$cadenaSql.=" ri.id_contexto, ";
-				$cadenaSql.=" ri.paiscodigo, ";
-				$cadenaSql.=" ri.id_tipo_indexacion, ";
-				$cadenaSql.=" ri.numero_issn, ";
-				$cadenaSql.=" ri.anno_publicacion, ";
-				$cadenaSql.=" ri.volumen_revista, ";
-				$cadenaSql.=" ri.numero_revista, ";
-				$cadenaSql.=" ri.paginas_revista, ";
-				$cadenaSql.=" ri.titulo_articulo, ";
-				$cadenaSql.=" ri.numero_autores, ";
-				$cadenaSql.=" ri.numero_autores_ud, ";
-				$cadenaSql.=" ri.fecha_publicacion, ";
-				$cadenaSql.=" ri.numero_acta, ";
-				$cadenaSql.=" ri.fecha_acta, ";
-				$cadenaSql.=" ri.numero_caso, ";
-				$cadenaSql.=" ri.puntaje ";
-				$cadenaSql.=" FROM docencia.revista_indexada ri ";
-				$cadenaSql.=" left join docencia.docente dc on ri.documento_docente=dc.documento_docente ";
-				$cadenaSql.=" WHERE ri.documento_docente ='" . $variable['documento_docente']. "'";
-				$cadenaSql.=" and ri.numero_issn ='" . $variable['numero_issn']. "'";
-				break;
-				
-			case "actualizarIndexacion" :
+			case "actualizarLibro" :
 				$cadenaSql = "UPDATE ";
 				$cadenaSql .= "docencia.revista_indexada ";
 				$cadenaSql .= "SET ";
