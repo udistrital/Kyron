@@ -34,9 +34,8 @@ if (isset ( $funcion [0] )) {
 }
 
 include ("ajax.php");
-include ("validarCampoNumerico.js");
-include ("campoFecha.js");
-include ("evaluadores.js");
-
+include ("scriptLocal/validarCampoNumerico.js");
+include ("scriptLocal/campoFecha.js");
+include ("scriptLocal/evaluadores.js");
 
 ?>

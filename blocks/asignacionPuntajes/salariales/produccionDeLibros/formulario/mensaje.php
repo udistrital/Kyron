@@ -72,10 +72,10 @@ if (!isset($GLOBALS["autorizado"])) {
     if ($_REQUEST['mensaje'] == 'confirma') {
 
         $tipo = 'success';
-        $mensaje = "Registro Exitoso.<br>Ha sido indexada correctamente la revista para el docente <br>" . $_REQUEST ['docente'] . ".";
+        $mensaje = "Registro Exitoso.<br>Los datos han sido registrados correctamente.";
         $boton = "continuar";
 		
-        $valorCodificado = "pagina=revistasIndexadas";
+        $valorCodificado = "pagina=".$miPaginaActual;
         $valorCodificado.="&opcion=nuevo";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
@@ -83,7 +83,7 @@ if (!isset($GLOBALS["autorizado"])) {
         
     } else if($_REQUEST['mensaje'] == 'error') {
         $tipo = 'error';
-        $mensaje = "Error al tratar de indexar la revista.";
+        $mensaje = "Error al tratar de registrar.";
         $boton = "regresar";
 
         $valorCodificado = "pagina=revistasIndexadas";
@@ -93,7 +93,7 @@ if (!isset($GLOBALS["autorizado"])) {
        
     } else if($_REQUEST['mensaje'] == 'actualizo') {
         $tipo = 'success';
-        $mensaje = "Actualización Exitosa </br> Han sido actualizados los datos de la revista indexada para el docente <br>" . $_REQUEST ['docente'] . ".";
+        $mensaje = "Actualización Exitosa </br> Han sido actualizados los datos.<br>";
         $boton = "continuar";
 
         $valorCodificado = "pagina=revistasIndexadas";

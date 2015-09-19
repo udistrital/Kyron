@@ -68,6 +68,28 @@ class Funcion {
 		// Validar las variables para evitar un tipo insercion de SQL
 		// $this->Redireccionador( "exito" );
 		// }
+		/*
+		 * Se realiza la decodificación de los campos "validador" de los
+		 * componentes del FormularioHtml. Se realiza la validación. En caso de que algún parámetro
+		 * sea ingresado fuera de lo correspondiente en el campo "validador", este será ajustado
+		 * (o convertido a) a un parámetro permisible o simplemente de no ser válido se devolverá
+		 * el valor false. Si lo que se quiere es saber si los parámetros son correctos o no, se
+		 * puede introducir un tercer parámetro $arreglar, que es un parámetro booleano que indica,
+		 * si es pertinente o no realizar un recorte de los datos "string" para que cumpla los requerimientos
+		 * de longitud (tamaño) del campo.
+		 */
+		if(isset($_REQUEST['validadorCampos'])){
+			$validadorCampos = $this->miInspectorHTML->decodificarCampos($_REQUEST['validadorCampos']);
+			$respuesta = $this->miInspectorHTML->validacionCampos($_REQUEST,$validadorCampos,false);
+			if ($respuesta != false){
+				$_REQUEST = $respuesta;
+			} else {
+				//Lo que se desea hacer si los parámetros son inválidos
+				echo "Usted ha ingresado parámetros de forma incorrecta al sistema.
+                 El acceso incorrecto ha sido registrado en el sistema con la IP: ".$_SERVER['REMOTE_ADDR'];
+				die;
+			}
+		}
 		
 		if (isset ( $_REQUEST ['procesarAjax'] )) {
 			$this->procesarAjax ();
