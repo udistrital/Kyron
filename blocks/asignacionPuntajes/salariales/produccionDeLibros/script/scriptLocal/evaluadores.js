@@ -9,12 +9,34 @@ for(var i = evaluador; i > evaluadoRequerido; i--){
 	$("#marcoEvaluador" + i).hide();
 }
 
+String.prototype.insertAt=function(index, string) { 
+  return this.substr(0, index) + string + this.substr(index);
+}
+var idDatosEvaluadores = [
+   <?php for($i=1; $i<=3; $i++):?> 
+	 '<?php echo $this->campoSeguro('documentoEvaluador'.$i)?>',
+	 '<?php echo $this->campoSeguro('nombreEvaluador'.$i)?>',
+	 '<?php echo $this->campoSeguro('entidadCertificadora'.$i)?>',
+	 '<?php echo $this->campoSeguro('puntajeSugeridoEvaluador'.$i)?>',
+   <?php endfor; ?>
+];
+//Agrega required a todos los campos de los evaluadores
+$.each(idDatosEvaluadores,function (i,v){
+	var obj = $("#"+v);
+	var clases = obj.attr('class').split(' ');
+	var claseValidate = $.grep(clases,function(v,i){return v.indexOf('validate')>-1})[0];
+	obj.removeClass(claseValidate);
+	claseValidate = claseValidate.insertAt(claseValidate.indexOf("[")+1,'required,');
+	obj.addClass(claseValidate);
+});
+
+
 $("#botonEliminarEvaluador1").click(function( event ) { eliminarEvaluador1(); });
 $("#botonEliminarEvaluador2").click(function( event ) { eliminarEvaluador2(); });
 $("#botonEliminarEvaluador3").click(function( event ) { eliminarEvaluador3(); });
 
 function eliminarEvaluador1()  {
-	confirmar=confirm("¿Desea eliminar a esté evaluador?");  
+	confirmar=confirm("¿Desea eliminar a este evaluador?");  
     if (confirmar){
        	<?php for($i=1; $i<=3; $i++):?>      
         	$('#<?php echo $this->campoSeguro('documentoEvaluador'.$i)?>').val($('#<?php echo $this->campoSeguro('documentoEvaluador'.($i+1))?>').val());
@@ -38,7 +60,7 @@ function eliminarEvaluador1()  {
 }
 
 function eliminarEvaluador2()  {
-	confirmar=confirm("¿Desea eliminar a esté evaluador?");  
+	confirmar=confirm("¿Desea eliminar a este evaluador?");  
     if (confirmar){
        	<?php for($i=2; $i<=3; $i++):?>        	 
         	$('#<?php echo $this->campoSeguro('documentoEvaluador'.$i)?>').val($('#<?php echo $this->campoSeguro('documentoEvaluador'.($i+1))?>').val());
@@ -62,7 +84,7 @@ function eliminarEvaluador2()  {
 }
 
 function eliminarEvaluador3()  {
-	confirmar=confirm("¿Desea eliminar a esté evaluador?");  
+	confirmar=confirm("¿Desea eliminar a este evaluador?");  
     if (confirmar){
        	<?php for($i=3; $i<=3; $i++):?>        	 
             <?php if($i==3): ?>
