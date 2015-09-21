@@ -135,50 +135,61 @@ class Sql extends \Sql {
 				break;
 				
 			case "docente" :
-				$cadenaSql = "SELECT documento_docente||' - '||primer_nombre||' '||segundo_nombre||' '||primer_apellido||' '||segundo_apellido AS  value, documento_docente  AS data ";
-				$cadenaSql .= " FROM docencia.docente";
-				$cadenaSql .= " WHERE cast(documento_docente as text) LIKE '%" . $variable . "%'";
-				$cadenaSql .= " OR primer_nombre LIKE '%" . $variable . "%' LIMIT 10;";
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" documento_docente||' - '||primer_nombre||' '||segundo_nombre||' '||primer_apellido||' '||segundo_apellido AS value, ";
+				$cadenaSql.=" documento_docente AS data ";
+				$cadenaSql.=" FROM ";
+				$cadenaSql.=" docencia.docente WHERE documento_docente||' - '||primer_nombre||' '||segundo_nombre||' '||primer_apellido||' '||segundo_apellido ";
+				$cadenaSql.=" LIKE '%" . $variable . "%' LIMIT 10;";
 				
 				break;
 								
 			case "consultarLibros" :			
-				$cadenaSql=" select ";
-				$cadenaSql.=" ri.documento_docente, ";
-				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
-				$cadenaSql.=" ri.nombre_revista, ri.titulo_articulo, pi.paisnombre, ti.descripcion as tipo_indexacion,";
-				$cadenaSql.=" ri.numero_issn, ri.anno_publicacion,";
-				$cadenaSql.=" ri.volumen_revista, ri.numero_revista,";
-				$cadenaSql.=" ri.paginas_revista,";
-				$cadenaSql.=" ri.fecha_publicacion ";
-				$cadenaSql.=" from ";
-				$cadenaSql.=" docencia.revista_indexada ri ";
-				$cadenaSql.=" left join docencia.docente dc on ri.documento_docente=dc.documento_docente ";
-				$cadenaSql.=" left join docencia.docente_proyectocurricular dc_pc on ri.documento_docente=dc_pc.documento_docente ";
-				$cadenaSql.=" left join docencia.proyectocurricular pc on dc_pc.id_proyectocurricular=pc.id_proyectocurricular ";
-				$cadenaSql.=" left join docencia.facultad fc on pc.id_facultad=fc.id_facultad ";
-				$cadenaSql.=" left join docencia.pais pi on ri.paiscodigo=pi.paiscodigo ";
-				$cadenaSql.=" left join docencia.tipo_indexacion ti ON ti.id_tipo_indexacion = ri.id_tipo_indexacion";
-				$cadenaSql.=" where 1=1";
-				if ($variable [0] != '') {
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" dc.documento_docente AS documento_docente,";
+				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido AS nombre_docente,";
+				$cadenaSql.=" li.titulo AS titulo_libro,";
+				$cadenaSql.=" tl.tipo_libro AS tipo_libro,";
+				$cadenaSql.=" li.codigo_isbn AS codigo_isbn,";
+				$cadenaSql.=" li.anno_publicacion AS anno_publicacion,";
+				$cadenaSql.=" li.numero_autores AS numero_autores,";
+				$cadenaSql.=" li.numero_autores_ud AS numero_autores_ud,";
+				$cadenaSql.=" ed.nombre_editorial AS editorial,";
+				$cadenaSql.=" li.numero_acta AS numero_acta,";
+				$cadenaSql.=" li.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" li.numero_caso AS numero_caso,";
+				$cadenaSql.=" li.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.libro_docente AS li";
+				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON dc.documento_docente = li.documento_docente";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_libro AS tl ON tl.id_tipo_libro = li.id_tipo_libro";
+				$cadenaSql.=" LEFT JOIN docencia.editorial AS ed ON ed.id_editorial = li.id_editorial";
+				$cadenaSql.=" LEFT JOIN docencia.docente_proyectocurricular AS dc_pc ON li.documento_docente=dc_pc.documento_docente";
+				$cadenaSql.=" LEFT JOIN docencia.proyectocurricular AS pc ON dc_pc.id_proyectocurricular=pc.id_proyectocurricular";
+				$cadenaSql.=" LEFT JOIN docencia.facultad AS fc ON pc.id_facultad=fc.id_facultad";
+				$cadenaSql.=" WHERE li.estado=true";
+				$cadenaSql.=" AND dc.estado=true";
+				$cadenaSql.=" AND dc_pc.estado=true";
+				$cadenaSql.=" AND pc.estado=true";
+				if ($variable ['documento_docente'] != '') {
 					$cadenaSql .= " AND dc.documento_docente = '" . $variable ['documento_docente'] . "'";
 				}
-				if ($variable [1] != '') {
+				if ($variable ['id_facultad'] != '') {
 					$cadenaSql .= " AND fc.id_facultad = '" . $variable ['id_facultad'] . "'";
 				}
-				if ($variable [2] != '') {
+				if ($variable ['id_proyectocurricular'] != '') {
 					$cadenaSql .= " AND pc.id_proyectocurricular = '" . $variable ['id_proyectocurricular'] . "'";
 				}
 				break;
 				
+				
 			case "insertarLibroDocente" :
 				$cadenaSql='';
 				for($i = 1; $i <= 3; $i++){
-					$evaluadorExite =   $variable ['documentoEvaluador'.$i] != '' &&
+					$evaluadorExiste =  $variable ['documentoEvaluador'.$i] != '' &&
 										$variable ['nombreEvaluador'.$i] != '' &&
 										$variable ['entidadCertificadora'.$i] != '' &&
 										$variable ['puntajeSugeridoEvaluador'.$i] != '';
-					if($i == 1 && $evaluadorExite){
+					if($i == 1 && $evaluadorExiste){
 						$cadenaSql=" with rows as (";
 					}
 					if($i == 1){
@@ -215,7 +226,7 @@ class Sql extends \Sql {
 						$cadenaSql.=" '" . $variable ['puntajeLibro'] . "'";
 						$cadenaSql.=" ) ";
 					}
-					if($i == 1 && $evaluadorExite){
+					if($i == 1 && $evaluadorExiste){
 						$cadenaSql.=" returning documento_docente, codigo_isbn";
 						$cadenaSql.=" )";
 						$cadenaSql.=" INSERT INTO docencia.evaluador_libro_docente (";

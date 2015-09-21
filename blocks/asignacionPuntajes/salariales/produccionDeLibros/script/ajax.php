@@ -1,4 +1,4 @@
-	<?php
+<?php
 /**
  *
  * Los datos del bloque se encuentran en el arreglo $esteBloque.
@@ -25,7 +25,8 @@ $cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cad
 $urlFinalDocente = $url . $cadena;
 ?>
 
-<script type='text/javascript'>
+//Document Ready es necesario para que cargue correctamente.
+$(document).ready(function(){
 
 $( "#<?php echo $this->campoSeguro('docente')?>" ).keyup(function() {
 	$('#<?php echo $this->campoSeguro('docente') ?>').val($('#<?php echo $this->campoSeguro('docente') ?>').val().toUpperCase());
@@ -106,10 +107,9 @@ $(function () {
     });
 
 });
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 ///////////////Función que se encarga de hacer dinámico el campo categoría////////////////  
+
 <?php
 
 $url = $this->miConfigurador->getVariableConfiguracion ( "host" );
@@ -147,7 +147,5 @@ function consultarEntidadCertificadora(elem, request, response){
 		}
 	});
 };
-///////////////////////////////////////////////////////////////////////////////////// 
 
-</script>
-
+});
