@@ -5,14 +5,12 @@ $("#produccionDeLibros").validationEngine({
 	autoHideDelay: 2000
 });
 
-$(function() {
-	$("#produccionDeLibros").submit(function() {
-		$resultado=$("#produccionDeLibros").validationEngine("validate");
-		if ($resultado) {
-			return true;
-		}
-		return false;
-	});
+$("#produccionDeLibros").submit(function() {
+	$resultado=$("#produccionDeLibros").validationEngine("validate");
+	if ($resultado) {
+		return true;
+	}
+	return false;
 });
 
 $("#produccionDeLibrosRegistrar").validationEngine({
@@ -22,30 +20,24 @@ $("#produccionDeLibrosRegistrar").validationEngine({
 	autoHideDelay: 2000
 });
 
-$(function() {
-	$("#produccionDeLibrosRegistrar").submit(function() {
-		$resultado=$("#produccionDeLibrosRegistrar").validationEngine("validate");		
-		if ($resultado) {
-			return true;
-		}
-		return false;
-	});
+$("#produccionDeLibrosRegistrar").submit(function() {
+	$resultado=$("#produccionDeLibrosRegistrar").validationEngine("validate");		
+	if ($resultado) {
+		return true;
+	}
+	return false;
 });
 
-$(function () {
-    $("button").button().click(function (event) { 
-        event.preventDefault();
-    });
+$("button").button().click(function (event) { 
+    event.preventDefault();
 });
 
-$(function() {
-	$("#produccionDeLibrosModificar").submit(function() {
-		$resultado=$("#produccionDeLibrosModificar").validationEngine("validate");
-		if ($resultado) {
-			return true;
-		}
-		return false;
-	});
+$("#produccionDeLibrosModificar").submit(function() {
+	$resultado=$("#produccionDeLibrosModificar").validationEngine("validate");
+	if ($resultado) {
+		return true;
+	}
+	return false;
 });
 
 $("#produccionDeLibrosModificar").validationEngine({
@@ -100,13 +92,26 @@ $("#<?php echo $this->campoSeguro('tipoLibro')?>").select2();
 $("#<?php echo $this->campoSeguro('annoLibro')?>").select2();
 $("#<?php echo $this->campoSeguro('editorial')?>").select2();
 
+/*
+ * Se asigna dinámicamente el parámetro required a los select2. Se quita un reminicente de:
+ */
+var obj = $("#<?php echo $this->campoSeguro('entidadCertificadora1')?>").select2();
+var clases = obj.attr('class').split(' ');
+var claseValidate = $.grep(clases,function(v,i){return v.indexOf('validate')>-1})[0];
+obj.removeClass(claseValidate);
+claseValidate = claseValidate.insertAt(claseValidate.indexOf("[")+1,'required,');
+obj.addClass(claseValidate);
 
-$("#<?php echo $this->campoSeguro('entidadCertificadora1')?>").select2();
-$("#<?php echo $this->campoSeguro('entidadCertificadora2')?>").select2();
-$("#<?php echo $this->campoSeguro('entidadCertificadora3')?>").select2();
+var obj = $("#<?php echo $this->campoSeguro('entidadCertificadora2')?>").select2();
+var clases = obj.attr('class').split(' ');
+var claseValidate = $.grep(clases,function(v,i){return v.indexOf('validate')>-1})[0];
+obj.removeClass(claseValidate);
+claseValidate = claseValidate.insertAt(claseValidate.indexOf("[")+1,'required,');
+obj.addClass(claseValidate);
 
-//<!-- document.getElementsByTagName('label')[5].firstChild.data.innerHTML="Hola"; -->
-
-//<!-- var label = document.querySelector('label[for="categoria"]'); -->
-//<!-- // change it's content -->
-//<!-- label.textContent = 'Emmanuel' -->
+var obj = $("#<?php echo $this->campoSeguro('entidadCertificadora3')?>").select2();
+var clases = obj.attr('class').split(' ');
+var claseValidate = $.grep(clases,function(v,i){return v.indexOf('validate')>-1})[0];
+obj.removeClass(claseValidate);
+claseValidate = claseValidate.insertAt(claseValidate.indexOf("[")+1,'required,');
+obj.addClass(claseValidate);

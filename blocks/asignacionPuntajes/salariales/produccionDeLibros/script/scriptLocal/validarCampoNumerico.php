@@ -40,6 +40,3 @@ $(campoValidarPunto).each(function(){
 });
 
 });
-
-
-

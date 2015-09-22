@@ -143,7 +143,53 @@ class Sql extends \Sql {
 				$cadenaSql.=" LIKE '%" . $variable . "%' LIMIT 10;";
 				
 				break;
-								
+			
+			case "consultarLibro" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" dc.documento_docente AS documento_docente,";
+				$cadenaSql.=" dc.documento_docente||' - '||dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido AS nombre_docente,";
+				$cadenaSql.=" li.titulo AS titulo_libro,";
+				$cadenaSql.=" tl.id_tipo_libro AS id_tipo_libro,";
+				$cadenaSql.=" tl.tipo_libro AS tipo_libro,";
+				$cadenaSql.=" un.id_universidad AS id_entidad_certificadora,";
+				$cadenaSql.=" un.nombre_universidad AS entidad_certificadora,";
+				$cadenaSql.=" li.codigo_isbn AS codigo_isbn,";
+				$cadenaSql.=" li.anno_publicacion AS anno_publicacion,";
+				$cadenaSql.=" li.numero_autores AS numero_autores,";
+				$cadenaSql.=" li.numero_autores_ud AS numero_autores_ud,";
+				$cadenaSql.=" ed.nombre_editorial AS editorial,";
+				$cadenaSql.=" li.numero_acta AS numero_acta,";
+				$cadenaSql.=" li.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" li.numero_caso AS numero_caso,";
+				$cadenaSql.=" li.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.libro_docente AS li";
+				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON dc.documento_docente = li.documento_docente";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_libro AS tl ON tl.id_tipo_libro = li.id_tipo_libro";
+				$cadenaSql.=" LEFT JOIN docencia.universidad AS un ON un.id_universidad = li.id_universidad";
+				$cadenaSql.=" LEFT JOIN docencia.editorial AS ed ON ed.id_editorial = li.id_editorial";
+				$cadenaSql.=" WHERE li.estado=true";
+				$cadenaSql.=" AND dc.estado=true";
+				$cadenaSql.=" AND ed.estado=true";
+				$cadenaSql.=" AND li.documento_docente = '".$variable ['documento_docente']."'";
+				$cadenaSql.=" AND li.codigo_isbn = '".$variable ['codigo_isbn']."'";
+				break;
+					
+			case "consultarEvaluador" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" eld.documento_evaluador AS documento_evaluador,";
+				$cadenaSql.=" eld.nombre AS nombre_evaluador,";
+				$cadenaSql.=" un.id_universidad AS id_entidad_certificadora,";
+				$cadenaSql.=" un.nombre_universidad AS entidad_certificadora,";
+				$cadenaSql.=" eld.puntaje AS puntaje";
+				$cadenaSql.=" FROM";
+				$cadenaSql.=" docencia.evaluador_libro_docente AS eld";
+				$cadenaSql.=" LEFT JOIN docencia.universidad AS un ON un.id_universidad = eld.id_universidad";
+				$cadenaSql.=" WHERE";
+				$cadenaSql.=" eld.estado=true";
+				$cadenaSql.=" AND eld.documento_docente = '".$variable ['documento_docente']."'";
+				$cadenaSql.=" AND eld.codigo_isbn = '".$variable ['codigo_isbn']."'";
+				break;
+				
 			case "consultarLibros" :			
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" dc.documento_docente AS documento_docente,";

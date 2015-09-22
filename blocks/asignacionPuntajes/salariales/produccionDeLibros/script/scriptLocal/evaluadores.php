@@ -1,7 +1,15 @@
 //Document Ready es necesario para que cargue correctamente.
 $(document).ready(function(){
 
-var evaluadoRequerido = 0;
+<?php
+$_REQUEST['numeroEvaluadores'] = 0;
+for($i=1; $i<=3; $i++){
+	if(isset($_REQUEST['documentoEvaluador' . $i]) && $_REQUEST['documentoEvaluador' . $i] != '' && $_REQUEST['documentoEvaluador' . $i]){
+		$_REQUEST['numeroEvaluadores']++;
+	}
+}
+?>
+var evaluadoRequerido = <?php echo $_REQUEST['numeroEvaluadores'];?>;
 var evaluador = 3;
 var numEvaluadores = evaluadoRequerido;
 var indice = 0;
@@ -17,7 +25,6 @@ var idDatosEvaluadores = [
    <?php for($i=1; $i<=3; $i++):?> 
 	 '<?php echo $this->campoSeguro('documentoEvaluador'.$i)?>',
 	 '<?php echo $this->campoSeguro('nombreEvaluador'.$i)?>',
-	 '<?php echo $this->campoSeguro('entidadCertificadora'.$i)?>',
 	 '<?php echo $this->campoSeguro('puntajeSugeridoEvaluador'.$i)?>',
    <?php endfor; ?>
 ];
