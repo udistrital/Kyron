@@ -16,7 +16,7 @@ $this->idioma["nombre"] = "Título del Trabajo";
 $this->idioma["anno"] = "Año Dirección";
 $this->idioma["categoria"] = "Categoría Del Trabajo";
 $this->idioma["tipo"] = "Tipo de Trabajo";
-$this->idioma["marcoConsultaGeneral"] = "Cartas al Editor Registradas";
+$this->idioma["marcoConsultaGeneral"] = "Dirección de Trabajos de Grado Registradas";
 $this->idioma["marcoModificarRegistro"] = "Modificar Información de Cartas al Editor";
 
 $this->idioma["nombreTitulo"] = "Nombre de Revista Públicada.";
@@ -28,9 +28,17 @@ $this->idioma["fechaActaTitulo"] = "Seleccione la Fecha de Acta CIARP-UD.";
 $this->idioma["numeroCasoActaTitulo"] = "Ingrese el Número de Caso de Acta.";
 $this->idioma["puntajeTitulo"] = "Ingrese Puntaje.";
 
-$this->idioma["nombreEstudiante1"] = "Estudiante";
-$this->idioma["nombreEstudiante2"] = "Estudiante";
-$this->idioma["nombreEstudiante3"] = "Estudiante";
+$this->idioma["codigoEstudiante1"] = "Código del Estudiante";
+$this->idioma["codigoEstudiante2"] = "Código del Estudiante";
+$this->idioma["codigoEstudiante3"] = "Código del Estudiante";
+
+$this->idioma["nombreEstudiante1"] = "Nombre del Estudiante";
+$this->idioma["nombreEstudiante2"] = "Nombre del Estudiante";
+$this->idioma["nombreEstudiante3"] = "Nombre del Estudiante";
+
+$this->idioma["codigoEstudiante1Titulo"] = "Código del Estudiante";
+$this->idioma["codigoEstudiante2Titulo"] = "Código del Estudiante";
+$this->idioma["codigoEstudiante3Titulo"] = "Código del Estudiante";
 
 $this->idioma["nombreEstudiante1Titulo"] = "Nombre del Estudiante";
 $this->idioma["nombreEstudiante2Titulo"] = "Nombre del Estudiante";

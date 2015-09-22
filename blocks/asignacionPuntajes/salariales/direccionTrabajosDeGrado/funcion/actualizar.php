@@ -35,32 +35,26 @@ class RegistrarIndexacionRevista {
 		$rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "raizDocumento" ) . "/blocks/asignacionPuntajes/salariales/";
 		$rutaBloque .= $esteBloque ['nombre'];
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
-
+		
+		$_REQUEST['numeroAutores'] = 0;
+		
 		$arregloDatos = array (
 			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
-			'nombre' => $_REQUEST['nombre'],
-			'contexto' => $_REQUEST['contexto'],
-			'pais' => $_REQUEST['pais'],
-			'categoria' => $_REQUEST['categoria'],
-			'identificadorColeccion' => $_REQUEST['identificadorColeccion'],
+			'tituloTrabajo' => $_REQUEST['nombre'],
 			'anno' => $_REQUEST['anno'],
-			'volumen' => $_REQUEST['volumen'],
-			'numero' => $_REQUEST['numero'],
-			'paginas' => $_REQUEST['paginas'],
-			'tituloArticulo' => $_REQUEST['tituloArticulo'],
+			'tipoTrabajo' => $_REQUEST['tipo'],
+			'categoriaTrabajo' => $_REQUEST['categoria'],
 			'numeroAutores' => $_REQUEST['numeroAutores'],
-			'numeroAutoresUniversidad' => $_REQUEST['numeroAutoresUniversidad'],
-			'fechaPublicacion' => $_REQUEST['fechaPublicacion'],
 			'numeroActa' => $_REQUEST['numeroActa'],
 			'fechaActa' => $_REQUEST['fechaActa'],
 			'numeroCasoActa' => $_REQUEST['numeroCasoActa'],
 			'puntaje' => $_REQUEST['puntaje'],
-			'identificadorColeccion_old' => $_REQUEST['identificadorColeccion_old']
+			'id_direccion_trabajo' => $_REQUEST['identificadorDireccion']
 		);
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizar', $arregloDatos );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
-		
+
 		if ($resultado) {
 			redireccion::redireccionar ( 'actualizo',  $_REQUEST['docenteRegistrar']);
 			exit ();

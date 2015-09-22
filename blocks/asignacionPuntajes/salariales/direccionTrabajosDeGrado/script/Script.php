@@ -8,6 +8,14 @@ $funcion [$indice ++] = "jquery.dataTables.js";
 $funcion [$indice ++] = "timepicker.js";
 $funcion [$indice ++] = "jquery.autocomplete.js";
 $funcion [$indice ++] = "jquery.autocomplete.min.js";
+$embebido [$indice] = true;
+$funcion [$indice ++] = "ajax.php";
+$embebido [$indice] = true;
+$funcion [$indice ++] = "scriptLocal/validarCampoNumerico.js";
+$embebido [$indice] = true;
+$funcion [$indice ++] = "scriptLocal/campoFecha.js";
+$embebido [$indice] = true;
+$funcion [$indice ++] = "scriptLocal/estudiantes.js";
 
 
 $rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "host" );
@@ -33,12 +41,4 @@ if (isset ( $funcion [0] )) {
 		}
 	}
 }
-
-include ("ajax.php");
-include ("scriptLocal/validarCampoNumerico.js");
-include ("scriptLocal/campoFecha.js");
-include ("scriptLocal/estudiantes.js");
-
-
-
 ?>

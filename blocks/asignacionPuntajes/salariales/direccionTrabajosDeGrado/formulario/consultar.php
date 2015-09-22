@@ -185,15 +185,11 @@ class registrarForm {
 	                   
 	                    <th>Identificación</th>
 	                    <th>Nombres y Apellidos</th>
-						<th>Nombre Revista</th>
-						<th>Título Artículo</th>
-						<th>País</th>
-						<th>Indexación</th>
-						<th>ISSN</th>
+						<th>Título Trabajo</th>
+						<th>Categoría</th>
+						<th>Tipo de Trabajo</th>
 						<th>Año</th>
-						<th>Volumen</th>
-						<th>Número Paginas</th>
-						<th>Fecha Publicación</th>
+						<th>Puntaje</th>
 						<th>Modificar</th>
 							
 	                </tr>
@@ -206,21 +202,17 @@ class registrarForm {
 						$variable .= "&arreglo=" . $arreglo;
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
 						$variable .= "&documento_docente=" . $indexacion [$i] ['documento_docente'];
-						$variable .= "&identificadorColeccion=" . $indexacion [$i] ['numero_issn'];
+						$variable .= "&identificadorDireccionTrabajo=" . $indexacion [$i] ['id_direccion'];
 						$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 						
 						$mostrarHtml = "<tr>
 	                    <td><center>" . $indexacion [$i] ['documento_docente'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['nombre_docente'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['nombre_revista'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['titulo_articulo'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['paisnombre'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['tipo_indexacion'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['numero_issn'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['anno_publicacion'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['volumen_revista'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['paginas_revista'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['fecha_publicacion'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['titulo'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['categoria'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['tipo'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['anno'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['puntaje'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>
 	                            <img src='" . $rutaBloque . "/css/images/Entrada.png' width='15px'>

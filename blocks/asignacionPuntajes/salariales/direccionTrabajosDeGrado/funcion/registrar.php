@@ -36,21 +36,15 @@ class Registrar {
 		$rutaBloque .= $esteBloque ['nombre'];
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
 		
+		$_REQUEST['numeroAutores'] = 0;
+		
 		$arregloDatos = array (
 			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
-			'nombre' => $_REQUEST['nombre'],
-			'contexto' => $_REQUEST['contexto'],
-			'pais' => $_REQUEST['pais'],
-			'categoria' => $_REQUEST['categoria'],
-			'identificadorColeccion' => $_REQUEST['identificadorColeccion'],
+			'tituloTrabajo' => $_REQUEST['nombre'],
 			'anno' => $_REQUEST['anno'],
-			'volumen' => $_REQUEST['volumen'],
-			'numero' => $_REQUEST['numero'],
-			'paginas' => $_REQUEST['paginas'],
-			'tituloArticulo' => $_REQUEST['tituloArticulo'],
+			'tipoTrabajo' => $_REQUEST['tipo'],
+			'categoriaTrabajo' => $_REQUEST['categoria'],
 			'numeroAutores' => $_REQUEST['numeroAutores'],
-			'numeroAutoresUniversidad' => $_REQUEST['numeroAutoresUniversidad'],
-			'fechaPublicacion' => $_REQUEST['fechaPublicacion'],
 			'numeroActa' => $_REQUEST['numeroActa'],
 			'fechaActa' => $_REQUEST['fechaActa'],
 			'numeroCasoActa' => $_REQUEST['numeroCasoActa'],
@@ -59,6 +53,10 @@ class Registrar {
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'registrar', $arregloDatos );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
+		
+		var_dump($cadenaSql);
+		var_dump($resultado);
+		var_dump($arregloDatos);exit;
 		
 		if ($resultado) {
 			redireccion::redireccionar ( 'inserto',  $_REQUEST['docenteRegistrar']);

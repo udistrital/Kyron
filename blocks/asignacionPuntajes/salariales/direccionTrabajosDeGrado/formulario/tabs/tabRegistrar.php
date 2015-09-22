@@ -224,7 +224,7 @@ class FormularioRegistro {
 				$atributos ['dobleLinea'] = 0;
 				$atributos ['tabIndex'] = $tab;
 				$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-				$atributos ['validar'] = 'required';
+				$atributos ['validar'] = "";//'required';
 				if (isset ( $_REQUEST [$esteCampo] )) {
 					$atributos ['valor'] = $_REQUEST [$esteCampo];
 				} else {
@@ -244,7 +244,40 @@ class FormularioRegistro {
 				unset ( $atributos );
 				// ----------------FIN CONTROL: Campo de Texto Nombre del Estudiante --------------------------------------------------------
 			
-		
+				// ----------------INICIO CONTROL: Campo de Texto Nombre del Estudiante --------------------------------------------------------
+				$esteCampo = 'codigoEstudiante' . $i;
+				$atributos ['id'] = $esteCampo;
+				$atributos ['nombre'] = $esteCampo;
+				$atributos ['tipo'] = 'text';
+				$atributos ['estilo'] = 'jqueryui';
+				$atributos ['marco'] = true;
+				$atributos ['estiloMarco'] = '';
+				$atributos ["etiquetaObligatorio"] = true;
+				$atributos ['columnas'] = 2;
+				$atributos ['dobleLinea'] = 0;
+				$atributos ['tabIndex'] = $tab;
+				$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+				$atributos ['validar'] = "";//'required, custom[onlyNumberSp]';
+				if (isset ( $_REQUEST [$esteCampo] )) {
+					$atributos ['valor'] = $_REQUEST [$esteCampo];
+				} else {
+					$atributos ['valor'] = '';
+				}
+				$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+				$atributos ['deshabilitado'] = false;
+				$atributos ['tamanno'] = 30;
+				$atributos ['maximoTamanno'] = '11';
+				$atributos ['anchoEtiqueta'] = 200;
+				$tab ++;
+					
+				// Aplica atributos globales al control
+				$atributos = array_merge ( $atributos, $atributosGlobales );
+				//var_dump($atributos);
+				echo $this->miFormulario->campoCuadroTexto ( $atributos );
+				unset ( $atributos );
+				// ----------------FIN CONTROL: Campo de Texto Nombre del Estudiante --------------------------------------------------------
+				
+				
 		
 				echo $this->miFormulario->marcoAgrupacion ( 'fin' );
 					
@@ -511,7 +544,7 @@ class FormularioRegistro {
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
 		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '4';
+		$atributos ['maximoTamanno'] = '6';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
 			
