@@ -192,7 +192,7 @@ class Sql extends \Sql {
 				break;
 				
 			case "publicacionActualizar" :
-				$cadenaSql=" SELECT dtg.documento_docente,";
+				$cadenaSql=" SELECT dtg.id_direccion_trabajogrado, dtg.documento_docente,";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
 				$cadenaSql.=" dtg.id_tipo_trabajogrado, ";
 				$cadenaSql.=" dtg.id_categoria_trabajogrado, ";
@@ -207,6 +207,14 @@ class Sql extends \Sql {
 				$cadenaSql.=" left join docencia.docente dc on dtg.documento_docente=dc.documento_docente ";
 				$cadenaSql.=" WHERE dtg.documento_docente ='" . $variable['documento_docente']. "'";
 				$cadenaSql.=" and dtg.id_direccion_trabajogrado ='" . $variable['identificadorDireccion']. "'";
+				break;
+				
+			case "publicacionEstudiantesActualizar" :
+				$cadenaSql=" select nombre_estudiante, ";
+				$cadenaSql.=" codigo_estudiante ";
+				$cadenaSql.=" from docencia.direccion_trabajogrado_estudiante ";
+				$cadenaSql.=" where ";
+				$cadenaSql.=" id_direccion_trabajogrado ="  . $variable;
 				break;
 				
 			case "actualizar" :

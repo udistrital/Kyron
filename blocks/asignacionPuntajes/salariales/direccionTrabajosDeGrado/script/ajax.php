@@ -4,6 +4,7 @@
  * Los datos del bloque se encuentran en el arreglo $esteBloque.
  */
 
+
 // URL base
 $url = $this->miConfigurador->getVariableConfiguracion ( "host" );
 $url .= $this->miConfigurador->getVariableConfiguracion ( "site" );

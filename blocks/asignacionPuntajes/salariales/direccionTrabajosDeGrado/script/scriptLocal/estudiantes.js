@@ -1,12 +1,17 @@
 $( document ).ready(function() {
 	
+		
 	var estudianteRequerido = 1;
 	var estudiante = 3;
-	var numEstudiante = estudianteRequerido;
+	var numEstudiante = <?php echo $_REQUEST['numeroEstudiantes'];?>;
 	var indice = 0;
 	
 	for(var i = estudiante; i > estudianteRequerido; i--){
 		$("#marcoEstudiante" + i).hide();
+	}
+	
+	for(var i = 1; i<= numEstudiante; i++){
+		$("#marcoEstudiante" + i).show();
 	}
 	
 	$("#botonEliminar1").click(function( event ) { eliminar1(); });
