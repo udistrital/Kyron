@@ -25,8 +25,6 @@ $cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cad
 $urlFinalDocente = $url . $cadena;
 ?>
 
-<script type='text/javascript'>
-
 $( "#<?php echo $this->campoSeguro('docente')?>" ).keyup(function() {
 	$('#<?php echo $this->campoSeguro('docente') ?>').val($('#<?php echo $this->campoSeguro('docente') ?>').val().toUpperCase());
 });
@@ -219,5 +217,3 @@ if($("#<?php echo $this->campoSeguro('contextoRevista')?>").val() == 0 || $("#<?
 	$("#<?php echo $this->campoSeguro('pais')?>").select2();
 	$("#<?php echo $this->campoSeguro('categoria')?>").select2();
 }
-</script>
-

@@ -134,11 +134,12 @@ class Sql extends \Sql {
 				break;
 				
 			case "docente" :
-				$cadenaSql = "SELECT documento_docente||' - '||primer_nombre||' '||segundo_nombre||' '||primer_apellido||' '||segundo_apellido AS  value, documento_docente  AS data ";
-				$cadenaSql .= " FROM docencia.docente";
-				$cadenaSql .= " WHERE cast(documento_docente as text) LIKE '%" . $variable . "%'";
-				$cadenaSql .= " OR primer_nombre LIKE '%" . $variable . "%' LIMIT 10;";
-				
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" documento_docente||' - '||primer_nombre||' '||segundo_nombre||' '||primer_apellido||' '||segundo_apellido AS value, ";
+				$cadenaSql.=" documento_docente AS data ";
+				$cadenaSql.=" FROM ";
+				$cadenaSql.=" docencia.docente WHERE documento_docente||' - '||primer_nombre||' '||segundo_nombre||' '||primer_apellido||' '||segundo_apellido ";
+				$cadenaSql.=" LIKE '%" . $variable . "%' LIMIT 10;";
 				break;
 								
 			case "consultar" :			
@@ -159,6 +160,9 @@ class Sql extends \Sql {
 				$cadenaSql.=" left join docencia.pais pi on ce.paiscodigo=pi.paiscodigo ";
 				$cadenaSql.=" left join docencia.tipo_indexacion ti ON ti.id_tipo_indexacion = ce.id_tipo_indexacion";
 				$cadenaSql.=" where ce.estado=true";
+				$cadenaSql.=" and dc.estado=true";
+				$cadenaSql.=" and pc.estado=true";
+				$cadenaSql.=" and dc_pc.estado=true";
 				if ($variable ['documento_docente'] != '') {
 					$cadenaSql .= " AND dc.documento_docente = '" . $variable ['documento_docente'] . "'";
 				}
@@ -220,6 +224,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" FROM docencia.cartas_editor ce ";
 				$cadenaSql.=" left join docencia.docente dc on ce.documento_docente=dc.documento_docente ";
 				$cadenaSql.=" WHERE ce.documento_docente ='" . $variable['documento_docente']. "'";
+				$cadenaSql.=" and ce.estado=true";
 				$cadenaSql.=" and ce.numero_issn ='" . $variable['identificadorColeccion']. "'";
 				break;
 				
