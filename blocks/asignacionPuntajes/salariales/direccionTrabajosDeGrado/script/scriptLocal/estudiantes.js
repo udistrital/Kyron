@@ -90,3 +90,25 @@ $( document ).ready(function() {
 	}); 	
 				
 });
+
+String.prototype.insertAt=function(index, string) { 
+	  return this.substr(0, index) + string + this.substr(index);
+	}
+
+var idDatosEstudiantes = [
+                          <?php for($i=1; $i<=3; $i++):?> 
+                       	 '<?php echo $this->campoSeguro('nombreEstudiante'.$i)?>',
+                       	 '<?php echo $this->campoSeguro('codigoEstudiante'.$i)?>',
+                          <?php endfor; ?>
+                       ];
+//Agrega required a todos los campos de los estudiantes
+$.each(idDatosEstudiantes,function (i,v){
+	var obj = $("#"+v);
+	if(obj.length>0){
+		var clases = obj.attr('class').split(' ');
+		var claseValidate = $.grep(clases,function(v,i){return v.indexOf('validate')>-1})[0];
+		obj.removeClass(claseValidate);
+		claseValidate = claseValidate.insertAt(claseValidate.indexOf("[")+1,'required,');
+		obj.addClass(claseValidate);
+	}
+});

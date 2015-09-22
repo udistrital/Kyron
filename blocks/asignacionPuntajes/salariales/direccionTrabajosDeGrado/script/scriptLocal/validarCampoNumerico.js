@@ -7,6 +7,9 @@ $( document ).ready(function() {
 	var IPunto = 0;
 	
 	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroCasoActa')?>";
+	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('codigoEstudiante1')?>";
+	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('codigoEstudiante2')?>";
+	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('codigoEstudiante3')?>";
 	
 	campoValidarPunto[IPunto++] = "#<?php echo $this->campoSeguro('puntaje')?>";
 	

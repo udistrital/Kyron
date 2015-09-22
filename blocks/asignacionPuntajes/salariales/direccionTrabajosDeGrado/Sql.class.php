@@ -183,6 +183,14 @@ class Sql extends \Sql {
 				$cadenaSql .= " returning id_direccion_trabajogrado";
 				break;
 				
+			case "registroEstudiantes" :
+				$cadenaSql = "INSERT INTO docencia.direccion_trabajogrado_estudiante( ";
+				$cadenaSql .= "id_direccion_trabajogrado, nombre_estudiante, codigo_estudiante) ";
+				$cadenaSql .= " VALUES (" . $variable ['id_direccion_trabajogrado'] . ",";
+				$cadenaSql .= " '" . $variable ['nombre_estudiante'] . "',";
+				$cadenaSql .= " '" . $variable ['codigo_estudiante'] . "')";
+				break;
+				
 			case "publicacionActualizar" :
 				$cadenaSql=" SELECT dtg.documento_docente,";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";

@@ -38,6 +38,12 @@ class Registrar {
 		
 		$_REQUEST['numeroAutores'] = 0;
 		
+		for($i=1; $i<=3; $i++){
+			if($_REQUEST['nombreEstudiante' . $i] != "" && $_REQUEST['codigoEstudiante' . $i]){
+				$_REQUEST['numeroAutores']++;
+			}
+		}
+		
 		$arregloDatos = array (
 			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
 			'tituloTrabajo' => $_REQUEST['nombre'],
@@ -52,11 +58,18 @@ class Registrar {
 		);
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'registrar', $arregloDatos );
-		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
-		
-		var_dump($cadenaSql);
-		var_dump($resultado);
-		var_dump($arregloDatos);exit;
+		$id_direccion_trabajogrado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+
+		for($i=1; $i<= $_REQUEST['numeroAutores']; $i++){
+			$arregloEstudiante = array (
+					'id_direccion_trabajogrado' => $id_direccion_trabajogrado[0]['id_direccion_trabajogrado'],
+					'nombre_estudiante' => $_REQUEST['nombreEstudiante'.$i],
+					'codigo_estudiante' => $_REQUEST['codigoEstudiante'.$i]
+			);
+			
+			$cadenaSql = $this->miSql->getCadenaSql ( 'registroEstudiantes', $arregloEstudiante );
+			$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
+		}
 		
 		if ($resultado) {
 			redireccion::redireccionar ( 'inserto',  $_REQUEST['docenteRegistrar']);
