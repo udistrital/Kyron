@@ -132,7 +132,7 @@ class Formulario {
 			echo $this->miFormulario->campoCuadroTexto ( $atributos );
 			unset ( $atributos );
 			
-		// ----------------FIN CONTROL: Lista Docente--------------------------------------------------------
+		    // ----------------FIN CONTROL: Lista Docente--------------------------------------------------------
 			
 			// ---------------- CONTROL: Lista Facultad--------------------------------------------------------
 			$esteCampo = "facultad";
@@ -239,7 +239,7 @@ class Formulario {
 					
 					// -----------------FIN CONTROL: Botón -----------------------------------------------------------
 				}
-	// 			------------------Fin Division para los botones-------------------------
+	            // 			------------------Fin Division para los botones-------------------------
 				echo $this->miFormulario->division( "fin" );
 				
 				

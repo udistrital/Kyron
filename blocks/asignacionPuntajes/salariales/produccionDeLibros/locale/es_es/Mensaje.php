@@ -8,6 +8,8 @@ $this->idioma["botonRegistrar"] = "Registrar";
 $this->idioma["botonCancelar"] = "Cancelar";
 $this->idioma["noDefinido"] = "No definido";
 
+$this->idioma["marcoModificarRegistro"] = "Modificar Información de Producción de Libros";
+
 $this->idioma["consultarLibros"] = "Consultar Producción de Libros";
 $this->idioma["ingresarLibros"] = "Ingresar Producción de Libros";
 

@@ -31,7 +31,7 @@ class FormularioModificar {
 		 * Por tanto en el archivo ready.php se delaran algunas funciones js
 		 * que lo complementan.
 		 */
-		
+
 		$conexion = "docencia";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
@@ -112,14 +112,14 @@ class FormularioModificar {
 		$_REQUEST['docenteRegistrar'] =  $resultado[0]['nombre_docente'];
 		$_REQUEST['id_docenteRegistrar'] =  $resultado[0]['documento_docente'];
 		$_REQUEST['nombreLibro'] =  $resultado[0]['titulo_libro'];
-		$_REQUEST['tipoLibro'] =  $resultado[0]['tipo_libro'];
+		$_REQUEST['tipoLibro'] =  $resultado[0]['id_tipo_libro'];
 		//$_REQUEST['entidad_div'] =  $resultado[0]['paiscodigo'];
-		$_REQUEST['entidadCertificadora'] =  $resultado[0]['entidad_certificadora'];
+		$_REQUEST['entidadCertificadora'] =  $resultado[0]['id_entidad_certificadora'];
 		$_REQUEST['isbnLibro'] =  $resultado[0]['codigo_isbn'];
 		$_REQUEST['annoLibro'] =  $resultado[0]['anno_publicacion'];
 		$_REQUEST['numeroAutoresLibro'] =  $resultado[0]['numero_autores'];
 		$_REQUEST['numeroAutoresUniversidad'] =  $resultado[0]['numero_autores_ud'];
-		$_REQUEST['editorial'] =  $resultado[0]['editorial'];
+		$_REQUEST['editorial'] =  $resultado[0]['id_editorial'];
 		//$_REQUEST['marcoEvaluadores'] =  $resultado[0]['titulo_articulo'];
 		//$_REQUEST['marcoEvaluador1'] =  $resultado[0]['numero_autores'];
 		//$_REQUEST['botonEliminarEvaluador1'] =  $resultado[0]['numero_autores_ud'];
@@ -131,7 +131,6 @@ class FormularioModificar {
 				$_REQUEST['puntajeSugeridoEvaluador'.$i] =  $resultado2[$i-1]['puntaje'];
 			}
 		}
-		//var_dump($_REQUEST);
 		
 		//$_REQUEST['botonAgregarEvaluador1'] =  $resultado[0]['puntaje'];
 		$_REQUEST['numeroActaLibro'] =  $resultado[0]['numero_acta'];
@@ -141,8 +140,16 @@ class FormularioModificar {
 		
 		// ---------------- FIN: Lista Variables--------------------------------------------------------
 		
-		
+
 		// ---------------- CONTROL: Lista Docente--------------------------------------------------------
+		
+		$esteCampo = "marcoModificarRegistro";
+		$atributos ['id'] = $esteCampo;
+		$atributos ["estilo"] = "jqueryui";
+		$atributos ['tipoEtiqueta'] = 'inicio';
+		$atributos ["leyenda"] = $this->lenguaje->getCadena ( $esteCampo );
+		echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
+		
 		
 		$esteCampo = 'docenteRegistrar';
 			
@@ -273,7 +280,7 @@ class FormularioModificar {
 		// ---------------- CONTROL:  Lista Entidad que Certifica--------------------------------------------------------
 			
 		$atributos ["id"] = "entidad_div";
-		$atributos ["estiloEnLinea"] = "display:none";
+		$atributos ["estiloEnLinea"] = "display:block";
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->division ( "inicio", $atributos );
 		unset ( $atributos );
@@ -307,8 +314,10 @@ class FormularioModificar {
 						' '
 				)
 		);
+		$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ("entidadCertificadora" , $_REQUEST['tipoLibro']);
+		$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 		$atributos ['matrizItems'] = $matrizItems;
-			
+		
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroLista ( $atributos );
 		unset ( $atributos );
@@ -902,9 +911,26 @@ class FormularioModificar {
 				$valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
 				$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 				$valorCodificado .= "&opcion=actualizar";
-				$valorCodificado .= "&arreglo=".$_REQUEST['arreglo'];
-				$valorCodificado .= "&codigo_isbn_old=".$_REQUEST['codigo_isbn'];
-				
+				/*
+				 * Sara permite validar los campos en el formulario o funcion destino.
+				 * Para ello se envía los datos atributos["validadar"] de los componentes del formulario
+				 * Estos se pueden obtener en el atributo $this->miFormulario->validadorCampos del formulario
+				 * La función $this->miFormulario->codificarCampos() codifica automáticamente el atributo validadorCampos
+				 */
+				//
+				$valorCodificado .= "&validadorCampos=" . $this->miFormulario->codificarCampos();
+				/*
+				 * identificadores de registro antiguos, necesarios para la transacción update 
+				 */
+				$valorCodificado .= "&old_id_docenteRegistrar=".$_REQUEST['id_docenteRegistrar'];
+				$valorCodificado .= "&old_isbnLibro=".$_REQUEST['isbnLibro'];
+				for($i=1; $i<=3; $i++){
+					$campo = 'documentoEvaluador'.$i;
+					if(isset($_REQUEST[$campo])){
+						$valorCodificado .= "&old_".$campo."=".$_REQUEST[$campo];
+					}
+				}
+						
 				/**
 				 * SARA permite que los nombres de los campos sean dinámicos.
 				 * Para ello utiliza la hora en que es creado el formulario para

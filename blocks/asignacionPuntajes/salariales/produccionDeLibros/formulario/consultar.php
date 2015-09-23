@@ -70,7 +70,6 @@ class registrarForm {
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'consultarLibros', $arreglo );
 		$indexacion = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
-		$arreglo=serialize($arreglo);
 		
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
 		$esteCampo = $esteBloque ['nombre'];
@@ -154,7 +153,6 @@ class registrarForm {
 					for($i = 0; $i < count ( $indexacion ); $i ++) {
 						$variable = "pagina=" . $miPaginaActual; // pendiente la pagina para modificar parametro
 						$variable .= "&opcion=modificar";
-						$variable .= "&arreglo=".$arreglo;
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
 						$variable .= "&documento_docente=" . $indexacion [$i] ['documento_docente'];
 						$variable .= "&codigo_isbn=" . $indexacion [$i] ['codigo_isbn'];

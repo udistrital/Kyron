@@ -2,14 +2,14 @@
 $(document).ready(function(){
 
 <?php
-$_REQUEST['numeroEvaluadores'] = 0;
+$numeroEvaluadores = 0;
 for($i=1; $i<=3; $i++){
-	if(isset($_REQUEST['documentoEvaluador' . $i]) && $_REQUEST['documentoEvaluador' . $i] != '' && $_REQUEST['documentoEvaluador' . $i]){
-		$_REQUEST['numeroEvaluadores']++;
+	if(isset($_REQUEST['documentoEvaluador' . $i]) && $_REQUEST['documentoEvaluador' . $i] != ''){
+		$numeroEvaluadores++;
 	}
 }
 ?>
-var evaluadoRequerido = <?php echo $_REQUEST['numeroEvaluadores'];?>;
+var evaluadoRequerido = <?php echo $numeroEvaluadores;?>;
 var evaluador = 3;
 var numEvaluadores = evaluadoRequerido;
 var indice = 0;

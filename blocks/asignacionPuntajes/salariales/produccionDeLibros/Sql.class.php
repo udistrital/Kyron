@@ -157,6 +157,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" li.anno_publicacion AS anno_publicacion,";
 				$cadenaSql.=" li.numero_autores AS numero_autores,";
 				$cadenaSql.=" li.numero_autores_ud AS numero_autores_ud,";
+				$cadenaSql.=" li.id_editorial AS id_editorial,";
 				$cadenaSql.=" ed.nombre_editorial AS editorial,";
 				$cadenaSql.=" li.numero_acta AS numero_acta,";
 				$cadenaSql.=" li.fecha_acta AS fecha_acta,";
@@ -285,7 +286,7 @@ class Sql extends \Sql {
 						$cadenaSql.=" )";
 						$cadenaSql.=" VALUES ";
 					}
-					if($evaluadorExite){
+					if($evaluadorExiste){
 						$cadenaSql.=" (";
 						$cadenaSql.=" '" . $variable ['documentoEvaluador'.$i] . "',";
 						$cadenaSql.=" '" . $variable ['nombreEvaluador'.$i] . "',";
@@ -300,30 +301,64 @@ class Sql extends \Sql {
 				$cadenaSql.=" ;";
 				break;
 				
-			case "actualizarLibro" :
-				$cadenaSql = "UPDATE ";
-				$cadenaSql .= "docencia.revista_indexada ";
-				$cadenaSql .= "SET ";
-				$cadenaSql .= "nombre_revista = '" . $variable ['nombreRevista'] . "', ";
-				$cadenaSql .= "id_contexto = '" . $variable ['contextoRevista'] . "', ";
-				$cadenaSql .= "paiscodigo = '" . $variable ['pais'] . "', ";
-				$cadenaSql .= "id_tipo_indexacion = '" . $variable ['categoria'] . "', ";
-				$cadenaSql .= "numero_issn = '" . $variable ['issnRevista'] . "', ";
-				$cadenaSql .= "anno_publicacion = '" . $variable ['annoRevista'] . "', ";
-				$cadenaSql .= "volumen_revista = '" . $variable ['volumenRevista'] . "', ";
-				$cadenaSql .= "numero_revista = '" . $variable ['numeroRevista'] . "', ";
-				$cadenaSql .= "paginas_revista = '" . $variable ['paginasRevista'] . "', ";
-				$cadenaSql .= "titulo_articulo = '" . $variable ['tituloArticuloRevista'] . "', ";
-				$cadenaSql .= "numero_autores = '" . $variable ['numeroAutoresRevista'] . "', ";
-				$cadenaSql .= "numero_autores_ud = '" . $variable ['numeroAutoresUniversidad'] . "', ";
-				$cadenaSql .= "fecha_publicacion = '" . $variable ['fechaPublicacionrevista'] . "', ";
-				$cadenaSql .= "numero_acta = '" . $variable ['numeroActaRevista'] . "', ";
-				$cadenaSql .= "fecha_acta = '" . $variable ['fechaActaRevista'] . "', ";
-				$cadenaSql .= "numero_caso = '" . $variable ['numeroCasoActaRevista'] . "', ";
-				$cadenaSql .= "puntaje = '" . $variable ['puntajeRevista'] . "'";
-				$cadenaSql .= "WHERE ";
-				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";
-				$cadenaSql .= "and numero_issn ='" . $variable ['numero_issn_old'] . "' ";
+			case "actualizarLibroDocente" :
+				$cadenaSql=" UPDATE docencia.libro_docente";
+				$cadenaSql.=" SET";
+				$cadenaSql.=" documento_docente = '" . $variable ['id_docenteRegistrar'] . "',";
+				$cadenaSql.=" titulo = '" . $variable ['nombreLibro'] . "',";
+				$cadenaSql.=" id_tipo_libro = '" . $variable ['tipoLibro'] . "',";
+				$valor = $variable ['entidadCertificadora'];
+				$variable ['entidadCertificadora'] = ($valor=='')?'NULL':" '".$valor."'";
+				$cadenaSql.=" id_universidad = " . $variable ['entidadCertificadora'] . ",";
+				$cadenaSql.=" codigo_isbn = '" . $variable ['isbnLibro'] . "',";
+				$cadenaSql.=" anno_publicacion = '" . $variable ['annoLibro'] . "',";
+				$cadenaSql.=" numero_autores = '" . $variable ['numeroAutoresLibro'] . "',";
+				$cadenaSql.=" numero_autores_ud = '" . $variable ['numeroAutoresUniversidad'] . "',";
+				$cadenaSql.=" id_editorial = '" . $variable ['editorial'] . "',";
+				$cadenaSql.=" numero_acta = '" . $variable ['numeroActaLibro'] . "',";
+				$cadenaSql.=" fecha_acta = '" . $variable ['fechaActaLibro'] . "', ";
+				$cadenaSql.=" numero_caso = '" . $variable ['numeroCasoActaLibro'] . "', ";
+				$cadenaSql.=" puntaje = '" . $variable ['puntajeLibro'] . "'";
+				$cadenaSql.=" WHERE";
+				$cadenaSql.=" documento_docente = '" . $variable ['old_id_docenteRegistrar'] . "'";
+				$cadenaSql.=" AND codigo_isbn = '" . $variable ['old_isbnLibro'] . "'";
+				$cadenaSql.=" ;";
+				break;
+				
+			case "insertarEvaluador" :
+				$cadenaSql=" INSERT INTO docencia.evaluador_libro_docente (";
+				$cadenaSql.=" documento_evaluador,";
+				$cadenaSql.=" nombre,";
+				$cadenaSql.=" codigo_isbn,";
+				$cadenaSql.=" documento_docente,";
+				$cadenaSql.=" id_universidad,";
+				$cadenaSql.=" puntaje";
+				$cadenaSql.=" )";
+				$cadenaSql.=" VALUES (";
+				$cadenaSql.=" '" . $variable ['documento_evaluador'] . "',";
+				$cadenaSql.=" '" . $variable ['nombre'] . "',";
+				$cadenaSql.=" '" . $variable ['codigo_isbn'] . "',";
+				$cadenaSql.=" '" . $variable ['documento_docente'] . "',";
+				$cadenaSql.=" '" . $variable ['id_universidad'] . "',";
+				$cadenaSql.=" '" . $variable ['puntaje'] . "'";
+				$cadenaSql.=" );";
+				break;
+				
+			case "actualizarEvaluador" :
+				$cadenaSql=" UPDATE";
+				$cadenaSql.=" docencia.evaluador_libro_docente";
+				$cadenaSql.=" SET";
+				$cadenaSql.=" documento_evaluador = '" . $variable ['documento_evaluador'] . "',";
+				$cadenaSql.=" nombre = '" . $variable ['nombre'] . "',";
+				$cadenaSql.=" codigo_isbn = '" . $variable ['codigo_isbn'] . "',";
+				$cadenaSql.=" documento_docente = '" . $variable ['documento_docente'] . "',";
+				$cadenaSql.=" id_universidad = '" . $variable ['id_universidad'] . "',";
+				$cadenaSql.=" puntaje = '" . $variable ['puntaje'] . "'";
+				$cadenaSql.=" WHERE";
+				$cadenaSql.=" documento_evaluador = '" . $variable ['old_documento_evaluador'] . "'";
+				$cadenaSql.=" AND codigo_isbn = '" . $variable ['old_codigo_isbn'] . "'";
+				$cadenaSql.=" AND documento_docente = '" . $variable ['old_documento_docente'] . "'";
+				$cadenaSql.=" ;";
 				break;
 		}
 		

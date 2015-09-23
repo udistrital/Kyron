@@ -149,3 +149,8 @@ function consultarEntidadCertificadora(elem, request, response){
 };
 
 });
+
+if($("#<?php echo $this->campoSeguro('tipoLibro')?>").val() == 1){
+	$('#<?php echo $this->campoSeguro('entidadCertificadora')?>').width(470);
+	var elem = $("#<?php echo $this->campoSeguro('entidadCertificadora')?>").select2();
+}

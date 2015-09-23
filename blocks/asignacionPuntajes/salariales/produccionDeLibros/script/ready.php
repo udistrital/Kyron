@@ -96,22 +96,28 @@ $("#<?php echo $this->campoSeguro('editorial')?>").select2();
  * Se asigna dinámicamente el parámetro required a los select2. Se quita un reminicente de:
  */
 var obj = $("#<?php echo $this->campoSeguro('entidadCertificadora1')?>").select2();
-var clases = obj.attr('class').split(' ');
-var claseValidate = $.grep(clases,function(v,i){return v.indexOf('validate')>-1})[0];
-obj.removeClass(claseValidate);
-claseValidate = claseValidate.insertAt(claseValidate.indexOf("[")+1,'required,');
-obj.addClass(claseValidate);
+if(obj.length>0){
+	var clases = obj.attr('class').split(' ');
+	var claseValidate = $.grep(clases,function(v,i){return v.indexOf('validate')>-1})[0];
+	obj.removeClass(claseValidate);
+	claseValidate = claseValidate.insertAt(claseValidate.indexOf("[")+1,'required,');
+	obj.addClass(claseValidate);
+}
 
 var obj = $("#<?php echo $this->campoSeguro('entidadCertificadora2')?>").select2();
-var clases = obj.attr('class').split(' ');
-var claseValidate = $.grep(clases,function(v,i){return v.indexOf('validate')>-1})[0];
-obj.removeClass(claseValidate);
-claseValidate = claseValidate.insertAt(claseValidate.indexOf("[")+1,'required,');
-obj.addClass(claseValidate);
+if(obj.length>0){
+	var clases = obj.attr('class').split(' ');
+	var claseValidate = $.grep(clases,function(v,i){return v.indexOf('validate')>-1})[0];
+	obj.removeClass(claseValidate);
+	claseValidate = claseValidate.insertAt(claseValidate.indexOf("[")+1,'required,');
+	obj.addClass(claseValidate);
+}
 
 var obj = $("#<?php echo $this->campoSeguro('entidadCertificadora3')?>").select2();
-var clases = obj.attr('class').split(' ');
-var claseValidate = $.grep(clases,function(v,i){return v.indexOf('validate')>-1})[0];
-obj.removeClass(claseValidate);
-claseValidate = claseValidate.insertAt(claseValidate.indexOf("[")+1,'required,');
-obj.addClass(claseValidate);
+if(obj.length>0){
+	var clases = obj.attr('class').split(' ');
+	var claseValidate = $.grep(clases,function(v,i){return v.indexOf('validate')>-1})[0];
+	obj.removeClass(claseValidate);
+	claseValidate = claseValidate.insertAt(claseValidate.indexOf("[")+1,'required,');
+	obj.addClass(claseValidate);
+}

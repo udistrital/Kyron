@@ -27,6 +27,7 @@ class RegistrarIndexacionRevista {
 		$this->miFuncion = $funcion;
 	}
 	function procesarFormulario() {
+		
 		$conexion = "docencia";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
@@ -35,33 +36,43 @@ class RegistrarIndexacionRevista {
 		$rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "raizDocumento" ) . "/blocks/asignacionPuntajes/salariales/";
 		$rutaBloque .= $esteBloque ['nombre'];
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
-
-		$arregloDatos = array (
-			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
-			'nombreRevista' => $_REQUEST['nombreRevista'],
-			'contextoRevista' => $_REQUEST['contextoRevista'],
-			'pais' => $_REQUEST['pais'],
-			'categoria' => $_REQUEST['categoria'],
-			'issnRevista' => $_REQUEST['issnRevista'],
-			'annoRevista' => $_REQUEST['annoRevista'],
-			'volumenRevista' => $_REQUEST['volumenRevista'],
-			'numeroRevista' => $_REQUEST['numeroRevista'],
-			'paginasRevista' => $_REQUEST['paginasRevista'],
-			'tituloArticuloRevista' => $_REQUEST['tituloArticuloRevista'],
-			'numeroAutoresRevista' => $_REQUEST['numeroAutoresRevista'],
-			'numeroAutoresUniversidad' => $_REQUEST['numeroAutoresUniversidad'],
-			'fechaPublicacionrevista' => $_REQUEST['fechaPublicacionrevista'],
-			'numeroActaRevista' => $_REQUEST['numeroActaRevista'],
-			'fechaActaRevista' => $_REQUEST['fechaActaRevista'],
-			'numeroCasoActaRevista' => $_REQUEST['numeroCasoActaRevista'],
-			'puntajeRevista' => $_REQUEST['puntajeRevista'],
-			'numero_issn_old' => $_REQUEST['numero_issn_old']
-		);
 		
-		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizarIndexacion', $arregloDatos );
+		//Actualizar Libro Docente
+		$cadenaSql = $this->miSql->getCadenaSql ('actualizarLibroDocente', $_REQUEST);
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
+		$transaccion = TRUE;
+		$transaccion &= $resultado;
 		
-		if ($resultado) {
+		for($i=1; $i<=3 && $transaccion; $i++){
+			if(isset($_REQUEST['old_documentoEvaluador' . $i])){//Actualizar evaluador
+				$datos = array(
+						'documento_evaluador' =>  $_REQUEST ['documentoEvaluador'.$i],
+						'old_documento_evaluador' =>  $_REQUEST ['old_documentoEvaluador'.$i],
+						'codigo_isbn' => $_REQUEST ['isbnLibro'],
+						'old_codigo_isbn' => $_REQUEST ['old_isbnLibro'],
+						'documento_docente' => $_REQUEST ['id_docenteRegistrar'],
+						'old_documento_docente' => $_REQUEST ['old_id_docenteRegistrar'],
+						'nombre' => $_REQUEST ['nombreEvaluador'.$i],
+						'id_universidad' => $_REQUEST ['entidadCertificadora'.$i],
+						'puntaje' => $_REQUEST ['puntajeSugeridoEvaluador'.$i]
+				);
+				$cadenaSql = $this->miSql->getCadenaSql ('actualizarEvaluador', $datos);
+				$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );				
+			} else if (isset($_REQUEST['documentoEvaluador' . $i]) && $_REQUEST['documentoEvaluador' . $i] != ''){//Insertar nuevo evaluador
+				$datos = array(
+						'documento_evaluador' =>  $_REQUEST ['documentoEvaluador'.$i],
+						'codigo_isbn' => $_REQUEST ['isbnLibro'],
+						'documento_docente' => $_REQUEST ['id_docenteRegistrar'],
+						'nombre' => $_REQUEST ['nombreEvaluador'.$i],
+						'id_universidad' => $_REQUEST ['entidadCertificadora'.$i],
+						'puntaje' => $_REQUEST ['puntajeSugeridoEvaluador'.$i]
+				);
+				$cadenaSql = $this->miSql->getCadenaSql ('insertarEvaluador', $datos);
+				$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
+			}
+			$transaccion &= $resultado;
+		}
+		if ($transaccion==TRUE) {
 			redireccion::redireccionar ( 'actualizo',  $_REQUEST['docenteRegistrar']);
 			exit ();
 		} else {
