@@ -9,6 +9,8 @@ $this->idioma["tabIngresar"] = "Ingresar Cartas al Editor";
 $this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Carta al Editor para el docente <br>";
 $this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado la Carta al Editor para el docente <br>" ;
 $this->idioma["mensajeError"] =  "Error al tratar de registrar la Carta al Editor.";
+$this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Cartas al Editor Para los Criterios Ingresados";
+
 /////////////////////////////////
 
 //* SECCIÓN ELEMENTOS QUE SU NOMBRE POSIBLEMENTE VARIA DENTRO DEL FORMULARIO *//

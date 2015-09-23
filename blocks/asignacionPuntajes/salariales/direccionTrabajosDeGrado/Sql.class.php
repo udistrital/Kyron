@@ -215,6 +215,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" from docencia.direccion_trabajogrado_estudiante ";
 				$cadenaSql.=" where ";
 				$cadenaSql.=" id_direccion_trabajogrado ="  . $variable;
+				$cadenaSql.=" and estado = true";
 				break;
 				
 			case "actualizar" :
@@ -234,6 +235,29 @@ class Sql extends \Sql {
 				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";
 				$cadenaSql .= "and id_direccion_trabajogrado ='" . $variable ['id_direccion_trabajo'] . "' ";
 				$cadenaSql .= "and estado=true";
+				break;
+				
+			case "actualizarEstudiante" :
+				$cadenaSql = "UPDATE ";
+				$cadenaSql .= "docencia.direccion_trabajogrado_estudiante ";
+				$cadenaSql .= "SET ";
+				$cadenaSql .= "nombre_estudiante ='" . $variable ['nombre_estudiante'] . "',";
+				$cadenaSql .= "codigo_estudiante='" . $variable ['codigo_estudiante'] . "' ";
+				$cadenaSql .= "WHERE ";
+				$cadenaSql .= "nombre_estudiante ='" . $variable ['old_nombre_estudiante'] . "' ";
+				$cadenaSql .= "and codigo_estudiante='" . $variable ['old_codigo_estudiante'] . "' ";
+				$cadenaSql .= "and id_direccion_trabajogrado ='" . $variable ['id_direccion_trabajogrado'] . "' ";
+				break;
+				
+			case "actualizarEstudianteEliminar" ://cambiar estado a false
+				$cadenaSql = "UPDATE ";
+				$cadenaSql .= "docencia.direccion_trabajogrado_estudiante ";
+				$cadenaSql .= "SET ";
+				$cadenaSql .= "estado =  false ";
+				$cadenaSql .= "WHERE ";
+				$cadenaSql .= "nombre_estudiante ='" . $variable ['old_nombre_estudiante'] . "' ";
+				$cadenaSql .= "and codigo_estudiante='" . $variable ['old_codigo_estudiante'] . "' ";
+				$cadenaSql .= "and id_direccion_trabajogrado ='" . $variable ['id_direccion_trabajogrado'] . "' ";
 				break;
 		}
 		

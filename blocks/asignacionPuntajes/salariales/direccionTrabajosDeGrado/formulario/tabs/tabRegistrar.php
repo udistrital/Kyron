@@ -89,8 +89,6 @@ class FormularioRegistro {
 
 		// ---------------- CONTROL: Lista Docente--------------------------------------------------------
 		
-		$_REQUEST['numeroEstudiantes'] = 1; // se crea este valor como mínimo de estudiantes requeridos;
-		
 		$esteCampo = 'docenteRegistrar';
 			
 		$atributos ['id'] = $esteCampo;

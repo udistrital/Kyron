@@ -105,7 +105,7 @@ class FormularioModificar {
 		
 		$cadena_sql = $this->miSql->getCadenaSql ( "publicacionEstudiantesActualizar", $resultadoDireccionTrabajo[0]['id_direccion_trabajogrado'] );
 		$estudiantes = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
-		
+
 		for($i=0; $i< $resultadoDireccionTrabajo[0]['numero_autores']; $i++){
 			$_REQUEST['nombreEstudiante'.($i+1)] =  $estudiantes[$i]['nombre_estudiante'];
 			$_REQUEST['codigoEstudiante'.($i+1)] =  $estudiantes[$i]['codigo_estudiante'];
@@ -113,16 +113,16 @@ class FormularioModificar {
 		
 		$_REQUEST['numeroEstudiantes'] = $resultadoDireccionTrabajo[0]['numero_autores'];
 		
-				$_REQUEST['docenteRegistrar'] =  $resultadoDireccionTrabajo[0]['documento_docente'] . " - " . $resultadoDireccionTrabajo[0]['nombre_docente'];
-				$_REQUEST['id_docenteRegistrar'] =  $resultadoDireccionTrabajo[0]['documento_docente'];
-				$_REQUEST['nombre'] =  $resultadoDireccionTrabajo[0]['titulo_trabajogrado'];
-				$_REQUEST['categoria'] =  $resultadoDireccionTrabajo[0]['id_categoria_trabajogrado'];
-				$_REQUEST['tipo'] =  $resultadoDireccionTrabajo[0]['id_tipo_trabajogrado'];
-				$_REQUEST['anno'] =  $resultadoDireccionTrabajo[0]['anno_direccion'];
-				$_REQUEST['numeroActa'] =  $resultadoDireccionTrabajo[0]['numero_acta'];
-				$_REQUEST['fechaActa'] =  $resultadoDireccionTrabajo[0]['fecha_acta'];
-				$_REQUEST['numeroCasoActa'] =  $resultadoDireccionTrabajo[0]['caso_acta'];
-				$_REQUEST['puntaje'] =  $resultadoDireccionTrabajo[0]['puntaje'];
+		$_REQUEST['docenteRegistrar'] =  $resultadoDireccionTrabajo[0]['documento_docente'] . " - " . $resultadoDireccionTrabajo[0]['nombre_docente'];
+		$_REQUEST['id_docenteRegistrar'] =  $resultadoDireccionTrabajo[0]['documento_docente'];
+		$_REQUEST['nombre'] =  $resultadoDireccionTrabajo[0]['titulo_trabajogrado'];
+		$_REQUEST['categoria'] =  $resultadoDireccionTrabajo[0]['id_categoria_trabajogrado'];
+		$_REQUEST['tipo'] =  $resultadoDireccionTrabajo[0]['id_tipo_trabajogrado'];
+		$_REQUEST['anno'] =  $resultadoDireccionTrabajo[0]['anno_direccion'];
+		$_REQUEST['numeroActa'] =  $resultadoDireccionTrabajo[0]['numero_acta'];
+		$_REQUEST['fechaActa'] =  $resultadoDireccionTrabajo[0]['fecha_acta'];
+		$_REQUEST['numeroCasoActa'] =  $resultadoDireccionTrabajo[0]['caso_acta'];
+		$_REQUEST['puntaje'] =  $resultadoDireccionTrabajo[0]['puntaje'];
 		
 		$esteCampo = "marcoModificarRegistro";
 		$atributos ['id'] = $esteCampo;
@@ -280,7 +280,6 @@ class FormularioModificar {
 						
 					// Aplica atributos globales al control
 					$atributos = array_merge ( $atributos, $atributosGlobales );
-					//var_dump($atributos);
 					echo $this->miFormulario->campoCuadroTexto ( $atributos );
 					unset ( $atributos );
 					// ----------------FIN CONTROL: Campo de Texto Nombre del Estudiante --------------------------------------------------------
@@ -313,7 +312,6 @@ class FormularioModificar {
 						
 					// Aplica atributos globales al control
 					$atributos = array_merge ( $atributos, $atributosGlobales );
-					//var_dump($atributos);
 					echo $this->miFormulario->campoCuadroTexto ( $atributos );
 					unset ( $atributos );
 					// ----------------FIN CONTROL: Campo de Texto Nombre del Estudiante --------------------------------------------------------

@@ -6,9 +6,10 @@ $this->idioma["tabIngresar"] = "Ingresar Dirección de Trabajos De Grado";
 //////////////////////////////////////////////////////////////
 
 //************ MENSAJES *********
-$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Carta al Editor para el docente <br>";
-$this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado la Carta al Editor para el docente <br>" ;
-$this->idioma["mensajeError"] =  "Error al tratar de registrar la Carta al Editor.";
+$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Dirección de Trabajo de Grado para el docente <br>";
+$this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado la Dirección de Trabajo Grado para el docente <br>" ;
+$this->idioma["mensajeError"] =  "Error al tratar de registrar la Dirección de Trabajo Grado.";
+$this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Direcciones de Trabajos De Grado </br> Para los Criterios Ingresados";
 /////////////////////////////////
 
 //* SECCIÓN ELEMENTOS QUE SU NOMBRE POSIBLEMENTE VARIA DENTRO DEL FORMULARIO *//
@@ -17,16 +18,16 @@ $this->idioma["anno"] = "Año Dirección";
 $this->idioma["categoria"] = "Categoría Del Trabajo";
 $this->idioma["tipo"] = "Tipo de Trabajo";
 $this->idioma["marcoConsultaGeneral"] = "Dirección de Trabajos de Grado Registradas";
-$this->idioma["marcoModificarRegistro"] = "Modificar Información de Cartas al Editor";
+$this->idioma["marcoModificarRegistro"] = "Modificar Información de la Dirección de Trabajo Grado";
 
-$this->idioma["nombreTitulo"] = "Nombre de Revista Públicada.";
-$this->idioma["annoTitulo"] = "Año de Publicación de la Revista.";
+$this->idioma["nombreTitulo"] = "Título del Trabajo de Grado.";
+$this->idioma["annoTitulo"] = "Año de Presentación del Trabajo de Grado.";
 $this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";
 $this->idioma["docenteTitulo"] = "Identificación o Nombre del Docente.";
 $this->idioma["numeroActaTitulo"] = "Ingrese el Número de Acta CIARP-UD.";
 $this->idioma["fechaActaTitulo"] = "Seleccione la Fecha de Acta CIARP-UD.";
 $this->idioma["numeroCasoActaTitulo"] = "Ingrese el Número de Caso de Acta.";
-$this->idioma["puntajeTitulo"] = "Ingrese Puntaje.";
+$this->idioma["puntajeTitulo"] = "Ingrese el Puntaje.";
 
 $this->idioma["codigoEstudiante1"] = "Código del Estudiante";
 $this->idioma["codigoEstudiante2"] = "Código del Estudiante";

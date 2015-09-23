@@ -1,5 +1,10 @@
 $( document ).ready(function() {
 	
+	<?php 
+			if(!isset($_REQUEST['numeroEstudiantes'])){
+				$_REQUEST['numeroEstudiantes'] = 1;
+			}
+	?>;
 		
 	var estudianteRequerido = 1;
 	var estudiante = 3;
@@ -28,8 +33,10 @@ $( document ).ready(function() {
 		    if (confirmar){
 		       	<?php for($i=1; $i<=3; $i++):?>      
 		       		$('#<?php echo $this->campoSeguro('nombreEstudiante'.$i)?>').val($('#<?php echo $this->campoSeguro('nombreEstudiante'.($i+1))?>').val());
+		       		$('#<?php echo $this->campoSeguro('codigoEstudiante'.$i)?>').val($('#<?php echo $this->campoSeguro('codigoEstudiante'.($i+1))?>').val());
 		            <?php if($i==3): ?>
 		           		$('#<?php echo $this->campoSeguro('nombreEstudiante'.$i)?>').val("");
+		           		$('#<?php echo $this->campoSeguro('codigoEstudiante'.$i)?>').val("");
 		            <?php endif; ?>
 		        <?php endfor; ?>
 		           
@@ -50,8 +57,10 @@ $( document ).ready(function() {
 		    if (confirmar){
 		       	<?php for($i=2; $i<=3; $i++):?>        	 
 		       		$('#<?php echo $this->campoSeguro('nombreEstudiante'.$i)?>').val($('#<?php echo $this->campoSeguro('nombreEstudiante'.($i+1))?>').val());
+		       		$('#<?php echo $this->campoSeguro('codigoEstudiante'.$i)?>').val($('#<?php echo $this->campoSeguro('codigoEstudiante'.($i+1))?>').val());
 		            <?php if($i==3): ?>
 		           		$('#<?php echo $this->campoSeguro('nombreEstudiante'.$i)?>').val("");
+		           		$('#<?php echo $this->campoSeguro('codigoEstudiante'.$i)?>').val("");
 		            <?php endif; ?>
 		        <?php endfor; ?>
 		           
@@ -73,6 +82,7 @@ $( document ).ready(function() {
 		       	<?php for($i=3; $i<=3; $i++):?>        	 
 		            <?php if($i==3): ?>
 		           		$('#<?php echo $this->campoSeguro('nombreEstudiante'.$i)?>').val("");
+		           		$('#<?php echo $this->campoSeguro('codigoEstudiante'.$i)?>').val("");
 		            <?php endif; ?>
 		        <?php endfor; ?>
 		           
