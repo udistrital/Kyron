@@ -35,9 +35,10 @@ if($_REQUEST['opcion']=='Formatear'){
 	$linea=explode('<br />',$cadena);
 	
 	foreach ($linea as $key => $value) {
-		$caracteres = array('$cadenaSql.="', "\n", "\r");
+		$caracteres = array('$cadenaSql.="','$cadenaSql="','$cadenaSql .= "','$cadenaSql = "', '$cadenaSql .= ');
 		$value = str_replace($caracteres,'',$value);
-		echo '=" '.$value.'";<br>';
+		$value = substr($value, 0, -2);
+		echo $value.'<br>';
 	}
 }
 
