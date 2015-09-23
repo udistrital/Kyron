@@ -120,8 +120,9 @@ class registrarForm {
 		);
 
 		$cadenaSql = $this->miSql->getCadenaSql ( 'consultar', $arreglo );
-		$indexacion = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+		$experiencia = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 		$arreglo=serialize($arregloSerialize);
+
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
 		$esteCampo = $esteBloque ['nombre'];
 		$atributos ['id'] = $esteCampo;
@@ -169,7 +170,7 @@ class registrarForm {
 			
 		unset ( $atributos );
 		
-				if ($indexacion) {
+				if ($experiencia) {
 					
 					$esteCampo = "marcoConsultaGeneral";
 					$atributos ['id'] = $esteCampo;
@@ -185,10 +186,15 @@ class registrarForm {
 	                   
 	                    <th>Identificación</th>
 	                    <th>Nombres y Apellidos</th>
-						<th>Título Trabajo</th>
-						<th>Categoría</th>
-						<th>Tipo de Trabajo</th>
-						<th>Año</th>
+						<th>Entidad o Institución</th>
+						<th>Tipo Entidad</th>
+						<th>Número de Horas por Semana</th>
+						<th>Fecha de Inicio</th>
+						<th>Fecha de Finalización</th>
+						<th>Duración Experiencia (Días)</th>
+						<th>Número de Acta CIARP-UD</th>
+						<th>Fecha de Acta CIARP-UD</th>
+						<th>Número Caso de Acta</th>
 						<th>Puntaje</th>
 						<th>Modificar</th>
 							
@@ -196,23 +202,35 @@ class registrarForm {
 	            </thead>
 	            <tbody>";
 					
-					for($i = 0; $i < count ( $indexacion ); $i ++) {
+					for($i = 0; $i < count ( $experiencia ); $i ++) {
+						
+						if(isset($experiencia [$i] ['entidad']) && $experiencia [$i] ['entidad']!=''){
+							$experiencia [$i] ['entidadInstitucion'] = $experiencia [$i] ['entidad'];
+						}else{
+							$experiencia [$i] ['entidadInstitucion'] = $experiencia [$i] ['otra_entidad'];
+						}
+						
 						$variable = "pagina=" . $miPaginaActual; // pendiente la pagina para modificar parametro
 						$variable .= "&opcion=modificar";
 						$variable .= "&arreglo=" . $arreglo;
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
-						$variable .= "&documento_docente=" . $indexacion [$i] ['documento_docente'];
-						$variable .= "&identificadorDireccionTrabajo=" . $indexacion [$i] ['id_direccion'];
+						$variable .= "&documento_docente=" . $experiencia [$i] ['documento_docente'];
+						$variable .= "&identificadorExperiencia=" . $experiencia [$i] ['id_experiencia'];
 						$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 						
 						$mostrarHtml = "<tr>
-	                    <td><center>" . $indexacion [$i] ['documento_docente'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['nombre_docente'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['titulo'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['categoria'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['tipo'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['anno'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['puntaje'] . "</center></td>
+	                    <td><center>" . $experiencia [$i] ['documento_docente'] . "</center></td>
+	                    <td><center>" . $experiencia [$i] ['nombre_docente'] . "</center></td>
+	                    <td><center>" . $experiencia [$i] ['entidadInstitucion'] . "</center></td>
+	                    <td><center>" . $experiencia [$i] ['nombre_tipo_entidad'] . "</center></td>
+	                    <td><center>" . $experiencia [$i] ['horas_semana'] . "</center></td>
+	                    <td><center>" . $experiencia [$i] ['fecha_inicio'] . "</center></td>
+	                  	<td><center>" . $experiencia [$i] ['fecha_finalizacion'] . "</center></td>
+	                  	<td><center>" . $experiencia [$i] ['dias_experiencia'] . "</center></td>
+	                  	<td><center>" . $experiencia [$i] ['numero_acta'] . "</center></td>
+	                    <td><center>" . $experiencia [$i] ['fecha_acta'] . "</center></td>
+	                    <td><center>" . $experiencia [$i] ['caso_acta'] . "</center></td>
+	                    <td><center>" . $experiencia [$i] ['puntaje'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>
 	                            <img src='" . $rutaBloque . "/css/images/Entrada.png' width='15px'>

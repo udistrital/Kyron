@@ -152,25 +152,33 @@ class Sql extends \Sql {
 				break;
 								
 			case "consultar" :			
-				$cadenaSql=" select dtg.id_direccion_trabajogrado as id_direccion, dtg.documento_docente,";
+				$cadenaSql=" select ";
+				$cadenaSql.=" eda.id_experiencia_direccion_academica as id_experiencia, ";
+				$cadenaSql.=" eda.documento_docente, ";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente, ";
-				$cadenaSql.=" dtg.titulo_trabajogrado as titulo, ";
-				$cadenaSql.=" ctg.nombre_categoria_trabajogrado as categoria,";
-				$cadenaSql.=" ttg.nombre_tipo_trabajogrado as tipo, ";
-				$cadenaSql.=" dtg.anno_direccion as anno,";
-				$cadenaSql.=" dtg.puntaje as puntaje";
+				$cadenaSql.=" un.nombre_universidad as entidad,";
+				$cadenaSql.=" te.nombre_tipo_entidad,";
+				$cadenaSql.=" eda.otra_entidad,";
+				$cadenaSql.=" eda.horas_semana,";
+				$cadenaSql.=" eda.fecha_inicio,";
+				$cadenaSql.=" eda.fecha_finalizacion,";
+				$cadenaSql.=" eda.dias_experiencia,";
+				$cadenaSql.=" eda.numero_acta,";
+				$cadenaSql.=" eda.fecha_acta,";
+				$cadenaSql.=" eda.caso_acta,";
+				$cadenaSql.=" eda.puntaje as puntaje ";
 				$cadenaSql.=" from ";
-				$cadenaSql.=" docencia.direccion_trabajogrado dtg ";
-				$cadenaSql.=" left join docencia.docente dc on dtg.documento_docente=dc.documento_docente ";
-				$cadenaSql.=" left join docencia.docente_proyectocurricular dc_pc on dtg.documento_docente=dc_pc.documento_docente ";
+				$cadenaSql.=" docencia.experiencia_direccion_academica eda ";
+				$cadenaSql.=" left join docencia.docente dc on eda.documento_docente=dc.documento_docente ";
+				$cadenaSql.=" left join docencia.docente_proyectocurricular dc_pc on eda.documento_docente=dc_pc.documento_docente ";
 				$cadenaSql.=" left join docencia.proyectocurricular pc on dc_pc.id_proyectocurricular=pc.id_proyectocurricular ";
 				$cadenaSql.=" left join docencia.facultad fc on pc.id_facultad=fc.id_facultad ";
-				$cadenaSql.=" left join docencia.categoria_trabajogrado ctg on dtg.id_categoria_trabajogrado = ctg.id_categoria_trabajogrado ";
-				$cadenaSql.=" left join docencia.tipo_trabajogrado ttg on dtg.id_tipo_trabajogrado = ttg.id_tipo_trabajogrado ";
+				$cadenaSql.=" left join docencia.universidad un on un.id_universidad = eda.id_universidad ";
+				$cadenaSql.=" left join docencia.tipo_entidad te on eda.id_tipo_entidad = te.id_tipo_entidad";
 				$cadenaSql.=" where ";
-				$cadenaSql.=" dtg.estado=true";
-				$cadenaSql.=" and dc.estado=true";
-				$cadenaSql.=" and pc.estado=true";
+				$cadenaSql.=" eda.estado=true ";
+				$cadenaSql.=" and dc.estado=true ";
+				$cadenaSql.=" and pc.estado=true ";
 				$cadenaSql.=" and dc_pc.estado=true";
 				if ($variable ['documento_docente'] != '') {
 					$cadenaSql .= " AND dc.documento_docente = '" . $variable ['documento_docente'] . "'";
