@@ -90,8 +90,46 @@ $("#<?php echo $this->campoSeguro('entidad')?>").select2();
 $("#<?php echo $this->campoSeguro('entidad')?>").change(function() {
 	if($("#<?php echo $this->campoSeguro('entidad')?>").val()==''){
 		$("#<?php echo $this->campoSeguro('otraEntidad')?>").removeAttr("disabled");
+		var idDatosEstudiantes = [
+                       	 '<?php echo $this->campoSeguro('otraEntidad')?>',
+                       ];
+		//Agrega required a todos los campos de los estudiantes
+		$.each(idDatosEstudiantes,function (i,v){
+			var obj = $("#"+v);
+			if(obj.length>0){
+				var clases = obj.attr('class').split(' ');
+				var claseValidate = $.grep(clases,function(v,i){return v.indexOf('validate')>-1})[0];
+				obj.removeClass(claseValidate);
+				claseValidate = claseValidate.insertAt(claseValidate.indexOf("[")+1,'required,');
+				obj.addClass(claseValidate);
+			}
+		});
 	}else{
 		$("#<?php echo $this->campoSeguro('otraEntidad')?>").attr("disabled", "disabled");
 		$("#<?php echo $this->campoSeguro('otraEntidad')?>").val("");
+		var idDatosEstudiantes = [
+                       	 '<?php echo $this->campoSeguro('entidad')?>',
+                       ];
+		//Agrega required a todos los campos de los estudiantes
+		$.each(idDatosEstudiantes,function (i,v){
+			var obj = $("#"+v);
+			if(obj.length>0){
+				var clases = obj.attr('class').split(' ');
+				var claseValidate = $.grep(clases,function(v,i){return v.indexOf('validate')>-1})[0];
+				obj.removeClass(claseValidate);
+				claseValidate = claseValidate.insertAt(claseValidate.indexOf("[")+1,'required,');
+				obj.addClass(claseValidate);
+			}
+		});
 	}
 });
+
+if($("#<?php echo $this->campoSeguro('entidad')?>").val()!=''){
+		$("#<?php echo $this->campoSeguro('otraEntidad')?>").attr("disabled", "disabled");
+}else{
+}
+
+String.prototype.insertAt=function(index, string) { 
+	  return this.substr(0, index) + string + this.substr(index);
+	}
+

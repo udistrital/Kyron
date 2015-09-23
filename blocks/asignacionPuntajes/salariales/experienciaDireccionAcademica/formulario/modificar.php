@@ -96,33 +96,26 @@ class FormularioModificar {
 		// ---------------- CONTROL: Lista Docente--------------------------------------------------------
 		$datos = array(
 				'documento_docente' =>  $_REQUEST ['documento_docente'],
-				'identificadorDireccion' => $_REQUEST ['identificadorDireccionTrabajo'],
+				'identificadorExperiencia' => $_REQUEST ['identificadorExperiencia'],
 		
 		);
 		 
 		$cadena_sql = $this->miSql->getCadenaSql ( "publicacionActualizar", $datos );
-		$resultadoDireccionTrabajo = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
+		$resultadoExperienciaDireccionAca = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
 		
-		$cadena_sql = $this->miSql->getCadenaSql ( "publicacionEstudiantesActualizar", $resultadoDireccionTrabajo[0]['id_direccion_trabajogrado'] );
-		$estudiantes = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
-
-		for($i=0; $i< $resultadoDireccionTrabajo[0]['numero_autores']; $i++){
-			$_REQUEST['nombreEstudiante'.($i+1)] =  $estudiantes[$i]['nombre_estudiante'];
-			$_REQUEST['codigoEstudiante'.($i+1)] =  $estudiantes[$i]['codigo_estudiante'];
-		}
-		
-		$_REQUEST['numeroEstudiantes'] = $resultadoDireccionTrabajo[0]['numero_autores'];
-		
-		$_REQUEST['docenteRegistrar'] =  $resultadoDireccionTrabajo[0]['documento_docente'] . " - " . $resultadoDireccionTrabajo[0]['nombre_docente'];
-		$_REQUEST['id_docenteRegistrar'] =  $resultadoDireccionTrabajo[0]['documento_docente'];
-		$_REQUEST['nombre'] =  $resultadoDireccionTrabajo[0]['titulo_trabajogrado'];
-		$_REQUEST['categoria'] =  $resultadoDireccionTrabajo[0]['id_categoria_trabajogrado'];
-		$_REQUEST['tipo'] =  $resultadoDireccionTrabajo[0]['id_tipo_trabajogrado'];
-		$_REQUEST['anno'] =  $resultadoDireccionTrabajo[0]['anno_direccion'];
-		$_REQUEST['numeroActa'] =  $resultadoDireccionTrabajo[0]['numero_acta'];
-		$_REQUEST['fechaActa'] =  $resultadoDireccionTrabajo[0]['fecha_acta'];
-		$_REQUEST['numeroCasoActa'] =  $resultadoDireccionTrabajo[0]['caso_acta'];
-		$_REQUEST['puntaje'] =  $resultadoDireccionTrabajo[0]['puntaje'];
+		$_REQUEST['docenteRegistrar'] =  $resultadoExperienciaDireccionAca[0]['documento_docente'] . " - " . $resultadoExperienciaDireccionAca[0]['nombre_docente'];
+		$_REQUEST['id_docenteRegistrar'] =  $resultadoExperienciaDireccionAca[0]['documento_docente'];
+		$_REQUEST['entidad'] =  $resultadoExperienciaDireccionAca[0]['id_universidad'];
+		$_REQUEST['otraEntidad'] =  $resultadoExperienciaDireccionAca[0]['otra_entidad'];
+		$_REQUEST['tipoEntidad'] =  $resultadoExperienciaDireccionAca[0]['id_tipo_entidad'];
+		$_REQUEST['horasPorSemana'] =  $resultadoExperienciaDireccionAca[0]['horas_semana'];
+		$_REQUEST['fechaInicio'] =  $resultadoExperienciaDireccionAca[0]['fecha_inicio'];
+		$_REQUEST['fechaFinalizacion'] =  $resultadoExperienciaDireccionAca[0]['fecha_finalizacion'];
+		$_REQUEST['duracionExperiencia'] =  $resultadoExperienciaDireccionAca[0]['dias_experiencia'];
+		$_REQUEST['numeroActa'] =  $resultadoExperienciaDireccionAca[0]['numero_acta'];
+		$_REQUEST['fechaActa'] =  $resultadoExperienciaDireccionAca[0]['fecha_acta'];
+		$_REQUEST['numeroCasoActa'] =  $resultadoExperienciaDireccionAca[0]['caso_acta'];
+		$_REQUEST['puntaje'] =  $resultadoExperienciaDireccionAca[0]['puntaje'];
 		
 		$esteCampo = "marcoModificarRegistro";
 		$atributos ['id'] = $esteCampo;
@@ -208,14 +201,24 @@ class FormularioModificar {
 					$atributos ['limitar'] = true;
 					$atributos ['anchoCaja'] = 57;
 					$atributos ['miEvento'] = '';
-					$atributos ['validar'] = 'required';
+					$atributos ['validar'] = '';
+					$matriz=array(
+							array (
+									0 => '',
+									'id_tipo_entidad' => '',
+									1 => 'Seleccione .....',
+									'nombre_tipo_entidad' => 'Seleccione .....',
+							)
+					);
 					$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ("entidadInstitucion");
 					$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
+					$matrizItems = array_merge($matriz,$matrizItems);
 					$atributos ['matrizItems'] = $matrizItems;
 					// Aplica atributos globales al control
 					$atributos = array_merge ( $atributos, $atributosGlobales );
 					echo $this->miFormulario->campoCuadroLista ( $atributos );
 					unset ( $atributos );
+					unset ( $matrizItems );
 					// ----------------FIN CONTROL:  Lista entidad o Institución--------------------------------------------------------
 						
 						
@@ -233,7 +236,7 @@ class FormularioModificar {
 					$atributos ['dobleLinea'] = 0;
 					$atributos ['tabIndex'] = $tab;
 					$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-					$atributos ['validar'] = ""; // 'required';
+					$atributos ['validar'] = "";
 					if (isset ( $_REQUEST [$esteCampo] )) {
 						$atributos ['valor'] = $_REQUEST [$esteCampo];
 					} else {
@@ -278,11 +281,18 @@ class FormularioModificar {
 					$atributos ['limitar'] = false;
 					$atributos ['anchoCaja'] = 60;
 					$atributos ['miEvento'] = '';
-			
+					$matriz=array(
+							array (
+									0 => '',
+									'id_tipo_entidad' => '',
+									1 => 'Seleccione .....',
+									'nombre_tipo_entidad' => 'Seleccione .....',
+							)
+					);
 					$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ("tipoEntidadInstitucion");
 					$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
+					$matrizItems = array_merge($matriz,$matrizItems);
 					$atributos ['matrizItems'] = $matrizItems;
-						
 					$atributos = array_merge ( $atributos, $atributosGlobales );
 					echo $this->miFormulario->campoCuadroLista ( $atributos );
 					unset ( $atributos );
@@ -630,7 +640,7 @@ class FormularioModificar {
 				$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 				$valorCodificado .= "&opcion=actualizar";
 				$valorCodificado .= "&arreglo=".$_REQUEST['arreglo'];
-				$valorCodificado .= "&identificadorDireccion=".$_REQUEST['identificadorDireccionTrabajo'];
+				$valorCodificado .= "&identificadorExperiencia=".$_REQUEST['identificadorExperiencia'];
 				
 				/**
 				 * SARA permite que los nombres de los campos sean dinámicos.

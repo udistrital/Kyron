@@ -125,23 +125,6 @@ class Sql extends \Sql {
 				$cadenaSql .= " docencia.tipo_entidad";
 				break;
 				
-				
-			case "tipoTrabajoGrado" :
-				$cadenaSql = "select";
-				$cadenaSql .= " id_tipo_trabajogrado as id_tipo,";
-				$cadenaSql .= "	nombre_tipo_trabajogrado as nombre_tipo";
-				$cadenaSql .= " FROM ";
-				$cadenaSql .= " docencia.tipo_trabajogrado";
-				break;
-				
-			case "categoriaTrabajoGrado" :
-				$cadenaSql = "select";
-				$cadenaSql .= " id_categoria_trabajogrado as id_categoria,";
-				$cadenaSql .= "	nombre_categoria_trabajogrado as nombre_categoria";
-				$cadenaSql .= " FROM ";
-				$cadenaSql .= " docencia.categoria_trabajogrado";
-				break;
-				
 			case "docente" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" documento_docente||' - '||primer_nombre||' '||segundo_nombre||' '||primer_apellido||' '||segundo_apellido AS value, ";
@@ -149,6 +132,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" FROM ";
 				$cadenaSql.=" docencia.docente WHERE documento_docente||' - '||primer_nombre||' '||segundo_nombre||' '||primer_apellido||' '||segundo_apellido ";
 				$cadenaSql.=" LIKE '%" . $variable . "%' LIMIT 10;";
+				
 				break;
 								
 			case "consultar" :			
@@ -210,39 +194,43 @@ class Sql extends \Sql {
 				break;				
 				
 			case "publicacionActualizar" :
-				$cadenaSql=" SELECT dtg.id_direccion_trabajogrado, dtg.documento_docente,";
+				$cadenaSql=" SELECT eda.id_experiencia_direccion_academica, eda.documento_docente,";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
-				$cadenaSql.=" dtg.id_tipo_trabajogrado, ";
-				$cadenaSql.=" dtg.id_categoria_trabajogrado, ";
-				$cadenaSql.=" dtg.titulo_trabajogrado, ";
-				$cadenaSql.=" dtg.numero_autores, ";
-				$cadenaSql.=" dtg.anno_direccion, ";
-				$cadenaSql.=" dtg.numero_acta, ";
-				$cadenaSql.=" dtg.fecha_acta, ";
-				$cadenaSql.=" dtg.caso_acta, ";
-				$cadenaSql.=" dtg.puntaje ";
-				$cadenaSql.=" FROM docencia.direccion_trabajogrado as dtg ";
-				$cadenaSql.=" left join docencia.docente dc on dtg.documento_docente=dc.documento_docente ";
-				$cadenaSql.=" WHERE dtg.documento_docente ='" . $variable['documento_docente']. "'";
-				$cadenaSql.=" and dtg.id_direccion_trabajogrado ='" . $variable['identificadorDireccion']. "'";
+				$cadenaSql.=" eda.id_universidad, ";
+				$cadenaSql.=" eda.otra_entidad, ";
+				$cadenaSql.=" eda.id_tipo_entidad, ";
+				$cadenaSql.=" eda.horas_semana, ";
+				$cadenaSql.=" eda.fecha_inicio, ";
+				$cadenaSql.=" eda.fecha_finalizacion, ";
+				$cadenaSql.=" eda.dias_experiencia, ";
+				$cadenaSql.=" eda.numero_acta, ";
+				$cadenaSql.=" eda.fecha_acta, ";
+				$cadenaSql.=" eda.caso_acta, ";
+				$cadenaSql.=" eda.puntaje ";
+				$cadenaSql.=" FROM docencia.experiencia_direccion_academica as eda ";
+				$cadenaSql.=" left join docencia.docente dc on eda.documento_docente=dc.documento_docente ";
+				$cadenaSql.=" WHERE eda.documento_docente ='" . $variable['documento_docente']. "'";
+				$cadenaSql.=" and eda.id_experiencia_direccion_academica ='" . $variable['identificadorExperiencia']. "'";
 				break;
 				
 			case "actualizar" :
 				$cadenaSql = "UPDATE ";
-				$cadenaSql .= "docencia.direccion_trabajogrado ";
+				$cadenaSql .= "docencia.experiencia_direccion_academica ";
 				$cadenaSql .= "SET ";
-				$cadenaSql .= "id_tipo_trabajogrado = '" . $variable ['tipoTrabajo'] . "', ";
-				$cadenaSql .= "id_categoria_trabajogrado = '" . $variable ['categoriaTrabajo'] . "', ";
-				$cadenaSql .= "titulo_trabajogrado = '" . $variable ['tituloTrabajo'] . "', ";
-				$cadenaSql .= "numero_autores = '" . $variable ['numeroAutores'] . "', ";
-				$cadenaSql .= "anno_direccion = '" . $variable ['anno'] . "', ";
+				$cadenaSql .= "id_universidad = '" . $variable ['entidadInstitucion'] . "', ";
+				$cadenaSql .= "otra_entidad = '" . $variable ['otraEntidad'] . "', ";
+				$cadenaSql .= "id_tipo_entidad = '" . $variable ['tipoEntidad'] . "', ";
+				$cadenaSql .= "horas_semana = '" . $variable ['horasPorSemana'] . "', ";
+				$cadenaSql .= "fecha_inicio = '" . $variable ['fechaInicio'] . "', ";
+				$cadenaSql .= "fecha_finalizacion = '" . $variable ['fechaFinalizacion'] . "', ";
+				$cadenaSql .= "dias_experiencia = '" . $variable ['duracionExperiencia'] . "', ";
 				$cadenaSql .= "numero_acta = '" . $variable ['numeroActa'] . "', ";
 				$cadenaSql .= "fecha_acta = '" . $variable ['fechaActa'] . "', ";
 				$cadenaSql .= "caso_acta = '" . $variable ['numeroCasoActa'] . "', ";
 				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "'";
 				$cadenaSql .= "WHERE ";
 				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";
-				$cadenaSql .= "and id_direccion_trabajogrado ='" . $variable ['id_direccion_trabajo'] . "' ";
+				$cadenaSql .= "and id_experiencia_direccion_academica ='" . $variable ['identificadorExperiencia'] . "' ";
 				$cadenaSql .= "and estado=true";
 				break;
 				
