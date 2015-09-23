@@ -280,7 +280,7 @@ class FormularioModificar {
 		// ---------------- CONTROL:  Lista Entidad que Certifica--------------------------------------------------------
 			
 		$atributos ["id"] = "entidad_div";
-		$atributos ["estiloEnLinea"] = "display:block";
+		$atributos ["estiloEnLinea"] = "display:none";
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->division ( "inicio", $atributos );
 		unset ( $atributos );
