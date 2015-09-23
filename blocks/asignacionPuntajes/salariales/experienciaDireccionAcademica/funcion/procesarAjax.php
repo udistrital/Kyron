@@ -1,5 +1,5 @@
 <?php
-use asignacionPuntajes\salariales\direccionTrabajosDeGrado\Sql;
+use asignacionPuntajes\salariales\experienciaDireccionAcademica\Sql;
 
 $conexion = "docencia";
 $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );

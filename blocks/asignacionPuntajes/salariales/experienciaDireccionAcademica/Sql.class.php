@@ -1,6 +1,6 @@
 <?php
 
-namespace asignacionPuntajes\salariales\direccionTrabajosDeGrado;
+namespace asignacionPuntajes\salariales\experienciaDireccionAcademica;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -184,29 +184,22 @@ class Sql extends \Sql {
 				break;
 				
 			case "registrar" :
-				$cadenaSql = "INSERT INTO docencia.direccion_trabajogrado( ";
-				$cadenaSql .= "documento_docente, titulo_trabajogrado, anno_direccion, id_tipo_trabajogrado, ";
-				$cadenaSql .= "id_categoria_trabajogrado, numero_autores, numero_acta, fecha_acta, caso_acta, puntaje) ";
+				$cadenaSql = "INSERT INTO docencia.experiencia_direccion_academica( ";
+				$cadenaSql .= "documento_docente, id_universidad, otra_entidad, id_tipo_entidad, ";
+				$cadenaSql .= "horas_semana, fecha_inicio, fecha_finalizacion, dias_experiencia, numero_acta, fecha_acta, caso_acta, puntaje) ";
 				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
-				$cadenaSql .= " '" . $variable ['tituloTrabajo'] . "',";
-				$cadenaSql .= " '" . $variable ['anno'] . "',";
-				$cadenaSql .= "'" . $variable ['tipoTrabajo'] . "',";
-				$cadenaSql .= " '" . $variable ['categoriaTrabajo'] . "',";
-				$cadenaSql .= " '" . $variable ['numeroAutores'] . "',";
+				$cadenaSql .= " '" . $variable ['entidadInstitucion'] . "',";
+				$cadenaSql .= " '" . $variable ['otraEntidad'] . "',";
+				$cadenaSql .= "'" . $variable ['tipoEntidad'] . "',";
+				$cadenaSql .= " '" . $variable ['horasPorSemana'] . "',";
+				$cadenaSql .= " '" . $variable ['fechaInicio'] . "',";
+				$cadenaSql .= " '" . $variable ['fechaFinalizacion'] . "',";
+				$cadenaSql .= " '" . $variable ['duracionExperiencia'] . "',";
 				$cadenaSql .= " '" . $variable ['numeroActa'] . "',";
 				$cadenaSql .= " '" . $variable ['fechaActa'] . "',";
 				$cadenaSql .= "' " . $variable ['numeroCasoActa'] . "',";
 				$cadenaSql .= " '" . $variable ['puntaje'] . "')";
-				$cadenaSql .= " returning id_direccion_trabajogrado";
-				break;
-				
-			case "registroEstudiantes" :
-				$cadenaSql = "INSERT INTO docencia.direccion_trabajogrado_estudiante( ";
-				$cadenaSql .= "id_direccion_trabajogrado, nombre_estudiante, codigo_estudiante) ";
-				$cadenaSql .= " VALUES (" . $variable ['id_direccion_trabajogrado'] . ",";
-				$cadenaSql .= " '" . $variable ['nombre_estudiante'] . "',";
-				$cadenaSql .= " '" . $variable ['codigo_estudiante'] . "')";
-				break;
+				break;				
 				
 			case "publicacionActualizar" :
 				$cadenaSql=" SELECT dtg.id_direccion_trabajogrado, dtg.documento_docente,";
@@ -224,15 +217,6 @@ class Sql extends \Sql {
 				$cadenaSql.=" left join docencia.docente dc on dtg.documento_docente=dc.documento_docente ";
 				$cadenaSql.=" WHERE dtg.documento_docente ='" . $variable['documento_docente']. "'";
 				$cadenaSql.=" and dtg.id_direccion_trabajogrado ='" . $variable['identificadorDireccion']. "'";
-				break;
-				
-			case "publicacionEstudiantesActualizar" :
-				$cadenaSql=" select nombre_estudiante, ";
-				$cadenaSql.=" codigo_estudiante ";
-				$cadenaSql.=" from docencia.direccion_trabajogrado_estudiante ";
-				$cadenaSql.=" where ";
-				$cadenaSql.=" id_direccion_trabajogrado ="  . $variable;
-				$cadenaSql.=" and estado = true";
 				break;
 				
 			case "actualizar" :
@@ -254,28 +238,6 @@ class Sql extends \Sql {
 				$cadenaSql .= "and estado=true";
 				break;
 				
-			case "actualizarEstudiante" :
-				$cadenaSql = "UPDATE ";
-				$cadenaSql .= "docencia.direccion_trabajogrado_estudiante ";
-				$cadenaSql .= "SET ";
-				$cadenaSql .= "nombre_estudiante ='" . $variable ['nombre_estudiante'] . "',";
-				$cadenaSql .= "codigo_estudiante='" . $variable ['codigo_estudiante'] . "' ";
-				$cadenaSql .= "WHERE ";
-				$cadenaSql .= "nombre_estudiante ='" . $variable ['old_nombre_estudiante'] . "' ";
-				$cadenaSql .= "and codigo_estudiante='" . $variable ['old_codigo_estudiante'] . "' ";
-				$cadenaSql .= "and id_direccion_trabajogrado ='" . $variable ['id_direccion_trabajogrado'] . "' ";
-				break;
-				
-			case "actualizarEstudianteEliminar" ://cambiar estado a false
-				$cadenaSql = "UPDATE ";
-				$cadenaSql .= "docencia.direccion_trabajogrado_estudiante ";
-				$cadenaSql .= "SET ";
-				$cadenaSql .= "estado =  false ";
-				$cadenaSql .= "WHERE ";
-				$cadenaSql .= "nombre_estudiante ='" . $variable ['old_nombre_estudiante'] . "' ";
-				$cadenaSql .= "and codigo_estudiante='" . $variable ['old_codigo_estudiante'] . "' ";
-				$cadenaSql .= "and id_direccion_trabajogrado ='" . $variable ['id_direccion_trabajogrado'] . "' ";
-				break;
 		}
 		
 		return $cadenaSql;

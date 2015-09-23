@@ -1,8 +1,8 @@
 <?php
 
-namespace asignacionPuntajes\salariales\direccionTrabajosDeGrado\funcion;
+namespace asignacionPuntajes\salariales\experienciaDireccionAcademica\funcion;
 
-use asignacionPuntajes\salariales\direccionTrabajosDeGrado\funcion\redireccionar;
+use asignacionPuntajes\salariales\experienciaDireccionAcademica\funcion\redireccionar;
 
 include_once ('redireccionar.php');
 if (! isset ( $GLOBALS ["autorizado"] )) {
@@ -35,22 +35,19 @@ class Registrar {
 		$rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "raizDocumento" ) . "/blocks/asignacionPuntajes/salariales/";
 		$rutaBloque .= $esteBloque ['nombre'];
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
-		
-		$_REQUEST['numeroAutores'] = 0;
-		
-		for($i=1; $i<=3; $i++){
-			if($_REQUEST['nombreEstudiante' . $i] != "" && $_REQUEST['codigoEstudiante' . $i]){
-				$_REQUEST['numeroAutores']++;
-			}
+				
+		if(!isset($_REQUEST['otraEntidad'])){
+			$_REQUEST['otraEntidad'] = null;
 		}
-		
 		$arregloDatos = array (
 			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
-			'tituloTrabajo' => $_REQUEST['nombre'],
-			'anno' => $_REQUEST['anno'],
-			'tipoTrabajo' => $_REQUEST['tipo'],
-			'categoriaTrabajo' => $_REQUEST['categoria'],
-			'numeroAutores' => $_REQUEST['numeroAutores'],
+			'entidadInstitucion' => $_REQUEST['entidad'],
+			'otraEntidad' => $_REQUEST['otraEntidad'],
+			'tipoEntidad' => $_REQUEST['tipoEntidad'],
+			'horasPorSemana' => $_REQUEST['horasPorSemana'],
+			'fechaInicio' => $_REQUEST['fechaInicio'],
+			'fechaFinalizacion' => $_REQUEST['fechaFinalizacion'],
+			'duracionExperiencia' => $_REQUEST['duracionExperiencia'],
 			'numeroActa' => $_REQUEST['numeroActa'],
 			'fechaActa' => $_REQUEST['fechaActa'],
 			'numeroCasoActa' => $_REQUEST['numeroCasoActa'],
@@ -58,19 +55,8 @@ class Registrar {
 		);
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'registrar', $arregloDatos );
-		$id_direccion_trabajogrado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "registrar" );
 
-		for($i=1; $i<= $_REQUEST['numeroAutores']; $i++){
-			$arregloEstudiante = array (
-					'id_direccion_trabajogrado' => $id_direccion_trabajogrado[0]['id_direccion_trabajogrado'],
-					'nombre_estudiante' => $_REQUEST['nombreEstudiante'.$i],
-					'codigo_estudiante' => $_REQUEST['codigoEstudiante'.$i]
-			);
-			
-			$cadenaSql = $this->miSql->getCadenaSql ( 'registroEstudiantes', $arregloEstudiante );
-			$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
-		}
-		
 		if ($resultado) {
 			redireccion::redireccionar ( 'inserto',  $_REQUEST['docenteRegistrar']);
 			exit ();

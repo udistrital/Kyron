@@ -83,9 +83,15 @@ $('#<?php echo $this->campoSeguro('entidad')?>').width(450);
 $("#<?php echo $this->campoSeguro('facultad')?>").select2();
 $("#<?php echo $this->campoSeguro('proyectoCurricular')?>").select2();
 
-$("#<?php echo $this->campoSeguro('categoria')?>").select2();
-$("#<?php echo $this->campoSeguro('tipo')?>").select2();
-$("#<?php echo $this->campoSeguro('contexto')?>").select2();
-$("#<?php echo $this->campoSeguro('anno')?>").select2();
+$("#<?php echo $this->campoSeguro('tipoEntidad')?>").select2();
+$("#<?php echo $this->campoSeguro('entidad')?>").select2();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$("#<?php echo $this->campoSeguro('entidad')?>").change(function() {
+	if($("#<?php echo $this->campoSeguro('entidad')?>").val()==''){
+		$("#<?php echo $this->campoSeguro('otraEntidad')?>").removeAttr("disabled");
+	}else{
+		$("#<?php echo $this->campoSeguro('otraEntidad')?>").attr("disabled", "disabled");
+		$("#<?php echo $this->campoSeguro('otraEntidad')?>").val("");
+	}
+});
