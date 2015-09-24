@@ -1,4 +1,4 @@
-$("#experienciaDireccionAcademica").validationEngine({
+$("#experienciaInvestigacion").validationEngine({
 promptPosition : "centerRight", 
 scroll: false,
 autoHidePrompt: true,
@@ -6,8 +6,8 @@ autoHideDelay: 2000
 });
 
 $(function() {
-	$("#experienciaDireccionAcademica").submit(function() {
-		$resultado=$("#experienciaDireccionAcademica").validationEngine("validate");
+	$("#experienciaInvestigacion").submit(function() {
+		$resultado=$("#experienciaInvestigacion").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -15,7 +15,7 @@ $(function() {
 	});
 });
 
-$("#experienciaDireccionAcademicaRegistrar").validationEngine({
+$("#experienciaInvestigacionRegistrar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,
@@ -23,8 +23,8 @@ $("#experienciaDireccionAcademicaRegistrar").validationEngine({
 });
 
 $(function() {
-$("#experienciaDireccionAcademicaRegistrar").submit(function() {
-$resultado=$("#experienciaDireccionAcademicaRegistrar").validationEngine("validate");
+$("#experienciaInvestigacionRegistrar").submit(function() {
+$resultado=$("#experienciaInvestigacionRegistrar").validationEngine("validate");
 
 if ($resultado) {
 
@@ -41,8 +41,8 @@ $(function () {
 });
 
 $(function() {
-	$("#experienciaDireccionAcademicaModificar").submit(function() {
-		$resultado=$("#experienciaDireccionAcademicaModificar").validationEngine("validate");
+	$("#experienciaInvestigacionModificar").submit(function() {
+		$resultado=$("#experienciaInvestigacionModificar").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -50,7 +50,7 @@ $(function() {
 	});
 });
 
-$("#experienciaDireccionAcademicaModificar").validationEngine({
+$("#experienciaInvestigacionModificar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,
@@ -127,6 +127,24 @@ $("#<?php echo $this->campoSeguro('entidad')?>").change(function() {
 if($("#<?php echo $this->campoSeguro('entidad')?>").val()!=''){
 		$("#<?php echo $this->campoSeguro('otraEntidad')?>").attr("disabled", "disabled");
 }else{
+
+		String.prototype.insertAt=function(index, string) { 
+	  		return this.substr(0, index) + string + this.substr(index);
+		}
+		var idDatosEstudiantes = [
+                       	 '<?php echo $this->campoSeguro('otraEntidad')?>',
+                       ];
+		//Agrega required a todos los campos de los estudiantes
+		$.each(idDatosEstudiantes,function (i,v){
+			var obj = $("#"+v);
+			if(obj.length>0){
+				var clases = obj.attr('class').split(' ');
+				var claseValidate = $.grep(clases,function(v,i){return v.indexOf('validate')>-1})[0];
+				obj.removeClass(claseValidate);
+				claseValidate = claseValidate.insertAt(claseValidate.indexOf("[")+1,'required,');
+				obj.addClass(claseValidate);
+			}
+		});
 }
 
 String.prototype.insertAt=function(index, string) { 

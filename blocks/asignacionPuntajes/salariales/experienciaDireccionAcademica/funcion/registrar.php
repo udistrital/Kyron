@@ -36,9 +36,13 @@ class Registrar {
 		$rutaBloque .= $esteBloque ['nombre'];
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
 				
-		if(!isset($_REQUEST['otraEntidad'])){
+		if($_REQUEST['entidad']==''){
+			$_REQUEST['entidad'] = 'null';
+		}
+		if (!isset($_REQUEST['otraEntidad'])){
 			$_REQUEST['otraEntidad'] = null;
 		}
+		
 		$arregloDatos = array (
 			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
 			'entidadInstitucion' => $_REQUEST['entidad'],

@@ -102,6 +102,17 @@ if (!isset($GLOBALS["autorizado"])) {
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
        
     }
+    else if($_REQUEST['mensaje'] == 'noActualizo') {
+    	$tipo = 'error';
+    	$mensaje = "Error al tratar de actualizar </br>el registro de la Revista Indexada Para el Docente </br>" . $_REQUEST ['docente'] . ".";
+    	$boton = "continuar";
+    
+    	$valorCodificado = "pagina=revistasIndexadas";
+    	$valorCodificado.="&opcion=nuevo";
+    	$valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
+    	$valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
+    	 
+    }
     
     
 

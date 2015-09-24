@@ -68,7 +68,7 @@ class RegistrarIndexacionRevista {
 			redireccion::redireccionar ( 'actualizo',  $_REQUEST['docenteRegistrar']);
 			exit ();
 		} else {
-			redireccion::redireccionar ( 'noActualizo' );
+			redireccion::redireccionar ( 'noActualizo',  $_REQUEST['docenteRegistrar'] );
 			exit ();
 		}
 	}

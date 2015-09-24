@@ -10,6 +10,7 @@ $this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido act
 $this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado la Dirección de Trabajo Grado para el docente <br>" ;
 $this->idioma["mensajeError"] =  "Error al tratar de registrar la Dirección de Trabajo Grado.";
 $this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Direcciones de Trabajos De Grado </br> Para los Criterios Ingresados";
+$this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de Dirección de Trabajos de Grado Para el Docente </br>";
 /////////////////////////////////
 
 //* SECCIÓN ELEMENTOS QUE SU NOMBRE POSIBLEMENTE VARIA DENTRO DEL FORMULARIO *//

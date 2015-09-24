@@ -180,7 +180,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "documento_docente, id_universidad, otra_entidad, id_tipo_entidad, ";
 				$cadenaSql .= "horas_semana, fecha_inicio, fecha_finalizacion, dias_experiencia, numero_acta, fecha_acta, caso_acta, puntaje) ";
 				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
-				$cadenaSql .= " '" . $variable ['entidadInstitucion'] . "',";
+				$cadenaSql .= " " . $variable ['entidadInstitucion'] . ",";
 				$cadenaSql .= " '" . $variable ['otraEntidad'] . "',";
 				$cadenaSql .= "'" . $variable ['tipoEntidad'] . "',";
 				$cadenaSql .= " '" . $variable ['horasPorSemana'] . "',";
@@ -217,7 +217,7 @@ class Sql extends \Sql {
 				$cadenaSql = "UPDATE ";
 				$cadenaSql .= "docencia.experiencia_direccion_academica ";
 				$cadenaSql .= "SET ";
-				$cadenaSql .= "id_universidad = '" . $variable ['entidadInstitucion'] . "', ";
+				$cadenaSql .= "id_universidad = " . $variable ['entidadInstitucion'] . ", ";
 				$cadenaSql .= "otra_entidad = '" . $variable ['otraEntidad'] . "', ";
 				$cadenaSql .= "id_tipo_entidad = '" . $variable ['tipoEntidad'] . "', ";
 				$cadenaSql .= "horas_semana = '" . $variable ['horasPorSemana'] . "', ";
@@ -227,7 +227,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "numero_acta = '" . $variable ['numeroActa'] . "', ";
 				$cadenaSql .= "fecha_acta = '" . $variable ['fechaActa'] . "', ";
 				$cadenaSql .= "caso_acta = '" . $variable ['numeroCasoActa'] . "', ";
-				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "'";
+				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "' ";
 				$cadenaSql .= "WHERE ";
 				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";
 				$cadenaSql .= "and id_experiencia_direccion_academica ='" . $variable ['identificadorExperiencia'] . "' ";

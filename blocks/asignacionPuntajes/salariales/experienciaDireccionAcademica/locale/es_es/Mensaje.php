@@ -10,6 +10,7 @@ $this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido act
 $this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado la Experiencia Dirección Académica para el docente <br>" ;
 $this->idioma["mensajeError"] =  "Error al tratar de registrar la Experiencia Dirección Académica.";
 $this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Experiencia Dirección Académica </br> Para los Criterios Ingresados";
+$this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de Experiencia en Dirección Académica Para el Docente </br>";
 /////////////////////////////////
 
 //* SECCIÓN ELEMENTOS QUE SU NOMBRE POSIBLEMENTE VARIA DENTRO DEL FORMULARIO *//

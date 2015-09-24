@@ -68,7 +68,7 @@ if (!isset($GLOBALS["autorizado"])) {
 
     //$atributos["estiloEnLinea"]="display:none"; 
     echo $this->miFormulario->division("inicio", $atributos);
-
+    
     if ($_REQUEST['mensaje'] == 'confirma') {
 
         $tipo = 'success';
@@ -94,6 +94,16 @@ if (!isset($GLOBALS["autorizado"])) {
     } else if($_REQUEST['mensaje'] == 'actualizo') {
         $tipo = 'success';
         $mensaje = $this->lenguaje->getCadena('mensajeActualizar') . $_REQUEST ['docente'] . ".";
+        $boton = "continuar";
+
+        $valorCodificado = "pagina=".$esteBloque['nombre'];
+        $valorCodificado.="&opcion=nuevo";
+        $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
+        $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
+       
+    } else if($_REQUEST['mensaje'] == 'noActualizo') {
+        $tipo = 'error';
+        $mensaje = $this->lenguaje->getCadena('mensajeNoActualizo') . $_REQUEST ['docente'] . ".";
         $boton = "continuar";
 
         $valorCodificado = "pagina=".$esteBloque['nombre'];
