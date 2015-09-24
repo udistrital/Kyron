@@ -60,19 +60,26 @@ class InspectorHTML {
 	/*
 	 * Permite validar un campo con un arreglo de parámetros al estilo jquery-validation-engine
 	 */
-	function validarCampo($valorCampo, $parametros, $corregir=false) {
+	function validarCampo($valorCampo, $parametros, $corregir=false, $showError=false) {
 		
 		if (isset($parametros['required'])) {
 			$campoVacio = ($valorCampo == '') ? false : true;
 			if (!$campoVacio) {
+				if($showError){
+					return array("errorType"=>"required","errorMessage"=>"Campo Vacío") ;
+				}
 				return false;
 			}
 		}
 
 		if (isset($parametros['minSize'])) {
-			$tamannoCampo = strlen($valorCampo);
+			//Al no usar esta codificación utf8 la longitud da diferente en javascript que en PHP
+			$tamannoCampo = strlen(utf8_decode($valorCampo));
 			if ($tamannoCampo<$parametros['minSize']) {
 				if(!$corregir){
+					if($showError){
+						return array("errorType"=>"minSize","errorMessage"=>"La longitud es menor a ".$parametros['maxSize']);
+					}
 					return false;
 				}
 				$faltante = $parametros['minSize'] - $tamannoCampo;
@@ -82,9 +89,13 @@ class InspectorHTML {
 		}
 		
 		if (isset($parametros['maxSize'])) {
-			$tamannoCampo = strlen($valorCampo);
+			//Al no usar esta codificación utf8 la longitud da diferente en javascript que en PHP
+			$tamannoCampo = strlen(utf8_decode($valorCampo));
 			if ($tamannoCampo>$parametros['maxSize']) {
 				if(!$corregir){
+					if($showError){
+						return array("errorType"=>"maxSize","errorMessage"=>"La longitud es mayor a ".$parametros['maxSize']);
+					}
 					return false;
 				}
 				$sobrante = $parametros['minSize'] - $tamannoCampo;
@@ -97,6 +108,9 @@ class InspectorHTML {
 			$miValidador = new ValidadorCampos();
 			$valido = $miValidador->validarTipo($valorCampo,$parametros['custom']);
 			if (!$valido) {
+				if($showError){
+					return array("errorType"=>"custom","errorMessage"=>"El campo no es del tipo ".$parametros['custom']);
+				}
 				return false;
 			}
 		}
@@ -131,7 +145,7 @@ class InspectorHTML {
 	 * Permite que los valores de $_REQUEST se validen del lado del servidor con el módulo
 	 * ValidadorCampos de los componentes generales del CORE de SARA
 	 */
-	function validacionCampos($variables, $validadorCampos, $corregir=false) {
+	function validacionCampos($variables, $validadorCampos, $corregir=false, $showError=false) {
 
 		function get_string_between($string, $start, $end) {
 			$string = " " . $string;
@@ -166,10 +180,13 @@ class InspectorHTML {
 		foreach ($validadorCampos as $nombreCampo => $validador) {
 			if (isset($variables[$nombreCampo])) {
 				$parametros = separarParametros($validador);
-				$validez = $this -> validarCampo($variables[$nombreCampo], $parametros, $corregir);
+				$validez = $this -> validarCampo($variables[$nombreCampo], $parametros, $corregir, $showError);
 				if ($validez===false) {
 					return false;
-				} 
+				}
+				if (isset($validez['errorType'])) {
+					return "El campo \"".$nombreCampo."\" con valor \"".$variables[$nombreCampo]."\" arroja el error: \"".$validez['errorMessage']."\"";
+				}
 				$variables[$nombreCampo] = $validez;
 			}
 		}
