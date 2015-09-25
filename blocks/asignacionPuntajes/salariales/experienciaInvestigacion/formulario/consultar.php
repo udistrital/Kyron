@@ -186,15 +186,11 @@ class registrarForm {
 	                   
 	                    <th>Identificación</th>
 	                    <th>Nombres y Apellidos</th>
-						<th>Entidad o Institución</th>
-						<th>Tipo Entidad</th>
-						<th>Número de Horas por Semana</th>
+						<th>Entidad</th>
+						<th>Experiencia</th>
 						<th>Fecha de Inicio</th>
 						<th>Fecha de Finalización</th>
-						<th>Duración Experiencia (Días)</th>
-						<th>Número de Acta CIARP-UD</th>
-						<th>Fecha de Acta CIARP-UD</th>
-						<th>Número Caso de Acta</th>
+						<th>Horas por Semana</th>
 						<th>Puntaje</th>
 						<th>Modificar</th>
 							
@@ -222,14 +218,10 @@ class registrarForm {
 	                    <td><center>" . $experiencia [$i] ['documento_docente'] . "</center></td>
 	                    <td><center>" . $experiencia [$i] ['nombre_docente'] . "</center></td>
 	                    <td><center>" . $experiencia [$i] ['entidadInstitucion'] . "</center></td>
-	                    <td><center>" . $experiencia [$i] ['nombre_tipo_entidad'] . "</center></td>
-	                    <td><center>" . $experiencia [$i] ['horas_semana'] . "</center></td>
+	                    <td><center>" . $experiencia [$i] ['tipo_experiencia'] . "</center></td>
 	                    <td><center>" . $experiencia [$i] ['fecha_inicio'] . "</center></td>
 	                  	<td><center>" . $experiencia [$i] ['fecha_finalizacion'] . "</center></td>
-	                  	<td><center>" . $experiencia [$i] ['dias_experiencia'] . "</center></td>
-	                  	<td><center>" . $experiencia [$i] ['numero_acta'] . "</center></td>
-	                    <td><center>" . $experiencia [$i] ['fecha_acta'] . "</center></td>
-	                    <td><center>" . $experiencia [$i] ['caso_acta'] . "</center></td>
+	                  	<td><center>" . $experiencia [$i] ['horas_semana'] . "</center></td>
 	                    <td><center>" . $experiencia [$i] ['puntaje'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>

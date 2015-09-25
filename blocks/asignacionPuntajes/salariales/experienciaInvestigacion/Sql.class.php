@@ -117,12 +117,12 @@ class Sql extends \Sql {
 				$cadenaSql .= " docencia.universidad";
 				break;
 				
-			case "tipoEntidadInstitucion" :
+			case "tipoExperiencia" :
 				$cadenaSql = "SELECT";
-				$cadenaSql .= " id_tipo_entidad,";
-				$cadenaSql .= "	nombre_tipo_entidad";
+				$cadenaSql .= " id_tipo_experiencia_investigacion,";
+				$cadenaSql .= "	descripcion";
 				$cadenaSql .= " FROM ";
-				$cadenaSql .= " docencia.tipo_entidad";
+				$cadenaSql .= " docencia.tipo_experiencia_investigacion";
 				break;
 				
 			case "docente" :
@@ -137,30 +137,26 @@ class Sql extends \Sql {
 								
 			case "consultar" :			
 				$cadenaSql=" select ";
-				$cadenaSql.=" eda.id_experiencia_direccion_academica as id_experiencia, ";
-				$cadenaSql.=" eda.documento_docente, ";
+				$cadenaSql.=" ei.id_experiencia_investigacion as id_experiencia, ";
+				$cadenaSql.=" ei.documento_docente, ";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente, ";
 				$cadenaSql.=" un.nombre_universidad as entidad,";
-				$cadenaSql.=" te.nombre_tipo_entidad,";
-				$cadenaSql.=" eda.otra_entidad,";
-				$cadenaSql.=" eda.horas_semana,";
-				$cadenaSql.=" eda.fecha_inicio,";
-				$cadenaSql.=" eda.fecha_finalizacion,";
-				$cadenaSql.=" eda.dias_experiencia,";
-				$cadenaSql.=" eda.numero_acta,";
-				$cadenaSql.=" eda.fecha_acta,";
-				$cadenaSql.=" eda.caso_acta,";
-				$cadenaSql.=" eda.puntaje as puntaje ";
+				$cadenaSql.=" te.descripcion tipo_experiencia,";
+				$cadenaSql.=" ei.otra_entidad,";
+				$cadenaSql.=" ei.horas_semana,";
+				$cadenaSql.=" ei.fecha_inicio,";
+				$cadenaSql.=" ei.fecha_finalizacion,";
+				$cadenaSql.=" ei.puntaje as puntaje ";
 				$cadenaSql.=" from ";
-				$cadenaSql.=" docencia.experiencia_direccion_academica eda ";
-				$cadenaSql.=" left join docencia.docente dc on eda.documento_docente=dc.documento_docente ";
-				$cadenaSql.=" left join docencia.docente_proyectocurricular dc_pc on eda.documento_docente=dc_pc.documento_docente ";
+				$cadenaSql.=" docencia.experiencia_investigacion ei ";
+				$cadenaSql.=" left join docencia.docente dc on ei.documento_docente=dc.documento_docente ";
+				$cadenaSql.=" left join docencia.docente_proyectocurricular dc_pc on ei.documento_docente=dc_pc.documento_docente ";
 				$cadenaSql.=" left join docencia.proyectocurricular pc on dc_pc.id_proyectocurricular=pc.id_proyectocurricular ";
 				$cadenaSql.=" left join docencia.facultad fc on pc.id_facultad=fc.id_facultad ";
-				$cadenaSql.=" left join docencia.universidad un on un.id_universidad = eda.id_universidad ";
-				$cadenaSql.=" left join docencia.tipo_entidad te on eda.id_tipo_entidad = te.id_tipo_entidad";
+				$cadenaSql.=" left join docencia.universidad un on un.id_universidad = ei.id_universidad ";
+				$cadenaSql.=" left join docencia.tipo_experiencia_investigacion te on ei.id_tipo_experiencia_investigacion = ei.id_tipo_experiencia_investigacion";
 				$cadenaSql.=" where ";
-				$cadenaSql.=" eda.estado=true ";
+				$cadenaSql.=" ei.estado=true ";
 				$cadenaSql.=" and dc.estado=true ";
 				$cadenaSql.=" and pc.estado=true ";
 				$cadenaSql.=" and dc_pc.estado=true";
@@ -177,12 +173,12 @@ class Sql extends \Sql {
 				
 			case "registrar" :
 				$cadenaSql = "INSERT INTO docencia.experiencia_investigacion( ";
-				$cadenaSql .= "documento_docente, id_universidad, otra_entidad, id_tipo_entidad, ";
+				$cadenaSql .= "documento_docente, id_universidad, otra_entidad, id_tipo_experiencia_investigacion, ";
 				$cadenaSql .= "horas_semana, fecha_inicio, fecha_finalizacion, numero_acta, fecha_acta, caso_acta, puntaje) ";
 				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
 				$cadenaSql .= " " . $variable ['entidadInstitucion'] . ",";
 				$cadenaSql .= " '" . $variable ['otraEntidad'] . "',";
-				$cadenaSql .= "'" . $variable ['tipoEntidad'] . "',";
+				$cadenaSql .= "'" . $variable ['tipoExperiencia'] . "',";
 				$cadenaSql .= " '" . $variable ['horasPorSemana'] . "',";
 				$cadenaSql .= " '" . $variable ['fechaInicio'] . "',";
 				$cadenaSql .= " '" . $variable ['fechaFinalizacion'] . "',";
@@ -193,23 +189,22 @@ class Sql extends \Sql {
 				break;				
 				
 			case "publicacionActualizar" :
-				$cadenaSql=" SELECT eda.id_experiencia_direccion_academica, eda.documento_docente,";
+				$cadenaSql=" SELECT ei.id_experiencia_investigacion, ei.documento_docente,";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
-				$cadenaSql.=" eda.id_universidad, ";
-				$cadenaSql.=" eda.otra_entidad, ";
-				$cadenaSql.=" eda.id_tipo_entidad, ";
-				$cadenaSql.=" eda.horas_semana, ";
-				$cadenaSql.=" eda.fecha_inicio, ";
-				$cadenaSql.=" eda.fecha_finalizacion, ";
-				$cadenaSql.=" eda.dias_experiencia, ";
-				$cadenaSql.=" eda.numero_acta, ";
-				$cadenaSql.=" eda.fecha_acta, ";
-				$cadenaSql.=" eda.caso_acta, ";
-				$cadenaSql.=" eda.puntaje ";
-				$cadenaSql.=" FROM docencia.experiencia_direccion_academica as eda ";
-				$cadenaSql.=" left join docencia.docente dc on eda.documento_docente=dc.documento_docente ";
-				$cadenaSql.=" WHERE eda.documento_docente ='" . $variable['documento_docente']. "'";
-				$cadenaSql.=" and eda.id_experiencia_direccion_academica ='" . $variable['identificadorExperiencia']. "'";
+				$cadenaSql.=" ei.id_universidad, ";
+				$cadenaSql.=" ei.otra_entidad, ";
+				$cadenaSql.=" ei.id_tipo_experiencia_investigacion, ";
+				$cadenaSql.=" ei.horas_semana, ";
+				$cadenaSql.=" ei.fecha_inicio, ";
+				$cadenaSql.=" ei.fecha_finalizacion, ";
+				$cadenaSql.=" ei.numero_acta, ";
+				$cadenaSql.=" ei.fecha_acta, ";
+				$cadenaSql.=" ei.caso_acta, ";
+				$cadenaSql.=" ei.puntaje ";
+				$cadenaSql.=" FROM docencia.experiencia_investigacion as ei ";
+				$cadenaSql.=" left join docencia.docente dc on ei.documento_docente=dc.documento_docente ";
+				$cadenaSql.=" WHERE ei.documento_docente ='" . $variable['documento_docente']. "'";
+				$cadenaSql.=" and ei.id_experiencia_investigacion ='" . $variable['identificadorExperiencia']. "'";
 				break;
 				
 			case "actualizar" :

@@ -47,7 +47,7 @@ class Registrar {
 			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
 			'entidadInstitucion' => $_REQUEST['entidad'],
 			'otraEntidad' => $_REQUEST['otraEntidad'],
-			'tipoEntidad' => $_REQUEST['tipoEntidad'],
+			'tipoExperiencia' => $_REQUEST['tipoExperiencia'],
 			'horasPorSemana' => $_REQUEST['horasPorSemana'],
 			'fechaInicio' => $_REQUEST['fechaInicio'],
 			'fechaFinalizacion' => $_REQUEST['fechaFinalizacion'],

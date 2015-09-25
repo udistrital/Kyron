@@ -211,7 +211,7 @@ class FormularioRegistro {
 				
 		// ----------------INICIO CONTROL: Lista Tipo de Entidad --------------------------------------------------------
 				
-		$esteCampo = "tipoEntidad";
+		$esteCampo = "tipoExperiencia";
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['id'] = $esteCampo;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
@@ -235,7 +235,7 @@ class FormularioRegistro {
 		$atributos ['anchoCaja'] = 60;
 		$atributos ['miEvento'] = '';
 
-		$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ("tipoEntidadInstitucion");
+		$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ("tipoExperiencia");
 		$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 		$atributos ['matrizItems'] = $matrizItems;
 			
