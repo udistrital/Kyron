@@ -89,34 +89,16 @@ class registrarForm {
 		$conexion = "docencia";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
-		if (isset ( $_REQUEST ['id_docente'] ) && $_REQUEST ['id_docente'] != '') {
-			$id_docente = $_REQUEST ['id_docente'];
-		} else {
-			$id_docente = '';
-		}
-		
-		if (isset ( $_REQUEST ['facultad'] ) && $_REQUEST ['facultad'] != '') {
-			$facultad = $_REQUEST ['facultad'];
-		} else {
-			$facultad = '';
-		}
-		
-		if (isset ( $_REQUEST ['proyectoCurricular'] ) && $_REQUEST ['proyectoCurricular'] != '') {
-			$proyectoCurricular = $_REQUEST ['proyectoCurricular'];
-		} else {
-			$proyectoCurricular = '';
-		}
-		
 		$arreglo = array (
-				'documento_docente' => $id_docente,
-				'id_facultad' => $facultad,
-				'id_proyectocurricular' => $proyectoCurricular
+				'documento_docente' => $_REQUEST ['id_docente'],
+				'id_facultad' =>$_REQUEST ['facultad'],
+				'id_proyectocurricular' =>$_REQUEST ['proyectoCurricular'] 
 		);
 		
 		$arregloSerialize = array (
-				$id_docente,
-				$facultad,
-				$proyectoCurricular
+				$_REQUEST ['id_docente'],
+				$_REQUEST ['facultad'],
+				$_REQUEST ['proyectoCurricular']
 		);
 
 		$cadenaSql = $this->miSql->getCadenaSql ( 'consultar', $arreglo );
@@ -185,15 +167,15 @@ class registrarForm {
 	                   
 	                    <th>Identificación</th>
 	                    <th>Nombres y Apellidos</th>
-						<th>Nombre Revista</th>
-						<th>Título Artículo</th>
-						<th>País</th>
-						<th>Indexación</th>
-						<th>ISSN</th>
-						<th>Año</th>
+						<th>Título Traducción</th>
+						<th>Nombre Traductor</th>
 						<th>Volumen</th>
-						<th>Número Paginas</th>
-						<th>Fecha Publicación</th>
+						<th>Fecha Traducción</th>
+						<th>Año</th>
+						<th>Número Acta CIARP-UD</th>
+						<th>Fecha Acta CIARP-UD</th>
+						<th>Número Caso de Acta</th>
+						<th>Puntaje</th>
 						<th>Modificar</th>
 							
 	                </tr>
@@ -205,29 +187,28 @@ class registrarForm {
 						$variable .= "&opcion=modificar";
 						$variable .= "&arreglo=" . $arreglo;
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
-						$variable .= "&documento_docente=" . $indexacion [$i] ['documento_docente'];
-						$variable .= "&identificadorColeccion=" . $indexacion [$i] ['numero_issn'];
+						$variable .= "&id_traduccion=" . $indexacion [$i] ['id_traduccion'];
 						$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 						
 						$mostrarHtml = "<tr>
 	                    <td><center>" . $indexacion [$i] ['documento_docente'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['nombre_docente'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['nombre_revista'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['titulo_articulo'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['paisnombre'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['tipo_indexacion'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['numero_issn'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['titulo_traduccion'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['nombre_traductor'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['volumen_traduccion'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['fecha_traduccion'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['anno_publicacion'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['volumen_revista'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['paginas_revista'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['fecha_publicacion'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['numero_acta'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['fecha_acta'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['numero_caso'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['puntaje'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>
 	                            <img src='" . $rutaBloque . "/css/images/Entrada.png' width='15px'>
 	                        </a>
 	                  	</center> </td>
 	           
-	                </tr>";
+	                    </tr>";
 						echo $mostrarHtml;
 						unset ( $mostrarHtml );
 						unset ( $variable );

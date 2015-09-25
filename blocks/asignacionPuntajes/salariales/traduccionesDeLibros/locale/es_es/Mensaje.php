@@ -6,10 +6,10 @@ $this->idioma["tabIngresar"] = "Ingresar Traducciones de Libros";
 //////////////////////////////////////////////////////////////
 
 //************ MENSAJES *********
-$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Carta al Editor para el docente <br>";
-$this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado la Carta al Editor para el docente <br>" ;
-$this->idioma["mensajeError"] =  "Error al tratar de registrar la Carta al Editor.";
-$this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Traducciones de Libros Para los Criterios Ingresados";
+$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Traduccion de Libro para el docente <br>";
+$this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado la Traduccion de Libro para el docente <br>" ;
+$this->idioma["mensajeError"] =  "Error al tratar de registrar la Traduccion de Libro.";
+$this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Traduccion de Libro Para los Criterios Ingresados";
 
 /////////////////////////////////
 

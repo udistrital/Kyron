@@ -34,7 +34,6 @@ unset ( $atributos );
 	// -------------------- Listado de Pestañas (Como lista No Ordenada) -------------------------------
 
 	$items = array (
-			
 			"tabConsultar" => $this->lenguaje->getCadena ( 'tabConsultar' ),
 			"tabIngresar" => $this->lenguaje->getCadena ( 'tabIngresar' ) 
 	);
