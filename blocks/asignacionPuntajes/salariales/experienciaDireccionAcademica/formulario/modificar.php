@@ -212,7 +212,9 @@ class FormularioModificar {
 					);
 					$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ("entidadInstitucion");
 					$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
-					$matrizItems = array_merge($matriz,$matrizItems);
+					if($atributos ['seleccion'] != -1){
+						$matrizItems = array_merge($matriz,$matrizItems);
+					}
 					$atributos ['matrizItems'] = $matrizItems;
 					// Aplica atributos globales al control
 					$atributos = array_merge ( $atributos, $atributosGlobales );

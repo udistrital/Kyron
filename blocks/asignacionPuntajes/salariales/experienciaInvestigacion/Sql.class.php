@@ -209,22 +209,21 @@ class Sql extends \Sql {
 				
 			case "actualizar" :
 				$cadenaSql = "UPDATE ";
-				$cadenaSql .= "docencia.experiencia_direccion_academica ";
+				$cadenaSql .= "docencia.experiencia_investigacion ";
 				$cadenaSql .= "SET ";
-				$cadenaSql .= "id_universidad = '" . $variable ['entidadInstitucion'] . "', ";
+				$cadenaSql .= "id_universidad = " . $variable ['entidadInstitucion'] . ", ";
 				$cadenaSql .= "otra_entidad = '" . $variable ['otraEntidad'] . "', ";
-				$cadenaSql .= "id_tipo_entidad = '" . $variable ['tipoEntidad'] . "', ";
+				$cadenaSql .= "id_tipo_experiencia_investigacion = '" . $variable ['tipoExperiencia'] . "', ";
 				$cadenaSql .= "horas_semana = '" . $variable ['horasPorSemana'] . "', ";
 				$cadenaSql .= "fecha_inicio = '" . $variable ['fechaInicio'] . "', ";
 				$cadenaSql .= "fecha_finalizacion = '" . $variable ['fechaFinalizacion'] . "', ";
-				$cadenaSql .= "dias_experiencia = '" . $variable ['duracionExperiencia'] . "', ";
 				$cadenaSql .= "numero_acta = '" . $variable ['numeroActa'] . "', ";
 				$cadenaSql .= "fecha_acta = '" . $variable ['fechaActa'] . "', ";
 				$cadenaSql .= "caso_acta = '" . $variable ['numeroCasoActa'] . "', ";
 				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "'";
 				$cadenaSql .= "WHERE ";
 				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";
-				$cadenaSql .= "and id_experiencia_direccion_academica ='" . $variable ['identificadorExperiencia'] . "' ";
+				$cadenaSql .= "and id_experiencia_investigacion ='" . $variable ['identificadorExperiencia'] . "' ";
 				$cadenaSql .= "and estado=true";
 				break;
 				

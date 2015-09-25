@@ -36,18 +36,21 @@ class RegistrarIndexacionRevista {
 		$rutaBloque .= $esteBloque ['nombre'];
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
 		
-		if(!isset($_REQUEST['otraEntidad'])){
+		if($_REQUEST['entidad']==''){
+			$_REQUEST['entidad'] = 'null';
+		}
+		if (!isset($_REQUEST['otraEntidad'])){
 			$_REQUEST['otraEntidad'] = null;
 		}
+		
 		$arregloDatos = array (
 			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
 			'entidadInstitucion' => $_REQUEST['entidad'],
 			'otraEntidad' => $_REQUEST['otraEntidad'],
-			'tipoEntidad' => $_REQUEST['tipoEntidad'],
+			'tipoExperiencia' => $_REQUEST['tipoExperiencia'],
 			'horasPorSemana' => $_REQUEST['horasPorSemana'],
 			'fechaInicio' => $_REQUEST['fechaInicio'],
 			'fechaFinalizacion' => $_REQUEST['fechaFinalizacion'],
-			'duracionExperiencia' => $_REQUEST['duracionExperiencia'],
 			'numeroActa' => $_REQUEST['numeroActa'],
 			'fechaActa' => $_REQUEST['fechaActa'],
 			'numeroCasoActa' => $_REQUEST['numeroCasoActa'],
