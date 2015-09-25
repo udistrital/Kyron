@@ -1,16 +1,16 @@
 <?php
 
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
-$this->idioma["tabConsultar"] = "Consultar Producción de Libros";
-$this->idioma["tabIngresar"] = "Ingresar Producción de Libros";
+$this->idioma["tabConsultar"] = "Consultar Producción Técnica y Software";
+$this->idioma["tabIngresar"] = "Ingresar Producción Técnica y Software";
 //////////////////////////////////////////////////////////////
 
 //************ MENSAJES *********
-$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Dirección de Trabajo de Grado para el docente <br>";
+$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Producción Técnica y Software para el docente <br>";
 $this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado Producción de Libro para el docente <br>" ;
 $this->idioma["mensajeError"] =  "Error al tratar de registrar Producción de Libro.";
-$this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Producciones de Libros </br> Para los Criterios Ingresados";
-$this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de Producción de Libros Para el Docente </br>";
+$this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Producción Técnica y Software </br> Para los Criterios Ingresados";
+$this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de Producción Técnica y Software Para el Docente </br>";
 /////////////////////////////////
 
 //* SECCIÓN ELEMENTOS QUE SU NOMBRE POSIBLEMENTE VARIA DENTRO DEL FORMULARIO *//
