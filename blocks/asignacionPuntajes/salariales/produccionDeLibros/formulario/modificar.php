@@ -97,7 +97,7 @@ class FormularioModificar {
 				// Aplica atributos globales al control
 		echo $this->miFormulario->formulario ( $atributos );
 
-		// ---------------- INICIO: Lista Variables--------------------------------------------------------
+		// ---------------- INICIO: Lista Variables Modificar--------------------------------------------------------
 		$datos = array(
 				'documento_docente' =>  $_REQUEST ['documento_docente'],
 				'codigo_isbn' => $_REQUEST ['codigo_isbn']
@@ -138,10 +138,9 @@ class FormularioModificar {
 		$_REQUEST['numeroCasoActaLibro'] =  $resultado[0]['numero_caso'];
 		$_REQUEST['puntajeLibro'] =  $resultado[0]['puntaje'];
 		
-		// ---------------- FIN: Lista Variables--------------------------------------------------------
+		// ---------------- FIN: Lista Variables Modificar--------------------------------------------------------
 		
-
-		// ---------------- CONTROL: Lista Docente--------------------------------------------------------
+		// ---------------- INICIO CONTROL: Inicio Marco --------------------------------------------------------
 		
 		$esteCampo = "marcoModificarRegistro";
 		$atributos ['id'] = $esteCampo;
@@ -149,6 +148,10 @@ class FormularioModificar {
 		$atributos ['tipoEtiqueta'] = 'inicio';
 		$atributos ["leyenda"] = $this->lenguaje->getCadena ( $esteCampo );
 		echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
+		
+		// ---------------- FIN CONTROL: Inicio Marco --------------------------------------------------------
+
+		// ---------------- CONTROL: Lista Docente--------------------------------------------------------
 		
 		
 		$esteCampo = 'docenteRegistrar';
@@ -884,12 +887,14 @@ class FormularioModificar {
 					
 					// -----------------FIN CONTROL: Botón -----------------------------------------------------------
 				}
-	// 			------------------Fin Division para los botones-------------------------
+				// 			------------------Fin Division para los botones-------------------------
 	
-			echo $this->miFormulario->marcoAgrupacion ( 'fin' );
+				// ---------------- INICIO CONTROL: Fin Marco --------------------------------------------------------				
+				echo $this->miFormulario->marcoAgrupacion ( 'fin' );				
+				// ---------------- FIN CONTROL: Fin Marco --------------------------------------------------------
 				
+				// ---------------- FINALIZAR EL FORMULARIO --------------------------------------------------------
 				echo $this->miFormulario->division( "fin" );
-				
 				 
 				// ------------------- SECCION: Paso de variables ------------------------------------------------
 				
@@ -917,7 +922,6 @@ class FormularioModificar {
 				 * Estos se pueden obtener en el atributo $this->miFormulario->validadorCampos del formulario
 				 * La función $this->miFormulario->codificarCampos() codifica automáticamente el atributo validadorCampos
 				 */
-				//
 				$valorCodificado .= "&validadorCampos=" . $this->miFormulario->codificarCampos();
 				/*
 				 * identificadores de registro antiguos, necesarios para la transacción update 

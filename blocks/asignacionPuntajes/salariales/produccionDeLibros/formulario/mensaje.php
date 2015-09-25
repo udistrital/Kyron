@@ -4,7 +4,7 @@ if (!isset($GLOBALS["autorizado"])) {
     include("../index.php");
     exit;
 } else {
-
+	
     $esteBloque = $this->miConfigurador->getVariableConfiguracion("esteBloque");
 
     $rutaBloque = $this->miConfigurador->getVariableConfiguracion("host");
@@ -72,10 +72,10 @@ if (!isset($GLOBALS["autorizado"])) {
     if ($_REQUEST['mensaje'] == 'confirma') {
 
         $tipo = 'success';
-        $mensaje = "Registro Exitoso.<br>Los datos han sido registrados correctamente.";
+        $mensaje =  $this->lenguaje->getCadena('mensajeRegistro') . $_REQUEST ['docente'] . ".";
         $boton = "continuar";
 		
-        $valorCodificado = "pagina=".$miPaginaActual;
+        $valorCodificado = "pagina=".$esteBloque['nombre'];
         $valorCodificado.="&opcion=nuevo";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
@@ -83,20 +83,30 @@ if (!isset($GLOBALS["autorizado"])) {
         
     } else if($_REQUEST['mensaje'] == 'error') {
         $tipo = 'error';
-        $mensaje = "Error al tratar de registrar.";
+        $mensaje =  $this->lenguaje->getCadena('mensajeError');
         $boton = "regresar";
 
-        $valorCodificado = "pagina=revistasIndexadas";
+        $valorCodificado = "pagina=".$esteBloque['nombre'];
         $valorCodificado.="&opcion=nuevo";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
        
     } else if($_REQUEST['mensaje'] == 'actualizo') {
         $tipo = 'success';
-        $mensaje = "Actualización Exitosa </br> Han sido actualizados los datos.<br>";
+        $mensaje = $this->lenguaje->getCadena('mensajeActualizar') . $_REQUEST ['docente'] . ".";
         $boton = "continuar";
 
-        $valorCodificado = "pagina=revistasIndexadas";
+        $valorCodificado = "pagina=".$esteBloque['nombre'];
+        $valorCodificado.="&opcion=nuevo";
+        $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
+        $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
+       
+    }else if($_REQUEST['mensaje'] == 'noActualizo') {
+        $tipo = 'error';
+        $mensaje = $this->lenguaje->getCadena('mensajeNoActualizo') . $_REQUEST ['docente'] . ".";
+        $boton = "continuar";
+
+        $valorCodificado = "pagina=".$esteBloque['nombre'];
         $valorCodificado.="&opcion=nuevo";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];

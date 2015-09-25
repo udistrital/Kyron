@@ -42,7 +42,7 @@ class RegistrarIndexacionRevista {
 			redireccion::redireccionar ( 'inserto',  $_REQUEST['docenteRegistrar']);
 			exit ();
 		} else {
-			redireccion::redireccionar ( 'noInserto' );
+			redireccion::redireccionar ( 'noInserto');
 			exit ();
 		}
 	}
