@@ -1,27 +1,27 @@
-$("#produccionDeLibros").validationEngine({
+$("#produccionTecnicaYSoftware").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000
 });
 
-$("#produccionDeLibros").submit(function() {
-	$resultado=$("#produccionDeLibros").validationEngine("validate");
+$("#produccionTecnicaYSoftware").submit(function() {
+	$resultado=$("#produccionTecnicaYSoftware").validationEngine("validate");
 	if ($resultado) {
 		return true;
 	}
 	return false;
 });
 
-$("#produccionDeLibrosRegistrar").validationEngine({
+$("#produccionTecnicaYSoftwareRegistrar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000
 });
 
-$("#produccionDeLibrosRegistrar").submit(function() {
-	$resultado=$("#produccionDeLibrosRegistrar").validationEngine("validate");		
+$("#produccionTecnicaYSoftwareRegistrar").submit(function() {
+	$resultado=$("#produccionTecnicaYSoftwareRegistrar").validationEngine("validate");		
 	if ($resultado) {
 		return true;
 	}
@@ -32,15 +32,15 @@ $("button").button().click(function (event) {
     event.preventDefault();
 });
 
-$("#produccionDeLibrosModificar").submit(function() {
-	$resultado=$("#produccionDeLibrosModificar").validationEngine("validate");
+$("#produccionTecnicaYSoftwareModificar").submit(function() {
+	$resultado=$("#produccionTecnicaYSoftwareModificar").validationEngine("validate");
 	if ($resultado) {
 		return true;
 	}
 	return false;
 });
 
-$("#produccionDeLibrosModificar").validationEngine({
+$("#produccionTecnicaYSoftwareModificar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,
@@ -71,10 +71,7 @@ $('#<?php echo $this->campoSeguro('facultad')?>').width(450);
 $('#<?php echo $this->campoSeguro('proyectoCurricular')?>').width(450);      
 
 $('#<?php echo $this->campoSeguro('docenteRegistrar')?>').width(465);
-$('#<?php echo $this->campoSeguro('tipoLibro')?>').width(450);
-$('#<?php echo $this->campoSeguro('annoLibro')?>').width(450);
-
-$('#<?php echo $this->campoSeguro('editorial')?>').width(450);
+$('#<?php echo $this->campoSeguro('tipo')?>').width(450);
 
 $('#<?php echo $this->campoSeguro('entidadCertificadora1')?>').width(300);
 $('#<?php echo $this->campoSeguro('entidadCertificadora2')?>').width(300);
@@ -88,9 +85,7 @@ $("#<?php echo $this->campoSeguro('facultad')?>").select2();
 $("#<?php echo $this->campoSeguro('proyectoCurricular')?>").select2();
 
 
-$("#<?php echo $this->campoSeguro('tipoLibro')?>").select2();
-$("#<?php echo $this->campoSeguro('annoLibro')?>").select2();
-$("#<?php echo $this->campoSeguro('editorial')?>").select2();
+$("#<?php echo $this->campoSeguro('tipo')?>").select2();
 
 /*
  * Se asigna dinámicamente el parámetro required a los select2. Se quita un reminicente de:

@@ -6,8 +6,10 @@ var indiceA = 0;
 var indiceB= 0;
 var cont = 0;
 
-campoFecha[indiceA++] = "#<?php echo $this->campoSeguro('fechaActaLibro')?>";
-campoFechaInput[indiceB++] = "input#<?php echo $this->campoSeguro('fechaActaLibro')?>";
+campoFecha[indiceA++] = "#<?php echo $this->campoSeguro('fechaActa')?>";
+campoFechaInput[indiceB++] = "input#<?php echo $this->campoSeguro('fechaActa')?>";
+campoFecha[indiceA++] = "#<?php echo $this->campoSeguro('fechaProduccion')?>";
+campoFechaInput[indiceB++] = "input#<?php echo $this->campoSeguro('fechaProduccion')?>";
 
 
 $(campoFecha).each(function(){

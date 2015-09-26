@@ -216,7 +216,7 @@ class FormularioRegistro {
 			
 		// ----------------FIN CONTROL: Campo de Tipo de Producción--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Número de Certificado de Producción --------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Número de Certificado del producto --------------------------------------------------------
 		$esteCampo = 'numeroCertificado';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -229,7 +229,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, minSize[10],maxSize[30]';
+		$atributos ['validar'] = 'required, minSize[10],maxSize[30], custom[onlyLetterNumber]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -247,7 +247,7 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Número de Certificado de Producción --------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Número de Certificado del producto --------------------------------------------------------
 			
 		// ----------------INICIO CONTROL: Marco Evaluadores------------------------------------------------------
 			
@@ -298,7 +298,7 @@ class FormularioRegistro {
 				$atributos ['dobleLinea'] = 0;
 				$atributos ['tabIndex'] = $tab;
 				$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-				$atributos ['validar'] = '';//required al parecer no son requeridos
+				$atributos ['validar'] = 'custom[integer]';//required al parecer no son requeridos
 				if (isset ( $_REQUEST [$esteCampo] )) {
 					$atributos ['valor'] = $_REQUEST [$esteCampo];
 				} else {
@@ -677,7 +677,6 @@ class FormularioRegistro {
 				 * Estos se pueden obtener en el atributo $this->miFormulario->validadorCampos del formulario
 				 * La función $this->miFormulario->codificarCampos() codifica automáticamente el atributo validadorCampos
 				 */
-				//var_dump($this->miFormulario->validadorCampos);
 				$valorCodificado .= "&validadorCampos=" . $this->miFormulario->codificarCampos();
 				
 				// Paso 2: codificar la cadena resultante

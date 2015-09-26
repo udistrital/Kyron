@@ -16,7 +16,7 @@ $this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el re
 //* SECCIÓN ELEMENTOS QUE SU NOMBRE POSIBLEMENTE VARIA DENTRO DEL FORMULARIO *//
 $this->idioma["nombre"] = "Nombre de la producción:";
 $this->idioma["tipo"] = "Tipo de producción:";
-$this->idioma["numeroCertificado"] = "Número de dertificado del producto:";
+$this->idioma["numeroCertificado"] = "Número de certificado del producto:";
 $this->idioma["fechaProduccion"] = "Fecha de la producción:";
 
 $this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";
@@ -79,7 +79,7 @@ $this->idioma["docenteRegistrar"] = "Identificación o nombre del docente:";
 $this->idioma["numeroActa"] = "Número de Acta CIARP-UD:";
 $this->idioma["fechaActa"] = "Fecha de Acta CIARP-UD:";
 $this->idioma["numeroCasoActa"] = "Número de Caso de Acta:";
-$this->idioma["puntaje"] = "Puntaje	";
+$this->idioma["puntaje"] = "Puntaje:";
 ////////////////////////////////////////////////////////////////
 
 ?>

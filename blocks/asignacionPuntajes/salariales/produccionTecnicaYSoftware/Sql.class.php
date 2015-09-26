@@ -125,13 +125,12 @@ class Sql extends \Sql {
 				$cadenaSql .= " docencia.editorial";
 				break;
 				
-			case "tipoLibro" :
+			case "tipo" :
 				$cadenaSql = "select";
-				$cadenaSql .= " id_tipo_libro, tipo_libro";
-				$cadenaSql .= "	descripcion";
+				$cadenaSql .= " id_tipo_tecnicaysoftware, nombre";
 				$cadenaSql .= " FROM ";
-				$cadenaSql .= " docencia.tipo_libro ORDER BY";
-				$cadenaSql .= " tipo_libro ASC";
+				$cadenaSql .= " docencia.tipo_tecnicaysoftware ORDER BY";
+				$cadenaSql .= " nombre ASC";
 				break;
 				
 			case "docente" :
@@ -191,32 +190,28 @@ class Sql extends \Sql {
 				$cadenaSql.=" AND eld.codigo_isbn = '".$variable ['codigo_isbn']."'";
 				break;
 				
-			case "consultarLibros" :			
+			case "consultar" :			
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" dc.documento_docente AS documento_docente,";
-				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido AS nombre_docente,";
-				$cadenaSql.=" li.titulo AS titulo_libro,";
-				$cadenaSql.=" tl.tipo_libro AS tipo_libro,";
-				$cadenaSql.=" li.codigo_isbn AS codigo_isbn,";
-				$cadenaSql.=" li.anno_publicacion AS anno_publicacion,";
-				$cadenaSql.=" li.numero_autores AS numero_autores,";
-				$cadenaSql.=" li.numero_autores_ud AS numero_autores_ud,";
-				$cadenaSql.=" ed.nombre_editorial AS editorial,";
-				$cadenaSql.=" li.numero_acta AS numero_acta,";
-				$cadenaSql.=" li.fecha_acta AS fecha_acta,";
-				$cadenaSql.=" li.numero_caso AS numero_caso,";
-				$cadenaSql.=" li.puntaje AS puntaje";
-				$cadenaSql.=" FROM docencia.libro_docente AS li";
-				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON dc.documento_docente = li.documento_docente";
-				$cadenaSql.=" LEFT JOIN docencia.tipo_libro AS tl ON tl.id_tipo_libro = li.id_tipo_libro";
-				$cadenaSql.=" LEFT JOIN docencia.editorial AS ed ON ed.id_editorial = li.id_editorial";
-				$cadenaSql.=" LEFT JOIN docencia.docente_proyectocurricular AS dc_pc ON li.documento_docente=dc_pc.documento_docente";
-				$cadenaSql.=" LEFT JOIN docencia.proyectocurricular AS pc ON dc_pc.id_proyectocurricular=pc.id_proyectocurricular";
-				$cadenaSql.=" LEFT JOIN docencia.facultad AS fc ON pc.id_facultad=fc.id_facultad";
-				$cadenaSql.=" WHERE li.estado=true";
+				$cadenaSql.=" dc.documento_docente||' - '||dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido AS nombre_docente,";
+				$cadenaSql.=" pts.nombre AS nombre_produccion,";
+				$cadenaSql.=" ti.nombre AS nombre_tipo_libro,";
+				$cadenaSql.=" pts.numero_certificado AS numero_certificado,";
+				$cadenaSql.=" pts.fecha_produccion AS fecha_produccion,";
+				$cadenaSql.=" pts.numero_acta AS numero_acta,";
+				$cadenaSql.=" pts.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" pts.numero_caso AS numero_caso,";
+				$cadenaSql.=" pts.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.produccion_tecnicaysoftware AS pts";
+				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON dc.documento_docente = pts.documento_docente";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_tecnicaysoftware AS ti ON ti.id_tipo_tecnicaysoftware = pts.id_tipo_tecnicaysoftware";
+				$cadenaSql.=" LEFT JOIN docencia.docente_proyectocurricular AS dc_pc ON dc_pc.documento_docente=pts.documento_docente";
+				$cadenaSql.=" LEFT JOIN docencia.proyectocurricular AS pc ON pc.id_proyectocurricular=dc_pc.id_proyectocurricular";
+				$cadenaSql.=" LEFT JOIN docencia.facultad AS fc ON fc.id_facultad=pc.id_facultad";
+				$cadenaSql.=" WHERE pts.estado=true";
 				$cadenaSql.=" AND dc.estado=true";
 				$cadenaSql.=" AND dc_pc.estado=true";
-				$cadenaSql.=" AND pc.estado=true";
+				$cadenaSql.=" AND pc.estado=true";				
 				if ($variable ['documento_docente'] != '') {
 					$cadenaSql .= " AND dc.documento_docente = '" . $variable ['documento_docente'] . "'";
 				}
@@ -229,7 +224,7 @@ class Sql extends \Sql {
 				break;
 				
 				
-			case "insertarLibroDocente" :
+			case "insertar" :
 				$cadenaSql='';
 				for($i = 1; $i <= 3; $i++){
 					$evaluadorExiste =  $variable ['documentoEvaluador'.$i] != '' &&
@@ -240,16 +235,12 @@ class Sql extends \Sql {
 						$cadenaSql=" with rows as (";
 					}
 					if($i == 1){
-						$cadenaSql.=" INSERT INTO docencia.libro_docente (";
+						$cadenaSql.=" INSERT INTO docencia.produccion_tecnicaysoftware (";
 						$cadenaSql.=" documento_docente, ";
-						$cadenaSql.=" titulo, ";
-						$cadenaSql.=" id_tipo_libro, ";
-						$cadenaSql.=" id_universidad, ";
-						$cadenaSql.=" codigo_isbn, ";
-						$cadenaSql.=" anno_publicacion,";
-						$cadenaSql.=" numero_autores, ";
-						$cadenaSql.=" numero_autores_ud, ";
-						$cadenaSql.=" id_editorial, ";
+						$cadenaSql.=" nombre, ";
+						$cadenaSql.=" id_tipo_tecnicaysoftware, ";
+						$cadenaSql.=" numero_certificado, ";
+						$cadenaSql.=" fecha_produccion,";
 						$cadenaSql.=" numero_acta,";
 						$cadenaSql.=" fecha_acta, ";
 						$cadenaSql.=" numero_caso, ";
@@ -257,29 +248,23 @@ class Sql extends \Sql {
 						$cadenaSql.=" )";
 						$cadenaSql.=" VALUES (";
 						$cadenaSql.=" '" . $variable ['id_docenteRegistrar'] . "',";
-						$cadenaSql.=" '" . $variable ['nombreLibro'] . "',";
-						$cadenaSql.=" '" . $variable ['tipoLibro'] . "',";
-						$valor = $variable ['entidadCertificadora'];
-						$variable ['entidadCertificadora'] = ($valor=='')?'NULL':" '".$valor."'";
-						$cadenaSql.=" " . $variable ['entidadCertificadora'] . ",";
-						$cadenaSql.=" '" . $variable ['isbnLibro'] . "',";
-						$cadenaSql.=" '" . $variable ['annoLibro'] . "',";
-						$cadenaSql.=" '" . $variable ['numeroAutoresLibro'] . "',";
-						$cadenaSql.=" '" . $variable ['numeroAutoresUniversidad'] . "',";
-						$cadenaSql.=" '" . $variable ['editorial'] . "',";
-						$cadenaSql.=" '" . $variable ['numeroActaLibro'] . "',";
-						$cadenaSql.=" '" . $variable ['fechaActaLibro'] . "',";
-						$cadenaSql.=" '" . $variable ['numeroCasoActaLibro'] . "',";
-						$cadenaSql.=" '" . $variable ['puntajeLibro'] . "'";
+						$cadenaSql.=" '" . $variable ['nombre'] . "',";
+						$cadenaSql.=" '" . $variable ['tipo'] . "',";
+						$cadenaSql.=" '" . $variable ['numeroCertificado'] . "',";
+						$cadenaSql.=" '" . $variable ['fechaProduccion'] . "',";
+						$cadenaSql.=" '" . $variable ['numeroActa'] . "',";
+						$cadenaSql.=" '" . $variable ['fechaActa'] . "',";
+						$cadenaSql.=" '" . $variable ['numeroCasoActa'] . "',";
+						$cadenaSql.=" '" . $variable ['puntaje'] . "'";
 						$cadenaSql.=" ) ";
 					}
 					if($i == 1 && $evaluadorExiste){
-						$cadenaSql.=" returning documento_docente, codigo_isbn";
+						$cadenaSql.=" returning documento_docente, numero_certificado";
 						$cadenaSql.=" )";
-						$cadenaSql.=" INSERT INTO docencia.evaluador_libro_docente (";
+						$cadenaSql.=" INSERT INTO docencia.evaluador_produccion_tecnicaysoftware (";
 						$cadenaSql.=" documento_evaluador,";
 						$cadenaSql.=" nombre,";
-						$cadenaSql.=" codigo_isbn,";
+						$cadenaSql.=" numero_certificado,";
 						$cadenaSql.=" documento_docente,";
 						$cadenaSql.=" id_universidad,";
 						$cadenaSql.=" puntaje";
@@ -290,7 +275,7 @@ class Sql extends \Sql {
 						$cadenaSql.=" (";
 						$cadenaSql.=" '" . $variable ['documentoEvaluador'.$i] . "',";
 						$cadenaSql.=" '" . $variable ['nombreEvaluador'.$i] . "',";
-						$cadenaSql.=" (SELECT codigo_isbn FROM rows),";
+						$cadenaSql.=" (SELECT numero_certificado FROM rows),";
 						$cadenaSql.=" (SELECT documento_docente FROM rows),";
 						$cadenaSql.=" '" . $variable ['entidadCertificadora'.$i] . "',";
 						$cadenaSql.=" '" . $variable ['puntajeSugeridoEvaluador'.$i] . "'";

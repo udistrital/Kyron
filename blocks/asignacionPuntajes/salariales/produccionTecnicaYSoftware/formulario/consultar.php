@@ -13,6 +13,8 @@ class registrarForm {
 	function __construct($lenguaje, $formulario, $sql) {
 		$this->miConfigurador = \Configurador::singleton ();
 		
+		$this->miInspectorHTML = \InspectorHTML::singleton ();
+		
 		$this->miConfigurador->fabricaConexiones->setRecursoDB ( 'principal' );
 		
 		$this->lenguaje = $lenguaje;
@@ -21,8 +23,30 @@ class registrarForm {
 		
 		$this->miSql = $sql;
 	}
-	function miForm() {
-		
+	function miForm() {		
+		/*
+         * Se realiza la decodificación de los campos "validador" de los 
+         * componentes del FormularioHtml. Se realiza la validación. En caso de que algún parámetro
+         * sea ingresado fuera de lo correspondiente en el campo "validador", este será ajustado
+         * (o convertido a) a un parámetro permisible o simplemente de no ser válido se devolverá 
+         * el valor false. Si lo que se quiere es saber si los parámetros son correctos o no, se
+         * puede introducir un tercer parámetro $arreglar, que es un parámetro booleano que indica,
+         * si es pertinente o no realizar un recorte de los datos "string" para que cumpla los requerimientos
+         * de longitud (tamaño) del campo.
+         */
+        if(isset($_REQUEST['validadorCampos'])){
+            $validadorCampos = $this->miInspectorHTML->decodificarCampos($_REQUEST['validadorCampos']);
+            $respuesta = $this->miInspectorHTML->validacionCampos($_REQUEST,$validadorCampos,false);
+            if ($respuesta != false){
+                $_REQUEST = $respuesta;
+            } else {
+                //Lo que se desea hacer si los parámetros son inválidos
+                echo "Usted ha ingresado parámetros de forma incorrecta al sistema.
+                 El acceso incorrecto ha sido registrado en el sistema con la IP: ".$_SERVER['REMOTE_ADDR'];
+                die;
+            }
+        }
+        
 		// Rescatar los datos de este bloque
 		$esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );
 		$miPaginaActual = $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
@@ -68,7 +92,7 @@ class registrarForm {
 				'id_proyectocurricular' =>$_REQUEST ['proyectoCurricular'] 
 		);
 		
-		$cadenaSql = $this->miSql->getCadenaSql ( 'consultarLibros', $arreglo );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'consultar', $arreglo );
 		$indexacion = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 		
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
@@ -117,7 +141,7 @@ class registrarForm {
 		echo $this->miFormulario->enlace ( $atributos );
 			
 		unset ( $atributos );
-		
+				
 				if ($indexacion) {
 					
 					$esteCampo = "marcoDatosBasicos";
@@ -134,13 +158,10 @@ class registrarForm {
 	                   
 	                    <th>Identificación</th>
 	                    <th>Nombres y Apellidos</th>
-						<th>Título Libro</th>
-						<th>Tipo Libro</th>
-						<th>Código ISBN</th>
-						<th>Año Publicación</th>
-						<th>Número Autores</th>
-						<th>Números Autores UD</th>
-						<th>Editorial</th>
+						<th>Nombre Producción</th>
+						<th>Tipo Producción</th>
+						<th>Número Certificado Producto</th>
+						<th>Fecha Producción</th>
 						<th>Número Acta</th>
 						<th>Fecha Acta</th>
 						<th>Número Caso</th>
@@ -155,19 +176,16 @@ class registrarForm {
 						$variable .= "&opcion=modificar";
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
 						$variable .= "&documento_docente=" . $indexacion [$i] ['documento_docente'];
-						$variable .= "&codigo_isbn=" . $indexacion [$i] ['codigo_isbn'];
+						$variable .= "&numero_certificado=" . $indexacion [$i] ['numero_certificado'];
 						$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 						
 						$mostrarHtml = "<tr>
 	                    <td><center>" . $indexacion [$i] ['documento_docente'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['nombre_docente'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['titulo_libro'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['tipo_libro'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['codigo_isbn'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['anno_publicacion'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['numero_autores'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['numero_autores_ud'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['editorial'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['nombre_produccion'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['nombre_tipo_libro'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['numero_certificado'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['fecha_produccion'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['fecha_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_caso'] . "</center></td>
