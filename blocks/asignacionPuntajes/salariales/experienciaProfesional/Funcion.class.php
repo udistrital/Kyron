@@ -1,8 +1,8 @@
 <?php
 
-namespace asignacionPuntajes\salariales\experienciaInvestigacion;
+namespace asignacionPuntajes\salariales\experienciaProfesional;
 
-use asignacionPuntajes\salariales\experienciaInvestigacion\funcion\redireccion;
+use asignacionPuntajes\salariales\experienciaProfesional\funcion\redireccion;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");

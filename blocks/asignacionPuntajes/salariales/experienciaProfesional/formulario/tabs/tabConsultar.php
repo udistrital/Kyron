@@ -1,5 +1,5 @@
 <?php
-namespace asignacionPuntajes\salariales\experienciaInvestigacion\formulario;
+namespace asignacionPuntajes\salariales\experienciaProfesional\formulario;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");

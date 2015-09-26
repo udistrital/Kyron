@@ -1,15 +1,15 @@
 <?php
 
-namespace asignacionPuntajes\salariales\experienciaInvestigacion\funcion;
+namespace asignacionPuntajes\salariales\experienciaProfesional\funcion;
 
-use asignacionPuntajes\salariales\experienciaInvestigacion\funcion\redireccionar;
+use asignacionPuntajes\salariales\experienciaProfesional\funcion\redireccionar;
 
 include_once ('redireccionar.php');
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
 	exit ();
 }
-class Registrar {
+class RegistrarIndexacionRevista {
 	
 	var $miConfigurador;
 	var $lenguaje;
@@ -35,7 +35,7 @@ class Registrar {
 		$rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "raizDocumento" ) . "/blocks/asignacionPuntajes/salariales/";
 		$rutaBloque .= $esteBloque ['nombre'];
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
-				
+		
 		if($_REQUEST['entidad']==''){
 			$_REQUEST['entidad'] = 'null';
 		}
@@ -47,24 +47,25 @@ class Registrar {
 			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
 			'entidadInstitucion' => $_REQUEST['entidad'],
 			'otraEntidad' => $_REQUEST['otraEntidad'],
-			'tipoExperiencia' => $_REQUEST['tipoExperiencia'],
-			'horasPorSemana' => $_REQUEST['horasPorSemana'],
+			'cargo' => $_REQUEST['cargo'],
 			'fechaInicio' => $_REQUEST['fechaInicio'],
 			'fechaFinalizacion' => $_REQUEST['fechaFinalizacion'],
+			'duracionExperiencia' => $_REQUEST['duracionExperiencia'],
 			'numeroActa' => $_REQUEST['numeroActa'],
 			'fechaActa' => $_REQUEST['fechaActa'],
 			'numeroCasoActa' => $_REQUEST['numeroCasoActa'],
-			'puntaje' => $_REQUEST['puntaje']
+			'puntaje' => $_REQUEST['puntaje'],
+			'identificadorExperiencia' => $_REQUEST['identificadorExperiencia']
 		);
 		
-		$cadenaSql = $this->miSql->getCadenaSql ( 'registrar', $arregloDatos );
-		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "registrar" );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizar', $arregloDatos );
+		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
 
 		if ($resultado) {
-			redireccion::redireccionar ( 'inserto',  $_REQUEST['docenteRegistrar']);
+			redireccion::redireccionar ( 'actualizo',  $_REQUEST['docenteRegistrar']);
 			exit ();
 		} else {
-			redireccion::redireccionar ( 'noInserto' );
+			redireccion::redireccionar ( 'noActualizo',  $_REQUEST['docenteRegistrar']);
 			exit ();
 		}
 	}
@@ -79,7 +80,7 @@ class Registrar {
 	}
 }
 
-$miRegistrador = new Registrar ( $this->lenguaje, $this->sql, $this->funcion );
+$miRegistrador = new RegistrarIndexacionRevista ( $this->lenguaje, $this->sql, $this->funcion );
 
 $resultado = $miRegistrador->procesarFormulario ();
 

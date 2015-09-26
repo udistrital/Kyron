@@ -1,8 +1,8 @@
 <?php
 
-namespace asignacionPuntajes\salariales\experienciaInvestigacion\funcion;
+namespace asignacionPuntajes\salariales\experienciaProfesional\funcion;
 
-use asignacionPuntajes\salariales\experienciaInvestigacion\funcion\redireccionar;
+use asignacionPuntajes\salariales\experienciaProfesional\funcion\redireccionar;
 
 include_once ('redireccionar.php');
 if (! isset ( $GLOBALS ["autorizado"] )) {
@@ -47,10 +47,10 @@ class Registrar {
 			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
 			'entidadInstitucion' => $_REQUEST['entidad'],
 			'otraEntidad' => $_REQUEST['otraEntidad'],
-			'tipoExperiencia' => $_REQUEST['tipoExperiencia'],
-			'horasPorSemana' => $_REQUEST['horasPorSemana'],
+			'cargo' => $_REQUEST['cargo'],
 			'fechaInicio' => $_REQUEST['fechaInicio'],
 			'fechaFinalizacion' => $_REQUEST['fechaFinalizacion'],
+			'duracionExperiencia' => $_REQUEST['duracionExperiencia'],
 			'numeroActa' => $_REQUEST['numeroActa'],
 			'fechaActa' => $_REQUEST['fechaActa'],
 			'numeroCasoActa' => $_REQUEST['numeroCasoActa'],
