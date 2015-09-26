@@ -6,7 +6,7 @@ $this->idioma["tabIngresar"] = "Ingresar Producción de Libros";
 //////////////////////////////////////////////////////////////
 
 //************ MENSAJES *********
-$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Dirección de Trabajo de Grado para el docente <br>";
+$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Producción de Libro para el docente <br>";
 $this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado Producción de Libro para el docente <br>" ;
 $this->idioma["mensajeError"] =  "Error al tratar de registrar Producción de Libro.";
 $this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Producciones de Libros </br> Para los Criterios Ingresados";
@@ -33,6 +33,7 @@ $this->idioma["fechaActaLibro"] = "Fecha de Acta CIARP-UD:";
 $this->idioma["numeroCasoActaLibro"] = "Número de Caso de Acta:";
 $this->idioma["puntajeLibro"] = "Puntaje:";
 $this->idioma["detallesLibro"] = "Detalles:";
+$this->idioma["marcoModificarRegistro"] = "Modificar información de Producción de Libros";
 
 $this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";
 $this->idioma["docenteTitulo"] = "Identificación o Nombre del Docente.";
@@ -51,6 +52,7 @@ $this->idioma["numeroActaLibroTitulo"] = "Ingrese el Número de Acta CIARP-UD.";
 $this->idioma["fechaActaLibroTitulo"] = "Seleccione la Fecha de Acta CIARP-UD.";
 $this->idioma["numeroCasoActaLibroTitulo"] = "Ingrese el Número de Caso de Acta.";
 $this->idioma["puntajeLibrosTitulo"] = "Ingrese Puntaje.";
+$this->idioma["marcoModificarRegistroTitulo"] = "Modificar información de Producción de Libros";
 
 $this->idioma["documentoEvaluador1"] = "Identificacón Evaluador";
 $this->idioma["nombreEvaluador1"] = "Nombre del Evaluador";
