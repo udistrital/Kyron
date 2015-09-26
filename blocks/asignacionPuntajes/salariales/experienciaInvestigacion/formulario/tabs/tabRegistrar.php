@@ -299,7 +299,7 @@ class FormularioRegistro {
 			$atributos ['valor'] = '';
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-		$atributos ['deshabilitado'] = false;
+		$atributos ['deshabilitado'] = true;
 		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '10';
 		$atributos ['anchoEtiqueta'] = 280;
@@ -332,7 +332,7 @@ class FormularioRegistro {
 			$atributos ['valor'] = '';
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-		$atributos ['deshabilitado'] = false;
+		$atributos ['deshabilitado'] = true;
 		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '10';
 		$atributos ['anchoEtiqueta'] = 280;
