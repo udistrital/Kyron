@@ -14,25 +14,10 @@ $this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el re
 /////////////////////////////////
 
 //* SECCIÓN ELEMENTOS QUE SU NOMBRE POSIBLEMENTE VARIA DENTRO DEL FORMULARIO *//
-$this->idioma["docenteRegistrar"] = "Identificación o nombre del docente:";
-$this->idioma["nombreLibro"] = "Título del libro:";
-$this->idioma["tipoLibro"] = "Tipo de libro:";
-$this->idioma["entidadCertificadora"] = "Entidad que certifica:";
-$this->idioma["pais"] = "País";
-$this->idioma["categoria"] = "Categorías";
-$this->idioma["isbnLibro"] = "Código de numeración (ISBN):";
-$this->idioma["annoLibro"] = "Año de publicación:";
-$this->idioma["volumenLibro"] = "Volumen";
-$this->idioma["paginasLibro"] = "Páginas";
-$this->idioma["tituloArticuloLibro"] = "Título del Artículo";
-$this->idioma["numeroAutoresLibro"] = "Número de Autores:";
-$this->idioma["numeroAutoresUniversidad"] = "Número de Autores UD:";
-$this->idioma["editorial"] = "Editorial:";
-$this->idioma["numeroActaLibro"] = "Número de Acta CIARP-UD:";
-$this->idioma["fechaActaLibro"] = "Fecha de Acta CIARP-UD:";
-$this->idioma["numeroCasoActaLibro"] = "Número de Caso de Acta:";
-$this->idioma["puntajeLibro"] = "Puntaje:";
-$this->idioma["detallesLibro"] = "Detalles:";
+$this->idioma["nombre"] = "Nombre de la producción:";
+$this->idioma["tipo"] = "Tipo de producción:";
+$this->idioma["numeroCertificado"] = "Número de dertificado del producto:";
+$this->idioma["fechaProduccion"] = "Fecha de la producción:";
 
 $this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";
 $this->idioma["docenteTitulo"] = "Identificación o Nombre del Docente.";
@@ -89,12 +74,11 @@ $this->idioma["noDefinido"] = "No definido";
 // *** SECCIÓN DE ETIQUETAS QUE POSIBLEMENTE NO VARIAN *** //
 $this->idioma["facultad"] = "Facultad:";
 $this->idioma["proyectoCurricular"] = "Proyecto Curricular:";
-$this->idioma["docente"] = "Indentificación o nombre del docente:";
-$this->idioma["docenteRegistrar"] = "Identificación o Nombre del Docente";
-$this->idioma["pais"] = "País";
-$this->idioma["numeroActa"] = "Número de Acta CIARP-UD";
-$this->idioma["fechaActa"] = "Fecha de Acta CIARP-UD";
-$this->idioma["numeroCasoActa"] = "Número de Caso de Acta";
+$this->idioma["docente"] = "Identificación o nombre del docente:";
+$this->idioma["docenteRegistrar"] = "Identificación o nombre del docente:";
+$this->idioma["numeroActa"] = "Número de Acta CIARP-UD:";
+$this->idioma["fechaActa"] = "Fecha de Acta CIARP-UD:";
+$this->idioma["numeroCasoActa"] = "Número de Caso de Acta:";
 $this->idioma["puntaje"] = "Puntaje	";
 ////////////////////////////////////////////////////////////////
 
