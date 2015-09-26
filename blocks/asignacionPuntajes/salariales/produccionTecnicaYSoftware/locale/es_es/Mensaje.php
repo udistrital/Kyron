@@ -18,36 +18,25 @@ $this->idioma["nombre"] = "Nombre de la producción:";
 $this->idioma["tipo"] = "Tipo de producción:";
 $this->idioma["numeroCertificado"] = "Número de certificado del producto:";
 $this->idioma["fechaProduccion"] = "Fecha de la producción:";
+$this->idioma["marcoModificarRegistro"] = "Modificar información de Producción Técnica y Software";
 
-$this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";
-$this->idioma["docenteTitulo"] = "Identificación o Nombre del Docente.";
-$this->idioma["nombreLibroTitulo"] = "Nombre de Libro Públicada.";
-$this->idioma["contextoLibroTitulo"] = "Contexto de la Libro.";
-$this->idioma["isbnLibroTitulo"] = "International Standard Book Number, Número Estándar Internacional de Libros o Número Internacional Normalizado del Libro.";
-$this->idioma["annoLibroTitulo"] = "Año de Publicación de la Libro.";
-$this->idioma["volumenLibroTitulo"] = "Volumen de la Libro.";
-$this->idioma["numeroLibroTitulo"] = "Número de Publicación en Libro.";
-$this->idioma["paginasLibroTitulo"] = "Páginas de la Publicación en Libro.";
-$this->idioma["tituloArticuloLibroTitulo"] = "Título del Artículo Indexado";
-$this->idioma["numeroAutoresLibroTitulo"] = "Número de Autores del Artículo.";
-$this->idioma["numeroAutoresUniversidadTitulo"] = "Número de Autores en la Publicacón Pertenecientes a la Universidad Distrital.";
-$this->idioma["editorialTitulo"] = "Editorial:";
-$this->idioma["numeroActaLibroTitulo"] = "Ingrese el Número de Acta CIARP-UD.";
-$this->idioma["fechaActaLibroTitulo"] = "Seleccione la Fecha de Acta CIARP-UD.";
-$this->idioma["numeroCasoActaLibroTitulo"] = "Ingrese el Número de Caso de Acta.";
-$this->idioma["puntajeLibrosTitulo"] = "Ingrese Puntaje.";
+$this->idioma["nombreTitulo"] = "Nombre de Producción.";
+$this->idioma["tipoTitulo"] = "Tipo de Producción.";
+$this->idioma["numeroCertificadoTitulo"] = "Código/Número de identificación del producto.";
+$this->idioma["fechaProduccionTitulo"] = "Fecha de la producción:";
+$this->idioma["marcoModificarRegistroTitulo"] = "Modificar información de Producción Técnica y Software";
 
-$this->idioma["documentoEvaluador1"] = "Identificacón Evaluador";
+$this->idioma["documentoEvaluador1"] = "Identificación Evaluador";
 $this->idioma["nombreEvaluador1"] = "Nombre del Evaluador";
 $this->idioma["entidadEvaluador1"] = "Entidad o Institución";
 $this->idioma["puntajeSugeridoEvaluador1"] = "Puntaje Sugerido";
 
-$this->idioma["documentoEvaluador2"] = "Identificacón Evaluador";
+$this->idioma["documentoEvaluador2"] = "Identificación Evaluador";
 $this->idioma["nombreEvaluador2"] = "Nombre del Evaluador";
 $this->idioma["entidadEvaluador2"] = "Entidad o Institución";
 $this->idioma["puntajeSugeridoEvaluador2"] = "Puntaje Sugerido";
 
-$this->idioma["documentoEvaluador3"] = "Identificacón Evaluador";
+$this->idioma["documentoEvaluador3"] = "Identificación Evaluador";
 $this->idioma["nombreEvaluador3"] = "Nombre del Evaluador";
 $this->idioma["entidadEvaluador3"] = "Entidad o Institución";
 $this->idioma["puntajeSugeridoEvaluador3"] = "Puntaje Sugerido";
@@ -80,6 +69,14 @@ $this->idioma["numeroActa"] = "Número de Acta CIARP-UD:";
 $this->idioma["fechaActa"] = "Fecha de Acta CIARP-UD:";
 $this->idioma["numeroCasoActa"] = "Número de Caso de Acta:";
 $this->idioma["puntaje"] = "Puntaje:";
+
+
+$this->idioma["docenteTitulo"] = "Identificación o Nombre del Docente.";
+$this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";
+$this->idioma["numeroActaTitulo"] = "Ingrese el Número de Acta CIARP-UD.";
+$this->idioma["fechaActaTitulo"] = "Seleccione la Fecha de Acta CIARP-UD.";
+$this->idioma["numeroCasoActaTitulo"] = "Ingrese el Número de Caso de Acta.";
+$this->idioma["puntajeTitulo"] = "Ingrese Puntaje.";
 ////////////////////////////////////////////////////////////////
 
 ?>

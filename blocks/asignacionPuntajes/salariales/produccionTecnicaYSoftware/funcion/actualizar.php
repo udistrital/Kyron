@@ -37,8 +37,8 @@ class RegistrarIndexacionRevista {
 		$rutaBloque .= $esteBloque ['nombre'];
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
 		
-		//Actualizar Libro Docente
-		$cadenaSql = $this->miSql->getCadenaSql ('actualizarLibroDocente', $_REQUEST);
+		//Actualizar producción
+		$cadenaSql = $this->miSql->getCadenaSql ('actualizarProduccion', $_REQUEST);
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
 		$transaccion = TRUE;
 		$transaccion &= $resultado;
@@ -48,8 +48,8 @@ class RegistrarIndexacionRevista {
 				$datos = array(
 						'documento_evaluador' =>  $_REQUEST ['documentoEvaluador'.$i],
 						'old_documento_evaluador' =>  $_REQUEST ['old_documentoEvaluador'.$i],
-						'codigo_isbn' => $_REQUEST ['isbnLibro'],
-						'old_codigo_isbn' => $_REQUEST ['old_isbnLibro'],
+						'numero_certificado' => $_REQUEST ['numeroCertificado'],
+						'old_numero_certificado' => $_REQUEST ['old_numero_certificado'],
 						'documento_docente' => $_REQUEST ['id_docenteRegistrar'],
 						'old_documento_docente' => $_REQUEST ['old_id_docenteRegistrar'],
 						'nombre' => $_REQUEST ['nombreEvaluador'.$i],
@@ -61,7 +61,7 @@ class RegistrarIndexacionRevista {
 			} else if (isset($_REQUEST['documentoEvaluador' . $i]) && $_REQUEST['documentoEvaluador' . $i] != ''){//Insertar nuevo evaluador
 				$datos = array(
 						'documento_evaluador' =>  $_REQUEST ['documentoEvaluador'.$i],
-						'codigo_isbn' => $_REQUEST ['isbnLibro'],
+						'numero_certificado' => $_REQUEST ['numeroCertificado'],
 						'documento_docente' => $_REQUEST ['id_docenteRegistrar'],
 						'nombre' => $_REQUEST ['nombreEvaluador'.$i],
 						'id_universidad' => $_REQUEST ['entidadCertificadora'.$i],
