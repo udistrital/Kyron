@@ -101,20 +101,20 @@ class FormularioModificar {
 		);
 		 
 		$cadena_sql = $this->miSql->getCadenaSql ( "publicacionActualizar", $datos );
-		$resultadoExperienciaDireccionAca = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
+		$resultadoExperienciaProfesional = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
 		
-		$_REQUEST['docenteRegistrar'] =  $resultadoExperienciaDireccionAca[0]['documento_docente'] . " - " . $resultadoExperienciaDireccionAca[0]['nombre_docente'];
-		$_REQUEST['id_docenteRegistrar'] =  $resultadoExperienciaDireccionAca[0]['documento_docente'];
-		$_REQUEST['entidad'] =  $resultadoExperienciaDireccionAca[0]['id_universidad'];
-		$_REQUEST['otraEntidad'] =  $resultadoExperienciaDireccionAca[0]['otra_entidad'];
-		$_REQUEST['cargo'] =  $resultadoExperienciaDireccionAca[0]['cargo'];
-		$_REQUEST['fechaInicio'] =  $resultadoExperienciaDireccionAca[0]['fecha_inicio'];
-		$_REQUEST['fechaFinalizacion'] =  $resultadoExperienciaDireccionAca[0]['fecha_finalizacion'];
-		$_REQUEST['duracionExperiencia'] =  $resultadoExperienciaDireccionAca[0]['dias_experiencia'];
-		$_REQUEST['numeroActa'] =  $resultadoExperienciaDireccionAca[0]['numero_acta'];
-		$_REQUEST['fechaActa'] =  $resultadoExperienciaDireccionAca[0]['fecha_acta'];
-		$_REQUEST['numeroCasoActa'] =  $resultadoExperienciaDireccionAca[0]['caso_acta'];
-		$_REQUEST['puntaje'] =  $resultadoExperienciaDireccionAca[0]['puntaje'];
+		$_REQUEST['docenteRegistrar'] =  $resultadoExperienciaProfesional[0]['documento_docente'] . " - " . $resultadoExperienciaProfesional[0]['nombre_docente'];
+		$_REQUEST['id_docenteRegistrar'] =  $resultadoExperienciaProfesional[0]['documento_docente'];
+		$_REQUEST['entidad'] =  $resultadoExperienciaProfesional[0]['id_universidad'];
+		$_REQUEST['otraEntidad'] =  $resultadoExperienciaProfesional[0]['otra_entidad'];
+		$_REQUEST['cargo'] =  $resultadoExperienciaProfesional[0]['cargo'];
+		$_REQUEST['fechaInicio'] =  $resultadoExperienciaProfesional[0]['fecha_inicio'];
+		$_REQUEST['fechaFinalizacion'] =  $resultadoExperienciaProfesional[0]['fecha_finalizacion'];
+		$_REQUEST['duracionExperiencia'] =  $resultadoExperienciaProfesional[0]['dias_experiencia'];
+		$_REQUEST['numeroActa'] =  $resultadoExperienciaProfesional[0]['numero_acta'];
+		$_REQUEST['fechaActa'] =  $resultadoExperienciaProfesional[0]['fecha_acta'];
+		$_REQUEST['numeroCasoActa'] =  $resultadoExperienciaProfesional[0]['caso_acta'];
+		$_REQUEST['puntaje'] =  $resultadoExperienciaProfesional[0]['puntaje'];
 		
 		$esteCampo = "marcoModificarRegistro";
 		$atributos ['id'] = $esteCampo;

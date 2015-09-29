@@ -101,20 +101,17 @@ class FormularioModificar {
 		);
 		 
 		$cadena_sql = $this->miSql->getCadenaSql ( "publicacionActualizar", $datos );
-		$resultadoExperienciaDireccionAca = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
+		$resultadoExperienciaCalificada = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
 		
-		$_REQUEST['docenteRegistrar'] =  $resultadoExperienciaDireccionAca[0]['documento_docente'] . " - " . $resultadoExperienciaDireccionAca[0]['nombre_docente'];
-		$_REQUEST['id_docenteRegistrar'] =  $resultadoExperienciaDireccionAca[0]['documento_docente'];
-		$_REQUEST['entidad'] =  $resultadoExperienciaDireccionAca[0]['id_universidad'];
-		$_REQUEST['otraEntidad'] =  $resultadoExperienciaDireccionAca[0]['otra_entidad'];
-		$_REQUEST['cargo'] =  $resultadoExperienciaDireccionAca[0]['cargo'];
-		$_REQUEST['fechaInicio'] =  $resultadoExperienciaDireccionAca[0]['fecha_inicio'];
-		$_REQUEST['fechaFinalizacion'] =  $resultadoExperienciaDireccionAca[0]['fecha_finalizacion'];
-		$_REQUEST['duracionExperiencia'] =  $resultadoExperienciaDireccionAca[0]['dias_experiencia'];
-		$_REQUEST['numeroActa'] =  $resultadoExperienciaDireccionAca[0]['numero_acta'];
-		$_REQUEST['fechaActa'] =  $resultadoExperienciaDireccionAca[0]['fecha_acta'];
-		$_REQUEST['numeroCasoActa'] =  $resultadoExperienciaDireccionAca[0]['caso_acta'];
-		$_REQUEST['puntaje'] =  $resultadoExperienciaDireccionAca[0]['puntaje'];
+		$_REQUEST['docenteRegistrar'] =  $resultadoExperienciaCalificada[0]['documento_docente'] . " - " . $resultadoExperienciaCalificada[0]['nombre_docente'];
+		$_REQUEST['id_docenteRegistrar'] =  $resultadoExperienciaCalificada[0]['documento_docente'];
+		$_REQUEST['tipoExperiencia'] =  $resultadoExperienciaCalificada[0]['tipo_experiencia'];
+		$_REQUEST['numeroResolucion'] =  $resultadoExperienciaCalificada[0]['numero_resolucion'];
+		$_REQUEST['resolucionEmitidaPor'] =  $resultadoExperienciaCalificada[0]['emisor_resolucion'];
+		$_REQUEST['fechaResolucion'] =  $resultadoExperienciaCalificada[0]['fecha_resolucion'];
+		$_REQUEST['numeroActa'] =  $resultadoExperienciaCalificada[0]['numero_acta'];
+		$_REQUEST['fechaActa'] =  $resultadoExperienciaCalificada[0]['fecha_acta'];
+		$_REQUEST['puntaje'] =  $resultadoExperienciaCalificada[0]['puntaje'];
 		
 		$esteCampo = "marcoModificarRegistro";
 		$atributos ['id'] = $esteCampo;
@@ -146,7 +143,7 @@ class FormularioModificar {
 					$atributos ['valor'] = '';
 				}
 				$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-				$atributos ['deshabilitado'] = false;
+				$atributos ['deshabilitado'] = true;
 				$atributos ['tamanno'] = 80;
 				$atributos ['maximoTamanno'] = '200';
 				$atributos ['anchoEtiqueta'] = 280;

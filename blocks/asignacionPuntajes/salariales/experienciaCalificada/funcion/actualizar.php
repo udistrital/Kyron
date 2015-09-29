@@ -36,31 +36,21 @@ class Actualizar {
 		$rutaBloque .= $esteBloque ['nombre'];
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
 		
-		if($_REQUEST['entidad']==''){
-			$_REQUEST['entidad'] = 'null';
-		}
-		if (!isset($_REQUEST['otraEntidad'])){
-			$_REQUEST['otraEntidad'] = null;
-		}
-		
 		$arregloDatos = array (
 			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
-			'entidadInstitucion' => $_REQUEST['entidad'],
-			'otraEntidad' => $_REQUEST['otraEntidad'],
-			'cargo' => $_REQUEST['cargo'],
-			'fechaInicio' => $_REQUEST['fechaInicio'],
-			'fechaFinalizacion' => $_REQUEST['fechaFinalizacion'],
-			'duracionExperiencia' => $_REQUEST['duracionExperiencia'],
+			'tipoExperiencia' => $_REQUEST['tipoExperiencia'],
+			'numeroResolucion' => $_REQUEST['numeroResolucion'],
+			'resolucionEmitidaPor' => $_REQUEST['resolucionEmitidaPor'],
+			'fechaResolucion' => $_REQUEST['fechaResolucion'],
 			'numeroActa' => $_REQUEST['numeroActa'],
 			'fechaActa' => $_REQUEST['fechaActa'],
-			'numeroCasoActa' => $_REQUEST['numeroCasoActa'],
 			'puntaje' => $_REQUEST['puntaje'],
 			'identificadorExperiencia' => $_REQUEST['identificadorExperiencia']
 		);
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizar', $arregloDatos );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
-
+		
 		if ($resultado) {
 			redireccion::redireccionar ( 'actualizo',  $_REQUEST['docenteRegistrar']);
 			exit ();
