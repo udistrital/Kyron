@@ -1,34 +1,35 @@
 <?php
 
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
-$this->idioma["tabConsultar"] = "Consultar Experiencia en Docencia";
-$this->idioma["tabIngresar"] = "Ingresar Experiencia en Docencia";
+$this->idioma["tabConsultar"] = "Consultar Estudios PostDoctorales";
+$this->idioma["tabIngresar"] = "Ingresar Estudios PostDoctorales";
 //////////////////////////////////////////////////////////////
 
 //************ MENSAJES *********
-$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Experiencia en Docencia <br>";
-$this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado la Experiencia en Docencia para el docente <br>" ;
-$this->idioma["mensajeError"] =  "Error al tratar de registrar la Experiencia en Docencia.";
-$this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Experiencia en Docencia </br> Para los Criterios Ingresados";
-$this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de Experiencia en Docencia Para el Docente </br>";
+$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Estudios PostDoctorales <br>";
+$this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado la Estudios PostDoctorales para el docente <br>" ;
+$this->idioma["mensajeError"] =  "Error al tratar de registrar la Estudios PostDoctorales.";
+$this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Estudios PostDoctorales </br> Para los Criterios Ingresados";
+$this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de Estudios PostDoctorales Para el Docente </br>";
 /////////////////////////////////
 
 //* SECCIÓN ELEMENTOS QUE SU NOMBRE POSIBLEMENTE VARIA DENTRO DEL FORMULARIO *//
-$this->idioma["entidad"] = "Entidad o Institución";
-$this->idioma["otraEntidad"] = "Otra Entidad";
-$this->idioma["otraEntidadTitulo"] = "Ingrese el nombre de la Entidad o Institución";
-$this->idioma["tipoEntidad"] = "Tipo de Entidad";
-$this->idioma["horasPorSemana"] = "Número de Horas por Semana";
-$this->idioma["horasPorSemanaTitulo"] = "Ingrese el número de horas por semana";
-$this->idioma["fechaInicio"] = "Fecha de Inicio";
-$this->idioma["fechaInicioTitulo"] = "Seleccione la Fecha de Inicio";
-$this->idioma["fechaFinalizacion"] = "Fecha de Finalización";
-$this->idioma["fechaFinalizacionTitulo"] = "Seleccione la Fecha de Finalización";
-$this->idioma["duracionExperiencia"] = "Duración de Experiencia (Días)";
-$this->idioma["duracionExperienciaTitulo"] = "Ingrese la Duración de Experiencia (Días)";
 
-$this->idioma["marcoConsultaGeneral"] = "Experiencia en Docencia";
-$this->idioma["marcoModificarRegistro"] = "Modificar Información de la Experiencia en Docencia";
+$this->idioma["titulo"] = "Título otorgado:";
+$this->idioma["fecha"] = "Fecha de obtención del título:";
+$this->idioma["entidad"] = "Universidad o Entidad:";
+$this->idioma["otraEntidad"] = "En otra Universidad/Entidad:";
+$this->idioma["annos"] = "Duración de doctorado (en años):";
+
+
+$this->idioma["tituloTitulo"] = "";
+$this->idioma["fechaTitulo"] = "";
+$this->idioma["otraEntidadTitulo"] = "Ingrese el nombre de la Entidad o Institución";
+$this->idioma["entidadTitulo"] = "Ingrese el nombre de la Entidad o Institución";
+$this->idioma["annosTitulo"] = "";
+
+$this->idioma["marcoConsultaGeneral"] = "Estudios PostDoctorales";
+$this->idioma["marcoModificarRegistro"] = "Modificar Información de la Estudios PostDoctorales";
 
 $this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";
 $this->idioma["docenteTitulo"] = "Identificación o Nombre del Docente.";
@@ -51,14 +52,14 @@ $this->idioma["noDefinido"] = "No definido";
 
 
 // *** SECCIÓN DE ETIQUETAS QUE POSIBLEMENTE NO VARIAN *** //
-$this->idioma["facultad"] = "Facultad";
-$this->idioma["proyectoCurricular"] = "Proyecto Curricular";
+$this->idioma["facultad"] = "Facultad:";
+$this->idioma["proyectoCurricular"] = "Proyecto Curricular:";
 $this->idioma["docente"] = "Indentificación o nombre del docente:";
-$this->idioma["docenteRegistrar"] = "Identificación o Nombre del Docente";
-$this->idioma["numeroActa"] = "Número de Acta CIARP-UD";
-$this->idioma["fechaActa"] = "Fecha de Acta CIARP-UD";
-$this->idioma["numeroCasoActa"] = "Número de Caso de Acta";
-$this->idioma["puntaje"] = "Puntaje	";
+$this->idioma["docenteRegistrar"] = "Identificación o Nombre del Docente:";
+$this->idioma["numeroActa"] = "Número de Acta CIARP-UD:";
+$this->idioma["fechaActa"] = "Fecha de Acta CIARP-UD:";
+$this->idioma["numeroCasoActa"] = "Número de Caso de Acta:";
+$this->idioma["puntaje"] = "Puntaje:";
 ////////////////////////////////////////////////////////////////
 
 ?>
