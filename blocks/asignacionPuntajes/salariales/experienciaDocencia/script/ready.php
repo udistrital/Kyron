@@ -1,4 +1,4 @@
-$("#experienciaDireccionAcademica").validationEngine({
+$("#experienciaDocencia").validationEngine({
 promptPosition : "centerRight", 
 scroll: false,
 autoHidePrompt: true,
@@ -6,8 +6,8 @@ autoHideDelay: 2000
 });
 
 $(function() {
-	$("#experienciaDireccionAcademica").submit(function() {
-		$resultado=$("#experienciaDireccionAcademica").validationEngine("validate");
+	$("#experienciaDocencia").submit(function() {
+		$resultado=$("#experienciaDocencia").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -15,7 +15,7 @@ $(function() {
 	});
 });
 
-$("#experienciaDireccionAcademicaRegistrar").validationEngine({
+$("#experienciaDocenciaRegistrar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,
@@ -23,8 +23,8 @@ $("#experienciaDireccionAcademicaRegistrar").validationEngine({
 });
 
 $(function() {
-$("#experienciaDireccionAcademicaRegistrar").submit(function() {
-$resultado=$("#experienciaDireccionAcademicaRegistrar").validationEngine("validate");
+$("#experienciaDocenciaRegistrar").submit(function() {
+$resultado=$("#experienciaDocenciaRegistrar").validationEngine("validate");
 
 if ($resultado) {
 
@@ -41,8 +41,8 @@ $(function () {
 });
 
 $(function() {
-	$("#experienciaDireccionAcademicaModificar").submit(function() {
-		$resultado=$("#experienciaDireccionAcademicaModificar").validationEngine("validate");
+	$("#experienciaDocenciaModificar").submit(function() {
+		$resultado=$("#experienciaDocenciaModificar").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -50,7 +50,7 @@ $(function() {
 	});
 });
 
-$("#experienciaDireccionAcademicaModificar").validationEngine({
+$("#experienciaDocenciaModificar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,

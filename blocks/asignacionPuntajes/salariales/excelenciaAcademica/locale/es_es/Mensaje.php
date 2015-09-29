@@ -50,7 +50,7 @@ $this->idioma["noDefinido"] = "No definido";
 // *** SECCIÓN DE ETIQUETAS QUE POSIBLEMENTE NO VARIAN *** //
 $this->idioma["facultad"] = "Facultad";
 $this->idioma["proyectoCurricular"] = "Proyecto Curricular";
-$this->idioma["docente"] = "Indentificación o nombre del docente:";
+$this->idioma["docente"] = "Identificación o nombre del docente:";
 $this->idioma["docenteRegistrar"] = "Identificación o Nombre del Docente";
 $this->idioma["numeroActa"] = "Número de Acta CIARP-UD";
 $this->idioma["fechaActa"] = "Fecha de Acta CIARP-UD";

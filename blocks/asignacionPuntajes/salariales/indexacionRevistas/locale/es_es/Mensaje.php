@@ -22,7 +22,7 @@ $this->idioma["facultad"] = "Facultad";
 $this->idioma["proyectoCurricular"] = "Proyecto Curricular";
 
 $this->idioma["botonConsultar"] = "Consultar";
-$this->idioma["docente"] = "Indentificación o nombre del docente:";
+$this->idioma["docente"] = "Identificación o nombre del docente:";
 
 $this->idioma["botonRegresar"] = "Regresar";
 $this->idioma["docenteRegistrar"] = "Identificación o Nombre del Docente";
