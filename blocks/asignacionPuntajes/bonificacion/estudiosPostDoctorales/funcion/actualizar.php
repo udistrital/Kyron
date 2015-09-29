@@ -27,6 +27,7 @@ class RegistrarIndexacionRevista {
 		$this->miFuncion = $funcion;
 	}
 	function procesarFormulario() {
+		
 		$conexion = "docencia";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
@@ -37,29 +38,17 @@ class RegistrarIndexacionRevista {
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
 		
 		if($_REQUEST['entidad']==''){
-			$_REQUEST['entidad'] = 'null';
+			$_REQUEST['entidad'] = 'NULL';
+		} else {
+			$_REQUEST['entidad'] = '\'' . $_REQUEST['entidad'] . '\'';
 		}
 		if (!isset($_REQUEST['otraEntidad'])){
-			$_REQUEST['otraEntidad'] = null;
+			$_REQUEST['otraEntidad'] = 'NULL';
+		} else {
+			$_REQUEST['otraEntidad'] = '\'' . $_REQUEST['otraEntidad'] . '\'';
 		}
 		
-		$arregloDatos = array (
-			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
-			'entidadInstitucion' => $_REQUEST['entidad'],
-			'otraEntidad' => $_REQUEST['otraEntidad'],
-			'tipoEntidad' => $_REQUEST['tipoEntidad'],
-			'horasPorSemana' => $_REQUEST['horasPorSemana'],
-			'fechaInicio' => $_REQUEST['fechaInicio'],
-			'fechaFinalizacion' => $_REQUEST['fechaFinalizacion'],
-			'duracionExperiencia' => $_REQUEST['duracionExperiencia'],
-			'numeroActa' => $_REQUEST['numeroActa'],
-			'fechaActa' => $_REQUEST['fechaActa'],
-			'numeroCasoActa' => $_REQUEST['numeroCasoActa'],
-			'puntaje' => $_REQUEST['puntaje'],
-			'identificadorExperiencia' => $_REQUEST['identificadorExperiencia']
-		);
-		
-		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizar', $arregloDatos );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizar', $_REQUEST );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
 
 		if ($resultado) {

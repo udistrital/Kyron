@@ -22,11 +22,11 @@ $this->idioma["otraEntidad"] = "En otra Universidad/Entidad:";
 $this->idioma["annos"] = "Duración de doctorado (en años):";
 
 
-$this->idioma["tituloTitulo"] = "";
-$this->idioma["fechaTitulo"] = "";
+$this->idioma["tituloTitulo"] = "Ingrese el título otorgado en el doctorado";
+$this->idioma["fechaTitulo"] = "Ingrese la fecha de la obtención del título de doctorado";
 $this->idioma["otraEntidadTitulo"] = "Ingrese el nombre de la Entidad o Institución";
 $this->idioma["entidadTitulo"] = "Ingrese el nombre de la Entidad o Institución";
-$this->idioma["annosTitulo"] = "";
+$this->idioma["annosTitulo"] = "Ingrese el número de años que duró el doctorado";
 
 $this->idioma["marcoConsultaGeneral"] = "Estudios PostDoctorales";
 $this->idioma["marcoModificarRegistro"] = "Modificar Información de la Estudios PostDoctorales";

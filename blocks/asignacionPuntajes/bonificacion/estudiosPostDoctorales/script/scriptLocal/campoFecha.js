@@ -9,11 +9,8 @@ $( document ).ready(function() {
 	campoFecha[IFechaA++] = "#<?php echo $this->campoSeguro('fechaActa')?>";
 	campoFechaInput[IFechaB++] = "input#<?php echo $this->campoSeguro('fechaActa')?>";
 	
-	campoFecha[IFechaA++] = "#<?php echo $this->campoSeguro('fechaInicio')?>";
-	campoFechaInput[IFechaB++] = "input#<?php echo $this->campoSeguro('fechaInicio')?>";
-	
-	campoFecha[IFechaA++] = "#<?php echo $this->campoSeguro('fechaFinalizacion')?>";
-	campoFechaInput[IFechaB++] = "input#<?php echo $this->campoSeguro('fechaFinalizacion')?>";
+	campoFecha[IFechaA++] = "#<?php echo $this->campoSeguro('fecha')?>";
+	campoFechaInput[IFechaB++] = "input#<?php echo $this->campoSeguro('fecha')?>";
 	
 	
 	$(campoFecha).each(function(){

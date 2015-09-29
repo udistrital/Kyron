@@ -14,9 +14,6 @@ $embebido [$indice] = true;
 $funcion [$indice ++] = "scriptLocal/validarCampoNumerico.js";
 $embebido [$indice] = true;
 $funcion [$indice ++] = "scriptLocal/campoFecha.js";
-$embebido [$indice] = true;
-$funcion [$indice ++] = "scriptLocal/estudiantes.js";
-
 
 $rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "host" );
 $rutaBloque .= $this->miConfigurador->getVariableConfiguracion ( "site" );

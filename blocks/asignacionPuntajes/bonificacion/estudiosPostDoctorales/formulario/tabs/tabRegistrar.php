@@ -154,7 +154,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = ""; // 'required';
+		$atributos ['validar'] = "required, minSize[3], maxSize[255]";
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
 		} else {
@@ -187,7 +187,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, maxSize[10]';
+		$atributos ['validar'] = 'required, custom[date], maxSize[10]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -207,8 +207,7 @@ class FormularioRegistro {
 		unset ( $atributos );
 		// ----------------FIN CONTROL: Campo de Texto Fecha de Obtención del Título--------------------------------------------------------
 		
-		
-		// ----------------INICIO CONTROL: Lista entidad o Institución--------------------------------------------------------
+		// ----------------INICIO CONTROL: Lista universidad o entidad--------------------------------------------------------
 		$esteCampo = 'entidad';
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['id'] = $esteCampo;
@@ -231,7 +230,7 @@ class FormularioRegistro {
 		$atributos ['limitar'] = true;
 		$atributos ['anchoCaja'] = 57;
 		$atributos ['miEvento'] = '';
-		$atributos ['validar'] = '';
+		$atributos ['validar'] = 'custom[integer]';
 		$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ("entidadInstitucion");
 		$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 		$atributos ['matrizItems'] = $matrizItems;
@@ -239,7 +238,7 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroLista ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL:  Lista entidad o Institución--------------------------------------------------------
+		// ----------------FIN CONTROL:  Lista universidad o entidad--------------------------------------------------------
 		
 		// ----------------INICIO CONTROL: Campo Texto Otra Entidad o Institución --------------------------------------------------------
 		$esteCampo = 'otraEntidad';
@@ -254,7 +253,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = ""; // 'required';
+		$atributos ['validar'] = "custom[onlyLetterSp],minSize[3],maxSize[255]"; // 'required';
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
 		} else {
@@ -288,7 +287,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, maxSize[3], max[168]';
+		$atributos ['validar'] = 'required,custom[integer],maxSize[2]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -421,7 +420,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, min[0.1], max[4], custom[number]';
+		$atributos ['validar'] = 'required, min[0.1], max[120], custom[number]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -439,7 +438,7 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-			// ----------------FIN CONTROL: Campo de Texto Puntaje de PostDoctorales--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Puntaje de PostDoctorales--------------------------------------------------------
 			
 		// ------------------Division para los botones-------------------------
 		$atributos ["id"] = "botones";

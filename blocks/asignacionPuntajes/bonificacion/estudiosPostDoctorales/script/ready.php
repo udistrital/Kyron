@@ -88,11 +88,11 @@ $("#<?php echo $this->campoSeguro('entidad')?>").select2();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $("#<?php echo $this->campoSeguro('entidad')?>").change(function() {
-	if($("#<?php echo $this->campoSeguro('entidad')?>").val()==''){
-		$("#<?php echo $this->campoSeguro('otraEntidad')?>").removeAttr("disabled");
+	if($("#<?php echo $this->campoSeguro('entidad')?>").val()==''){//Si no existe entidad
+		$("#<?php echo $this->campoSeguro('otraEntidad')?>").removeAttr("disabled");//Se remueve el disable de otraEntidad
 		var idDatosEstudiantes = [
-                       	 '<?php echo $this->campoSeguro('otraEntidad')?>',
-                       ];
+             '<?php echo $this->campoSeguro('otraEntidad')?>',
+        ];
 		//Agrega required a todos los campos de los estudiantes
 		$.each(idDatosEstudiantes,function (i,v){
 			var obj = $("#"+v);
@@ -101,6 +101,21 @@ $("#<?php echo $this->campoSeguro('entidad')?>").change(function() {
 				var claseValidate = $.grep(clases,function(v,i){return v.indexOf('validate')>-1})[0];
 				obj.removeClass(claseValidate);
 				claseValidate = claseValidate.insertAt(claseValidate.indexOf("[")+1,'required,');
+				obj.addClass(claseValidate);
+			}
+		});
+		var idDatosEstudiantes = [
+             '<?php echo $this->campoSeguro('entidad')?>',
+        ];
+		//Remueve required a todos los campos de los estudiantes
+		$.each(idDatosEstudiantes,function (i,v){
+			var obj = $("#"+v);
+			if(obj.length>0){
+				var clases = obj.attr('class').split(' ');
+				var claseValidate = $.grep(clases,function(v,i){return v.indexOf('validate')>-1})[0];
+				obj.removeClass(claseValidate);
+				claseValidate = claseValidate.replace("required,","");
+				claseValidate = claseValidate.replace("required","");
 				obj.addClass(claseValidate);
 			}
 		});
@@ -108,8 +123,8 @@ $("#<?php echo $this->campoSeguro('entidad')?>").change(function() {
 		$("#<?php echo $this->campoSeguro('otraEntidad')?>").attr("disabled", "disabled");
 		$("#<?php echo $this->campoSeguro('otraEntidad')?>").val("");
 		var idDatosEstudiantes = [
-                       	 '<?php echo $this->campoSeguro('entidad')?>',
-                       ];
+         	 '<?php echo $this->campoSeguro('entidad')?>',
+        ];
 		//Agrega required a todos los campos de los estudiantes
 		$.each(idDatosEstudiantes,function (i,v){
 			var obj = $("#"+v);
@@ -121,19 +136,36 @@ $("#<?php echo $this->campoSeguro('entidad')?>").change(function() {
 				obj.addClass(claseValidate);
 			}
 		});
+		var idDatosEstudiantes = [
+             '<?php echo $this->campoSeguro('otraEntidad')?>',
+        ];
+		//Remueve required a todos los campos de los estudiantes
+		$.each(idDatosEstudiantes,function (i,v){
+			var obj = $("#"+v);
+			if(obj.length>0){
+				var clases = obj.attr('class').split(' ');
+				var claseValidate = $.grep(clases,function(v,i){return v.indexOf('validate')>-1})[0];
+				obj.removeClass(claseValidate);
+				claseValidate = claseValidate.replace("required,","");
+				claseValidate = claseValidate.replace("required","");
+				obj.addClass(claseValidate);
+			}
+		});
 	}
 });
+
+String.prototype.insertAt=function(index, string) { 
+	return this.substr(0, index) + string + this.substr(index);
+}
 
 if($("#<?php echo $this->campoSeguro('entidad')?>").val()!=''){
 		$("#<?php echo $this->campoSeguro('otraEntidad')?>").attr("disabled", "disabled");
 }else{
 
-		String.prototype.insertAt=function(index, string) { 
-	  		return this.substr(0, index) + string + this.substr(index);
-		}
+		
 		var idDatosEstudiantes = [
-                       	 '<?php echo $this->campoSeguro('otraEntidad')?>',
-                       ];
+             '<?php echo $this->campoSeguro('otraEntidad')?>',
+        ];
 		//Agrega required a todos los campos de los estudiantes
 		$.each(idDatosEstudiantes,function (i,v){
 			var obj = $("#"+v);
@@ -147,7 +179,4 @@ if($("#<?php echo $this->campoSeguro('entidad')?>").val()!=''){
 		});
 }
 
-String.prototype.insertAt=function(index, string) { 
-	  return this.substr(0, index) + string + this.substr(index);
-	}
 
