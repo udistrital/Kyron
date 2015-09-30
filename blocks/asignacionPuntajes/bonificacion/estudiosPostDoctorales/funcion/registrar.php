@@ -1,8 +1,8 @@
 <?php
 
-namespace asignacionPuntajes\salariales\estudiosPostDoctorales\funcion;
+namespace asignacionPuntajes\bonificacion\estudiosPostDoctorales\funcion;
 
-use asignacionPuntajes\salariales\estudiosPostDoctorales\funcion\redireccionar;
+use asignacionPuntajes\bonificacion\estudiosPostDoctorales\funcion\redireccionar;
 
 include_once ('redireccionar.php');
 if (! isset ( $GLOBALS ["autorizado"] )) {

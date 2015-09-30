@@ -1,8 +1,8 @@
 <?php
 
-namespace asignacionPuntajes\salariales\estudiosPostDoctorales;
+namespace asignacionPuntajes\bonificacion\estudiosPostDoctorales;
 
-use asignacionPuntajes\salariales\estudiosPostDoctorales\funcion\redireccion;
+use asignacionPuntajes\bonificacion\estudiosPostDoctorales\funcion\redireccion;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");

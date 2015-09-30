@@ -1,5 +1,5 @@
 <?php
-use asignacionPuntajes\salariales\estudiosPostDoctorales\Sql;
+use asignacionPuntajes\bonificacion\estudiosPostDoctorales\Sql;
 
 $conexion = "docencia";
 $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );

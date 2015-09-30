@@ -1,6 +1,6 @@
 <?php
 
-namespace asignacionPuntajes\salariales\estudiosPostDoctorales;
+namespace asignacionPuntajes\bonificacion\estudiosPostDoctorales;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -27,7 +27,7 @@ include_once ("Lenguaje.class.php");
 
 include_once ('funcion/redireccionar.php');
 
-use asignacionPuntajes\salariales\estudiosPostDoctorales\funcion\redireccion;
+use asignacionPuntajes\bonificacion\estudiosPostDoctorales\funcion\redireccion;
 
 // Esta clase actua como control del bloque en un patron FCE
 // Para evitar redefiniciones de clases el nombre de la clase del archivo bloque debe corresponder al nombre del bloque

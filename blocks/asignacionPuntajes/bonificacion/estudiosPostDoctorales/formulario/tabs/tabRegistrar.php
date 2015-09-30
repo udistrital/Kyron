@@ -1,5 +1,5 @@
 <?php
-namespace asignacionPuntajes\salariales\estudiosPostDoctorales\formulario;
+namespace asignacionPuntajes\bonificacion\estudiosPostDoctorales\formulario;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
