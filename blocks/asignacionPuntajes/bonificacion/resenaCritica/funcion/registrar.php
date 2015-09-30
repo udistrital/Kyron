@@ -9,7 +9,7 @@ if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
 	exit ();
 }
-class RegistrarIndexacionRevista {
+class Registrar {
 	
 	var $miConfigurador;
 	var $lenguaje;
@@ -37,7 +37,7 @@ class RegistrarIndexacionRevista {
 		$rutaBloque .= $esteBloque ['nombre'];
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
 				
-		$cadenaSql = $this->miSql->getCadenaSql ( 'registrar', $_REQUEST );echo $cadenaSql; die;
+		$cadenaSql = $this->miSql->getCadenaSql ( 'registrar', $_REQUEST );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
 		
 		if ($resultado) {
@@ -59,7 +59,7 @@ class RegistrarIndexacionRevista {
 	}
 }
 
-$miRegistrador = new RegistrarIndexacionRevista ( $this->lenguaje, $this->sql, $this->funcion );
+$miRegistrador = new Registrar ( $this->lenguaje, $this->sql, $this->funcion );
 
 $resultado = $miRegistrador->procesarFormulario ();
 

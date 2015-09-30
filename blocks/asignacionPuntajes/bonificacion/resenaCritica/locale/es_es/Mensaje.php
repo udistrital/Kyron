@@ -3,6 +3,8 @@
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
 $this->idioma["tabConsultar"] = "Consultar Reseña Crítica";
 $this->idioma["tabIngresar"] = "Ingresar Reseña Crítica";
+//Tooltip formulario
+$this->idioma["resenaCriticaRegistrar"] = "";
 //////////////////////////////////////////////////////////////
 
 //************ MENSAJES *********
@@ -29,6 +31,7 @@ $this->idioma["autorTitulo"] = "Ingrese el autor de la crítica.";
 
 $this->idioma["marcoConsultaGeneral"] = "Reseña Crítica";
 $this->idioma["marcoModificarRegistro"] = "Modificar Información de la Reseña Crítica";
+$this->idioma["marcoModificarRegistroTitulo"] = "";
 
 $this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";
 $this->idioma["docenteTitulo"] = "Identificación o Nombre del Docente.";

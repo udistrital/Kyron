@@ -9,7 +9,7 @@ if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
 	exit ();
 }
-class RegistrarIndexacionRevista {
+class Actualizar {
 	
 	var $miConfigurador;
 	var $lenguaje;
@@ -36,32 +36,7 @@ class RegistrarIndexacionRevista {
 		$rutaBloque .= $esteBloque ['nombre'];
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
 
-		$_REQUEST['contextoRevista'] = 0;
-		$_REQUEST['pais'] = 'COL';
-		
-		$arregloDatos = array (
-			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
-			'nombreRevista' => $_REQUEST['nombreRevista'],
-			'contextoRevista' => $_REQUEST['contextoRevista'],
-			'pais' => $_REQUEST['pais'],
-			'categoria' => $_REQUEST['categoria'],
-			'issnRevista' => $_REQUEST['issnRevista'],
-			'annoRevista' => $_REQUEST['annoRevista'],
-			'volumenRevista' => $_REQUEST['volumenRevista'],
-			'numeroRevista' => $_REQUEST['numeroRevista'],
-			'paginasRevista' => $_REQUEST['paginasRevista'],
-			'tituloArticuloRevista' => $_REQUEST['tituloArticuloRevista'],
-			'numeroAutoresRevista' => $_REQUEST['numeroAutoresRevista'],
-			'numeroAutoresUniversidad' => $_REQUEST['numeroAutoresUniversidad'],
-			'numeroActaRevista' => $_REQUEST['numeroActaRevista'],
-			'fechaActaRevista' => $_REQUEST['fechaActaRevista'],
-			'numeroCasoActaRevista' => $_REQUEST['numeroCasoActaRevista'],
-			'puntajeRevista' => $_REQUEST['puntajeRevista'],
-			'normatividad' => $_REQUEST['normatividad'],
-			'numero_issn_old' => $_REQUEST['numero_issn_old']
-		);
-		
-		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizarIndexacion', $arregloDatos );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizar', $_REQUEST );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
 
 		if ($resultado) {
@@ -83,8 +58,8 @@ class RegistrarIndexacionRevista {
 	}
 }
 
-$miRegistrador = new RegistrarIndexacionRevista ( $this->lenguaje, $this->sql, $this->funcion );
+$miActualizador = new Actualizar ( $this->lenguaje, $this->sql, $this->funcion );
 
-$resultado = $miRegistrador->procesarFormulario ();
+$resultado = $miActualizador->procesarFormulario ();
 
 ?>
