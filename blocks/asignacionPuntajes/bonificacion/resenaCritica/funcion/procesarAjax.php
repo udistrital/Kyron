@@ -1,5 +1,5 @@
 <?php
-use asignacionPuntajes\salariales\resenaCritica\Sql;
+use asignacionPuntajes\bonificacion\resenaCritica\Sql;
 
 $conexion = "docencia";
 $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );

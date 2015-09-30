@@ -1,8 +1,8 @@
 <?php
 
-namespace asignacionPuntajes\salariales\resenaCritica;
+namespace asignacionPuntajes\bonificacion\resenaCritica;
 
-use asignacionPuntajes\salariales\resenaCritica\funcion\redireccion;
+use asignacionPuntajes\bonificacion\resenaCritica\funcion\redireccion;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
