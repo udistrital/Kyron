@@ -1,6 +1,6 @@
 <?php
 
-namespace asignacionPuntajes\salariales\experienciaCalificada;
+namespace asignacionPuntajes\salariales\excelenciaAcademica;
 
 if (!isset($GLOBALS ["autorizado"])) {
     include ("../index.php");

@@ -1,6 +1,6 @@
 <?php
 
-namespace asignacionPuntajes\salariales\experienciaCalificada;
+namespace asignacionPuntajes\salariales\excelenciaAcademica;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -27,7 +27,7 @@ include_once ("Lenguaje.class.php");
 
 include_once ('funcion/redireccionar.php');
 
-use asignacionPuntajes\salariales\experienciaCalificada\funcion\redireccion;
+use asignacionPuntajes\salariales\excelenciaAcademica\funcion\redireccion;
 
 // Esta clase actua como control del bloque en un patron FCE
 // Para evitar redefiniciones de clases el nombre de la clase del archivo bloque debe corresponder al nombre del bloque

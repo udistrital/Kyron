@@ -1,5 +1,5 @@
 <?php
-namespace asignacionPuntajes\salariales\experienciaCalificada\formulario;
+namespace asignacionPuntajes\salariales\excelenciaAcademica\formulario;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -96,22 +96,20 @@ class FormularioModificar {
 		// ---------------- CONTROL: Lista Docente--------------------------------------------------------
 		$datos = array(
 				'documento_docente' =>  $_REQUEST ['documento_docente'],
-				'identificadorExperiencia' => $_REQUEST ['identificadorExperiencia'],
+				'identificadorExcelenciaAcad' => $_REQUEST ['identificadorExcelenciaAcad'],
 		
 		);
 		 
 		$cadena_sql = $this->miSql->getCadenaSql ( "publicacionActualizar", $datos );
-		$resultadoExperienciaCalificada = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
-		
-		$_REQUEST['docenteRegistrar'] =  $resultadoExperienciaCalificada[0]['documento_docente'] . " - " . $resultadoExperienciaCalificada[0]['nombre_docente'];
-		$_REQUEST['id_docenteRegistrar'] =  $resultadoExperienciaCalificada[0]['documento_docente'];
-		$_REQUEST['tipoExperiencia'] =  $resultadoExperienciaCalificada[0]['tipo_experiencia'];
-		$_REQUEST['numeroResolucion'] =  $resultadoExperienciaCalificada[0]['numero_resolucion'];
-		$_REQUEST['resolucionEmitidaPor'] =  $resultadoExperienciaCalificada[0]['emisor_resolucion'];
-		$_REQUEST['fechaResolucion'] =  $resultadoExperienciaCalificada[0]['fecha_resolucion'];
-		$_REQUEST['numeroActa'] =  $resultadoExperienciaCalificada[0]['numero_acta'];
-		$_REQUEST['fechaActa'] =  $resultadoExperienciaCalificada[0]['fecha_acta'];
-		$_REQUEST['puntaje'] =  $resultadoExperienciaCalificada[0]['puntaje'];
+		$resultadoExcelenciaAcademica = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
+
+		$_REQUEST['docenteRegistrar'] =  $resultadoExcelenciaAcademica[0]['documento_docente'] . " - " . $resultadoExcelenciaAcademica[0]['nombre_docente'];
+		$_REQUEST['id_docenteRegistrar'] =  $resultadoExcelenciaAcademica[0]['documento_docente'];
+		$_REQUEST['numeroResolucion'] =  $resultadoExcelenciaAcademica[0]['numero_resolucion'];
+		$_REQUEST['fechaResolucion'] =  $resultadoExcelenciaAcademica[0]['fecha_resolucion'];
+		$_REQUEST['numeroActa'] =  $resultadoExcelenciaAcademica[0]['numero_acta'];
+		$_REQUEST['fechaActa'] =  $resultadoExcelenciaAcademica[0]['fecha_acta'];
+		$_REQUEST['puntaje'] =  $resultadoExcelenciaAcademica[0]['puntaje'];
 		
 		$esteCampo = "marcoModificarRegistro";
 		$atributos ['id'] = $esteCampo;
@@ -121,6 +119,7 @@ class FormularioModificar {
 		echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
 		
 				// ---------------- CONTROL: Lista Docente--------------------------------------------------------
+				
 				$esteCampo = 'docenteRegistrar';
 					
 				$atributos ['id'] = $esteCampo;
@@ -173,39 +172,6 @@ class FormularioModificar {
 				
 				// ----------------FIN CONTROL: Lista Docente--------------------------------------------------------
 					
-				// ----------------INICIO CONTROL: Lista Tipo Experiencia Calificada--------------------------------------------------------
-				$esteCampo = 'tipoExperiencia';
-				$atributos ['nombre'] = $esteCampo;
-				$atributos ['id'] = $esteCampo;
-				$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-				$atributos ["etiquetaObligatorio"] = true;
-				$atributos ['tab'] = $tab ++;
-				$atributos ['anchoEtiqueta'] = 280;
-				$atributos ['evento'] = '';
-				if (isset ( $_REQUEST [$esteCampo] )) {
-					$atributos ['seleccion'] = $_REQUEST [$esteCampo];
-				} else {
-					$atributos ['seleccion'] = - 1;
-				}
-				$atributos ['deshabilitado'] = false;
-				$atributos ['columnas'] = 1;
-				$atributos ['tamanno'] = 1;
-				$atributos ['ajax_function'] = "";
-				$atributos ['ajax_control'] = $esteCampo;
-				$atributos ['estilo'] = "jqueryui";
-				$atributos ['limitar'] = true;
-				$atributos ['anchoCaja'] = 57;
-				$atributos ['miEvento'] = '';
-				$atributos ['validar'] = '';
-				$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ("tipoExperiencia");
-				$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
-				$atributos ['matrizItems'] = $matrizItems;
-				// Aplica atributos globales al control
-				$atributos = array_merge ( $atributos, $atributosGlobales );
-				echo $this->miFormulario->campoCuadroLista ( $atributos );
-				unset ( $atributos );
-				// ----------------FIN CONTROL:  Lista Tipo Experiencia Calificada--------------------------------------------------------
-						
 				// ----------------INICIO CONTROL: Campo de Texto Texto Número de Resolución--------------------------------------------------------
 				$esteCampo = 'numeroResolucion';
 				$atributos ['id'] = $esteCampo;
@@ -219,7 +185,7 @@ class FormularioModificar {
 				$atributos ['dobleLinea'] = 0;
 				$atributos ['tabIndex'] = $tab;
 				$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-				$atributos ['validar'] = 'required, maxSize[150], minSize[6]';
+				$atributos ['validar'] = 'required, maxSize[15], minSize[6]';
 					
 				if (isset ( $_REQUEST [$esteCampo] )) {
 					$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -239,39 +205,6 @@ class FormularioModificar {
 				unset ( $atributos );
 				// ----------------FIN CONTROL: Campo de Texto Texto Número de Resolución--------------------------------------------------------
 						
-				// ----------------INICIO CONTROL: Lista Tipo Experiencia Calificada--------------------------------------------------------
-				$esteCampo = 'resolucionEmitidaPor';
-				$atributos ['nombre'] = $esteCampo;
-				$atributos ['id'] = $esteCampo;
-				$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-				$atributos ["etiquetaObligatorio"] = true;
-				$atributos ['tab'] = $tab ++;
-				$atributos ['anchoEtiqueta'] = 280;
-				$atributos ['evento'] = '';
-				if (isset ( $_REQUEST [$esteCampo] )) {
-					$atributos ['seleccion'] = $_REQUEST [$esteCampo];
-				} else {
-					$atributos ['seleccion'] = - 1;
-				}
-				$atributos ['deshabilitado'] = false;
-				$atributos ['columnas'] = 1;
-				$atributos ['tamanno'] = 1;
-				$atributos ['ajax_function'] = "";
-				$atributos ['ajax_control'] = $esteCampo;
-				$atributos ['estilo'] = "jqueryui";
-				$atributos ['limitar'] = true;
-				$atributos ['anchoCaja'] = 57;
-				$atributos ['miEvento'] = '';
-				$atributos ['validar'] = '';
-				$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ("resolucionEmitidaPor");
-				$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
-				$atributos ['matrizItems'] = $matrizItems;
-				// Aplica atributos globales al control
-				$atributos = array_merge ( $atributos, $atributosGlobales );
-				echo $this->miFormulario->campoCuadroLista ( $atributos );
-				unset ( $atributos );
-				// ----------------FIN CONTROL:  Lista Tipo Experiencia Calificada--------------------------------------------------------
-						
 						
 				// ----------------INICIO CONTROL: Campo de Texto Fecha de Resolución--------------------------------------------------------
 				$esteCampo = 'fechaResolucion';
@@ -286,7 +219,7 @@ class FormularioModificar {
 				$atributos ['dobleLinea'] = 0;
 				$atributos ['tabIndex'] = $tab;
 				$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-				$atributos ['validar'] = 'required, maxSize[10]';
+				$atributos ['validar'] = 'required, maxSize[10], custom[date]';
 					
 				if (isset ( $_REQUEST [$esteCampo] )) {
 					$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -306,7 +239,7 @@ class FormularioModificar {
 				unset ( $atributos );
 				// ----------------FIN CONTROL: Campo de Texto Fecha de Resolución--------------------------------------------------------
 						
-				// ----------------INICIO CONTROL: Campo de Texto Número Acta de Experiencia Calificada--------------------------------------------------------
+				// ----------------INICIO CONTROL: Campo de Texto Número Acta de Excelencia Académica--------------------------------------------------------
 				$esteCampo = 'numeroActa';
 				$atributos ['id'] = $esteCampo;
 				$atributos ['nombre'] = $esteCampo;
@@ -337,9 +270,9 @@ class FormularioModificar {
 				$atributos = array_merge ( $atributos, $atributosGlobales );
 				echo $this->miFormulario->campoCuadroTexto ( $atributos );
 				unset ( $atributos );
-				// ----------------FIN CONTROL: Campo de Texto Numero Acta de Experiencia Calificada--------------------------------------------------------
+				// ----------------FIN CONTROL: Campo de Texto Numero Acta de Excelencia Académica--------------------------------------------------------
 					
-				// ----------------INICIO CONTROL: Campo de Texto Fecha Acta de Experiencia Calificada--------------------------------------------------------
+				// ----------------INICIO CONTROL: Campo de Texto Fecha Acta de Excelencia Académica--------------------------------------------------------
 				$esteCampo = 'fechaActa';
 				$atributos ['id'] = $esteCampo;
 				$atributos ['nombre'] = $esteCampo;
@@ -370,9 +303,9 @@ class FormularioModificar {
 				$atributos = array_merge ( $atributos, $atributosGlobales );
 				echo $this->miFormulario->campoCuadroTexto ( $atributos );
 				unset ( $atributos );
-				// ----------------FIN CONTROL: Campo de Texto Fecha Acta de Experiencia Calificada--------------------------------------------------------
+				// ----------------FIN CONTROL: Campo de Texto Fecha Acta de Excelencia Académica--------------------------------------------------------
 					
-				// ----------------INICIO CONTROL: Campo de Texto Puntaje de Experiencia Calificada--------------------------------------------------------
+				// ----------------INICIO CONTROL: Campo de Texto Puntaje de Excelencia Académica--------------------------------------------------------
 				$esteCampo = 'puntaje';
 				$atributos ['id'] = $esteCampo;
 				$atributos ['nombre'] = $esteCampo;
@@ -403,8 +336,8 @@ class FormularioModificar {
 				$atributos = array_merge ( $atributos, $atributosGlobales );
 				echo $this->miFormulario->campoCuadroTexto ( $atributos );
 				unset ( $atributos );
-					// ----------------FIN CONTROL: Campo de Texto Puntaje de Experiencia Calificada--------------------------------------------------------
-					
+			// ----------------FIN CONTROL: Campo de Texto Puntaje de Excelencia Académica--------------------------------------------------------
+			
 				// ------------------Division para los botones-------------------------
 				$atributos ["id"] = "botones";
 				$atributos ["estilo"] = "marcoBotones";
@@ -481,7 +414,7 @@ class FormularioModificar {
 				$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 				$valorCodificado .= "&opcion=actualizar";
 				$valorCodificado .= "&arreglo=".$_REQUEST['arreglo'];
-				$valorCodificado .= "&identificadorExperiencia=".$_REQUEST['identificadorExperiencia'];
+				$valorCodificado .= "&identificadorExcelenciaAcad=".$_REQUEST['identificadorExcelenciaAcad'];
 				
 				/**
 				 * SARA permite que los nombres de los campos sean dinámicos.
