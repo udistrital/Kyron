@@ -13,8 +13,6 @@ if (! isset ( $GLOBALS ["autorizado"] )) {
 
 $esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );
 
-$nombreFormulario = $esteBloque ["nombre"];
-
 include_once ("core/crypto/Encriptador.class.php");
 $cripto = Encriptador::singleton ();
 $valorCodificado = "action=" . $esteBloque ["nombre"];

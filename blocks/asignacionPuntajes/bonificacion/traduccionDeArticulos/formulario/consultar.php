@@ -167,11 +167,10 @@ class registrarForm {
 	                   
 	                    <th>Identificación</th>
 	                    <th>Nombres y Apellidos</th>
-						<th>Título Traducción</th>
-						<th>Nombre Traductor</th>
-						<th>Volumen</th>
+						<th>Título Publicación</th>
+						<th>Título Traduccion</th>
+						<th>Tipo Publicación</th>
 						<th>Fecha Traducción</th>
-						<th>Año</th>
 						<th>Número Acta CIARP-UD</th>
 						<th>Fecha Acta CIARP-UD</th>
 						<th>Número Caso de Acta</th>
@@ -187,17 +186,16 @@ class registrarForm {
 						$variable .= "&opcion=modificar";
 						$variable .= "&arreglo=" . $arreglo;
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
-						$variable .= "&id_traduccion=" . $indexacion [$i] ['id_traduccion'];
+						$variable .= "&id_traduccion_articulo=" . $indexacion [$i] ['id_traduccion_articulo'];
 						$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 						
 						$mostrarHtml = "<tr>
 	                    <td><center>" . $indexacion [$i] ['documento_docente'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['nombre_docente'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['titulo_publicacion'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['titulo_traduccion'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['nombre_traductor'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['volumen_traduccion'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['id_tipo_traduccion_articulo'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['fecha_traduccion'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['anno_publicacion'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['fecha_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_caso'] . "</center></td>

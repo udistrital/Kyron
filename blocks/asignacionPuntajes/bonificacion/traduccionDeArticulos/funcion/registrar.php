@@ -33,8 +33,10 @@ class Registrar {
 		
 		$esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );
 		
-		$rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "raizDocumento" ) . "/blocks/asignacionPuntajes/salariales/";
-		$rutaBloque .= $esteBloque ['nombre'];
+		$rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "host" );
+		$rutaBloque .= $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/";
+		$rutaBloque .= $esteBloque ['grupo'] . '/' . $esteBloque ['nombre'];
+		
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'registrar', $_REQUEST );

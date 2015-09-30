@@ -9,7 +9,7 @@ if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
 	exit ();
 }
-class RegistrarIndexacionRevista {
+class Actualizar {
 	
 	var $miConfigurador;
 	var $lenguaje;
@@ -32,8 +32,10 @@ class RegistrarIndexacionRevista {
 		
 		$esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );
 		
-		$rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "raizDocumento" ) . "/blocks/asignacionPuntajes/salariales/";
-		$rutaBloque .= $esteBloque ['nombre'];
+		$rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "host" );
+		$rutaBloque .= $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/";
+		$rutaBloque .= $esteBloque ['grupo'] . '/' . $esteBloque ['nombre'];
+		
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
 
 		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizar', $_REQUEST );
@@ -57,7 +59,7 @@ class RegistrarIndexacionRevista {
 	}
 }
 
-$miRegistrador = new RegistrarIndexacionRevista ( $this->lenguaje, $this->sql, $this->funcion );
+$miRegistrador = new Actualizar ( $this->lenguaje, $this->sql, $this->funcion );
 
 $resultado = $miRegistrador->procesarFormulario ();
 

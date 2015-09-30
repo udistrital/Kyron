@@ -1,9 +1,9 @@
 <?php 
 /*
- * Se reemplaza "traduccionesDeLibros" por el nombre de un futuro bloque. 
+ * Se reemplaza "traduccionDeArticulos" por el nombre de un futuro bloque. 
  */
 ?>
-$("#traduccionesDeLibros").validationEngine({
+$("#traduccionDeArticulos").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,
@@ -11,8 +11,8 @@ $("#traduccionesDeLibros").validationEngine({
 });
 
 $(function() {
-	$("#traduccionesDeLibros").submit(function() {
-		$resultado=$("#traduccionesDeLibros").validationEngine("validate");
+	$("#traduccionDeArticulos").submit(function() {
+		$resultado=$("#traduccionDeArticulos").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -20,7 +20,7 @@ $(function() {
 	});
 });
 
-$("#traduccionesDeLibrosRegistrar").validationEngine({
+$("#traduccionDeArticulosRegistrar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,
@@ -28,8 +28,8 @@ $("#traduccionesDeLibrosRegistrar").validationEngine({
 });
 
 $(function() {
-$("#traduccionesDeLibrosRegistrar").submit(function() {
-$resultado=$("#traduccionesDeLibrosRegistrar").validationEngine("validate");
+$("#traduccionDeArticulosRegistrar").submit(function() {
+$resultado=$("#traduccionDeArticulosRegistrar").validationEngine("validate");
 
 if ($resultado) {
 
@@ -46,8 +46,8 @@ $(function () {
 });
 
 $(function() {
-	$("#traduccionesDeLibrosModificar").submit(function() {
-		$resultado=$("#traduccionesDeLibrosModificar").validationEngine("validate");
+	$("#traduccionDeArticulosModificar").submit(function() {
+		$resultado=$("#traduccionDeArticulosModificar").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -55,7 +55,7 @@ $(function() {
 	});
 });
 
-$("#traduccionesDeLibrosModificar").validationEngine({
+$("#traduccionDeArticulosModificar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,
@@ -80,13 +80,8 @@ $('#<?php echo $this->campoSeguro('facultad')?>').width(450);
 $('#<?php echo $this->campoSeguro('proyectoCurricular')?>').width(450);      
 
 $('#<?php echo $this->campoSeguro('docenteRegistrar')?>').width(465);
-$('#<?php echo $this->campoSeguro('contexto')?>').width(450);
-$('#<?php echo $this->campoSeguro('anno')?>').width(450);
+$('#<?php echo $this->campoSeguro('tipoPublicacion')?>').width(450);
 
-
-///*********El ancho (width) de los siguientes campos es mayor debido a que se encuentran dentro de un div****///
-$('#<?php echo $this->campoSeguro('pais')?>').width(470);
-$('#<?php echo $this->campoSeguro('categoria')?>').width(470);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -95,7 +90,6 @@ $('#<?php echo $this->campoSeguro('categoria')?>').width(470);
 $("#<?php echo $this->campoSeguro('facultad')?>").select2();
 $("#<?php echo $this->campoSeguro('proyectoCurricular')?>").select2();
 
-$("#<?php echo $this->campoSeguro('contexto')?>").select2();
-$("#<?php echo $this->campoSeguro('anno')?>").select2();
+$("#<?php echo $this->campoSeguro('tipoPublicacion')?>").select2();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////

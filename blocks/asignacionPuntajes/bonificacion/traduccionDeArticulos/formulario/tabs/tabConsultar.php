@@ -3,10 +3,9 @@ namespace asignacionPuntajes\bonificacion\traduccionDeArticulos\formulario;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
-	
 	exit ();
 }
-class Formulario {
+class FormularioConsulta {
 	var $miConfigurador;
 	var $lenguaje;
 	var $miFormulario;
@@ -53,7 +52,7 @@ class Formulario {
 		
 		// -------------------------------------------------------------------------------------------------
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
-		$esteCampo = $esteBloque ['nombre'];
+		$esteCampo = $esteBloque ['nombre'].'Consultar';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		
@@ -230,7 +229,7 @@ class Formulario {
 					$atributos ["verificar"] = '';
 					$atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
 					$atributos ["valor"] = $this->lenguaje->getCadena ( $esteCampo );
-					$atributos ['nombreFormulario'] = $esteBloque ['nombre'];
+					$atributos ['nombreFormulario'] = $esteBloque ['nombre'].'Consultar';
 					$tab ++;
 					
 					// Aplica atributos globales al control
@@ -334,7 +333,7 @@ class Formulario {
 }
 
 
-$miFormulario = new Formulario ( $this->lenguaje, $this->miFormulario, $this->sql  );
+$miFormulario = new FormularioConsulta ( $this->lenguaje, $this->miFormulario, $this->sql  );
 
 $miFormulario->formulario ();
 $miFormulario->mensaje ();

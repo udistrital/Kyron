@@ -6,11 +6,6 @@ $( document ).ready(function() {
 	var IPunto = 0;
 	
 	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroCasoActa')?>";
-	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroAutoresUniversidad')?>";
-	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroAutores')?>";
-	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('paginas')?>";
-	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numero')?>";
-	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('volumen')?>";
 	
 	campoValidarPunto[IPunto++] = "#<?php echo $this->campoSeguro('puntaje')?>";
 	
