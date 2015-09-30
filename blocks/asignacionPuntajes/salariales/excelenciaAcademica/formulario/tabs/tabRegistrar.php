@@ -1,5 +1,5 @@
 <?php
-namespace asignacionPuntajes\salariales\experienciaCalificada\formulario;
+namespace asignacionPuntajes\salariales\excelenciaAcademica\formulario;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -154,7 +154,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, maxSize[150], minSize[6]';
+		$atributos ['validar'] = 'required, maxSize[15], minSize[6]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -188,7 +188,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, maxSize[10]';
+		$atributos ['validar'] = 'required, maxSize[10], custom[date]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -208,7 +208,7 @@ class FormularioRegistro {
 		unset ( $atributos );
 		// ----------------FIN CONTROL: Campo de Texto Fecha de Resolución--------------------------------------------------------
 				
-		// ----------------INICIO CONTROL: Campo de Texto Número Acta de Experiencia Calificada--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Número Acta de Excelencia Académica--------------------------------------------------------
 		$esteCampo = 'numeroActa';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -239,9 +239,9 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Numero Acta de Experiencia Calificada--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Numero Acta de Excelencia Académica--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto Fecha Acta de Experiencia Calificada--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Fecha Acta de Excelencia Académica--------------------------------------------------------
 		$esteCampo = 'fechaActa';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -272,9 +272,9 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Fecha Acta de Experiencia Calificada--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Fecha Acta de Excelencia Académica--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto Puntaje de Experiencia Calificada--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Puntaje de Excelencia Académica--------------------------------------------------------
 		$esteCampo = 'puntaje';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -305,7 +305,7 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-			// ----------------FIN CONTROL: Campo de Texto Puntaje de Experiencia Calificada--------------------------------------------------------
+			// ----------------FIN CONTROL: Campo de Texto Puntaje de Excelencia Académica--------------------------------------------------------
 			
 		// ------------------Division para los botones-------------------------
 		$atributos ["id"] = "botones";

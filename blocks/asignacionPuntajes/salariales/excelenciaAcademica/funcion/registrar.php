@@ -1,8 +1,8 @@
 <?php
 
-namespace asignacionPuntajes\salariales\experienciaCalificada\funcion;
+namespace asignacionPuntajes\salariales\excelenciaAcademica\funcion;
 
-use asignacionPuntajes\salariales\experienciaCalificada\funcion\redireccionar;
+use asignacionPuntajes\salariales\excelenciaAcademica\funcion\redireccionar;
 
 include_once ('redireccionar.php');
 if (! isset ( $GLOBALS ["autorizado"] )) {
@@ -38,9 +38,7 @@ class Registrar {
 		
 		$arregloDatos = array (
 			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
-			'tipoExperiencia' => $_REQUEST['tipoExperiencia'],
 			'numeroResolucion' => $_REQUEST['numeroResolucion'],
-			'resolucionEmitidaPor' => $_REQUEST['resolucionEmitidaPor'],
 			'fechaResolucion' => $_REQUEST['fechaResolucion'],
 			'numeroActa' => $_REQUEST['numeroActa'],
 			'fechaActa' => $_REQUEST['fechaActa'],

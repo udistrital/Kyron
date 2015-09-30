@@ -120,7 +120,7 @@ class registrarForm {
 		);
 
 		$cadenaSql = $this->miSql->getCadenaSql ( 'consultar', $arreglo );
-		$experiencia = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+		$excelenciaAcademica = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 		$arreglo=serialize($arregloSerialize);
 		
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
@@ -170,7 +170,7 @@ class registrarForm {
 			
 		unset ( $atributos );
 		
-				if ($experiencia) {
+				if ($excelenciaAcademica) {
 					
 					$esteCampo = "marcoConsultaGeneral";
 					$atributos ['id'] = $esteCampo;
@@ -186,9 +186,7 @@ class registrarForm {
 	                   
 	                    <th>Identificación</th>
 	                    <th>Nombres y Apellidos</th>
-						<th>Tipo de Experiencia</th>
 						<th>Número de Resolución</th>
-						<th>Emisor de Resolución</th>
 						<th>Fecha de Resolución</th>
 						<th>Número de Acta CIARP-UD</th>
 						<th>Fecha de Acta CIARP-UD</th>
@@ -199,26 +197,24 @@ class registrarForm {
 	            </thead>
 	            <tbody>";
 					
-					for($i = 0; $i < count ( $experiencia ); $i ++) {
+					for($i = 0; $i < count ( $excelenciaAcademica ); $i ++) {
 
 						$variable = "pagina=" . $miPaginaActual; // pendiente la pagina para modificar parametro
 						$variable .= "&opcion=modificar";
 						$variable .= "&arreglo=" . $arreglo;
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
-						$variable .= "&documento_docente=" . $experiencia [$i] ['documento_docente'];
-						$variable .= "&identificadorExperiencia=" . $experiencia [$i] ['id_experiencia'];
+						$variable .= "&documento_docente=" . $excelenciaAcademica [$i] ['documento_docente'];
+						$variable .= "&identificadorExcelenciaAcad=" . $excelenciaAcademica [$i] ['id_excelencia'];
 						$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 						
 						$mostrarHtml = "<tr>
-	                    <td><center>" . $experiencia [$i] ['documento_docente'] . "</center></td>
-	                    <td><center>" . $experiencia [$i] ['nombre_docente'] . "</center></td>
-	                    <td><center>" . $experiencia [$i] ['tipó_experiencia'] . "</center></td>
-	                    <td><center>" . $experiencia [$i] ['numero_resolucion'] . "</center></td>
-	                    <td><center>" . $experiencia [$i] ['emisor_resolucion'] . "</center></td>
-	                  	<td><center>" . $experiencia [$i] ['fecha_resolucion'] . "</center></td>
-	                  	<td><center>" . $experiencia [$i] ['numero_acta'] . "</center></td>
-	                    <td><center>" . $experiencia [$i] ['fecha_acta'] . "</center></td>
-	                    <td><center>" . $experiencia [$i] ['puntaje'] . "</center></td>
+	                    <td><center>" . $excelenciaAcademica [$i] ['documento_docente'] . "</center></td>
+	                    <td><center>" . $excelenciaAcademica [$i] ['nombre_docente'] . "</center></td>
+	                    <td><center>" . $excelenciaAcademica [$i] ['numero_resolucion'] . "</center></td>
+	                  	<td><center>" . $excelenciaAcademica [$i] ['fecha_resolucion'] . "</center></td>
+	                  	<td><center>" . $excelenciaAcademica [$i] ['numero_acta'] . "</center></td>
+	                    <td><center>" . $excelenciaAcademica [$i] ['fecha_acta'] . "</center></td>
+	                    <td><center>" . $excelenciaAcademica [$i] ['puntaje'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>
 	                            <img src='" . $rutaBloque . "/css/images/Entrada.png' width='15px'>

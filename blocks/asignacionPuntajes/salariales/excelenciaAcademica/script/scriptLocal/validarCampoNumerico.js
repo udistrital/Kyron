@@ -6,6 +6,8 @@ $( document ).ready(function() {
 	var INumero = 0; 
 	var IPunto = 0;
 	
+	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroResolucion')?>";
+
 	campoValidarPunto[IPunto++] = "#<?php echo $this->campoSeguro('puntaje')?>";
 	
 	$(campoValidar).each(function(){
