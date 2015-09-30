@@ -218,8 +218,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ep.puntaje AS puntaje";
 				$cadenaSql.=" FROM docencia.estudio_postdoctoral_docente AS ep";
 				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON ep.documento_docente=dc.documento_docente";
-				$cadenaSql.=" WHERE dc.documento_docente ='" . $variable['documento_docente']. "'";
-				$cadenaSql.=" AND ep.id_estudio_postdoctoral_docente ='" . $variable['id_estudio_postdoctoral_docente']. "'";
+				$cadenaSql.=" WHERE ep.id_estudio_postdoctoral_docente ='" . $variable['id_estudio_postdoctoral_docente']. "'";
 				$cadenaSql.=" ;";
 				break;
 				
