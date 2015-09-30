@@ -117,7 +117,7 @@ class FormularioRegistro {
 		$atributos ["id"] = $esteCampo; // No cambiar este nombre
 		$atributos ["tipo"] = "hidden";
 		$atributos ['estilo'] = '';
-		$atributos ['validar'] = 'required, custom[integer]';
+		$atributos ['validar'] = '';//antes required, pero este no guarda realmente el campo
 		$atributos ["obligatorio"] = true;
 		$atributos ['marco'] = true;
 		$atributos ["etiqueta"] = "";
