@@ -5,13 +5,18 @@ if (! isset ( $GLOBALS ["autorizado"] )) {
 	exit ();
 }
 
+include_once ("core/builder/InspectorHTML.class.php");
+
 class registrarForm {
 	var $miConfigurador;
+	var $miInspectorHTML;
 	var $lenguaje;
 	var $miFormulario;
 	var $miSql;
 	function __construct($lenguaje, $formulario, $sql) {
 		$this->miConfigurador = \Configurador::singleton ();
+		
+		$this->miInspectorHTML = \InspectorHTML::singleton ();
 		
 		$this->miConfigurador->fabricaConexiones->setRecursoDB ( 'principal' );
 		
@@ -46,6 +51,39 @@ class registrarForm {
 		 */
 		
 		$atributosGlobales ['campoSeguro'] = 'true';
+		/*
+		 * Se propone un tipo de validación diferente a la convencional estructura:
+		 *	 if (isset ( $_REQUEST ['id_docente'] ) && $_REQUEST ['id_docente'] != '') {
+		 *		$id_docente = $_REQUEST ['id_docente'];
+		 *	} else {
+		 *		$id_docente = '';
+		 *	}
+		 * Se crea una función que valida todo de acuerdo a el campo validarCampos que corresponde
+		 * a las entradas puestas en el string jquery.validationEngine
+		 */
+		/*
+		 * Se realiza la decodificación de los campos "validador" de los 
+		 * componentes del FormularioHtml. Se realiza la validación. En caso de que algún parámetro
+		 * sea ingresado fuera de lo correspondiente en el campo "validador", este será ajustado
+		 * (o convertido a) a un parámetro permisible o simplemente de no ser válido se devolverá 
+		 * el valor false. Si lo que se quiere es saber si los parámetros son correctos o no, se
+		 * puede introducir un tercer parámetro $arreglar, que es un parámetro booleano que indica,
+		 * si es pertinente o no realizar un recorte de los datos "string" para que cumpla los requerimientos
+		 * de longitud (tamaño) del campo.
+		 */
+		if(isset($_REQUEST['validadorCampos'])){
+			$validadorCampos = $this->miInspectorHTML->decodificarCampos($_REQUEST['validadorCampos']);
+			$respuesta = $this->miInspectorHTML->validacionCampos($_REQUEST,$validadorCampos,false);
+			if ($respuesta != false){
+				$_REQUEST = $respuesta;
+			} else {
+				//Lo que se desea hacer si los parámetros son inválidos
+				echo "<h1>Usted ha ingresado parámetros de forma incorrecta al sistema.
+				 El acceso incorrecto ha sido registrado en el sistema con la IP: ".$_SERVER['REMOTE_ADDR'] . '</h1>';
+				//sleep(60);
+				//redireccion::redireccionar ( "index" );
+			}
+		}
 		
 		// -------------------------------------------------------------------------------------------------
 		$conexion = "docencia";
@@ -70,14 +108,20 @@ class registrarForm {
 		}
 		
 		$arreglo = array (
-				$id_docente,
-				$facultad,
-				$proyectoCurricular 
+				'documento_docente' => $id_docente,
+				'id_facultad' => $facultad,
+				'id_proyectocurricular' => $proyectoCurricular
 		);
 		
-		$cadenaSql = $this->miSql->getCadenaSql ( 'consultarIndexacion', $arreglo );
-		$indexacion = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
-		$arreglo=serialize($arreglo);
+		$arregloSerialize = array (
+				$id_docente,
+				$facultad,
+				$proyectoCurricular
+		);
+
+		$cadenaSql = $this->miSql->getCadenaSql ( 'consultar', $arreglo );
+		$obraArtistica = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+		$arreglo=serialize($arregloSerialize);
 		
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
 		$esteCampo = $esteBloque ['nombre'];
@@ -126,13 +170,13 @@ class registrarForm {
 			
 		unset ( $atributos );
 		
-				if ($indexacion) {
+				if ($obraArtistica) {
 					
-					$esteCampo = "marcoDatosBasicos";
+					$esteCampo = "marcoConsultaGeneral";
 					$atributos ['id'] = $esteCampo;
 					$atributos ["estilo"] = "jqueryui";
 					$atributos ['tipoEtiqueta'] = 'inicio';
-					$atributos ["leyenda"] = "Revistas Indexadas";					
+					$atributos ["leyenda"] = $this->lenguaje->getCadena ( $esteCampo );		
 					echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
 					
 					echo "<table id='tablaTitulos'>";
@@ -142,42 +186,42 @@ class registrarForm {
 	                   
 	                    <th>Identificación</th>
 	                    <th>Nombres y Apellidos</th>
-						<th>Nombre Revista</th>
-						<th>Título Artículo</th>
-						<th>País</th>
-						<th>Indexación</th>
-						<th>ISSN</th>
-						<th>Año</th>
-						<th>Volumen</th>
-						<th>Número Paginas</th>
-						<th>Fecha Publicación</th>
+						<th>Tipo Obra Artística</th>
+						<th>Título de la Obra</th>
+						<th>Certificada Por</th>
+						<th>Año de Obra</th>
+						<th>Contexto</th>
+						<th>Número de Acta CIARP-UD</th>
+						<th>Fecha de Acta CIARP-UD</th>
+						<th>Número de Caso de Acta</th>
+						<th>Puntaje</th>
 						<th>Modificar</th>
 							
 	                </tr>
 	            </thead>
 	            <tbody>";
 					
-					for($i = 0; $i < count ( $indexacion ); $i ++) {
+					for($i = 0; $i < count ( $obraArtistica ); $i ++) {
 						$variable = "pagina=" . $miPaginaActual; // pendiente la pagina para modificar parametro
 						$variable .= "&opcion=modificar";
-						$variable .= "&arreglo=".$arreglo;
+						$variable .= "&arreglo=" . $arreglo;
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
-						$variable .= "&documento_docente=" . $indexacion [$i] ['documento_docente'];
-						$variable .= "&numero_issn=" . $indexacion [$i] ['numero_issn'];
+						$variable .= "&documento_docente=" . $obraArtistica [$i] ['documento_docente'];
+						$variable .= "&identificadorObra=" . $obraArtistica [$i] ['id_obra'];
 						$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 						
 						$mostrarHtml = "<tr>
-	                    <td><center>" . $indexacion [$i] ['documento_docente'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['nombre_docente'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['nombre_revista'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['titulo_articulo'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['paisnombre'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['tipo_indexacion'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['numero_issn'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['anno_publicacion'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['volumen_revista'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['paginas_revista'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['fecha_publicacion'] . "</center></td>
+	                    <td><center>" . $obraArtistica [$i] ['documento_docente'] . "</center></td>
+	                    <td><center>" . $obraArtistica [$i] ['nombre_docente'] . "</center></td>
+	                    <td><center>" . $obraArtistica [$i] ['tipo_obra'] . "</center></td>
+	                    <td><center>" . $obraArtistica [$i] ['titulo_obra'] . "</center></td>
+	                    <td><center>" . $obraArtistica [$i] ['certificador'] . "</center></td>
+	                    <td><center>" . $obraArtistica [$i] ['anno_obra'] . "</center></td>
+	                    <td><center>" . $obraArtistica [$i] ['contexto'] . "</center></td>
+	                    <td><center>" . $obraArtistica [$i] ['numero_acta'] . "</center></td>
+	                    <td><center>" . $obraArtistica [$i] ['fecha_acta'] . "</center></td>
+	                    <td><center>" . $obraArtistica [$i] ['numero_caso'] . "</center></td>
+	                    <td><center>" . $obraArtistica [$i] ['puntaje'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>
 	                            <img src='" . $rutaBloque . "/css/images/Entrada.png' width='15px'>
@@ -198,7 +242,7 @@ class registrarForm {
 
 				} else {
 					
-					$mensaje = "No Se Encontraron<br> Registros de Revistas Indexadas.";
+					$mensaje = $this->lenguaje->getCadena('mensajeNoRegistros');
 					
 					// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
 					$esteCampo = 'mensajeRegistro';

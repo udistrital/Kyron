@@ -1,6 +1,6 @@
 <?php
 
-namespace asignacionPuntajes\salariales\indexacionRevistas\funcion;
+namespace asignacionPuntajes\salariales\obrasArtisticas\funcion;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("index.php");
@@ -52,8 +52,9 @@ class redireccion {
 			
 			case "noActualizo" :
 				$variable = "pagina=" . $miPaginaActual;
-				$variable .= "&opcion=noActualizo";
-				$variable .= "&mensaje=error";
+				$variable .= "&opcion=mensaje";
+				$variable .= "&mensaje=noActualizo";
+				$variable .= "&docente=" . $valor;
 				break;
 			
 			case "registrar" :
