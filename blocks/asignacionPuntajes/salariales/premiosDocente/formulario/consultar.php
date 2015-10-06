@@ -120,8 +120,9 @@ class registrarForm {
 		);
 
 		$cadenaSql = $this->miSql->getCadenaSql ( 'consultar', $arreglo );
-		$indexacion = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+		$premioDocente = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 		$arreglo=serialize($arregloSerialize);
+		
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
 		$esteCampo = $esteBloque ['nombre'];
 		$atributos ['id'] = $esteCampo;
@@ -169,7 +170,7 @@ class registrarForm {
 			
 		unset ( $atributos );
 		
-				if ($indexacion) {
+				if ($premioDocente) {
 					
 					$esteCampo = "marcoConsultaGeneral";
 					$atributos ['id'] = $esteCampo;
@@ -185,42 +186,57 @@ class registrarForm {
 	                   
 	                    <th>Identificación</th>
 	                    <th>Nombres y Apellidos</th>
-						<th>Nombre Revista</th>
-						<th>Título Artículo</th>
+						<th>Entidad</th>
+						<th>Tipo de Entidad</th>
+						<th>Contexto Entidad</th>
+						<th>Concepto Premio</th>
 						<th>País</th>
-						<th>Indexación</th>
-						<th>ISSN</th>
-						<th>Año</th>
-						<th>Volumen</th>
-						<th>Número Paginas</th>
-						<th>Fecha Publicación</th>
+						<th>Ciudad</th>
+						<th>Fecha</th>
+						<th>Número de Personas Premiadas</th>
+						<th>Año de Premiación</th>
+						<th>Número de Acta CIARP-UD</th>
+						<th>Fecha de Acta CIARP-UD</th>
+						<th>Número de Caso de Acta</th>
+						<th>Puntaje</th>
 						<th>Modificar</th>
 							
 	                </tr>
 	            </thead>
 	            <tbody>";
 					
-					for($i = 0; $i < count ( $indexacion ); $i ++) {
+					for($i = 0; $i < count ( $premioDocente ); $i ++) {
+						
+						if(isset($premioDocente [$i] ['entidad']) && $premioDocente [$i] ['entidad']!=''){
+							$premioDocente [$i] ['entidadInstitucion'] = $premioDocente [$i] ['entidad'];
+						}else{
+							$premioDocente [$i] ['entidadInstitucion'] = $premioDocente [$i] ['otra_entidad'];
+						}
+						
 						$variable = "pagina=" . $miPaginaActual; // pendiente la pagina para modificar parametro
 						$variable .= "&opcion=modificar";
 						$variable .= "&arreglo=" . $arreglo;
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
-						$variable .= "&documento_docente=" . $indexacion [$i] ['documento_docente'];
-						$variable .= "&identificadorColeccion=" . $indexacion [$i] ['numero_issn'];
+						$variable .= "&documento_docente=" . $premioDocente [$i] ['documento_docente'];
+						$variable .= "&identificadorPremioDocente=" . $premioDocente [$i] ['id_premio_docente'];
 						$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 						
 						$mostrarHtml = "<tr>
-	                    <td><center>" . $indexacion [$i] ['documento_docente'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['nombre_docente'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['nombre_revista'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['titulo_articulo'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['paisnombre'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['tipo_indexacion'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['numero_issn'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['anno_publicacion'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['volumen_revista'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['paginas_revista'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['fecha_publicacion'] . "</center></td>
+	                    <td><center>" . $premioDocente [$i] ['documento_docente'] . "</center></td>
+	                    <td><center>" . $premioDocente [$i] ['nombre_docente'] . "</center></td>
+	                    <td><center>" . $premioDocente [$i] ['entidadInstitucion'] . "</center></td>
+	                    <td><center>" . $premioDocente [$i] ['tipo_entidad'] . "</center></td>
+	                    <td><center>" . $premioDocente [$i] ['contexto'] . "</center></td>
+	                    <td><center>" . $premioDocente [$i] ['concepto_premio'] . "</center></td>
+	                    <td><center>" . $premioDocente [$i] ['pais'] . "</center></td>
+	                    <td><center>" . $premioDocente [$i] ['ciudad'] . "</center></td>
+	                    <td><center>" . $premioDocente [$i] ['fecha_premio'] . "</center></td>
+	                    <td><center>" . $premioDocente [$i] ['numero_condecorados'] . "</center></td>
+	                    <td><center>" . $premioDocente [$i] ['anno_premio'] . "</center></td>
+	                    <td><center>" . $premioDocente [$i] ['numero_acta'] . "</center></td>
+	                    <td><center>" . $premioDocente [$i] ['fecha_acta'] . "</center></td>
+	                    <td><center>" . $premioDocente [$i] ['caso_acta'] . "</center></td>
+	                    <td><center>" . $premioDocente [$i] ['puntaje'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>
 	                            <img src='" . $rutaBloque . "/css/images/Entrada.png' width='15px'>
