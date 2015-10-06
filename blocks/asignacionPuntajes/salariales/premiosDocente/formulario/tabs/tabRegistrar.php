@@ -232,8 +232,7 @@ class FormularioRegistro {
 		echo $this->miFormulario->campoCuadroLista ( $atributos );
 		unset ( $atributos );
 		
-		// ----------------FIN CONTROL: Lista Tipo de Entidad--------------------------------------------------------
-		
+		// ----------------FIN CONTROL: Lista Contexto--------------------------------------------------------
 			
 		$esteCampo = 'contexto';
 		$atributos ['nombre'] = $esteCampo;
@@ -266,7 +265,7 @@ class FormularioRegistro {
 		echo $this->miFormulario->campoCuadroLista ( $atributos );
 		unset ( $atributos );
 			
-		// ----------------FIN CONTROL: Campo de Texto Contexto Revista--------------------------------------------------------
+		// ----------------FIN CONTROL: Lista Contexto--------------------------------------------------------
 			
 		// ---------------- CONTROL: Lista País--------------------------------------------------------
 			
@@ -315,7 +314,7 @@ class FormularioRegistro {
 		
 		// ----------------FIN CONTROL: Lista País--------------------------------------------------------
 			
-		// ---------------- CONTROL: Lista Categoria--------------------------------------------------------
+		// ---------------- CONTROL: Lista Ciudad--------------------------------------------------------
 			
 		$atributos ["id"] = "ciudad_div";
 		$atributos ["estiloEnLinea"] = "display:none";
@@ -360,9 +359,9 @@ class FormularioRegistro {
 		
 		echo $this->miFormulario->division ( "fin" );
 			
-		// ----------------FIN CONTROL: Lista Tipo Indexación--------------------------------------------------------
+		// ----------------FIN CONTROL: Lista Ciudad--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto Número Acta Revista--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Concepto del Premio--------------------------------------------------------
 		$esteCampo = 'conceptoPremio';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -393,9 +392,9 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Numero Acta Revista--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Concepto del Premio--------------------------------------------------------
 				
-		// ----------------INICIO CONTROL: Campo de Texto Fecha Publicación Revista--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Fecha en que se otorgo el premio--------------------------------------------------------
 		$esteCampo = 'fechaPremio';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -426,9 +425,9 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Fecha Publicación Revista--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Fecha en que se otorgo el premio--------------------------------------------------------
 				
-		// ----------------INICIO CONTROL: Campo de Texto Número Autores Revista--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Número de Condecorados--------------------------------------------------------
 		$esteCampo = 'numeroCondecorados';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -459,9 +458,9 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Número Autores Revista--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Número de Condecorados--------------------------------------------------------
 				
-		// ----------------INICIO CONTROL: Campo de Texto Año Publicación Revista--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Año en que se recibio el premio--------------------------------------------------------
 		
 		$esteCampo = "anno";
 		$atributos ['nombre'] = $esteCampo;
@@ -503,9 +502,9 @@ class FormularioRegistro {
 		echo $this->miFormulario->campoCuadroLista ( $atributos );
 		unset ( $atributos );
 		
-		// ----------------FIN CONTROL: Campo de Texto Año Publicación Revista--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Año en que se recibio el premio--------------------------------------------------------
 				
-		// ----------------INICIO CONTROL: Campo de Texto Número Acta Revista--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Número Acta Premio al Docente--------------------------------------------------------
 		$esteCampo = 'numeroActa';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -536,9 +535,9 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Numero Acta Revista--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Numero Acta Premio al Docente--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto Fecha Acta Revista--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Fecha Acta Premio al Docente--------------------------------------------------------
 		$esteCampo = 'fechaActa';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -569,9 +568,9 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Fecha Acta Revista--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Fecha Acta Premio al Docente--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto Número Caso Acta Revista--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Número Caso Acta Premio al Docente--------------------------------------------------------
 		$esteCampo = 'numeroCasoActa';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -602,9 +601,9 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Número Caso Acta Revista--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Número Caso Acta Premio al Docente--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto Puntaje Revista--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Puntaje Premio al Docente--------------------------------------------------------
 		$esteCampo = 'puntaje';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -635,7 +634,7 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Puntaje Revista--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Puntaje Premio al Docente--------------------------------------------------------
 		
 				
 				// ------------------Division para los botones-------------------------
