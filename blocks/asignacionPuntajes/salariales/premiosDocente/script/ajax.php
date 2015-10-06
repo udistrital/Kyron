@@ -77,7 +77,7 @@ $("#<?php echo $this->campoSeguro('contexto')?>").change(function() {
 
 $("#<?php echo $this->campoSeguro('pais')?>").change(function() {
 
-	if($("#<?php echo $this->campoSeguro('contexto')?>").val() == ''){
+	if($("#<?php echo $this->campoSeguro('pais')?>").val() == ''){
 
 		$("<option value=''>Seleccione .....</option>").appendTo("#<?php echo $this->campoSeguro('ciudad')?>");
 		
@@ -222,10 +222,12 @@ function consultarCiudad(elem, request, response){
     	 
 
 
-if($("#<?php echo $this->campoSeguro('contexto')?>").val() == 0 || $("#<?php echo $this->campoSeguro('contexto')?>").val() == 1){
-	$('#<?php echo $this->campoSeguro('contexto')?>').width(400);
+if($("#<?php echo $this->campoSeguro('contexto')?>").val() != '' ){
 	$('#<?php echo $this->campoSeguro('pais')?>').width(470);
-	$('#<?php echo $this->campoSeguro('ciudad')?>').width(470);
 	$("#<?php echo $this->campoSeguro('pais')?>").select2();
+}
+
+if($("#<?php echo $this->campoSeguro('pais')?>").val() != '' ){
+	$('#<?php echo $this->campoSeguro('ciudad')?>').width(470);
 	$("#<?php echo $this->campoSeguro('ciudad')?>").select2();
 }

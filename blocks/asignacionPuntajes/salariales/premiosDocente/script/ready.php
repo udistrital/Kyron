@@ -83,7 +83,7 @@ $("#<?php echo $this->campoSeguro('tipoEntidad')?>").width(450);
 
 ///*********El ancho (width) de los siguientes campos es mayor debido a que se encuentran dentro de un div****///
 $('#<?php echo $this->campoSeguro('pais')?>').width(470);
-$('#<?php echo $this->campoSeguro('categoria')?>').width(470);
+$('#<?php echo $this->campoSeguro('ciudad')?>').width(470);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
