@@ -222,15 +222,15 @@ class FormularioRegistro {
 		$atributos ['limitar'] = false;
 		$atributos ['anchoCaja'] = 60;
 		$atributos ['miEvento'] = '';
-		$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "categoria_revista", 0 );
-			$matrizItems = array (
-					array (
-							0,
-							' '
-					)
-			);
-			$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
-			$atributos ['matrizItems'] = $matrizItems;
+		$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "categoria_revista", 1 );
+		$matrizItems = array (
+				array (
+						0,
+						' '
+				)
+		);
+		$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
+		$atributos ['matrizItems'] = $matrizItems;
 			
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroLista ( $atributos );
