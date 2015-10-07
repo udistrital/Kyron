@@ -1,6 +1,6 @@
 <?php
 
-namespace asignacionPuntajes\bonificacion\resenaCritica\funcion;
+namespace asignacionPuntajes\bonificacion\ponenciasDocente\funcion;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("index.php");

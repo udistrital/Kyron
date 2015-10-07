@@ -1,36 +1,43 @@
 <?php
 
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
-$this->idioma["tabConsultar"] = "Consultar Reseña Crítica";
-$this->idioma["tabIngresar"] = "Ingresar Reseña Crítica";
+$this->idioma["tabConsultar"] = "Consultar Ponencias del Docente";
+$this->idioma["tabIngresar"] = "Ingresar Ponencias del Docente";
 //Tooltip formulario
-$this->idioma["resenaCriticaRegistrar"] = "";
+$this->idioma["ponenciasDocenteRegistrar"] = "";
 //////////////////////////////////////////////////////////////
 
 //************ MENSAJES *********
-$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Reseña Crítica <br>";
-$this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado la Reseña Crítica para el docente <br>" ;
-$this->idioma["mensajeError"] =  "Error al tratar de registrar la Reseña Crítica.";
-$this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Reseña Crítica </br> Para los Criterios Ingresados";
-$this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de Reseña Crítica Para el Docente </br>";
+$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Ponencias del Docente <br>";
+$this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado la Ponencias del Docente para el docente <br>" ;
+$this->idioma["mensajeError"] =  "Error al tratar de registrar la Ponencias del Docente.";
+$this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Ponencias del Docente </br> Para los Criterios Ingresados";
+$this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de Ponencias del Docente Para el Docente </br>";
 /////////////////////////////////
 
 //* SECCIÓN ELEMENTOS QUE SU NOMBRE POSIBLEMENTE VARIA DENTRO DEL FORMULARIO *//
 
-$this->idioma["titulo"] = "Título de la reseña:";
-$this->idioma["revista"] = "Nombre revista:";
-$this->idioma["categoria"] = "Categoría revista:";
-$this->idioma["fecha"] = "Fecha de la reseña crítica:";
-$this->idioma["autor"] = "Autor de la crítica:";
+$this->idioma["titulo"] = "Título de la ponencia:";
+$this->idioma["ponencia"] = "Nombre ponencia:";
+$this->idioma["categoria"] = "Categoría ponencia:";
+$this->idioma["fecha"] = "Fecha de la ponencias del Docente:";
+$this->idioma["numeroAutores"] = "Número de autores:";
+$this->idioma["numeroAutoresUniversidad"] = "Número de autores UD:";
+$this->idioma["evento"] = "Evento presentación de ponencia:";
+$this->idioma["institucion"] = "Institución que certifica:";
 
 $this->idioma["tituloTitulo"] = "Ingrese el título de la reseña.";
-$this->idioma["revistaTitulo"] = "Ingrese el nombre revista.";
-$this->idioma["categoriaTitulo"] = "Ingrese la categoría revista.";
-$this->idioma["fechaTitulo"] = "Ingrese la fecha de la reseña crítica.";
+$this->idioma["ponenciaTitulo"] = "Ingrese el nombre ponencia.";
+$this->idioma["categoriaTitulo"] = "Ingrese la categoría ponencia.";
+$this->idioma["fechaTitulo"] = "Ingrese la fecha de la ponencias del Docente.";
 $this->idioma["autorTitulo"] = "Ingrese el autor de la crítica.";
+$this->idioma["numeroAutoresTitulo"] = "Ingrese el número de autores.";
+$this->idioma["numeroAutoresUniversidadTitulo"] = "Ingrese el número de autores UD.";
+$this->idioma["eventoTitulo"] = "Ingrese el evento presentación de ponencia.";
+$this->idioma["institucionTitulo"] = "Ingrese la institución que certifica.";
 
-$this->idioma["marcoConsultaGeneral"] = "Reseña Crítica";
-$this->idioma["marcoModificarRegistro"] = "Modificar Información de la Reseña Crítica";
+$this->idioma["marcoConsultaGeneral"] = "Ponencias del Docente";
+$this->idioma["marcoModificarRegistro"] = "Modificar Información de la Ponencias del Docente";
 $this->idioma["marcoModificarRegistroTitulo"] = "";
 
 $this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";

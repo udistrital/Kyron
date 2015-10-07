@@ -185,11 +185,13 @@ class registrarForm {
 	                   
 	                    <th>Identificación</th>
 	                    <th>Nombres y Apellidos</th>
-						<th>Título Reseña Crítica</th>
-						<th>Revista</th>
-						<th>Tipo Indexación</th>
-						<th>Fecha Publicación</th>
-						<th>Autor Reseña</th>
+						<th>Título Ponencia Docente</th>
+						<th>Número Autores</th>
+						<th>Número Autores UD</th>
+						<th>Fecha Ponencia</th>
+						<th>Contexto</th>
+						<th>Evento de la Presentación</th>
+						<th>Institución Certificadora</th>
 						<th>Número Acta</th>
 						<th>Fecha Acta</th>
 						<th>Caso Acta</th>
@@ -206,17 +208,19 @@ class registrarForm {
 						$variable .= "&arreglo=" . $arreglo;
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
 						$variable .= "&documento_docente=" . $indexacion [$i] ['documento_docente'];
-						$variable .= "&id_resena_critica=" . $indexacion [$i] ['id_resena_critica'];
+						$variable .= "&id_ponencia=" . $indexacion [$i] ['id_ponencia'];
 						$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 						
 						$mostrarHtml = "<tr>
 	                    <td><center>" . $indexacion [$i] ['documento_docente'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['nombre_docente'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['titulo'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['revista'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['tipo_indexacion'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['numero_autores'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['numero_autores_ud'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['fecha'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['autor'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['contexto'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['evento_presentacion'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['institucion_certificadora'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['fecha_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['caso_acta'] . "</center></td>

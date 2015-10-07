@@ -1,8 +1,8 @@
 <?php
 
-namespace asignacionPuntajes\bonificacion\resenaCritica\funcion;
+namespace asignacionPuntajes\bonificacion\ponenciasDocente\funcion;
 
-use asignacionPuntajes\bonificacion\resenaCritica\funcion\redireccionar;
+use asignacionPuntajes\bonificacion\ponenciasDocente\funcion\redireccionar;
 
 include_once ('redireccionar.php');
 if (! isset ( $GLOBALS ["autorizado"] )) {
@@ -26,6 +26,7 @@ class Registrar {
 		$this->miSql = $sql;
 		$this->miFuncion = $funcion;
 	}
+	
 	function procesarFormulario() {
 		
 		$conexion = "docencia";

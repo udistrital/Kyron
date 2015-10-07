@@ -1,6 +1,6 @@
 <?php
 
-namespace asignacionPuntajes\bonificacion\resenaCritica;
+namespace asignacionPuntajes\bonificacion\ponenciasDocente;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -136,28 +136,29 @@ class Sql extends \Sql {
 								
 			case "consultar" :			
 				$cadenaSql=" SELECT";
-				$cadenaSql.=" rc.id_resena_critica AS id_resena_critica,";
+				$cadenaSql.=" po.id_ponencia AS id_ponencia,";
 				$cadenaSql.=" dc.documento_docente AS documento_docente,";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido AS nombre_docente,";
-				$cadenaSql.=" rc.titulo AS titulo,";
-				$cadenaSql.=" rc.revista AS revista,";
-				$cadenaSql.=" rc.id_tipo_indexacion AS id_tipo_indexacion,";
-				$cadenaSql.=" ti.descripcion AS tipo_indexacion,";
-				$cadenaSql.=" rc.fecha AS fecha,";
-				$cadenaSql.=" rc.autor AS autor,";
-				$cadenaSql.=" rc.numero_acta AS numero_acta,";
-				$cadenaSql.=" rc.fecha_acta AS fecha_acta,";
-				$cadenaSql.=" rc.caso_acta AS caso_acta,";
-				$cadenaSql.=" rc.puntaje AS puntaje";
+				$cadenaSql.=" po.titulo AS titulo,";
+				$cadenaSql.=" po.numero_autores AS numero_autores,";
+				$cadenaSql.=" po.numero_autores_ud AS numero_autores_ud,";
+				$cadenaSql.=" po.fecha AS fecha,";
+				$cadenaSql.=" ti.contexto AS contexto,";
+				$cadenaSql.=" po.evento_presentacion AS evento_presentacion,";
+				$cadenaSql.=" po.institucion_certificadora AS institucion_certificadora,";
+				$cadenaSql.=" po.numero_acta AS numero_acta,";
+				$cadenaSql.=" po.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" po.caso_acta AS caso_acta,";
+				$cadenaSql.=" po.puntaje AS puntaje";
 				$cadenaSql.=" FROM";
-				$cadenaSql.=" docencia.resena_critica AS rc";
-				$cadenaSql.=" LEFT JOIN docencia.tipo_indexacion AS ti ON ti.id_tipo_indexacion=rc.id_tipo_indexacion";
-				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON rc.documento_docente=dc.documento_docente";
-				$cadenaSql.=" LEFT JOIN docencia.docente_proyectocurricular AS dc_pc ON rc.documento_docente=dc_pc.documento_docente";
+				$cadenaSql.=" docencia.ponencia AS po";
+				$cadenaSql.=" LEFT JOIN docencia.contexto_ponencia AS ti ON ti.id_contexto_ponencia=po.id_contexto_ponencia";
+				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON po.documento_docente=dc.documento_docente";
+				$cadenaSql.=" LEFT JOIN docencia.docente_proyectocurricular AS dc_pc ON po.documento_docente=dc_pc.documento_docente";
 				$cadenaSql.=" LEFT JOIN docencia.proyectocurricular AS pc ON dc_pc.id_proyectocurricular=pc.id_proyectocurricular";
 				$cadenaSql.=" LEFT JOIN docencia.facultad AS fc ON pc.id_facultad=fc.id_facultad";
 				$cadenaSql.=" WHERE";
-				$cadenaSql.=" rc.estado=true";
+				$cadenaSql.=" po.estado=true";
 				$cadenaSql.=" AND dc.estado=true";
 				$cadenaSql.=" AND pc.estado=true";
 				$cadenaSql.=" AND dc_pc.estado=true";
@@ -173,25 +174,25 @@ class Sql extends \Sql {
 				$cadenaSql.=" ;";
 				break;
 				
-			case "categoria_revista" :
-				$cadenaSql = "select";
-				$cadenaSql .= " id_tipo_indexacion,";
-				$cadenaSql .= "	descripcion";
+			case "categoria" :
+				$cadenaSql = "SELECT";
+				$cadenaSql .= " id_contexto_ponencia,";
+				$cadenaSql .= "	contexto";
 				$cadenaSql .= " FROM ";
-				$cadenaSql .= " docencia.tipo_indexacion";
-				$cadenaSql .= " WHERE";
-				$cadenaSql .= " id_contexto =" . $variable;
+				$cadenaSql .= " docencia.contexto_ponencia;";
 				break;
 				
 			case "registrar" :
-				$cadenaSql=" INSERT INTO docencia.resena_critica";
+				$cadenaSql=" INSERT INTO docencia.ponencia";
 				$cadenaSql.=" (";
 				$cadenaSql.=" documento_docente,";
 				$cadenaSql.=" titulo,";
-				$cadenaSql.=" revista,";
-				$cadenaSql.=" id_tipo_indexacion,";
+				$cadenaSql.=" numero_autores,";
+				$cadenaSql.=" numero_autores_ud,";
 				$cadenaSql.=" fecha,";
-				$cadenaSql.=" autor,";
+				$cadenaSql.=" id_contexto_ponencia,";
+				$cadenaSql.=" evento_presentacion,";
+				$cadenaSql.=" institucion_certificadora,";
 				$cadenaSql.=" numero_acta,";
 				$cadenaSql.=" fecha_acta,";
 				$cadenaSql.=" caso_acta,";
@@ -201,56 +202,60 @@ class Sql extends \Sql {
 				$cadenaSql.=" (";
 				$cadenaSql.=" '" . $variable ['id_docenteRegistrar'] . "',";
 				$cadenaSql.=" '" . $variable ['titulo'] . "',";
-				$cadenaSql.=" '" . $variable ['revista'] . "',";
-				$cadenaSql.=" '" . $variable ['categoria'] . "',";
+				$cadenaSql.=" '" . $variable ['numeroAutores'] . "',";
+				$cadenaSql.=" '" . $variable ['numeroAutoresUniversidad'] . "',";
 				$cadenaSql.=" '" . $variable ['fecha'] . "',";
-				$cadenaSql.=" '" . $variable ['autor'] . "',";
+				$cadenaSql.=" '" . $variable ['categoria'] . "',";
+				$cadenaSql.=" '" . $variable ['evento'] . "',";
+				$cadenaSql.=" '" . $variable ['institucion'] . "',";
 				$cadenaSql.=" '" . $variable ['numeroActa'] . "',";
 				$cadenaSql.=" '" . $variable ['fechaActa'] . "',";
 				$cadenaSql.=" '" . $variable ['numeroCasoActa'] . "',";
 				$cadenaSql.=" '" . $variable ['puntaje'] . "'";
-				$cadenaSql.=" )";
-				$cadenaSql.=" ;";
+				$cadenaSql.=" );";
 				break;		
 				
 			case "consultaActualizar" :
 				$cadenaSql=" SELECT";
-				$cadenaSql.=" rc.id_resena_critica AS id_resena_critica,";
+				$cadenaSql.=" po.id_ponencia AS id_ponencia,";
 				$cadenaSql.=" dc.documento_docente AS documento_docente,";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido AS nombre_docente,";
-				$cadenaSql.=" rc.titulo AS titulo,";
-				$cadenaSql.=" rc.revista AS revista,";
-				$cadenaSql.=" rc.id_tipo_indexacion AS id_tipo_indexacion,";
-				$cadenaSql.=" ti.descripcion AS tipo_indexacion,";
-				$cadenaSql.=" rc.fecha AS fecha,";
-				$cadenaSql.=" rc.autor AS autor,";
-				$cadenaSql.=" rc.numero_acta AS numero_acta,";
-				$cadenaSql.=" rc.fecha_acta AS fecha_acta,";
-				$cadenaSql.=" rc.caso_acta AS caso_acta,";
-				$cadenaSql.=" rc.puntaje AS puntaje";
+				$cadenaSql.=" po.titulo AS titulo,";
+				$cadenaSql.=" po.numero_autores AS numero_autores,";
+				$cadenaSql.=" po.numero_autores_ud AS numero_autores_ud,";
+				$cadenaSql.=" po.fecha AS fecha,";
+				$cadenaSql.=" ti.contexto AS contexto,";
+				$cadenaSql.=" po.evento_presentacion AS evento_presentacion,";
+				$cadenaSql.=" po.institucion_certificadora AS institucion_certificadora,";
+				$cadenaSql.=" po.numero_acta AS numero_acta,";
+				$cadenaSql.=" po.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" po.caso_acta AS caso_acta,";
+				$cadenaSql.=" po.puntaje AS puntaje";
 				$cadenaSql.=" FROM";
-				$cadenaSql.=" docencia.resena_critica AS rc";
-				$cadenaSql.=" LEFT JOIN docencia.tipo_indexacion AS ti ON ti.id_tipo_indexacion=rc.id_tipo_indexacion";
-				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON rc.documento_docente=dc.documento_docente";
-				$cadenaSql.=" WHERE rc.id_resena_critica ='" . $variable['id_resena_critica']. "'";
+				$cadenaSql.=" docencia.ponencia AS po";
+				$cadenaSql.=" LEFT JOIN docencia.contexto_ponencia AS ti ON ti.id_contexto_ponencia=po.id_contexto_ponencia";
+				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON po.documento_docente=dc.documento_docente";
+				$cadenaSql.=" WHERE po.id_ponencia ='" . $variable['id_ponencia']. "'";
 				$cadenaSql.=" ;";
 				break;
 				
 			case "actualizar" :
-				$cadenaSql=" UPDATE docencia.resena_critica";
+				$cadenaSql=" UPDATE docencia.ponencia";
 				$cadenaSql.=" SET";
 				$cadenaSql.=" documento_docente='" . $variable['id_docenteRegistrar']. "',";
 				$cadenaSql.=" titulo='" . $variable['titulo']. "',";
-				$cadenaSql.=" revista='" . $variable['revista']. "',";
-				$cadenaSql.=" id_tipo_indexacion='" . $variable['categoria']. "',";
+				$cadenaSql.=" numero_autores='" . $variable['numeroAutores']. "',";
+				$cadenaSql.=" numero_autores_ud='" . $variable['numeroAutoresUniversidad']. "',";
 				$cadenaSql.=" fecha='" . $variable['fecha']. "',";
-				$cadenaSql.=" autor='" . $variable['autor']. "',";
+				$cadenaSql.=" id_contexto_ponencia='" . $variable['categoria']. "',";
+				$cadenaSql.=" evento_presentacion='" . $variable['evento']. "',";
+				$cadenaSql.=" institucion_certificadora='" . $variable['institucion']. "',";
 				$cadenaSql.=" numero_acta='" . $variable['numeroActa']. "',";
 				$cadenaSql.=" fecha_acta='" . $variable['fechaActa']. "',";
 				$cadenaSql.=" caso_acta='" . $variable['numeroCasoActa']. "',";
 				$cadenaSql.=" puntaje='" . $variable['puntaje']. "'";
 				$cadenaSql.=" WHERE";
-				$cadenaSql.=" id_resena_critica='" . $variable ['id_resena_critica'] . "'";
+				$cadenaSql.=" id_ponencia='" . $variable ['id_ponencia'] . "'";
 				$cadenaSql.=" AND estado=true";
 				$cadenaSql.=" ;";
 				break;

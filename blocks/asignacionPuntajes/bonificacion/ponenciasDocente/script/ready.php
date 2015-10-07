@@ -1,4 +1,4 @@
-$("#resenaCritica").validationEngine({
+$("#ponenciasDocente").validationEngine({
 promptPosition : "centerRight", 
 scroll: false,
 autoHidePrompt: true,
@@ -6,8 +6,8 @@ autoHideDelay: 2000
 });
 
 $(function() {
-	$("#resenaCritica").submit(function() {
-		$resultado=$("#resenaCritica").validationEngine("validate");
+	$("#ponenciasDocente").submit(function() {
+		$resultado=$("#ponenciasDocente").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -15,7 +15,7 @@ $(function() {
 	});
 });
 
-$("#resenaCriticaRegistrar").validationEngine({
+$("#ponenciasDocenteRegistrar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,
@@ -23,8 +23,8 @@ $("#resenaCriticaRegistrar").validationEngine({
 });
 
 $(function() {
-$("#resenaCriticaRegistrar").submit(function() {
-$resultado=$("#resenaCriticaRegistrar").validationEngine("validate");
+$("#ponenciasDocenteRegistrar").submit(function() {
+$resultado=$("#ponenciasDocenteRegistrar").validationEngine("validate");
 
 if ($resultado) {
 
@@ -41,8 +41,8 @@ $(function () {
 });
 
 $(function() {
-	$("#resenaCriticaModificar").submit(function() {
-		$resultado=$("#resenaCriticaModificar").validationEngine("validate");
+	$("#ponenciasDocenteModificar").submit(function() {
+		$resultado=$("#ponenciasDocenteModificar").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -50,7 +50,7 @@ $(function() {
 	});
 });
 
-$("#resenaCriticaModificar").validationEngine({
+$("#ponenciasDocenteModificar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,

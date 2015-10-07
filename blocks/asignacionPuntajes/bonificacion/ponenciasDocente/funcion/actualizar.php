@@ -1,8 +1,8 @@
 <?php
 
-namespace asignacionPuntajes\bonificacion\resenaCritica\funcion;
+namespace asignacionPuntajes\bonificacion\ponenciasDocente\funcion;
 
-use asignacionPuntajes\bonificacion\resenaCritica\funcion\redireccionar;
+use asignacionPuntajes\bonificacion\ponenciasDocente\funcion\redireccionar;
 
 include_once ('redireccionar.php');
 if (! isset ( $GLOBALS ["autorizado"] )) {
@@ -35,7 +35,7 @@ class Actualizar {
 		$rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "raizDocumento" ) . "/blocks/asignacionPuntajes/salariales/";
 		$rutaBloque .= $esteBloque ['nombre'];
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
-
+		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizar', $_REQUEST );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
 
