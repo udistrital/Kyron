@@ -6,8 +6,8 @@ $( document ).ready(function() {
 	var indiceB= 0;
 	var cont = 0;
 	
-	campoFecha[indiceA++] = "#<?php echo $this->campoSeguro('fechaPublicacion')?>";
-	campoFechaInput[indiceB++] = "input#<?php echo $this->campoSeguro('fechaPublicacion')?>";
+	campoFecha[indiceA++] = "#<?php echo $this->campoSeguro('fechaResolucion')?>";
+	campoFechaInput[indiceB++] = "input#<?php echo $this->campoSeguro('fechaResolucion')?>";
 	
 	campoFecha[indiceA++] = "#<?php echo $this->campoSeguro('fechaActa')?>";
 	campoFechaInput[indiceB++] = "input#<?php echo $this->campoSeguro('fechaActa')?>";

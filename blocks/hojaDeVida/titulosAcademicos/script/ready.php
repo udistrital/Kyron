@@ -1,4 +1,4 @@
-$("#patentes").validationEngine({
+$("#titulosAcademicos").validationEngine({
 promptPosition : "centerRight", 
 scroll: false,
 autoHidePrompt: true,
@@ -6,8 +6,8 @@ autoHideDelay: 2000
 });
 
 $(function() {
-	$("#patentes").submit(function() {
-		$resultado=$("#patentes").validationEngine("validate");
+	$("#titulosAcademicos").submit(function() {
+		$resultado=$("#titulosAcademicos").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -15,7 +15,7 @@ $(function() {
 	});
 });
 
-$("#patentesRegistrar").validationEngine({
+$("#titulosAcademicosRegistrar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,
@@ -23,8 +23,8 @@ $("#patentesRegistrar").validationEngine({
 });
 
 $(function() {
-$("#patentesRegistrar").submit(function() {
-$resultado=$("#patentesRegistrar").validationEngine("validate");
+$("#titulosAcademicosRegistrar").submit(function() {
+$resultado=$("#titulosAcademicosRegistrar").validationEngine("validate");
 
 if ($resultado) {
 
@@ -41,8 +41,8 @@ $(function () {
 });
 
 $(function() {
-	$("#patentesModificar").submit(function() {
-		$resultado=$("#patentesModificar").validationEngine("validate");
+	$("#titulosAcademicosModificar").submit(function() {
+		$resultado=$("#titulosAcademicosModificar").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -50,7 +50,7 @@ $(function() {
 	});
 });
 
-$("#patentesModificar").validationEngine({
+$("#titulosAcademicosModificar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,
@@ -75,8 +75,9 @@ $('#<?php echo $this->campoSeguro('facultad')?>').width(450);
 $('#<?php echo $this->campoSeguro('proyectoCurricular')?>').width(450);      
 
 $('#<?php echo $this->campoSeguro('docenteRegistrar')?>').width(465);
-$('#<?php echo $this->campoSeguro('tipoPatente')?>').width(450);
-$('#<?php echo $this->campoSeguro('entidadPatente')?>').width(450);
+$('#<?php echo $this->campoSeguro('tipo')?>').width(450);
+$('#<?php echo $this->campoSeguro('entidad')?>').width(450);
+$('#<?php echo $this->campoSeguro('modalidad')?>').width(450);
 $('#<?php echo $this->campoSeguro('pais')?>').width(450);
 $('#<?php echo $this->campoSeguro('anno')?>').width(450);
 
@@ -85,8 +86,9 @@ $('#<?php echo $this->campoSeguro('anno')?>').width(450);
 $("#<?php echo $this->campoSeguro('facultad')?>").select2();
 $("#<?php echo $this->campoSeguro('proyectoCurricular')?>").select2();
 
-$('#<?php echo $this->campoSeguro('tipoPatente')?>').select2();
-$('#<?php echo $this->campoSeguro('entidadPatente')?>').select2();
+$('#<?php echo $this->campoSeguro('tipo')?>').select2();
+$('#<?php echo $this->campoSeguro('entidad')?>').select2();
+$('#<?php echo $this->campoSeguro('modalidad')?>').select2();
 $('#<?php echo $this->campoSeguro('pais')?>').select2();
 $('#<?php echo $this->campoSeguro('anno')?>').select2();
 

@@ -132,9 +132,9 @@ class FormularioRegistro {
 		
 		// ----------------FIN CONTROL: Lista Docente--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Lista Tipo de Patente--------------------------------------------------------
+		// ----------------INICIO CONTROL: Lista Tipo de Título--------------------------------------------------------
 			
-		$esteCampo = 'tipoPatente';
+		$esteCampo = 'tipo';
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['id'] = $esteCampo;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
@@ -157,7 +157,7 @@ class FormularioRegistro {
 		$atributos ['anchoCaja'] = 57;
 		$atributos ['miEvento'] = '';
 		$atributos ['validar'] = 'required';
-		$atributos ['cadena_sql'] = $cadenaSql = $this->miSql->getCadenaSql ( 'tipo_patente' );
+		$atributos ['cadena_sql'] = $cadenaSql = $this->miSql->getCadenaSql ( 'tipo_titulo_academico' );
 		$matrizItems = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 		$atributos ['matrizItems'] = $matrizItems;
 		// Aplica atributos globales al control
@@ -165,10 +165,10 @@ class FormularioRegistro {
 		echo $this->miFormulario->campoCuadroLista ( $atributos );
 		unset ( $atributos );
 			
-		// ----------------FIN CONTROL: Lista Tipo de Patente--------------------------------------------------------
+		// ----------------FIN CONTROL: Lista Tipo de Título--------------------------------------------------------
 				
-		// ----------------INICIO CONTROL: Campo de Texto Título de Patente--------------------------------------------------------
-		$esteCampo = 'tituloPatente';
+		// ----------------INICIO CONTROL: Campo de Texto Título Otorgado--------------------------------------------------------
+		$esteCampo = 'titulo';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -180,7 +180,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, minSize[6],maxSize[50]';
+		$atributos ['validar'] = 'required, minSize[6],maxSize[50], custom[onlyLetterSp]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -198,11 +198,11 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Título de Patente--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Título Otorgado--------------------------------------------------------
 				
-		// ---------------- CONTROL: Lista Entidad Patente--------------------------------------------------------
+		// ---------------- CONTROL: Lista Entidad que lo otorga--------------------------------------------------------
 			
-		$esteCampo = "entidadPatente";
+		$esteCampo = "entidad";
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['id'] = $esteCampo;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
@@ -232,7 +232,7 @@ class FormularioRegistro {
 		echo $this->miFormulario->campoCuadroLista ( $atributos );
 		unset ( $atributos );
 		
-		// ----------------FIN CONTROL: Lista Entidad Patente--------------------------------------------------------
+		// ----------------FIN CONTROL: Lista Entidad que lo otorga--------------------------------------------------------
 
 		// ---------------- CONTROL: Lista País--------------------------------------------------------
 			
@@ -268,7 +268,7 @@ class FormularioRegistro {
 			
 		// ----------------FIN CONTROL: Lista País--------------------------------------------------------
 				
-		// ----------------INICIO CONTROL: Campo de Texto Año de Registro de Patente--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Año de Obtención del Título--------------------------------------------------------
 		
 		$esteCampo = "anno";
 		$atributos ['nombre'] = $esteCampo;
@@ -289,7 +289,7 @@ class FormularioRegistro {
 		$atributos ['ajax_function'] = "";
 		$atributos ['ajax_control'] = $esteCampo;
 		$atributos ['estilo'] = "jqueryui";
-		$atributos ['validar'] = "required";
+		$atributos ['validar'] = "required,custom[integer]";
 		$atributos ['limitar'] = false;
 		$atributos ['anchoCaja'] = 60;
 		$atributos ['miEvento'] = '';
@@ -310,11 +310,46 @@ class FormularioRegistro {
 		echo $this->miFormulario->campoCuadroLista ( $atributos );
 		unset ( $atributos );
 		
-		// ----------------FIN CONTROL: Campo de Texto Año de Registro de Patente--------------------------------------------------------
-			
-		// ----------------INICIO CONTROL: Campo de Texto Concepto Patente--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Año de Obtención del Título--------------------------------------------------------
 		
-		$esteCampo = 'conceptoPatente'; 
+		// ---------------- CONTROL: Lista Modalidad--------------------------------------------------------
+			
+		$esteCampo = "modalidad";
+		$atributos ['nombre'] = $esteCampo;
+		$atributos ['id'] = $esteCampo;
+		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+		$atributos ["etiquetaObligatorio"] = true;
+		$atributos ['tab'] = $tab ++;
+		$atributos ['anchoEtiqueta'] = 280;
+		$atributos ['evento'] = '';
+		if (isset ( $_REQUEST [$esteCampo] )) {
+			$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+		} else {
+			$atributos ['seleccion'] = - 1;
+		}
+		$atributos ['deshabilitado'] = false;
+		$atributos ['columnas'] = 1;
+		$atributos ['tamanno'] = 1;
+		$atributos ['ajax_function'] = "";
+		$atributos ['ajax_control'] = $esteCampo;
+		$atributos ['estilo'] = "jqueryui";
+		$atributos ['validar'] = "required";
+		$atributos ['limitar'] = false;
+		$atributos ['anchoCaja'] = 60;
+		$atributos ['miEvento'] = '';
+		$atributos ['cadena_sql'] = $cadenaSql = $this->miSql->getCadenaSql ( 'modalidad_titulo_academico' );
+		$matrizItems = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+		$atributos ['matrizItems'] = $matrizItems;
+		$atributos = array_merge ( $atributos, $atributosGlobales );
+		echo $this->miFormulario->campoCuadroLista ( $atributos );
+		unset ( $atributos );
+			
+		// ----------------FIN CONTROL: Lista Modalidad--------------------------------------------------------
+		
+		
+		// ----------------INICIO CONTROL: Campo de Texto Resolución de convalidación--------------------------------------------------------
+		
+		$esteCampo = 'resolucion'; 
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -326,7 +361,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, minSize[10],maxSize[30]';
+		$atributos ['validar'] = 'required, minSize[10],maxSize[30],custom[onlyLetterNumber]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -344,10 +379,11 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Concepto Patente--------------------------------------------------------
-
-		// ----------------INICIO CONTROL: Campo de Texto Número de Registro de Patente--------------------------------------------------------
-		$esteCampo = 'numeroRegistro';
+		// ----------------FIN CONTROL: Campo de Texto Resolución de convalidación--------------------------------------------------------
+		
+		
+		// ----------------INICIO CONTROL: Campo de Texto Fecha de Resolución de convalidación--------------------------------------------------------
+		$esteCampo = 'fechaResolucion';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -359,7 +395,40 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, custom[onlyNumberSp], maxSize[15]';
+		$atributos ['validar'] = 'required, custom[date]';
+		if (isset ( $_REQUEST [$esteCampo] )) {
+			$atributos ['valor'] = $_REQUEST [$esteCampo];
+		} else {
+			$atributos ['valor'] = '';
+		}
+		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+		$atributos ['deshabilitado'] = true;
+		$atributos ['tamanno'] = 57;
+		$atributos ['maximoTamanno'] = '';
+		$atributos ['anchoEtiqueta'] = 280;
+		$tab ++;
+		
+		// Aplica atributos globales al control
+		$atributos = array_merge ( $atributos, $atributosGlobales );
+		echo $this->miFormulario->campoCuadroTexto ( $atributos );
+		unset ( $atributos );
+		// ----------------FIN CONTROL: Campo de Texto Fecha de Resolución de convalidación--------------------------------------------------------
+		
+		// ----------------INICIO CONTROL: Campo de Texto Entidad que convalida--------------------------------------------------------
+		
+		$esteCampo = 'entidadConvalidacion';
+		$atributos ['id'] = $esteCampo;
+		$atributos ['nombre'] = $esteCampo;
+		$atributos ['tipo'] = 'text';
+		$atributos ['estilo'] = 'jqueryui';
+		$atributos ['marco'] = true;
+		$atributos ['estiloMarco'] = '';
+		$atributos ["etiquetaObligatorio"] = true;
+		$atributos ['columnas'] = 1;
+		$atributos ['dobleLinea'] = 0;
+		$atributos ['tabIndex'] = $tab;
+		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+		$atributos ['validar'] = 'required, minSize[10],maxSize[30],custom[onlyLetterSp]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -369,7 +438,7 @@ class FormularioRegistro {
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
 		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '15';
+		$atributos ['maximoTamanno'] = '30';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
 			
@@ -377,9 +446,9 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Número de Registro de Patente--------------------------------------------------------
-			
-		// ----------------INICIO CONTROL: Campo de Texto Número Acta Patente--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Entidad que convalida--------------------------------------------------------
+		
+		// ----------------INICIO CONTROL: Campo de Texto Número Acta--------------------------------------------------------
 		$esteCampo = 'numeroActa';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -392,7 +461,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, maxSize[15]';
+		$atributos ['validar'] = 'required, maxSize[15],custom[onlyLetterNumber]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -410,9 +479,9 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Numero Acta Patente--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Numero Acta--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto Fecha Acta Patente--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Fecha Acta--------------------------------------------------------
 		$esteCampo = 'fechaActa';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -443,9 +512,9 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Fecha Acta Patente--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Fecha Acta--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto Número Caso Acta Patente--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Número Caso Acta--------------------------------------------------------
 		$esteCampo = 'numeroCasoActa';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -476,9 +545,9 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Número Caso Acta Patente--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Número Caso Acta--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto Puntaje Patente--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Puntaje--------------------------------------------------------
 		$esteCampo = 'puntaje';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -509,7 +578,7 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Puntaje Patente--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Puntaje--------------------------------------------------------
 		
 				
 				// ------------------Division para los botones-------------------------

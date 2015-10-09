@@ -109,12 +109,12 @@ class Sql extends \Sql {
 				$cadenaSql .= " docencia.proyectocurricular";
 				break;
 
-			case "tipo_patente" :
+			case "tipo_titulo_academico" :
 				$cadenaSql = "SELECT";
-				$cadenaSql .= " id_tipo_patente,";
-				$cadenaSql .= "	descripcion";
+				$cadenaSql .= " id_tipo_titulo_academico,";
+				$cadenaSql .= "	tipo";
 				$cadenaSql .= " FROM ";
-				$cadenaSql .= " docencia.tipo_patente";
+				$cadenaSql .= " docencia.tipo_titulo_academico ORDER BY id_tipo_titulo_academico";
 				break;
 					
 			case "entidadInstitucion" :
@@ -133,6 +133,13 @@ class Sql extends \Sql {
 				$cadenaSql .= " docencia.pais";
 				$cadenaSql .= " order by paisnombre";
 				break;
+			case "modalidad_titulo_academico" :
+				$cadenaSql = "SELECT";
+				$cadenaSql .= " id_modalidad_titulo_academico,";
+				$cadenaSql .= "	modalidad";
+				$cadenaSql .= " FROM ";
+				$cadenaSql .= " docencia.modalidad_titulo_academico ORDER BY id_modalidad_titulo_academico";
+				break;
 				
 			case "docente" :
 				$cadenaSql=" SELECT";
@@ -144,30 +151,38 @@ class Sql extends \Sql {
 				break;
 								
 			case "consultar" :			
-				$cadenaSql=" select ";
-				$cadenaSql.=" pat.id_patente, ";
-				$cadenaSql.=" pat.documento_docente, ";
-				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
-				$cadenaSql.=" pat.titulo_patente, ";
-				$cadenaSql.=" tp.descripcion as tipo_patente,";
-				$cadenaSql.=" pat.concepto_patente,";
-				$cadenaSql.=" un.nombre_universidad as entidad,";
-				$cadenaSql.=" pi.paisnombre as pais,";
-				$cadenaSql.=" pat.anno_obtencion,";
-				$cadenaSql.=" pat.puntaje";
-				$cadenaSql.=" from ";
-				$cadenaSql.=" docencia.patente pat ";
-				$cadenaSql.=" left join docencia.docente dc on pat.documento_docente=dc.documento_docente ";
-				$cadenaSql.=" left join docencia.docente_proyectocurricular dc_pc on pat.documento_docente=dc_pc.documento_docente ";
-				$cadenaSql.=" left join docencia.proyectocurricular pc on dc_pc.id_proyectocurricular=pc.id_proyectocurricular ";
-				$cadenaSql.=" left join docencia.facultad fc on pc.id_facultad=fc.id_facultad ";
-				$cadenaSql.=" left join docencia.tipo_patente tp on pat.id_tipo_patente=tp.id_tipo_patente ";
-				$cadenaSql.=" left join docencia.universidad un on pat.id_universidad=un.id_universidad ";
-				$cadenaSql.=" left join docencia.pais pi on pat.paiscodigo=pi.paiscodigo ";
-				$cadenaSql.=" where pat.estado=true";
-				$cadenaSql.=" and dc.estado=true";
-				$cadenaSql.=" and pc.estado=true";
-				$cadenaSql.=" and dc_pc.estado=true";
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" ta.id_titulo_academico AS id_titulo_academico,";
+				$cadenaSql.=" dc.documento_docente AS documento_docente,";
+				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido AS nombre_docente,";
+				$cadenaSql.=" tta.tipo AS tipo,";
+				$cadenaSql.=" ta.titulo AS titulo,";
+				$cadenaSql.=" un.nombre_universidad AS universidad,";
+				$cadenaSql.=" pa.paisnombre AS pais,";
+				$cadenaSql.=" ta.anno AS anno,";
+				$cadenaSql.=" mta.modalidad AS modalidad,";
+				$cadenaSql.=" ta.resolucion AS resolucion,";
+				$cadenaSql.=" ta.fecha_resolucion AS fecha_resolucion,";
+				$cadenaSql.=" ta.entidad_convalidacion AS entidad_convalidacion,";
+				$cadenaSql.=" ta.numero_acta AS numero_acta,";
+				$cadenaSql.=" ta.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" ta.numero_caso AS numero_caso,";
+				$cadenaSql.=" ta.puntaje AS puntaje";
+				$cadenaSql.=" FROM";
+				$cadenaSql.=" docencia.titulo_academico AS ta";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_titulo_academico AS tta ON tta.id_tipo_titulo_academico=ta.id_tipo_titulo_academico";
+				$cadenaSql.=" LEFT JOIN docencia.universidad AS un ON un.id_universidad=ta.id_universidad";
+				$cadenaSql.=" LEFT JOIN docencia.pais AS pa ON pa.paiscodigo=ta.paiscodigo";
+				$cadenaSql.=" LEFT JOIN docencia.modalidad_titulo_academico AS mta ON mta.id_modalidad_titulo_academico=ta.id_modalidad_titulo_academico";
+				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON dc.documento_docente=ta.documento_docente";
+				$cadenaSql.=" LEFT JOIN docencia.docente_proyectocurricular AS dc_pc ON dc_pc.documento_docente=ta.documento_docente";
+				$cadenaSql.=" LEFT JOIN docencia.proyectocurricular AS pc ON dc_pc.id_proyectocurricular=pc.id_proyectocurricular";
+				$cadenaSql.=" LEFT JOIN docencia.facultad AS fc ON pc.id_facultad=fc.id_facultad";
+				$cadenaSql.=" WHERE";
+				$cadenaSql.=" ta.estado=true";
+				$cadenaSql.=" AND dc.estado=true";
+				$cadenaSql.=" AND pc.estado=true";
+				$cadenaSql.=" AND dc_pc.estado=true";
 				if ($variable ['documento_docente'] != '') {
 					$cadenaSql .= " AND dc.documento_docente = '" . $variable ['documento_docente'] . "'";
 				}
@@ -180,63 +195,97 @@ class Sql extends \Sql {
 				break;
 				
 			case "registrar" :
-				$cadenaSql = "INSERT INTO docencia.patente( ";
-				$cadenaSql .= "documento_docente, id_tipo_patente, titulo_patente, id_universidad, ";
-				$cadenaSql .= "paiscodigo, anno_obtencion,concepto_patente, numero_registro, ";
-				$cadenaSql .= "numero_acta, fecha_acta, numero_caso, puntaje) ";
-				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
-				$cadenaSql .= " '" . $variable ['tipoPatente'] . "',";
-				$cadenaSql .= " '" . $variable ['tituloPatente'] . "',";
-				$cadenaSql .= "'" . $variable ['entidadPatente'] . "',";
-				$cadenaSql .= " '" . $variable ['pais'] . "',";
-				$cadenaSql .= " '" . $variable ['anno'] . "',";
-				$cadenaSql .= " '" . $variable ['conceptoPatente'] . "',";
-				$cadenaSql .= " '" . $variable ['numeroRegistro'] . "',";
-				$cadenaSql .= "' " . $variable ['numeroActa'] . "',";
-				$cadenaSql .= " '" . $variable ['fechaActa'] . "',";
-				$cadenaSql .= "' " . $variable ['numeroCasoActa'] . "',";
-				$cadenaSql .= " '" . $variable ['puntaje'] . "')";
+				$cadenaSql=" INSERT INTO docencia.titulo_academico";
+				$cadenaSql.=" (";
+				$cadenaSql.=" documento_docente,";
+				$cadenaSql.=" id_tipo_titulo_academico,";
+				$cadenaSql.=" titulo,";
+				$cadenaSql.=" id_universidad,";
+				$cadenaSql.=" paiscodigo,";
+				$cadenaSql.=" anno,";
+				$cadenaSql.=" id_modalidad_titulo_academico,";
+				$cadenaSql.=" resolucion,";
+				$cadenaSql.=" fecha_resolucion,";
+				$cadenaSql.=" entidad_convalidacion,";
+				$cadenaSql.=" numero_acta,";
+				$cadenaSql.=" fecha_acta,";
+				$cadenaSql.=" numero_caso,";
+				$cadenaSql.=" puntaje";
+				$cadenaSql.=" )";
+				$cadenaSql.=" VALUES";
+				$cadenaSql.=" (";
+				$cadenaSql.=" '" . $variable['id_docenteRegistrar']. "',";
+				$cadenaSql.=" '" . $variable['tipo']. "',";
+				$cadenaSql.=" '" . $variable['titulo']. "',";
+				$cadenaSql.=" '" . $variable['entidad']. "',";
+				$cadenaSql.=" '" . $variable['pais']. "',";
+				$cadenaSql.=" '" . $variable['anno']. "',";
+				$cadenaSql.=" '" . $variable['modalidad']. "',";
+				$cadenaSql.=" '" . $variable['resolucion']. "',";
+				$cadenaSql.=" '" . $variable['fechaResolucion']. "',";
+				$cadenaSql.=" '" . $variable['entidadConvalidacion']. "',";
+				$cadenaSql.=" '" . $variable['numeroActa']. "',";
+				$cadenaSql.=" '" . $variable['fechaActa']. "',";
+				$cadenaSql.=" '" . $variable['numeroCasoActa']. "',";
+				$cadenaSql.=" '" . $variable['puntaje']. "'";
+				$cadenaSql.=" );";
 				break;
 				
-			case "publicacionActualizar" :
-				$cadenaSql=" SELECT pat.documento_docente,";
-				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
-				$cadenaSql.=" pat.id_tipo_patente, ";
-				$cadenaSql.=" pat.titulo_patente, ";
-				$cadenaSql.=" pat.id_universidad, ";
-				$cadenaSql.=" pat.paiscodigo, ";
-				$cadenaSql.=" pat.anno_obtencion, ";
-				$cadenaSql.=" pat.concepto_patente, ";
-				$cadenaSql.=" pat.numero_registro, ";
-				$cadenaSql.=" pat.numero_acta, ";
-				$cadenaSql.=" pat.fecha_acta, ";
-				$cadenaSql.=" pat.numero_caso, ";
-				$cadenaSql.=" pat.puntaje ";
-				$cadenaSql.=" FROM docencia.patente pat ";
-				$cadenaSql.=" left join docencia.docente dc on pat.documento_docente=dc.documento_docente ";
-				$cadenaSql.=" WHERE pat.documento_docente ='" . $variable['documento_docente']. "'";
-				$cadenaSql.=" and pat.estado=true";
-				$cadenaSql.=" and pat.id_patente ='" . $variable['identificadorPatente']. "'";
+			case "consultaActualizar" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" ta.id_titulo_academico AS id_titulo_academico,";
+				$cadenaSql.=" dc.documento_docente AS documento_docente,";
+				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido AS nombre_docente,";
+				$cadenaSql.=" ta.id_tipo_titulo_academico AS id_tipo_titulo_academico,";
+				$cadenaSql.=" tta.tipo AS tipo,";
+				$cadenaSql.=" ta.titulo AS titulo,";
+				$cadenaSql.=" ta.id_universidad AS id_universidad,";
+				$cadenaSql.=" un.nombre_universidad AS universidad,";
+				$cadenaSql.=" ta.paiscodigo AS paiscodigo,";
+				$cadenaSql.=" pa.paisnombre AS pais,";
+				$cadenaSql.=" ta.anno AS anno,";
+				$cadenaSql.=" mta.id_modalidad_titulo_academico AS id_modalidad_titulo_academico,";
+				$cadenaSql.=" mta.modalidad AS modalidad,";
+				$cadenaSql.=" ta.resolucion AS resolucion,";
+				$cadenaSql.=" ta.fecha_resolucion AS fecha_resolucion,";
+				$cadenaSql.=" ta.entidad_convalidacion AS entidad_convalidacion,";
+				$cadenaSql.=" ta.numero_acta AS numero_acta,";
+				$cadenaSql.=" ta.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" ta.numero_caso AS numero_caso,";
+				$cadenaSql.=" ta.puntaje AS puntaje";
+				$cadenaSql.=" FROM";
+				$cadenaSql.=" docencia.titulo_academico AS ta";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_titulo_academico AS tta ON tta.id_tipo_titulo_academico=ta.id_tipo_titulo_academico";
+				$cadenaSql.=" LEFT JOIN docencia.universidad AS un ON un.id_universidad=ta.id_universidad";
+				$cadenaSql.=" LEFT JOIN docencia.pais AS pa ON pa.paiscodigo=ta.paiscodigo";
+				$cadenaSql.=" LEFT JOIN docencia.modalidad_titulo_academico AS mta ON mta.id_modalidad_titulo_academico=ta.id_modalidad_titulo_academico";
+				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON dc.documento_docente=ta.documento_docente";
+				$cadenaSql.=" WHERE";
+				$cadenaSql.=" ta.estado=true";
+				$cadenaSql.=" and ta.id_titulo_academico ='" . $variable['id_titulo_academico']. "'";
 				break;
 				
 			case "actualizar" :
 				$cadenaSql = "UPDATE ";
-				$cadenaSql .= "docencia.patente ";
+				$cadenaSql .= "docencia.titulo_academico ";
 				$cadenaSql .= "SET ";
-				$cadenaSql .= "id_tipo_patente = '" . $variable ['tipoPatente'] . "', ";
-				$cadenaSql .= "titulo_patente = '" . $variable ['tituloPatente'] . "', ";
-				$cadenaSql .= "id_universidad = '" . $variable ['entidadPatente'] . "', ";
-				$cadenaSql .= "paiscodigo = '" . $variable ['pais'] . "', ";
-				$cadenaSql .= "anno_obtencion = '" . $variable ['anno'] . "', ";
-				$cadenaSql .= "concepto_patente = '" . $variable ['conceptoPatente'] . "', ";
-				$cadenaSql .= "numero_registro = '" . $variable ['numeroRegistro'] . "', ";
-				$cadenaSql .= "numero_acta = '" . $variable ['numeroActa'] . "', ";
-				$cadenaSql .= "fecha_acta = '" . $variable ['fechaActa'] . "', ";
-				$cadenaSql .= "numero_caso = '" . $variable ['numeroCasoActa'] . "', ";
-				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "'";
-				$cadenaSql .= "WHERE ";
-				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";
-				$cadenaSql .= "and id_patente ='" . $variable ['identificadorPatente_old'] . "' ";
+				$cadenaSql.=" documento_docente='" . $variable ['id_docenteRegistrar'] . "',";
+				$cadenaSql.=" id_tipo_titulo_academico='" . $variable ['tipo'] . "',";
+				$cadenaSql.=" titulo='" . $variable ['titulo'] . "',";
+				$cadenaSql.=" id_universidad='" . $variable ['entidad'] . "',";
+				$cadenaSql.=" paiscodigo='" . $variable ['pais'] . "',";
+				$cadenaSql.=" anno='" . $variable ['anno'] . "',";
+				$cadenaSql.=" id_modalidad_titulo_academico='" . $variable ['modalidad'] . "',";
+				$cadenaSql.=" resolucion='" . $variable ['resolucion'] . "',";
+				$cadenaSql.=" fecha_resolucion='" . $variable ['fechaResolucion'] . "',";
+				$cadenaSql.=" entidad_convalidacion='" . $variable ['entidadConvalidacion'] . "',";
+				$cadenaSql.=" numero_acta='" . $variable ['numeroActa'] . "',";
+				$cadenaSql.=" fecha_acta='" . $variable ['fechaActa'] . "',";
+				$cadenaSql.=" numero_caso='" . $variable ['numeroCasoActa'] . "',";
+				$cadenaSql.=" puntaje='" . $variable ['puntaje'] . "'";
+				$cadenaSql .= " WHERE";
+				$cadenaSql .= " id_titulo_academico ='" . $variable ['id_titulo_academico'] . "' ";
+				$cadenaSql .= " AND estado=true ";
 				break;
 		}
 		

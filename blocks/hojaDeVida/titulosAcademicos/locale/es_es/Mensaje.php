@@ -1,42 +1,43 @@
 <?php
 
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
-$this->idioma["tabConsultar"] = "Consultar Patentes";
-$this->idioma["tabIngresar"] = "Ingresar Patentes";
+$this->idioma["tabConsultar"] = "Consultar Títulos Académicos";
+$this->idioma["tabIngresar"] = "Ingresar Títulos Académicos";
 //////////////////////////////////////////////////////////////
 
 //************ MENSAJES *********
-$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Patente para el docente <br>";
-$this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado la Patente para el docente <br>" ;
-$this->idioma["mensajeError"] =  "Error al tratar de registrar la Patente.";
-$this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Patentes Para los Criterios Ingresados";
-$this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de la Patente Para el Docente </br>";
+$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Título Académico para el docente <br>";
+$this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado la Título Académico para el docente <br>" ;
+$this->idioma["mensajeError"] =  "Error al tratar de registrar la Título Académico.";
+$this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Títulos Académicos Para los Criterios Ingresados";
+$this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de la Título Académico Para el Docente </br>";
 /////////////////////////////////
 
-$this->idioma["marcoConsultaGeneral"] = "Patentes Registradas";
-$this->idioma["marcoModificarRegistro"] = "Modificar Información de Patentes";
+$this->idioma["marcoConsultaGeneral"] = "Títulos Académicos Registradas";
+$this->idioma["marcoModificarRegistro"] = "Modificar Información de Títulos Académicos";
 
 
 //* SECCIÓN ELEMENTOS QUE SU NOMBRE POSIBLEMENTE VARIA DENTRO DEL FORMULARIO *//
-$this->idioma["tipoPatente"] = "Tipo de Patente";
-$this->idioma["tituloPatente"] = "Titulo de Patente";
-$this->idioma["entidadPatente"] = "Entidad Patente";
-$this->idioma["conceptoPatente"] = "Concepto Patente";
-$this->idioma["numeroRegistro"] = "Número de Registro";
 
-$this->idioma["tipoPatenteTitulo"] = "Seleccione el Tipo de Patente";
-$this->idioma["tituloPatenteTitulo"] = "Ingrese el Título de la Patente";
-$this->idioma["entidadPatenteTitulo"] = "Ingrese la Entidad Patente";
-$this->idioma["conceptoPatenteTitulo"] = "Ingrese el Concepto Patente";
-$this->idioma["numeroRegistroTitulo"] = "Ingrese el Número de Registro de la Pantente";
+$this->idioma["tipo"] = "Tipo de título:";
+$this->idioma["titulo"] = "Título otorgado:";
+$this->idioma["entidad"] = "Universidad que lo otorga:";
+$this->idioma["pais"] = "País título académico:";
+$this->idioma["anno"] = "Año de Obtención:";
+$this->idioma["modalidad"] = "Modalidad de estudios:";
+$this->idioma["resolucion"] = "Resolución de convalidación:";
+$this->idioma["fechaResolucion"] = "Fecha Resolución de convalidación:";
+$this->idioma["entidadConvalidacion"] = "Entidad que convalida:";
 
-$this->idioma["nombreTitulo"] = "Nombre de Revista Públicada.";
-$this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";
-$this->idioma["docenteTitulo"] = "Identificación o Nombre del Docente.";
-$this->idioma["numeroActaTitulo"] = "Ingrese el Número de Acta CIARP-UD.";
-$this->idioma["fechaActaTitulo"] = "Seleccione la Fecha de Acta CIARP-UD.";
-$this->idioma["numeroCasoActaTitulo"] = "Ingrese el Número de Caso de Acta.";
-$this->idioma["puntajeTitulo"] = "Ingrese Puntaje.";
+$this->idioma["tipoTitulo"] = "Ingrese tipo de título.";
+$this->idioma["tituloTitulo"] = "Ingrese título otorgado.";
+$this->idioma["entidadTitulo"] = "Seleccione universidad que lo otorga.";
+$this->idioma["paisTitulo"] = "Seleccione país título académico.";
+$this->idioma["annoTitulo"] = "Seleccione año de Obtención.";
+$this->idioma["modalidadTitulo"] = "Seleccione modalidad de estudios.";
+$this->idioma["resolucionTitulo"] = "Ingrese resolución de convalidación.";
+$this->idioma["fechaResolucionTitulo"] = "Ingrese fecha Resolución de convalidación.";
+$this->idioma["entidadConvalidacionTitulo"] = "Ingrese entidad que convalida.";
 ///////////////////////////////////////////////////////////////////
 
 //***************** SECCIÓN BOTONES ******************//
@@ -52,16 +53,14 @@ $this->idioma["noDefinido"] = "No definido";
 
 
 // *** SECCIÓN DE ETIQUETAS QUE POSIBLEMENTE NO VARIAN *** //
-$this->idioma["facultad"] = "Facultad";
-$this->idioma["proyectoCurricular"] = "Proyecto Curricular";
+$this->idioma["facultad"] = "Facultad:";
+$this->idioma["proyectoCurricular"] = "Proyecto Curricular:";
 $this->idioma["docente"] = "Identificación o nombre del docente:";
-$this->idioma["docenteRegistrar"] = "Identificación o Nombre del Docente";
-$this->idioma["pais"] = "País Patente";
-$this->idioma["anno"] = "Año de Obtención";
-$this->idioma["numeroActa"] = "Número de Acta CIARP-UD";
-$this->idioma["fechaActa"] = "Fecha de Acta CIARP-UD";
-$this->idioma["numeroCasoActa"] = "Número de Caso de Acta";
-$this->idioma["puntaje"] = "Puntaje	Asignado";
+$this->idioma["docenteRegistrar"] = "Identificación o nombre del docente:";
+$this->idioma["numeroActa"] = "Número de Acta CIARP-UD:";
+$this->idioma["fechaActa"] = "Fecha de Acta CIARP-UD:";
+$this->idioma["numeroCasoActa"] = "Número de Caso de Acta:";
+$this->idioma["puntaje"] = "Puntaje	Asignado:";
 ////////////////////////////////////////////////////////////////
 
 ?>

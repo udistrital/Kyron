@@ -186,12 +186,18 @@ class registrarForm {
 	                   
 	                    <th>Identificación</th>
 	                    <th>Nombres y Apellidos</th>
-						<th>Título Patente</th>
-						<th>Tipo Patente</th>
-						<th>Concepto Patentes</th>
-						<th>Entidad</th>
-						<th>País</th>
+						<th>Tipo Título Académico</th>
+						<th>Título Académico</th>
+						<th>Universidad</th>
+						<th>Pais</th>
 						<th>Año</th>
+						<th>Modalidad</th>
+						<th>Resolución</th>
+						<th>Fecha resolución</th>
+						<th>Entidad que realiza la convalidación</th>
+						<th>Número Acta</th>
+						<th>Fecha Acta</th>
+						<th>Número Caso</th>
 						<th>Puntaje</th>
 						<th>Modificar</th>
 							
@@ -205,18 +211,24 @@ class registrarForm {
 						$variable .= "&arreglo=" . $arreglo;
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
 						$variable .= "&documento_docente=" . $patentes [$i] ['documento_docente'];
-						$variable .= "&identificadorPatente=" . $patentes [$i] ['id_patente'];
+						$variable .= "&id_titulo_academico=" . $patentes [$i] ['id_titulo_academico'];
 						$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 						
 						$mostrarHtml = "<tr>
 	                    <td><center>" . $patentes [$i] ['documento_docente'] . "</center></td>
 	                    <td><center>" . $patentes [$i] ['nombre_docente'] . "</center></td>
-	                    <td><center>" . $patentes [$i] ['titulo_patente'] . "</center></td>
-	                    <td><center>" . $patentes [$i] ['tipo_patente'] . "</center></td>
-	                    <td><center>" . $patentes [$i] ['concepto_patente'] . "</center></td>
-	                    <td><center>" . $patentes [$i] ['entidad'] . "</center></td>
+	                    <td><center>" . $patentes [$i] ['tipo'] . "</center></td>
+	                    <td><center>" . $patentes [$i] ['titulo'] . "</center></td>
+	                    <td><center>" . $patentes [$i] ['universidad'] . "</center></td>
 	                    <td><center>" . $patentes [$i] ['pais'] . "</center></td>
-	                    <td><center>" . $patentes [$i] ['anno_obtencion'] . "</center></td>
+	                    <td><center>" . $patentes [$i] ['anno'] . "</center></td>
+	                    <td><center>" . $patentes [$i] ['modalidad'] . "</center></td>
+	                    <td><center>" . $patentes [$i] ['resolucion'] . "</center></td>
+	                    <td><center>" . $patentes [$i] ['fecha_resolucion'] . "</center></td>
+	                    <td><center>" . $patentes [$i] ['entidad_convalidacion'] . "</center></td>
+	                    <td><center>" . $patentes [$i] ['numero_acta'] . "</center></td>
+	                    <td><center>" . $patentes [$i] ['fecha_acta'] . "</center></td>
+	                    <td><center>" . $patentes [$i] ['numero_caso'] . "</center></td>
 	                    <td><center>" . $patentes [$i] ['puntaje'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>
