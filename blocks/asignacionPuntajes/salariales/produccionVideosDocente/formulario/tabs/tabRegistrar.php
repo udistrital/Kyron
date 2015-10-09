@@ -1,5 +1,5 @@
 <?php
-namespace asignacionPuntajes\salariales\direccionTrabajosDeGrado\formulario;
+namespace asignacionPuntajes\salariales\produccionVideosDocente\formulario;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -358,7 +358,7 @@ class FormularioRegistro {
 			echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
 			unset($atributos);
 				
-			// ----------------INICIO CONTROL: Eliminar Estudiante --------------------------------------------------------
+			// ----------------INICIO CONTROL: Eliminar Evaluador --------------------------------------------------------
 			$esteCampo = "botonEliminar" . $i;
 			$atributos ["id"] = $esteCampo;
 			$atributos ["tabIndex"] = $tab ++;
@@ -372,9 +372,9 @@ class FormularioRegistro {
 			$atributos ["valor"] = $this->lenguaje->getCadena ( $esteCampo );
 			echo $this->miFormulario->campoImagen ( $atributos );
 			unset ( $atributos );
-			// ----------------FIN CONTROL: Eliminar Estudiante --------------------------------------------------------
+			// ----------------FIN CONTROL: Eliminar Evaluador --------------------------------------------------------
 		
-				// ----------------INICIO CONTROL: Campo de Texto Nombre del Estudiante --------------------------------------------------------
+				// ----------------INICIO CONTROL: Campo de Texto Nombre del Evaluador --------------------------------------------------------
 				$esteCampo = 'nombreEvaluador' . $i;
 				$atributos ['id'] = $esteCampo;
 				$atributos ['nombre'] = $esteCampo;
@@ -405,7 +405,7 @@ class FormularioRegistro {
 				//var_dump($atributos);
 				echo $this->miFormulario->campoCuadroTexto ( $atributos );
 				unset ( $atributos );
-				// ----------------FIN CONTROL: Campo de Texto Nombre del Estudiante --------------------------------------------------------
+				// ----------------FIN CONTROL: Campo de Texto Nombre del Evaluador --------------------------------------------------------
 			
 				// ----------------INICIO CONTROL: Campo de Texto Entidad o institucion a la que pertenece el evaluador--------------------------------------------------------
 				$esteCampo = 'universidadEvaluador' . $i;
@@ -484,7 +484,7 @@ class FormularioRegistro {
 					
 				}
 				
-				// -------------INICIO CONTROl: Imagen Agregar Estudiante-----------------------
+				// -------------INICIO CONTROl: Imagen Agregar Evaluador-----------------------
 			$esteCampo = "botonAgregar";
 			$atributos ["id"] = $esteCampo;
 			$atributos ["tabIndex"] = $tab ++;
@@ -495,13 +495,13 @@ class FormularioRegistro {
 			$atributos ["imagen"] = $rutaBloque . "/imagenes/add_list_256.png";
 			echo $this->miFormulario->campoImagen ( $atributos );
 			unset ( $atributos );
-				// -------------FIN CONTROL: Imagen Agregar Estudiante----------------------
+				// -------------FIN CONTROL: Imagen Agregar Evaluador----------------------
 				
 			echo $this->miFormulario->marcoAgrupacion ( 'fin' );
 				
 				
 		
-		// ----------------INICIO CONTROL: Campo de Texto Número Acta de trabajo de Grado--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Número Acta de Producción de Video--------------------------------------------------------
 		$esteCampo = 'numeroActa';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -532,9 +532,9 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Numero Acta de trabajo de Grado--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Numero Acta de Producción de Video--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto Fecha Acta de trabajo de Grado--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Fecha Acta de Producción de Video--------------------------------------------------------
 		$esteCampo = 'fechaActa';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -565,9 +565,9 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Fecha Acta de Trabajo de Grado--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Fecha Acta de Producción de Video--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto Número Caso Acta de Trabajo de Grado--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Número Caso Acta de Producción de Video--------------------------------------------------------
 		$esteCampo = 'numeroCasoActa';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -598,9 +598,9 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Número Caso Acta de Trabajo de Grado--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Número Caso Acta de Producción de Video--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto Puntaje de Trabajo de Grado--------------------------------------------------------
+		// ----------------INICIO CONTROL: Campo de Texto Puntaje de Asignado a la Producción de Video--------------------------------------------------------
 		$esteCampo = 'puntaje';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
@@ -631,7 +631,7 @@ class FormularioRegistro {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-			// ----------------FIN CONTROL: Campo de Texto Puntaje de Trabajo de Grado--------------------------------------------------------
+			// ----------------FIN CONTROL: Campo de Texto Puntaje asignado a la Producción de Video--------------------------------------------------------
 			
 		// ------------------Division para los botones-------------------------
 		$atributos ["id"] = "botones";

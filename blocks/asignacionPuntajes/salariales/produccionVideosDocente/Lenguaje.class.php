@@ -1,5 +1,5 @@
 <?php
-namespace asignacionPuntajes\salariales\direccionTrabajosDeGrado;
+namespace asignacionPuntajes\salariales\produccionVideosDocente;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
     include ("../index.php");

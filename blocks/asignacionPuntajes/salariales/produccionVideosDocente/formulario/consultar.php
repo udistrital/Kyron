@@ -120,8 +120,9 @@ class registrarForm {
 		);
 
 		$cadenaSql = $this->miSql->getCadenaSql ( 'consultar', $arreglo );
-		$indexacion = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+		$produccionVideo = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 		$arreglo=serialize($arregloSerialize);
+		
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
 		$esteCampo = $esteBloque ['nombre'];
 		$atributos ['id'] = $esteCampo;
@@ -169,7 +170,7 @@ class registrarForm {
 			
 		unset ( $atributos );
 		
-				if ($indexacion) {
+				if ($produccionVideo) {
 					
 					$esteCampo = "marcoConsultaGeneral";
 					$atributos ['id'] = $esteCampo;
@@ -185,10 +186,12 @@ class registrarForm {
 	                   
 	                    <th>Identificación</th>
 	                    <th>Nombres y Apellidos</th>
-						<th>Título Trabajo</th>
-						<th>Categoría</th>
-						<th>Tipo de Trabajo</th>
-						<th>Año</th>
+						<th>Título del Video</th>
+						<th>Fecha de Video</th>
+						<th>Impacto</th>
+						<th>Número de Acta CIARP_UD</th>
+						<th>Fecha Acta CIARP-UD</th>
+						<th>Nḿero de Caso de Acta</th>
 						<th>Puntaje</th>
 						<th>Modificar</th>
 							
@@ -196,23 +199,25 @@ class registrarForm {
 	            </thead>
 	            <tbody>";
 					
-					for($i = 0; $i < count ( $indexacion ); $i ++) {
+					for($i = 0; $i < count ( $produccionVideo ); $i ++) {
 						$variable = "pagina=" . $miPaginaActual; // pendiente la pagina para modificar parametro
 						$variable .= "&opcion=modificar";
 						$variable .= "&arreglo=" . $arreglo;
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
-						$variable .= "&documento_docente=" . $indexacion [$i] ['documento_docente'];
-						$variable .= "&identificadorDireccionTrabajo=" . $indexacion [$i] ['id_direccion'];
+						$variable .= "&documento_docente=" . $produccionVideo [$i] ['documento_docente'];
+						$variable .= "&identificadorProduccionVideo=" . $produccionVideo [$i] ['id_produccion_video'];
 						$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 						
 						$mostrarHtml = "<tr>
-	                    <td><center>" . $indexacion [$i] ['documento_docente'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['nombre_docente'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['titulo'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['categoria'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['tipo'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['anno'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['puntaje'] . "</center></td>
+	                    <td><center>" . $produccionVideo [$i] ['documento_docente'] . "</center></td>
+	                    <td><center>" . $produccionVideo [$i] ['nombre_docente'] . "</center></td>
+	                    <td><center>" . $produccionVideo [$i] ['titulo_video'] . "</center></td>
+	                    <td><center>" . $produccionVideo [$i] ['fecha_realizacion'] . "</center></td>
+	                    <td><center>" . $produccionVideo [$i] ['impacto'] . "</center></td>
+	                    <td><center>" . $produccionVideo [$i] ['numero_acta'] . "</center></td>
+	                    <td><center>" . $produccionVideo [$i] ['fecha_acta'] . "</center></td>
+	                    <td><center>" . $produccionVideo [$i] ['caso_acta'] . "</center></td>
+	                    <td><center>" . $produccionVideo [$i] ['puntaje'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>
 	                            <img src='" . $rutaBloque . "/css/images/Entrada.png' width='15px'>
