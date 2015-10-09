@@ -39,36 +39,25 @@ class Registrar {
 		$_REQUEST['numeroAutores'] = 0;
 		
 		for($i=1; $i<=3; $i++){
-			if($_REQUEST['nombreEstudiante' . $i] != "" && $_REQUEST['codigoEstudiante' . $i]){
+			if($_REQUEST['nombreEvaluador' . $i] != "" && $_REQUEST['universidadEvaluador' . $i] != "" && $_REQUEST['puntajeEvaluador' . $i] != ""){
 				$_REQUEST['numeroAutores']++;
 			}
 		}
+				
+		$cadenaSql = $this->miSql->getCadenaSql ( 'registrar', $_REQUEST);
+		$id_produccion_video = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 		
-		$arregloDatos = array (
-			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
-			'tituloTrabajo' => $_REQUEST['nombre'],
-			'anno' => $_REQUEST['anno'],
-			'tipoTrabajo' => $_REQUEST['tipo'],
-			'categoriaTrabajo' => $_REQUEST['categoria'],
-			'numeroAutores' => $_REQUEST['numeroAutores'],
-			'numeroActa' => $_REQUEST['numeroActa'],
-			'fechaActa' => $_REQUEST['fechaActa'],
-			'numeroCasoActa' => $_REQUEST['numeroCasoActa'],
-			'puntaje' => $_REQUEST['puntaje']
-		);
-		
-		$cadenaSql = $this->miSql->getCadenaSql ( 'registrar', $arregloDatos );
-		$id_direccion_trabajogrado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
-
 		for($i=1; $i<= $_REQUEST['numeroAutores']; $i++){
-			$arregloEstudiante = array (
-					'id_direccion_trabajogrado' => $id_direccion_trabajogrado[0]['id_direccion_trabajogrado'],
-					'nombre_estudiante' => $_REQUEST['nombreEstudiante'.$i],
-					'codigo_estudiante' => $_REQUEST['codigoEstudiante'.$i]
+			$arregloEvaluador = array (
+					'id_produccion_video' => $id_produccion_video[0]['id_produccion_video'],
+					'nombreEvaluador' => $_REQUEST['nombreEvaluador'.$i],
+					'UniversidadEvaluador' => $_REQUEST['universidadEvaluador'.$i],
+					'puntajeEvaluador' => $_REQUEST['puntajeEvaluador'.$i]
 			);
 			
-			$cadenaSql = $this->miSql->getCadenaSql ( 'registroEstudiantes', $arregloEstudiante );
+			$cadenaSql = $this->miSql->getCadenaSql ( 'registroEstudiantes', $arregloEvaluador);
 			$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
+			
 		}
 		
 		if ($resultado) {

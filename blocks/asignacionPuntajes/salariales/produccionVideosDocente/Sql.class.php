@@ -191,28 +191,31 @@ class Sql extends \Sql {
 				break;
 				
 			case "registrar" :
-				$cadenaSql = "INSERT INTO docencia.direccion_trabajogrado( ";
-				$cadenaSql .= "documento_docente, titulo_trabajogrado, anno_direccion, id_tipo_trabajogrado, ";
-				$cadenaSql .= "id_categoria_trabajogrado, numero_autores, numero_acta, fecha_acta, caso_acta, puntaje) ";
+				$cadenaSql = "INSERT INTO docencia.produccion_video( ";
+				$cadenaSql .= "documento_docente, titulo_video, numero_autores, numero_autores_ud, ";
+				$cadenaSql .= "fecha_realizacion, id_contexto, id_caracter_video, numero_evaluadores, numero_acta, fecha_acta, caso_acta, puntaje) ";
 				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
-				$cadenaSql .= " '" . $variable ['tituloTrabajo'] . "',";
-				$cadenaSql .= " '" . $variable ['anno'] . "',";
-				$cadenaSql .= "'" . $variable ['tipoTrabajo'] . "',";
-				$cadenaSql .= " '" . $variable ['categoriaTrabajo'] . "',";
+				$cadenaSql .= " '" . $variable ['tituloVideo'] . "',";
+				$cadenaSql .= " '" . $variable ['numeroAutores'] . "',";
+				$cadenaSql .= "'" . $variable ['numeroAutoresUd'] . "',";
+				$cadenaSql .= " '" . $variable ['fechaRealizacion'] . "',";
+				$cadenaSql .= " '" . $variable ['impacto'] . "',";
+				$cadenaSql .= " '" . $variable ['caracter'] . "',";
 				$cadenaSql .= " '" . $variable ['numeroAutores'] . "',";
 				$cadenaSql .= " '" . $variable ['numeroActa'] . "',";
 				$cadenaSql .= " '" . $variable ['fechaActa'] . "',";
 				$cadenaSql .= "' " . $variable ['numeroCasoActa'] . "',";
 				$cadenaSql .= " '" . $variable ['puntaje'] . "')";
-				$cadenaSql .= " returning id_direccion_trabajogrado";
+				$cadenaSql .= " returning id_produccion_video";
 				break;
 				
 			case "registroEstudiantes" :
-				$cadenaSql = "INSERT INTO docencia.direccion_trabajogrado_estudiante( ";
-				$cadenaSql .= "id_direccion_trabajogrado, nombre_estudiante, codigo_estudiante) ";
-				$cadenaSql .= " VALUES (" . $variable ['id_direccion_trabajogrado'] . ",";
-				$cadenaSql .= " '" . $variable ['nombre_estudiante'] . "',";
-				$cadenaSql .= " '" . $variable ['codigo_estudiante'] . "')";
+				$cadenaSql = "INSERT INTO docencia.evaluador_produccion_video( ";
+				$cadenaSql .= "id_produccion_video, nombre_evaluador, id_universidad, puntaje) ";
+				$cadenaSql .= " VALUES (" . $variable ['id_produccion_video'] . ",";
+				$cadenaSql .= " '" . $variable ['nombreEvaluador'] . "',";
+				$cadenaSql .= " '" . $variable ['UniversidadEvaluador'] . "',";
+				$cadenaSql .= " '" . $variable ['puntajeEvaluador'] . "')";
 				break;
 				
 			case "publicacionActualizar" :

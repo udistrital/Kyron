@@ -383,11 +383,11 @@ class FormularioRegistro {
 				$atributos ['marco'] = true;
 				$atributos ['estiloMarco'] = '';
 				$atributos ["etiquetaObligatorio"] = true;
-				$atributos ['columnas'] = 3;
+				$atributos ['columnas'] = 1;
 				$atributos ['dobleLinea'] = 0;
 				$atributos ['tabIndex'] = $tab;
 				$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-				$atributos ['validar'] = "";//'required';
+				$atributos ['validar'] = "";
 				if (isset ( $_REQUEST [$esteCampo] )) {
 					$atributos ['valor'] = $_REQUEST [$esteCampo];
 				} else {
@@ -395,9 +395,9 @@ class FormularioRegistro {
 				}
 				$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 				$atributos ['deshabilitado'] = false;
-				$atributos ['tamanno'] = 30;
+				$atributos ['tamanno'] = 57;
 				$atributos ['maximoTamanno'] = '';
-				$atributos ['anchoEtiqueta'] = 200;
+				$atributos ['anchoEtiqueta'] = 250;
 				$tab ++;
 					
 				// Aplica atributos globales al control
@@ -408,13 +408,13 @@ class FormularioRegistro {
 				// ----------------FIN CONTROL: Campo de Texto Nombre del Estudiante --------------------------------------------------------
 			
 				// ----------------INICIO CONTROL: Campo de Texto Entidad o institucion a la que pertenece el evaluador--------------------------------------------------------
-				$esteCampo = "universidadEvaluador" . $i;
+				$esteCampo = 'universidadEvaluador' . $i;
 				$atributos ['nombre'] = $esteCampo;
 				$atributos ['id'] = $esteCampo;
 				$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 				$atributos ["etiquetaObligatorio"] = true;
 				$atributos ['tab'] = $tab ++;
-				$atributos ['anchoEtiqueta'] = 200;
+				$atributos ['anchoEtiqueta'] = 250;
 				$atributos ['evento'] = '';
 				if (isset ( $_REQUEST [$esteCampo] )) {
 					$atributos ['seleccion'] = $_REQUEST [$esteCampo];
@@ -422,7 +422,7 @@ class FormularioRegistro {
 					$atributos ['seleccion'] = - 1;
 				}
 				$atributos ['deshabilitado'] = false;
-				$atributos ['columnas'] = 3;
+				$atributos ['columnas'] = 1;
 				$atributos ['tamanno'] = 1;
 				$atributos ['ajax_function'] = "";
 				$atributos ['ajax_control'] = $esteCampo;
@@ -455,11 +455,11 @@ class FormularioRegistro {
 				$atributos ['marco'] = true;
 				$atributos ['estiloMarco'] = '';
 				$atributos ["etiquetaObligatorio"] = true;
-				$atributos ['columnas'] = 3;
+				$atributos ['columnas'] = 1;
 				$atributos ['dobleLinea'] = 0;
 				$atributos ['tabIndex'] = $tab;
 				$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-				$atributos ['validar'] = 'required, min[0.1], max[15], custom[number]';
+				$atributos ['validar'] = 'min[0.1], max[15], custom[number]';
 				if (isset ( $_REQUEST [$esteCampo] )) {
 					$atributos ['valor'] = $_REQUEST [$esteCampo];
 				} else {
@@ -467,9 +467,9 @@ class FormularioRegistro {
 				}
 				$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 				$atributos ['deshabilitado'] = false;
-				$atributos ['tamanno'] = 30;
+				$atributos ['tamanno'] = 57;
 				$atributos ['maximoTamanno'] = '6';
-				$atributos ['anchoEtiqueta'] = 200;
+				$atributos ['anchoEtiqueta'] = 250;
 				$tab ++;
 					
 				// Aplica atributos globales al control

@@ -115,14 +115,14 @@ String.prototype.insertAt=function(index, string) {
 	  return this.substr(0, index) + string + this.substr(index);
 	}
 
-var idDatosevaluadors = [
+var idDatosevaluadores = [
                           <?php for($i=1; $i<=3; $i++):?> 
-                       	 '<?php echo $this->campoSeguro('nombreevaluador'.$i)?>',
-                       	 '<?php echo $this->campoSeguro('codigoevaluador'.$i)?>',
+                       	 '<?php echo $this->campoSeguro('nombreEvaluador'.$i)?>',
+                       	'<?php echo $this->campoSeguro('puntajeEvaluador'.$i)?>',
                           <?php endfor; ?>
                        ];
-//Agrega required a todos los campos de los evaluadors
-$.each(idDatosevaluadors,function (i,v){
+//Agrega required a todos los campos de los evaluadores
+$.each(idDatosevaluadores,function (i,v){
 	var obj = $("#"+v);
 	if(obj.length>0){
 		var clases = obj.attr('class').split(' ');
