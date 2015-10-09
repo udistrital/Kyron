@@ -129,7 +129,7 @@ class Tipos {
 	}
 	
 	private function validarLetrasYEspacios($valor){
-		if (preg_match('/^([[:alpha:]]|[[:space:]])*$/',$valor)) {
+		if (preg_match('/^([[:alpha:]]|[[:space:]]|[áéíóú])*$/',$valor)) {
 			return true;
 		} else {
 			return false;

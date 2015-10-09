@@ -84,8 +84,9 @@
                     "alertText": "* No es un valor decimal válido"
                 },
                 "date": {
-                    "regex": /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/,
-                    "alertText": "* Fecha inválida, por favor utilize el formato DD/MM/AAAA"
+                    //"regex": /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/,
+                	"regex": /^(19|20)\d{2}[\-\-](0?[1-9]|1[012])[\-\-](0?[1-9]|[12][0-9]|3[01])$/,
+                    "alertText": "* Fecha inválida, por favor utilize el formato AAAA-MM-DD"
                 },
                 "ipv4": {
                 	"regex": /^((([01]?[0-9]{1,2})|(2[0-4][0-9])|(25[0-5]))[.]){3}(([0-1]?[0-9]{1,2})|(2[0-4][0-9])|(25[0-5]))$/,
@@ -100,8 +101,10 @@
                     "alertText": "* Sólo números"
                 },
 			    "onlyLetterSp": {
-                    "regex": /^[a-zA-Z\ \']+$/,
-                    "alertText": "* Sólo letras"
+                    //"regex": /^[a-zA-Z\ \']+$/,
+			    	//para acentos	^[a-zA-áéíúó\ \']+$
+			    	"regex": /^[a-zA-áéíúó\ \']+$/,
+                    "alertText": "* Sólo letras y espacios"
                 },
                 "onlyLetterNumber": {
                     "regex": /^[0-9a-zA-Z]+$/,
