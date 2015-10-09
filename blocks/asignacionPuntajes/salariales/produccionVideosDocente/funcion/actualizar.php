@@ -39,54 +39,61 @@ class RegistrarIndexacionRevista {
 		$_REQUEST['numeroAutores'] = 0;
 		
 		for($i=1; $i<=3; $i++){
-			if($_REQUEST['nombreEstudiante' . $i] != "" && $_REQUEST['codigoEstudiante' . $i]){
+			if($_REQUEST['nombreEvaluador' . $i] != "" && $_REQUEST['universidadEvaluador' . $i] != "" && $_REQUEST['puntajeEvaluador' . $i] != ""){
 				$_REQUEST['numeroAutores']++;
 			}
 		}
-		//Se consultan los estudiantes en la base de datos para comparar con lo que se desean regsitrar
-		$cadena_sql = $this->miSql->getCadenaSql ( "publicacionEstudiantesActualizar", $_REQUEST['identificadorDireccion'] );
-		$estudiantes = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
-		
-		for($i=0; $i<count($estudiantes); $i++){
-			$existeEstudiante = 0;
+		//Se consultan los evaluadores en la base de datos para comparar con lo que se desean regsitrar
+		$cadena_sql = $this->miSql->getCadenaSql ( "publicacionEvaluadoresActualizar", $_REQUEST['identificadorProduccionVideo'] );
+		$evaluadores = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
+			
+		for($i=0; $i<count($evaluadores); $i++){
+			$existeEvaluador = 0;
 			for($j=1; $j<=3; $j++){
-				if(!($estudiantes[$i]['nombre_estudiante']== $_REQUEST['nombreEstudiante'.$j] && $estudiantes[$i]['codigo_estudiante']== $_REQUEST['codigoEstudiante'.$j])){
-					if($estudiantes[$i]['nombre_estudiante']== $_REQUEST['nombreEstudiante'.$j] || $estudiantes[$i]['codigo_estudiante']== $_REQUEST['codigoEstudiante'.$j]){
-						$arregloEstudiante = array (
-								'id_direccion_trabajogrado' => $_REQUEST['identificadorDireccion'],
-								'old_nombre_estudiante' => $estudiantes[$i]['nombre_estudiante'],
-								'old_codigo_estudiante' => $estudiantes[$i]['codigo_estudiante'],
-								'nombre_estudiante' => $_REQUEST['nombreEstudiante'.$j],
-								'codigo_estudiante' => $_REQUEST['codigoEstudiante'.$j]
+				if(!($evaluadores[$i]['nombre_evaluador']== $_REQUEST['nombreEvaluador'.$j] && $evaluadores[$i]['id_universidad']== $_REQUEST['universidadEvaluador'.$j] && $evaluadores[$i]['puntaje']== $_REQUEST['puntajeEvaluador'.$j])){
+					if($evaluadores[$i]['nombre_evaluador']== $_REQUEST['nombreEvaluador'.$j] || $evaluadores[$i]['id_universidad']== $_REQUEST['universidadEvaluador'.$j] || $evaluadores[$i]['puntaje']== $_REQUEST['puntajeEvaluador'.$j]){
+						$arregloEvaluador = array (
+								'id_produccion_video' => $_REQUEST['identificadorProduccionVideo'],
+								'old_nombre_evaluador' => $evaluadores[$i]['nombre_evaluador'],
+								'old_id_universidad' => $evaluadores[$i]['id_universidad'],
+								'old_puntaje_evaluador' => $evaluadores[$i]['puntaje'],
+								'nombre_evaluador' => $_REQUEST['nombreEvaluador'.$j],
+								'id_universidad' => $_REQUEST['universidadEvaluador'.$j],
+								'puntaje_evaluador' => $_REQUEST['puntajeEvaluador'.$j]
 						);
 							
-						$cadenaSql = $this->miSql->getCadenaSql ( 'actualizarEstudiante', $arregloEstudiante );
+						$cadenaSql = $this->miSql->getCadenaSql ( 'actualizarEvaluador', $arregloEvaluador );
 						$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
-						$existeEstudiante++;
+						$existeEvaluador++;
 					}else{
-						$arregloEstudiante = array (
-								'id_direccion_trabajogrado' => $_REQUEST['identificadorDireccion'],
-								'nombre_estudiante' => $_REQUEST['nombreEstudiante'.$j],
-								'codigo_estudiante' => $_REQUEST['codigoEstudiante'.$j]
+						$arregloEvaluador = array (
+								'id_produccion_video' => $_REQUEST['identificadorProduccionVideo'],
+								'nombre_evaluador' => $_REQUEST['nombreEvaluador'.$j],
+								'id_universidad' => $_REQUEST['universidadEvaluador'.$j],
+								'puntaje_evaluador' => $_REQUEST['puntajeEvaluador'.$j]
 						);
 							
-						$cadenaSql = $this->miSql->getCadenaSql ( 'registroEstudiantes', $arregloEstudiante );
+						$cadenaSql = $this->miSql->getCadenaSql ( 'registroEvaluador', $arregloEvaluador );
 						$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );						
 					}
 				}else{
-					$existeEstudiante++;
+					$existeEvaluador++;
 				}
 			}
-			if($existeEstudiante==0){
-				$arregloEstudiante = array (
-						'id_direccion_trabajogrado' => $_REQUEST['identificadorDireccion'],
-						'old_nombre_estudiante' => $estudiantes[$i]['nombre_estudiante'],
-						'old_codigo_estudiante' => $estudiantes[$i]['codigo_estudiante']						
+			if($existeEvaluador==0){
+				$arregloEvaluador = array (
+						'id_produccion_video' => $_REQUEST['identificadorProduccionVideo'],
+						'old_nombre_evaluador' => $evaluadores[$i]['nombre_evaluador'],
+						'old_id_universidad' => $evaluadores[$i]['id_universidad'],
+						'old_puntaje_evaluador' => $evaluadores[$i]['puntaje']						
 				);
 					
-				$cadenaSql = $this->miSql->getCadenaSql ( 'actualizarEstudianteEliminar', $arregloEstudiante );
+				$cadenaSql = $this->miSql->getCadenaSql ( 'actualizarEvaluadorEliminar', $arregloEvaluador );
 				$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
 			}
+			
+			$cadena_sql;
+			var_dump($evaluadores); exit;
 		}
 
 		$arregloDatos = array (

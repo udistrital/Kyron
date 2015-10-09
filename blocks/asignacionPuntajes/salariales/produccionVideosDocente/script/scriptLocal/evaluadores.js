@@ -1,14 +1,14 @@
 $( document ).ready(function() {
 	
 	<?php 
-			if(!isset($_REQUEST['numeroevaluadores'])){
-				$_REQUEST['numeroevaluadores'] = 2;
+			if(!isset($_REQUEST['numeroEvaluadores'])){
+				$_REQUEST['numeroEvaluadores'] = 2;
 			}
 	?>;
 		
 	var evaluadorRequerido = 2;
 	var evaluador = 3;
-	var numevaluador = <?php echo $_REQUEST['numeroevaluadores'];?>;
+	var numevaluador = <?php echo $_REQUEST['numeroEvaluadores'];?>;
 	var indice = 0;
 	
 	for(var i = evaluador; i > evaluadorRequerido; i--){

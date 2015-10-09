@@ -210,7 +210,7 @@ class Sql extends \Sql {
 				$cadenaSql .= " returning id_produccion_video";
 				break;
 				
-			case "registroEstudiantes" :
+			case "registroEvaluador" :
 				$cadenaSql = "INSERT INTO docencia.evaluador_produccion_video( ";
 				$cadenaSql .= "id_produccion_video, nombre_evaluador, id_universidad, puntaje) ";
 				$cadenaSql .= " VALUES (" . $variable ['id_produccion_video'] . ",";
@@ -220,29 +220,32 @@ class Sql extends \Sql {
 				break;
 				
 			case "publicacionActualizar" :
-				$cadenaSql=" SELECT dtg.id_direccion_trabajogrado, dtg.documento_docente,";
+				$cadenaSql=" SELECT pv.id_produccion_video, pv.documento_docente,";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
-				$cadenaSql.=" dtg.id_tipo_trabajogrado, ";
-				$cadenaSql.=" dtg.id_categoria_trabajogrado, ";
-				$cadenaSql.=" dtg.titulo_trabajogrado, ";
-				$cadenaSql.=" dtg.numero_autores, ";
-				$cadenaSql.=" dtg.anno_direccion, ";
-				$cadenaSql.=" dtg.numero_acta, ";
-				$cadenaSql.=" dtg.fecha_acta, ";
-				$cadenaSql.=" dtg.caso_acta, ";
-				$cadenaSql.=" dtg.puntaje ";
-				$cadenaSql.=" FROM docencia.direccion_trabajogrado as dtg ";
-				$cadenaSql.=" left join docencia.docente dc on dtg.documento_docente=dc.documento_docente ";
-				$cadenaSql.=" WHERE dtg.documento_docente ='" . $variable['documento_docente']. "'";
-				$cadenaSql.=" and dtg.id_direccion_trabajogrado ='" . $variable['identificadorDireccion']. "'";
+				$cadenaSql.=" pv.titulo_video, ";
+				$cadenaSql.=" pv.numero_autores, ";
+				$cadenaSql.=" pv.numero_autores_ud, ";
+				$cadenaSql.=" pv.fecha_realizacion, ";
+				$cadenaSql.=" pv.id_contexto, ";
+				$cadenaSql.=" pv.id_caracter_video, ";
+				$cadenaSql.=" pv.numero_evaluadores, ";
+				$cadenaSql.=" pv.numero_acta, ";
+				$cadenaSql.=" pv.fecha_acta, ";
+				$cadenaSql.=" pv.caso_acta, ";
+				$cadenaSql.=" pv.puntaje ";
+				$cadenaSql.=" FROM docencia.produccion_video AS pv ";
+				$cadenaSql.=" left join docencia.docente dc on pv.documento_docente=dc.documento_docente ";
+				$cadenaSql.=" WHERE pv.documento_docente ='" . $variable['documento_docente']. "'";
+				$cadenaSql.=" and pv.id_produccion_video ='" . $variable['identificadorProduccionVideo']. "'";
 				break;
 				
-			case "publicacionEstudiantesActualizar" :
-				$cadenaSql=" select nombre_estudiante, ";
-				$cadenaSql.=" codigo_estudiante ";
-				$cadenaSql.=" from docencia.direccion_trabajogrado_estudiante ";
+			case "publicacionEvaluadoresActualizar" :
+				$cadenaSql=" select nombre_evaluador, ";
+				$cadenaSql.=" id_universidad, ";
+				$cadenaSql.=" puntaje ";
+				$cadenaSql.=" from docencia.evaluador_produccion_video ";
 				$cadenaSql.=" where ";
-				$cadenaSql.=" id_direccion_trabajogrado ="  . $variable;
+				$cadenaSql.=" id_produccion_video ="  . $variable;
 				$cadenaSql.=" and estado = true";
 				break;
 				
@@ -265,27 +268,30 @@ class Sql extends \Sql {
 				$cadenaSql .= "and estado=true";
 				break;
 				
-			case "actualizarEstudiante" :
+			case "actualizarEvaluador" :
 				$cadenaSql = "UPDATE ";
-				$cadenaSql .= "docencia.direccion_trabajogrado_estudiante ";
+				$cadenaSql .= "docencia.evaluador_produccion_video ";
 				$cadenaSql .= "SET ";
-				$cadenaSql .= "nombre_estudiante ='" . $variable ['nombre_estudiante'] . "',";
-				$cadenaSql .= "codigo_estudiante='" . $variable ['codigo_estudiante'] . "' ";
+				$cadenaSql .= "nombre_evaluador ='" . $variable ['nombre_evaluador'] . "',";
+				$cadenaSql .= "id_universidad ='" . $variable ['id_universidad'] . "',";
+				$cadenaSql .= "puntaje='" . $variable ['puntaje_evaluador'] . "' ";
 				$cadenaSql .= "WHERE ";
-				$cadenaSql .= "nombre_estudiante ='" . $variable ['old_nombre_estudiante'] . "' ";
-				$cadenaSql .= "and codigo_estudiante='" . $variable ['old_codigo_estudiante'] . "' ";
-				$cadenaSql .= "and id_direccion_trabajogrado ='" . $variable ['id_direccion_trabajogrado'] . "' ";
+				$cadenaSql .= "nombre_evaluador ='" . $variable ['old_nombre_evaluador'] . "' ";
+				$cadenaSql .= "and id_universidad='" . $variable ['old_id_universidad'] . "' ";
+				$cadenaSql .= "and puntaje='" . $variable ['old_puntaje_evaluador'] . "' ";
+				$cadenaSql .= "and id_produccion_video ='" . $variable ['id_produccion_video'] . "' ";
 				break;
 				
-			case "actualizarEstudianteEliminar" ://cambiar estado a false
+			case "actualizarEvaluadorEliminar" ://cambiar estado a false
 				$cadenaSql = "UPDATE ";
-				$cadenaSql .= "docencia.direccion_trabajogrado_estudiante ";
+				$cadenaSql .= "docencia.evaluador_produccion_video";
 				$cadenaSql .= "SET ";
 				$cadenaSql .= "estado =  false ";
 				$cadenaSql .= "WHERE ";
-				$cadenaSql .= "nombre_estudiante ='" . $variable ['old_nombre_estudiante'] . "' ";
-				$cadenaSql .= "and codigo_estudiante='" . $variable ['old_codigo_estudiante'] . "' ";
-				$cadenaSql .= "and id_direccion_trabajogrado ='" . $variable ['id_direccion_trabajogrado'] . "' ";
+				$cadenaSql .= "nombre_evaluador ='" . $variable ['old_nombre_evaluador'] . "' ";
+				$cadenaSql .= "and id_universidad='" . $variable ['old_id_universidad'] . "' ";
+				$cadenaSql .= "and puntaje='" . $variable ['old_puntaje_evaluador'] . "' ";
+				$cadenaSql .= "and id_produccion_video ='" . $variable ['id_produccion_video'] . "' ";
 				break;
 		}
 		

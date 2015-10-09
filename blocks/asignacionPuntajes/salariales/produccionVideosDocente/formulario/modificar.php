@@ -96,33 +96,35 @@ class FormularioModificar {
 		// ---------------- CONTROL: Lista Docente--------------------------------------------------------
 		$datos = array(
 				'documento_docente' =>  $_REQUEST ['documento_docente'],
-				'identificadorDireccion' => $_REQUEST ['identificadorDireccionTrabajo'],
+				'identificadorProduccionVideo' => $_REQUEST ['identificadorProduccionVideo'],
 		
 		);
 		 
 		$cadena_sql = $this->miSql->getCadenaSql ( "publicacionActualizar", $datos );
-		$resultadoDireccionTrabajo = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
+		$resultadoProduccionVideo = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
 		
-		$cadena_sql = $this->miSql->getCadenaSql ( "publicacionEstudiantesActualizar", $resultadoDireccionTrabajo[0]['id_direccion_trabajogrado'] );
-		$estudiantes = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
-
-		for($i=0; $i< $resultadoDireccionTrabajo[0]['numero_autores']; $i++){
-			$_REQUEST['nombreEstudiante'.($i+1)] =  $estudiantes[$i]['nombre_estudiante'];
-			$_REQUEST['codigoEstudiante'.($i+1)] =  $estudiantes[$i]['codigo_estudiante'];
+		$cadena_sql = $this->miSql->getCadenaSql ( "publicacionEvaluadoresActualizar", $resultadoProduccionVideo[0]['id_produccion_video'] );
+		$evaluador = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
+		
+		for($i=0; $i< $resultadoProduccionVideo[0]['numero_evaluadores']; $i++){
+			$_REQUEST['nombreEvaluador'.($i+1)] =  $evaluador[$i]['nombre_evaluador'];
+			$_REQUEST['universidadEvaluador'.($i+1)] =  $evaluador[$i]['id_universidad'];
+			$_REQUEST['puntajeEvaluador'.($i+1)] =  $evaluador[$i]['puntaje'];
 		}
 		
-		$_REQUEST['numeroEstudiantes'] = $resultadoDireccionTrabajo[0]['numero_autores'];
-		
-		$_REQUEST['docenteRegistrar'] =  $resultadoDireccionTrabajo[0]['documento_docente'] . " - " . $resultadoDireccionTrabajo[0]['nombre_docente'];
-		$_REQUEST['id_docenteRegistrar'] =  $resultadoDireccionTrabajo[0]['documento_docente'];
-		$_REQUEST['nombre'] =  $resultadoDireccionTrabajo[0]['titulo_trabajogrado'];
-		$_REQUEST['categoria'] =  $resultadoDireccionTrabajo[0]['id_categoria_trabajogrado'];
-		$_REQUEST['tipo'] =  $resultadoDireccionTrabajo[0]['id_tipo_trabajogrado'];
-		$_REQUEST['anno'] =  $resultadoDireccionTrabajo[0]['anno_direccion'];
-		$_REQUEST['numeroActa'] =  $resultadoDireccionTrabajo[0]['numero_acta'];
-		$_REQUEST['fechaActa'] =  $resultadoDireccionTrabajo[0]['fecha_acta'];
-		$_REQUEST['numeroCasoActa'] =  $resultadoDireccionTrabajo[0]['caso_acta'];
-		$_REQUEST['puntaje'] =  $resultadoDireccionTrabajo[0]['puntaje'];
+		$_REQUEST['docenteRegistrar'] =  $resultadoProduccionVideo[0]['documento_docente'] . " - " . $resultadoProduccionVideo[0]['nombre_docente'];
+		$_REQUEST['id_docenteRegistrar'] =  $resultadoProduccionVideo[0]['documento_docente'];
+		$_REQUEST['tituloVideo'] =  $resultadoProduccionVideo[0]['titulo_video'];
+		$_REQUEST['numeroAutores'] =  $resultadoProduccionVideo[0]['numero_autores'];
+		$_REQUEST['numeroAutoresUd'] =  $resultadoProduccionVideo[0]['numero_autores_ud'];
+		$_REQUEST['fechaRealizacion'] =  $resultadoProduccionVideo[0]['fecha_realizacion'];
+		$_REQUEST['impacto'] =  $resultadoProduccionVideo[0]['id_contexto'];
+		$_REQUEST['caracter'] =  $resultadoProduccionVideo[0]['id_caracter_video'];
+		$_REQUEST['numeroEvaluadores'] = $resultadoProduccionVideo[0]['numero_evaluadores'];
+		$_REQUEST['numeroActa'] =  $resultadoProduccionVideo[0]['numero_acta'];
+		$_REQUEST['fechaActa'] =  $resultadoProduccionVideo[0]['fecha_acta'];
+		$_REQUEST['numeroCasoActa'] =  $resultadoProduccionVideo[0]['caso_acta'];
+		$_REQUEST['puntaje'] =  $resultadoProduccionVideo[0]['puntaje'];
 		
 		$esteCampo = "marcoModificarRegistro";
 		$atributos ['id'] = $esteCampo;
@@ -155,7 +157,7 @@ class FormularioModificar {
 					$atributos ['valor'] = '';
 				}
 				$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-				$atributos ['deshabilitado'] = false;
+				$atributos ['deshabilitado'] = true;
 				$atributos ['tamanno'] = 80;
 				$atributos ['maximoTamanno'] = '200';
 				$atributos ['anchoEtiqueta'] = 280;
@@ -753,7 +755,7 @@ class FormularioModificar {
 				$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 				$valorCodificado .= "&opcion=actualizar";
 				$valorCodificado .= "&arreglo=".$_REQUEST['arreglo'];
-				$valorCodificado .= "&identificadorDireccion=".$_REQUEST['identificadorDireccionTrabajo'];
+				$valorCodificado .= "&identificadorProduccionVideo=".$_REQUEST['identificadorProduccionVideo'];
 				
 				/**
 				 * SARA permite que los nombres de los campos sean dinámicos.

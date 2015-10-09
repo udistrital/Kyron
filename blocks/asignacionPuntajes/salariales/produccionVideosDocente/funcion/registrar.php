@@ -55,7 +55,7 @@ class Registrar {
 					'puntajeEvaluador' => $_REQUEST['puntajeEvaluador'.$i]
 			);
 			
-			$cadenaSql = $this->miSql->getCadenaSql ( 'registroEstudiantes', $arregloEvaluador);
+			$cadenaSql = $this->miSql->getCadenaSql ( 'registroEvaluador', $arregloEvaluador);
 			$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
 			
 		}
