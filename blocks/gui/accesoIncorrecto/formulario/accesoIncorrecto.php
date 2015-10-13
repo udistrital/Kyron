@@ -1,17 +1,13 @@
 <?php
 //Se establece el espacio de nombre
-namespace development\saraFormCreator\formulario;
+namespace gui\accesoIncorrecto\formulario;
 // Se verifica si el usuario está autorizado
 if (!isset($GLOBALS['autorizado'])) {
 	include ('../index.php');
 	exit();
 }
 
-// Se llaman la clase del elemento form creator
-include_once ($this -> ruta . "/builder/formCreator.class.php");
-use development\saraFormCreator\builder\formCreator;
-
-class saraFormCreator {
+class Form {
 	var $miConfigurador;
 	var $lenguaje;
 	var $miFormulario;
@@ -25,7 +21,7 @@ class saraFormCreator {
 		$this -> miFormulario = $formulario;
 	}
 
-	function seleccionarForm() {
+	function miForm() {
 		// Rescatar los datos de este bloque
 		$esteBloque = $this -> miConfigurador -> getVariableConfiguracion("esteBloque");
 		echo "Usted ha ingresado parámetros de forma incorrecta al sistema.
@@ -71,9 +67,9 @@ class saraFormCreator {
 
 }
 
-$miSeleccionador = new saraFormCreator($this -> lenguaje, $this -> miFormulario);
+$miSeleccionador = new Form($this -> lenguaje, $this -> miFormulario);
 
 $miSeleccionador -> mensaje();
 
-$miSeleccionador -> seleccionarForm();
+$miSeleccionador -> miForm();
 ?>

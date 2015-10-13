@@ -1,6 +1,6 @@
 <?php
 
-namespace development\saraFormCreator;
+namespace gui\accesoIncorrecto;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");

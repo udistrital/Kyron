@@ -1,6 +1,6 @@
 <?php
 
-namespace development\saraFormCreator;
+namespace gui\accesoIncorrecto;
 
 // Evitar un acceso directo a este archivo
 if (! isset ( $GLOBALS ["autorizado"] )) {
