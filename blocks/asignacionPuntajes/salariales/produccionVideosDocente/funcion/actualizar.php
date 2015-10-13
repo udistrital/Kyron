@@ -49,9 +49,11 @@ class RegistrarIndexacionRevista {
 			
 		for($i=0; $i<count($evaluadores); $i++){
 			$existeEvaluador = 0;
-			for($j=1; $j<=3; $j++){
+			for($j=1; $j<= $_REQUEST['numeroAutores']; $j++){
+						
 				if(!($evaluadores[$i]['nombre_evaluador']== $_REQUEST['nombreEvaluador'.$j] && $evaluadores[$i]['id_universidad']== $_REQUEST['universidadEvaluador'.$j] && $evaluadores[$i]['puntaje']== $_REQUEST['puntajeEvaluador'.$j])){
-					if($evaluadores[$i]['nombre_evaluador']== $_REQUEST['nombreEvaluador'.$j] || $evaluadores[$i]['id_universidad']== $_REQUEST['universidadEvaluador'.$j] || $evaluadores[$i]['puntaje']== $_REQUEST['puntajeEvaluador'.$j]){
+					
+					if($evaluadores[$i]['nombre_evaluador']== $_REQUEST['nombreEvaluador'.$j]){
 						$arregloEvaluador = array (
 								'id_produccion_video' => $_REQUEST['identificadorProduccionVideo'],
 								'old_nombre_evaluador' => $evaluadores[$i]['nombre_evaluador'],
@@ -65,21 +67,14 @@ class RegistrarIndexacionRevista {
 						$cadenaSql = $this->miSql->getCadenaSql ( 'actualizarEvaluador', $arregloEvaluador );
 						$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
 						$existeEvaluador++;
-					}else{
-						$arregloEvaluador = array (
-								'id_produccion_video' => $_REQUEST['identificadorProduccionVideo'],
-								'nombre_evaluador' => $_REQUEST['nombreEvaluador'.$j],
-								'id_universidad' => $_REQUEST['universidadEvaluador'.$j],
-								'puntaje_evaluador' => $_REQUEST['puntajeEvaluador'.$j]
-						);
-							
-						$cadenaSql = $this->miSql->getCadenaSql ( 'registroEvaluador', $arregloEvaluador );
-						$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );						
-					}
+						
+						echo($cadenaSql);
+					}					
 				}else{
 					$existeEvaluador++;
 				}
 			}
+			
 			if($existeEvaluador==0){
 				$arregloEvaluador = array (
 						'id_produccion_video' => $_REQUEST['identificadorProduccionVideo'],
@@ -87,32 +82,41 @@ class RegistrarIndexacionRevista {
 						'old_id_universidad' => $evaluadores[$i]['id_universidad'],
 						'old_puntaje_evaluador' => $evaluadores[$i]['puntaje']						
 				);
-					
+				
 				$cadenaSql = $this->miSql->getCadenaSql ( 'actualizarEvaluadorEliminar', $arregloEvaluador );
-				$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
+				$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );				
+			}
+		}
+		
+		for($i=1; $i<= $_REQUEST['numeroAutores']; $i++){
+			$registroEvaluadores = 0;
+			for($j=0; $j<count($evaluadores); $j++ ){
+				if($_REQUEST['nombreEvaluador'.$i] == $evaluadores[$j]['nombre_evaluador']){
+					$registroEvaluadores++;
+				}
 			}
 			
-			$cadena_sql;
-			var_dump($evaluadores); exit;
+			if($registroEvaluadores == 0){
+				$arregloEvaluador = array (
+						'id_produccion_video' => $_REQUEST ['identificadorProduccionVideo'],
+						'nombreEvaluador' => $_REQUEST ['nombreEvaluador' . $i],
+						'UniversidadEvaluador' => $_REQUEST ['universidadEvaluador' . $i],
+						'puntajeEvaluador' => $_REQUEST ['puntajeEvaluador' . $i]
+				);
+					
+				$cadenaSql = $this->miSql->getCadenaSql ( 'registroEvaluador', $arregloEvaluador );
+				$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
+				
+				echo $cadenaSql;
+			}
 		}
-
-		$arregloDatos = array (
-			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
-			'tituloTrabajo' => $_REQUEST['nombre'],
-			'anno' => $_REQUEST['anno'],
-			'tipoTrabajo' => $_REQUEST['tipo'],
-			'categoriaTrabajo' => $_REQUEST['categoria'],
-			'numeroAutores' => $_REQUEST['numeroAutores'],
-			'numeroActa' => $_REQUEST['numeroActa'],
-			'fechaActa' => $_REQUEST['fechaActa'],
-			'numeroCasoActa' => $_REQUEST['numeroCasoActa'],
-			'puntaje' => $_REQUEST['puntaje'],
-			'id_direccion_trabajo' => $_REQUEST['identificadorDireccion']
-		);
 		
-		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizar', $arregloDatos );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizar', $_REQUEST );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
 
+		echo $cadenaSql;
+		var_dump($resultado); exit;
+		
 		if ($resultado) {
 			redireccion::redireccionar ( 'actualizo',  $_REQUEST['docenteRegistrar']);
 			exit ();

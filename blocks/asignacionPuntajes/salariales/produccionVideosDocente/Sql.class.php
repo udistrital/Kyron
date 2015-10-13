@@ -251,20 +251,22 @@ class Sql extends \Sql {
 				
 			case "actualizar" :
 				$cadenaSql = "UPDATE ";
-				$cadenaSql .= "docencia.direccion_trabajogrado ";
+				$cadenaSql .= "docencia.produccion_video ";
 				$cadenaSql .= "SET ";
-				$cadenaSql .= "id_tipo_trabajogrado = '" . $variable ['tipoTrabajo'] . "', ";
-				$cadenaSql .= "id_categoria_trabajogrado = '" . $variable ['categoriaTrabajo'] . "', ";
-				$cadenaSql .= "titulo_trabajogrado = '" . $variable ['tituloTrabajo'] . "', ";
+				$cadenaSql .= "titulo_video = '" . $variable ['tituloVideo'] . "', ";
 				$cadenaSql .= "numero_autores = '" . $variable ['numeroAutores'] . "', ";
-				$cadenaSql .= "anno_direccion = '" . $variable ['anno'] . "', ";
+				$cadenaSql .= "numero_autores_ud = '" . $variable ['numeroAutoresUd'] . "', ";
+				$cadenaSql .= "fecha_realizacion = '" . $variable ['fechaRealizacion'] . "', ";
+				$cadenaSql .= "id_contexto = '" . $variable ['impacto'] . "', ";
+				$cadenaSql .= "id_caracter_video = '" . $variable ['caracter'] . "', ";
+				$cadenaSql .= "numero_evaluadores = '" . $variable ['numeroAutores'] . "', ";
 				$cadenaSql .= "numero_acta = '" . $variable ['numeroActa'] . "', ";
 				$cadenaSql .= "fecha_acta = '" . $variable ['fechaActa'] . "', ";
 				$cadenaSql .= "caso_acta = '" . $variable ['numeroCasoActa'] . "', ";
 				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "'";
 				$cadenaSql .= "WHERE ";
 				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";
-				$cadenaSql .= "and id_direccion_trabajogrado ='" . $variable ['id_direccion_trabajo'] . "' ";
+				$cadenaSql .= "and id_produccion_video ='" . $variable ['identificadorProduccionVideo'] . "' ";
 				$cadenaSql .= "and estado=true";
 				break;
 				
@@ -284,7 +286,7 @@ class Sql extends \Sql {
 				
 			case "actualizarEvaluadorEliminar" ://cambiar estado a false
 				$cadenaSql = "UPDATE ";
-				$cadenaSql .= "docencia.evaluador_produccion_video";
+				$cadenaSql .= "docencia.evaluador_produccion_video ";
 				$cadenaSql .= "SET ";
 				$cadenaSql .= "estado =  false ";
 				$cadenaSql .= "WHERE ";
