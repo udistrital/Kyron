@@ -1,4 +1,4 @@
-$("#resenaCritica").validationEngine({
+$("#publicacionesImpresas").validationEngine({
 promptPosition : "centerRight", 
 scroll: false,
 autoHidePrompt: true,
@@ -6,8 +6,8 @@ autoHideDelay: 2000
 });
 
 $(function() {
-	$("#resenaCritica").submit(function() {
-		$resultado=$("#resenaCritica").validationEngine("validate");
+	$("#publicacionesImpresas").submit(function() {
+		$resultado=$("#publicacionesImpresas").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -15,7 +15,7 @@ $(function() {
 	});
 });
 
-$("#resenaCriticaRegistrar").validationEngine({
+$("#publicacionesImpresasRegistrar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,
@@ -23,8 +23,8 @@ $("#resenaCriticaRegistrar").validationEngine({
 });
 
 $(function() {
-$("#resenaCriticaRegistrar").submit(function() {
-$resultado=$("#resenaCriticaRegistrar").validationEngine("validate");
+$("#publicacionesImpresasRegistrar").submit(function() {
+$resultado=$("#publicacionesImpresasRegistrar").validationEngine("validate");
 
 if ($resultado) {
 
@@ -41,8 +41,8 @@ $(function () {
 });
 
 $(function() {
-	$("#resenaCriticaModificar").submit(function() {
-		$resultado=$("#resenaCriticaModificar").validationEngine("validate");
+	$("#publicacionesImpresasModificar").submit(function() {
+		$resultado=$("#publicacionesImpresasModificar").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -50,7 +50,7 @@ $(function() {
 	});
 });
 
-$("#resenaCriticaModificar").validationEngine({
+$("#publicacionesImpresasModificar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,

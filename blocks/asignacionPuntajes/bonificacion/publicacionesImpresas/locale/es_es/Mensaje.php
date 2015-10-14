@@ -1,44 +1,43 @@
 <?php
 
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
-$this->idioma["tabConsultar"] = "Consultar Reseña Crítica";
-$this->idioma["tabIngresar"] = "Ingresar Reseña Crítica";
+$this->idioma["tabConsultar"] = "Consultar Publicación Impresa";
+$this->idioma["tabIngresar"] = "Ingresar Publicación Impresa";
 //Tooltip formulario
 $this->idioma["resenaCriticaRegistrar"] = "";
 //////////////////////////////////////////////////////////////
 
 //************ MENSAJES *********
-$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Reseña Crítica <br>";
-$this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado la Reseña Crítica para el docente <br>" ;
-$this->idioma["mensajeError"] =  "Error al tratar de registrar la Reseña Crítica.";
-$this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Reseña Crítica </br> Para los Criterios Ingresados";
-$this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de Reseña Crítica Para el Docente </br>";
+$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Publicación Impresa <br>";
+$this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado la Publicación Impresa para el docente <br>" ;
+$this->idioma["mensajeError"] =  "Error al tratar de registrar la Publicación Impresa.";
+$this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Publicación Impresa </br> Para los Criterios Ingresados";
+$this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de Publicación Impresa Para el Docente </br>";
 /////////////////////////////////
 
 //* SECCIÓN ELEMENTOS QUE SU NOMBRE POSIBLEMENTE VARIA DENTRO DEL FORMULARIO *//
 
-$this->idioma["titulo"] = "Título de la reseña:";
+$this->idioma["titulo"] = "Título de la publicación:";
+$this->idioma["issn"] = "ISSN de la publicación:";
 $this->idioma["revista"] = "Nombre revista:";
-$this->idioma["categoria"] = "Categoría revista:";
-$this->idioma["fecha"] = "Fecha de la reseña crítica:";
-$this->idioma["autor"] = "Autor de la crítica:";
+$this->idioma["numeroRevista"] = "Número de la revista:";
+$this->idioma["volumenRevista"] = "Volumen de la revista:";
+$this->idioma["annoRevista"] = "Año de la revista:";
+$this->idioma["categoria"] = "Categoría de la revista:";
 
-$this->idioma["tituloTitulo"] = "Ingrese el título de la reseña.";
+$this->idioma["tituloTitulo"] = "Ingrese el título de la publicación.";
+$this->idioma["issnTitulo"] = "Ingrese el ISSN de la revista.";
 $this->idioma["revistaTitulo"] = "Ingrese el nombre revista.";
-$this->idioma["categoriaTitulo"] = "Ingrese la categoría revista.";
-$this->idioma["fechaTitulo"] = "Ingrese la fecha de la reseña crítica.";
-$this->idioma["autorTitulo"] = "Ingrese el autor de la crítica.";
+$this->idioma["numeroRevistaTitulo"] = "Ingrese el número de la revista.";
+$this->idioma["volumenRevistaTitulo"] = "Ingrese el volúmen de la revista.";
+$this->idioma["annoRevistaTitulo"] = "Ingrese el año de la revista.";
+$this->idioma["categoriaTitulo"] = "Seleccione la categoría revista.";
 
-$this->idioma["marcoConsultaGeneral"] = "Reseña Crítica";
-$this->idioma["marcoModificarRegistro"] = "Modificar Información de la Reseña Crítica";
+$this->idioma["marcoConsultaGeneral"] = "Publicación Impresa";
+$this->idioma["marcoModificarRegistro"] = "Modificar Información de la Publicación Impresa";
 $this->idioma["marcoModificarRegistroTitulo"] = "";
 
-$this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";
-$this->idioma["docenteTitulo"] = "Identificación o Nombre del Docente.";
-$this->idioma["numeroActaTitulo"] = "Ingrese el Número de Acta CIARP-UD.";
-$this->idioma["fechaActaTitulo"] = "Seleccione la Fecha de Acta CIARP-UD.";
-$this->idioma["numeroCasoActaTitulo"] = "Ingrese el Número de Caso de Acta.";
-$this->idioma["puntajeTitulo"] = "Ingrese el Puntaje.";
+
 ///////////////////////////////////////////////////////////////////
 
 //***************** SECCIÓN BOTONES ******************//
@@ -62,6 +61,15 @@ $this->idioma["numeroActa"] = "Número de Acta CIARP-UD:";
 $this->idioma["fechaActa"] = "Fecha de Acta CIARP-UD:";
 $this->idioma["numeroCasoActa"] = "Número de Caso de Acta:";
 $this->idioma["puntaje"] = "Puntaje:";
+$this->idioma["normatividad"] = "Normatividad:";
+
+$this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";
+$this->idioma["docenteTitulo"] = "Identificación o Nombre del Docente.";
+$this->idioma["numeroActaTitulo"] = "Ingrese el Número de Acta CIARP-UD.";
+$this->idioma["fechaActaTitulo"] = "Seleccione la Fecha de Acta CIARP-UD.";
+$this->idioma["numeroCasoActaTitulo"] = "Ingrese el Número de Caso de Acta.";
+$this->idioma["puntajeTitulo"] = "Ingrese el Puntaje.";
+$this->idioma["normatividadTitulo"] = "Ingrese la Normatividad.";
 ////////////////////////////////////////////////////////////////
 
 ?>

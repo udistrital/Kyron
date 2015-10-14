@@ -73,7 +73,7 @@ class registrarForm {
 		 */
 		if(isset($_REQUEST['validadorCampos'])){
 			$validadorCampos = $this->miInspectorHTML->decodificarCampos($_REQUEST['validadorCampos']);
-			$respuesta = $this->miInspectorHTML->validacionCampos($_REQUEST,$validadorCampos,false);
+			$respuesta = $this->miInspectorHTML->validacionCampos($_REQUEST,$validadorCampos,false,false);
 			if ($respuesta != false){
 				$_REQUEST = $respuesta;
 			} else {
@@ -185,15 +185,18 @@ class registrarForm {
 	                   
 	                    <th>Identificación</th>
 	                    <th>Nombres y Apellidos</th>
-						<th>Título Reseña Crítica</th>
-						<th>Revista</th>
-						<th>Tipo Indexación</th>
-						<th>Fecha Publicación</th>
-						<th>Autor Reseña</th>
+						<th>Título Publicación Impresa</th>
+						<th>Número ISSN</th>
+						<th>Nombre Revista</th>
+						<th>Número Revista</th>
+						<th>Volúmen Revista</th>
+						<th>Año Revista</th>
+						<th>Categoría Revista</th>
 						<th>Número Acta</th>
 						<th>Fecha Acta</th>
 						<th>Caso Acta</th>
 						<th>Puntaje</th>
+						<th>Normatividad</th>
 						<th>Modificar</th>	
 							
 	                </tr>
@@ -206,21 +209,24 @@ class registrarForm {
 						$variable .= "&arreglo=" . $arreglo;
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
 						$variable .= "&documento_docente=" . $indexacion [$i] ['documento_docente'];
-						$variable .= "&id_resena_critica=" . $indexacion [$i] ['id_resena_critica'];
+						$variable .= "&numero_issn=" . $indexacion [$i] ['numero_issn'];
 						$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 						
 						$mostrarHtml = "<tr>
 	                    <td><center>" . $indexacion [$i] ['documento_docente'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['nombre_docente'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['titulo'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['revista'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['numero_issn'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['nombre_revista'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['numero_revista'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['volumen_revista'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['anno_revista'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['tipo_indexacion'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['fecha'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['autor'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['fecha_acta'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['caso_acta'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['numero_caso'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['puntaje'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['normatividad'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>
 	                            <img src='" . $rutaBloque . "/css/images/Entrada.png' width='15px'>
