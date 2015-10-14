@@ -20,7 +20,7 @@ $this->idioma ['produccionDeLibros'] = 'Producción de Libros';
 	//SALARIALES////////////////////////////////	
 	$this->idioma ['capituloLibros'] = 'Capítulos de Libros';
 	$this->idioma ['cartasEditor'] = 'Cartas al Editor';
-	$this->idioma ['direccionTrabajosGrado'] = 'Dirección de Trabajos de Grado';
+	$this->idioma ['direccionTrabajosDeGrado'] = 'Dirección de Trabajos de Grado';
 	$this->idioma ['experienciaDireccionAcademica'] = 'Experiencia Dirección Académica';
 	$this->idioma ['experienciaInvestigacion'] = 'Experiencia en Investigación';
 	$this->idioma ['experienciaDocencia'] = 'Experiencia en Docencia';
@@ -29,13 +29,13 @@ $this->idioma ['produccionDeLibros'] = 'Producción de Libros';
 	$this->idioma ['excelenciaAcademica'] = 'Excelencia Académica';
 	$this->idioma ['revistasIndexadas'] = 'Revistas Indexadas';
 	$this->idioma ['comunicacionCorta'] = 'Comunicación Corta';
-	$this->idioma ['obrasArtisticas'] = 'Obras Artísticas';
+	$this->idioma ['obrasArtisticas'] = 'Obras Artísticas Docente';
 	$this->idioma ['patentes'] = 'Patentes';
-	$this->idioma ['PremiosDocente'] = 'Premios Docente';
+	$this->idioma ['premiosDocente'] = 'Premios Docente';
 	$this->idioma ['produccionVideosDocente'] = 'Producción en Videos del Docente';
 	$this->idioma ['produccionLibros'] = 'Producción de Libros';
 	$this->idioma ['traducciones'] = 'Traducciones';
-	$this->idioma ['registroTecnicaSoftware'] = 'Registrar Técnica y Software Docente';
+	$this->idioma ['produccionTecnicaYSoftware'] = 'Producción Técnica y Software Docente';
 	//Fin SALARIALES////////////////////////////////
 	
 $this->idioma ['tituloBonificacion'] = 'BONIFICACIÓN';		
