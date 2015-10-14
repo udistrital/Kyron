@@ -1,6 +1,6 @@
 <?php
 
-namespace asignacionPuntajes\salariales\indexacionRevistas;
+namespace asignacionPuntajes\salariales\capituloLibros;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -356,7 +356,7 @@ class Sql extends \Sql {
 				
 			case "actualizarEvaluador" :
 				$cadenaSql=" UPDATE";
-				$cadenaSql.=" docencia.evaluador_libro_docente";
+				$cadenaSql.=" docencia.evaluador_capitulo_libro";
 				$cadenaSql.=" SET";
 				$cadenaSql.=" documento_evaluador = '" . $variable ['documento_evaluador'] . "',";
 				$cadenaSql.=" nombre = '" . $variable ['nombre'] . "',";

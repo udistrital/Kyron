@@ -109,15 +109,23 @@ class Sql extends \Sql {
 				$cadenaSql .= " docencia.proyectocurricular";
 				break;
 				
+			case "contexto" :
+				$cadenaSql = "select";
+				$cadenaSql .= " id_contexto,";
+				$cadenaSql .= "	descripcion";
+				$cadenaSql .= " FROM ";
+				$cadenaSql .= " docencia.contexto";
+				break;
+				
 			case "pais" :
 				$cadenaSql = "SELECT";
 				$cadenaSql .= " paiscodigo,";
 				$cadenaSql .= "	paisnombre";
 				$cadenaSql .= " FROM ";
 				$cadenaSql .= " docencia.pais";
-				if($variable == 0){
+				if($variable == 1){
 					$cadenaSql .= " WHERE paiscodigo = 'COL'";
-				}elseif ($variable == 1){
+				}elseif ($variable == 2){
 					$cadenaSql .= " WHERE paiscodigo != 'COL'";
 				}
 				$cadenaSql .= "order by paisnombre";

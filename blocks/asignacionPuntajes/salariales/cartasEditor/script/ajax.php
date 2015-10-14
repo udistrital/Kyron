@@ -71,11 +71,11 @@ $("#<?php echo $this->campoSeguro('contexto')?>").change(function() {
 		$("#<?php echo $this->campoSeguro('pais')?>").select2();
 		$("#<?php echo $this->campoSeguro('categoria')?>").select2();
 
-		if($("#<?php echo $this->campoSeguro('contexto')?>").val() == 0){
+		if($("#<?php echo $this->campoSeguro('contexto')?>").val() == 1){
 			$("#<?php echo $this->campoSeguro('pais')?>").val(1);
 			var label = document.querySelector('label[for="categoria"]');
 			label.textContent = 'Categorías';
-		}else if($("#<?php echo $this->campoSeguro('contexto')?>").val() == 1){
+		}else if($("#<?php echo $this->campoSeguro('contexto')?>").val() == 2){
 			var label = document.querySelector('label[for="categoria"]');
 			label.textContent = 'Tipo de Indexación';
 		}

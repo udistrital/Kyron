@@ -2,19 +2,19 @@
 $(document).ready(function(){
 
 <?php
-$numeroEvaluadores = 0;
+$numeroEvaluadores = 1;
 for($i=1; $i<=3; $i++){
 	if(isset($_REQUEST['documentoEvaluador' . $i]) && $_REQUEST['documentoEvaluador' . $i] != ''){
 		$numeroEvaluadores++;
 	}
 }
 ?>
-var evaluadoRequerido = <?php echo $numeroEvaluadores;?>;
+var evaluadorRequerido = 1;
 var evaluador = 3;
-var numEvaluadores = evaluadoRequerido;
+var numEvaluadores = <?php echo $numeroEvaluadores;?>;
 var indice = 0;
 
-for(var i = evaluador; i > evaluadoRequerido; i--){
+for(var i = evaluador; i > evaluadorRequerido; i--){
 	$("#marcoEvaluador" + i).hide();
 }
 
@@ -46,27 +46,32 @@ $("#botonEliminarEvaluador2").click(function( event ) { eliminarEvaluador2(); })
 $("#botonEliminarEvaluador3").click(function( event ) { eliminarEvaluador3(); });
 
 function eliminarEvaluador1()  {
-	confirmar=confirm("¿Desea eliminar a este evaluador?");  
-    if (confirmar){
-       	<?php for($i=1; $i<=3; $i++):?>      
-        	$('#<?php echo $this->campoSeguro('documentoEvaluador'.$i)?>').val($('#<?php echo $this->campoSeguro('documentoEvaluador'.($i+1))?>').val());
-       		$('#<?php echo $this->campoSeguro('nombreEvaluador'.$i)?>').val($('#<?php echo $this->campoSeguro('nombreEvaluador'.($i+1))?>').val());
-       		$('#<?php echo $this->campoSeguro('entidadCertificadora'.$i)?>').select2('val',$('#<?php echo $this->campoSeguro('entidadCertificadora'.($i+1))?>').val());
-       		$('#<?php echo $this->campoSeguro('puntajeSugeridoEvaluador'.$i)?>').val($('#<?php echo $this->campoSeguro('puntajeSugeridoEvaluador'.($i+1))?>').val());
-            <?php if($i==3): ?>
-           	   	$('#<?php echo $this->campoSeguro('documentoEvaluador'.$i)?>').val("");
-           		$('#<?php echo $this->campoSeguro('nombreEvaluador'.$i)?>').val("");
-           		$('#<?php echo $this->campoSeguro('entidadCertificadora'.$i)?>').select2('val', '');
-           		$('#<?php echo $this->campoSeguro('puntajeSugeridoEvaluador'.$i)?>').val("");
-            <?php endif; ?>
-        <?php endfor; ?>
-           
-		numEvaluadores--;
-			
-		for(var i = evaluador; i > numEvaluadores; i--){
-       		$("#marcoEvaluador" + i).hide();
-       	}
-    }
+	if(numEvaluadores == evaluadorRequerido){
+			alert("No es Posible Eliminar Este Evaluador \nDebe haber por lo menos un (1) Evaluador");
+	
+	}else{
+		confirmar=confirm("¿Desea eliminar a este evaluador?");  
+	    if (confirmar){
+	       	<?php for($i=1; $i<=3; $i++):?>      
+	        	$('#<?php echo $this->campoSeguro('documentoEvaluador'.$i)?>').val($('#<?php echo $this->campoSeguro('documentoEvaluador'.($i+1))?>').val());
+	       		$('#<?php echo $this->campoSeguro('nombreEvaluador'.$i)?>').val($('#<?php echo $this->campoSeguro('nombreEvaluador'.($i+1))?>').val());
+	       		$('#<?php echo $this->campoSeguro('entidadCertificadora'.$i)?>').select2('val',$('#<?php echo $this->campoSeguro('entidadCertificadora'.($i+1))?>').val());
+	       		$('#<?php echo $this->campoSeguro('puntajeSugeridoEvaluador'.$i)?>').val($('#<?php echo $this->campoSeguro('puntajeSugeridoEvaluador'.($i+1))?>').val());
+	            <?php if($i==3): ?>
+	           	   	$('#<?php echo $this->campoSeguro('documentoEvaluador'.$i)?>').val("");
+	           		$('#<?php echo $this->campoSeguro('nombreEvaluador'.$i)?>').val("");
+	           		$('#<?php echo $this->campoSeguro('entidadCertificadora'.$i)?>').select2('val', '');
+	           		$('#<?php echo $this->campoSeguro('puntajeSugeridoEvaluador'.$i)?>').val("");
+	            <?php endif; ?>
+	        <?php endfor; ?>
+	           
+			numEvaluadores--;
+				
+			for(var i = evaluador; i > numEvaluadores; i--){
+	       		$("#marcoEvaluador" + i).hide();
+	       	}
+	    }
+	}
 }
 
 function eliminarEvaluador2()  {

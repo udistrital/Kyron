@@ -117,6 +117,14 @@ class Sql extends \Sql {
 				$cadenaSql .= " docencia.universidad";
 				break;
 				
+			case "tipoEntidadInstitucion" :
+				$cadenaSql = "SELECT";
+				$cadenaSql .= " id_tipo_entidad,";
+				$cadenaSql .= "	nombre_tipo_entidad";
+				$cadenaSql .= " FROM ";
+				$cadenaSql .= " docencia.tipo_entidad";
+				break;
+					
 			case "docente" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" documento_docente||' - '||primer_nombre||' '||segundo_nombre||' '||primer_apellido||' '||segundo_apellido AS value, ";

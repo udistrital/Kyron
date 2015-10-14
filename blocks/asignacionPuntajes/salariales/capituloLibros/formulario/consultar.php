@@ -104,6 +104,7 @@ class registrarForm {
 		$variable = "pagina=" . $miPaginaActual;
 		$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 			
+		echo "</br>";
 		// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
 		$esteCampo = 'botonRegresar';
 		$atributos ['id'] = $esteCampo;
@@ -114,8 +115,9 @@ class registrarForm {
 		$atributos ['ancho'] = '10%';
 		$atributos ['alto'] = '10%';
 		$atributos ['redirLugar'] = true;
+		echo "<div class='padre-enlace'>";
 		echo $this->miFormulario->enlace ( $atributos );
-			
+		echo "</div>";
 		unset ( $atributos );
 		
 				if ($resultado) {

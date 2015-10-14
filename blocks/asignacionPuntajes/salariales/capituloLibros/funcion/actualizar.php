@@ -1,8 +1,8 @@
 <?php
 
-namespace asignacionPuntajes\salariales\indexacionRevistas\funcion;
+namespace asignacionPuntajes\salariales\capituloLibros\funcion;
 
-use asignacionPuntajes\salariales\indexacionRevistas\funcion\redireccionar;
+use asignacionPuntajes\salariales\capituloLibros\funcion\redireccionar;
 
 include_once ('redireccionar.php');
 if (! isset ( $GLOBALS ["autorizado"] )) {
@@ -57,7 +57,8 @@ class RegistrarIndexacionRevista {
 						'puntaje' => $_REQUEST ['puntajeSugeridoEvaluador'.$i]
 				);
 				$cadenaSql = $this->miSql->getCadenaSql ('actualizarEvaluador', $datos);
-				$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );				
+				$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
+				
 			} else if (isset($_REQUEST['documentoEvaluador' . $i]) && $_REQUEST['documentoEvaluador' . $i] != ''){//Insertar nuevo evaluador
 				$datos = array(
 						'documento_evaluador' =>  $_REQUEST ['documentoEvaluador'.$i],
@@ -69,6 +70,7 @@ class RegistrarIndexacionRevista {
 				);
 				$cadenaSql = $this->miSql->getCadenaSql ('insertarEvaluador', $datos);
 				$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
+				
 			}
 			$transaccion &= $resultado;
 			

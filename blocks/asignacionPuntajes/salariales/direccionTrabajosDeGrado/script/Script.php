@@ -14,6 +14,8 @@ $embebido [$indice] = true;
 $funcion [$indice ++] = "scriptLocal/campoFecha.js";
 $embebido [$indice] = true;
 $funcion [$indice ++] = "scriptLocal/estudiantes.js";
+$embebido [$indice] = true;
+$funcion [$indice ++] = "scriptLocal/asignacionPuntaje.js";
 
 
 $rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "host" );

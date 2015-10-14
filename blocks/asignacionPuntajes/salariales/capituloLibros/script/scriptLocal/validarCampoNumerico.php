@@ -8,7 +8,9 @@ var INumero = 0;
 var IPunto = 0;
 
 campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroAutoresLibro')?>";
-campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroAutoresUniversidad')?>";
+campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroAutoresLibroUniversidad')?>";
+campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroAutoresCapitulo')?>";
+campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroAutoresCapituloUniversidad')?>";
 campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroCasoActaLibro')?>";
 campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroActaLibro')?>";
 

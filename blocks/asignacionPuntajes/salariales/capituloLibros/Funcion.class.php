@@ -1,8 +1,8 @@
 <?php
 
-namespace asignacionPuntajes\salariales\indexacionRevistas;
+namespace asignacionPuntajes\salariales\capituloLibros;
 
-use asignacionPuntajes\salariales\indexacionRevistas\funcion\redireccion;
+use asignacionPuntajes\salariales\capituloLibros\funcion\redireccion;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
