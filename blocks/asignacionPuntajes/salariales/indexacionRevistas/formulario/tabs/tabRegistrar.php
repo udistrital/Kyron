@@ -286,7 +286,7 @@ class FormularioRegistro {
 		$atributos ['limitar'] = false;
 		$atributos ['anchoCaja'] = 60;
 		$atributos ['miEvento'] = '';
-		$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "categoria_revista", 0 );
+		$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "categoria_revista", 1 );
 			$matrizItems = array (
 					array (
 							0,

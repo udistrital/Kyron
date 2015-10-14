@@ -75,7 +75,7 @@ if (!isset($GLOBALS["autorizado"])) {
         $mensaje = "Registro Exitoso.<br>Ha sido registrada la Comunicación Corta para el docente <br>" . $_REQUEST ['docente'] . ".";
         $boton = "continuar";
 		
-        $valorCodificado = "pagina=comunicacionCorta";
+        $valorCodificado = "pagina=".$esteBloque['nombre'];
         $valorCodificado.="&opcion=nuevo";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
@@ -86,7 +86,7 @@ if (!isset($GLOBALS["autorizado"])) {
         $mensaje = "Error al tratar de Registrar la Comunicación Corta.";
         $boton = "regresar";
 
-        $valorCodificado = "pagina=comunicacionCorta";
+        $valorCodificado = "pagina=".$esteBloque['nombre'];
         $valorCodificado.="&opcion=nuevo";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
@@ -96,7 +96,7 @@ if (!isset($GLOBALS["autorizado"])) {
         $mensaje = "Actualización Exitosa </br> Han sido actualizados los datos de la Comunicación Corta para el docente <br>" . $_REQUEST ['docente'] . ".";
         $boton = "continuar";
 
-        $valorCodificado = "pagina=comunicacionCorta";
+        $valorCodificado = "pagina=".$esteBloque['nombre'];
         $valorCodificado.="&opcion=nuevo";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
@@ -107,16 +107,13 @@ if (!isset($GLOBALS["autorizado"])) {
     	$mensaje = "Error al tratar de actualizar </br>el registro de la Comunicación Corta Para el Docente </br>" . $_REQUEST ['docente'] . ".";
     	$boton = "continuar";
     
-    	$valorCodificado = "pagina=comunicacionCorta";
+    	$valorCodificado = "pagina=".$esteBloque['nombre'];
     	$valorCodificado.="&opcion=nuevo";
     	$valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
     	$valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
     	 
     }
     
-    
-
-
     /**
      * IMPORTANTE: Este formulario está utilizando jquery.
      * Por tanto en el archivo ready.php se delaran algunas funciones js
