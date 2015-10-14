@@ -1,8 +1,8 @@
 <?php
 
-namespace asignacionPuntajes\salariales\indexacionRevistas\funcion;
+namespace asignacionPuntajes\salariales\comunicacionCorta\funcion;
 
-use asignacionPuntajes\salariales\indexacionRevistas\funcion\redireccionar;
+use asignacionPuntajes\salariales\comunicacionCorta\funcion\redireccionar;
 
 include_once ('redireccionar.php');
 if (! isset ( $GLOBALS ["autorizado"] )) {
@@ -36,31 +36,10 @@ class RegistrarIndexacionRevista {
 		$rutaBloque .= $esteBloque ['nombre'];
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
 		
-		$_REQUEST['contextoRevista'] = 0;
+		$_REQUEST['contextoRevista'] = 1;
 		$_REQUEST['pais'] = 'COL';
-		
-		$arregloDatos = array (
-			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
-			'nombreRevista' => $_REQUEST['nombreRevista'],
-			'contextoRevista' => $_REQUEST['contextoRevista'],
-			'pais' => $_REQUEST['pais'],
-			'categoria' => $_REQUEST['categoria'],
-			'issnRevista' => $_REQUEST['issnRevista'],
-			'annoRevista' => $_REQUEST['annoRevista'],
-			'volumenRevista' => $_REQUEST['volumenRevista'],
-			'numeroRevista' => $_REQUEST['numeroRevista'],
-			'paginasRevista' => $_REQUEST['paginasRevista'],
-			'tituloArticuloRevista' => $_REQUEST['tituloArticuloRevista'],
-			'numeroAutoresRevista' => $_REQUEST['numeroAutoresRevista'],
-			'numeroAutoresUniversidad' => $_REQUEST['numeroAutoresUniversidad'],
-			'numeroActaRevista' => $_REQUEST['numeroActaRevista'],
-			'fechaActaRevista' => $_REQUEST['fechaActaRevista'],
-			'numeroCasoActaRevista' => $_REQUEST['numeroCasoActaRevista'],
-			'puntajeRevista' => $_REQUEST['puntajeRevista'],
-			'normatividad' => $_REQUEST['normatividad']
-		);
-		
-		$cadenaSql = $this->miSql->getCadenaSql ( 'insertarIndexacion', $arregloDatos );
+			
+		$cadenaSql = $this->miSql->getCadenaSql ( 'registrar', $_REQUEST );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
 		
 		if ($resultado) {

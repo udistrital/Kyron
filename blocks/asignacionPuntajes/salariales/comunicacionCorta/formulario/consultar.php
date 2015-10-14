@@ -119,7 +119,7 @@ class registrarForm {
 				$proyectoCurricular
 		);
 
-		$cadenaSql = $this->miSql->getCadenaSql ( 'consultarIndexacion', $arreglo );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'consultar', $arreglo );
 		$indexacion = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 		$arreglo=serialize($arregloSerialize);
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
@@ -175,7 +175,7 @@ class registrarForm {
 					$atributos ['id'] = $esteCampo;
 					$atributos ["estilo"] = "jqueryui";
 					$atributos ['tipoEtiqueta'] = 'inicio';
-					$atributos ["leyenda"] = "Revistas Indexadas";					
+					$atributos ["leyenda"] = "Comunicación Corta";					
 					echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
 					
 					echo "<table id='tablaTitulos'>";
@@ -239,7 +239,7 @@ class registrarForm {
 
 				} else {
 					
-					$mensaje = "No Se Encontraron<br> Registros de Revistas Indexadas.";
+					$mensaje = "No Se Encontraron<br> Registros de Comunicación Corta Para los criterios Ingresados.";
 					
 					// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
 					$esteCampo = 'mensajeRegistro';

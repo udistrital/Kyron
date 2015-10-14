@@ -72,10 +72,10 @@ if (!isset($GLOBALS["autorizado"])) {
     if ($_REQUEST['mensaje'] == 'confirma') {
 
         $tipo = 'success';
-        $mensaje = "Registro Exitoso.<br>Ha sido indexada correctamente la revista para el docente <br>" . $_REQUEST ['docente'] . ".";
+        $mensaje = "Registro Exitoso.<br>Ha sido registrada la Comunicación Corta para el docente <br>" . $_REQUEST ['docente'] . ".";
         $boton = "continuar";
 		
-        $valorCodificado = "pagina=revistasIndexadas";
+        $valorCodificado = "pagina=comunicacionCorta";
         $valorCodificado.="&opcion=nuevo";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
@@ -83,20 +83,20 @@ if (!isset($GLOBALS["autorizado"])) {
         
     } else if($_REQUEST['mensaje'] == 'error') {
         $tipo = 'error';
-        $mensaje = "Error al tratar de indexar la revista.";
+        $mensaje = "Error al tratar de Registrar la Comunicación Corta.";
         $boton = "regresar";
 
-        $valorCodificado = "pagina=revistasIndexadas";
+        $valorCodificado = "pagina=comunicacionCorta";
         $valorCodificado.="&opcion=nuevo";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
        
     } else if($_REQUEST['mensaje'] == 'actualizo') {
         $tipo = 'success';
-        $mensaje = "Actualización Exitosa </br> Han sido actualizados los datos de la revista indexada para el docente <br>" . $_REQUEST ['docente'] . ".";
+        $mensaje = "Actualización Exitosa </br> Han sido actualizados los datos de la Comunicación Corta para el docente <br>" . $_REQUEST ['docente'] . ".";
         $boton = "continuar";
 
-        $valorCodificado = "pagina=revistasIndexadas";
+        $valorCodificado = "pagina=comunicacionCorta";
         $valorCodificado.="&opcion=nuevo";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
@@ -104,10 +104,10 @@ if (!isset($GLOBALS["autorizado"])) {
     }
     else if($_REQUEST['mensaje'] == 'noActualizo') {
     	$tipo = 'error';
-    	$mensaje = "Error al tratar de actualizar </br>el registro de la Revista Indexada Para el Docente </br>" . $_REQUEST ['docente'] . ".";
+    	$mensaje = "Error al tratar de actualizar </br>el registro de la Comunicación Corta Para el Docente </br>" . $_REQUEST ['docente'] . ".";
     	$boton = "continuar";
     
-    	$valorCodificado = "pagina=revistasIndexadas";
+    	$valorCodificado = "pagina=comunicacionCorta";
     	$valorCodificado.="&opcion=nuevo";
     	$valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
     	$valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];

@@ -1,15 +1,15 @@
 <?php
 
-namespace asignacionPuntajes\salariales\indexacionRevistas\funcion;
+namespace asignacionPuntajes\salariales\comunicacionCorta\funcion;
 
-use asignacionPuntajes\salariales\indexacionRevistas\funcion\redireccionar;
+use asignacionPuntajes\salariales\comunicacionCorta\funcion\redireccionar;
 
 include_once ('redireccionar.php');
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
 	exit ();
 }
-class RegistrarIndexacionRevista {
+class Registrar {
 	
 	var $miConfigurador;
 	var $lenguaje;
@@ -36,7 +36,7 @@ class RegistrarIndexacionRevista {
 		$rutaBloque .= $esteBloque ['nombre'];
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
 
-		$_REQUEST['contextoRevista'] = 0;
+		$_REQUEST['contextoRevista'] = 1;
 		$_REQUEST['pais'] = 'COL';
 		
 		$arregloDatos = array (
@@ -61,7 +61,7 @@ class RegistrarIndexacionRevista {
 			'numero_issn_old' => $_REQUEST['numero_issn_old']
 		);
 		
-		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizarIndexacion', $arregloDatos );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizar', $arregloDatos );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
 
 		if ($resultado) {
@@ -83,7 +83,7 @@ class RegistrarIndexacionRevista {
 	}
 }
 
-$miRegistrador = new RegistrarIndexacionRevista ( $this->lenguaje, $this->sql, $this->funcion );
+$miRegistrador = new Registrar ( $this->lenguaje, $this->sql, $this->funcion );
 
 $resultado = $miRegistrador->procesarFormulario ();
 

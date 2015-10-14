@@ -1,4 +1,4 @@
-$("#indexacionRevistas").validationEngine({
+$("#comunicacionCorta").validationEngine({
 promptPosition : "centerRight", 
 scroll: false,
 autoHidePrompt: true,
@@ -6,8 +6,8 @@ autoHideDelay: 2000
 });
 
 $(function() {
-	$("#indexacionRevistas").submit(function() {
-		$resultado=$("#indexacionRevistas").validationEngine("validate");
+	$("#comunicacionCorta").submit(function() {
+		$resultado=$("#comunicacionCorta").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -15,7 +15,7 @@ $(function() {
 	});
 });
 
-$("#indexacionRevistasRegistrar").validationEngine({
+$("#comunicacionCortaRegistrar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,
@@ -23,8 +23,8 @@ $("#indexacionRevistasRegistrar").validationEngine({
 });
 
 $(function() {
-$("#indexacionRevistasRegistrar").submit(function() {
-$resultado=$("#indexacionRevistasRegistrar").validationEngine("validate");
+$("#comunicacionCortaRegistrar").submit(function() {
+$resultado=$("#comunicacionCortaRegistrar").validationEngine("validate");
 
 if ($resultado) {
 
@@ -41,8 +41,8 @@ $(function () {
 });
 
 $(function() {
-	$("#indexacionRevistasModificar").submit(function() {
-		$resultado=$("#indexacionRevistasModificar").validationEngine("validate");
+	$("#comunicacionCortaModificar").submit(function() {
+		$resultado=$("#comunicacionCortaModificar").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -50,7 +50,7 @@ $(function() {
 	});
 });
 
-$("#indexacionRevistasModificar").validationEngine({
+$("#comunicacionCortaModificar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,

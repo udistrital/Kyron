@@ -1,5 +1,5 @@
 <?php
-namespace asignacionPuntajes\salariales\indexacionRevistas\formulario;
+namespace asignacionPuntajes\salariales\comunicacionCorta\formulario;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -91,9 +91,9 @@ class FormularioModificar {
 		
 		);
 		 
-		$cadena_sql = $this->miSql->getCadenaSql ( "consultarRevistas", $datos );		
+		$cadena_sql = $this->miSql->getCadenaSql ( "consultarPublicacion", $datos );		
 		$resultadoIndexacion = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
-		
+				
 				$_REQUEST['docenteRegistrar'] =  $resultadoIndexacion[0]['documento_docente'] . " - " . $resultadoIndexacion[0]['nombre_docente'];
 				$_REQUEST['id_docenteRegistrar'] =  $resultadoIndexacion[0]['documento_docente'];
 				$_REQUEST['nombreRevista'] =  $resultadoIndexacion[0]['nombre_revista'];
@@ -118,7 +118,7 @@ class FormularioModificar {
 		$atributos ['id'] = $esteCampo;
 		$atributos ["estilo"] = "jqueryui";
 		$atributos ['tipoEtiqueta'] = 'inicio';
-		$atributos ["leyenda"] = "Modificar Información de Revistas Indexadas";
+		$atributos ["leyenda"] = "Modificar Información de Comunicacón Corta";
 		echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
 		
 			$esteCampo = 'docenteRegistrar';
@@ -325,7 +325,7 @@ class FormularioModificar {
 			$atributos ['limitar'] = false;
 			$atributos ['anchoCaja'] = 60;
 			$atributos ['miEvento'] = '';
-			$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "categoria_revista", 0 );
+			$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "categoria_revista", 1 );
 				$matrizItems = array (
 						array (
 								0,

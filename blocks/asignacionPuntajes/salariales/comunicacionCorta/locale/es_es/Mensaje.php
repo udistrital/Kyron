@@ -2,8 +2,8 @@
 
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
 
-$this->idioma["consultarRevistas"] = "Consultar Revistas Indexadas";
-$this->idioma["ingresarRevistas"] = "Ingresar Revistas Indexadas";
+$this->idioma["consultarRevistas"] = "Consultar Comunicación Corta";
+$this->idioma["ingresarRevistas"] = "Ingresar Comunicación Corta";
 
 //////////////////////////////////////////////////////////////
 

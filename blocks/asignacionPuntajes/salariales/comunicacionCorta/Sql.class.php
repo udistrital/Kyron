@@ -1,6 +1,6 @@
 <?php
 
-namespace asignacionPuntajes\salariales\indexacionRevistas;
+namespace asignacionPuntajes\salariales\comunicacionCorta;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -142,7 +142,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LIKE '%" . $variable . "%' LIMIT 10;";
 				break;
 								
-			case "consultarIndexacion" :			
+			case "consultar" :			
 				$cadenaSql=" select ";
 				$cadenaSql.=" ri.documento_docente, ";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
@@ -151,7 +151,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ri.volumen_revista, ri.numero_revista,";
 				$cadenaSql.=" ri.paginas_revista ";
 				$cadenaSql.=" from ";
-				$cadenaSql.=" docencia.revista_indexada ri ";
+				$cadenaSql.=" docencia.comunicacion_corta ri ";
 				$cadenaSql.=" left join docencia.docente dc on ri.documento_docente=dc.documento_docente ";
 				$cadenaSql.=" left join docencia.docente_proyectocurricular dc_pc on ri.documento_docente=dc_pc.documento_docente ";
 				$cadenaSql.=" left join docencia.proyectocurricular pc on dc_pc.id_proyectocurricular=pc.id_proyectocurricular ";
@@ -173,8 +173,8 @@ class Sql extends \Sql {
 				}
 				break;
 				
-			case "insertarIndexacion" :
-				$cadenaSql = "INSERT INTO docencia.revista_indexada( ";
+			case "registrar" :
+				$cadenaSql = "INSERT INTO docencia.comunicacion_corta( ";
 				$cadenaSql .= "documento_docente, nombre_revista, id_contexto, paiscodigo, ";
 				$cadenaSql .= "id_tipo_indexacion, ";
 				$cadenaSql .= "numero_issn, anno_publicacion, volumen_revista, numero_revista, paginas_revista, ";
@@ -200,7 +200,7 @@ class Sql extends \Sql {
 				$cadenaSql .= " '" . $variable ['normatividad'] . "')";
 				break;
 				
-			case "consultarRevistas" :
+			case "consultarPublicacion" :
 				$cadenaSql=" SELECT ri.documento_docente,";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
 				$cadenaSql.=" ri.nombre_revista, ";
@@ -220,16 +220,16 @@ class Sql extends \Sql {
 				$cadenaSql.=" ri.numero_caso, ";
 				$cadenaSql.=" ri.puntaje, ";
 				$cadenaSql.=" ri.normatividad ";
-				$cadenaSql.=" FROM docencia.revista_indexada ri ";
+				$cadenaSql.=" FROM docencia.comunicacion_corta ri ";
 				$cadenaSql.=" left join docencia.docente dc on ri.documento_docente=dc.documento_docente ";
 				$cadenaSql.=" WHERE ri.documento_docente ='" . $variable['documento_docente']. "'";
 				$cadenaSql.=" and ri.numero_issn ='" . $variable['numero_issn']. "'";
 				$cadenaSql.=" and ri.estado=true";
 				break;
 				
-			case "actualizarIndexacion" :
+			case "actualizar" :
 				$cadenaSql = "UPDATE ";
-				$cadenaSql .= "docencia.revista_indexada ";
+				$cadenaSql .= "docencia.comunicacion_corta ";
 				$cadenaSql .= "SET ";
 				$cadenaSql .= "nombre_revista = '" . $variable ['nombreRevista'] . "', ";
 				$cadenaSql .= "id_contexto = '" . $variable ['contextoRevista'] . "', ";

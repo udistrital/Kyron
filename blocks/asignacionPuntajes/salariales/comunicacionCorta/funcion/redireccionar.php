@@ -1,6 +1,6 @@
 <?php
 
-namespace asignacionPuntajes\salariales\indexacionRevistas\funcion;
+namespace asignacionPuntajes\salariales\comunicacionCorta\funcion;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("index.php");
