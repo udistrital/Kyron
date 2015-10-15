@@ -1,4 +1,4 @@
-$("#resenaCritica").validationEngine({
+$("#novedadesSalariales").validationEngine({
 promptPosition : "centerRight", 
 scroll: false,
 autoHidePrompt: true,
@@ -6,8 +6,8 @@ autoHideDelay: 2000
 });
 
 $(function() {
-	$("#resenaCritica").submit(function() {
-		$resultado=$("#resenaCritica").validationEngine("validate");
+	$("#novedadesSalariales").submit(function() {
+		$resultado=$("#novedadesSalariales").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -15,7 +15,7 @@ $(function() {
 	});
 });
 
-$("#resenaCriticaRegistrar").validationEngine({
+$("#novedadesSalarialesRegistrar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,
@@ -23,8 +23,8 @@ $("#resenaCriticaRegistrar").validationEngine({
 });
 
 $(function() {
-$("#resenaCriticaRegistrar").submit(function() {
-$resultado=$("#resenaCriticaRegistrar").validationEngine("validate");
+$("#novedadesSalarialesRegistrar").submit(function() {
+$resultado=$("#novedadesSalarialesRegistrar").validationEngine("validate");
 
 if ($resultado) {
 
@@ -41,8 +41,8 @@ $(function () {
 });
 
 $(function() {
-	$("#resenaCriticaModificar").submit(function() {
-		$resultado=$("#resenaCriticaModificar").validationEngine("validate");
+	$("#novedadesSalarialesModificar").submit(function() {
+		$resultado=$("#novedadesSalarialesModificar").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -50,7 +50,7 @@ $(function() {
 	});
 });
 
-$("#resenaCriticaModificar").validationEngine({
+$("#novedadesSalarialesModificar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,
@@ -76,15 +76,12 @@ $('#<?php echo $this->campoSeguro('facultad')?>').width(450);
 $('#<?php echo $this->campoSeguro('proyectoCurricular')?>').width(450);      
 
 $('#<?php echo $this->campoSeguro('docenteRegistrar')?>').width(465);
-$('#<?php echo $this->campoSeguro('contextoRevista')?>').width(450);
-$('#<?php echo $this->campoSeguro('annoRevista')?>').width(450);
-$('#<?php echo $this->campoSeguro('categoria')?>').width(450);
-$('#<?php echo $this->campoSeguro('categoria')?>').select2();
+$('#<?php echo $this->campoSeguro('tipo')?>').width(450);
 
 
 ///*********El ancho (width) de los siguientes campos es mayor debido a que se encuentran dentro de un div****///
-$('#<?php echo $this->campoSeguro('pais')?>').width(470);
-$('#<?php echo $this->campoSeguro('categoria')?>').width(470);
+//$('#<?php echo $this->campoSeguro('pais')?>').width(470);
+//$('#<?php echo $this->campoSeguro('categoria')?>').width(470);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -94,8 +91,7 @@ $('#<?php echo $this->campoSeguro('categoria')?>').width(470);
 $("#<?php echo $this->campoSeguro('facultad')?>").select2();
 $("#<?php echo $this->campoSeguro('proyectoCurricular')?>").select2();
 
-$("#<?php echo $this->campoSeguro('contextoRevista')?>").select2();
-$("#<?php echo $this->campoSeguro('annoRevista')?>").select2();
+$("#<?php echo $this->campoSeguro('tipo')?>").select2();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

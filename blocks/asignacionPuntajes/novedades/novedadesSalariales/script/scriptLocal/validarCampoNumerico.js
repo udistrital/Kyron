@@ -6,8 +6,6 @@ $( document ).ready(function() {
 	var IPunto = 0;
 	
 	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroCasoActaRevista')?>";
-	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroAutoresUniversidad')?>";
-	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroAutoresRevista')?>";
 	
 	campoValidarPunto[IPunto++] = "#<?php echo $this->campoSeguro('puntajeRevista')?>";
 	
