@@ -31,7 +31,7 @@ $this->idioma["docenteTitulo"] = "Identificación o Nombre del Docente.";
 $this->idioma["numeroActaTitulo"] = "Ingrese el Número de Acta CIARP-UD.";
 $this->idioma["fechaActaTitulo"] = "Seleccione la Fecha de Acta CIARP-UD.";
 $this->idioma["numeroCasoActaTitulo"] = "Ingrese el Número de Caso de Acta.";
-$this->idioma["puntajeTitulo"] = "Ingrese el Puntaje.";
+$this->idioma["puntajeTitulo"] = "Ingrese el Puntaje, si es negativo derroga o por el contrario si es positivo asigna puntos.";
 $this->idioma["normatividadTitulo"] = "Ingrese la normatividad.";
 ///////////////////////////////////////////////////////////////////
 
@@ -55,7 +55,7 @@ $this->idioma["docenteRegistrar"] = "Identificación o nombre del docente:";
 $this->idioma["numeroActa"] = "Número de Acta CIARP-UD:";
 $this->idioma["fechaActa"] = "Fecha de Acta CIARP-UD:";
 $this->idioma["numeroCasoActa"] = "Número de Caso de Acta:";
-$this->idioma["puntaje"] = "Puntaje:";
+$this->idioma["puntaje"] = "Puntaje: (-)Derroga o (+)Asigna.";
 $this->idioma["normatividad"] = "Normatividad:";
 ////////////////////////////////////////////////////////////////
 

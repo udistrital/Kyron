@@ -156,6 +156,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.facultad AS fc ON pc.id_facultad=fc.id_facultad";
 				$cadenaSql.=" WHERE";
 				$cadenaSql.=" no.estado=true";
+				$cadenaSql.=" AND tn.id_categoria_novedad='1'";
 				$cadenaSql.=" AND dc.estado=true";
 				$cadenaSql.=" AND pc.estado=true";
 				$cadenaSql.=" AND dc_pc.estado=true";
