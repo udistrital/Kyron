@@ -1,4 +1,4 @@
-$("#novedadesSalariales").validationEngine({
+$("#novedadesBonificacion").validationEngine({
 promptPosition : "centerRight", 
 scroll: false,
 autoHidePrompt: true,
@@ -6,8 +6,8 @@ autoHideDelay: 2000
 });
 
 $(function() {
-	$("#novedadesSalariales").submit(function() {
-		$resultado=$("#novedadesSalariales").validationEngine("validate");
+	$("#novedadesBonificacion").submit(function() {
+		$resultado=$("#novedadesBonificacion").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -15,7 +15,7 @@ $(function() {
 	});
 });
 
-$("#novedadesSalarialesRegistrar").validationEngine({
+$("#novedadesBonificacionRegistrar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,
@@ -23,8 +23,8 @@ $("#novedadesSalarialesRegistrar").validationEngine({
 });
 
 $(function() {
-$("#novedadesSalarialesRegistrar").submit(function() {
-$resultado=$("#novedadesSalarialesRegistrar").validationEngine("validate");
+$("#novedadesBonificacionRegistrar").submit(function() {
+$resultado=$("#novedadesBonificacionRegistrar").validationEngine("validate");
 
 if ($resultado) {
 
@@ -41,8 +41,8 @@ $(function () {
 });
 
 $(function() {
-	$("#novedadesSalarialesModificar").submit(function() {
-		$resultado=$("#novedadesSalarialesModificar").validationEngine("validate");
+	$("#novedadesBonificacionModificar").submit(function() {
+		$resultado=$("#novedadesBonificacionModificar").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -50,7 +50,7 @@ $(function() {
 	});
 });
 
-$("#novedadesSalarialesModificar").validationEngine({
+$("#novedadesBonificacionModificar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,

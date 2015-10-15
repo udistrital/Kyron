@@ -189,7 +189,7 @@ class FormularioRegistro {
 		$atributos ['limitar'] = false;
 		$atributos ['anchoCaja'] = 60;
 		$atributos ['miEvento'] = '';
-		$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "tipo_novedad", 1 );
+		$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "tipo_novedad", 2 );
 		$matrizItems = array (
 				array (
 						0,
