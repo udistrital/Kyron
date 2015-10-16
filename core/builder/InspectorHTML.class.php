@@ -78,13 +78,22 @@ class InspectorHTML {
 			if ($tamannoCampo<$parametros['minSize']) {
 				if(!$corregir){
 					if($showError){
-						return array("errorType"=>"minSize","errorMessage"=>"La longitud es menor a ".$parametros['maxSize']);
+						return array("errorType"=>"minSize","errorMessage"=>"La longitud es menor a ".$parametros['minSize']);
 					}
 					return false;
 				}
 				$faltante = $parametros['minSize'] - $tamannoCampo;
 				$faltante = str_repeat('',$faltante);
 				$valorCampo .= $faltante; 
+			}
+		}
+		
+		if (isset($parametros['min'])) {
+			if ($valorCampo<$parametros['min']) {
+				if($showError){
+					return array("errorType"=>"min","errorMessage"=>"El número es menor a ".$parametros['min']);
+				}
+				return false;
 			}
 		}
 		
@@ -100,6 +109,15 @@ class InspectorHTML {
 				}
 				$sobrante = $parametros['minSize'] - $tamannoCampo;
 				$valorCampo = substr($valorCampo, 0, $faltante);
+			}
+		}
+		
+		if (isset($parametros['max'])) {
+			if ($valorCampo>$parametros['max']) {
+				if($showError){
+					return array("errorType"=>"max","errorMessage"=>"El número es mayor a ".$parametros['max']);
+				}
+				return false;
 			}
 		}
 		
