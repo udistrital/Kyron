@@ -1,5 +1,19 @@
 $( document ).ready(function() {
 
+	/*PUNTAJES ASIGNADOS SEGÚN EL TIPO DE EXPERIENCIA CALIFICADA
+	Tipo de experiencia (lista desplegable)
+	Docente                                     Puntos: 4
+	Rector                                       Puntos: 11
+	Vicerrector                                 Puntos: 9
+	Decano                                      Puntos: 6
+	Secretaria general                       Puntos: 9
+	Jefe de oficina                             Puntos: 6
+	Director de oficina de investigación    Puntos: 6
+	Coordinador Proyecto curricular          Puntos: 6
+	Jefe de Oficina de Extensión                 Puntos: 6
+	Director instituto escuela o departamento  Puntos: 2
+	Director unidad de gestión académico administrativa Puntos: 2*/
+
 	asignarPuntaje();
 	
 	$("#<?php echo $this->campoSeguro('tipoExperiencia')?>").change(function(event){
