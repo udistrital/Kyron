@@ -259,7 +259,7 @@ class FormularioRegistro {
 		$atributos ['miEvento'] = '';
 		$atributos ['validar'] = 'required';
 		$atributos ['cadena_sql'] = $cadenaSql = $this->miSql->getCadenaSql ( 'contexto' );
-		$matrizItems = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+		$matrizItems = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );		
 		$atributos ['matrizItems'] = $matrizItems;
 		// Aplica atributos globales al control
 		$atributos = array_merge ( $atributos, $atributosGlobales );
