@@ -16,6 +16,8 @@ $embebido [$indice] = true;
 $funcion [$indice ++] = "scriptLocal/campoFecha.php";
 $embebido [$indice] = true;
 $funcion [$indice ++] = "scriptLocal/evaluadores.php";
+$embebido [$indice] = true;
+$funcion [$indice ++] = "scriptLocal/asignacionPuntaje.php";
 
 
 $rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "host" );
