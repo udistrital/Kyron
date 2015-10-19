@@ -1,17 +1,8 @@
 $( document ).ready(function() {
 
-	/*SEGUN EL CASO DE USO 12. REGISTRAR EXPERIENCIA EN INVESTIGACIÓN
-	 * 
-	 * Puntaje asignado (6 puntos salariales por un año de Experiencia 
-	 *y el máximo de puntaje  de acuerdo a la relación duración en días con respecto a los al año de experiencia)
-     *6 Puntos maximos-------->1 Año (365 dias)
-     *(Puntos maximos)---------> Duracion(dias) 
-     *un dia equivale a 0.01643835616*
-     *Para calcular el máximo puntaje que se puede asignar se divide 6 que es el máximo puntaje por año
-     *y se divide en 365 días dando como resultado el factor por el que se debe multiplicar cada día
-     *para ir incrementando el puntaje máximo dependiendo de la cantidad de días que ingrese como experiencia.*/
+	/*SEGUN EL CASO DE USO 15. REGISTRAR EXPERIENCIA PROFESIONAL*/
 	
-	var puntajeAnnio = 6;
+	var puntajeAnnio = 3;
 	asignarPuntaje();
 	
 	$("#<?php echo $this->campoSeguro('puntaje')?>").focus(function() {
@@ -19,8 +10,8 @@ $( document ).ready(function() {
 	});
 		
 	function asignarPuntaje(){
-		var diasExperiencia = calcularDias();		
-		puntajeMaximo = redondeo(diasExperiencia*(puntajeAnnio/365), 3);
+		var diasExperiencia = calcularDias();			
+		puntajeMaximo = redondeo(diasExperiencia*(puntajeAnnio/365), 3);		
 		$("#<?php echo $this->campoSeguro('puntaje')?>").attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required, custom[number],min[0.1],max["+puntajeMaximo+"]");
 	}
 	
