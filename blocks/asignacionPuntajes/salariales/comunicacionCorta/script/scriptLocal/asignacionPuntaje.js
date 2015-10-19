@@ -18,7 +18,6 @@ $( document ).ready(function() {
 	function asignarPuntaje(){
 		var contexto = $("#<?php echo $this->campoSeguro('contexto')?>").val();
 		var categoria = $("#<?php echo $this->campoSeguro('categoria')?>").val();
-		alert(categoria);
 		if(contexto == "" || categoria == ""){
 			$("#<?php echo $this->campoSeguro('puntajeRevista')?>").attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required, custom[number],min[0.1]");
 		}else{
