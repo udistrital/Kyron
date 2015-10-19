@@ -8,11 +8,11 @@ $( document ).ready(function() {
 	
 	asignarPuntaje();
 
-	$("#<?php echo $this->campoSeguro('tipoLibro')?>").chnage(function(){alert("aquí");		
-		//asignarPuntaje();
+	$("#<?php echo $this->campoSeguro('tipoLibro')?>").change(function(){	
+		asignarPuntaje();
 	});
 	
 	function asignarPuntaje(){
-		$("#<?php echo $this->campoSeguro('puntaje')?>").attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required, custom[number],min[0.1],max[15]]");
+		$("#<?php echo $this->campoSeguro('puntajeLibro')?>").attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required, custom[number],min[0.1],max[15]]");
 	}
 });
