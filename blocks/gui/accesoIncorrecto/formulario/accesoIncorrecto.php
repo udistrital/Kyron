@@ -24,10 +24,42 @@ class Form {
 	function miForm() {
 		// Rescatar los datos de este bloque
 		$esteBloque = $this -> miConfigurador -> getVariableConfiguracion("esteBloque");
-		echo "Usted ha ingresado parámetros de forma incorrecta al sistema.
-		 El acceso incorrecto ha sido registrado en el sistema con la IP: ".$_SERVER['REMOTE_ADDR'];
-		die;
-		$url = $miConfigurador->configuracion ["host"] . $miConfigurador->configuracion ["site"] . "/index.php";		
+		echo '
+			<table align="center" width="80%" cellpadding="7" border=0>
+			<tr><td>
+			<table width="100%" align="center"><tr>
+			<td><img src="/error/escud.gif" WIDTH=120 HEIGHT=150></td>
+			<td >
+			<h1 align="center">UNIVERSIDAD DISTRITAL <br>"FRANCISCO JOS&Eacute; DE CALDAS"</h1><br>
+			<h2 align="center">OFICINA ASESORA DE SISTEMAS.</h2></td>
+			<td><img src="/error/oas.png" WIDTH=100 HEIGHT=100></td>			
+			</tr></table>			
+			</td>			
+			</tr>
+			<tr>
+			<td bgcolor="#DC011B" valign="middle">
+			<h1 align="center"><blink>LA PAGINA NO EXISTE<blink></h1>
+			
+			</td>
+			</tr>
+			<tr>
+			<td align="center"><h3>Se ha creado un registro de acceso ilegal desde la direcci&oacute;n: <b>'.$_SERVER['REMOTE_ADDR'].'</b>.</h3></td>
+			</tr>
+			<tr>
+			<td align="center">
+			Si considera que esto es un error por favor comuniquese con el administrador del sistema.
+			</td>
+			</tr>
+			<tr>
+			<td style="font-size:12;" align="center">
+			<hr>
+			Ambiente de desarrollo para aplicaciones web.<br>
+			Universidad Distrital Francisco Jos&eacute; de Caldas. <br>
+			Oficina Asesora de Sistemas
+			</td>
+			</tr>
+			</table>
+		';	
 	}
 
 	function mensaje() {
