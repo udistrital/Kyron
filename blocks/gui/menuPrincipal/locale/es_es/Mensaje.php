@@ -49,7 +49,8 @@ $this->idioma ['tituloBonificacion'] = 'BONIFICACIÓN';
 	
 $this->idioma ['tituloNovedades'] = 'NOVEDADES';
 	//NOVEDADES////////////////////////////////	
-	$this->idioma ['novedades'] = 'Novedades';
+	$this->idioma ['novedadesSalariales'] = 'Novedades Salariales';
+	$this->idioma ['novedadesBonificacion'] = 'Novedades Bonificación';
 	//Fin NOVEDADES///////////////////////////////////	
 //Fin Asginación de Puntajes//////////////////////////
 

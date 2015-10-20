@@ -274,7 +274,7 @@ class FormularioModificar {
 		$atributos ['limitar'] = false;
 		$atributos ['anchoCaja'] = 60;
 		$atributos ['miEvento'] = '';
-		$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "categoria_revista", 0 );
+		$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "categoria_revista", 1 );
 		$matrizItems = array (
 				array (
 						0,
@@ -609,6 +609,13 @@ class FormularioModificar {
 				 */
 				$valorCodificado .= "&campoSeguro=" . $_REQUEST ['tiempo'];
 				$valorCodificado .= "&tiempo=" . time();
+				/*
+				 * Sara permite validar los campos en el formulario o funcion destino.
+				 * Para ello se envía los datos atributos["validadar"] de los componentes del formulario
+				 * Estos se pueden obtener en el atributo $this->miFormulario->validadorCampos del formulario
+				 * La función $this->miFormulario->codificarCampos() codifica automáticamente el atributo validadorCampos
+				 */
+				$valorCodificado .= "&validadorCampos=" . $this->miFormulario->codificarCampos();
 				
 				// Paso 2: codificar la cadena resultante
 				$valorCodificado = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $valorCodificado );

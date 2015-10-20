@@ -2,7 +2,7 @@ $( document ).ready(function() {
 
 	//Puntaje asignado: El puntaje no podrá ser mayor al 30 % del total de puntos
 	//Los puntajes máximos asignados corresponden al 30% del puntaje total
-	//Por ejemplo para una indexación nacional A1 son 15 puntos el 30% corresponde a 4.5
+	//Por ejemplo para una indexación nacional A1 son 15 puntos, el 30% corresponde a 4.5
 	//Este 4.5 es el puntaje máximo que se podra asignar al docente.
 
 	asignarPuntaje();
