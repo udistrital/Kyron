@@ -17,6 +17,14 @@ $( document ).ready(function() {
 	$("#<?php echo $this->campoSeguro('puntaje')?>").focus(function() {
 		asignarPuntaje();
 	});
+	
+	$("#<?php echo $this->campoSeguro('fechaInicio')?>").blur(function() {
+		asignarPuntaje();
+	});
+	
+	$("#<?php echo $this->campoSeguro('fechaFinalizacion')?>").blur(function() {
+		asignarPuntaje();
+	});
 		
 	function asignarPuntaje(){
 		var diasExperiencia = calcularDias();		

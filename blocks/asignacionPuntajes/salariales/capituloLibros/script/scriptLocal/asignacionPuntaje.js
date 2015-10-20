@@ -1,4 +1,10 @@
 $( document ).ready(function() {
+	/* SEGÚN ESPECIFICACIÓN DE CASO DE USO 58. CAPÍTULOS DE LIBROS
+		Puntaje asignado 
+			Investigación 15 puntos máximo
+			Ensayo 20 puntos máximo
+			Texto 15 puntos máximo
+	*/
 
 	asignarPuntaje();
 
