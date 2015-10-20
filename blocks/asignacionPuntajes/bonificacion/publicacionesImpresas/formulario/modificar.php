@@ -681,6 +681,13 @@ class FormularioModificar {
 				$valorCodificado .= "&old_id_docenteRegistrar=".$_REQUEST['documento_docente'];
 				$valorCodificado .= "&old_issn=".$_REQUEST['numero_issn'];
 				
+				/*
+				 * Sara permite validar los campos en el formulario o funcion destino.
+				 * Para ello se envía los datos atributos["validadar"] de los componentes del formulario
+				 * Estos se pueden obtener en el atributo $this->miFormulario->validadorCampos del formulario
+				 * La función $this->miFormulario->codificarCampos() codifica automáticamente el atributo validadorCampos
+				 */
+				$valorCodificado .= "&validadorCampos=" . $this->miFormulario->codificarCampos();				
 				/**
 				 * SARA permite que los nombres de los campos sean dinámicos.
 				 * Para ello utiliza la hora en que es creado el formulario para
