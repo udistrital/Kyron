@@ -165,18 +165,19 @@ function getCadenaSql($tipo, $variable = "") {
 			$cadenaSql .= " tipo_item.descripcion as tipo_item,";	
 			$cadenaSql .= " item.link as link";
 			$cadenaSql .= " FROM";
-			$cadenaSql .= " item";
-			$cadenaSql .= " inner join menu";
+			$cadenaSql .= " menu.item";
+			$cadenaSql .= " inner join menu.menu";
 			$cadenaSql .= " on menu.id_menu = item.id_menu";
-			$cadenaSql .= " inner join grupo";
+			$cadenaSql .= " inner join menu.grupo";
 			$cadenaSql .= " on grupo.id_grupo = item.id_grupo";
-			$cadenaSql .= " inner join tipo_item"; 
+			$cadenaSql .= " inner join menu.tipo_item"; 
 			$cadenaSql .= " on item.id_tipo_item = tipo_item.id_tipo_item";			
 			$cadenaSql .= " WHERE ";
 			$cadenaSql .= " menu.estado_registro= true";
 			$cadenaSql .= " and item.estado_registro = true";
 			$cadenaSql .= " and menu.perfil_usuario =". $variable;
-			$cadenaSql .= " order by item.id_grupo, item.columna, item.id_tipo_item, item.orden_item";
+			$cadenaSql .= " order by grupo.orden_grupo, item.columna, item.id_tipo_item, item.orden_item";
+			$cadenaSql .= ";";
 			break;
     }
     

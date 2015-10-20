@@ -54,6 +54,10 @@ $this->idioma ['tituloNovedades'] = 'NOVEDADES';
 	//Fin NOVEDADES///////////////////////////////////	
 //Fin Asginación de Puntajes//////////////////////////
 
+$this->idioma ['enlacesExternos'] = 'Enlaces Externos';
+	//CONSULTA REPORTES DOCENCIA////////////////////////////////
+	$this->idioma ['SNIES'] = 'Sistema Nacional de Información de la Educación Superior SNIES';
+	
 $this->idioma ['tituloConsultaReportes'] = 'CONSULTA REPORTES DOCENCIA';
 	//CONSULTA REPORTES DOCENCIA////////////////////////////////
 	$this->idioma ['consultaReportes'] = 'Gestor de Reportes';

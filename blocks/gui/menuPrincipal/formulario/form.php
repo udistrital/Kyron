@@ -98,7 +98,7 @@ class FormularioMenu {
 		// ---------------- SECCION: Controles del Formulario -----------------------------------------------
 						
 		$cadenaSql = $this->miSql->getCadenaSql ( "datosMenu", 0 );
-		$datosMenu = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );	
+		$datosMenu = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 		
 		foreach ( $datosMenu as $menu => $item ) {
 			$enlaces [$this->lenguaje->getCadena ($item ['grupo'])]['columna'. $item ['columna']][$item ['tipo_item']][$this->lenguaje->getCadena ($item ['descripcion'])] = array ();
