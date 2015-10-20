@@ -85,11 +85,15 @@ class Funcion {
 				$_REQUEST = $respuesta;
 			} else {
 				//Lo que se desea hacer si los parámetros son inválidos
-				echo "Usted ha ingresado parámetros de forma incorrecta al sistema.
-				 El acceso incorrecto ha sido registrado en el sistema con la IP: ".$_SERVER['REMOTE_ADDR'];
-				die;
-				$url = $miConfigurador->configuracion ["host"] . $miConfigurador->configuracion ["site"] . "/index.php";
-				echo "<script>location.replace('" . $url . "')</script>";
+				$miPaginaActual = $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
+				$variable = "pagina=accesoIncorrecto";
+				$variable .= "&opcion=error";
+				$variable .= "&paginaError=".$miPaginaActual;
+				$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $variable );
+				$url = $this->miConfigurador->configuracion ["host"] . $this->miConfigurador->configuracion ["site"] . "/index.php?";
+				$enlace = $this->miConfigurador->configuracion ['enlace'];				
+				$redireccion = $url . $enlace . '=' . $variable;
+				echo "<script>location.replace('" . $redireccion . "')</script>";
 			}
 		}
 		
