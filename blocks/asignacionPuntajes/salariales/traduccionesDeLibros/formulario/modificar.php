@@ -82,20 +82,20 @@ class FormularioModificar {
 		// ---------------- INICIO: Lista Variables Modificar--------------------------------------------------------
 		
 		$datos = array(
-				'id_traduccion' =>  $_REQUEST ['id_traduccion']
+				'id_traduccion_libro' =>  $_REQUEST ['id_traduccion_libro']
 		);
 		 
 		$cadena_sql = $this->miSql->getCadenaSql ( "consultaModificar", $datos );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadena_sql, "busqueda" );
 		
-		$_REQUEST['id_traduccion'] =  $resultado[0]['id_traduccion'];
+		$_REQUEST['id_traduccion_libro'] =  $resultado[0]['id_traduccion_libro'];
 		$_REQUEST['docenteRegistrar'] =  $resultado[0]['nombre_docente'];
 		$_REQUEST['id_docenteRegistrar'] =  $resultado[0]['documento_docente'];
 		$_REQUEST['nombre'] =  $resultado[0]['titulo_traduccion'];
 		$_REQUEST['nombreTraductor'] =  $resultado[0]['nombre_traductor'];
 		$_REQUEST['volumen'] =  $resultado[0]['volumen_traduccion'];
-		$_REQUEST['fechaPublicacion'] =  $resultado[0]['fecha_traduccion'];
-		$_REQUEST['anno'] =  $resultado[0]['anno_publicacion'];
+		$_REQUEST['annoTraduccion'] =  $resultado[0]['anno_traduccion'];
+		$_REQUEST['annoPublicacion'] =  $resultado[0]['anno_publicacion'];
 		$_REQUEST['numeroActa'] =  $resultado[0]['numero_acta'];
 		$_REQUEST['fechaActa'] =  $resultado[0]['fecha_acta'];
 		$_REQUEST['numeroCasoActa'] =  $resultado[0]['numero_caso'];
@@ -269,44 +269,10 @@ class FormularioModificar {
 		// ----------------FIN CONTROL: Campo de Texto Volumen Libro--------------------------------------------------------
 		
 		
-		// ----------------INICIO CONTROL: Campo de Texto Fecha de Traducción--------------------------------------------------------
-		$esteCampo = 'fechaPublicacion';
-		$atributos ['id'] = $esteCampo;
-		$atributos ['nombre'] = $esteCampo;
-		$atributos ['tipo'] = 'text';
-		$atributos ['estilo'] = 'jqueryui';
-		$atributos ['marco'] = true;
-		$atributos ['estiloMarco'] = '';
-		$atributos ["etiquetaObligatorio"] = true;
-		$atributos ['columnas'] = 1;
-		$atributos ['dobleLinea'] = 0;
-		$atributos ['tabIndex'] = $tab;
-		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, custom[date]';
-			
-		if (isset ( $_REQUEST [$esteCampo] )) {
-			$atributos ['valor'] = $_REQUEST [$esteCampo];
-		} else {
-			$atributos ['valor'] = '';
-		}
-		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-		$atributos ['deshabilitado'] = true;
-		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '';
-		$atributos ['anchoEtiqueta'] = 280;
-		$tab ++;
-			
-		// Aplica atributos globales al control
-		$atributos = array_merge ( $atributos, $atributosGlobales );
-		echo $this->miFormulario->campoCuadroTexto ( $atributos );
-		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Fecha de Traducción--------------------------------------------------------
 		
+		// ----------------INICIO CONTROL: Campo de Texto Año de Traducción--------------------------------------------------------
 		
-		
-		// ----------------INICIO CONTROL: Campo de Texto Año Publicación Libro--------------------------------------------------------
-		
-		$esteCampo = "anno";
+		$esteCampo = "annoTraduccion";
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['id'] = $esteCampo;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
@@ -331,11 +297,56 @@ class FormularioModificar {
 		$atributos ['miEvento'] = '';
 		
 		$matrizItems = array();
-			
+		 
 		for($i=date ("Y"); $i >= date ("Y")-50;   $i--){
 			$anno = array(
-					$i,
-					$i
+				$i,
+				$i	
+			);
+			array_push($matrizItems, $anno);
+		}
+		
+		$atributos ['matrizItems'] = $matrizItems;
+			
+		$atributos = array_merge ( $atributos, $atributosGlobales );
+		echo $this->miFormulario->campoCuadroLista ( $atributos );
+		unset ( $atributos );
+		
+		// ----------------FIN CONTROL: Campo de Texto Año de Traducción--------------------------------------------------------
+		
+		
+		// ----------------INICIO CONTROL: Campo de Texto Año Publicación Libro--------------------------------------------------------
+		
+		$esteCampo = "annoPublicacion";
+		$atributos ['nombre'] = $esteCampo;
+		$atributos ['id'] = $esteCampo;
+		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+		$atributos ["etiquetaObligatorio"] = true;
+		$atributos ['tab'] = $tab ++;
+		$atributos ['anchoEtiqueta'] = 280;
+		$atributos ['evento'] = '';
+		if (isset ( $_REQUEST [$esteCampo] )) {
+			$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+		} else {
+			$atributos ['seleccion'] = 0;
+		}
+		$atributos ['deshabilitado'] = false;
+		$atributos ['columnas'] = 1;
+		$atributos ['tamanno'] = 1;
+		$atributos ['ajax_function'] = "";
+		$atributos ['ajax_control'] = $esteCampo;
+		$atributos ['estilo'] = "jqueryui";
+		$atributos ['validar'] = "required,minSize[4],maxSize[4],custom[integer]";
+		$atributos ['limitar'] = false;
+		$atributos ['anchoCaja'] = 60;
+		$atributos ['miEvento'] = '';
+		
+		$matrizItems = array();
+		 
+		for($i=date ("Y"); $i >= date ("Y")-50;   $i--){
+			$anno = array(
+				$i,
+				$i	
 			);
 			array_push($matrizItems, $anno);
 		}
@@ -570,7 +581,7 @@ class FormularioModificar {
 				/*
 				 * identificadores de registro antiguos, necesarios para la transacción update
 				 */
-				$valorCodificado .= "&old_id_traduccion=".$_REQUEST['id_traduccion'];
+				$valorCodificado .= "&old_id_traduccion_libro=".$_REQUEST['id_traduccion_libro'];
 				
 				/*
 				 * Sara permite validar los campos en el formulario o funcion destino.

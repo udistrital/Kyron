@@ -144,19 +144,19 @@ class Sql extends \Sql {
 								
 			case "consultar" :			
 				$cadenaSql=" SELECT";
-				$cadenaSql.=" tr.id_traduccion AS id_traduccion,";
+				$cadenaSql.=" tr.id_traduccion_libro AS id_traduccion_libro,";
 				$cadenaSql.=" dc.documento_docente AS documento_docente,";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido AS nombre_docente,";
 				$cadenaSql.=" tr.titulo AS titulo_traduccion,";
 				$cadenaSql.=" tr.nombre_traductor AS nombre_traductor,";
 				$cadenaSql.=" tr.volumen AS volumen_traduccion,";
-				$cadenaSql.=" tr.fecha_traduccion AS fecha_traduccion,";
+				$cadenaSql.=" tr.anno_traduccion AS anno_traduccion,";
 				$cadenaSql.=" tr.anno_publicacion AS anno_publicacion,";
 				$cadenaSql.=" tr.numero_acta AS numero_acta,";
 				$cadenaSql.=" tr.fecha_acta AS fecha_acta,";
 				$cadenaSql.=" tr.numero_caso AS numero_caso,";
 				$cadenaSql.=" tr.puntaje AS puntaje";
-				$cadenaSql.=" FROM docencia.traduccion AS tr";
+				$cadenaSql.=" FROM docencia.traduccion_libro AS tr";
 				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON dc.documento_docente = tr.documento_docente";
 				$cadenaSql.=" LEFT JOIN docencia.docente_proyectocurricular AS dc_pc ON tr.documento_docente=dc_pc.documento_docente";
 				$cadenaSql.=" LEFT JOIN docencia.proyectocurricular AS pc ON dc_pc.id_proyectocurricular=pc.id_proyectocurricular";
@@ -174,15 +174,16 @@ class Sql extends \Sql {
 				if ($variable ['id_proyectocurricular'] != '') {
 					$cadenaSql .= " AND pc.id_proyectocurricular = '" . $variable ['id_proyectocurricular'] . "'";
 				}
+				$cadenaSql.=" ;";
 				break;
 				
 			case "registrar" :
-				$cadenaSql=" INSERT INTO docencia.traduccion(";
+				$cadenaSql=" INSERT INTO docencia.traduccion_libro(";
 				$cadenaSql.=" documento_docente,";
 				$cadenaSql.=" titulo,";
 				$cadenaSql.=" nombre_traductor,";
 				$cadenaSql.=" volumen,";
-				$cadenaSql.=" fecha_traduccion,";
+				$cadenaSql.=" anno_traduccion,";
 				$cadenaSql.=" anno_publicacion,";
 				$cadenaSql.=" numero_acta,";
 				$cadenaSql.=" fecha_acta,";
@@ -194,8 +195,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" '".$variable['nombre']."',";
 				$cadenaSql.=" '".$variable['nombreTraductor']."',";
 				$cadenaSql.=" '".$variable['volumen']."',";
-				$cadenaSql.=" '".$variable['fechaPublicacion']."',";
-				$cadenaSql.=" '".$variable['anno']."',";
+				$cadenaSql.=" '".$variable['annoTraduccion']."',";
+				$cadenaSql.=" '".$variable['annoPublicacion']."',";
 				$cadenaSql.=" '".$variable['numeroActa']."',";
 				$cadenaSql.=" '".$variable['fechaActa']."',";
 				$cadenaSql.=" '".$variable['numeroCasoActa']."',";
@@ -205,42 +206,42 @@ class Sql extends \Sql {
 				
 			case "consultaModificar" :			
 				$cadenaSql=" SELECT";
-				$cadenaSql.=" tr.id_traduccion AS id_traduccion,";
+				$cadenaSql.=" tr.id_traduccion_libro AS id_traduccion_libro,";
 				$cadenaSql.=" dc.documento_docente AS documento_docente,";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido AS nombre_docente,";
 				$cadenaSql.=" tr.titulo AS titulo_traduccion,";
 				$cadenaSql.=" tr.nombre_traductor AS nombre_traductor,";
 				$cadenaSql.=" tr.volumen AS volumen_traduccion,";
-				$cadenaSql.=" tr.fecha_traduccion AS fecha_traduccion,";
+				$cadenaSql.=" tr.anno_traduccion AS anno_traduccion,";
 				$cadenaSql.=" tr.anno_publicacion AS anno_publicacion,";
 				$cadenaSql.=" tr.numero_acta AS numero_acta,";
 				$cadenaSql.=" tr.fecha_acta AS fecha_acta,";
 				$cadenaSql.=" tr.numero_caso AS numero_caso,";
 				$cadenaSql.=" tr.puntaje AS puntaje";
-				$cadenaSql.=" FROM docencia.traduccion AS tr";
+				$cadenaSql.=" FROM docencia.traduccion_libro AS tr";
 				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON dc.documento_docente = tr.documento_docente";
 				$cadenaSql.=" LEFT JOIN docencia.docente_proyectocurricular AS dc_pc ON tr.documento_docente=dc_pc.documento_docente";
 				$cadenaSql.=" WHERE tr.estado=true";
 				$cadenaSql.=" AND dc.estado=true";
-				$cadenaSql.=" AND tr.id_traduccion = '".$variable ['id_traduccion']."';";
+				$cadenaSql.=" AND tr.id_traduccion_libro = '".$variable ['id_traduccion_libro']."';";
 				break;
 				
 			case "actualizar" :
 				$cadenaSql="UPDATE ";
-				$cadenaSql.="docencia.traduccion ";
+				$cadenaSql.="docencia.traduccion_libro ";
 				$cadenaSql.="SET ";
 				$cadenaSql.=" documento_docente='".$variable['id_docenteRegistrar']."',";
 				$cadenaSql.=" titulo='".$variable['nombre']."',";
 				$cadenaSql.=" nombre_traductor='".$variable['nombreTraductor']."',";
 				$cadenaSql.=" volumen='".$variable['volumen']."',";
-				$cadenaSql.=" fecha_traduccion='".$variable['fechaPublicacion']."',";
-				$cadenaSql.=" anno_publicacion='".$variable['anno']."',";
+				$cadenaSql.=" anno_traduccion='".$variable['annoTraduccion']."',";
+				$cadenaSql.=" anno_publicacion='".$variable['annoPublicacion']."',";
 				$cadenaSql.=" numero_acta='".$variable['numeroActa']."',";
 				$cadenaSql.=" fecha_acta='".$variable['fechaActa']."',";
 				$cadenaSql.=" numero_caso='".$variable['numeroCasoActa']."',";
 				$cadenaSql.=" puntaje='".$variable['puntaje']."'";
 				$cadenaSql.= "WHERE ";
-				$cadenaSql.= "id_traduccion ='".$variable ['old_id_traduccion']."';";
+				$cadenaSql.= "id_traduccion_libro ='".$variable ['old_id_traduccion_libro']."';";
 				break;
 		}
 		

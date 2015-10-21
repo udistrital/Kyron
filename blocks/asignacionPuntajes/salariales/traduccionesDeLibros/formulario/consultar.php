@@ -172,8 +172,8 @@ class registrarForm {
 						<th>Título Traducción</th>
 						<th>Nombre Traductor</th>
 						<th>Volumen</th>
-						<th>Fecha Traducción</th>
-						<th>Año</th>
+						<th>Año Traducción</th>
+						<th>Año Publicación Libro</th>
 						<th>Número Acta CIARP-UD</th>
 						<th>Fecha Acta CIARP-UD</th>
 						<th>Número Caso de Acta</th>
@@ -189,7 +189,7 @@ class registrarForm {
 						$variable .= "&opcion=modificar";
 						$variable .= "&arreglo=" . $arreglo;
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
-						$variable .= "&id_traduccion=" . $indexacion [$i] ['id_traduccion'];
+						$variable .= "&id_traduccion_libro=" . $indexacion [$i] ['id_traduccion_libro'];
 						$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 						
 						$mostrarHtml = "<tr>
@@ -198,7 +198,7 @@ class registrarForm {
 	                    <td><center>" . $indexacion [$i] ['titulo_traduccion'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['nombre_traductor'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['volumen_traduccion'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['fecha_traduccion'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['anno_traduccion'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['anno_publicacion'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['fecha_acta'] . "</center></td>
