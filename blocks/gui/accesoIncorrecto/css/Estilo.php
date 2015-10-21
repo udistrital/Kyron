@@ -1,12 +1,8 @@
 <?php
 $indice = 0;
 
-$estilo [$indice] = "estiloGrilla.css";
-$indice ++;
-
-$estilo [$indice++] = "bootstrap.min.css";
-$estilo [$indice++] = "application.css";
-$estilo [$indice++] = "simple-sidebar.css";
+//$estilo [$indice] = "estiloGrilla.css";
+$estilo = array();
 
 $rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "host" );
 $rutaBloque .= $this->miConfigurador->getVariableConfiguracion ( "site" );

@@ -9,10 +9,8 @@
 // Registrar los archvos js que deben incluirse
 
 $indice=-1;
-$funcion[$indice++]='jquery.js';
-$funcion[$indice++]='bootstrap.js';
-$funcion[$indice++]='jquery-sortable.js';
-$funcion[$indice++]='ace/src-noconflict/ace.js';
+//$funcion[$indice++]='jquery.js';
+$funcion = array();
 
 $rutaBloque=$this->miConfigurador->getVariableConfiguracion("host");
 $rutaBloque.=$this->miConfigurador->getVariableConfiguracion("site");
@@ -34,9 +32,5 @@ foreach ($funcion as $clave=>$nombre){
 /**
  * Incluir los scripts que deben registrarse como javascript pero requieren procesamiento previo de código php
  */
-//include("archivoPHP con código js embebido.php");
-// Procesar las funciones requeridas en ajax
-echo "\n<script type='text/javascript'>";
-	include("sara.js.php");
-echo "\n</script>\n";
+
 ?>
