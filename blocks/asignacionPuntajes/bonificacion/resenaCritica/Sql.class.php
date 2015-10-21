@@ -62,7 +62,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "formulario, ";
 				$cadenaSql .= "campo, ";
 				$cadenaSql .= "valor, ";
-				$cadenaSql .= "fecha ";
+				$cadenaSql .= "anno ";
 				$cadenaSql .= ") ";
 				$cadenaSql .= "VALUES ";
 				
@@ -72,7 +72,7 @@ class Sql extends \Sql {
 					$cadenaSql .= "'" . $variable ['formulario'] . "', ";
 					$cadenaSql .= "'" . $clave . "', ";
 					$cadenaSql .= "'" . $valor . "', ";
-					$cadenaSql .= "'" . $variable ['fecha'] . "' ";
+					$cadenaSql .= "'" . $variable ['anno'] . "' ";
 					$cadenaSql .= "),";
 				}
 				
@@ -143,12 +143,12 @@ class Sql extends \Sql {
 				$cadenaSql.=" rc.revista AS revista,";
 				$cadenaSql.=" rc.id_tipo_indexacion AS id_tipo_indexacion,";
 				$cadenaSql.=" ti.descripcion AS tipo_indexacion,";
-				$cadenaSql.=" rc.fecha AS fecha,";
-				$cadenaSql.=" rc.autor AS autor,";
+				$cadenaSql.=" rc.anno AS anno,";
 				$cadenaSql.=" rc.numero_acta AS numero_acta,";
 				$cadenaSql.=" rc.fecha_acta AS fecha_acta,";
 				$cadenaSql.=" rc.caso_acta AS caso_acta,";
-				$cadenaSql.=" rc.puntaje AS puntaje";
+				$cadenaSql.=" rc.puntaje AS puntaje,";
+				$cadenaSql.=" rc.normatividad AS normatividad";
 				$cadenaSql.=" FROM";
 				$cadenaSql.=" docencia.resena_critica AS rc";
 				$cadenaSql.=" LEFT JOIN docencia.tipo_indexacion AS ti ON ti.id_tipo_indexacion=rc.id_tipo_indexacion";
@@ -190,12 +190,12 @@ class Sql extends \Sql {
 				$cadenaSql.=" titulo,";
 				$cadenaSql.=" revista,";
 				$cadenaSql.=" id_tipo_indexacion,";
-				$cadenaSql.=" fecha,";
-				$cadenaSql.=" autor,";
+				$cadenaSql.=" anno,";
 				$cadenaSql.=" numero_acta,";
 				$cadenaSql.=" fecha_acta,";
 				$cadenaSql.=" caso_acta,";
-				$cadenaSql.=" puntaje";
+				$cadenaSql.=" puntaje,";
+				$cadenaSql.=" normatividad";
 				$cadenaSql.=" )";
 				$cadenaSql.=" VALUES";
 				$cadenaSql.=" (";
@@ -203,12 +203,12 @@ class Sql extends \Sql {
 				$cadenaSql.=" '" . $variable ['titulo'] . "',";
 				$cadenaSql.=" '" . $variable ['revista'] . "',";
 				$cadenaSql.=" '" . $variable ['categoria'] . "',";
-				$cadenaSql.=" '" . $variable ['fecha'] . "',";
-				$cadenaSql.=" '" . $variable ['autor'] . "',";
+				$cadenaSql.=" '" . $variable ['anno'] . "',";
 				$cadenaSql.=" '" . $variable ['numeroActa'] . "',";
 				$cadenaSql.=" '" . $variable ['fechaActa'] . "',";
 				$cadenaSql.=" '" . $variable ['numeroCasoActa'] . "',";
-				$cadenaSql.=" '" . $variable ['puntaje'] . "'";
+				$cadenaSql.=" '" . $variable ['puntaje'] . "',";
+				$cadenaSql.=" '" . $variable ['normatividad'] . "'";
 				$cadenaSql.=" )";
 				$cadenaSql.=" ;";
 				break;		
@@ -222,12 +222,12 @@ class Sql extends \Sql {
 				$cadenaSql.=" rc.revista AS revista,";
 				$cadenaSql.=" rc.id_tipo_indexacion AS id_tipo_indexacion,";
 				$cadenaSql.=" ti.descripcion AS tipo_indexacion,";
-				$cadenaSql.=" rc.fecha AS fecha,";
-				$cadenaSql.=" rc.autor AS autor,";
+				$cadenaSql.=" rc.anno AS anno,";
 				$cadenaSql.=" rc.numero_acta AS numero_acta,";
 				$cadenaSql.=" rc.fecha_acta AS fecha_acta,";
 				$cadenaSql.=" rc.caso_acta AS caso_acta,";
-				$cadenaSql.=" rc.puntaje AS puntaje";
+				$cadenaSql.=" rc.puntaje AS puntaje,";
+				$cadenaSql.=" rc.normatividad AS normatividad";
 				$cadenaSql.=" FROM";
 				$cadenaSql.=" docencia.resena_critica AS rc";
 				$cadenaSql.=" LEFT JOIN docencia.tipo_indexacion AS ti ON ti.id_tipo_indexacion=rc.id_tipo_indexacion";
@@ -243,12 +243,12 @@ class Sql extends \Sql {
 				$cadenaSql.=" titulo='" . $variable['titulo']. "',";
 				$cadenaSql.=" revista='" . $variable['revista']. "',";
 				$cadenaSql.=" id_tipo_indexacion='" . $variable['categoria']. "',";
-				$cadenaSql.=" fecha='" . $variable['fecha']. "',";
-				$cadenaSql.=" autor='" . $variable['autor']. "',";
+				$cadenaSql.=" anno='" . $variable['anno']. "',";
 				$cadenaSql.=" numero_acta='" . $variable['numeroActa']. "',";
 				$cadenaSql.=" fecha_acta='" . $variable['fechaActa']. "',";
 				$cadenaSql.=" caso_acta='" . $variable['numeroCasoActa']. "',";
-				$cadenaSql.=" puntaje='" . $variable['puntaje']. "'";
+				$cadenaSql.=" puntaje='" . $variable['puntaje']. "',";
+				$cadenaSql.=" normatividad='" . $variable['normatividad']. "'";
 				$cadenaSql.=" WHERE";
 				$cadenaSql.=" id_resena_critica='" . $variable ['id_resena_critica'] . "'";
 				$cadenaSql.=" AND estado=true";

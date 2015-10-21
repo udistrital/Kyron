@@ -190,12 +190,12 @@ class registrarForm {
 						<th>Título Reseña Crítica</th>
 						<th>Revista</th>
 						<th>Tipo Indexación</th>
-						<th>Fecha Publicación</th>
-						<th>Autor Reseña</th>
+						<th>Año Publicación</th>
 						<th>Número Acta</th>
 						<th>Fecha Acta</th>
 						<th>Caso Acta</th>
 						<th>Puntaje</th>
+						<th>Normatividad</th>
 						<th>Modificar</th>	
 							
 	                </tr>
@@ -217,11 +217,11 @@ class registrarForm {
 	                    <td><center>" . $indexacion [$i] ['titulo'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['revista'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['tipo_indexacion'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['fecha'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['autor'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['anno'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['fecha_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['caso_acta'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['normatividad'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['puntaje'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>
