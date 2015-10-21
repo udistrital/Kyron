@@ -17,14 +17,14 @@ $this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el re
 $this->idioma["nombre"] = "Nombre de la producción:";
 $this->idioma["tipo"] = "Tipo de producción:";
 $this->idioma["numeroCertificado"] = "Número de certificado del producto:";
-$this->idioma["fechaProduccion"] = "Fecha de la producción:";
+$this->idioma["annoProduccion"] = "Año de la producción:";
 $this->idioma["marcoModificarRegistro"] = "Modificar información de Producción Técnica y Software";
 
 $this->idioma["nombreTitulo"] = "Nombre de Producción.";
 $this->idioma["tipoTitulo"] = "Tipo de Producción.";
 $this->idioma["numeroCertificadoTitulo"] = "Código/Número de identificación del producto.";
-$this->idioma["fechaProduccionTitulo"] = "Fecha de la producción:";
-$this->idioma["marcoModificarRegistroTitulo"] = "Modificar información de Producción Técnica y Software";
+$this->idioma["annoProduccionTitulo"] = "Año de la producción.";
+$this->idioma["marcoModificarRegistroTitulo"] = "Modificar información de Producción Técnica y Software.";
 
 $this->idioma["documentoEvaluador1"] = "Identificación Evaluador";
 $this->idioma["nombreEvaluador1"] = "Nombre del Evaluador";

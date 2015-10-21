@@ -163,7 +163,7 @@ class registrarForm {
 						<th>Nombre Producción</th>
 						<th>Tipo Producción</th>
 						<th>Número Certificado Producto</th>
-						<th>Fecha Producción</th>
+						<th>Año Producción</th>
 						<th>Número Acta</th>
 						<th>Fecha Acta</th>
 						<th>Número Caso</th>
@@ -187,7 +187,7 @@ class registrarForm {
 	                    <td><center>" . $indexacion [$i] ['nombre_produccion'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['nombre_tipo_libro'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_certificado'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['fecha_produccion'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['anno_produccion'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['fecha_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_caso'] . "</center></td>

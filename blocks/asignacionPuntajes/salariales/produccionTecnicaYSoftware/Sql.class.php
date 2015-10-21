@@ -151,7 +151,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ti.id_tipo_tecnicaysoftware AS id_tipo_libro,";
 				$cadenaSql.=" ti.nombre AS nombre_tipo_libro,";
 				$cadenaSql.=" pts.numero_certificado AS certificado_producto,";
-				$cadenaSql.=" pts.fecha_produccion AS fecha_produccion,";
+				$cadenaSql.=" pts.anno_produccion AS anno_produccion,";
 				$cadenaSql.=" pts.numero_acta AS numero_acta,";
 				$cadenaSql.=" pts.fecha_acta AS fecha_acta,";
 				$cadenaSql.=" pts.numero_caso AS numero_caso,";
@@ -188,7 +188,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" pts.nombre AS nombre_produccion,";
 				$cadenaSql.=" ti.nombre AS nombre_tipo_libro,";
 				$cadenaSql.=" pts.numero_certificado AS numero_certificado,";
-				$cadenaSql.=" pts.fecha_produccion AS fecha_produccion,";
+				$cadenaSql.=" pts.anno_produccion AS anno_produccion,";
 				$cadenaSql.=" pts.numero_acta AS numero_acta,";
 				$cadenaSql.=" pts.fecha_acta AS fecha_acta,";
 				$cadenaSql.=" pts.numero_caso AS numero_caso,";
@@ -231,7 +231,7 @@ class Sql extends \Sql {
 						$cadenaSql.=" nombre, ";
 						$cadenaSql.=" id_tipo_tecnicaysoftware, ";
 						$cadenaSql.=" numero_certificado, ";
-						$cadenaSql.=" fecha_produccion,";
+						$cadenaSql.=" anno_produccion,";
 						$cadenaSql.=" numero_acta,";
 						$cadenaSql.=" fecha_acta, ";
 						$cadenaSql.=" numero_caso, ";
@@ -242,7 +242,7 @@ class Sql extends \Sql {
 						$cadenaSql.=" '" . $variable ['nombre'] . "',";
 						$cadenaSql.=" '" . $variable ['tipo'] . "',";
 						$cadenaSql.=" '" . $variable ['numeroCertificado'] . "',";
-						$cadenaSql.=" '" . $variable ['fechaProduccion'] . "',";
+						$cadenaSql.=" '" . $variable ['annoProduccion'] . "',";
 						$cadenaSql.=" '" . $variable ['numeroActa'] . "',";
 						$cadenaSql.=" '" . $variable ['fechaActa'] . "',";
 						$cadenaSql.=" '" . $variable ['numeroCasoActa'] . "',";
@@ -284,7 +284,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" nombre = '" . $variable ['nombre'] . "',";
 				$cadenaSql.=" id_tipo_tecnicaysoftware = '" . $variable ['tipo'] . "',";
 				$cadenaSql.=" numero_certificado = '" . $variable ['numeroCertificado'] . "',";
-				$cadenaSql.=" fecha_produccion = '" . $variable ['fechaProduccion'] . "',";
+				$cadenaSql.=" anno_produccion = '" . $variable ['annoProduccion'] . "',";
 				$cadenaSql.=" numero_acta = '" . $variable ['numeroActa'] . "',";
 				$cadenaSql.=" fecha_acta = '" . $variable ['fechaActa'] . "', ";
 				$cadenaSql.=" numero_caso = '" . $variable ['numeroCasoActa'] . "', ";

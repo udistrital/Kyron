@@ -72,6 +72,7 @@ $('#<?php echo $this->campoSeguro('proyectoCurricular')?>').width(450);
 
 $('#<?php echo $this->campoSeguro('docenteRegistrar')?>').width(465);
 $('#<?php echo $this->campoSeguro('tipo')?>').width(450);
+$("#<?php echo $this->campoSeguro('annoProduccion')?>").width(450);
 
 $('#<?php echo $this->campoSeguro('entidadCertificadora1')?>').width(300);
 $('#<?php echo $this->campoSeguro('entidadCertificadora2')?>').width(300);
@@ -86,6 +87,7 @@ $("#<?php echo $this->campoSeguro('proyectoCurricular')?>").select2();
 
 
 $("#<?php echo $this->campoSeguro('tipo')?>").select2();
+$("#<?php echo $this->campoSeguro('annoProduccion')?>").select2();
 
 /*
  * Se asigna dinámicamente el parámetro required a los select2. Se quita un reminicente de:
