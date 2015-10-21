@@ -71,65 +71,66 @@ class InspectorHTML {
 				return false;
 			}
 		}
-
-		if (isset($parametros['minSize'])) {
-			//Al no usar esta codificación utf8 la longitud da diferente en javascript que en PHP
-			$tamannoCampo = strlen(utf8_decode($valorCampo));
-			if ($tamannoCampo<$parametros['minSize']) {
-				if(!$corregir){
-					if($showError){
-						return array("errorType"=>"minSize","errorMessage"=>"La longitud es menor a ".$parametros['minSize']);
-					}
-					return false;
-				}
-				$faltante = $parametros['minSize'] - $tamannoCampo;
-				$faltante = str_repeat('',$faltante);
-				$valorCampo .= $faltante; 
-			}
-		}
-		
-		if (isset($parametros['min'])) {
-			if ($valorCampo<$parametros['min']) {
-				if($showError){
-					return array("errorType"=>"min","errorMessage"=>"El número es menor a ".$parametros['min']);
-				}
-				return false;
-			}
-		}
-		
-		if (isset($parametros['maxSize'])) {
-			//Al no usar esta codificación utf8 la longitud da diferente en javascript que en PHP
-			$tamannoCampo = strlen(utf8_decode($valorCampo));
-			if ($tamannoCampo>$parametros['maxSize']) {
-				if(!$corregir){
-					if($showError){
-						return array("errorType"=>"maxSize","errorMessage"=>"La longitud es mayor a ".$parametros['maxSize']);
-					}
-					return false;
-				}
-				$sobrante = $parametros['minSize'] - $tamannoCampo;
-				$valorCampo = substr($valorCampo, 0, $faltante);
-			}
-		}
-		
-		if (isset($parametros['max'])) {
-			if ($valorCampo>$parametros['max']) {
-				if($showError){
-					return array("errorType"=>"max","errorMessage"=>"El número es mayor a ".$parametros['max']);
-				}
-				return false;
-			}
-		}
-		
-		if (isset($parametros['custom'])) {
+		//Si el campo es diferente de vacío y no es required, se entra a verificar su valor.
+		if($valorCampo!=''){
+			
 			include_once ('core/general/ValidadorCampos.class.php');
 			$miValidador = new ValidadorCampos();
-			$valido = $miValidador->validarTipo($valorCampo,$parametros['custom']);
-			if (!$valido) {
-				if($showError){
-					return array("errorType"=>"custom","errorMessage"=>"El campo no es del tipo ".$parametros['custom']);
+			
+			if (isset($parametros['minSize'])) {
+				$valido = $miValidador->validarRango($valorCampo,$parametros['minSize'],'minSize');
+				if (!$valido) {
+					if(!$corregir){
+						if($showError){
+							return array("errorType"=>"minSize","errorMessage"=>"La longitud es menor a ".$parametros['minSize']);
+						}
+						return false;
+					}
+					$valorCampo = $miValidador->corregirRango($valorCampo,$parametros['minSize'],'minSize');
 				}
-				return false;
+			}
+			
+			if (isset($parametros['min'])) {
+				$valido = $miValidador->validarRango($valorCampo,$parametros['min'],'min');
+				if (!$valido) {
+					if($showError){
+						return array("errorType"=>"min","errorMessage"=>"El número es menor a ".$parametros['min']);
+					}
+					return false;
+				}
+			}
+			
+			if (isset($parametros['maxSize'])) {
+				$valido = $miValidador->validarRango($valorCampo,$parametros['maxSize'],'maxSize');
+				if (!$valido) {
+					if(!$corregir){
+						if($showError){
+							return array("errorType"=>"maxSize","errorMessage"=>"La longitud es mayor a ".$parametros['maxSize']);
+						}
+						return false;
+					}
+					$valorCampo = $miValidador->corregirRango($valorCampo,$parametros['maxSize'],'maxSize');
+				}
+			}
+			
+			if (isset($parametros['max'])) {
+				$valido = $miValidador->validarRango($valorCampo,$parametros['max'],'max');
+				if (!$valido) {
+					if($showError){
+						return array("errorType"=>"max","errorMessage"=>"El número es mayor a ".$parametros['max']);
+					}
+					return false;
+				}
+			}
+			
+			if (isset($parametros['custom'])) {			
+				$valido = $miValidador->validarTipo($valorCampo,$parametros['custom']);
+				if (!$valido) {
+					if($showError){
+						return array("errorType"=>"custom","errorMessage"=>"El campo no es del tipo ".$parametros['custom']);
+					}
+					return false;
+				}
 			}
 		}
 		
