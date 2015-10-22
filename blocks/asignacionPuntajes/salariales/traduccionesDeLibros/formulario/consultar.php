@@ -170,7 +170,7 @@ class registrarForm {
 	                    <th>Identificación</th>
 	                    <th>Nombres y Apellidos</th>
 						<th>Título Traducción</th>
-						<th>Nombre Traductor</th>
+						<th>Nombre Autor Original</th>
 						<th>Volumen</th>
 						<th>Año Traducción</th>
 						<th>Año Publicación Libro</th>
@@ -178,6 +178,7 @@ class registrarForm {
 						<th>Fecha Acta CIARP-UD</th>
 						<th>Número Caso de Acta</th>
 						<th>Puntaje</th>
+						<th>Normatividad</th>
 						<th>Modificar</th>
 							
 	                </tr>
@@ -196,13 +197,14 @@ class registrarForm {
 	                    <td><center>" . $indexacion [$i] ['documento_docente'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['nombre_docente'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['titulo_traduccion'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['nombre_traductor'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['nombre_autor_original'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['volumen_traduccion'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['anno_traduccion'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['anno_publicacion'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['fecha_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_caso'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['normatividad'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['puntaje'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>

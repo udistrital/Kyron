@@ -92,7 +92,7 @@ class FormularioModificar {
 		$_REQUEST['docenteRegistrar'] =  $resultado[0]['nombre_docente'];
 		$_REQUEST['id_docenteRegistrar'] =  $resultado[0]['documento_docente'];
 		$_REQUEST['nombre'] =  $resultado[0]['titulo_traduccion'];
-		$_REQUEST['nombreTraductor'] =  $resultado[0]['nombre_traductor'];
+		$_REQUEST['nombreAutorOriginal'] =  $resultado[0]['nombre_autor_original'];
 		$_REQUEST['volumen'] =  $resultado[0]['volumen_traduccion'];
 		$_REQUEST['annoTraduccion'] =  $resultado[0]['anno_traduccion'];
 		$_REQUEST['annoPublicacion'] =  $resultado[0]['anno_publicacion'];
@@ -100,6 +100,7 @@ class FormularioModificar {
 		$_REQUEST['fechaActa'] =  $resultado[0]['fecha_acta'];
 		$_REQUEST['numeroCasoActa'] =  $resultado[0]['numero_caso'];
 		$_REQUEST['puntaje'] =  $resultado[0]['puntaje'];
+		$_REQUEST['normatividad'] =  $resultado[0]['normatividad'];
 		
 		// ---------------- FIN: Lista Variables Modificar--------------------------------------------------------
 		
@@ -202,8 +203,8 @@ class FormularioModificar {
 		unset ( $atributos );
 		// ----------------FIN CONTROL: Campo de Texto Título Traducción--------------------------------------------------------
 			
-		// ----------------INICIO CONTROL: Campo de Texto Nombre Traductor--------------------------------------------------------
-		$esteCampo = 'nombreTraductor';
+		// ----------------INICIO CONTROL: Campo de Texto Nombre Autor Original--------------------------------------------------------
+		$esteCampo = 'nombreAutorOriginal';
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		$atributos ['tipo'] = 'text';
@@ -233,7 +234,7 @@ class FormularioModificar {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
-		// ----------------FIN CONTROL: Campo de Texto Nombre Traductor--------------------------------------------------------
+		// ----------------FIN CONTROL: Campo de Texto Nombre Autor Original--------------------------------------------------------
 		
 		// ----------------INICIO CONTROL: Campo de Texto Volumen Libro--------------------------------------------------------
 		$esteCampo = 'volumen';
@@ -492,6 +493,39 @@ class FormularioModificar {
 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
 		unset ( $atributos );
 		// ----------------FIN CONTROL: Campo de Texto Puntaje Traducción--------------------------------------------------------
+		
+		// ----------------INICIO CONTROL: Campo de Texto Normatividad--------------------------------------------------------
+		$esteCampo = 'normatividad';
+		$atributos ['id'] = $esteCampo;
+		$atributos ['nombre'] = $esteCampo;
+		$atributos ['tipo'] = 'text';
+		$atributos ['estilo'] = 'jqueryui';
+		$atributos ['marco'] = true;
+		$atributos ['estiloMarco'] = '';
+		$atributos ["etiquetaObligatorio"] = true;
+		$atributos ['columnas'] = 1;
+		$atributos ['dobleLinea'] = 0;
+		$atributos ['tabIndex'] = $tab;
+		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+		$atributos ['validar'] = 'maxSize[50]';
+			
+		if (isset ( $_REQUEST [$esteCampo] )) {
+			$atributos ['valor'] = $_REQUEST [$esteCampo];
+		} else {
+			$atributos ['valor'] = '';
+		}
+		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+		$atributos ['deshabilitado'] = false;
+		$atributos ['tamanno'] = 57;
+		$atributos ['maximoTamanno'] = '50';
+		$atributos ['anchoEtiqueta'] = 280;
+		$tab ++;
+			
+		// Aplica atributos globales al control
+		$atributos = array_merge ( $atributos, $atributosGlobales );
+		echo $this->miFormulario->campoCuadroTexto ( $atributos );
+		unset ( $atributos );
+		// ----------------FIN CONTROL: Campo de Texto Normatividad--------------------------------------------------------
 		
 				
 				// ------------------Division para los botones-------------------------
