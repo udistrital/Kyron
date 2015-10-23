@@ -142,7 +142,9 @@ class registrarForm {
 		
 		// ----------------INICIAR EL FORMULARIO ------------------------------------------------------------
 		$atributos ['tipoEtiqueta'] = 'inicio';
+		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo );
 		echo $this->miFormulario->formulario ( $atributos );
+
 		// ---------------- SECCION: Controles del Formulario -----------------------------------------------
 		
 		

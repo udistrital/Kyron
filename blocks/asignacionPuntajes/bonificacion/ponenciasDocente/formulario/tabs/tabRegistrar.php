@@ -16,6 +16,7 @@ class FormularioRegistro {
 		$this->miConfigurador = \Configurador::singleton ();
 		
 		$this->miConfigurador->fabricaConexiones->setRecursoDB ( 'principal' );
+		
 		$this->lenguaje = $lenguaje;
 		
 		$this->miFormulario = $formulario;

@@ -77,6 +77,8 @@ $this->idioma["numeroActaTitulo"] = "Ingrese el Número de Acta CIARP-UD.";
 $this->idioma["fechaActaTitulo"] = "Seleccione la Fecha de Acta CIARP-UD.";
 $this->idioma["numeroCasoActaTitulo"] = "Ingrese el Número de Caso de Acta.";
 $this->idioma["puntajeTitulo"] = "Ingrese Puntaje.";
+$this->idioma["normatividad"] = "Normatividad:";
+$this->idioma["normatividadTitulo"] = "Ingrese la normatividad.";
 ////////////////////////////////////////////////////////////////
 
 ?>

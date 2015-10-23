@@ -35,6 +35,7 @@ if (!isset($GLOBALS["autorizado"])) {
     $atributos["metodo"] = "POST";
     $atributos["nombreFormulario"] = $nombreFormulario;
     $atributos["tipoEtiqueta"] = 'inicio';
+    $atributos ['titulo'] = $this->lenguaje->getCadena ( $nombreFormulario );
     $verificarFormulario = "1";
     echo $this->miFormulario->formulario($atributos);
 

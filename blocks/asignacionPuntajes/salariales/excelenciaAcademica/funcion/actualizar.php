@@ -43,12 +43,14 @@ class Actualizar {
 			'numeroActa' => $_REQUEST['numeroActa'],
 			'fechaActa' => $_REQUEST['fechaActa'],
 			'puntaje' => $_REQUEST['puntaje'],
+			'normatividad' => $_REQUEST['normatividad'],
 			'identificadorExcelenciaAcad' => $_REQUEST['identificadorExcelenciaAcad']
 		);
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizar', $arregloDatos );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
 		
+		echo $cadenaSql;exit;
 		if ($resultado) {
 			redireccion::redireccionar ( 'actualizo',  $_REQUEST['docenteRegistrar']);
 			exit ();

@@ -80,7 +80,9 @@ class Formulario {
 		
 		// ----------------INICIAR EL FORMULARIO ------------------------------------------------------------
 		$atributos ['tipoEtiqueta'] = 'inicio';
+		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo );
 		echo $this->miFormulario->formulario ( $atributos );
+
 		unset ( $atributos );
 		// ---------------- SECCION: Controles del Formulario -----------------------------------------------
 		

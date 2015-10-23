@@ -1,5 +1,10 @@
 <?php
 
+$this->idioma["traduccionesDeLibrosRegistrar"] = "";
+$this->idioma["traduccionesDeLibros"] = "";
+$this->idioma["marcoConsultaGeneral"] = "";
+$this->idioma["marcoModificarRegistro"] = "";
+
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
 $this->idioma["tabConsultar"] = "Consultar Traducciones de Libros";
 $this->idioma["tabIngresar"] = "Ingresar Traducciones de Libros";
@@ -28,14 +33,13 @@ $this->idioma["contextoTitulo"] = "Contexto de la Libro.";
 $this->idioma["identificadorColeccionTitulo"] = "International Standard Serial Number, Número Internacional Normalizado de publicaciónes Seriado.";
 $this->idioma["numeroTitulo"] = "Número de Publicación Libro.";
 $this->idioma["paginasTitulo"] = "Páginas de la Publicación Libro.";
-$this->idioma["annoPublicaciónTitulo"] = "Año de Publicación del Libro.";
+$this->idioma["annoPublicacionTitulo"] = "Año de Publicación del Libro.";
 
 $this->idioma["tituloArticuloTitulo"] = "Título del Artículo Indexado";
 $this->idioma["numeroAutoresTitulo"] = "Número de Autores del Artículo.";
 $this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";
 $this->idioma["docenteTitulo"] = "Identificación o Nombre del Docente.";
 $this->idioma["numeroAutoresUniversidadTitulo"] = "Número de Autores en la Publicacón Pertenecientes a la Universidad Distrital.";
-$this->idioma["annopublicaciónTitulo"] = "Fecha de Publicación del Libro.";
 $this->idioma["annoTraduccionTitulo"] = "Fecha de Traducción del Libro.";
 $this->idioma["numeroActaTitulo"] = "Ingrese el Número de Acta CIARP-UD.";
 $this->idioma["fechaActaTitulo"] = "Seleccione la Fecha de Acta CIARP-UD.";
@@ -61,7 +65,7 @@ $this->idioma["proyectoCurricular"] = "Proyecto Curricular:";
 $this->idioma["docente"] = "Identificación o nombre del docente:";
 $this->idioma["docenteRegistrar"] = "Identificación o Nombre del Docente:";
 $this->idioma["pais"] = "País";
-$this->idioma["annopublicación"] = "Año publicación libro:";
+$this->idioma["annoPublicacion"] = "Año publicación libro:";
 $this->idioma["volumen"] = "Volumen:";
 $this->idioma["paginas"] = "Páginas";
 $this->idioma["tituloArticulo"] = "Título del Artículo";

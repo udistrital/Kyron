@@ -12,7 +12,7 @@ $( document ).ready(function() {
 	
 	function asignarPuntaje(){
 		var tipo = $("#<?php echo $this->campoSeguro('tipo')?>").val();
-		var categoria = $("#<?php echo $this->campoSeguro('categoria')?>").val()
+		var categoria = $("#<?php echo $this->campoSeguro('categoria')?>").val();
 		
 		if(tipo == 1){
 			if(categoria == 1){

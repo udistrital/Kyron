@@ -107,6 +107,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "	nombre";
 				$cadenaSql .= " FROM ";
 				$cadenaSql .= " docencia.proyectocurricular";
+				$cadenaSql .= " WHERE estado=true";
 				break;
 				
 			case "tipoExperiencia" :
@@ -202,6 +203,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "numero_acta = '" . $variable ['numeroActa'] . "', ";
 				$cadenaSql .= "fecha_acta = '" . $variable ['fechaActa'] . "', ";
 				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "' ";
+				$cadenaSql .= "normatividad = '" . $variable ['normatividad'] . "' ";
 				$cadenaSql .= "WHERE ";
 				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";
 				$cadenaSql .= "and id_excelencia_academica ='" . $variable ['identificadorExcelenciaAcad'] . "' ";
