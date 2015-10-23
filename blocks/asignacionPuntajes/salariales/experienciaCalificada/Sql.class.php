@@ -144,7 +144,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" tec.descripcion as tipó_experiencia,";
 				$cadenaSql.=" ec.numero_resolucion,";
 				$cadenaSql.=" ter.descripcion emisor_resolucion,";
-				$cadenaSql.=" ec.anno_resolucion,";
+				$cadenaSql.=" ec.fecha_resolucion,";
 				$cadenaSql.=" ec.numero_acta,";
 				$cadenaSql.=" ec.fecha_acta,";
 				$cadenaSql.=" ec.puntaje as puntaje ";
@@ -175,7 +175,7 @@ class Sql extends \Sql {
 			case "registrar" :
 				$cadenaSql = "INSERT INTO docencia.experiencia_calificada( ";
 				$cadenaSql .= "documento_docente, id_tipo_experiencia_calificada, numero_resolucion, ";
-				$cadenaSql .= "id_tipo_emisor_resolucion, anno_resolucion, numero_acta, fecha_acta, puntaje, normatividad) ";
+				$cadenaSql .= "id_tipo_emisor_resolucion, fecha_resolucion, numero_acta, fecha_acta, puntaje, normatividad) ";
 				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
 				$cadenaSql .= " " . $variable ['tipoExperiencia'] . ",";
 				$cadenaSql .= " '" . $variable ['numeroResolucion'] . "',";
@@ -193,7 +193,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ec.id_tipo_experiencia_calificada tipo_experiencia, ";
 				$cadenaSql.=" ec.numero_resolucion, ";
 				$cadenaSql.=" ec.id_tipo_emisor_resolucion emisor_resolucion, ";
-				$cadenaSql.=" ec.anno_resolucion, ";
+				$cadenaSql.=" ec.fecha_resolucion, ";
 				$cadenaSql.=" ec.numero_acta, ";
 				$cadenaSql.=" ec.fecha_acta, ";
 				$cadenaSql.=" ec.puntaje, ";
@@ -211,7 +211,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "id_tipo_experiencia_calificada = " . $variable ['tipoExperiencia'] . ", ";
 				$cadenaSql .= "numero_resolucion = '" . $variable ['numeroResolucion'] . "', ";
 				$cadenaSql .= "id_tipo_emisor_resolucion = '" . $variable ['resolucionEmitidaPor'] . "', ";
-				$cadenaSql .= "anno_resolucion = '" . $variable ['annoResolucion'] . "', ";
+				$cadenaSql .= "fecha_resolucion = '" . $variable ['annoResolucion'] . "', ";
 				$cadenaSql .= "numero_acta = '" . $variable ['numeroActa'] . "', ";
 				$cadenaSql .= "fecha_acta = '" . $variable ['fechaActa'] . "', ";
 				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "', ";

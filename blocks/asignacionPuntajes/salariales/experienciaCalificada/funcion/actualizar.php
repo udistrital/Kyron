@@ -41,7 +41,7 @@ class Actualizar {
 			'tipoExperiencia' => $_REQUEST['tipoExperiencia'],
 			'numeroResolucion' => $_REQUEST['numeroResolucion'],
 			'resolucionEmitidaPor' => $_REQUEST['resolucionEmitidaPor'],
-			'annoResolucion' => $_REQUEST['annoResolucion'],
+			'annoResolucion' => $_REQUEST['fechaResolucion'],
 			'numeroActa' => $_REQUEST['numeroActa'],
 			'fechaActa' => $_REQUEST['fechaActa'],
 			'puntaje' => $_REQUEST['puntaje'],
