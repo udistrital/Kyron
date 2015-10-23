@@ -112,6 +112,7 @@ class FormularioModificar {
 		$_REQUEST['numeroActa'] =  $resultadoExperienciaCalificada[0]['numero_acta'];
 		$_REQUEST['fechaActa'] =  $resultadoExperienciaCalificada[0]['fecha_acta'];
 		$_REQUEST['puntaje'] =  $resultadoExperienciaCalificada[0]['puntaje'];
+		$_REQUEST['normatividad'] =  $resultadoExperienciaCalificada[0]['normatividad'];
 		
 		$esteCampo = "marcoModificarRegistro";
 		$atributos ['id'] = $esteCampo;

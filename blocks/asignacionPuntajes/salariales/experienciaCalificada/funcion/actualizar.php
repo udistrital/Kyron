@@ -45,6 +45,7 @@ class Actualizar {
 			'numeroActa' => $_REQUEST['numeroActa'],
 			'fechaActa' => $_REQUEST['fechaActa'],
 			'puntaje' => $_REQUEST['puntaje'],
+			'normatividad' => $_REQUEST['normatividad'],
 			'identificadorExperiencia' => $_REQUEST['identificadorExperiencia']
 		);
 		

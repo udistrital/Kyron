@@ -44,7 +44,8 @@ class Registrar {
 			'fechaResolucion' => $_REQUEST['fechaResolucion'],
 			'numeroActa' => $_REQUEST['numeroActa'],
 			'fechaActa' => $_REQUEST['fechaActa'],
-			'puntaje' => $_REQUEST['puntaje']
+			'puntaje' => $_REQUEST['puntaje'],
+			'normatividad' => $_REQUEST['normatividad']
 		);
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'registrar', $arregloDatos );
