@@ -41,7 +41,7 @@ class Registrar {
 			'tipoExperiencia' => $_REQUEST['tipoExperiencia'],
 			'numeroResolucion' => $_REQUEST['numeroResolucion'],
 			'resolucionEmitidaPor' => $_REQUEST['resolucionEmitidaPor'],
-			'fechaResolucion' => $_REQUEST['fechaResolucion'],
+			'annoResolucion' => $_REQUEST['annoResolucion'],
 			'numeroActa' => $_REQUEST['numeroActa'],
 			'fechaActa' => $_REQUEST['fechaActa'],
 			'puntaje' => $_REQUEST['puntaje'],

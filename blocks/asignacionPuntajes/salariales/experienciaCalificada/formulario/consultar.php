@@ -193,7 +193,7 @@ class registrarForm {
 						<th>Tipo de Experiencia</th>
 						<th>Número de Resolución</th>
 						<th>Emisor de Resolución</th>
-						<th>Fecha de Resolución</th>
+						<th>Año de Resolución</th>
 						<th>Número de Acta CIARP-UD</th>
 						<th>Fecha de Acta CIARP-UD</th>
 						<th>Puntaje</th>
@@ -219,7 +219,7 @@ class registrarForm {
 	                    <td><center>" . $experiencia [$i] ['tipó_experiencia'] . "</center></td>
 	                    <td><center>" . $experiencia [$i] ['numero_resolucion'] . "</center></td>
 	                    <td><center>" . $experiencia [$i] ['emisor_resolucion'] . "</center></td>
-	                  	<td><center>" . $experiencia [$i] ['fecha_resolucion'] . "</center></td>
+	                  	<td><center>" . $experiencia [$i] ['anno_resolucion'] . "</center></td>
 	                  	<td><center>" . $experiencia [$i] ['numero_acta'] . "</center></td>
 	                    <td><center>" . $experiencia [$i] ['fecha_acta'] . "</center></td>
 	                    <td><center>" . $experiencia [$i] ['puntaje'] . "</center></td>
