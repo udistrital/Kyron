@@ -1,5 +1,5 @@
 $("#excelenciaAcademica").validationEngine({
-promptPosition : "centerRight", 
+promptPosition : "bottomRight:-150", 
 scroll: false,
 autoHidePrompt: true,
 autoHideDelay: 2000
@@ -16,7 +16,7 @@ $(function() {
 });
 
 $("#excelenciaAcademicaRegistrar").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000
@@ -51,7 +51,7 @@ $(function() {
 });
 
 $("#excelenciaAcademicaModificar").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000

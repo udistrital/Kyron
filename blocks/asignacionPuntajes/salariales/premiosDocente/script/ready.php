@@ -1,5 +1,5 @@
 $("#premiosDocente").validationEngine({
-promptPosition : "centerRight", 
+promptPosition : "bottomRight:-150", 
 scroll: false,
 autoHidePrompt: true,
 autoHideDelay: 2000
@@ -16,7 +16,7 @@ $(function() {
 });
 
 $("#premiosDocenteRegistrar").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000
@@ -51,7 +51,7 @@ $(function() {
 });
 
 $("#premiosDocenteModificar").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000

@@ -1,5 +1,5 @@
 $("#experienciaDocencia").validationEngine({
-promptPosition : "centerRight", 
+promptPosition : "bottomRight:-150", 
 scroll: false,
 autoHidePrompt: true,
 autoHideDelay: 2000
@@ -16,7 +16,7 @@ $(function() {
 });
 
 $("#experienciaDocenciaRegistrar").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000
@@ -51,7 +51,7 @@ $(function() {
 });
 
 $("#experienciaDocenciaModificar").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000

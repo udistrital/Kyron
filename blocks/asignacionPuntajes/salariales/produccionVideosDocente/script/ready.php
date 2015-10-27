@@ -1,5 +1,5 @@
 $("#produccionVideosDocente").validationEngine({
-promptPosition : "centerRight", 
+promptPosition : "bottomRight:-150", 
 scroll: false,
 autoHidePrompt: true,
 autoHideDelay: 2000
@@ -16,7 +16,7 @@ $(function() {
 });
 
 $("#produccionVideosDocenteRegistrar").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000
@@ -51,7 +51,7 @@ $(function() {
 });
 
 $("#produccionVideosDocenteModificar").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000

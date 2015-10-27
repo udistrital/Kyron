@@ -1,5 +1,5 @@
 $("#produccionDeLibros").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000
@@ -14,7 +14,7 @@ $("#produccionDeLibros").submit(function() {
 });
 
 $("#produccionDeLibrosRegistrar").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000
@@ -41,7 +41,7 @@ $("#produccionDeLibrosModificar").submit(function() {
 });
 
 $("#produccionDeLibrosModificar").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000

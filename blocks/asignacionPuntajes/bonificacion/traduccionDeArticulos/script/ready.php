@@ -4,7 +4,7 @@
  */
 ?>
 $("#traduccionDeArticulos").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000
@@ -21,7 +21,7 @@ $(function() {
 });
 
 $("#traduccionDeArticulosRegistrar").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000
@@ -56,7 +56,7 @@ $(function() {
 });
 
 $("#traduccionDeArticulosModificar").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000

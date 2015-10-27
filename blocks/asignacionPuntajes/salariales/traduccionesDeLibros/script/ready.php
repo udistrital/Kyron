@@ -4,7 +4,7 @@
  */
 ?>
 $("#traduccionesDeLibros").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000
@@ -21,7 +21,7 @@ $(function() {
 });
 
 $("#traduccionesDeLibrosRegistrar").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000
@@ -56,7 +56,7 @@ $(function() {
 });
 
 $("#traduccionesDeLibrosModificar").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000

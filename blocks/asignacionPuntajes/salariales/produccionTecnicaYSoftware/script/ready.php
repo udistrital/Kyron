@@ -1,5 +1,5 @@
 $("#produccionTecnicaYSoftware").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000
@@ -14,7 +14,7 @@ $("#produccionTecnicaYSoftware").submit(function() {
 });
 
 $("#produccionTecnicaYSoftwareRegistrar").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000
@@ -41,7 +41,7 @@ $("#produccionTecnicaYSoftwareModificar").submit(function() {
 });
 
 $("#produccionTecnicaYSoftwareModificar").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000

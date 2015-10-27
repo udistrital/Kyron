@@ -1,5 +1,5 @@
 $("#capituloLibros").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000
@@ -14,7 +14,7 @@ $("#capituloLibros").submit(function() {
 });
 
 $("#capituloLibrosRegistrar").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000
@@ -41,7 +41,7 @@ $("#capituloLibrosModificar").submit(function() {
 });
 
 $("#capituloLibrosModificar").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000
