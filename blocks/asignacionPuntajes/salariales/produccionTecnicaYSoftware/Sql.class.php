@@ -115,7 +115,8 @@ class Sql extends \Sql {
 				$cadenaSql .= " id_universidad,";
 				$cadenaSql .= "	nombre_universidad";
 				$cadenaSql .= " FROM ";
-				$cadenaSql .= " docencia.universidad";				
+				$cadenaSql .= " docencia.universidad";
+				$cadenaSql .= " WHERE estado=true";
 				break;
 				
 			case "editorial" :
@@ -124,6 +125,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "	nombre_editorial";
 				$cadenaSql .= " FROM ";
 				$cadenaSql .= " docencia.editorial";
+				$cadenaSql .= " WHERE estado=true";
 				break;
 				
 			case "tipo" :
@@ -140,8 +142,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" documento_docente AS data ";
 				$cadenaSql.=" FROM ";
 				$cadenaSql.=" docencia.docente WHERE documento_docente||' - '||primer_nombre||' '||segundo_nombre||' '||primer_apellido||' '||segundo_apellido ";
-				$cadenaSql.=" LIKE '%" . $variable . "%' LIMIT 10;";
-				
+				$cadenaSql.=" LIKE '%" . $variable . "%' AND estado=true LIMIT 10;";
 				break;
 			
 			case "consultarProduccion" :
@@ -156,7 +157,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" pts.numero_acta AS numero_acta,";
 				$cadenaSql.=" pts.fecha_acta AS fecha_acta,";
 				$cadenaSql.=" pts.numero_caso AS numero_caso,";
-				$cadenaSql.=" pts.puntaje AS puntaje";
+				$cadenaSql.=" pts.puntaje AS puntaje,";
+				$cadenaSql.=" pts.normatividad AS normatividad";
 				$cadenaSql.=" FROM docencia.produccion_tecnicaysoftware AS pts";
 				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON dc.documento_docente = pts.documento_docente";
 				$cadenaSql.=" LEFT JOIN docencia.tipo_tecnicaysoftware AS ti ON ti.id_tipo_tecnicaysoftware = pts.id_tipo_tecnicaysoftware";
@@ -172,7 +174,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" ept.nombre AS nombre_evaluador,";
 				$cadenaSql.=" ept.id_universidad AS id_entidad_certificadora,";
 				$cadenaSql.=" un.nombre_universidad AS entidad_certificadora,";
-				$cadenaSql.=" ept.puntaje AS puntaje";
+				$cadenaSql.=" ept.puntaje AS puntaje,";
+				$cadenaSql.=" ept.normatividad AS normatividad";
 				$cadenaSql.=" FROM";
 				$cadenaSql.=" docencia.evaluador_produccion_tecnicaysoftware AS ept";
 				$cadenaSql.=" LEFT JOIN docencia.universidad AS un ON un.id_universidad = ept.id_universidad";
@@ -193,7 +196,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" pts.numero_acta AS numero_acta,";
 				$cadenaSql.=" pts.fecha_acta AS fecha_acta,";
 				$cadenaSql.=" pts.numero_caso AS numero_caso,";
-				$cadenaSql.=" pts.puntaje AS puntaje";
+				$cadenaSql.=" pts.puntaje AS puntaje,";
+				$cadenaSql.=" pts.normatividad AS normatividad";
 				$cadenaSql.=" FROM docencia.produccion_tecnicaysoftware AS pts";
 				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON dc.documento_docente = pts.documento_docente";
 				$cadenaSql.=" LEFT JOIN docencia.tipo_tecnicaysoftware AS ti ON ti.id_tipo_tecnicaysoftware = pts.id_tipo_tecnicaysoftware";
@@ -236,7 +240,8 @@ class Sql extends \Sql {
 						$cadenaSql.=" numero_acta,";
 						$cadenaSql.=" fecha_acta, ";
 						$cadenaSql.=" numero_caso, ";
-						$cadenaSql.=" puntaje ";
+						$cadenaSql.=" puntaje, ";
+						$cadenaSql.=" normatividad ";
 						$cadenaSql.=" )";
 						$cadenaSql.=" VALUES (";
 						$cadenaSql.=" '" . $variable ['id_docenteRegistrar'] . "',";
@@ -247,7 +252,8 @@ class Sql extends \Sql {
 						$cadenaSql.=" '" . $variable ['numeroActa'] . "',";
 						$cadenaSql.=" '" . $variable ['fechaActa'] . "',";
 						$cadenaSql.=" '" . $variable ['numeroCasoActa'] . "',";
-						$cadenaSql.=" '" . $variable ['puntaje'] . "'";
+						$cadenaSql.=" '" . $variable ['puntaje'] . "',";
+						$cadenaSql.=" '" . $variable ['normatividad'] . "'";
 						$cadenaSql.=" ) ";
 					}
 					if($i == 1 && $evaluadorExiste){
@@ -289,7 +295,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" numero_acta = '" . $variable ['numeroActa'] . "',";
 				$cadenaSql.=" fecha_acta = '" . $variable ['fechaActa'] . "', ";
 				$cadenaSql.=" numero_caso = '" . $variable ['numeroCasoActa'] . "', ";
-				$cadenaSql.=" puntaje = '" . $variable ['puntaje'] . "'";
+				$cadenaSql.=" puntaje = '" . $variable ['puntaje'] . "', ";
+				$cadenaSql.=" normatividad = '" . $variable ['normatividad'] . "'";
 				$cadenaSql.=" WHERE";
 				$cadenaSql.=" documento_docente = '" . $variable ['old_id_docenteRegistrar'] . "'";
 				$cadenaSql.=" AND numero_certificado = '" . $variable ['old_numero_certificado'] . "'";
@@ -311,7 +318,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" '" . $variable ['numero_certificado'] . "',";
 				$cadenaSql.=" '" . $variable ['documento_docente'] . "',";
 				$cadenaSql.=" '" . $variable ['id_universidad'] . "',";
-				$cadenaSql.=" '" . $variable ['puntaje'] . "'";
+				$cadenaSql.=" '" . $variable ['puntaje'] . "',";
+				$cadenaSql.=" '" . $variable ['normatividad'] . "'";
 				$cadenaSql.=" );";
 				break;
 				
@@ -324,7 +332,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" numero_certificado = '" . $variable ['numero_certificado'] . "',";
 				$cadenaSql.=" documento_docente = '" . $variable ['documento_docente'] . "',";
 				$cadenaSql.=" id_universidad = '" . $variable ['id_universidad'] . "',";
-				$cadenaSql.=" puntaje = '" . $variable ['puntaje'] . "'";
+				$cadenaSql.=" puntaje = '" . $variable ['puntaje'] . "',";
+				$cadenaSql.=" normatividad = '" . $variable ['normatividad'] . "'";
 				$cadenaSql.=" WHERE";
 				$cadenaSql.=" documento_evaluador = '" . $variable ['old_documento_evaluador'] . "'";
 				$cadenaSql.=" AND numero_certificado = '" . $variable ['old_numero_certificado'] . "'";

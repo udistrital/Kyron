@@ -141,8 +141,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" documento_docente AS data ";
 				$cadenaSql.=" FROM ";
 				$cadenaSql.=" docencia.docente WHERE documento_docente||' - '||primer_nombre||' '||segundo_nombre||' '||primer_apellido||' '||segundo_apellido ";
-				$cadenaSql.=" LIKE '%" . $variable . "%' LIMIT 10;";
-				
+				$cadenaSql.=" LIKE '%" . $variable . "%' AND estado=true LIMIT 10;";
 				break;
 			
 			case "consultarCapitulo" :

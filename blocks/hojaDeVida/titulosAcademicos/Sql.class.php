@@ -124,6 +124,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "	nombre_universidad";
 				$cadenaSql .= " FROM ";
 				$cadenaSql .= " docencia.universidad";
+				$cadenaSql .= " WHERE estado=true";
 				break;
 				
 			case "pais" :
