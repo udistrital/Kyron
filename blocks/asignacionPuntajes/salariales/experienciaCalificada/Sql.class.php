@@ -116,6 +116,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "	descripcion";
 				$cadenaSql .= " FROM";
 				$cadenaSql .= " docencia.tipo_experiencia_calificada";
+				$cadenaSql .= " WHERE  id_tipo_experiencia_calificada != -1";
 				break;
 				
 			case "resolucionEmitidaPor" :
@@ -124,6 +125,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "	descripcion";
 				$cadenaSql .= " FROM ";
 				$cadenaSql .= " docencia.tipo_emisor_resolucion";
+				$cadenaSql .= " WHERE  id_tipo_emisor_resolucion != -1";
 				break;
 				
 			case "docente" :
