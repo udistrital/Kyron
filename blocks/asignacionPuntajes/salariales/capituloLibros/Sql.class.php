@@ -124,6 +124,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "	nombre_editorial";
 				$cadenaSql .= " FROM ";
 				$cadenaSql .= " docencia.editorial";
+				$cadenaSql .= " WHERE id_editorial != -1";
 				break;
 				
 			case "tipoLibro" :
@@ -131,8 +132,9 @@ class Sql extends \Sql {
 				$cadenaSql .= " id_tipo_libro, tipo_libro";
 				$cadenaSql .= "	descripcion";
 				$cadenaSql .= " FROM ";
-				$cadenaSql .= " docencia.tipo_libro ORDER BY";
-				$cadenaSql .= " tipo_libro ASC";
+				$cadenaSql .= " docencia.tipo_libro";
+				$cadenaSql .= " WHERE id_tipo_libro != -1";		
+				$cadenaSql .= " ORDER BY tipo_libro ASC";
 				break;
 				
 			case "docente" :
