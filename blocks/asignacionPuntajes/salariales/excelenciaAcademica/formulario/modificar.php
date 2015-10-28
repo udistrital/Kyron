@@ -110,6 +110,7 @@ class FormularioModificar {
 		$_REQUEST['numeroActa'] =  $resultadoExcelenciaAcademica[0]['numero_acta'];
 		$_REQUEST['fechaActa'] =  $resultadoExcelenciaAcademica[0]['fecha_acta'];
 		$_REQUEST['puntaje'] =  $resultadoExcelenciaAcademica[0]['puntaje'];
+		$_REQUEST['normatividad'] =  $resultadoExcelenciaAcademica[0]['normatividad'];
 		
 		$esteCampo = "marcoModificarRegistro";
 		$atributos ['id'] = $esteCampo;
@@ -185,7 +186,7 @@ class FormularioModificar {
 				$atributos ['dobleLinea'] = 0;
 				$atributos ['tabIndex'] = $tab;
 				$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-				$atributos ['validar'] = 'required, maxSize[15], minSize[6]';
+				$atributos ['validar'] = 'required, maxSize[15], minSize[6], custom[integer]';
 					
 				if (isset ( $_REQUEST [$esteCampo] )) {
 					$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -338,6 +339,40 @@ class FormularioModificar {
 				unset ( $atributos );
 			// ----------------FIN CONTROL: Campo de Texto Puntaje de Excelencia Académica--------------------------------------------------------
 			
+				
+				// ----------------INICIO CONTROL: Campo de Texto Normatividad--------------------------------------------------------
+				$esteCampo = 'normatividad';
+				$atributos ['id'] = $esteCampo;
+				$atributos ['nombre'] = $esteCampo;
+				$atributos ['tipo'] = 'text';
+				$atributos ['estilo'] = 'jqueryui';
+				$atributos ['marco'] = true;
+				$atributos ['estiloMarco'] = '';
+				$atributos ["etiquetaObligatorio"] = false;
+				$atributos ['columnas'] = 1;
+				$atributos ['dobleLinea'] = 0;
+				$atributos ['tabIndex'] = $tab;
+				$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+				$atributos ['validar'] = 'maxSize[200]';
+					
+				if (isset ( $_REQUEST [$esteCampo] )) {
+					$atributos ['valor'] = $_REQUEST [$esteCampo];
+				} else {
+					$atributos ['valor'] = '';
+				}
+				$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+				$atributos ['deshabilitado'] = false;
+				$atributos ['tamanno'] = 57;
+				$atributos ['maximoTamanno'] = '10';
+				$atributos ['anchoEtiqueta'] = 280;
+				$tab ++;
+					
+				// Aplica atributos globales al control
+				$atributos = array_merge ( $atributos, $atributosGlobales );
+				echo $this->miFormulario->campoCuadroTexto ( $atributos );
+				unset ( $atributos );
+				// ----------------FIN CONTROL: Campo de Texto Fecha de Normatividad--------------------------------------------------------
+				
 				// ------------------Division para los botones-------------------------
 				$atributos ["id"] = "botones";
 				$atributos ["estilo"] = "marcoBotones";

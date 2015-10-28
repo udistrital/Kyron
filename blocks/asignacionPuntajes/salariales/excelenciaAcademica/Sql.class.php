@@ -170,13 +170,14 @@ class Sql extends \Sql {
 			case "registrar" :
 				$cadenaSql = "INSERT INTO docencia.excelencia_academica( ";
 				$cadenaSql .= "documento_docente, numero_resolucion, ";
-				$cadenaSql .= "fecha_resolucion, numero_acta, fecha_acta, puntaje) ";
+				$cadenaSql .= "fecha_resolucion, numero_acta, fecha_acta, puntaje, normatividad) ";
 				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
 				$cadenaSql .= " '" . $variable ['numeroResolucion'] . "',";
 				$cadenaSql .= " '" . $variable ['fechaResolucion'] . "',";
 				$cadenaSql .= " '" . $variable ['numeroActa'] . "',";
 				$cadenaSql .= " '" . $variable ['fechaActa'] . "',";
-				$cadenaSql .= " '" . $variable ['puntaje'] . "')";
+				$cadenaSql .= " '" . $variable ['puntaje'] . "',";
+				$cadenaSql .= " '" . $variable ['normatividad'] . "')";
 				break;				
 				
 			case "publicacionActualizar" :
@@ -186,7 +187,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" ea.fecha_resolucion, ";
 				$cadenaSql.=" ea.numero_acta, ";
 				$cadenaSql.=" ea.fecha_acta, ";
-				$cadenaSql.=" ea.puntaje ";
+				$cadenaSql.=" ea.puntaje, ";
+				$cadenaSql.=" ea.normatividad ";
 				$cadenaSql.=" FROM docencia.excelencia_academica as ea ";
 				$cadenaSql.=" left join docencia.docente dc on ea.documento_docente=dc.documento_docente ";
 				$cadenaSql.=" WHERE ea.documento_docente ='" . $variable['documento_docente']. "'";
@@ -201,7 +203,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "fecha_resolucion = '" . $variable ['fechaResolucion'] . "', ";
 				$cadenaSql .= "numero_acta = '" . $variable ['numeroActa'] . "', ";
 				$cadenaSql .= "fecha_acta = '" . $variable ['fechaActa'] . "', ";
-				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "' ";
+				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "', ";
 				$cadenaSql .= "normatividad = '" . $variable ['normatividad'] . "' ";
 				$cadenaSql .= "WHERE ";
 				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";

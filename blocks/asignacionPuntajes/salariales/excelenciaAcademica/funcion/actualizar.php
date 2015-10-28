@@ -50,7 +50,6 @@ class Actualizar {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizar', $arregloDatos );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
 		
-		echo $cadenaSql;exit;
 		if ($resultado) {
 			redireccion::redireccionar ( 'actualizo',  $_REQUEST['docenteRegistrar']);
 			exit ();
