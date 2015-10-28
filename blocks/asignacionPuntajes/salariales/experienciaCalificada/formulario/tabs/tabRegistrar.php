@@ -153,7 +153,7 @@ class FormularioRegistro {
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['seleccion'] = $_REQUEST [$esteCampo];
 		} else {
-			$atributos ['seleccion'] = - 1;
+			$atributos ['seleccion'] = -1;
 		}
 		$atributos ['deshabilitado'] = false;
 		$atributos ['columnas'] = 1;
@@ -164,7 +164,7 @@ class FormularioRegistro {
 		$atributos ['limitar'] = true;
 		$atributos ['anchoCaja'] = 57;
 		$atributos ['miEvento'] = '';
-		$atributos ['validar'] = '';
+		$atributos ['validar'] = 'required, custom[integer]';
 		$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ("tipoExperiencia");
 		$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 		$atributos ['matrizItems'] = $matrizItems;
@@ -276,7 +276,7 @@ class FormularioRegistro {
 		$atributos ['limitar'] = true;
 		$atributos ['anchoCaja'] = 57;
 		$atributos ['miEvento'] = '';
-		$atributos ['validar'] = '';
+		$atributos ['validar'] = 'required, custom[integer]';
 		$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ("resolucionEmitidaPor");
 		$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 		$atributos ['matrizItems'] = $matrizItems;

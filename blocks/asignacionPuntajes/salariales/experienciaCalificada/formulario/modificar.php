@@ -197,7 +197,7 @@ class FormularioModificar {
 				$atributos ['limitar'] = true;
 				$atributos ['anchoCaja'] = 57;
 				$atributos ['miEvento'] = '';
-				$atributos ['validar'] = '';
+				$atributos ['validar'] = 'required, custom[integer]';
 				$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ("tipoExperiencia");
 				$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 				$atributos ['matrizItems'] = $matrizItems;
@@ -308,7 +308,7 @@ class FormularioModificar {
 				$atributos ['limitar'] = true;
 				$atributos ['anchoCaja'] = 57;
 				$atributos ['miEvento'] = '';
-				$atributos ['validar'] = '';
+				$atributos ['validar'] = 'required, custom[integer]';
 				$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ("resolucionEmitidaPor");
 				$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 				$atributos ['matrizItems'] = $matrizItems;
