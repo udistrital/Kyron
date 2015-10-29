@@ -179,6 +179,7 @@ class registrarForm {
 						<th>Fecha Acta CIARP-UD</th>
 						<th>Número Caso de Acta</th>
 						<th>Puntaje</th>
+						<th>Normatividad</th>
 						<th>Modificar</th>
 							
 	                </tr>
@@ -203,6 +204,7 @@ class registrarForm {
 	                    <td><center>" . $indexacion [$i] ['numero_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['fecha_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_caso'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['normatividad'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['puntaje'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>

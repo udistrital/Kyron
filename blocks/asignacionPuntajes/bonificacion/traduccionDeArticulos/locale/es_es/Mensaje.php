@@ -1,5 +1,8 @@
 <?php
-
+$this->idioma["traduccionDeArticulosRegistrar"] = "";
+$this->idioma["traduccionDeArticulos"] = "";
+$this->idioma["marcoConsultaGeneral"] = "";
+$this->idioma["marcoModificarRegistro"] = "";
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
 $this->idioma["tabConsultar"] = "Consultar Traducción de Artículos";
 $this->idioma["tabIngresar"] = "Ingresar Traducción de Artículos";

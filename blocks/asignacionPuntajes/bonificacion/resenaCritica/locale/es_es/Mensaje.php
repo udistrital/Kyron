@@ -1,5 +1,8 @@
 <?php
-
+$this->idioma["resenaCriticaRegistrar"] = "";
+$this->idioma["resenaCritica"] = "";
+$this->idioma["marcoConsultaGeneral"] = "";
+$this->idioma["marcoModificarRegistro"] = "";
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
 $this->idioma["tabConsultar"] = "Consultar Reseña Crítica";
 $this->idioma["tabIngresar"] = "Ingresar Reseña Crítica";

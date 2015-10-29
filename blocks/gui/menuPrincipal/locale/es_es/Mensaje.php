@@ -4,6 +4,7 @@ $this->idioma ['menuPrincipal'] = '';
 $this->idioma ['noDefinido'] = 'No definido';
 
 $this->idioma ['inicio'] = 'Inicio';
+$this->idioma ['index'] = 'Inicio';
 $this->idioma ['hojaVida'] = 'Hoja de Vida';
 $this->idioma ['asignacionPuntajes'] = 'Asignación de Puntajes';
 $this->idioma ['reportesDocencia'] = 'Reportes Docencia';
@@ -31,7 +32,7 @@ $this->idioma ['produccionDeLibros'] = 'Producción de Libros';
 	$this->idioma ['excelenciaAcademica'] = 'Excelencia Académica';
 	$this->idioma ['revistasIndexadas'] = 'Revistas Indexadas';
 	$this->idioma ['comunicacionCorta'] = 'Comunicación Corta';
-	$this->idioma ['obrasArtisticas'] = 'Obras Artísticas Docente';
+	$this->idioma ['obrasArtisticasDocente'] = 'Obras Artísticas Docente';
 	$this->idioma ['patentes'] = 'Patentes';
 	$this->idioma ['premiosDocente'] = 'Premios Docente';
 	$this->idioma ['produccionVideosDocente'] = 'Producción en Videos del Docente';

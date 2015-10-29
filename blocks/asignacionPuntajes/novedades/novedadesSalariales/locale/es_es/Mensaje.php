@@ -1,5 +1,8 @@
 <?php
-
+$this->idioma["novedadesSalarialesRegistrar"] = "";
+$this->idioma["novedadesSalariales"] = "";
+$this->idioma["marcoConsultaGeneral"] = "";
+$this->idioma["marcoModificarRegistro"] = "";
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
 $this->idioma["tabConsultar"] = "Consultar Novedades Salariales";
 $this->idioma["tabIngresar"] = "Ingresar Novedades Salariales";

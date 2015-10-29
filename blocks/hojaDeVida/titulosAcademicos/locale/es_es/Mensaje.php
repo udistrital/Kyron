@@ -1,5 +1,8 @@
 <?php
-
+$this->idioma["titulosAcademicosRegistrar"] = "";
+$this->idioma["titulosAcademicos"] = "";
+$this->idioma["marcoConsultaGeneral"] = "";
+$this->idioma["marcoModificarRegistro"] = "";
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
 $this->idioma["tabConsultar"] = "Consultar Títulos Académicos";
 $this->idioma["tabIngresar"] = "Ingresar Títulos Académicos";

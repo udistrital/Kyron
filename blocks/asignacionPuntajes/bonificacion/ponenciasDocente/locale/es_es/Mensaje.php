@@ -1,5 +1,8 @@
 <?php
-
+$this->idioma["ponenciasDocenteRegistrar"] = "";
+$this->idioma["ponenciasDocente"] = "";
+$this->idioma["marcoConsultaGeneral"] = "";
+$this->idioma["marcoModificarRegistro"] = "";
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
 $this->idioma["tabConsultar"] = "Consultar Ponencias del Docente";
 $this->idioma["tabIngresar"] = "Ingresar Ponencias del Docente";

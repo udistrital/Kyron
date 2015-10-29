@@ -1,5 +1,8 @@
 <?php
-
+$this->idioma["estudiosPostDoctoralesRegistrar"] = "";
+$this->idioma["estudiosPostDoctorales"] = "";
+$this->idioma["marcoConsultaGeneral"] = "";
+$this->idioma["marcoModificarRegistro"] = "";
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
 $this->idioma["tabConsultar"] = "Consultar Estudios PostDoctorales";
 $this->idioma["tabIngresar"] = "Ingresar Estudios PostDoctorales";

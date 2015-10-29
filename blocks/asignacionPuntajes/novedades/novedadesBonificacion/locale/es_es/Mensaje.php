@@ -1,5 +1,8 @@
 <?php
-
+$this->idioma["novedadesBonificacionRegistrar"] = "";
+$this->idioma["novedadesBonificacion"] = "";
+$this->idioma["marcoConsultaGeneral"] = "";
+$this->idioma["marcoModificarRegistro"] = "";
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
 $this->idioma["tabConsultar"] = "Consultar Novedades Bonificación";
 $this->idioma["tabIngresar"] = "Ingresar Novedades Bonificación";
