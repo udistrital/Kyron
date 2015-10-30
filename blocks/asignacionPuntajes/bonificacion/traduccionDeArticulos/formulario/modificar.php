@@ -484,9 +484,9 @@ class FormularioModificar {
 					$esteCampo = 'botonRegresar';
 					$atributos ["id"] = $esteCampo;
 					$atributos ["tabIndex"] = $tab;
-					$atributos ["tipo"] = 'false';
+					$atributos ["tipo"] = 'boton';
 					// submit: no se coloca si se desea un tipo button genérico
-					$atributos ['submit'] = 'true';
+					$atributos ['submit'] = 'false';
 					$atributos ["estiloMarco"] = '';
 					$atributos ["estiloBoton"] = 'jqueryui';
 					// verificar: true para verificar el formulario antes de pasarlo al servidor.
