@@ -87,5 +87,8 @@ $this->idioma["puntaje"] = "Puntaje	Asignado";
 $this->idioma["normatividad"] = "Normatividad:";
 $this->idioma["normatividadTitulo"] = "Ingrese la normatividad.";
 ////////////////////////////////////////////////////////////////
+$this->idioma['produccionVideosDocente'] = '';
+$this->idioma['produccionVideosDocenteRegistrar'] = '';
+$this->idioma['produccionVideosDocenteModificar'] = '';
 
 ?>

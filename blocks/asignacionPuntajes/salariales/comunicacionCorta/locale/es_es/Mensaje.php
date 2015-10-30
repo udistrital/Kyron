@@ -69,5 +69,8 @@ $this->idioma["fechaActaRevistaTitulo"] = "Seleccione la Fecha de Acta CIARP-UD.
 $this->idioma["numeroCasoActaRevistaTitulo"] = "Ingrese el Número de Caso de Acta.";
 $this->idioma["puntajeRevistasTitulo"] = "Ingrese Puntaje.";
 
+$this->idioma['comunicacionCorta'] = '';
+$this->idioma['comunicacionCortaRegistrar'] = '';
+$this->idioma['comunicacionCortaModificar'] = '';
 
 ?>

@@ -74,5 +74,7 @@ $this->idioma["numeroCasoActaTitulo"] = "Ingrese el Número de Caso de Acta.";
 $this->idioma["puntajeTitulo"] = "Ingrese el Puntaje.";
 $this->idioma["normatividadTitulo"] = "Ingrese la Normatividad.";
 ////////////////////////////////////////////////////////////////
-
+$this->idioma['publicacionesImpresas'] = '';
+$this->idioma['publicacionesImpresasRegistrar'] = '';
+$this->idioma['publicacionesImpresasModificar'] = '';
 ?>

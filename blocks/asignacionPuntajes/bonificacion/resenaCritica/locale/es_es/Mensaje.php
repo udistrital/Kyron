@@ -68,5 +68,7 @@ $this->idioma["puntaje"] = "Puntaje:";
 $this->idioma["normatividad"] = "Normatividad:";
 $this->idioma["normatividadTitulo"] = "Ingrese la normatividad.";
 ////////////////////////////////////////////////////////////////
-
+$this->idioma['resenaCritica'] = '';
+$this->idioma['resenaCriticaRegistrar'] = '';
+$this->idioma['resenaCriticaModificar'] = '';
 ?>

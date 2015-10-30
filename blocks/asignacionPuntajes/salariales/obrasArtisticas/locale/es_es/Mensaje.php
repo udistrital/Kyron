@@ -63,5 +63,8 @@ $this->idioma["puntaje"] = "Puntaje	Asignado";
 $this->idioma["normatividad"] = "Normatividad:";
 $this->idioma["normatividadTitulo"] = "Ingrese la normatividad.";
 ////////////////////////////////////////////////////////////////
+$this->idioma['obrasArtisticas'] = '';
+$this->idioma['obrasArtisticasRegistrar'] = '';
+$this->idioma['obrasArtisticasModificar'] = '';
 
 ?>

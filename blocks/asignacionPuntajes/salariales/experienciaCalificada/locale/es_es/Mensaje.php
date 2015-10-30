@@ -62,4 +62,7 @@ $this->idioma["normatividad"] = "Normatividad";
 $this->idioma["normatividadTitulo"] = "Ingrese la normatividad.";
 ////////////////////////////////////////////////////////////////
 
+$this->idioma['experienciaCalificada'] = '';
+$this->idioma['experienciaCalificadaRegistrar'] = '';
+$this->idioma['experienciaCalificadaModificar'] = '';
 ?>

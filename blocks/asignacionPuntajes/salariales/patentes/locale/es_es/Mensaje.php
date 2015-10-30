@@ -65,5 +65,8 @@ $this->idioma["puntaje"] = "Puntaje	Asignado";
 $this->idioma["normatividad"] = "Normatividad:";
 $this->idioma["normatividadTitulo"] = "Ingrese la normatividad.";
 ////////////////////////////////////////////////////////////////
+$this->idioma['patentes'] = '';
+$this->idioma['patentesRegistrar'] = '';
+$this->idioma['patentesModificar'] = '';
 
 ?>

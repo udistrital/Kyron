@@ -100,4 +100,8 @@ $this->idioma["normatividad"] = "Normatividad:";
 $this->idioma["normatividadTitulo"] = "Ingrese la normatividad.";
 ////////////////////////////////////////////////////////////////
 
+$this->idioma['capituloLibros'] = '';
+$this->idioma['capituloLibrosModificar'] = '';
+$this->idioma['capituloLibrosRegistrar'] = '';
+
 ?>

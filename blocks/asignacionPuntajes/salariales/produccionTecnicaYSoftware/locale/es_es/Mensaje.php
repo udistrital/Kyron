@@ -84,5 +84,8 @@ $this->idioma["puntajeTitulo"] = "Ingrese Puntaje.";
 $this->idioma["normatividad"] = "Normatividad:";
 $this->idioma["normatividadTitulo"] = "Ingrese la normatividad.";
 ////////////////////////////////////////////////////////////////
+$this->idioma['produccionTecnicaYSoftware'] = '';
+$this->idioma['produccionTecnicaYSoftwareRegistrar'] = '';
+$this->idioma['produccionTecnicaYSoftwareModificar'] = '';
 
 ?>

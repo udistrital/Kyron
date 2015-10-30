@@ -64,4 +64,8 @@ $this->idioma["normatividad"] = "Normatividad:";
 $this->idioma["normatividadTitulo"] = "Ingrese la normatividad.";
 ////////////////////////////////////////////////////////////////
 
+$this->idioma['experienciaProfesional'] = '';
+$this->idioma['experienciaProfesionalRegistrar'] = '';
+$this->idioma['experienciaProfesionalModificar'] = '';
+
 ?>

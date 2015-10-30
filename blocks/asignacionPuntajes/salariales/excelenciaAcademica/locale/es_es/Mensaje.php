@@ -60,4 +60,9 @@ $this->idioma["normatividad"] = "Normatividad";
 $this->idioma["normatividadTitulo"] = "Ingrese la normatividad.";
 ////////////////////////////////////////////////////////////////
 
+$this->idioma['excelenciaAcademica'] = '';
+$this->idioma['excelenciaAcademicaRegistrar'] = '';
+$this->idioma['excelenciaAcademicaModificar'] = '';
+
+
 ?>

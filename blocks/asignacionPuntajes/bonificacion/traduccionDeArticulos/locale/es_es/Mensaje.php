@@ -64,5 +64,7 @@ $this->idioma["puntajeTitulo"] = "Ingrese Puntaje.";
 $this->idioma["normatividad"] = "Normatividad:";
 $this->idioma["normatividadTitulo"] = "Ingrese la normatividad.";
 ////////////////////////////////////////////////////////////////
-
+$this->idioma['traduccionDeArticulos'] = '';
+$this->idioma['traduccionDeArticulosRegistrar'] = '';
+$this->idioma['traduccionDeArticulosModificar'] = '';
 ?>

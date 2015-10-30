@@ -62,4 +62,8 @@ $this->idioma["puntaje"] = "Puntaje: (-)Derroga o (+)Asigna.";
 $this->idioma["normatividad"] = "Normatividad:";
 ////////////////////////////////////////////////////////////////
 
+$this->idioma['novedadesBonificacion'] = '';
+$this->idioma['novedadesBonificacionRegistrar'] = '';
+$this->idioma['novedadesBonificacionModificar'] = '';
+
 ?>
