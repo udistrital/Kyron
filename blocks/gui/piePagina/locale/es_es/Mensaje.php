@@ -1,5 +1,7 @@
 <?php
 
+$this->idioma['piePagina'] = '';
+
 $this->idioma ['botonAceptar'] = 'Aceptar';
 $this->idioma ['botonCancelar'] = 'Cancelar';
 $this->idioma ['noDefinido'] = 'Etiqueta No definida';

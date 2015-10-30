@@ -9,4 +9,6 @@ $this->idioma ['campoHora'] = 'Hora';
 $this->idioma ['botonAceptar'] = 'Aceptar';
 $this->idioma ['botonCancelar'] = 'Cancelar';
 $this->idioma ['noDefinido'] = 'Etiqueta No definida';
+
+$this->idioma["bannerKyron"] = "";
 ?>
