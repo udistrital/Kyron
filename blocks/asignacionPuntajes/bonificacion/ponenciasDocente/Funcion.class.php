@@ -89,6 +89,7 @@ class Funcion {
 				$variable = "pagina=accesoIncorrecto";
 				$variable .= "&opcion=error";
 				$variable .= "&paginaError=".$miPaginaActual;
+				$variable .= "&validadorCampos=".serialize($_REQUEST['validadorCampos']);
 				$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $variable );
 				$url = $this->miConfigurador->configuracion ["host"] . $this->miConfigurador->configuracion ["site"] . "/index.php?";
 				$enlace = $this->miConfigurador->configuracion ['enlace'];				
