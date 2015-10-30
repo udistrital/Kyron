@@ -13,6 +13,8 @@ class Form {
 	var $miFormulario;
 	function __construct($lenguaje, $formulario) {
 		$this -> miConfigurador = \Configurador::singleton();
+		
+		$this -> miInspectorHTML = \InspectorHTML::singleton();
 
 		$this -> miConfigurador -> fabricaConexiones -> setRecursoDB('principal');
 
@@ -24,6 +26,9 @@ class Form {
 	function miForm() {
 		// Rescatar los datos de este bloque
 		$esteBloque = $this -> miConfigurador -> getVariableConfiguracion("esteBloque");
+		$parametros = $this->miInspectorHTML->decodificarCampos($_REQUEST['parametros']);
+		$validadorCampos = $this->miInspectorHTML->decodificarCampos($parametros['validadorCampos']);
+		$respuestaError = $this->miInspectorHTML->validacionCampos($parametros,$validadorCampos,false,true);
 		echo '
 			<table align="center" width="80%" cellpadding="7" border=0>
 			<tr><td>
@@ -43,8 +48,13 @@ class Form {
 			</td>
 			</tr>
 			<tr>
-			<td align="center"><h3>Se ha creado un registro de acceso ilegal desde la direcci&oacute;n: <b>'.$_SERVER['REMOTE_ADDR'].'</b>.</h3></td>
+			<td align="center">
+			'.$respuestaError.'.
+			</td>
 			</tr>
+			<tr>
+			<td align="center"><h3>Se ha creado un registro de acceso ilegal desde la direcci&oacute;n: <b>'.$_SERVER['REMOTE_ADDR'].'</b>.</h3></td>
+			</tr>			
 			<tr>
 			<td align="center">
 			Si considera que esto es un error por favor comuniquese con el administrador del sistema.
@@ -59,7 +69,8 @@ class Form {
 			</td>
 			</tr>
 			</table>
-		';	
+		';
+		
 	}
 
 	function mensaje() {

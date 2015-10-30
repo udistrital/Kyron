@@ -1,4 +1,6 @@
 <?php
+
+$this->idioma ['bannerKyron'] = '';
 $this->idioma ['nombreCampo'] = 'Valor:';
 
 $this->idioma ['bannerSuperior'] = 'bannerSuperior';

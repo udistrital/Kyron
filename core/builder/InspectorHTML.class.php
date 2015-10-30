@@ -212,7 +212,15 @@ class InspectorHTML {
 		
 		return $variables;
 	}
-
+	
+	/*
+	 * Permite codificar los campos de $_REQUEST para enviar como parámetros a FormularioHtml.class.php.
+	 * Permite saltar la restricción de validación SQL, PHP y HTML en los campos para enviar datos sin alteración.
+	 */
+	function codificarCampos($valor){
+    	return base64_encode(serialize($valor));
+    }
+	
 	/*
 	 * Permite decodificar los campos de $_REQUEST que hayan sido enviados codificados
 	 * con la funcion "codificarCampos" del las instancias FormularioHtml.class.php.
