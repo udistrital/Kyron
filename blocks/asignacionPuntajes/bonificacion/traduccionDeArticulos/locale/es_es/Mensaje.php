@@ -2,7 +2,7 @@
 $this->idioma["traduccionDeArticulosRegistrar"] = "";
 $this->idioma["traduccionDeArticulos"] = "";
 $this->idioma["marcoConsultaGeneral"] = "";
-$this->idioma["marcoModificarRegistro"] = "";
+$this->idioma["marcoModificarRegistro"] = "Modificar Información de Traducción de Artículos";
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
 $this->idioma["tabConsultar"] = "Consultar Traducción de Artículos";
 $this->idioma["tabIngresar"] = "Ingresar Traducción de Artículos";
