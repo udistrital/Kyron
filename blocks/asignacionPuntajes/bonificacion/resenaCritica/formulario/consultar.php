@@ -73,15 +73,21 @@ class registrarForm {
 		 */
 		if(isset($_REQUEST['validadorCampos'])){
 			$validadorCampos = $this->miInspectorHTML->decodificarCampos($_REQUEST['validadorCampos']);
-			$respuesta = $this->miInspectorHTML->validacionCampos($_REQUEST,$validadorCampos,false);
+			$respuesta = $this->miInspectorHTML->validacionCampos($_REQUEST,$validadorCampos,false,false);
 			if ($respuesta != false){
 				$_REQUEST = $respuesta;
 			} else {
 				//Lo que se desea hacer si los parámetros son inválidos
-				echo "<h1>Usted ha ingresado parámetros de forma incorrecta al sistema.
-				 El acceso incorrecto ha sido registrado en el sistema con la IP: ".$_SERVER['REMOTE_ADDR'] . '</h1>';
-				//sleep(60);
-				//redireccion::redireccionar ( "index" );
+				$miPaginaActual = $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
+				$variable = "pagina=accesoIncorrecto";
+				$variable .= "&opcion=error";
+				$variable .= "&paginaError=".$miPaginaActual;
+				$variable .= "&validadorCampos=".serialize($_REQUEST['validadorCampos']);
+				$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $variable );
+				$url = $this->miConfigurador->configuracion ["host"] . $this->miConfigurador->configuracion ["site"] . "/index.php?";
+				$enlace = $this->miConfigurador->configuracion ['enlace'];				
+				$redireccion = $url . $enlace . '=' . $variable;
+				echo "<script>location.replace('" . $redireccion . "')</script>";
 			}
 		}
 		
