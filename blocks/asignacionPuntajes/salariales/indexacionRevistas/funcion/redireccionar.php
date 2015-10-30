@@ -10,7 +10,7 @@ class redireccion {
 	public static function redireccionar($opcion, $valor = "") {
 		$miConfigurador = \Configurador::singleton ();
 		$miPaginaActual = $miConfigurador->getVariableConfiguracion ( "pagina" );
-		
+
 		switch ($opcion) {
 			case "inserto" :
 				$variable = "pagina=" . $miPaginaActual;

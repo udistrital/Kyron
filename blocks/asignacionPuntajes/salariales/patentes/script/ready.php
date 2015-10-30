@@ -36,7 +36,7 @@ return false;
 
 $(function () {
     $("button").button().click(function (event) { 
-        event.preventDefault();
+        event.preventDefault();        
     });
 });
 
@@ -68,7 +68,7 @@ $(function() {
 //////////////////////////////////////////////////////////////////////////////
 
 // Asociar el widget de validación al formulario
-
+<?php unset($_REQUEST['validadorCampos'])?>;
 /////////Se define el ancho de los campos de listas desplegables///////
 $('#<?php echo $this->campoSeguro('docente')?>').width(465);      
 $('#<?php echo $this->campoSeguro('facultad')?>').width(450);      

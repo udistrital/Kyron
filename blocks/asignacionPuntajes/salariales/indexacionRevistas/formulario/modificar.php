@@ -113,7 +113,7 @@ class FormularioModificar {
 				$_REQUEST['numeroCasoActaRevista'] =  $resultadoIndexacion[0]['numero_caso'];
 				$_REQUEST['puntajeRevista'] =  $resultadoIndexacion[0]['puntaje'];
 				$_REQUEST['normatividad'] =  $resultadoIndexacion[0]['normatividad'];
-		
+					
 		$esteCampo = "marcoDatosBasicos";
 		$atributos ['id'] = $esteCampo;
 		$atributos ["estilo"] = "jqueryui";
@@ -821,19 +821,20 @@ class FormularioModificar {
 				$atributos ["id"] = "botones";
 				$atributos ["estilo"] = "marcoBotones";
 				echo $this->miFormulario->division ( "inicio", $atributos );
-				{
+				{					
+					
 					// -----------------CONTROL: Botón ----------------------------------------------------------------
 					$esteCampo = 'botonRegresar';
 					$atributos ["id"] = $esteCampo;
 					$atributos ["tabIndex"] = $tab;
 					$atributos ["tipo"] = 'boton';
 					// submit: no se coloca si se desea un tipo button genérico
-					$atributos ['submit'] = 'true';
+					$atributos ['submit'] = 'false';
 					$atributos ["estiloMarco"] = '';
 					$atributos ["estiloBoton"] = 'jqueryui';
 					// verificar: true para verificar el formulario antes de pasarlo al servidor.
 					$atributos ["verificar"] = '';
-					$atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
+					$atributos ["tipoSubmit"] = ''; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
 					$atributos ["valor"] = $this->lenguaje->getCadena ( $esteCampo );
 					$atributos ['nombreFormulario'] = $esteBloque ['nombre']."Registrar";
 					$tab ++;

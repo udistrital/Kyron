@@ -654,7 +654,7 @@ class FormularioModificar {
 					$atributos ["estiloBoton"] = 'jqueryui';
 					// verificar: true para verificar el formulario antes de pasarlo al servidor.
 					$atributos ["verificar"] = '';
-					$atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
+					$atributos ["tipoSubmit"] = ''; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
 					$atributos ["valor"] = $this->lenguaje->getCadena ( $esteCampo );
 					$atributos ['nombreFormulario'] = $esteBloque ['nombre']."Registrar";
 					$tab ++;
