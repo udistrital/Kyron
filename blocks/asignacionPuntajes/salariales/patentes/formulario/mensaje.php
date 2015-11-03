@@ -4,7 +4,6 @@ if (!isset($GLOBALS["autorizado"])) {
     include("../index.php");
     exit;
 } else {
-
     $esteBloque = $this->miConfigurador->getVariableConfiguracion("esteBloque");
 
     $rutaBloque = $this->miConfigurador->getVariableConfiguracion("host");
@@ -84,7 +83,7 @@ if (!isset($GLOBALS["autorizado"])) {
         $boton = "continuar";
 
         $valorCodificado = "pagina=".$esteBloque['nombre'];
-        $valorCodificado.="&opcion=nuevo";
+        $valorCodificado.="&opcion=consultar";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
        
@@ -94,7 +93,7 @@ if (!isset($GLOBALS["autorizado"])) {
         $boton = "continuar";
 
         $valorCodificado = "pagina=".$esteBloque['nombre'];
-        $valorCodificado.="&opcion=nuevo";
+        $valorCodificado.="&opcion=consultar";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
        

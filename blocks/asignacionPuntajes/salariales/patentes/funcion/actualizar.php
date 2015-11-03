@@ -38,7 +38,7 @@ class RegistrarIndexacionRevista {
 
 		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizar', $_REQUEST );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
-
+		
 		if ($resultado) {
 			redireccion::redireccionar ( 'actualizo',  $_REQUEST['docenteRegistrar']);
 			exit ();

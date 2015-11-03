@@ -85,7 +85,7 @@ if (!isset($GLOBALS["autorizado"])) {
         $boton = "continuar";
 
         $valorCodificado = "pagina=".$esteBloque['nombre'];
-        $valorCodificado.="&opcion=nuevo";
+        $valorCodificado.="&opcion=consultar";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
        
@@ -96,7 +96,7 @@ if (!isset($GLOBALS["autorizado"])) {
     	$boton = "continuar";
     
     	$valorCodificado = "pagina=".$esteBloque['nombre'];
-    	$valorCodificado.="&opcion=nuevo";
+    	$valorCodificado.="&opcion=consultar";
     	$valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
     	$valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
     	 
