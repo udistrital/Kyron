@@ -196,7 +196,6 @@ if (!isset($GLOBALS["autorizado"])) {
     $valorCodificado .= "&campoSeguro=" . $_REQUEST['tiempo'];
     // Paso 2: codificar la cadena resultante
     $valorCodificado = $this->miConfigurador->fabricaConexiones->crypto->codificar($valorCodificado);
-
     $atributos ["id"] = "formSaraData"; // No cambiar este nombre
     $atributos ["tipo"] = "hidden";
     $atributos ['estilo'] = '';

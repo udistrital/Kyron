@@ -75,6 +75,9 @@ $this->idioma["normatividad"] = "Normatividad:";
 $this->idioma["normatividadTitulo"] = "Ingrese la normatividad.";
 ////////////////////////////////////////////////////////////////
 
+$this->idioma["normatividad"] = "Normatividad";
+$this->idioma["normatividadTitulo"] = "Normatividad";
+
 $this->idioma['cartasEditor'] = '';
 $this->idioma['cartasEditorRegistrar'] = '';
 $this->idioma['cartasEditorModificar'] = '';

@@ -208,7 +208,8 @@ class Sql extends \Sql {
 				$cadenaSql .= "' " . $variable ['numeroActa'] . "',";
 				$cadenaSql .= " '" . $variable ['fechaActa'] . "',";
 				$cadenaSql .= "' " . $variable ['numeroCasoActa'] . "',";
-				$cadenaSql .= " '" . $variable ['puntaje'] . "')";
+				$cadenaSql .= "' " . $variable ['puntaje'] . "',";
+				$cadenaSql .= " '" . $variable ['normatividad'] . "')";
 				break;
 				
 			case "publicacionActualizar" :

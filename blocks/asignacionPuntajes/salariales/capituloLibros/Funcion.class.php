@@ -78,7 +78,7 @@ class Funcion {
 		 * si es pertinente o no realizar un recorte de los datos "string" para que cumpla los requerimientos
 		 * de longitud (tamaño) del campo.
 		 */
-		if(isset($_REQUEST['validadorCampos']) && !($_REQUEST ["botonRegresar"] == 'true')){
+		if(isset($_REQUEST['validadorCampos']) && !(isset($_REQUEST ["botonRegresar"]) && $_REQUEST ["botonRegresar"] == 'true')){
 			$validadorCampos = $this->miInspectorHTML->decodificarCampos($_REQUEST['validadorCampos']);
 			$respuesta = $this->miInspectorHTML->validacionCampos($_REQUEST,$validadorCampos,false,false);
 			if ($respuesta != false){

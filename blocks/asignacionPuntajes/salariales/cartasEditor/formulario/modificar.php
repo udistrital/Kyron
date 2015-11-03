@@ -786,7 +786,39 @@ class FormularioModificar {
 			
 			// ----------------FIN CONTROL: Campo de Texto Puntaje Revista--------------------------------------------------------
 			
+			// ----------------INICIO CONTROL: Campo de Texto Normatividad--------------------------------------------------------
+			$esteCampo = 'normatividad';
+			$atributos ['id'] = $esteCampo;
+			$atributos ['nombre'] = $esteCampo;
+			$atributos ['tipo'] = 'text';
+			$atributos ['estilo'] = 'jqueryui';
+			$atributos ['marco'] = true;
+			$atributos ['estiloMarco'] = '';
+			$atributos ["etiquetaObligatorio"] = false;
+			$atributos ['columnas'] = 1;
+			$atributos ['dobleLinea'] = 0;
+			$atributos ['tabIndex'] = $tab;
+			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+			$atributos ['validar'] = 'required, maxSize[50]';
 				
+			if (isset ( $_REQUEST [$esteCampo] )) {
+				$atributos ['valor'] = $_REQUEST [$esteCampo];
+			} else {
+				$atributos ['valor'] = '';
+			}
+			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+			$atributos ['deshabilitado'] = false;
+			$atributos ['tamanno'] = 57;
+			$atributos ['maximoTamanno'] = '50';
+			$atributos ['anchoEtiqueta'] = 280;
+			$tab ++;
+				
+			// Aplica atributos globales al control
+			$atributos = array_merge ( $atributos, $atributosGlobales );
+			echo $this->miFormulario->campoCuadroTexto ( $atributos );
+			unset ( $atributos );
+			// ----------------FIN CONTROL: Campo de Texto Normatividad--------------------------------------------------------
+			
 				// ------------------Division para los botones-------------------------
 				$atributos ["id"] = "botones";
 				$atributos ["estilo"] = "marcoBotones";
