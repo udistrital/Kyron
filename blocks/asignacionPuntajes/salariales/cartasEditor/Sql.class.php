@@ -116,6 +116,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "	descripcion";
 				$cadenaSql .= " FROM ";
 				$cadenaSql .= " docencia.contexto";
+				$cadenaSql .= " WHERE id_contexto != -1";
 				break;
 				
 			case "pais" :

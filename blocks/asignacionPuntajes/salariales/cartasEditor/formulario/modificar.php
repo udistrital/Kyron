@@ -230,17 +230,15 @@ class FormularioModificar {
 			$atributos ['anchoCaja'] = 57;
 			$atributos ['miEvento'] = '';
 			$atributos ['validar'] = 'required';
-			$matrizItems = array (
-					array (
-							0,
-							'Nacional'
-					),
-					array (
-							1,
-							'Internacional'
-					),
-			);
-			$atributos ['matrizItems'] = $matrizItems;
+			$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "contexto");
+				$matrizItems = array (
+						array (
+								0,
+								' '
+						)
+				);
+				$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
+				$atributos ['matrizItems'] = $matrizItems;
 			// Aplica atributos globales al control
 			$atributos = array_merge ( $atributos, $atributosGlobales );
 			echo $this->miFormulario->campoCuadroLista ( $atributos );

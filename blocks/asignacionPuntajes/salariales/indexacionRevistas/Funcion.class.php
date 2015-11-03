@@ -1,8 +1,8 @@
 <?php
 
-namespace asignacionPuntajes\salariales\indexacionRevistas;
+namespace asignacionPuntajes\salariales\indexacionrevistas;
 
-use asignacionPuntajes\salariales\indexacionRevistas\funcion\redireccion;
+use asignacionPuntajes\salariales\indexacionrevistas\funcion\redireccion;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -47,7 +47,6 @@ class Funcion {
 		include_once ($this->ruta . "/funcion/actualizar.php");
 	}
 	function action() {
-		
 		// Evitar que se ingrese codigo HTML y PHP en los campos de texto
 		// Campos que se quieren excluir de la limpieza de código. Formato: nombreCampo1|nombreCampo2|nombreCampo3
 		$excluir = "";
@@ -101,7 +100,6 @@ class Funcion {
 		if (isset ( $_REQUEST ['procesarAjax'] )) {
 			$this->procesarAjax ();
 		} else if (isset ( $_REQUEST ["opcion"] )) {
-			
 			switch ($_REQUEST ["opcion"]) {
 				case 'consultar' :
 					$this->consultarContrato ();

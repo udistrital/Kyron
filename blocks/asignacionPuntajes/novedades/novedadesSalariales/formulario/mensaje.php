@@ -56,52 +56,43 @@ if (!isset($GLOBALS["autorizado"])) {
     //$atributos["estiloEnLinea"]="display:none"; 
     echo $this->miFormulario->division("inicio", $atributos);
 
-    if ($_REQUEST['mensaje'] == 'confirma') {
-
+if ($_REQUEST['mensaje'] == 'confirma') {
         $tipo = 'success';
-        $mensaje = "Registro Exitoso.<br>Ha sido indexada correctamente la revista para el docente <br>" . $_REQUEST ['docente'] . ".";
+        $mensaje =  $this->lenguaje->getCadena('mensajeRegistro') . $_REQUEST ['docente'] . ".";
         $boton = "continuar";
-		
-        $valorCodificado = "pagina=revistasIndexadas";
+        $valorCodificado = "pagina=".$esteBloque['nombre'];
         $valorCodificado.="&opcion=nuevo";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
         
-        
     } else if($_REQUEST['mensaje'] == 'error') {
         $tipo = 'error';
-        $mensaje = "Error al tratar de indexar la revista.";
+        $mensaje =  $this->lenguaje->getCadena('mensajeError');
         $boton = "regresar";
-
-        $valorCodificado = "pagina=revistasIndexadas";
+        $valorCodificado = "pagina=".$esteBloque['nombre'];
         $valorCodificado.="&opcion=nuevo";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
        
     } else if($_REQUEST['mensaje'] == 'actualizo') {
         $tipo = 'success';
-        $mensaje = "Actualización Exitosa </br> Han sido actualizados los datos de la revista indexada para el docente <br>" . $_REQUEST ['docente'] . ".";
+        $mensaje = $this->lenguaje->getCadena('mensajeActualizar') . $_REQUEST ['docente'] . ".";
         $boton = "continuar";
-
-        $valorCodificado = "pagina=revistasIndexadas";
+        $valorCodificado = "pagina=".$esteBloque['nombre'];
+        $valorCodificado.="&opcion=consultar";
+        $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
+        $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
+       
+    } else if($_REQUEST['mensaje'] == 'noActualizo') {
+        $tipo = 'error';
+        $mensaje = $this->lenguaje->getCadena('mensajeNoActualizo') . $_REQUEST ['docente'] . ".";
+        $boton = "continuar";
+        $valorCodificado = "pagina=".$esteBloque['nombre'];
         $valorCodificado.="&opcion=consultar";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
        
     }
-    else if($_REQUEST['mensaje'] == 'noActualizo') {
-    	$tipo = 'error';
-    	$mensaje = "Error al tratar de actualizar </br>el registro de la Revista Indexada Para el Docente </br>" . $_REQUEST ['docente'] . ".";
-    	$boton = "continuar";
-    
-    	$valorCodificado = "pagina=revistasIndexadas";
-    	$valorCodificado.="&opcion=consultar";
-    	$valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
-    	$valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
-    	 
-    }
-    
-    
 
 
     /**

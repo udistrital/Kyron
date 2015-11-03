@@ -56,23 +56,19 @@ if (!isset($GLOBALS["autorizado"])) {
     //$atributos["estiloEnLinea"]="display:none"; 
     echo $this->miFormulario->division("inicio", $atributos);
 
-    if ($_REQUEST['mensaje'] == 'confirma') {
-
+if ($_REQUEST['mensaje'] == 'confirma') {
         $tipo = 'success';
         $mensaje =  $this->lenguaje->getCadena('mensajeRegistro') . $_REQUEST ['docente'] . ".";
         $boton = "continuar";
-		
         $valorCodificado = "pagina=".$esteBloque['nombre'];
         $valorCodificado.="&opcion=nuevo";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
         
-        
     } else if($_REQUEST['mensaje'] == 'error') {
         $tipo = 'error';
         $mensaje =  $this->lenguaje->getCadena('mensajeError');
         $boton = "regresar";
-
         $valorCodificado = "pagina=".$esteBloque['nombre'];
         $valorCodificado.="&opcion=nuevo";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
@@ -82,24 +78,21 @@ if (!isset($GLOBALS["autorizado"])) {
         $tipo = 'success';
         $mensaje = $this->lenguaje->getCadena('mensajeActualizar') . $_REQUEST ['docente'] . ".";
         $boton = "continuar";
-
         $valorCodificado = "pagina=".$esteBloque['nombre'];
         $valorCodificado.="&opcion=consultar";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
        
-    }else if($_REQUEST['mensaje'] == 'noActualizo') {
+    } else if($_REQUEST['mensaje'] == 'noActualizo') {
         $tipo = 'error';
         $mensaje = $this->lenguaje->getCadena('mensajeNoActualizo') . $_REQUEST ['docente'] . ".";
         $boton = "continuar";
-
         $valorCodificado = "pagina=".$esteBloque['nombre'];
         $valorCodificado.="&opcion=consultar";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
        
     }
-    
     
 
 

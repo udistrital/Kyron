@@ -7,6 +7,14 @@ $this->idioma["ingresarRevistas"] = "Ingresar Comunicación Corta";
 
 //////////////////////////////////////////////////////////////
 
+//************ MENSAJES *********
+$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Comunicación Corta para el docente <br>";
+$this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado la Comunicación Corta para el docente <br>" ;
+$this->idioma["mensajeError"] =  "Error al tratar de registrar la Comunicación Corta.";
+$this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Comunicación Corta Para los Criterios Ingresados";
+$this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de la Comunicación Corta Para el Docente </br>";
+/////////////////////////////////
+
 
 $this->idioma["botonRegresar"] = "Regresar";
 $this->idioma["botonGuardar"] = "Guardar";

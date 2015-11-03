@@ -7,6 +7,7 @@ if (! isset ( $GLOBALS ["autorizado"] )) {
 	exit ();
 }
 class redireccion {
+	
 	public static function redireccionar($opcion, $valor = "") {
 		$miConfigurador = \Configurador::singleton ();
 		$miPaginaActual = $miConfigurador->getVariableConfiguracion ( "pagina" );
@@ -86,6 +87,8 @@ class redireccion {
 		$redireccion = $url . $_REQUEST [$enlace];
 		
 		echo "<script>location.replace('" . $redireccion . "')</script>";
+		
+		
 		
 		// $enlace =$miConfigurador->getVariableConfiguracion("enlace");
 		// $variable = $miConfigurador->fabricaConexiones->crypto->codificar($variable);

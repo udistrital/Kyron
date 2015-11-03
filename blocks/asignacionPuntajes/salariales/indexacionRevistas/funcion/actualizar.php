@@ -35,8 +35,8 @@ class RegistrarIndexacionRevista {
 		$rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "raizDocumento" ) . "/blocks/asignacionPuntajes/salariales/";
 		$rutaBloque .= $esteBloque ['nombre'];
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
-
-		$_REQUEST['contextoRevista'] = 0;
+		
+		$_REQUEST['contextoRevista'] = 1;
 		$_REQUEST['pais'] = 'COL';
 		
 		$arregloDatos = array (
@@ -60,6 +60,7 @@ class RegistrarIndexacionRevista {
 			'normatividad' => $_REQUEST['normatividad'],
 			'numero_issn_old' => $_REQUEST['numero_issn_old']
 		);
+		
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizarIndexacion', $arregloDatos );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );

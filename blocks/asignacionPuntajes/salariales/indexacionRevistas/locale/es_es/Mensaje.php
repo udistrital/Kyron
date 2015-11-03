@@ -7,6 +7,13 @@ $this->idioma["ingresarRevistas"] = "Ingresar Revistas Indexadas";
 
 //////////////////////////////////////////////////////////////
 
+//************ MENSAJES *********
+$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Revista Indexada para el docente <br>";
+$this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado la Revista Indexada para el docente <br>" ;
+$this->idioma["mensajeError"] =  "Error al tratar de registrar la Revista Indexada.";
+$this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Revistas Indexadas </br> Para los Criterios Ingresados";
+$this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de Revista Indexada Para el Docente </br>";
+/////////////////////////////////
 
 $this->idioma["botonRegresar"] = "Regresar";
 $this->idioma["botonGuardar"] = "Guardar";
