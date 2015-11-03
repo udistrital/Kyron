@@ -190,7 +190,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "id_tipo_indexacion, ";
 				$cadenaSql .= "numero_issn, anno_publicacion, volumen_revista, numero_revista, paginas_revista, ";
 				$cadenaSql .= "titulo_articulo, numero_autores, numero_autores_ud, fecha_publicacion, ";
-				$cadenaSql .= "numero_acta, fecha_acta, numero_caso, puntaje) ";
+				$cadenaSql .= "numero_acta, fecha_acta, numero_caso, puntaje, normatividad) ";
 				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
 				$cadenaSql .= " '" . $variable ['nombre'] . "',";
 				$cadenaSql .= " '" . $variable ['contexto'] . "',";
@@ -231,7 +231,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" ce.numero_acta, ";
 				$cadenaSql.=" ce.fecha_acta, ";
 				$cadenaSql.=" ce.numero_caso, ";
-				$cadenaSql.=" ce.puntaje ";
+				$cadenaSql.=" ce.puntaje, ";
+				$cadenaSql.=" ce.normatividad ";
 				$cadenaSql.=" FROM docencia.cartas_editor ce ";
 				$cadenaSql.=" left join docencia.docente dc on ce.documento_docente=dc.documento_docente ";
 				$cadenaSql.=" WHERE ce.documento_docente ='" . $variable['documento_docente']. "'";
@@ -259,7 +260,8 @@ class Sql extends \Sql {
 				$cadenaSql .= "numero_acta = '" . $variable ['numeroActa'] . "', ";
 				$cadenaSql .= "fecha_acta = '" . $variable ['fechaActa'] . "', ";
 				$cadenaSql .= "numero_caso = '" . $variable ['numeroCasoActa'] . "', ";
-				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "'";
+				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "', ";
+				$cadenaSql .= "normatividad = '" . $variable ['normatividad'] . "'";
 				$cadenaSql .= "WHERE ";
 				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";
 				$cadenaSql .= "and numero_issn ='" . $variable ['identificadorColeccion_old'] . "' ";

@@ -113,6 +113,7 @@ class FormularioModificar {
 				$_REQUEST['fechaActa'] =  $resultadoIndexacion[0]['fecha_acta'];
 				$_REQUEST['numeroCasoActa'] =  $resultadoIndexacion[0]['numero_caso'];
 				$_REQUEST['puntaje'] =  $resultadoIndexacion[0]['puntaje'];
+				$_REQUEST['normatividad'] =  $resultadoIndexacion[0]['normatividad'];
 		
 		$esteCampo = "marcoModificarRegistro";
 		$atributos ['id'] = $esteCampo;

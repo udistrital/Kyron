@@ -116,6 +116,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "	nombre_tipo_trabajogrado as nombre_tipo";
 				$cadenaSql .= " FROM ";
 				$cadenaSql .= " docencia.tipo_trabajogrado";
+				$cadenaSql .= " WHERE id_tipo_trabajogrado != -1";
 				break;
 				
 			case "categoriaTrabajoGrado" :
@@ -124,6 +125,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "	nombre_categoria_trabajogrado as nombre_categoria";
 				$cadenaSql .= " FROM ";
 				$cadenaSql .= " docencia.categoria_trabajogrado";
+				$cadenaSql .= " WHERE id_categoria_trabajogrado != -1";
 				break;
 				
 			case "docente" :
@@ -170,7 +172,7 @@ class Sql extends \Sql {
 			case "registrar" :
 				$cadenaSql = "INSERT INTO docencia.direccion_trabajogrado( ";
 				$cadenaSql .= "documento_docente, titulo_trabajogrado, anno_direccion, id_tipo_trabajogrado, ";
-				$cadenaSql .= "id_categoria_trabajogrado, numero_autores, numero_acta, fecha_acta, caso_acta, puntaje) ";
+				$cadenaSql .= "id_categoria_trabajogrado, numero_autores, numero_acta, fecha_acta, caso_acta, puntaje, normatividad) ";
 				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
 				$cadenaSql .= " '" . $variable ['tituloTrabajo'] . "',";
 				$cadenaSql .= " '" . $variable ['anno'] . "',";
@@ -180,7 +182,8 @@ class Sql extends \Sql {
 				$cadenaSql .= " '" . $variable ['numeroActa'] . "',";
 				$cadenaSql .= " '" . $variable ['fechaActa'] . "',";
 				$cadenaSql .= "' " . $variable ['numeroCasoActa'] . "',";
-				$cadenaSql .= " '" . $variable ['puntaje'] . "')";
+				$cadenaSql .= "' " . $variable ['puntaje'] . "',";
+				$cadenaSql .= " '" . $variable ['normatividad'] . "')";
 				$cadenaSql .= " returning id_direccion_trabajogrado";
 				break;
 				
@@ -203,7 +206,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" dtg.numero_acta, ";
 				$cadenaSql.=" dtg.fecha_acta, ";
 				$cadenaSql.=" dtg.caso_acta, ";
-				$cadenaSql.=" dtg.puntaje ";
+				$cadenaSql.=" dtg.puntaje, ";
+				$cadenaSql.=" dtg.normatividad ";
 				$cadenaSql.=" FROM docencia.direccion_trabajogrado as dtg ";
 				$cadenaSql.=" left join docencia.docente dc on dtg.documento_docente=dc.documento_docente ";
 				$cadenaSql.=" WHERE dtg.documento_docente ='" . $variable['documento_docente']. "'";
@@ -231,7 +235,8 @@ class Sql extends \Sql {
 				$cadenaSql .= "numero_acta = '" . $variable ['numeroActa'] . "', ";
 				$cadenaSql .= "fecha_acta = '" . $variable ['fechaActa'] . "', ";
 				$cadenaSql .= "caso_acta = '" . $variable ['numeroCasoActa'] . "', ";
-				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "'";
+				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "', ";
+				$cadenaSql .= "normatividad = '" . $variable ['normatividad'] . "'";
 				$cadenaSql .= "WHERE ";
 				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";
 				$cadenaSql .= "and id_direccion_trabajogrado ='" . $variable ['id_direccion_trabajo'] . "' ";
