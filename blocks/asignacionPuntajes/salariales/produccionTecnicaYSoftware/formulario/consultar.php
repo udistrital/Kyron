@@ -92,8 +92,17 @@ class registrarForm {
 				'id_proyectocurricular' =>$_REQUEST ['proyectoCurricular'] 
 		);
 		
+		$arregloSerialize = array (
+				$_REQUEST ['id_docente'],
+				$_REQUEST ['facultad'],
+				$_REQUEST ['proyectoCurricular']
+		);
+		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'consultar', $arreglo );
 		$indexacion = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+		
+		$arreglo=serialize($arregloSerialize);
+		
 		
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
 		$esteCampo = $esteBloque ['nombre'];
@@ -179,6 +188,7 @@ class registrarForm {
 					for($i = 0; $i < count ( $indexacion ); $i ++) {
 						$variable = "pagina=" . $miPaginaActual; // pendiente la pagina para modificar parametro
 						$variable .= "&opcion=modificar";
+						$variable .= "&arreglo=" . $arreglo;
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
 						$variable .= "&documento_docente=" . $indexacion [$i] ['documento_docente'];
 						$variable .= "&numero_certificado=" . $indexacion [$i] ['numero_certificado'];

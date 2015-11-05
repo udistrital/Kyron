@@ -155,7 +155,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" left join docencia.proyectocurricular pc on dc_pc.id_proyectocurricular=pc.id_proyectocurricular ";
 				$cadenaSql.=" left join docencia.facultad fc on pc.id_facultad=fc.id_facultad ";
 				$cadenaSql.=" left join docencia.universidad un on un.id_universidad = ei.id_universidad ";
-				$cadenaSql.=" left join docencia.tipo_experiencia_investigacion te on ei.id_tipo_experiencia_investigacion = ei.id_tipo_experiencia_investigacion";
+				$cadenaSql.=" left join docencia.tipo_experiencia_investigacion te on te.id_tipo_experiencia_investigacion = ei.id_tipo_experiencia_investigacion";
 				$cadenaSql.=" where ";
 				$cadenaSql.=" ei.estado=true ";
 				$cadenaSql.=" and dc.estado=true ";
@@ -175,7 +175,7 @@ class Sql extends \Sql {
 			case "registrar" :
 				$cadenaSql = "INSERT INTO docencia.experiencia_investigacion( ";
 				$cadenaSql .= "documento_docente, id_universidad, otra_entidad, id_tipo_experiencia_investigacion, ";
-				$cadenaSql .= "horas_semana, fecha_inicio, fecha_finalizacion, numero_acta, fecha_acta, caso_acta, puntaje) ";
+				$cadenaSql .= "horas_semana, fecha_inicio, fecha_finalizacion, numero_acta, fecha_acta, caso_acta, puntaje, normatividad) ";
 				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
 				$cadenaSql .= " " . $variable ['entidadInstitucion'] . ",";
 				$cadenaSql .= " '" . $variable ['otraEntidad'] . "',";
@@ -186,7 +186,8 @@ class Sql extends \Sql {
 				$cadenaSql .= " '" . $variable ['numeroActa'] . "',";
 				$cadenaSql .= " '" . $variable ['fechaActa'] . "',";
 				$cadenaSql .= "' " . $variable ['numeroCasoActa'] . "',";
-				$cadenaSql .= " '" . $variable ['puntaje'] . "')";
+				$cadenaSql .= "' " . $variable ['puntaje'] . "',";
+				$cadenaSql .= " '" . $variable ['normatividad'] . "')";
 				break;				
 				
 			case "publicacionActualizar" :
@@ -201,7 +202,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" ei.numero_acta, ";
 				$cadenaSql.=" ei.fecha_acta, ";
 				$cadenaSql.=" ei.caso_acta, ";
-				$cadenaSql.=" ei.puntaje ";
+				$cadenaSql.=" ei.puntaje, ";
+				$cadenaSql.=" ei.normatividad ";
 				$cadenaSql.=" FROM docencia.experiencia_investigacion as ei ";
 				$cadenaSql.=" left join docencia.docente dc on ei.documento_docente=dc.documento_docente ";
 				$cadenaSql.=" WHERE ei.documento_docente ='" . $variable['documento_docente']. "'";
@@ -221,7 +223,8 @@ class Sql extends \Sql {
 				$cadenaSql .= "numero_acta = '" . $variable ['numeroActa'] . "', ";
 				$cadenaSql .= "fecha_acta = '" . $variable ['fechaActa'] . "', ";
 				$cadenaSql .= "caso_acta = '" . $variable ['numeroCasoActa'] . "', ";
-				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "'";
+				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "', ";
+				$cadenaSql .= "normatividad = '" . $variable ['normatividad'] . "'";
 				$cadenaSql .= "WHERE ";
 				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";
 				$cadenaSql .= "and id_experiencia_investigacion ='" . $variable ['identificadorExperiencia'] . "' ";
@@ -229,7 +232,6 @@ class Sql extends \Sql {
 				break;
 				
 		}
-		
 		return $cadenaSql;
 	}
 }

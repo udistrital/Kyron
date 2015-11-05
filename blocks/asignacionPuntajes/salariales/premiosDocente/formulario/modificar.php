@@ -110,6 +110,7 @@ class FormularioModificar {
 		$_REQUEST['fechaActa'] =  $resultadoPremioDocente[0]['fecha_acta'];
 		$_REQUEST['numeroCasoActa'] =  $resultadoPremioDocente[0]['caso_acta'];
 		$_REQUEST['puntaje'] =  $resultadoPremioDocente[0]['puntaje'];
+		$_REQUEST['normatividad'] =  $resultadoPremioDocente[0]['normatividad'];
 		
 		$esteCampo = "marcoModificarRegistro";
 		$atributos ['id'] = $esteCampo;
@@ -681,6 +682,39 @@ class FormularioModificar {
 			echo $this->miFormulario->campoCuadroTexto ( $atributos );
 			unset ( $atributos );
 			// ----------------FIN CONTROL: Campo de Texto Puntaje Premio al Docente--------------------------------------------------------
+			
+			// ----------------INICIO CONTROL: Campo de Texto Normatividad--------------------------------------------------------
+			$esteCampo = 'normatividad';
+			$atributos ['id'] = $esteCampo;
+			$atributos ['nombre'] = $esteCampo;
+			$atributos ['tipo'] = 'text';
+			$atributos ['estilo'] = 'jqueryui';
+			$atributos ['marco'] = true;
+			$atributos ['estiloMarco'] = '';
+			$atributos ["etiquetaObligatorio"] = false;
+			$atributos ['columnas'] = 1;
+			$atributos ['dobleLinea'] = 0;
+			$atributos ['tabIndex'] = $tab;
+			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+			$atributos ['validar'] = 'maxSize[200]';
+				
+			if (isset ( $_REQUEST [$esteCampo] )) {
+				$atributos ['valor'] = $_REQUEST [$esteCampo];
+			} else {
+				$atributos ['valor'] = '';
+			}
+			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+			$atributos ['deshabilitado'] = false;
+			$atributos ['tamanno'] = 57;
+			$atributos ['maximoTamanno'] = '10';
+			$atributos ['anchoEtiqueta'] = 280;
+			$tab ++;
+				
+			// Aplica atributos globales al control
+			$atributos = array_merge ( $atributos, $atributosGlobales );
+			echo $this->miFormulario->campoCuadroTexto ( $atributos );
+			unset ( $atributos );
+			// ----------------FIN CONTROL: Campo de Texto Fecha de Normatividad--------------------------------------------------------
 			
 					
 				// ------------------Division para los botones-------------------------

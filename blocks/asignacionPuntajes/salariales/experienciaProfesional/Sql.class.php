@@ -177,7 +177,7 @@ class Sql extends \Sql {
 			case "registrar" :
 				$cadenaSql = "INSERT INTO docencia.experiencia_profesional( ";
 				$cadenaSql .= "documento_docente, id_universidad, otra_entidad, cargo, ";
-				$cadenaSql .= "fecha_inicio, fecha_finalizacion, dias_experiencia, numero_acta, fecha_acta, caso_acta, puntaje) ";
+				$cadenaSql .= "fecha_inicio, fecha_finalizacion, dias_experiencia, numero_acta, fecha_acta, caso_acta, puntaje, normatividad) ";
 				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
 				$cadenaSql .= " " . $variable ['entidadInstitucion'] . ",";
 				$cadenaSql .= " '" . $variable ['otraEntidad'] . "',";
@@ -188,7 +188,8 @@ class Sql extends \Sql {
 				$cadenaSql .= " '" . $variable ['numeroActa'] . "',";
 				$cadenaSql .= " '" . $variable ['fechaActa'] . "',";
 				$cadenaSql .= "' " . $variable ['numeroCasoActa'] . "',";
-				$cadenaSql .= " '" . $variable ['puntaje'] . "')";
+				$cadenaSql .= "' " . $variable ['puntaje'] . "',";
+				$cadenaSql .= " '" . $variable ['normatividad'] . "')";
 				break;				
 				
 			case "publicacionActualizar" :
@@ -203,7 +204,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" ep.numero_acta, ";
 				$cadenaSql.=" ep.fecha_acta, ";
 				$cadenaSql.=" ep.caso_acta, ";
-				$cadenaSql.=" ep.puntaje ";
+				$cadenaSql.=" ep.puntaje, ";
+				$cadenaSql.=" ep.normatividad ";
 				$cadenaSql.=" FROM docencia.experiencia_profesional as ep ";
 				$cadenaSql.=" left join docencia.docente dc on ep.documento_docente=dc.documento_docente ";
 				$cadenaSql.=" WHERE ep.documento_docente ='" . $variable['documento_docente']. "'";
@@ -223,7 +225,8 @@ class Sql extends \Sql {
 				$cadenaSql .= "numero_acta = '" . $variable ['numeroActa'] . "', ";
 				$cadenaSql .= "fecha_acta = '" . $variable ['fechaActa'] . "', ";
 				$cadenaSql .= "caso_acta = '" . $variable ['numeroCasoActa'] . "', ";
-				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "' ";
+				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "', ";
+				$cadenaSql .= "normatividad = '" . $variable ['normatividad'] . "' ";
 				$cadenaSql .= "WHERE ";
 				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";
 				$cadenaSql .= "and id_experiencia_profesional ='" . $variable ['identificadorExperiencia'] . "' ";

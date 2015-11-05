@@ -786,6 +786,8 @@ class FormularioModificar {
 				$valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
 				$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 				$valorCodificado .= "&opcion=actualizar";
+				$valorCodificado .= "&arreglo=".$_REQUEST['arreglo'];
+				
 				/*
 				 * Sara permite validar los campos en el formulario o funcion destino.
 				 * Para ello se envía los datos atributos["validadar"] de los componentes del formulario

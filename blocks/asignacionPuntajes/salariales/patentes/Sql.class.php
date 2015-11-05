@@ -185,7 +185,7 @@ class Sql extends \Sql {
 				$cadenaSql = "INSERT INTO docencia.patente( ";
 				$cadenaSql .= "documento_docente, id_tipo_patente, titulo_patente, id_universidad, ";
 				$cadenaSql .= "paiscodigo, anno_obtencion,concepto_patente, numero_registro, ";
-				$cadenaSql .= "numero_acta, fecha_acta, numero_caso, puntaje) ";
+				$cadenaSql .= "numero_acta, fecha_acta, numero_caso, puntaje, normatividad) ";
 				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
 				$cadenaSql .= " '" . $variable ['tipoPatente'] . "',";
 				$cadenaSql .= " '" . $variable ['tituloPatente'] . "',";
@@ -197,7 +197,8 @@ class Sql extends \Sql {
 				$cadenaSql .= "' " . $variable ['numeroActa'] . "',";
 				$cadenaSql .= " '" . $variable ['fechaActa'] . "',";
 				$cadenaSql .= "' " . $variable ['numeroCasoActa'] . "',";
-				$cadenaSql .= " '" . $variable ['puntaje'] . "')";
+				$cadenaSql .= "' " . $variable ['puntaje'] . "',";
+				$cadenaSql .= " '" . $variable ['normatividad'] . "')";
 				break;
 				
 			case "publicacionActualizar" :
@@ -213,7 +214,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" pat.numero_acta, ";
 				$cadenaSql.=" pat.fecha_acta, ";
 				$cadenaSql.=" pat.numero_caso, ";
-				$cadenaSql.=" pat.puntaje ";
+				$cadenaSql.=" pat.puntaje, ";
+				$cadenaSql.=" pat.normatividad ";
 				$cadenaSql.=" FROM docencia.patente pat ";
 				$cadenaSql.=" left join docencia.docente dc on pat.documento_docente=dc.documento_docente ";
 				$cadenaSql.=" WHERE pat.documento_docente ='" . $variable['documento_docente']. "'";
@@ -235,7 +237,8 @@ class Sql extends \Sql {
 				$cadenaSql .= "numero_acta = '" . $variable ['numeroActa'] . "', ";
 				$cadenaSql .= "fecha_acta = '" . $variable ['fechaActa'] . "', ";
 				$cadenaSql .= "numero_caso = '" . $variable ['numeroCasoActa'] . "', ";
-				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "'";
+				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "', ";
+				$cadenaSql .= "normatividad = '" . $variable ['normatividad'] . "'";
 				$cadenaSql .= "WHERE ";
 				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";
 				$cadenaSql .= "and id_patente ='" . $variable ['identificadorPatente_old'] . "' ";

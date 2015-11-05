@@ -141,6 +141,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "	descripcion";
 				$cadenaSql .= " FROM ";
 				$cadenaSql .= " docencia.contexto";
+				$cadenaSql .= " WHERE id_contexto != -1";
 				break;
 				
 			case "caracter" :
@@ -196,7 +197,7 @@ class Sql extends \Sql {
 			case "registrar" :
 				$cadenaSql = "INSERT INTO docencia.produccion_video( ";
 				$cadenaSql .= "documento_docente, titulo_video, numero_autores, numero_autores_ud, ";
-				$cadenaSql .= "fecha_realizacion, id_contexto, id_caracter_video, numero_evaluadores, numero_acta, fecha_acta, caso_acta, puntaje) ";
+				$cadenaSql .= "fecha_realizacion, id_contexto, id_caracter_video, numero_evaluadores, numero_acta, fecha_acta, caso_acta, puntaje, normatividad) ";
 				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
 				$cadenaSql .= " '" . $variable ['tituloVideo'] . "',";
 				$cadenaSql .= " '" . $variable ['numeroAutores'] . "',";
@@ -208,7 +209,8 @@ class Sql extends \Sql {
 				$cadenaSql .= " '" . $variable ['numeroActa'] . "',";
 				$cadenaSql .= " '" . $variable ['fechaActa'] . "',";
 				$cadenaSql .= "' " . $variable ['numeroCasoActa'] . "',";
-				$cadenaSql .= " '" . $variable ['puntaje'] . "')";
+				$cadenaSql .= "' " . $variable ['puntaje'] . "',";
+				$cadenaSql .= " '" . $variable ['normatividad'] . "')";
 				$cadenaSql .= " returning id_produccion_video";
 				break;
 				
@@ -234,7 +236,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" pv.numero_acta, ";
 				$cadenaSql.=" pv.fecha_acta, ";
 				$cadenaSql.=" pv.caso_acta, ";
-				$cadenaSql.=" pv.puntaje ";
+				$cadenaSql.=" pv.puntaje, ";
+				$cadenaSql.=" pv.normatividad ";
 				$cadenaSql.=" FROM docencia.produccion_video AS pv ";
 				$cadenaSql.=" left join docencia.docente dc on pv.documento_docente=dc.documento_docente ";
 				$cadenaSql.=" WHERE pv.documento_docente ='" . $variable['documento_docente']. "'";
@@ -265,7 +268,8 @@ class Sql extends \Sql {
 				$cadenaSql .= "numero_acta = '" . $variable ['numeroActa'] . "', ";
 				$cadenaSql .= "fecha_acta = '" . $variable ['fechaActa'] . "', ";
 				$cadenaSql .= "caso_acta = '" . $variable ['numeroCasoActa'] . "', ";
-				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "'";
+				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "', ";
+				$cadenaSql .= "normatividad = '" . $variable ['normatividad'] . "'";
 				$cadenaSql .= "WHERE ";
 				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";
 				$cadenaSql .= "and id_produccion_video ='" . $variable ['identificadorProduccionVideo'] . "' ";

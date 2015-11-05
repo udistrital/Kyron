@@ -42,7 +42,6 @@ class RegistrarIndexacionRevista {
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
 		$transaccion = TRUE;
 		$transaccion &= $resultado;
-		
 		for($i=1; $i<=3 && $transaccion; $i++){
 			if(isset($_REQUEST['old_documentoEvaluador' . $i])){//Actualizar evaluador
 				$datos = array(
@@ -57,7 +56,8 @@ class RegistrarIndexacionRevista {
 						'puntaje' => $_REQUEST ['puntajeSugeridoEvaluador'.$i]
 				);
 				$cadenaSql = $this->miSql->getCadenaSql ('actualizarEvaluador', $datos);
-				$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );				
+				$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );		
+				
 			} else if (isset($_REQUEST['documentoEvaluador' . $i]) && $_REQUEST['documentoEvaluador' . $i] != ''){//Insertar nuevo evaluador
 				$datos = array(
 						'documento_evaluador' =>  $_REQUEST ['documentoEvaluador'.$i],

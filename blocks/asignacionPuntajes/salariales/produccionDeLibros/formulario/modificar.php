@@ -137,6 +137,7 @@ class FormularioModificar {
 		$_REQUEST['fechaActaLibro'] =  $resultado[0]['fecha_acta'];
 		$_REQUEST['numeroCasoActaLibro'] =  $resultado[0]['numero_caso'];
 		$_REQUEST['puntajeLibro'] =  $resultado[0]['puntaje'];
+		$_REQUEST['normatividad'] =  $resultado[0]['normatividad'];
 		
 		// ---------------- FIN: Lista Variables Modificar--------------------------------------------------------
 		
@@ -838,6 +839,38 @@ class FormularioModificar {
 		unset ( $atributos );
 		// ----------------FIN CONTROL: Campo de Texto Puntaje Libro--------------------------------------------------------
 		
+		// ----------------INICIO CONTROL: Campo de Texto Normatividad--------------------------------------------------------
+		$esteCampo = 'normatividad';
+		$atributos ['id'] = $esteCampo;
+		$atributos ['nombre'] = $esteCampo;
+		$atributos ['tipo'] = 'text';
+		$atributos ['estilo'] = 'jqueryui';
+		$atributos ['marco'] = true;
+		$atributos ['estiloMarco'] = '';
+		$atributos ["etiquetaObligatorio"] = false;
+		$atributos ['columnas'] = 1;
+		$atributos ['dobleLinea'] = 0;
+		$atributos ['tabIndex'] = $tab;
+		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+		$atributos ['validar'] = 'maxSize[200]';
+			
+		if (isset ( $_REQUEST [$esteCampo] )) {
+			$atributos ['valor'] = $_REQUEST [$esteCampo];
+		} else {
+			$atributos ['valor'] = '';
+		}
+		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+		$atributos ['deshabilitado'] = false;
+		$atributos ['tamanno'] = 57;
+		$atributos ['maximoTamanno'] = '10';
+		$atributos ['anchoEtiqueta'] = 280;
+		$tab ++;
+			
+		// Aplica atributos globales al control
+		$atributos = array_merge ( $atributos, $atributosGlobales );
+		echo $this->miFormulario->campoCuadroTexto ( $atributos );
+		unset ( $atributos );
+		// ----------------FIN CONTROL: Campo de Texto Fecha de Normatividad--------------------------------------------------------
 				
 				// ------------------Division para los botones-------------------------
 				$atributos ["id"] = "botones";
@@ -916,6 +949,8 @@ class FormularioModificar {
 				$valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
 				$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 				$valorCodificado .= "&opcion=actualizar";
+				$valorCodificado .= "&arreglo=".$_REQUEST['arreglo'];
+				
 				/*
 				 * Sara permite validar los campos en el formulario o funcion destino.
 				 * Para ello se envía los datos atributos["validadar"] de los componentes del formulario

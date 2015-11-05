@@ -61,15 +61,40 @@ class registrarForm {
 		 * Se crea una función que valida todo de acuerdo a el campo validarCampos que corresponde
 		 * a las entradas puestas en el string jquery.validationEngine
 		 */
+		if (isset ( $_REQUEST ['id_docente'] ) && $_REQUEST ['id_docente'] != '') {
+			$id_docente = $_REQUEST ['id_docente'];
+		} else {
+			$id_docente = '';
+		}
+		
+		if (isset ( $_REQUEST ['facultad'] ) && $_REQUEST ['facultad'] != '') {
+			$facultad = $_REQUEST ['facultad'];
+		} else {
+			$facultad = '';
+		}
+		
+		if (isset ( $_REQUEST ['proyectoCurricular'] ) && $_REQUEST ['proyectoCurricular'] != '') {
+			$proyectoCurricular = $_REQUEST ['proyectoCurricular'];
+		} else {
+			$proyectoCurricular = '';
+		}
 		
 		$arreglo = array (
-				'documento_docente' => $_REQUEST ['id_docente'],
-				'id_facultad' =>$_REQUEST ['facultad'],
-				'id_proyectocurricular' =>$_REQUEST ['proyectoCurricular'] 
+				'documento_docente' => $id_docente,
+				'id_facultad' => $facultad,
+				'id_proyectocurricular' => $proyectoCurricular
+		);
+		
+		$arregloSerialize = array (
+				$id_docente,
+				$facultad,
+				$proyectoCurricular
 		);
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'consultarLibros', $arreglo );
 		$indexacion = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+		
+		$arreglo=serialize($arregloSerialize);
 		
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
 		$esteCampo = $esteBloque ['nombre'];
@@ -157,6 +182,7 @@ class registrarForm {
 					for($i = 0; $i < count ( $indexacion ); $i ++) {
 						$variable = "pagina=" . $miPaginaActual; // pendiente la pagina para modificar parametro
 						$variable .= "&opcion=modificar";
+						$variable .= "&arreglo=" . $arreglo;						
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
 						$variable .= "&documento_docente=" . $indexacion [$i] ['documento_docente'];
 						$variable .= "&codigo_isbn=" . $indexacion [$i] ['codigo_isbn'];

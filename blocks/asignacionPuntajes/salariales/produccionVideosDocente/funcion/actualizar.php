@@ -68,7 +68,6 @@ class RegistrarIndexacionRevista {
 						$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
 						$existeEvaluador++;
 						
-						echo($cadenaSql);
 					}					
 				}else{
 					$existeEvaluador++;
@@ -107,16 +106,12 @@ class RegistrarIndexacionRevista {
 				$cadenaSql = $this->miSql->getCadenaSql ( 'registroEvaluador', $arregloEvaluador );
 				$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
 				
-				echo $cadenaSql;
 			}
 		}
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizar', $_REQUEST );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
 
-		echo $cadenaSql;
-		var_dump($resultado); exit;
-		
 		if ($resultado) {
 			redireccion::redireccionar ( 'actualizo',  $_REQUEST['docenteRegistrar']);
 			exit ();

@@ -133,6 +133,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "	descripcion";
 				$cadenaSql .= " FROM ";
 				$cadenaSql .= " docencia.contexto";
+				$cadenaSql .= " WHERE id_contexto != -1";
 				break;
 				
 			case "pais" :
@@ -227,7 +228,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "documento_docente, id_universidad, otra_entidad, id_tipo_entidad, ";
 				$cadenaSql .= "id_contexto, paiscodigo, ciudadid, concepto_premio, fecha_premio, ";
 				$cadenaSql .= "numero_condecorados, anno_premio, ";
-				$cadenaSql .= "numero_acta, fecha_acta, caso_acta, puntaje) ";
+				$cadenaSql .= "numero_acta, fecha_acta, caso_acta, puntaje, normatividad) ";
 				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
 				$cadenaSql .= " '" . $variable ['entidad'] . "',";
 				$cadenaSql .= " '" . $variable ['otraEntidad'] . "',";
@@ -242,7 +243,8 @@ class Sql extends \Sql {
 				$cadenaSql .= "' " . $variable ['numeroActa'] . "',";
 				$cadenaSql .= " '" . $variable ['fechaActa'] . "',";
 				$cadenaSql .= "' " . $variable ['numeroCasoActa'] . "',";
-				$cadenaSql .= " '" . $variable ['puntaje'] . "')";
+				$cadenaSql .= "' " . $variable ['puntaje'] . "',";
+				$cadenaSql .= " '" . $variable ['normatividad'] . "')";
 				break;
 				
 			case "publicacionActualizar" :
@@ -261,7 +263,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" pd.numero_acta, ";
 				$cadenaSql.=" pd.fecha_acta, ";
 				$cadenaSql.=" pd.caso_acta, ";
-				$cadenaSql.=" pd.puntaje ";
+				$cadenaSql.=" pd.puntaje, ";
+				$cadenaSql.=" pd.normatividad ";
 				$cadenaSql.=" FROM docencia.premio_docente AS pd ";
 				$cadenaSql.=" left join docencia.docente dc on pd.documento_docente=dc.documento_docente ";
 				$cadenaSql.=" WHERE pd.documento_docente ='" . $variable['documento_docente']. "'";
@@ -286,7 +289,8 @@ class Sql extends \Sql {
 				$cadenaSql .= "numero_acta = '" . $variable ['numeroActa'] . "', ";
 				$cadenaSql .= "fecha_acta = '" . $variable ['fechaActa'] . "', ";
 				$cadenaSql .= "caso_acta = '" . $variable ['numeroCasoActa'] . "', ";
-				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "'";
+				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "', ";
+				$cadenaSql .= "normatividad = '" . $variable ['normatividad'] . "'";
 				$cadenaSql .= "WHERE ";
 				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";
 				$cadenaSql .= "and id_premio_docente ='" . $variable ['identificadorPremioDocente_old'] . "' ";

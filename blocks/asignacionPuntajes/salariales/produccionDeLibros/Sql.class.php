@@ -124,6 +124,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "	nombre_editorial";
 				$cadenaSql .= " FROM ";
 				$cadenaSql .= " docencia.editorial";
+				$cadenaSql .= " WHERE  id_editorial != -1";
 				break;
 				
 			case "tipoLibro" :
@@ -131,8 +132,9 @@ class Sql extends \Sql {
 				$cadenaSql .= " id_tipo_libro, tipo_libro";
 				$cadenaSql .= "	descripcion";
 				$cadenaSql .= " FROM ";
-				$cadenaSql .= " docencia.tipo_libro ORDER BY";
-				$cadenaSql .= " tipo_libro ASC";
+				$cadenaSql .= " docencia.tipo_libro";
+				$cadenaSql .= " WHERE  id_tipo_libro != -1";
+				$cadenaSql .= "  ORDER BY tipo_libro ASC";
 				break;
 				
 			case "docente" :
@@ -162,7 +164,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" li.numero_acta AS numero_acta,";
 				$cadenaSql.=" li.fecha_acta AS fecha_acta,";
 				$cadenaSql.=" li.numero_caso AS numero_caso,";
-				$cadenaSql.=" li.puntaje AS puntaje";
+				$cadenaSql.=" li.puntaje AS puntaje,";
+				$cadenaSql.=" li.normatividad AS normatividad";
 				$cadenaSql.=" FROM docencia.libro_docente AS li";
 				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON dc.documento_docente = li.documento_docente";
 				$cadenaSql.=" LEFT JOIN docencia.tipo_libro AS tl ON tl.id_tipo_libro = li.id_tipo_libro";
@@ -205,7 +208,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" li.numero_acta AS numero_acta,";
 				$cadenaSql.=" li.fecha_acta AS fecha_acta,";
 				$cadenaSql.=" li.numero_caso AS numero_caso,";
-				$cadenaSql.=" li.puntaje AS puntaje";
+				$cadenaSql.=" li.puntaje AS puntaje,";
+				$cadenaSql.=" li.normatividad AS normatividad";
 				$cadenaSql.=" FROM docencia.libro_docente AS li";
 				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON dc.documento_docente = li.documento_docente";
 				$cadenaSql.=" LEFT JOIN docencia.tipo_libro AS tl ON tl.id_tipo_libro = li.id_tipo_libro";
@@ -253,7 +257,8 @@ class Sql extends \Sql {
 						$cadenaSql.=" numero_acta,";
 						$cadenaSql.=" fecha_acta, ";
 						$cadenaSql.=" numero_caso, ";
-						$cadenaSql.=" puntaje ";
+						$cadenaSql.=" puntaje, ";
+						$cadenaSql.=" normatividad ";
 						$cadenaSql.=" )";
 						$cadenaSql.=" VALUES (";
 						$cadenaSql.=" '" . $variable ['id_docenteRegistrar'] . "',";
@@ -270,7 +275,8 @@ class Sql extends \Sql {
 						$cadenaSql.=" '" . $variable ['numeroActaLibro'] . "',";
 						$cadenaSql.=" '" . $variable ['fechaActaLibro'] . "',";
 						$cadenaSql.=" '" . $variable ['numeroCasoActaLibro'] . "',";
-						$cadenaSql.=" '" . $variable ['puntajeLibro'] . "'";
+						$cadenaSql.=" '" . $variable ['puntajeLibro'] . "',";
+						$cadenaSql.=" '" . $variable ['normatividad'] . "'";
 						$cadenaSql.=" ) ";
 					}
 					if($i == 1 && $evaluadorExiste){
@@ -318,7 +324,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" numero_acta = '" . $variable ['numeroActaLibro'] . "',";
 				$cadenaSql.=" fecha_acta = '" . $variable ['fechaActaLibro'] . "', ";
 				$cadenaSql.=" numero_caso = '" . $variable ['numeroCasoActaLibro'] . "', ";
-				$cadenaSql.=" puntaje = '" . $variable ['puntajeLibro'] . "'";
+				$cadenaSql.=" puntaje = '" . $variable ['puntajeLibro'] . "', ";
+				$cadenaSql.=" normatividad = '" . $variable ['normatividad'] . "'";
 				$cadenaSql.=" WHERE";
 				$cadenaSql.=" documento_docente = '" . $variable ['old_id_docenteRegistrar'] . "'";
 				$cadenaSql.=" AND codigo_isbn = '" . $variable ['old_isbnLibro'] . "'";

@@ -55,6 +55,7 @@ class RegistrarIndexacionRevista {
 			'fechaActa' => $_REQUEST['fechaActa'],
 			'numeroCasoActa' => $_REQUEST['numeroCasoActa'],
 			'puntaje' => $_REQUEST['puntaje'],
+			'normatividad' => $_REQUEST['normatividad'],
 			'identificadorExperiencia' => $_REQUEST['identificadorExperiencia']
 		);
 		
