@@ -25,7 +25,7 @@ $this->idioma["fechaInicioTitulo"] = "Seleccione la Fecha de Inicio";
 $this->idioma["fechaFinalizacion"] = "Fecha de Finalización";
 $this->idioma["fechaFinalizacionTitulo"] = "Seleccione la Fecha de Finalización";
 
-$this->idioma["marcoConsultaGeneral"] = "Experiencia en Investigación";
+$this->idioma["marcoConsultaGeneral"] = "Consulta Experiencia en Investigación";
 $this->idioma["marcoModificarRegistro"] = "Modificar Información de la Experiencia en Investigación";
 
 $this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";

@@ -13,7 +13,7 @@ $this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Pr
 $this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro del Premio Otorgado al Docente </br>";
 /////////////////////////////////
 
-$this->idioma["marcoConsultaGeneral"] = "Premios Otorgados al Docente Registrados";
+$this->idioma["marcoConsultaGeneral"] = "Consulta Premios Otorgados al Docente Registrados";
 $this->idioma["marcoModificarRegistro"] = "Modificar Información del Premio Otorgado al Docente";
 
 //* SECCIÓN ELEMENTOS QUE SU NOMBRE POSIBLEMENTE VARIA DENTRO DEL FORMULARIO *//

@@ -18,7 +18,7 @@ $this->idioma["nombre"] = "Título del Trabajo";
 $this->idioma["anno"] = "Año Dirección";
 $this->idioma["categoria"] = "Categoría Del Trabajo";
 $this->idioma["tipo"] = "Tipo de Trabajo";
-$this->idioma["marcoConsultaGeneral"] = "Dirección de Trabajos de Grado Registradas";
+$this->idioma["marcoConsultaGeneral"] = "Consulta Dirección de Trabajos de Grado Registradas";
 $this->idioma["marcoModificarRegistro"] = "Modificar Información de la Dirección de Trabajo Grado";
 
 $this->idioma["nombreTitulo"] = "Título del Trabajo de Grado.";

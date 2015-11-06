@@ -1,7 +1,7 @@
 <?php
 $this->idioma["publicacionesImpresasRegistrar"] = "";
 $this->idioma["publicacionesImpresas"] = "";
-$this->idioma["marcoConsultaGeneral"] = "";
+$this->idioma["marcoConsultaGeneral"] = "Consulta ";
 $this->idioma["marcoModificarRegistro"] = "";
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
 $this->idioma["tabConsultar"] = "Consultar Publicación Impresa";
@@ -36,7 +36,7 @@ $this->idioma["volumenRevistaTitulo"] = "Ingrese el volúmen de la revista.";
 $this->idioma["annoRevistaTitulo"] = "Ingrese el año de la revista.";
 $this->idioma["categoriaTitulo"] = "Seleccione la categoría revista.";
 
-$this->idioma["marcoConsultaGeneral"] = "Publicación Impresa";
+$this->idioma["marcoConsultaGeneral"] = "Consulta Publicación Impresa";
 $this->idioma["marcoModificarRegistro"] = "Modificar Información de la Publicación Impresa";
 $this->idioma["marcoModificarRegistroTitulo"] = "";
 

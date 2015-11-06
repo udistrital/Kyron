@@ -2,7 +2,7 @@
 
 $this->idioma["traduccionesDeLibrosRegistrar"] = "";
 $this->idioma["traduccionesDeLibros"] = "";
-$this->idioma["marcoConsultaGeneral"] = "";
+$this->idioma["marcoConsultaGeneral"] = "Consulta ";
 $this->idioma["marcoModificarRegistro"] = "";
 
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
@@ -24,7 +24,7 @@ $this->idioma["nombreAutorOriginal"] = "Autor de la publicación original:";
 $this->idioma["categoria0"] = "Categorías";
 $this->idioma["categoria1"] = "Tipo de Indexación";
 $this->idioma["numero"] = "Número de Libro";
-$this->idioma["marcoConsultaGeneral"] = "Traducciones de Libros Registradas";
+$this->idioma["marcoConsultaGeneral"] = "Consulta Traducciones de Libros Registradas";
 $this->idioma["marcoModificarRegistro"] = "Modificar Información de Traducciones de Libros";
 
 $this->idioma["nombreTitulo"] = "Nombre de Libro Públicada.";

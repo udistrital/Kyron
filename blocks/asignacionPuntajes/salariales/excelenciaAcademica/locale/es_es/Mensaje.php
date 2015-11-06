@@ -24,7 +24,7 @@ $this->idioma["numeroResolucionTitulo"] = "Ingrese el número de resolución";
 $this->idioma["resolucionEmitidaPor"] = "Resolución Emitida Por";
 $this->idioma["resolucionEmitidaPorTitulo"] = "Ingrese la persona encargada de emitir la resolución";
 
-$this->idioma["marcoConsultaGeneral"] = "Registros de Excelencia Académica";
+$this->idioma["marcoConsultaGeneral"] = "Consulta Registros de Excelencia Académica";
 $this->idioma["marcoModificarRegistro"] = "Modificar Información de la Excelencia Académica";
 
 $this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";

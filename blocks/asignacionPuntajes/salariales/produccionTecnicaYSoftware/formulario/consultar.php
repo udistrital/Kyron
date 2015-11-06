@@ -157,11 +157,11 @@ class registrarForm {
 				
 				if ($indexacion) {
 					
-					$esteCampo = "marcoDatosBasicos";
+					$esteCampo = $esteCampo = "marcoConsultaGeneral";
 					$atributos ['id'] = $esteCampo;
 					$atributos ["estilo"] = "jqueryui";
 					$atributos ['tipoEtiqueta'] = 'inicio';
-					$atributos ["leyenda"] = "Revistas Indexadas";					
+					$atributos ["leyenda"] = $this->lenguaje->getCadena ( $esteCampo );		
 					echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
 					
 					echo "<table id='tablaTitulos'>";
