@@ -62,14 +62,43 @@ class registrarForm {
 		 * a las entradas puestas en el string jquery.validationEngine
 		 */
 		
+		$conexion = "docencia";
+		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+		
+		if (isset ( $_REQUEST ['id_docente'] ) && $_REQUEST ['id_docente'] != '') {
+			$id_docente = $_REQUEST ['id_docente'];
+		} else {
+			$id_docente = '';
+		}
+		
+		if (isset ( $_REQUEST ['facultad'] ) && $_REQUEST ['facultad'] != '') {
+			$facultad = $_REQUEST ['facultad'];
+		} else {
+			$facultad = '';
+		}
+		
+		if (isset ( $_REQUEST ['proyectoCurricular'] ) && $_REQUEST ['proyectoCurricular'] != '') {
+			$proyectoCurricular = $_REQUEST ['proyectoCurricular'];
+		} else {
+			$proyectoCurricular = '';
+		}
+		
 		$arreglo = array (
-				'documento_docente' => $_REQUEST ['id_docente'],
-				'id_facultad' =>$_REQUEST ['facultad'],
-				'id_proyectocurricular' =>$_REQUEST ['proyectoCurricular'] 
+				'documento_docente' => $id_docente,
+				'id_facultad' => $facultad,
+				'id_proyectocurricular' => $proyectoCurricular
+		);
+		
+		$arregloSerialize = array (
+				$id_docente,
+				$facultad,
+				$proyectoCurricular
 		);
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'consultarCapituloLibro', $arreglo );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+		
+		$arreglo=serialize($arregloSerialize);
 		
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
 		$esteCampo = $esteBloque ['nombre'];
@@ -163,6 +192,7 @@ class registrarForm {
 						$variable .= "&opcion=modificar";
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
 						$variable .= "&documento_docente=" . $resultado [$i] ['documento_docente'];
+						$variable .= "&arreglo=" . $arreglo;
 						$variable .= "&codigo_isbn=" . $resultado [$i] ['codigo_isbn'];
 						$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 						
