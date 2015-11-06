@@ -114,7 +114,7 @@ class FormularioModificar {
 		$_REQUEST['fechaActa'] =  $resultado[0]['fecha_acta'];
 		$_REQUEST['numeroCasoActa'] =  $resultado[0]['caso_acta'];
 		$_REQUEST['puntaje'] =  $resultado[0]['puntaje'];
-		$_REQUEST['normatividad'] =  $resultado[0]['puntaje'];
+		$_REQUEST['normatividad'] =  $resultado[0]['normatividad'];
 		
 		// ---------------- FIN: Lista Variables Modificar--------------------------------------------------------
 		
