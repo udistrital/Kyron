@@ -874,7 +874,7 @@ class FormularioRegistro {
 			$atributos ['valor'] = '';
 		}
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-		$atributos ['deshabilitado'] = true;
+		$atributos ['deshabilitado'] = false;
 		$atributos ['tamanno'] = 57;
 		$atributos ['maximoTamanno'] = '10';
 		$atributos ['anchoEtiqueta'] = 280;

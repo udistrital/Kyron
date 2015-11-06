@@ -938,7 +938,7 @@ class FormularioModificar {
 				$atributos ['valor'] = '';
 			}
 			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-			$atributos ['deshabilitado'] = true;
+			$atributos ['deshabilitado'] = false;
 			$atributos ['tamanno'] = 57;
 			$atributos ['maximoTamanno'] = '10';
 			$atributos ['anchoEtiqueta'] = 280;
@@ -1026,6 +1026,7 @@ class FormularioModificar {
 				$valorCodificado .= "&pagina=" . $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
 				$valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
 				$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
+				$valorCodificado .= "&arreglo=".$_REQUEST['arreglo'];
 				$valorCodificado .= "&opcion=actualizar";
 				/*
 				 * Sara permite validar los campos en el formulario o funcion destino.
