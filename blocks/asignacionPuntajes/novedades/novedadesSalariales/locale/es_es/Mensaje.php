@@ -1,7 +1,7 @@
 <?php
 $this->idioma["novedadesSalarialesRegistrar"] = "";
 $this->idioma["novedadesSalariales"] = "";
-$this->idioma["marcoConsultaGeneral"] = "";
+$this->idioma["marcoConsultaGeneral"] = "Consulta ";
 $this->idioma["marcoModificarRegistro"] = "";
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
 $this->idioma["tabConsultar"] = "Consultar Novedades Salariales";
@@ -25,7 +25,7 @@ $this->idioma["tipo"] = "Asignación Puntaje:";
 $this->idioma["descripcionTitulo"] = "Ingrese el título de la novedad.";
 $this->idioma["tipoTitulo"] = "Ingrese el item o módulo para el que se reporta la novedad.";
 
-$this->idioma["marcoConsultaGeneral"] = "Novedades Salariales";
+$this->idioma["marcoConsultaGeneral"] = "Consulta Novedades Salariales";
 $this->idioma["marcoModificarRegistro"] = "Modificar Información de la Novedades Salariales";
 $this->idioma["marcoModificarRegistroTitulo"] = "";
 

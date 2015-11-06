@@ -20,7 +20,7 @@ $this->idioma["identificadorColeccion"] = "ISSN";
 $this->idioma["categoria0"] = "Categorías";
 $this->idioma["categoria1"] = "Tipo de Indexación";
 $this->idioma["numero"] = "Número de Revista";
-$this->idioma["marcoConsultaGeneral"] = "Cartas al Editor Registradas";
+$this->idioma["marcoConsultaGeneral"] = "Consulta Cartas al Editor Registradas";
 $this->idioma["marcoModificarRegistro"] = "Modificar Información de Cartas al Editor";
 
 $this->idioma["nombreTitulo"] = "Nombre de Revista Públicada.";

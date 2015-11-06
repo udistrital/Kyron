@@ -27,7 +27,7 @@ $this->idioma["fechaFinalizacionTitulo"] = "Seleccione la Fecha de Finalización
 $this->idioma["duracionExperiencia"] = "Duración de Experiencia (Días)";
 $this->idioma["duracionExperienciaTitulo"] = "Ingrese la Duración de Experiencia (Días)";
 
-$this->idioma["marcoConsultaGeneral"] = "Experiencia en Docencia";
+$this->idioma["marcoConsultaGeneral"] = "Consulta Experiencia en Docencia";
 $this->idioma["marcoModificarRegistro"] = "Modificar Información de la Experiencia en Docencia";
 
 $this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";

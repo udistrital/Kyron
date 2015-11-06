@@ -1,7 +1,7 @@
 <?php
 $this->idioma["titulosAcademicosRegistrar"] = "";
 $this->idioma["titulosAcademicos"] = "";
-$this->idioma["marcoConsultaGeneral"] = "";
+$this->idioma["marcoConsultaGeneral"] = "Consulta ";
 $this->idioma["marcoModificarRegistro"] = "";
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
 $this->idioma["tabConsultar"] = "Consultar Títulos Académicos";
@@ -16,7 +16,7 @@ $this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de T�
 $this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de la Título Académico Para el Docente </br>";
 /////////////////////////////////
 
-$this->idioma["marcoConsultaGeneral"] = "Títulos Académicos Registradas";
+$this->idioma["marcoConsultaGeneral"] = "Consulta Títulos Académicos Registradas";
 $this->idioma["marcoModificarRegistro"] = "Modificar Información de Títulos Académicos";
 
 

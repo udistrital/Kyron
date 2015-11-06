@@ -1,7 +1,7 @@
 <?php
 $this->idioma["ponenciasDocenteRegistrar"] = "";
 $this->idioma["ponenciasDocente"] = "";
-$this->idioma["marcoConsultaGeneral"] = "";
+$this->idioma["marcoConsultaGeneral"] = "Consulta ";
 $this->idioma["marcoModificarRegistro"] = "";
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
 $this->idioma["tabConsultar"] = "Consultar Ponencias del Docente";
@@ -39,7 +39,7 @@ $this->idioma["numeroAutoresUniversidadTitulo"] = "Ingrese el número de autores
 $this->idioma["eventoTitulo"] = "Ingrese el evento presentación de ponencia.";
 $this->idioma["institucionTitulo"] = "Ingrese la institución que certifica.";
 
-$this->idioma["marcoConsultaGeneral"] = "Ponencias del Docente";
+$this->idioma["marcoConsultaGeneral"] = "Consulta Ponencias del Docente";
 $this->idioma["marcoModificarRegistro"] = "Modificar Información de la Ponencias del Docente";
 $this->idioma["marcoModificarRegistroTitulo"] = "";
 

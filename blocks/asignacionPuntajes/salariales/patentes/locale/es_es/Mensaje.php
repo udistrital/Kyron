@@ -13,7 +13,7 @@ $this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Pa
 $this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de la Patente Para el Docente </br>";
 /////////////////////////////////
 
-$this->idioma["marcoConsultaGeneral"] = "Patentes Registradas";
+$this->idioma["marcoConsultaGeneral"] = "Consulta Patentes Registradas";
 $this->idioma["marcoModificarRegistro"] = "Modificar Información de Patentes";
 
 

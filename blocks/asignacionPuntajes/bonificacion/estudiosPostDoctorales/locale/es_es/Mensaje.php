@@ -1,7 +1,7 @@
 <?php
 $this->idioma["estudiosPostDoctoralesRegistrar"] = "";
 $this->idioma["estudiosPostDoctorales"] = "";
-$this->idioma["marcoConsultaGeneral"] = "";
+$this->idioma["marcoConsultaGeneral"] = "Consulta ";
 $this->idioma["marcoModificarRegistro"] = "";
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
 $this->idioma["tabConsultar"] = "Consultar Estudios PostDoctorales";
@@ -31,7 +31,7 @@ $this->idioma["otraEntidadTitulo"] = "Ingrese el nombre de la Entidad o Instituc
 $this->idioma["entidadTitulo"] = "Ingrese el nombre de la Entidad o Institución";
 $this->idioma["annosTitulo"] = "Ingrese el número de años que duró el doctorado";
 
-$this->idioma["marcoConsultaGeneral"] = "Estudios PostDoctorales";
+$this->idioma["marcoConsultaGeneral"] = "Consulta Estudios PostDoctorales";
 $this->idioma["marcoModificarRegistro"] = "Modificar Información de la Estudios PostDoctorales";
 
 $this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";

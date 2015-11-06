@@ -163,6 +163,8 @@ class registrarForm {
 		$variable = "pagina=" . $miPaginaActual;
 		$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 			
+		echo "</br>";
+		
 		// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
 		$esteCampo = 'botonRegresar';
 		$atributos ['id'] = $esteCampo;
@@ -183,7 +185,7 @@ class registrarForm {
 					$atributos ['id'] = $esteCampo;
 					$atributos ["estilo"] = "jqueryui";
 					$atributos ['tipoEtiqueta'] = 'inicio';
-					$atributos ["leyenda"] = "Revistas Indexadas";					
+					$atributos ["leyenda"] = "Novedades Bonificación";					
 					echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
 					
 					echo "<table id='tablaTitulos'>";
@@ -199,8 +201,8 @@ class registrarForm {
 						<th>Fecha Acta</th>
 						<th>Caso Acta</th>
 						<th>Puntaje</th>
-						<th>Puntaje</th>
-						<th>Normatividad</th>	
+						<th>Normatividad</th>
+						<th>Modificar</th>	
 							
 	                </tr>
 	            </thead>

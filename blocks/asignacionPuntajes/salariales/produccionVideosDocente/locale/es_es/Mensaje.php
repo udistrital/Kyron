@@ -13,7 +13,7 @@ $this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Pr
 $this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de Producción de Videos Para el Docente </br>";
 /////////////////////////////////
 
-$this->idioma["marcoConsultaGeneral"] = "Producción de Videos Registradas";
+$this->idioma["marcoConsultaGeneral"] = "Consulta Producción de Videos Registradas";
 $this->idioma["marcoModificarRegistro"] = "Modificar Información de la Producción de Videos";
 
 

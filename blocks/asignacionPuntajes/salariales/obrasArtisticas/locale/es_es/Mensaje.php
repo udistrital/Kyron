@@ -26,7 +26,7 @@ $this->idioma["tituloTitulo"] = "Ingrese el Título de Obra.";
 $this->idioma["certificadorTitulo"] = "Ingrese Quien Certifica la Obra Artística.";
 
 
-$this->idioma["marcoConsultaGeneral"] = "Obras Artísticas Registradas";
+$this->idioma["marcoConsultaGeneral"] = "Consulta Obras Artísticas Registradas";
 $this->idioma["marcoModificarRegistro"] = "Modificar Información de la Obra Artística";
 
 $this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";
