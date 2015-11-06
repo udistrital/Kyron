@@ -151,7 +151,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" po.numero_acta AS numero_acta,";
 				$cadenaSql.=" po.fecha_acta AS fecha_acta,";
 				$cadenaSql.=" po.caso_acta AS caso_acta,";
-				$cadenaSql.=" po.puntaje AS puntaje";
+				$cadenaSql.=" po.puntaje AS puntaje,";
+				$cadenaSql.=" po.normatividad AS normatividad";
 				$cadenaSql.=" FROM";
 				$cadenaSql.=" docencia.ponencia AS po";
 				$cadenaSql.=" LEFT JOIN docencia.contexto_ponencia AS ti ON ti.id_contexto_ponencia=po.id_contexto_ponencia";
@@ -198,7 +199,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" numero_acta,";
 				$cadenaSql.=" fecha_acta,";
 				$cadenaSql.=" caso_acta,";
-				$cadenaSql.=" puntaje";
+				$cadenaSql.=" puntaje,";
+				$cadenaSql.=" normatividad";
 				$cadenaSql.=" )";
 				$cadenaSql.=" VALUES";
 				$cadenaSql.=" (";
@@ -213,7 +215,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" '" . $variable ['numeroActa'] . "',";
 				$cadenaSql.=" '" . $variable ['fechaActa'] . "',";
 				$cadenaSql.=" '" . $variable ['numeroCasoActa'] . "',";
-				$cadenaSql.=" '" . $variable ['puntaje'] . "'";
+				$cadenaSql.=" '" . $variable ['puntaje'] . "',";
+				$cadenaSql.=" '" . $variable ['normatividad'] . "'";
 				$cadenaSql.=" );";
 				break;		
 				
@@ -232,7 +235,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" po.numero_acta AS numero_acta,";
 				$cadenaSql.=" po.fecha_acta AS fecha_acta,";
 				$cadenaSql.=" po.caso_acta AS caso_acta,";
-				$cadenaSql.=" po.puntaje AS puntaje";
+				$cadenaSql.=" po.puntaje AS puntaje,";
+				$cadenaSql.=" po.normatividad AS normatividad";
 				$cadenaSql.=" FROM";
 				$cadenaSql.=" docencia.ponencia AS po";
 				$cadenaSql.=" LEFT JOIN docencia.contexto_ponencia AS ti ON ti.id_contexto_ponencia=po.id_contexto_ponencia";
@@ -255,7 +259,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" numero_acta='" . $variable['numeroActa']. "',";
 				$cadenaSql.=" fecha_acta='" . $variable['fechaActa']. "',";
 				$cadenaSql.=" caso_acta='" . $variable['numeroCasoActa']. "',";
-				$cadenaSql.=" puntaje='" . $variable['puntaje']. "'";
+				$cadenaSql.=" puntaje='" . $variable['puntaje']. "',";
+				$cadenaSql.=" normatividad='" . $variable['normatividad']. "'";
 				$cadenaSql.=" WHERE";
 				$cadenaSql.=" id_ponencia='" . $variable ['id_ponencia'] . "'";
 				$cadenaSql.=" AND estado=true";

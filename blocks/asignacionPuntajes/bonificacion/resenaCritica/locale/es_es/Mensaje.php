@@ -1,7 +1,7 @@
 <?php
 $this->idioma["resenaCriticaRegistrar"] = "";
 $this->idioma["resenaCritica"] = "";
-$this->idioma["marcoConsultaGeneral"] = "";
+$this->idioma["marcoConsultaGeneral"] = "Consulta ";
 $this->idioma["marcoModificarRegistro"] = "";
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
 $this->idioma["tabConsultar"] = "Consultar Reseña Crítica";
@@ -32,7 +32,7 @@ $this->idioma["categoriaTitulo"] = "Ingrese la categoría revista.";
 $this->idioma["annoTitulo"] = "Ingrese el año de la reseña crítica.";
 $this->idioma["autorTitulo"] = "Ingrese el autor de la crítica.";
 
-$this->idioma["marcoConsultaGeneral"] = "Reseña Crítica";
+$this->idioma["marcoConsultaGeneral"] = "Consulta Reseña Crítica";
 $this->idioma["marcoModificarRegistro"] = "Modificar Información de la Reseña Crítica";
 $this->idioma["marcoModificarRegistroTitulo"] = "";
 
