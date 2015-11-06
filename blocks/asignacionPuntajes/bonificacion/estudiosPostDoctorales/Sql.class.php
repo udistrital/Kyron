@@ -186,7 +186,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" numero_acta,";
 				$cadenaSql.=" fecha_acta,";
 				$cadenaSql.=" caso_acta,";
-				$cadenaSql.=" puntaje";
+				$cadenaSql.=" puntaje,";
+				$cadenaSql.=" normatividad";
 				$cadenaSql.=" )";
 				$cadenaSql.=" VALUES";
 				$cadenaSql.=" (";
@@ -199,7 +200,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" '" . $variable ['numeroActa'] . "',";
 				$cadenaSql.=" '" . $variable ['fechaActa'] . "',";
 				$cadenaSql.=" '" . $variable ['numeroCasoActa'] . "',";
-				$cadenaSql.=" '" . $variable ['puntaje'] . "'";
+				$cadenaSql.=" '" . $variable ['puntaje'] . "',";
+				$cadenaSql.=" '" . $variable ['normatividad'] . "'";
 				$cadenaSql.=" )";
 				$cadenaSql.=" ;";
 				break;				
@@ -216,7 +218,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" ep.numero_acta AS numero_acta,";
 				$cadenaSql.=" ep.fecha_acta AS fecha_acta,";
 				$cadenaSql.=" ep.caso_acta AS caso_acta,";
-				$cadenaSql.=" ep.puntaje AS puntaje";
+				$cadenaSql.=" ep.puntaje AS puntaje,";
+				$cadenaSql.=" ep.normatividad AS normatividad";
 				$cadenaSql.=" FROM docencia.estudio_postdoctoral_docente AS ep";
 				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON ep.documento_docente=dc.documento_docente";
 				$cadenaSql.=" WHERE ep.id_estudio_postdoctoral_docente ='" . $variable['id_estudio_postdoctoral_docente']. "'";
@@ -235,7 +238,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" numero_acta='" . $variable ['numeroActa'] . "',";
 				$cadenaSql.=" fecha_acta='" . $variable ['fechaActa'] . "',";
 				$cadenaSql.=" caso_acta='" . $variable ['numeroCasoActa'] . "',";
-				$cadenaSql.=" puntaje='" . $variable ['puntaje'] . "'";
+				$cadenaSql.=" puntaje='" . $variable ['puntaje'] . "',";
+				$cadenaSql.=" normatividad='" . $variable ['normatividad'] . "'";
 				$cadenaSql.=" WHERE";
 				$cadenaSql.=" id_estudio_postdoctoral_docente='" . $variable ['id_estudio_postdoctoral_docente'] . "'";
 				$cadenaSql.=" AND estado=true";
