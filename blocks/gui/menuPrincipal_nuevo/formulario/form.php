@@ -87,7 +87,7 @@ class FormularioMenu {
 		$tab = 1;
 		// ---------------- FIN SECCION: de Parámetros Generales del Formulario ----------------------------
 		
-		$conexion = "menu";
+		$conexion = "estructura";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
 		
 		// ----------------INICIAR EL FORMULARIO ------------------------------------------------------------
@@ -97,30 +97,30 @@ class FormularioMenu {
 		unset ( $atributos );
 		// ---------------- SECCION: Controles del Formulario -----------------------------------------------
 						
-		$cadenaSql = $this->miSql->getCadenaSql ( "datosMenu", 0 );
+		$cadenaSql = $this->miSql->getCadenaSql ( "datosMenu", 1 );
 		$datosMenu = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 		
 		foreach ( $datosMenu as $menu => $item ) {
-			$enlaces [$this->lenguaje->getCadena ($item ['grupo'])]['columna'. $item ['columna']][$item ['tipo_item']][$this->lenguaje->getCadena ($item ['descripcion'])] = array ();
+			$enlaces ['menu'.$item ['menu']]['columna'. $item ['columna']][$item ['tipo_enlace']][$this->lenguaje->getCadena ($item ['titulo'])] = array ();
 		}
 		foreach ( $datosMenu as $menu => $item ) {			
-			if(strcmp($item['tipo_item'], 'tittle') == 0){
+			if(strcmp($item['tipo_enlace'], 'menu_enlace_interno') == 0){
 				$enlace = '#';	
-				$enlaces [$this->lenguaje->getCadena ($item ['grupo'])]['columna'. $item ['columna']][$item ['tipo_item']][$this->lenguaje->getCadena ($item ['descripcion'])] = $enlace;				
-			}elseif(strcmp($item['tipo_item'], 'item') == 0){
-				$enlace = 'pagina=' . $item ['link'].$item['parametros'];				
+				$enlaces ['menu'.$item ['menu']]['columna'. $item ['columna']][$item ['tipo_enlace']][$this->lenguaje->getCadena ($item ['titulo'])] = $enlace;				
+			}elseif(strcmp($item['tipo_enlace'], 'enlace_interno') == 0){
+				$enlace = 'pagina=' . $item ['enlace'].$item['parametros'];				
 				$enlace = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlace, $directorio );
-				$enlaces [$this->lenguaje->getCadena ($item ['grupo'])]['columna'. $item ['columna']][$item ['tipo_item']][$this->lenguaje->getCadena ($item ['descripcion'])] = $enlace;						
+				$enlaces ['menu'.$item ['menu']]['columna'. $item ['columna']][$item ['tipo_enlace']][$this->lenguaje->getCadena ($item ['titulo'])] = $enlace;						
 			}
-			elseif(strcmp($item['tipo_item'], 'menu') == 0){
-				$enlace = 'pagina=' . $item ['grupo'];
+			elseif(strcmp($item['tipo_enlace'], 'submenu_enlace_interno') == 0){
+				$enlace = 'pagina=' . $item ['menu'];
 				$enlace = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlace, $directorio );
-				$nombrePagina = $this->lenguaje->getCadena ( $item ['grupo'] );
+				$nombrePagina = $this->lenguaje->getCadena ( $item ['menu'] );
 				$enlaces [$nombrePagina] = $enlace;
-			}elseif(strcmp($item['tipo_item'], 'link') == 0){
-				$enlace = $item ['link'];
+			}elseif(strcmp($item['tipo_enlace'], 'enlace_externo') == 0){
+				$enlace = $item ['externo'];
 				//$enlace = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlace, $directorio );
-				$enlaces [$this->lenguaje->getCadena ($item ['grupo'])]['columna'. $item ['columna']][$item ['tipo_item']][$this->lenguaje->getCadena ($item ['descripcion'])] = $enlace;						
+				$enlaces ['menu'.$item ['menu']]['columna'. $item ['columna']][$item ['tipo_enlace']][$this->lenguaje->getCadena ($item ['titulo'])] = $enlace;						
 			}
 		}
 

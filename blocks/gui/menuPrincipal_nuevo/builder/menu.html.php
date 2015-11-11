@@ -11,7 +11,7 @@
 		<?php if (is_array($columnas)): ?>	
 				<?php $numColumnas = count($columnas); $tit=0;?>	
 				<li><a href="#"><?php echo $nombrePagina ?></a>
-					<ul>
+				<ul>
 				<?php foreach ( $columnas as $col=>$item): ?>
 					<?php foreach ( $item as $titulo=>$paginas): ?>	
 						<?php foreach ( $paginas as $nombrePagina=>$enlace): ?>	
