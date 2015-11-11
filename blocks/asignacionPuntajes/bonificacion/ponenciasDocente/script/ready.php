@@ -77,7 +77,7 @@ $('#<?php echo $this->campoSeguro('proyectoCurricular')?>').width(450);
 
 $('#<?php echo $this->campoSeguro('docenteRegistrar')?>').width(465);
 $('#<?php echo $this->campoSeguro('contextoRevista')?>').width(450);
-$('#<?php echo $this->campoSeguro('annoRevista')?>').width(450);
+$('#<?php echo $this->campoSeguro('anno')?>').width(450);
 $('#<?php echo $this->campoSeguro('categoria')?>').width(450);
 $('#<?php echo $this->campoSeguro('categoria')?>').select2();
 
@@ -95,7 +95,7 @@ $("#<?php echo $this->campoSeguro('facultad')?>").select2();
 $("#<?php echo $this->campoSeguro('proyectoCurricular')?>").select2();
 
 $("#<?php echo $this->campoSeguro('contextoRevista')?>").select2();
-$("#<?php echo $this->campoSeguro('annoRevista')?>").select2();
+$("#<?php echo $this->campoSeguro('anno')?>").select2();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

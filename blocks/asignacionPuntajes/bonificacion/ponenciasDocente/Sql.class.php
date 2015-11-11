@@ -144,7 +144,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" po.titulo AS titulo,";
 				$cadenaSql.=" po.numero_autores AS numero_autores,";
 				$cadenaSql.=" po.numero_autores_ud AS numero_autores_ud,";
-				$cadenaSql.=" po.fecha AS fecha,";
+				$cadenaSql.=" po.anno AS anno,";
 				$cadenaSql.=" ti.contexto AS contexto,";
 				$cadenaSql.=" po.evento_presentacion AS evento_presentacion,";
 				$cadenaSql.=" po.institucion_certificadora AS institucion_certificadora,";
@@ -192,7 +192,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" titulo,";
 				$cadenaSql.=" numero_autores,";
 				$cadenaSql.=" numero_autores_ud,";
-				$cadenaSql.=" fecha,";
+				$cadenaSql.=" anno,";
 				$cadenaSql.=" id_contexto_ponencia,";
 				$cadenaSql.=" evento_presentacion,";
 				$cadenaSql.=" institucion_certificadora,";
@@ -208,7 +208,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" '" . $variable ['titulo'] . "',";
 				$cadenaSql.=" '" . $variable ['numeroAutores'] . "',";
 				$cadenaSql.=" '" . $variable ['numeroAutoresUniversidad'] . "',";
-				$cadenaSql.=" '" . $variable ['fecha'] . "',";
+				$cadenaSql.=" '" . $variable ['anno'] . "',";
 				$cadenaSql.=" '" . $variable ['categoria'] . "',";
 				$cadenaSql.=" '" . $variable ['evento'] . "',";
 				$cadenaSql.=" '" . $variable ['institucion'] . "',";
@@ -228,7 +228,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" po.titulo AS titulo,";
 				$cadenaSql.=" po.numero_autores AS numero_autores,";
 				$cadenaSql.=" po.numero_autores_ud AS numero_autores_ud,";
-				$cadenaSql.=" po.fecha AS fecha,";
+				$cadenaSql.=" po.anno AS anno,";
 				$cadenaSql.=" ti.contexto AS contexto,";
 				$cadenaSql.=" po.evento_presentacion AS evento_presentacion,";
 				$cadenaSql.=" po.institucion_certificadora AS institucion_certificadora,";
@@ -252,7 +252,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" titulo='" . $variable['titulo']. "',";
 				$cadenaSql.=" numero_autores='" . $variable['numeroAutores']. "',";
 				$cadenaSql.=" numero_autores_ud='" . $variable['numeroAutoresUniversidad']. "',";
-				$cadenaSql.=" fecha='" . $variable['fecha']. "',";
+				$cadenaSql.=" anno='" . $variable['anno']. "',";
 				$cadenaSql.=" id_contexto_ponencia='" . $variable['categoria']. "',";
 				$cadenaSql.=" evento_presentacion='" . $variable['evento']. "',";
 				$cadenaSql.=" institucion_certificadora='" . $variable['institucion']. "',";

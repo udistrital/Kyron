@@ -113,7 +113,10 @@ class FormularioModificar {
 				$_REQUEST['numeroCasoActaRevista'] =  $resultadoIndexacion[0]['numero_caso'];
 				$_REQUEST['puntajeRevista'] =  $resultadoIndexacion[0]['puntaje'];
 				$_REQUEST['normatividad'] =  $resultadoIndexacion[0]['normatividad'];
-					
+				
+				$_REQUEST['contextoRevista'] = 1;
+				$_REQUEST['pais'] = "COL";
+				
 		$esteCampo = "marcoDatosBasicos";
 		$atributos ['id'] = $esteCampo;
 		$atributos ["estilo"] = "jqueryui";

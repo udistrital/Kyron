@@ -198,7 +198,7 @@ class registrarForm {
 						<th>Título Ponencia Docente</th>
 						<th>Número Autores</th>
 						<th>Número Autores UD</th>
-						<th>Fecha Ponencia</th>
+						<th>Año Ponencia</th>
 						<th>Contexto</th>
 						<th>Evento de la Presentación</th>
 						<th>Institución Certificadora</th>
@@ -227,7 +227,7 @@ class registrarForm {
 	                    <td><center>" . $indexacion [$i] ['titulo'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_autores'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_autores_ud'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['fecha'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['anno'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['contexto'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['evento_presentacion'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['institucion_certificadora'] . "</center></td>

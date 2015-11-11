@@ -98,7 +98,6 @@ class FabricaDbConexion {
 	 * @return boolean
 	 */
 	private function recursoConfiguracion($nombre, $registro = "") {
-
 		if ($registro == '') {
 			$gestorDb = new Dbms($this -> configuracion);
 
@@ -107,7 +106,7 @@ class FabricaDbConexion {
 
 		}
 		$recurso = $gestorDb -> getRecursoDb();
-
+		
 		if ($recurso && !isset($this -> misConexiones[$nombre])) {
 			$this -> misConexiones[$nombre] = $recurso;
 			return true;
@@ -122,7 +121,6 @@ class FabricaDbConexion {
 
 		$recursoDB = $this -> getRecursoDB(self::CONFIGURACION);
 		$cadena = $this -> getClausulaSQL($nombre);
-
 		$resultado = $recursoDB -> ejecutarAcceso($cadena, "busqueda");
 
 		if (is_array($resultado)) {
