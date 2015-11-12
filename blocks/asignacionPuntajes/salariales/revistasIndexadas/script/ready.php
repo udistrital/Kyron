@@ -1,4 +1,4 @@
-$("#indexacionRevistas").validationEngine({
+$("#revistasIndexadas").validationEngine({
 promptPosition : "bottomRight:-150", 
 scroll: false,
 autoHidePrompt: true,
@@ -6,8 +6,8 @@ autoHideDelay: 2000
 });
 
 $(function() {
-	$("#indexacionRevistas").submit(function() {
-		$resultado=$("#indexacionRevistas").validationEngine("validate");
+	$("#revistasIndexadas").submit(function() {
+		$resultado=$("#revistasIndexadas").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -15,7 +15,7 @@ $(function() {
 	});
 });
 
-$("#indexacionRevistasRegistrar").validationEngine({
+$("#revistasIndexadasRegistrar").validationEngine({
 	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
@@ -23,8 +23,8 @@ $("#indexacionRevistasRegistrar").validationEngine({
 });
 
 $(function() {
-$("#indexacionRevistasRegistrar").submit(function() {
-$resultado=$("#indexacionRevistasRegistrar").validationEngine("validate");
+$("#revistasIndexadasRegistrar").submit(function() {
+$resultado=$("#revistasIndexadasRegistrar").validationEngine("validate");
 
 if ($resultado) {
 
@@ -41,8 +41,8 @@ $(function () {
 });
 
 $(function() {
-	$("#indexacionRevistasModificar").submit(function() {
-		$resultado=$("#indexacionRevistasModificar").validationEngine("validate");
+	$("#revistasIndexadasModificar").submit(function() {
+		$resultado=$("#revistasIndexadasModificar").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -50,7 +50,7 @@ $(function() {
 	});
 });
 
-$("#indexacionRevistasModificar").validationEngine({
+$("#revistasIndexadasModificar").validationEngine({
 	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,

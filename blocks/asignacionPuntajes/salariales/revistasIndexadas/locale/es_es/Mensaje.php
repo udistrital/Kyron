@@ -15,6 +15,8 @@ $this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Re
 $this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de Revista Indexada Para el Docente </br>";
 /////////////////////////////////
 
+$this->idioma["marcoConsultaGeneral"] =  "Revistas Indexadas";
+
 $this->idioma["botonRegresar"] = "Regresar";
 $this->idioma["botonGuardar"] = "Guardar";
 $this->idioma["continuar"] = "Continuar";
