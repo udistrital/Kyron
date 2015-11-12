@@ -157,27 +157,26 @@ function getCadenaSql($tipo, $variable = "") {
          */
                   
        	case "datosMenu" :
-			$cadenaSql = "SELECT";
-			$cadenaSql .= " item.id_menu as menu, item.parametros,";
-			$cadenaSql .= " item.descripcion as descripcion,";
-			$cadenaSql .= " grupo.descripcion as grupo,";
-			$cadenaSql .= " item.columna as columna,";
-			$cadenaSql .= " tipo_item.descripcion as tipo_item,";	
-			$cadenaSql .= " item.link as link";
-			$cadenaSql .= " FROM";
-			$cadenaSql .= " menu.item";
-			$cadenaSql .= " inner join menu.menu";
-			$cadenaSql .= " on menu.id_menu = item.id_menu";
-			$cadenaSql .= " inner join menu.grupo";
-			$cadenaSql .= " on grupo.id_grupo = item.id_grupo";
-			$cadenaSql .= " inner join menu.tipo_item"; 
-			$cadenaSql .= " on item.id_tipo_item = tipo_item.id_tipo_item";			
-			$cadenaSql .= " WHERE ";
-			$cadenaSql .= " menu.estado_registro= true";
-			$cadenaSql .= " and item.estado_registro = true";
-			$cadenaSql .= " and menu.perfil_usuario =". $variable;
-			$cadenaSql .= " order by grupo.orden_grupo, item.columna, item.id_tipo_item, item.orden_item";
-			$cadenaSql .= ";";
+       		$cadenaSql=" SELECT";
+       		$cadenaSql.=" rol.id_menu AS menu,";
+       		$cadenaSql.=" enl.titulo AS titulo,";
+       		$cadenaSql.=" enl.columna AS columna,";
+       		$cadenaSql.=" enl.orden AS orden,";
+       		$cadenaSql.=" ten.nombre AS tipo_enlace,";
+       		$cadenaSql.=" enl.enlace AS enlace,";
+       		$cadenaSql.=" enl.parametros AS parametros";
+       		$cadenaSql.=" FROM";
+       		$cadenaSql.=" kyron.kyron_menu_rol as rol";
+       		$cadenaSql.=" INNER JOIN kyron.kyron_menu AS men";
+       		$cadenaSql.=" ON men.id_menu = rol.id_menu";
+       		$cadenaSql.=" INNER JOIN kyron.kyron_menu_enlace AS enl";
+       		$cadenaSql.=" ON enl.id_menu = men.id_menu";
+       		$cadenaSql.=" INNER JOIN kyron.kyron_menu_tipo_enlace AS ten";
+       		$cadenaSql.=" ON ten.id_tipo_enlace =enl.id_tipo_enlace";
+       		$cadenaSql.=" WHERE";
+       		$cadenaSql.=" rol.id_rol = '".$variable."'";
+       		$cadenaSql.=" ORDER BY rol.id_menu, enl.columna, enl.orden ";
+       		$cadenaSql.=" ;";
 			break;
     }
     
