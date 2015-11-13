@@ -60,6 +60,9 @@ class Funcion {
 	function procesarAjax() {
 		include_once ($this->ruta . "funcion/procesarAjax.php");
 	}
+	function instalarMenuSARA() {
+		include_once ($this->ruta . "funcion/InstalarMenuSara.class.php");
+	}
 	function action() {
 		$resultado = true;
 		
@@ -81,7 +84,10 @@ class Funcion {
 					$resultado = $this->copiarArchivos ();	
 					$resultado = $this->configurarArchivos ();
 					$resultado = $this->registrarBloque ();								
-					break;		
+					break;
+				case '2' ://Acción de instalación Menú SARA
+					$this->instalarMenuSARA();
+					break;
 				
 			}
 		}

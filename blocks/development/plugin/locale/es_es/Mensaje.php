@@ -14,7 +14,8 @@ $this->idioma ['errorNombre'] = '<p>Al parecer ya se encuentra configurado el pl
 
 $this->idioma ['seleccionar'] = 'Seleccionar acción:';
 
-$this->idioma ['moduloPlugin'] = 'Módulo al que pertenece:';
+$this->idioma ['moduloPlugin'] = 'Directorio en blocks/:';
+$this->idioma ['moduloPluginTitulo'] = 'Ruta con Grupo Bloque y Bloque al que pertenece.';
 $this->idioma ['descripcionPlugin'] = 'Descripción:';
 
 $this->idioma ['nombreBloque'] = 'Nombre del bloque:';

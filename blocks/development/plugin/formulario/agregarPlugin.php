@@ -81,7 +81,7 @@ class AgregarPlugin {
         $atributos ['dobleLinea'] = false;
         $atributos ['tabIndex'] = $tab;
         $atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-        $atributos ['validar'] = '';
+        $atributos ['validar'] = 'required';
         
         if (isset ( $_REQUEST [$esteCampo] )) {
             $atributos ['valor'] = $_REQUEST [$esteCampo];

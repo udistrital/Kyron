@@ -70,7 +70,7 @@ class Registrador {
         $atributos ['tamanno'] = 1;
         $atributos ['anchoCaja'] = 150;
         $atributos ['estilo'] = 'jqueryui';
-        $atributos ['validar'] = '';
+        $atributos ['validar'] = 'required';
         $atributos ['limitar'] = true;
         $atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
         $atributos ['anchoEtiqueta'] = 150;
@@ -78,8 +78,12 @@ class Registrador {
         $matrizItems = array (
                 array (
                         1,
-                        'Reportico' 
-                )        		
+                        'Reportico'
+                ),
+        		array (
+        				2,
+        				'Menú SARA'
+        		)
         );
         
         $atributos ['matrizItems'] = $matrizItems;
@@ -120,8 +124,7 @@ class Registrador {
         
         if ($mensaje) {
             $tipoMensaje = $this->miConfigurador->getVariableConfiguracion ( 'tipoMensaje' );
-            if ($tipoMensaje == 'json') {
-                
+            if ($tipoMensaje == 'json') {                
                 $atributos ['mensaje'] = $mensaje;
                 $atributos ['json'] = true;
             } else {

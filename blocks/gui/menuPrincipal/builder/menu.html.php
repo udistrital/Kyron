@@ -9,8 +9,9 @@
 			<ul id="mega-menu-1" class="mega-menu">
 	<?php foreach ( $this->atributos['enlaces']  as $nombrePagina => $columnas ): ?>	
 		<?php 
-			$tituloMenu = array_keys($columnas['columna']['menu_enlace_interno'])[0];
-			$enlaceMenu = $columnas['columna']['menu_enlace_interno'][$tituloMenu];
+			$tipo_enlace = isset($columnas['columna']['menu_enlace_interno'])?'menu_enlace_interno':'menu_enlace_externo';
+			$tituloMenu = array_keys($columnas['columna'][$tipo_enlace])[0];
+			$enlaceMenu = $columnas['columna'][$tipo_enlace][$tituloMenu];
 			unset($columnas['columna']);
 			if (count($columnas)>0): ?>	
 				<?php $numColumnas = count($columnas); $tit=0; ?>	
@@ -19,7 +20,7 @@
 				<?php foreach ( $columnas as $col=>$item): ?>
 					<?php foreach ( $item as $titulo=>$paginas): ?>	
 						<?php foreach ( $paginas as $nombrePagina=>$enlace): ?>	
-							<?php if ($titulo=='submenu_enlace_interno'):?>
+							<?php if ($titulo=='submenu_enlace_interno' or $titulo=='submenu_enlace_externo'):?>
 								<?php if ($tit==0):?>
 										<li><a href="#"><?php echo $nombrePagina ?></a>
 											<ul>

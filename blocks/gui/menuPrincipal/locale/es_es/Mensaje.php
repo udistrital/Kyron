@@ -3,12 +3,12 @@
 $this->idioma ['menuPrincipal'] = '';
 $this->idioma ['noDefinido'] = 'No definido';
 
-$this->idioma ['inicio'] = 'Inicio';
+$this->idioma ['inicioTitulo'] = 'Inicio';
 $this->idioma ['index'] = 'Inicio';
-$this->idioma ['hojaVida'] = 'Hoja de Vida';
-$this->idioma ['asignacionPuntajes'] = 'Asignación de Puntajes';
-$this->idioma ['reportesDocencia'] = 'Reportes Docencia';
-$this->idioma ['cerrarSesion'] = 'Cerrar Sesión';
+$this->idioma ['hojaDeVidaTitulo'] = 'Hoja de Vida';
+$this->idioma ['asignacionDePuntajesTitulo'] = 'Asignación de Puntajes';
+$this->idioma ['reportesDocenciaTitulo'] = 'Reportes Docencia';
+$this->idioma ['cerrarSesionTitulo'] = 'Cerrar Sesión';
 
 //Hoja de Vida///////////////////////////////////
 $this->idioma ['crearDocente'] = 'Crear Docente';
@@ -21,12 +21,12 @@ $this->idioma ['consultarActividadDocente'] = 'Consultar Actividad Académica Do
 $this->idioma ['tituloSalariales'] = 'SALARIALES';
 $this->idioma ['produccionDeLibros'] = 'Producción de Libros';
 	//SALARIALES////////////////////////////////	
-	$this->idioma ['capituloLibros'] = 'Capítulos de Libros';
-	$this->idioma ['cartasEditor'] = 'Cartas al Editor';
-	$this->idioma ['direccionTrabajosDeGrado'] = 'Dirección de Trabajos de Grado';
+	$this->idioma ['capitulosDeLibros'] = 'Capítulos de Libros';
+	$this->idioma ['cartasAlEditor'] = 'Cartas al Editor';
+	$this->idioma ['direccionDeTrabajosDeGrado'] = 'Dirección de Trabajos de Grado';
 	$this->idioma ['experienciaDireccionAcademica'] = 'Experiencia Dirección Académica';
-	$this->idioma ['experienciaInvestigacion'] = 'Experiencia en Investigación';
-	$this->idioma ['experienciaDocencia'] = 'Experiencia en Docencia';
+	$this->idioma ['experienciaEnInvestigacion'] = 'Experiencia en Investigación';
+	$this->idioma ['experienciaEnDocencia'] = 'Experiencia en Docencia';
 	$this->idioma ['experienciaProfesional'] = 'Experiencia Profesional';
 	$this->idioma ['experienciaCalificada'] = 'Experiencia Calificada';	
 	$this->idioma ['excelenciaAcademica'] = 'Excelencia Académica';
@@ -35,19 +35,19 @@ $this->idioma ['produccionDeLibros'] = 'Producción de Libros';
 	$this->idioma ['obrasArtisticas'] = 'Obras Artísticas Docente';
 	$this->idioma ['patentes'] = 'Patentes';
 	$this->idioma ['premiosDocente'] = 'Premios Docente';
-	$this->idioma ['produccionVideosDocente'] = 'Producción en Videos del Docente';
-	$this->idioma ['produccionLibros'] = 'Producción de Libros';
-	$this->idioma ['traducciones'] = 'Traducciones';
+	$this->idioma ['produccionDeVideos'] = 'Producción en Videos del Docente';
+	$this->idioma ['produccionDeLibros'] = 'Producción de Libros';
+	$this->idioma ['traduccionesDeLibros'] = 'Traducciones de Libros';
 	$this->idioma ['produccionTecnicaYSoftware'] = 'Producción Técnica y Software Docente';
 	//Fin SALARIALES////////////////////////////////
 	
 $this->idioma ['tituloBonificacion'] = 'BONIFICACIÓN';		
 	//BONIFICACIÓN////////////////////////////////
 	$this->idioma ['publicacionesImpresas'] = 'Publicaciones Impresas Universitarias Docente';
-	$this->idioma ['estudiosPostdoctorales'] = 'Estudios PostDoctorales';
+	$this->idioma ['estudiosPostDoctorales'] = 'Estudios PostDoctorales';
 	$this->idioma ['resenaCritica'] = 'Reseña Crítica';
-	$this->idioma ['traduccionArticulo'] = 'Traducción de Artículos del Docente';
-	$this->idioma ['ponenciasArticulos'] = 'Ponencias Docente';
+	$this->idioma ['traduccionDeArticulos'] = 'Traducción de Artículos del Docente';
+	$this->idioma ['ponenciasDocente'] = 'Ponencias Docente';
 	//Fin BONIFICACIÓN////////////////////////////////
 	
 $this->idioma ['tituloNovedades'] = 'NOVEDADES';
