@@ -35,25 +35,32 @@ class logger extends loggerBase {
 	 * @access public
 	 */
 	function log_usuario($log) {
-		
-		$log ['usuario'] = $_COOKIE['PHPSESSID'];
-		$log ['accion'] = $_REQUEST['opcion'];
-		$log ['fecha_log'] = date ( "F j, Y, g:i:s a" );
-		$log ['host'] = $this->obtenerIP ();
-		$log ['name_machine'] = php_uname();
-		$log ['os'] = PHP_OS;
-		$log ['datos'] = "";
-		
-		foreach (array_keys($log) as $llaves){
-			if($llaves != "tiempo" && $llaves != "campoSeguro" && $llaves != "validadorCampos" && $llaves != "action" && $llaves != "option" && $llaves != "arreglo"){
-				$log ['datos'] .= $llaves.":".$log[$llaves]." ";
+// 		if(isset($log['opcion']) && (/*$log['opcion']=="buscar" ||*/ $log['opcion']=="insertar" || $log['opcion']=="actualizar")){
+			if(strcmp($log['opcion'], "buscar")==0){
+				$log['opcion']= "CONSULTAR";
 			}
-		}
-		
-		
-		
-		$cadenaSql = $this->miSql->getCadenaSql ( "registroLogUsuario", $log );
-		$resultado = $this->miConexion->ejecutarAcceso ( $cadenaSql, self::ACCEDER, '', 'registroLogUsuario' );
+			if(strcmp($log['opcion'], "insertar")==0){
+				$log['opcion']= "REGISTRAR";
+			}
+			if(strcmp($log['opcion'], "actualizar")==0){
+				$log['opcion']= "MODIFICAR";
+			}
+			
+			$log ['host'] = $this->obtenerIP ();
+			$log ['machine'] = php_uname();
+			$log ['os'] = PHP_OS;
+			$registroLog ['usuario'] = $_COOKIE['usuario'][0];
+			$registroLog ['accion'] = $log['opcion'];
+			$registroLog ['fecha_log'] = date ( "F j, Y, g:i:s a" );
+			$registroLog ['datos'] = "";
+			foreach (array_keys($log) as $llaves){
+				if($llaves != "tiempo" && $llaves != "campoSeguro" && $llaves != "validadorCampos" && $llaves != "action" && $llaves != "option" && $llaves != "opcion" && $llaves != "arreglo"){
+					$registroLog ['datos'] .= $llaves.":".$log[$llaves]." ";
+				}
+			}
+			$cadenaSql = $this->miSql->getCadenaSql ( "registroLogUsuario", $registroLog );
+			$resultado = $this->miConexion->ejecutarAcceso ( $cadenaSql, self::ACCEDER);var_dump($cadenaSql);
+// 		}
 	}
 	function obtenerIP() {
 		if (! empty ( $_SERVER ['HTTP_CLIENT_IP'] ))
