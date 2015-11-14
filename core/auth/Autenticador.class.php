@@ -95,7 +95,9 @@ class Autenticador {
         	require_once ($this->configurador->getVariableConfiguracion ( "raizDocumento" ) . "/core/auth/SesionSSO.class.php");
         	$sesionSSO = new SesionSSO ();
         	$resultado = $sesionSSO->verificarSesion ();
-        	echo '<p>Logueado con el usuario '.$resultado['usuario'][0].', con perfil '.$resultado['perfil'][0].'. </p>';
+        	$_COOKIE['usuario']=$resultado['usuario'];
+         	$_COOKIE['perfil']=$resultado['perfil'];
+        	//echo '<p>Logueado con el usuario '.$resultado['usuario'][0].', con perfil '.$resultado['perfil'][0].'. </p>';
         	//var_dump($resultado);die;
 //         	if($resultado){
 //         		$this->tipoError = "usuarioNoValido";

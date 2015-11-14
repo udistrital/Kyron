@@ -183,10 +183,9 @@ class Pgsql extends ConectorDb {
 		}
 		
 		$cadena = $this->tratarCadena ( $cadena );
-		
 		$numeroRegistros = 0;
 		
-		if ($tipo == "busqueda") {
+		if ($tipo == "busqueda" || $tipo == "buscar" ) {
 			$esteRegistro = $this->ejecutar_busqueda ( $cadena, $numeroRegistros );
 			if (isset ( $this->configuracion ["debugMode"] ) && $this->configuracion ["debugMode"] == 1 && ! $esteRegistro) {
 				error_log ( "El registro esta vacio!!! " . $cadena );
@@ -197,18 +196,12 @@ class Pgsql extends ConectorDb {
 		}
 		
 		if (isset ( $esteRegistro ) && $esteRegistro != false) {
-				
-				$regitro = stristr ( $cadena, 'INSERT' );
-				$actualizacion = stristr ( $cadena, 'UPDATE' );
-				$eliminar = stristr ( $cadena, 'DELETE' );
-// 				$consultar = stristr ( $cadena, 'SELECT' );
-				
-				if ($eliminar /*|| $consultar*/) {
+				if(strcmp($tipo, "buscar")==0 || strcmp($tipo, "actualizar")==0 || strcmp($tipo, "insertar")==0 ){
+					$_REQUEST['opcion']=$tipo;
 					$registrarLog = new logger ();	
 					$registrarLog->log_usuario($_REQUEST);
 				}
 			}
-
 		return $esteRegistro;
 	}
 	

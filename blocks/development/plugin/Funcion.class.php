@@ -61,7 +61,9 @@ class Funcion {
 		include_once ($this->ruta . "funcion/procesarAjax.php");
 	}
 	function instalarMenuSARA() {
-		include_once ($this->ruta . "funcion/InstalarMenuSara.class.php");
+		include_once ($this->ruta . "funcion/InstalarExtension.class.php");
+		$miInstalador = new InstalarExtension ( $this->lenguaje );		
+		$resultado = $miInstalador->instalarPorUrl ('https://raw.githubusercontent.com/JorgeUlises/menuSARA/master/menuSARA.tar.gz');
 	}
 	function action() {
 		$resultado = true;
@@ -79,7 +81,7 @@ class Funcion {
 			
 			switch ($_REQUEST ['opcionPlugin']) {
 				
-				case '1' :
+				case '1' ://Acción de instalación Reportico
 					$resultado = $this->agregarReportico ();											
 					$resultado = $this->copiarArchivos ();	
 					$resultado = $this->configurarArchivos ();

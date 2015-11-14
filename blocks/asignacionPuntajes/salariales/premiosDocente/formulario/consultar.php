@@ -126,7 +126,7 @@ class registrarForm {
 		);
 
 		$cadenaSql = $this->miSql->getCadenaSql ( 'consultar', $arreglo );
-		$premioDocente = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+		$premioDocente = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "buscar" );
 		$arreglo=serialize($arregloSerialize);
 		
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------

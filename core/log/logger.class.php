@@ -58,8 +58,11 @@ class logger extends loggerBase {
 					$registroLog ['datos'] .= $llaves.":".$log[$llaves]." ";
 				}
 			}
+			
+			$registroLog ['datos'] = json_encode($registroLog ['datos']);
+			
 			$cadenaSql = $this->miSql->getCadenaSql ( "registroLogUsuario", $registroLog );
-			$resultado = $this->miConexion->ejecutarAcceso ( $cadenaSql, self::ACCEDER);var_dump($cadenaSql);
+			$resultado = $this->miConexion->ejecutarAcceso ( $cadenaSql, self::ACCEDER);
 // 		}
 	}
 	function obtenerIP() {
