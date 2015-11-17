@@ -75,6 +75,11 @@ class SesionSql {
             case "verificarNivelUsuario" :
                 $this->cadena_sql [$indice] = "SELECT tipo FROM " . $this->prefijoTablas . "usuario WHERE id_usuario='" . $parametro . "' ";
                 break;
+                
+            case "verificarEnlaceUsuario" :
+                $this->cadena_sql [$indice] = "SELECT rol.id_rol FROM " . $this->prefijoTablas . "menu_rol_enlace AS rol LEFT JOIN " . $this->prefijoTablas . "menu_enlace AS enl ON enl.id_enlace=rol.id_enlace WHERE enl.enlace='" . $parametro . "' ";
+                break;
+                
             default :
         }
     

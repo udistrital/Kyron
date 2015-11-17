@@ -75,34 +75,30 @@ class Autenticador {
                 
                 $resultado = $this->verificarAutorizacionUsuario ();
                 if ($resultado) {
-                    $respuesta = true;
+                	$respuesta = true;
                 } else {
                     $this->tipoError = "usuarioNoAutorizado";
                     $respuesta = false;
                 }
             } else {
-                $this->tipoError = "sesionNoExiste";
-                $respuesta = false;
+            	$resultado = $this->verificarAutenticacionSSO();
+            	if($resultado){
+            		$resultado = $this->iniciarAutenticacionSSO();
+            		if($resultado){
+            			$respuesta = true;
+            		} else {
+            			$this->tipoError = "usuarioNoAutorizado";
+            			$respuesta = false;
+            		}
+            	} else {
+	                $this->tipoError = "sesionNoExiste";
+	                $respuesta = false;
+            	}
             }
         } else {
             
             $this->tipoError = "paginaNoExiste";
             $respuesta = false;
-        }
-        
-        //Si el sistema de logueo es por Single Sign On
-        if($this->configurador->getVariableConfiguracion ('singleSignOn')==true){
-        	require_once ($this->configurador->getVariableConfiguracion ( "raizDocumento" ) . "/core/auth/SesionSSO.class.php");
-        	$sesionSSO = new SesionSSO ();
-        	$resultado = $sesionSSO->verificarSesion ();
-        	$_COOKIE['usuario']=$resultado['usuario'];
-         	$_COOKIE['perfil']=$resultado['perfil'];
-        	//echo '<p>Logueado con el usuario '.$resultado['usuario'][0].', con perfil '.$resultado['perfil'][0].'. </p>';
-        	//var_dump($resultado);die;
-//         	if($resultado){
-//         		$this->tipoError = "usuarioNoValido";
-//         		$respuesta = false;
-//         	}
         }
         
         return $respuesta;
@@ -112,6 +108,12 @@ class Autenticador {
     function setPagina($pagina) {
         
         $this->pagina ["nombre"] = $pagina;
+    
+    }
+    
+    function getPagina() {
+    
+    	return $this->pagina ["nombre"];
     
     }
     
@@ -168,6 +170,19 @@ class Autenticador {
         
         return false;
     
+    }
+    
+    function verificarAutenticacionSSO(){
+    	return ($this->configurador->getVariableConfiguracion ('singleSignOn')==true)?true:false;
+    }
+    
+    function iniciarAutenticacionSSO(){
+    	//Si el sistema de logueo es por Single Sign On
+    	require_once ($this->configurador->getVariableConfiguracion ( "raizDocumento" ) . "/core/auth/SesionSso.class.php");
+
+    	$sesionSSO = new SesionSSO ();
+    	$resultado = $sesionSSO->verificarSesion ($this->getPagina());
+    	return $resultado;
     }
 
 }

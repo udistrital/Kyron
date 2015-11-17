@@ -3,8 +3,7 @@
 class SesionSSO {
 
 	
-	var $sesionExpiracion;
-	
+	var $miSql;
 	var $site;
 	var $hostSSO;
 	var $SPSSO;
@@ -17,7 +16,7 @@ class SesionSSO {
      */
     //private 
     function __construct() {
-		//SET Session EXPIRATION
+    	$this->sesionUsuario = Sesion::singleton ();
     	$this->configurador = \Configurador::singleton ();
     	$this->site = $this->configurador->getVariableConfiguracion ( "site" );
     	$this->hostSSO = $this->configurador->getVariableConfiguracion ( "hostSSO" );
@@ -25,14 +24,14 @@ class SesionSSO {
     }
     
     function setTiempoExpiracion($valor) {
-    
-    	$this->tiempoExpiracion = $valor;
+    	
+    	$this->sesionUsuario->setSesionExpiracion($valor);
     
     }
     
     function getSesionExpiracion() {
     
-    	return $this->sesionExpiracion;
+    	return $this->sesionUsuario->getSesionExpiracion();
     
     }
 
@@ -44,15 +43,15 @@ class SesionSSO {
      * @return void
      * @access public
      */
-    function verificarSesion() {
+    function verificarSesion($pagina) {
 
         $resultado = true;
-		
+        //if($this->sesionUsuario->getSesionUsuarioId());die;
         // Se eliminan las sesiones expiradas
         //$this->borrarSesionExpirada();
-        
-        
         $resultado = $this->crearSesion();
+        
+        $resultado = $this->verificarRolesPagina($resultado['perfil'],$pagina);
         
         return $resultado;
     }
@@ -84,11 +83,13 @@ class SesionSSO {
 		$as = new SimpleSAML_Auth_Simple ( $source ); // Se pasa como parametro la fuente de autenticación
 		
 		$login_params = array (
-				'ReturnTo' => $aplication_base_url . 'index.php' 
+			'ReturnTo' => $aplication_base_url . 'index.php' 
 		);
 		
 		$as->requireAuth ( $login_params );
 		$atributos = $as->getAttributes();
+		
+		$this->sesionUsuario->crearSesion($atributos['usuario'][0]);
 		
 		return $atributos;
     }
@@ -134,6 +135,20 @@ class SesionSSO {
     }
     
     // Fin del método terminar_sesion
+    
+    function verificarRolesPagina($perfiles,$pagina){
+    	$cadenaSql = $this->sesionUsuario->miSql->getCadenaSql("verificarEnlaceUsuario", $pagina);
+    	//Se busca en la tabla _menu_rol_enlace si la página pertenece al perfil.
+    	$roles = $this->sesionUsuario->miConexion->ejecutarAcceso($cadenaSql,"busqueda");
+    	foreach ($perfiles as $perfil){
+    		foreach ($roles as $rol){
+    			if($rol[0]==$perfil){
+    				return true;
+    			}
+    		}
+    	}
+    	return false;
+    }
 
 }
 
