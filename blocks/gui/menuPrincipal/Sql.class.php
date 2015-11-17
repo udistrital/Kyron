@@ -158,24 +158,21 @@ function getCadenaSql($tipo, $variable = "") {
                   
        	case "datosMenu" :
        		$cadenaSql=" SELECT";
-       		$cadenaSql.=" rol.id_menu AS menu,";
+       		$cadenaSql.=" enl.id_menu AS menu,";
        		$cadenaSql.=" enl.titulo AS titulo,";
        		$cadenaSql.=" enl.columna AS columna,";
        		$cadenaSql.=" enl.orden AS orden,";
        		$cadenaSql.=" ten.nombre AS tipo_enlace,";
+       		$cadenaSql.=" cen.nombre AS clase_enlace,";
        		$cadenaSql.=" enl.enlace AS enlace,";
        		$cadenaSql.=" enl.parametros AS parametros";
-       		$cadenaSql.=" FROM";
-       		$cadenaSql.=" kyron.kyron_menu_rol as rol";
-       		$cadenaSql.=" INNER JOIN kyron.kyron_menu AS men";
-       		$cadenaSql.=" ON men.id_menu = rol.id_menu";
-       		$cadenaSql.=" INNER JOIN kyron.kyron_menu_enlace AS enl";
-       		$cadenaSql.=" ON enl.id_menu = men.id_menu";
-       		$cadenaSql.=" INNER JOIN kyron.kyron_menu_tipo_enlace AS ten";
-       		$cadenaSql.=" ON ten.id_tipo_enlace =enl.id_tipo_enlace";
+       		$cadenaSql.=" FROM kyron.kyron_menu_rol_enlace as rol";
+       		$cadenaSql.=" INNER JOIN kyron.kyron_menu_enlace AS enl ON enl.id_enlace = rol.id_enlace";
+       		$cadenaSql.=" INNER JOIN kyron.kyron_menu_tipo_enlace AS ten ON ten.id_tipo_enlace = enl.id_tipo_enlace";
+       		$cadenaSql.=" INNER JOIN kyron.kyron_menu_clase_enlace AS cen ON cen.id_clase_enlace = enl.id_clase_enlace";
        		$cadenaSql.=" WHERE";
        		$cadenaSql.=" rol.id_rol = '".$variable."'";
-       		$cadenaSql.=" ORDER BY rol.id_menu, enl.columna, enl.orden ";
+       		$cadenaSql.=" ORDER BY enl.id_menu, enl.columna, enl.orden";
        		$cadenaSql.=" ;";
 			break;
     }
