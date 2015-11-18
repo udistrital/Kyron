@@ -93,9 +93,9 @@ class Formulario {
 		    $atributos ['id'] = $esteCampo;
 		    $atributos ['nombre'] = $esteCampo;
 		    $atributos ['estiloMarco'] = '';
-		    $atributos ["imagen"] = $rutaBloque . "/imagenes/escudo.jpg";
-		    $atributos ['alto'] = 65;
-		    $atributos ['ancho'] = 52;
+		    $atributos ["imagen"] = $rutaBloque . "/imagenes/escudo_oficial_udistrital_128x128.png";
+		    $atributos ['alto'] = 80;
+		    $atributos ['ancho'] = 80;
 		    $atributos ["borde"] = 0;
 		    $atributos ['tabIndex'] = $tab++;
 		    $atributos = array_merge ( $atributos, $atributosGlobales );		        

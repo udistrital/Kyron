@@ -140,12 +140,14 @@ class SesionSSO {
     	$cadenaSql = $this->sesionUsuario->miSql->getCadenaSql("verificarEnlaceUsuario", $pagina);
     	//Se busca en la tabla _menu_rol_enlace si la página pertenece al perfil.
     	$roles = $this->sesionUsuario->miConexion->ejecutarAcceso($cadenaSql,"busqueda");
-    	foreach ($perfiles as $perfil){
-    		foreach ($roles as $rol){
-    			if($rol[0]==$perfil){
-    				return true;
-    			}
-    		}
+    	if($roles){//Si la página tiene roles en el menú
+	    	foreach ($perfiles as $perfil){
+	    		foreach ($roles as $rol){
+	    			if($rol[0]==$perfil){
+	    				return true;
+	    			}
+	    		}
+	    	}
     	}
     	return false;
     }

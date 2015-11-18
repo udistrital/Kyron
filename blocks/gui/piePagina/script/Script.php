@@ -2,7 +2,8 @@
 
 $indice=0;
 
-$funcion[$indice++]="miScript.js";
+$funcion = array();
+//$funcion[$indice++]="miScript.js";
 
 $rutaBloque=$this->miConfigurador->getVariableConfiguracion("host");
 $rutaBloque.=$this->miConfigurador->getVariableConfiguracion("site");

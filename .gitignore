@@ -1,3 +1,7 @@
-/config/
-config.inc.php
 .project
+core/crypto/Encriptador.class.php
+config/config.inc.php
+blocks/reportico/script/reportico/run.php
+blocks/reportico/script/reportico/projects/zoe/config.php
+blocks/reportico/script/reportico/projects/admin/config.php
+blocks/reportico/script/reportico/projects/*/config.php
