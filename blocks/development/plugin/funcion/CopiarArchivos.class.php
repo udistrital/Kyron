@@ -78,7 +78,7 @@ class CopiarArchivos {
 	{
 		//Se crea el directorio destino
 
-		mkdir($dirDestino, 0777, true);
+		mkdir($dirDestino, 0755, true);
 		//Se Abre el directorio origen
 
 		if ($vcarga = opendir($dirOrigen))

@@ -81,7 +81,7 @@ class SesionSSO {
 		$source = $this->SPSSO; // Fuente de autenticación definida en el authsources del SP
 		
 		$as = new SimpleSAML_Auth_Simple ( $source ); // Se pasa como parametro la fuente de autenticación
-		
+		//En este caso se va al index, podría irse a la página desde donde lo solicitaron.
 		$login_params = array (
 			'ReturnTo' => $aplication_base_url . 'index.php' 
 		);
@@ -130,7 +130,7 @@ class SesionSSO {
     	$auth = new SimpleSAML_Auth_Simple ( $source ); // Se pasa como parametro la fuente de autenticación
     	
     	$auth->logout ( $aplication_base_url . 'index.php' );
-    	
+    	//Cerrar la sesión de SARA al salir.
     	return true;
     }
     

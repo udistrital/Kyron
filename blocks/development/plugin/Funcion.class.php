@@ -62,8 +62,8 @@ class Funcion {
 	}
 	function instalarMenuSARA() {
 		include_once ($this->ruta . "funcion/InstalarExtension.class.php");
-		$miInstalador = new InstalarExtension ( $this->lenguaje );		
 		$resultado = $miInstalador->instalarPorUrl ('https://raw.githubusercontent.com/JorgeUlises/menuSARA/master/menuSARA.tar.gz');
+		var_dump($resultado);
 	}
 	function action() {
 		$resultado = true;
