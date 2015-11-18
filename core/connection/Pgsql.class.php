@@ -195,13 +195,14 @@ class Pgsql extends ConectorDb {
 			$esteRegistro = $this->ejecutar_acceso_db ( $cadena );
 		}
 		
+		//Se genera un registro de las transacciones especificadas en el looger
 		if (isset ( $esteRegistro ) && $esteRegistro != false) {
-				if(strcmp($tipo, "buscar")==0 || strcmp($tipo, "actualizar")==0 || strcmp($tipo, "insertar")==0 ){
-					$_REQUEST['opcion']=$tipo;
-					$registrarLog = new logger ();	
-					$registrarLog->log_usuario($_REQUEST);
-				}
+			if(strcmp($tipo, "buscar")==0 || strcmp($tipo, "actualizar")==0 || strcmp($tipo, "insertar")==0 ){
+				$_REQUEST['opcion']=$tipo;
+				$registrarLog = new logger ();	
+				$registrarLog->log_usuario($_REQUEST);
 			}
+		}
 		return $esteRegistro;
 	}
 	

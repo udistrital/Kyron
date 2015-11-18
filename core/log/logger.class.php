@@ -6,6 +6,7 @@ class logger extends loggerBase {
 	private static $instancia;
 	const ACCEDER = 'acceso';
 	const BUSCAR = 'busqueda';
+	var $sesionUsuario;
 	
 	/**
 	 *
@@ -15,6 +16,7 @@ class logger extends loggerBase {
 	public function __construct() {
 		$this->miSql = new loggerSql ();
 		$this->miConfigurador = \Configurador::singleton ();
+		$this->sesionUsuario = \Sesion::singleton ();
 		$this->setPrefijoTablas ( $this->miConfigurador->getVariableConfiguracion ( "prefijo" ) );
 		$this->setConexion ( $this->miConfigurador->fabricaConexiones->getRecursoDB ( "estructura" ) );
 	}
@@ -48,17 +50,15 @@ class logger extends loggerBase {
 			
 			$log ['host'] = $this->obtenerIP ();
 			$log ['machine'] = php_uname();
-			$log ['os'] = PHP_OS;
-			$registroLog ['usuario'] = $_COOKIE['usuario'][0];
+			$registroLog ['usuario'] = $this->sesionUsuario->getSesionUsuarioId();
 			$registroLog ['accion'] = $log['opcion'];
 			$registroLog ['fecha_log'] = date ( "F j, Y, g:i:s a" );
-			$registroLog ['datos'] = "";
+			$registroLog ['datos'] = array();
 			foreach (array_keys($log) as $llaves){
 				if($llaves != "tiempo" && $llaves != "campoSeguro" && $llaves != "validadorCampos" && $llaves != "action" && $llaves != "option" && $llaves != "opcion" && $llaves != "arreglo"){
-					$registroLog ['datos'] .= $llaves.":".$log[$llaves]." ";
+					$registroLog ['datos'][$llaves]=$log[$llaves];
 				}
 			}
-			
 			$registroLog ['datos'] = json_encode($registroLog ['datos']);
 			
 			$cadenaSql = $this->miSql->getCadenaSql ( "registroLogUsuario", $registroLog );
