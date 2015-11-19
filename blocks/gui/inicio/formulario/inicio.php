@@ -12,7 +12,7 @@ class Form {
 	var $lenguaje;
 	var $miFormulario;
 	var $site;
-	var $sesionUsuario;
+	var $miSesionUsuario;
 	
 	function __construct($lenguaje, $formulario) {
 		$this -> miConfigurador = \Configurador::singleton();
@@ -27,14 +27,14 @@ class Form {
 		
 		$this -> site = $this->miConfigurador->getVariableConfiguracion ( "rutaBloque" );
 		
-		$this->sesionUsuario = \Sesion::singleton ();
+		$this->miSesionUsuario = \Sesion::singleton ();
 	}
 
 	function miForm() {
 		// Rescatar los datos de este bloque
-			
 		$esteBloque = $this->miConfigurador->getVariableConfiguracion("esteBloque");
-		include $this -> site.'funcion/VerificarSesion.php';
+		include $this->site.'funcion/VerificarSesion.php';
+		//$respuesta trae si la sesión de IDP está activa
 		if($respuesta){
 			$directorio = $this->miConfigurador->getVariableConfiguracion ( "host" );
 			$directorio .= $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/index.php?";
@@ -43,13 +43,8 @@ class Form {
 			//$valorCodificado .= "&autenticado=true";
 			$valorCodificado = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $valorCodificado );
 			$enlace = $directorio.'='.$valorCodificado;
-			
 			header('Location: '.$enlace);
 		}
-// 		$autenticado = false;
-// 		if(isset($_REQUEST['autenticado'])&&$_REQUEST['autenticado']==true){
-// 			$autenticado = true;
-// 		}
 		include $this->site.'formulario/paginaInicio.html.php';
 	}
 

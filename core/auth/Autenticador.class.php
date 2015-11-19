@@ -35,19 +35,21 @@ class Autenticador {
     
     var $configurador;
     
+    var $sesionSSO;
+    
     const NIVEL='nivel';
     
     private function __construct() {
         
         $this->configurador = Configurador::singleton ();
-        
         require_once ($this->configurador->getVariableConfiguracion ( "raizDocumento" ) . "/core/auth/Sesion.class.php");
         $this->sesionUsuario = Sesion::singleton ();
         $this->sesionUsuario->setSesionUsuario ( $this->configurador->fabricaConexiones->miLenguaje->getCadena ( "usuarioAnonimo" ) );
         $this->sesionUsuario->setConexion ( $this->configurador->fabricaConexiones->getRecursoDB ( "configuracion" ) );
         $this->sesionUsuario->setTiempoExpiracion ( $this->configurador->getVariableConfiguracion ( "expiracion" ) );
         $this->sesionUsuario->setPrefijoTablas ( $this->configurador->getVariableConfiguracion ( "prefijo" ) );
-        
+        require_once ($this->configurador->getVariableConfiguracion ( "raizDocumento" ) . "/core/auth/SesionSso.class.php");
+        $this->sesionSso = SesionSso::singleton ();
         
     
     }
@@ -65,9 +67,8 @@ class Autenticador {
     function iniciarAutenticacion() {
         
         $respuesta = '';
-        
         $resultado = $this->verificarExistenciaPagina ();
-        if ($resultado) {
+        if ($resultado) {        	
             $resultado = $this->cargarSesionUsuario ();
             
             if ($resultado) {
@@ -81,18 +82,25 @@ class Autenticador {
                     $respuesta = false;
                 }
             } else {
+            	/*
+            	 * Para la autenticación con SingleSignOn se verifica que esté habilitado en la base de datos "_configuracion"
+            	 */
             	$resultado = $this->verificarAutenticacionSSO();
+            	//La única página que no se valida por SSO es el index
             	if($resultado){
+            		if($this->getPagina()=='index'){
+            			return true;
+            		}
             		$resultado = $this->iniciarAutenticacionSSO();
             		if($resultado){
-            			$respuesta = true;
+            			return true;
             		} else {
             			$this->tipoError = "usuarioNoAutorizado";
-            			$respuesta = false;
+            			return false;
             		}
-            	} else {
-	                $this->tipoError = "sesionNoExiste";
-	                $respuesta = false;
+            	} else {//Termina SingleSignOn            	
+	            	$this->tipoError = "sesionNoExiste";
+		            $respuesta = false;
             	}
             }
         } else {
@@ -178,12 +186,8 @@ class Autenticador {
     
     function iniciarAutenticacionSSO(){
     	//Si el sistema de logueo es por Single Sign On
-    	require_once ($this->configurador->getVariableConfiguracion ( "raizDocumento" ) . "/core/auth/SesionSso.class.php");
-
-    	$sesionSSO = new SesionSSO ();
-    	$resultado = $sesionSSO->verificarSesion ($this->getPagina());
+    	$resultado = $this->sesionSso->verificarSesion($this->getPagina());
     	return $resultado;
     }
-
 }
 ?>

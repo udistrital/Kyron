@@ -1,13 +1,19 @@
 <?php
 
-class SesionSSO {
+require_once ('/var/simplesamlphp/lib/_autoload.php');
 
+class SesionSSO {
+	
+	private static $instancia;
 	
 	var $miSql;
 	var $site;
 	var $hostSSO;
 	var $SPSSO;
 	var $configurador;
+	var $authnRequest;
+	var $sesionUsuario;
+	var $sesionUsuarioId;
     
     /**
      *
@@ -20,19 +26,17 @@ class SesionSSO {
     	$this->configurador = \Configurador::singleton ();
     	$this->site = $this->configurador->getVariableConfiguracion ( "site" );
     	$this->hostSSO = $this->configurador->getVariableConfiguracion ( "hostSSO" );
-    	$this->SPSSO = $this->configurador->getVariableConfiguracion ( "SPSSO" );
+    	$this->SPSSO = $this->configurador->getVariableConfiguracion ( "SPSSO" );// Fuente de autenticación definida en el authsources del SP
+    	$this->authnRequest = new SimpleSAML_Auth_Simple ( $this->SPSSO );// Se pasa como parametro la fuente de autenticación
     }
     
-    function setTiempoExpiracion($valor) {
-    	
-    	$this->sesionUsuario->setSesionExpiracion($valor);
+    public static function singleton() {
     
-    }
-    
-    function getSesionExpiracion() {
-    
-    	return $this->sesionUsuario->getSesionExpiracion();
-    
+    	if (!isset(self::$instancia)) {
+    		$className = __CLASS__;
+    		self::$instancia = new $className ();
+    	}
+    	return self::$instancia;
     }
 
     /**
@@ -44,19 +48,38 @@ class SesionSSO {
      * @access public
      */
     function verificarSesion($pagina) {
-
         $resultado = true;
-        //if($this->sesionUsuario->getSesionUsuarioId());die;
         // Se eliminan las sesiones expiradas
         //$this->borrarSesionExpirada();
-        $resultado = $this->crearSesion();
-        
-        $resultado = $this->verificarRolesPagina($resultado['perfil'],$pagina);
-        
+        if($this->verificarSesionAbierta()){
+        	$resultado = $this->getParametrosSesionAbierta();
+        } else {
+        	$resultado = $this->crearSesion();
+        }
+        $resultado = $this->verificarRolesPagina($resultado['perfil'],$pagina);//Se verifica que la página pertenezca al perfil
         return $resultado;
     }
 
     /* Fin de la función numero_sesion */
+    
+    
+    function verificarSesionAbierta() {
+    	$respuesta = true;
+    	//La sesión SP está abierta
+    	if($this->authnRequest->isAuthenticated()){
+    		//La sesión SP abierta pero usuario no ha iniciado sesión SP en SARA
+    		if($this->sesionUsuario->numeroSesion()==''){    			
+    			$this->crearSesion();
+    		}
+    	} else {
+    		$respuesta = false;
+    	}
+    	return $respuesta;
+    }
+    
+    function getParametrosSesionAbierta() {
+    	return $this->authnRequest->getAttributes();
+    }
 
     /**
      * @METHOD crear_sesion
@@ -72,25 +95,18 @@ class SesionSSO {
      */
     function crearSesion() {
     	
-        $saml_lib_path = '/var/simplesamlphp/lib/_autoload.php';
-		
-		require_once ($saml_lib_path);
-		
-		// $aplication_base_url = 'http://10.20.0.38/splocal/';
-		$aplication_base_url = $this->hostSSO.$this->site.'/';
-		$source = $this->SPSSO; // Fuente de autenticación definida en el authsources del SP
-		
-		$as = new SimpleSAML_Auth_Simple ( $source ); // Se pasa como parametro la fuente de autenticación
+    	// $aplication_base_url = 'http://10.20.0.38/splocal/';
+		$aplication_base_url = $this->hostSSO.$this->site.'/';	
+		  
 		//En este caso se va al index, podría irse a la página desde donde lo solicitaron.
 		$login_params = array (
 			'ReturnTo' => $aplication_base_url . 'index.php' 
 		);
 		
-		$as->requireAuth ( $login_params );
-		$atributos = $as->getAttributes();
+		$this->authnRequest->requireAuth ( $login_params );
+		$atributos = $this->authnRequest->getAttributes();
 		
 		$this->sesionUsuario->crearSesion($atributos['usuario'][0]);
-		
 		return $atributos;
     }
 
@@ -103,7 +119,9 @@ class SesionSSO {
      * @access public
      */
     function terminarSesionExpirada() {
-
+		/*
+		 * No USADA
+		 */
         $cadenaSql = $cadenaSql = $this->miSql->getCadenaSql("borrarSesionesExpiradas");
 
         return !$this->miConexion->ejecutarAcceso($cadenaSql);
@@ -117,21 +135,15 @@ class SesionSSO {
      * @return boolean
      * @access public
      */
-    function terminarSesion($sesion) {
-    	
-    	$saml_lib_path = '/var/simplesamlphp/lib/_autoload.php';
-    	
-    	require_once ($saml_lib_path);
-    	
+    function terminarSesion() {
+    	$sesionUsuarioId = $this->sesionUsuario->numeroSesion();
+    	$this->sesionUsuario->terminarSesion($sesionUsuarioId);
     	// $aplication_base_url = 'http://10.20.0.38/splocal/';
     	$aplication_base_url = $this->hostSSO.$this->site.'/';
-    	$source = $this->SPSSO; // Fuente de autenticación definida en el authsources del SP
     	
-    	$auth = new SimpleSAML_Auth_Simple ( $source ); // Se pasa como parametro la fuente de autenticación
-    	
-    	$auth->logout ( $aplication_base_url . 'index.php' );
+    	$respuesta = $this->authnRequest->logout ( $aplication_base_url . 'index.php' );
     	//Cerrar la sesión de SARA al salir.
-    	return true;
+    	return $respuesta;
     }
     
     // Fin del método terminar_sesion
@@ -151,7 +163,6 @@ class SesionSSO {
     	}
     	return false;
     }
-
 }
 
 ?>
