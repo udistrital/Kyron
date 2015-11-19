@@ -12,7 +12,6 @@ class Form {
 	var $lenguaje;
 	var $miFormulario;
 	var $site;
-	var $miSesionUsuario;
 	
 	function __construct($lenguaje, $formulario) {
 		$this -> miConfigurador = \Configurador::singleton();
@@ -26,8 +25,6 @@ class Form {
 		$this -> miFormulario = $formulario;
 		
 		$this -> site = $this->miConfigurador->getVariableConfiguracion ( "rutaBloque" );
-		
-		$this->miSesionUsuario = \Sesion::singleton ();
 	}
 
 	function miForm() {
