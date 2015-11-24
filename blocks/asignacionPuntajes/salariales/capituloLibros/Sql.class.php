@@ -115,7 +115,8 @@ class Sql extends \Sql {
 				$cadenaSql .= " id_universidad,";
 				$cadenaSql .= "	nombre_universidad";
 				$cadenaSql .= " FROM ";
-				$cadenaSql .= " docencia.universidad";				
+				$cadenaSql .= " docencia.universidad";		
+				$cadenaSql .= " WHERE id_universidad != -1";
 				break;
 				
 			case "editorial" :

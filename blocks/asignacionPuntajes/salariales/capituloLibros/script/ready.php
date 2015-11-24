@@ -66,6 +66,7 @@ $(function() {
  * Se define el ancho de los campos de listas desplegables
  */
 
+
 $('#<?php echo $this->campoSeguro('docente')?>').width(465);      
 $('#<?php echo $this->campoSeguro('facultad')?>').width(450);      
 $('#<?php echo $this->campoSeguro('proyectoCurricular')?>').width(450);      
@@ -121,3 +122,13 @@ if(obj.length>0){
 	claseValidate = claseValidate.insertAt(claseValidate.indexOf("[")+1,'required,');
 	obj.addClass(claseValidate);
 }
+
+
+$("#<?php echo $this->campoSeguro('docente')?>").blur(function() {
+ 	$("#<?php echo $this->campoSeguro('docente')?>").val("");
+});
+
+$("#<?php echo $this->campoSeguro('docenteRegistrar')?>").blur(function() {
+ 	$("#<?php echo $this->campoSeguro('docenteRegistrar')?>").val("");
+});
+

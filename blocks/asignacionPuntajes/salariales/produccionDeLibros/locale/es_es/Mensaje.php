@@ -101,6 +101,9 @@ $this->idioma["puntaje"] = "Puntaje	";
 $this->idioma["normatividad"] = "Normatividad:";
 $this->idioma["normatividadTitulo"] = "Ingrese la normatividad.";
 ////////////////////////////////////////////////////////////////
+
+$this->idioma['marcoConsultaGeneral'] = 'Consulta Producción de Libros';
+
 $this->idioma['produccionDeLibros'] = '';
 $this->idioma['produccionDeLibrosRegistrar'] = '';
 $this->idioma['produccionDeLibrosModificar'] = '';

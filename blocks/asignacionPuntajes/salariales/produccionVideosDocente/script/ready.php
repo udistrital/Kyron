@@ -122,3 +122,14 @@ if(obj.length>0){
 	claseValidate = claseValidate.insertAt(claseValidate.indexOf("[")+1,'required,');
 	obj.addClass(claseValidate);
 }
+
+/*Se limpia el campo de doncente a consultar o a registrar cuando no se realiza
+una elección del listado desplegado*/
+
+$("#<?php echo $this->campoSeguro('docente')?>").blur(function() {
+ 	$("#<?php echo $this->campoSeguro('docente')?>").val("");
+});
+
+$("#<?php echo $this->campoSeguro('docenteRegistrar')?>").blur(function() {
+ 	$("#<?php echo $this->campoSeguro('docenteRegistrar')?>").val("");
+});

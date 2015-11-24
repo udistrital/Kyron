@@ -146,7 +146,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, minSize[6],maxSize[50]';
+		$atributos ['validar'] = 'required, minSize[6],maxSize[200]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -327,7 +327,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required,minSize[6],maxSize[50]';
+		$atributos ['validar'] = 'required,minSize[6],maxSize[200]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -360,7 +360,7 @@ class FormularioRegistro {
         $atributos ['dobleLinea'] = 0;
         $atributos ['tabIndex'] = $tab;
         $atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-        $atributos ['validar'] = 'required,minSize[6],maxSize[50],custom[onlyLetterSp]';
+        $atributos ['validar'] = 'required,minSize[6],maxSize[200],custom[onlyLetterSp]';
             
         if (isset ( $_REQUEST [$esteCampo] )) {
             $atributos ['valor'] = $_REQUEST [$esteCampo];

@@ -151,3 +151,14 @@ String.prototype.insertAt=function(index, string) {
 	  return this.substr(0, index) + string + this.substr(index);
 	}
 
+/*Se limpia el campo de doncente a consultar o a registrar cuando no se realiza
+una elección del listado desplegado*/
+
+$("#<?php echo $this->campoSeguro('docente')?>").blur(function() {
+ 	$("#<?php echo $this->campoSeguro('docente')?>").val("");
+});
+
+$("#<?php echo $this->campoSeguro('docenteRegistrar')?>").blur(function() {
+ 	$("#<?php echo $this->campoSeguro('docenteRegistrar')?>").val("");
+});
+

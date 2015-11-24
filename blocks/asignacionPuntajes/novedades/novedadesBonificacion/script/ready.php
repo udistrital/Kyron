@@ -95,8 +95,13 @@ $("#<?php echo $this->campoSeguro('tipo')?>").select2();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-<!-- document.getElementsByTagName('label')[5].firstChild.data.innerHTML="Hola"; -->
+/*Se limpia el campo de doncente a consultar o a registrar cuando no se realiza
+una elección del listado desplegado*/
 
-<!-- var label = document.querySelector('label[for="categoria"]'); -->
-<!-- // change it's content -->
-<!-- label.textContent = 'Emmanuel' -->
+$("#<?php echo $this->campoSeguro('docente')?>").blur(function() {
+ 	$("#<?php echo $this->campoSeguro('docente')?>").val("");
+});
+
+$("#<?php echo $this->campoSeguro('docenteRegistrar')?>").blur(function() {
+ 	$("#<?php echo $this->campoSeguro('docenteRegistrar')?>").val("");
+});

@@ -1,7 +1,7 @@
 <?php
 $this->idioma["produccionTecnicaYSoftwareRegistrar"] = "";
 $this->idioma["produccionTecnicaYSoftware"] = "";
-$this->idioma["marcoConsultaGeneral"] = "Consulta ";
+$this->idioma["marcoConsultaGeneral"] = "Consulta Producción Técnica y Software ";
 $this->idioma["marcoModificarRegistro"] = "";
 
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//

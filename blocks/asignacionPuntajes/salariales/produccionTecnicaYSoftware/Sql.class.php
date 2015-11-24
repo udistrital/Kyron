@@ -117,6 +117,7 @@ class Sql extends \Sql {
 				$cadenaSql .= " FROM ";
 				$cadenaSql .= " docencia.universidad";
 				$cadenaSql .= " WHERE estado=true";
+				$cadenaSql .= " AND id_universidad != -1";
 				break;
 				
 			case "editorial" :
@@ -126,6 +127,7 @@ class Sql extends \Sql {
 				$cadenaSql .= " FROM ";
 				$cadenaSql .= " docencia.editorial";
 				$cadenaSql .= " WHERE estado=true";
+				$cadenaSql .= " AND id_editorial != -1";
 				break;
 				
 			case "tipo" :

@@ -145,7 +145,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, minSize[6],maxSize[50]';
+		$atributos ['validar'] = 'required, minSize[6],maxSize[200]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -178,7 +178,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, minSize[6],maxSize[50]';
+		$atributos ['validar'] = 'required, minSize[6],maxSize[200]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -463,7 +463,7 @@ class FormularioRegistro {
 		$atributos ['estilo'] = 'jqueryui';
 		$atributos ['marco'] = true;
 		$atributos ['estiloMarco'] = '';
-		$atributos ["etiquetaObligatorio"] = true;
+		$atributos ["etiquetaObligatorio"] = false;
 		$atributos ['columnas'] = 1;
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
