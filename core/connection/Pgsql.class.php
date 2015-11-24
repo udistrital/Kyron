@@ -111,7 +111,7 @@
  *      
  */
 require_once ("core/log/loggerBase.class.php");
-include ("core/log/logger.class.php");
+include_once ("core/log/logger.class.php");
 class Pgsql extends ConectorDb {
 	
 	/**

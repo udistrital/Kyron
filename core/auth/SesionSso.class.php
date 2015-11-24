@@ -1,6 +1,7 @@
 <?php
 
 require_once ('/var/simplesamlphp/lib/_autoload.php');
+require_once ("core/log/logger.class.php");
 
 class SesionSSO {
 	
@@ -14,6 +15,7 @@ class SesionSSO {
 	var $authnRequest;
 	var $sesionUsuario;
 	var $sesionUsuarioId;
+	var $logger;
     
     /**
      *
@@ -28,6 +30,7 @@ class SesionSSO {
     	$this->hostSSO = $this->configurador->getVariableConfiguracion ( "hostSSO" );
     	$this->SPSSO = $this->configurador->getVariableConfiguracion ( "SPSSO" );// Fuente de autenticación definida en el authsources del SP
     	$this->authnRequest = new SimpleSAML_Auth_Simple ( $this->SPSSO );// Se pasa como parametro la fuente de autenticación
+    	$this->logger = new logger ();
     }
     
     public static function singleton() {
@@ -109,6 +112,9 @@ class SesionSSO {
 		
 		$this->authnRequest->requireAuth ( $login_params );
 		$atributos = $this->authnRequest->getAttributes();
+		$registro = $_REQUEST;
+		$registro['opcion'] = 'INGRESO';
+		$this->logger->log_usuario($registro);
 		
 		$this->sesionUsuario->crearSesion($atributos['usuario'][0]);
 		return $atributos;
