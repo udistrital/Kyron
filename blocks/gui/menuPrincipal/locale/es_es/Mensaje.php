@@ -10,6 +10,11 @@ $this->idioma ['asignacionDePuntajesTitulo'] = 'Asignación de Puntajes';
 $this->idioma ['reportesDocenciaTitulo'] = 'Reportes Docencia';
 $this->idioma ['cerrarSesionTitulo'] = 'Cerrar Sesión';
 
+//Menú de Administración de Usuarios
+$this->idioma ['administracionUsuarioTitulo'] = 'Administración de Usuarios';
+$this->idioma ['crearRol'] = 'Crear Roles';
+////////////////////////////////////
+
 //Hoja de Vida///////////////////////////////////
 $this->idioma ['crearDocente'] = 'Crear Docente';
 $this->idioma ['titulosAcademicos'] = 'Títulos Académicos';

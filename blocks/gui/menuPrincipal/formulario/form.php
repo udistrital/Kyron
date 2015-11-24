@@ -13,6 +13,7 @@ class FormularioMenu {
 	var $lenguaje;
 	var $miFormulario;
 	var $miSql;
+	var $miSesionSso;
 	
 	function __construct($lenguaje, $formulario, $sql) {
 		$this->miConfigurador = \Configurador::singleton ();
@@ -24,6 +25,8 @@ class FormularioMenu {
 		$this->miFormulario = $formulario;
 		
 		$this->miSql = $sql;
+		
+		$this->miSesionSso = \SesionSso::singleton ();
 	}
 	function formulario() {
 		
@@ -96,8 +99,10 @@ class FormularioMenu {
 		echo $this->miFormulario->formulario ( $atributos );
 		unset ( $atributos );
 		// ---------------- SECCION: Controles del Formulario -----------------------------------------------
-						
-		$cadenaSql = $this->miSql->getCadenaSql ( "datosMenu", 1 );
+		
+		$respuesta = $this->miSesionSso->getParametrosSesionAbierta();
+		
+		$cadenaSql = $this->miSql->getCadenaSql ( "datosMenu", $respuesta['perfil'] );
 		$datosMenu = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 
 

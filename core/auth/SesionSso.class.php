@@ -57,6 +57,10 @@ class SesionSSO {
         	$resultado = $this->crearSesion();
         }
         $resultado = $this->verificarRolesPagina($resultado['perfil'],$pagina);//Se verifica que la página pertenezca al perfil
+        // Si no tiene acceso a alguna página, se desloguea de SSO
+        if($resultado==false){
+        	$this->terminarSesion();
+        }
         return $resultado;
     }
 

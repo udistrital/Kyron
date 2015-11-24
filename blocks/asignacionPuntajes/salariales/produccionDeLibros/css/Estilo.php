@@ -7,8 +7,8 @@ $estilo[$indice++]="select2.css";
 $estilo[$indice++]="miestilo.css";
 
 // Tablas
-$estilo[$indice++]="demo_page.css";
-// $estilo[$indice++]="demo_table.css";
+// $estilo[$indice++]="demo_page.css";
+$estilo[$indice++]="demo_table.css";
 $estilo[$indice++]="jquery.dataTables.css";
 $estilo[$indice++]="jquery.dataTables_themeroller.css";
 

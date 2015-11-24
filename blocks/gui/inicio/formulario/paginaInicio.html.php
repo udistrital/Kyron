@@ -23,13 +23,13 @@
 										$valorCodificado = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $valorCodificado );
 									?>
 									<button id="submit-btn" class="disabled" onclick="window.location.href='<?php echo $directorio.'='.$valorCodificado?>'">
-										Identificarse
+										Ingresar
 									</button>
 								</div>
 							</span>
 						</h1>
 					</header>
-					<h1 class="tlt">Kyron - Sistema de gestión de Docencia</h1>
+					<h1 class="tlt">KYRON - Sistema de Gestión de Información Docente</h1>
 					<img style="width:100%" src="<?php echo $this -> miConfigurador->getVariableConfiguracion("rutaUrlBloque").'css/banner_kyron.png'?>" alt="Kyron">
 				</div>
 			</div>

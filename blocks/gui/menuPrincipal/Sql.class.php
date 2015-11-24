@@ -157,7 +157,7 @@ function getCadenaSql($tipo, $variable = "") {
          */
                   
        	case "datosMenu" :
-       		$cadenaSql=" SELECT";
+       		$cadenaSql=" SELECT DISTINCT";
        		$cadenaSql.=" enl.id_menu AS menu,";
        		$cadenaSql.=" enl.titulo AS titulo,";
        		$cadenaSql.=" enl.columna AS columna,";
@@ -171,7 +171,13 @@ function getCadenaSql($tipo, $variable = "") {
        		$cadenaSql.=" INNER JOIN kyron.kyron_menu_tipo_enlace AS ten ON ten.id_tipo_enlace = enl.id_tipo_enlace";
        		$cadenaSql.=" INNER JOIN kyron.kyron_menu_clase_enlace AS cen ON cen.id_clase_enlace = enl.id_clase_enlace";
        		$cadenaSql.=" WHERE";
-       		$cadenaSql.=" rol.id_rol = '".$variable."'";
+       		foreach ($variable as $indice => $rol){
+       			if($indice==0){
+       				$cadenaSql.=" rol.id_rol = '".$rol."'";
+       			} else {
+       				$cadenaSql.=" OR rol.id_rol = '".$rol."'";
+       			}
+       		}
        		$cadenaSql.=" ORDER BY enl.id_menu, enl.columna, enl.orden";
        		$cadenaSql.=" ;";
 			break;
