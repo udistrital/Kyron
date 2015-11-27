@@ -5,16 +5,15 @@ $funcion [$indice ++] = "select2_locale_es.js";
 $funcion [$indice ++] = "jquery.dataTables.js";
 $funcion [$indice ++] = "timepicker.js";
 $funcion [$indice ++] = "jquery.autocomplete.js";
-$funcion [$indice ++] = "jquery.autocomplete.js";
-
+$funcion [$indice ++] = "jquery.autocomplete.min.js";
 $embebido [$indice] = true;
 $funcion [$indice ++] = "ajax.php";
 $embebido [$indice] = true;
-$funcion [$indice ++] = "scriptLocal/validarCampoNumerico.php";
+$funcion [$indice ++] = "scriptLocal/validarCampoNumerico.js";
 $embebido [$indice] = true;
-$funcion [$indice ++] = "scriptLocal/campoFecha.php";
+$funcion [$indice ++] = "scriptLocal/campoFecha.js";
 $embebido [$indice] = true;
-$funcion [$indice ++] = "scriptLocal/evaluadores.php";
+$funcion [$indice ++] = "scriptLocal/evaluadores.js";
 $embebido [$indice] = true;
 $funcion [$indice ++] = "scriptLocal/asignacionPuntaje.js";
 
@@ -30,6 +29,7 @@ if ($esteBloque ["grupo"] == "") {
 
 $_REQUEST['tiempo']=time();
 
+
 if (isset ( $funcion [0] )) {
 	foreach ( $funcion as $clave => $nombre ) {
 		if (! isset ( $embebido [$clave] )) {
@@ -41,5 +41,4 @@ if (isset ( $funcion [0] )) {
 		}
 	}
 }
-
 ?>

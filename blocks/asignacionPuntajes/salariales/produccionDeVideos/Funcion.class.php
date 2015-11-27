@@ -1,8 +1,8 @@
 <?php
 
-namespace asignacionPuntajes\salariales\patentes;
+namespace asignacionPuntajes\salariales\produccionVideosDocente;
 
-use asignacionPuntajes\salariales\patentes\funcion\redireccion;
+use asignacionPuntajes\salariales\produccionVideosDocente\funcion\redireccion;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -101,8 +101,6 @@ class Funcion {
 		if (isset ( $_REQUEST ['procesarAjax'] )) {
 			$this->procesarAjax ();
 		} else if (isset ( $_REQUEST ["opcion"] )) {
-			
-				
 			switch ($_REQUEST ["opcion"]) {
 				case 'consultar' :
 					$this->consultarContrato ();
