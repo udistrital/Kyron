@@ -6,50 +6,84 @@ class InstalarExtension {
     
     var $miConfigurador;
     var $lenguaje;
-        
+    private $directorio_sara;
+    private $directorio_extensions;
+    private $directorio_install_extension;
+    
     function __construct($lenguaje) {
         
        	$this->miConfigurador = \Configurador::singleton ();
         $this->miConfigurador->fabricaConexiones->setRecursoDB ( 'principal' );
         $this->lenguaje = $lenguaje;
+        $this->directorio_sara = $this->miConfigurador->getVariableConfiguracion ( "raizDocumento" );
+        $this->directorio_extensions = $this->directorio_sara . '/extensions';
     }
     
-    function instalarPorUrl($urlExtension) {
-    	echo 'hi:<a href="'.$urlExtension.'">Link</a><br />';
-    	$raizInstalacion = $this->miConfigurador->getVariableConfiguracion ( "raizDocumento" );
-    	$path = $raizInstalacion . '/extensions';
-    	if (is_dir($path)) {
+    public function instalarPorUrl($urlExtension) {
+    	$nombreArchivo = basename($urlExtension);
+    	echo 'Descargar paquete manualmente: <a href="'.$urlExtension.'">'.$nombreArchivo.'</a><br />';
+    	if (is_dir($this->directorio_extensions)) {
     		echo '<p>(Warning) Directorio de Extensiones ya existe.</p>';
     	} else {
-    		mkdir($path, 0755);
+    		mkdir($this->directorio_extensions, 0755);
     	}
-    	$filePath = $path.'/tempFile.tar.gz';    	
-    	if (file_exists($filePath)){
-    		unlink($filePath);
-    	}
+    	$direccionFichero = $this->directorio_extensions.'/'.$nombreArchivo;
+    	$stream = $this->downloadFile($urlExtension);
+    	$this->saveFile($stream,$direccionFichero);
+    	$this->extractZip($direccionFichero,$this->directorio_extensions);
+    	$this->directorio_install_extension = $this->directorio_extensions.'/'.pathinfo($urlExtension, PATHINFO_FILENAME);
+    	$this->ejecutarInstruccionesExtension();
+    }
+    
+    private function ejecutarInstruccionesExtension(){
+    	$i = '-1';
+    	$argv[$i++] = 'directorio_sara='.$this->directorio_sara;
+    	$argv[$i++] = 'directorio_extensions='.$this->directorio_extensions;
+    	$argv[$i++] = 'directorio_extension='.$this->directorio_install_extension;
+    	require $this->directorio_install_extension.'/Extension.php';
+    }
+    
+    private function downloadFile($url){
+    	$conf['proxy_enable'] = true;
+    	$conf['proxy_context_params'] = array(
+    			'http' => array(
+    					'proxy' => 'tcp://10.20.4.15:3128',
+    					'request_fulluri' => true,
+    			),
+    	);
+    	$conf['proxy_context'] = stream_context_create($conf['proxy_context_params']);
     	try{
-    		$aContext = array(
-    				'http' => array(
-    						'proxy' => 'tcp://10.20.4.15:3128',
-    						'request_fulluri' => true,
-    				),
-    		);
-    		$cxContext = stream_context_create($aContext);
-    		$content = file_get_contents($urlExtension, false, $cxContext);
-    		file_put_contents($path.'/tempFile.tar.gz', $content);
+    		if(isset($conf['proxy_enable'])&&$conf['proxy_enable']==true){
+    			$content = file_get_contents($url, false, $conf['proxy_context']);
+    		} else {
+    			$content = file_get_contents($url, false);
+    		}
     	} catch(Exception $e){
-    		echo '<p>(Warning) No se detecta una conexión a internet desde el servidor.</p>';
-    		echo '<p>Caught exception: ',  $e->getMessage(), '</p>';
+    		die(
+    				'(Warning) No se detecta una conexión a internet desde el servidor.' .
+    				EOL .
+    				'Caught exception: '.  $e->getMessage() . EOL
+    		);
     	}
-    	try {
-	    	system('tar -zxvf '.$filePath.' '.$path);
-    	} catch (Exception $e) {
-    		// handle errors
+    	return $content;
+    }
+    
+    private function saveFile($strem,$dest){    	
+    	if (file_exists($dest)){
+    		unlink($dest);
     	}
-    	/*
-    	 * Falta descomprimir, copiar al directorio, saber que directorio fue el que pasé, ejecutar Extension.php, pero antes de ejecutar mostrar el anuncio de éso.
-    	 */
-    	var_dump($_REQUEST);
+    	file_put_contents($dest, $strem);
+    }
+    
+    private function extractZip ($src, $dest){
+    	$zip = new \ZipArchive;
+    	if ($zip->open($src)===true)
+    	{
+    		$zip->extractTo($dest);
+    		$zip->close();
+    		return true;
+    	}
+    	return false;
     }
 }
 
