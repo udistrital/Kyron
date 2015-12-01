@@ -23,7 +23,7 @@ class loggerSql {
 			case "registroLogUsuario" :
 				
 				$this->cadena_sql [$indice] = " INSERT INTO  ";
-				$this->cadena_sql [$indice] .= $this->prefijoTablas . "log_usuario  ";
+				$this->cadena_sql [$indice] .= "kyron." . $this->prefijoTablas . "log_usuario  ";
 				$this->cadena_sql [$indice] .= "(  ";
 				$this->cadena_sql [$indice] .= "id_usuario,  ";
 				$this->cadena_sql [$indice] .= "accion,  ";
