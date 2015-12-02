@@ -1,6 +1,6 @@
 <?php
 
-namespace asignacionPuntajes\salariales\cartasEditor\funcion;
+namespace reportes\estadoDeCuenta\funcion;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("index.php");

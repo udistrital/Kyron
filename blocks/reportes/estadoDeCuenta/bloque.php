@@ -1,6 +1,6 @@
 <?php
 
-namespace asignacionPuntajes\salariales\cartasEditor;
+namespace reportes\estadoDeCuenta;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -27,13 +27,13 @@ include_once ("Lenguaje.class.php");
 
 include_once ('funcion/redireccionar.php');
 
-use asignacionPuntajes\salariales\cartasEditor\funcion\redireccion;
+use reportes\estadoDeCuenta\funcion\redireccion;
 
 // Esta clase actua como control del bloque en un patron FCE
 // Para evitar redefiniciones de clases el nombre de la clase del archivo bloque debe corresponder al nombre del bloque
 // precedida por la palabra Bloque
 
-if (! class_exists ( '\\asignacionPuntajes\\salariales\\Bloque' )) {
+if (! class_exists ( '\\reportes\\estadoDeCuenta\\Bloque' )) {
 	class Bloque implements \Bloque {
 		var $nombreBloque;
 		var $miFuncion;

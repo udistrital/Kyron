@@ -1,5 +1,5 @@
 <?php
-namespace asignacionPuntajes\salariales\cartasEditor\formulario;
+namespace reportes\estadoDeCuenta\formulario;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");

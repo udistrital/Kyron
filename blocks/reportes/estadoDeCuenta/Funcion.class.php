@@ -1,8 +1,8 @@
 <?php
 
-namespace asignacionPuntajes\salariales\cartasEditor;
+namespace reportes\estadoDeCuenta;
 
-use asignacionPuntajes\salariales\cartasEditor\funcion\redireccion;
+use reportes\estadoDeCuenta\funcion\redireccion;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");

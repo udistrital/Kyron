@@ -1,5 +1,5 @@
 <?php
-use asignacionPuntajes\salariales\cartasEditor\Sql;
+use reportes\estadoDeCuenta\Sql;
 
 $conexion = "docencia";
 $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );

@@ -1,8 +1,8 @@
 <?php
 
-namespace asignacionPuntajes\salariales\cartasEditor\funcion;
+namespace reportes\estadoDeCuenta\funcion;
 
-use asignacionPuntajes\salariales\cartasEditor\funcion\redireccionar;
+use reportes\estadoDeCuenta\funcion\redireccionar;
 
 include_once ('redireccionar.php');
 if (! isset ( $GLOBALS ["autorizado"] )) {
