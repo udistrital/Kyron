@@ -3,12 +3,14 @@
 $this->idioma["tabIngresar"] = "Crear Docentes";
 $this->idioma["tipoDocumento"] = "Seleccione el Tipo de Documento";
 $this->idioma["identificacionFuncionario"] = "Número de Identificación del Funcionario";
-$this->idioma["marcoConsultarDocente"] = "Consultar Funcionario";
-$this->idioma["mensajeValidacion"] = "Para registrar el docente, primero debe realizar la validación del funcionario.<br> Por favor seleccione el tipo documento y digite el número de documento y <br> de click en 'Validar'."; 
+$this->idioma["mensajeValidacion"] = "<center> Para registrar el docente, primero debe realizar la validación del funcionario.<br> Por favor seleccione el tipo documento y digite el número de documento y <br> de click en 'Validar'.</center>"; 
 
 $this->idioma["botonValidar"] = "Validar";
 
 
+$this->idioma["paso1"] = "Consultar Funcionario";
+$this->idioma["paso2"] = "Información del Docente";
+$this->idioma["paso3"] = "Información Adicional";
 
 		
 
@@ -39,8 +41,6 @@ $this->idioma["entidad"] = "Universidad que lo otorga:";
 $this->idioma["pais"] = "País título académico:";
 $this->idioma["anno"] = "Año de Obtención:";
 $this->idioma["modalidad"] = "Modalidad de estudios:";
-$this->idioma["resolucion"] = "Resolución de convalidación:";
-$this->idioma["fechaResolucion"] = "Fecha Resolución de convalidación:";
 $this->idioma["entidadConvalidacion"] = "Entidad que convalida:";
 
 $this->idioma["tipoTitulo"] = "Ingrese tipo de título.";
@@ -74,13 +74,17 @@ $this->idioma["docenteRegistrar"] = "Identificación o nombre del docente:";
 $this->idioma["numeroActa"] = "Número de Acta CIARP-UD:";
 $this->idioma["fechaActa"] = "Fecha de Acta CIARP-UD:";
 $this->idioma["numeroCasoActa"] = "Número de Caso de Acta:";
-$this->idioma["puntaje"] = "Puntaje	Asignado:";
-$this->idioma["normatividad"] = "Normatividad:";
-$this->idioma["normatividadTitulo"] = "Ingrese la normatividad.";
+$this->idioma["correoInstitucional"] = "Correo Institucional:";
+$this->idioma["categoriaActualDocente"] = "Categoria Actual del Docente:";
+$this->idioma["resolucion"] = "Nùmero de Resolución Nombramiento:";
+$this->idioma["fechaIngreso"] = "Fecha Ingreso:";
+$this->idioma["fechaInicioPrueba"] = "Fecha de Inicio del Año de Prueba:";
+$this->idioma["dedicacion"] = "Dedicación:";
+
 ////////////////////////////////////////////////////////////////
 
-$this->idioma['titulosAcademicos'] = '';
-$this->idioma['titulosAcademicosRegistrar'] = '';
-$this->idioma['titulosAcademicosModificar'] = '';
+$this->idioma['crearDocente'] = '';
+$this->idioma['crearDocenteRegistrar'] = '';
+$this->idioma['crearDocenteModificar'] = '';
 
 ?>

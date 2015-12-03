@@ -15,12 +15,28 @@ $(function() {
 	});
 });
 
+var $formValidar = $("#crearDocenteRegistrar");
+       
+            
 $("#crearDocenteRegistrar").validationEngine({
 	promptPosition : "centerRight", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000
 });
+
+$formValidar.formToWizard({
+                submitButton: 'botonGuardarA',
+                showProgress: true, 
+                nextBtnName: 'Siguiente >>',
+                prevBtnName: '<< Anterior',
+                showStepNo: true,                
+                validateBeforeNext: function() {
+                
+                    return true;
+                }
+            });
+            
 
 $(function() {
 $("#crearDocenteRegistrar").submit(function() {
@@ -73,23 +89,18 @@ $(function() {
 $('#<?php echo $this->campoSeguro('docente')?>').width(465);      
 $('#<?php echo $this->campoSeguro('facultad')?>').width(450);      
 $('#<?php echo $this->campoSeguro('proyectoCurricular')?>').width(450);      
+$('#<?php echo $this->campoSeguro('dedicacion')?>').width(450);      
 
 $('#<?php echo $this->campoSeguro('docenteRegistrar')?>').width(465);
 $('#<?php echo $this->campoSeguro('tipoDocumento')?>').width(450);
-$('#<?php echo $this->campoSeguro('entidad')?>').width(450);
-$('#<?php echo $this->campoSeguro('modalidad')?>').width(450);
-$('#<?php echo $this->campoSeguro('pais')?>').width(450);
-$('#<?php echo $this->campoSeguro('anno')?>').width(450);
+$('#<?php echo $this->campoSeguro('categoriaActualDocente')?>').width(450);
 
 //////////////////**********Se definen los campos que requieren campos de select2**********////////////////
 
 $("#<?php echo $this->campoSeguro('facultad')?>").select2();
 $("#<?php echo $this->campoSeguro('proyectoCurricular')?>").select2();
-
-$('#<?php echo $this->campoSeguro('tipoDocumento')?>').select2();
-$('#<?php echo $this->campoSeguro('entidad')?>').select2();
-$('#<?php echo $this->campoSeguro('modalidad')?>').select2();
-$('#<?php echo $this->campoSeguro('pais')?>').select2();
-$('#<?php echo $this->campoSeguro('anno')?>').select2();
+$("#<?php echo $this->campoSeguro('tipoDocumento')?>").select2();
+$('#<?php echo $this->campoSeguro('categoriaActualDocente')?>').select2();
+$('#<?php echo $this->campoSeguro('dedicacion')?>').select2();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
