@@ -6,6 +6,9 @@ $funcion [$indice ++] = "jquery.dataTables.js";
 $funcion [$indice ++] = "timepicker.js";
 $funcion [$indice ++] = "jquery.autocomplete.js";
 $funcion [$indice ++] = "jquery.autocomplete.min.js";
+$funcion[$indice++]="jquery.formToWizard.js";
+
+
 $embebido [$indice] = true;
 $funcion [$indice ++] = "ajax.php";
 $embebido [$indice] = true;
