@@ -1,4 +1,4 @@
-$("#produccionVideosDocente").validationEngine({
+$("#produccionDeVideos").validationEngine({
 promptPosition : "bottomRight:-150", 
 scroll: false,
 autoHidePrompt: true,
@@ -6,8 +6,8 @@ autoHideDelay: 2000
 });
 
 $(function() {
-	$("#produccionVideosDocente").submit(function() {
-		$resultado=$("#produccionVideosDocente").validationEngine("validate");
+	$("#produccionDeVideos").submit(function() {
+		$resultado=$("#produccionDeVideos").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -15,7 +15,7 @@ $(function() {
 	});
 });
 
-$("#produccionVideosDocenteRegistrar").validationEngine({
+$("#produccionDeVideosRegistrar").validationEngine({
 	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
@@ -23,8 +23,8 @@ $("#produccionVideosDocenteRegistrar").validationEngine({
 });
 
 $(function() {
-$("#produccionVideosDocenteRegistrar").submit(function() {
-$resultado=$("#produccionVideosDocenteRegistrar").validationEngine("validate");
+$("#produccionDeVideosRegistrar").submit(function() {
+$resultado=$("#produccionDeVideosRegistrar").validationEngine("validate");
 
 if ($resultado) {
 
@@ -41,8 +41,8 @@ $(function () {
 });
 
 $(function() {
-	$("#produccionVideosDocenteModificar").submit(function() {
-		$resultado=$("#produccionVideosDocenteModificar").validationEngine("validate");
+	$("#produccionDeVideosModificar").submit(function() {
+		$resultado=$("#produccionDeVideosModificar").validationEngine("validate");
 		if ($resultado) {
 			return true;
 		}
@@ -50,7 +50,7 @@ $(function() {
 	});
 });
 
-$("#produccionVideosDocenteModificar").validationEngine({
+$("#produccionDeVideosModificar").validationEngine({
 	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,

@@ -136,6 +136,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "	paisnombre";
 				$cadenaSql .= " FROM ";
 				$cadenaSql .= " docencia.pais";
+				$cadenaSql .= " WHERE paiscodigo != '-1'";
 				$cadenaSql .= " order by paisnombre";
 				break;
 				
