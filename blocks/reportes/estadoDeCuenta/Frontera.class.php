@@ -9,6 +9,25 @@ if (!isset($GLOBALS ["autorizado"])) {
 
 include_once ("core/manager/Configurador.class.php");
 
+/*
+ * Sirve para agregar al core de SARA la funcionalidad de plantillas con domPDF
+ */
+if (class_exists ( '\FormularioHtml' )) {
+	class FormularioHtml extends \FormularioHtml {
+		function __construct() {
+			/**
+			 * Se agregan los componentes hechos con Boostrap para SARA
+			 */
+			require_once ($this->ruta . "builder/DomPdf.class.php");
+			// use blocks\docentes\planDeTrabajo\builder\componentes;
+			//Se llama a la clase constructor del padre
+			parent::__construct ();
+			$this->aggregate ( 'dompdf' );
+			//Se termina la agregación
+		}
+	}
+}
+
 class Frontera {
 
     var $ruta;

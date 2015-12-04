@@ -54,30 +54,18 @@ class registrarForm {
 		 */
 		
 		$documento = '79708124';//var_dump( $this->miConfigurador);
-		require_once $rutaSara.'/plugin/PHPExcel/Classes/PHPExcel/IOFactory.php';
-		$rendererName = PHPExcel_Settings::PDF_RENDERER_DOMPDF;
-		$rendererLibrary = 'dompdf';
-		$rendererLibraryPath = $rutaSara . '/plugin/' . $rendererLibrary;echo $rendererLibraryPath;
+		//require_once $rutaSara.'/plugin/PHPExcel/Classes/PHPExcel/IOFactory.php';
+		require_once( $rutaSara."/plugin/dompdf/dompdf_config.inc.php");
 		
-		$objReader = PHPExcel_IOFactory::createReader('Excel5');
-		$objPHPExcel = $objReader->load($rutaBloque."plantilla/plantilla_estado_de_cuenta.xls");
+		$html = file_get_contents($rutaBloque.'plantilla/plantilla_estado_de_cuenta.html');
 		
-		//$objPHPExcel->getActiveSheet()->setShowGridLines(false);
-		//$objPHPExcel->getActiveSheet()->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
-
-		if (!PHPExcel_Settings::setPdfRenderer(
-				$rendererName,
-				$rendererLibraryPath
-		)) {
-			die(
-				'NOTICE: Please set the $rendererName and $rendererLibraryPath values at the top of this script as appropriate for your directory structure'
-			);
-		}
+		$dompdf = new DOMPDF();
+		$dompdf->load_html($html);
+		$dompdf->render();
+		//$dompdf->stream("sample.pdf");
+		file_put_contents($rutaBloque.'Brochure.pdf', $dompdf->output());
+		echo $rutaBloque.'Brochure.pdf';
 		
-		
-		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'PDF');
-		$objWriter->setSheetIndex(0);
-		$objWriter->save(str_replace('.php', '_'.$rendererName.'.pdf', __FILE__));
 		echo 'hecho';
 		die;
 		
