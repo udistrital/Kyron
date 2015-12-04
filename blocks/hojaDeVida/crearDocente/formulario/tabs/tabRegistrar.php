@@ -87,7 +87,7 @@ class FormularioRegistro {
 			$esteCampo = "mensajeValidacion";
 			$atributos ["id"] = $esteCampo; // Cambiar este nombre y el estilo si no se desea mostrar los mensajes animados
 			$atributos ["etiqueta"] = "";
-			$atributos ["tipo"] = "warning";
+			$atributos ["tipo"] = "information";
 			$atributos ["estilo"] = "centrar";
 			$atributos ["mensaje"] = $this->lenguaje->getCadena ( $esteCampo );
 			echo $this->miFormulario->cuadroMensaje ( $atributos );
@@ -205,7 +205,7 @@ class FormularioRegistro {
 			$atributos ['deshabilitado'] = true;
 			$atributos ['tamanno'] = 57;
 			$atributos ['maximoTamanno'] = '';
-			$atributos ['anchoEtiqueta'] = 280;
+			$atributos ['anchoEtiqueta'] = 305;
 			$tab ++;
 			
 			// Aplica atributos globales al control
@@ -238,7 +238,7 @@ class FormularioRegistro {
 			$atributos ['deshabilitado'] = false;
 			$atributos ['tamanno'] = 57;
 			$atributos ['maximoTamanno'] = '6';
-			$atributos ['anchoEtiqueta'] = 280;
+			$atributos ['anchoEtiqueta'] = 305;
 			$tab ++;
 			
 			// Aplica atributos globales al control
@@ -247,6 +247,29 @@ class FormularioRegistro {
 			unset ( $atributos );
 			// ----------------FIN CONTROL: Campo de Texto Resolución de Nombramiento--------------------------------------------------------
 			
+			// //-------------Control Campo de Texto Documento Resolución-----------------------
+			$esteCampo = "documentoResolucion";
+			$atributos ["id"] = $esteCampo; // No cambiar este nombre
+			$atributos ["nombre"] = $esteCampo;
+			$atributos ["tipo"] = "file";
+			// $atributos ["obligatorio"] = true;
+			$atributos ["etiquetaObligatorio"] = true;
+			$atributos ["tabIndex"] = $tab ++;
+			$atributos ["columnas"] = 1;
+			$atributos ["estilo"] = "jqueryui";				
+			$atributos ["estilo"] = "textoIzquierda";
+			$atributos ["anchoEtiqueta"] = 310;
+			$atributos ["tamanno"] = 500000;
+			$atributos ["validar"] = "required";
+			$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
+			// $atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+			// $atributos ["valor"] = $valorCodificado;
+			$atributos = array_merge ( $atributos, $atributosGlobales );
+			echo $this->miFormulario->campoCuadroTexto ( $atributos );
+			unset ( $atributos );
+			echo "<br><br>";
+			// ----------------FIN CONTROL: Campo de Texto Documento Resolución--------------------------------------------------------
+					
 			// ----------------INICIO CONTROL: Lista Tipo de Documento--------------------------------------------------------
 			$esteCampo = 'dedicacion';
 			$atributos ['nombre'] = $esteCampo;
@@ -254,7 +277,7 @@ class FormularioRegistro {
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 			$atributos ["etiquetaObligatorio"] = true;
 			$atributos ['tab'] = $tab ++;
-			$atributos ['anchoEtiqueta'] = 280;
+			$atributos ['anchoEtiqueta'] = 305;
 			$atributos ['evento'] = '';
 			if (isset ( $_REQUEST [$esteCampo] )) {
 				$atributos ['seleccion'] = $_REQUEST [$esteCampo];
@@ -271,7 +294,7 @@ class FormularioRegistro {
 			$atributos ['anchoCaja'] = 57;
 			$atributos ['miEvento'] = '';
 			$atributos ['validar'] = 'required';
-			$atributos ['cadena_sql'] = $cadenaSql = $this->miSql->getCadenaSql ( 'tipo_documento' );
+			$atributos ['cadena_sql'] = $cadenaSql = $this->miSql->getCadenaSql ( 'tipo_dedicacion' );
 			$matrizItems = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 			$atributos ['matrizItems'] = $matrizItems;
 			// Aplica atributos globales al control
@@ -303,7 +326,7 @@ class FormularioRegistro {
 			$atributos ['deshabilitado'] = true;
 			$atributos ['tamanno'] = 57;
 			$atributos ['maximoTamanno'] = '';
-			$atributos ['anchoEtiqueta'] = 280;
+			$atributos ['anchoEtiqueta'] = 305;
 			$tab ++;
 				
 			// Aplica atributos globales al control
@@ -312,6 +335,74 @@ class FormularioRegistro {
 			unset ( $atributos );
 			// ----------------FIN CONTROL: Campo de Texto Fecha de Inicio del Año de Pruebas--------------------------------------------------------
 					
+			// //-------------Control Campo de Texto Documento Resolución-----------------------
+			$esteCampo = "documentoPropuestaPrueba";
+			$atributos ["id"] = $esteCampo; // No cambiar este nombre
+			$atributos ["nombre"] = $esteCampo;
+			$atributos ["tipo"] = "file";
+			// $atributos ["obligatorio"] = true;
+			$atributos ["etiquetaObligatorio"] = true;
+			$atributos ["tabIndex"] = $tab ++;
+			$atributos ["columnas"] = 1;
+			$atributos ["estilo"] = "jqueryui";
+			$atributos ["estilo"] = "textoIzquierda";
+			$atributos ["anchoEtiqueta"] = 310;
+			$atributos ["tamanno"] = 500000;
+			$atributos ["validar"] = "required";
+			$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
+			// $atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+			// $atributos ["valor"] = $valorCodificado;
+			$atributos = array_merge ( $atributos, $atributosGlobales );
+			echo $this->miFormulario->campoCuadroTexto ( $atributos );
+			unset ( $atributos );
+			echo "<br><br>";
+			// ----------------FIN CONTROL: Campo de Texto Documento Resolución--------------------------------------------------------
+						
+			// //-------------Control Campo de Texto Documento Resolución-----------------------
+			$esteCampo = "documentoFinPrueba";
+			$atributos ["id"] = $esteCampo; // No cambiar este nombre
+			$atributos ["nombre"] = $esteCampo;
+			$atributos ["tipo"] = "file";
+			// $atributos ["obligatorio"] = true;
+			$atributos ["etiquetaObligatorio"] = true;
+			$atributos ["tabIndex"] = $tab ++;
+			$atributos ["columnas"] = 1;
+			$atributos ["estilo"] = "jqueryui";
+			$atributos ["estilo"] = "textoIzquierda";
+			$atributos ["anchoEtiqueta"] = 310;
+			$atributos ["tamanno"] = 500000;
+			$atributos ["validar"] = "required";
+			$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
+			// $atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+			// $atributos ["valor"] = $valorCodificado;
+			$atributos = array_merge ( $atributos, $atributosGlobales );
+			echo $this->miFormulario->campoCuadroTexto ( $atributos );
+			unset ( $atributos );echo "<br><br>";
+			// ----------------FIN CONTROL: Campo de Texto Documento Resolución--------------------------------------------------------
+						
+			// //-------------Control Campo de Texto Documento Resolución-----------------------
+			$esteCampo = "documentoConceptoPares";
+			$atributos ["id"] = $esteCampo; // No cambiar este nombre
+			$atributos ["nombre"] = $esteCampo;
+			$atributos ["tipo"] = "file";
+			// $atributos ["obligatorio"] = true;
+			$atributos ["etiquetaObligatorio"] = true;
+			$atributos ["tabIndex"] = $tab ++;
+			$atributos ["columnas"] = 1;
+			$atributos ["estilo"] = "jqueryui";
+			$atributos ["estilo"] = "textoIzquierda";
+			$atributos ["anchoEtiqueta"] = 310;
+			$atributos ["tamanno"] = 500000;
+			$atributos ["validar"] = "required";
+			$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
+			// $atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+			// $atributos ["valor"] = $valorCodificado;
+			$atributos = array_merge ( $atributos, $atributosGlobales );
+			echo $this->miFormulario->campoCuadroTexto ( $atributos );
+			unset ( $atributos );echo "<br><br><br>";
+			// ----------------FIN CONTROL: Campo de Texto Documento Resolución--------------------------------------------------------
+						
+			
 		echo $this->miFormulario->agrupacion("fin");
 			
 		$esteCampo = "paso3";
@@ -326,7 +417,7 @@ class FormularioRegistro {
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 			$atributos ["etiquetaObligatorio"] = true;
 			$atributos ['tab'] = $tab ++;
-			$atributos ['anchoEtiqueta'] = 280;
+			$atributos ['anchoEtiqueta'] = 305;
 			$atributos ['evento'] = '';
 			if (isset ( $_REQUEST [$esteCampo] )) {
 				$atributos ['seleccion'] = $_REQUEST [$esteCampo];
@@ -343,7 +434,7 @@ class FormularioRegistro {
 			$atributos ['anchoCaja'] = 57;
 			$atributos ['miEvento'] = '';
 			$atributos ['validar'] = 'required';
-			$atributos ['cadena_sql'] = $cadenaSql = $this->miSql->getCadenaSql ( 'tipo_documento' );
+			$atributos ['cadena_sql'] = $cadenaSql = $this->miSql->getCadenaSql ( 'facultad' );
 			$matrizItems = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 			$atributos ['matrizItems'] = $matrizItems;
 			// Aplica atributos globales al control
@@ -359,7 +450,7 @@ class FormularioRegistro {
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 			$atributos ["etiquetaObligatorio"] = true;
 			$atributos ['tab'] = $tab ++;
-			$atributos ['anchoEtiqueta'] = 280;
+			$atributos ['anchoEtiqueta'] = 305;
 			$atributos ['evento'] = '';
 			if (isset ( $_REQUEST [$esteCampo] )) {
 				$atributos ['seleccion'] = $_REQUEST [$esteCampo];
@@ -376,7 +467,7 @@ class FormularioRegistro {
 			$atributos ['anchoCaja'] = 57;
 			$atributos ['miEvento'] = '';
 			$atributos ['validar'] = 'required';
-			$atributos ['cadena_sql'] = $cadenaSql = $this->miSql->getCadenaSql ( 'tipo_documento' );
+			$atributos ['cadena_sql'] = $cadenaSql = $this->miSql->getCadenaSql ( 'proyectoCurricular' );
 			$matrizItems = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 			$atributos ['matrizItems'] = $matrizItems;
 			// Aplica atributos globales al control
@@ -392,7 +483,7 @@ class FormularioRegistro {
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 			$atributos ["etiquetaObligatorio"] = true;
 			$atributos ['tab'] = $tab ++;
-			$atributos ['anchoEtiqueta'] = 280;
+			$atributos ['anchoEtiqueta'] = 305;
 			$atributos ['evento'] = '';
 			if (isset ( $_REQUEST [$esteCampo] )) {
 				$atributos ['seleccion'] = $_REQUEST [$esteCampo];
@@ -409,7 +500,7 @@ class FormularioRegistro {
 			$atributos ['anchoCaja'] = 57;
 			$atributos ['miEvento'] = '';
 			$atributos ['validar'] = 'required';
-			$atributos ['cadena_sql'] = $cadenaSql = $this->miSql->getCadenaSql ( 'tipo_documento' );
+			$atributos ['cadena_sql'] = $cadenaSql = $this->miSql->getCadenaSql ( 'categoria_actual_docente' );
 			$matrizItems = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 			$atributos ['matrizItems'] = $matrizItems;
 			// Aplica atributos globales al control
@@ -442,7 +533,7 @@ class FormularioRegistro {
 			$atributos ['deshabilitado'] = false;
 			$atributos ['tamanno'] = 57;
 			$atributos ['maximoTamanno'] = '15';
-			$atributos ['anchoEtiqueta'] = 280;
+			$atributos ['anchoEtiqueta'] = 305;
 			$tab ++;
 			
 			// Aplica atributos globales al control
@@ -476,7 +567,7 @@ class FormularioRegistro {
 			$atributos ['deshabilitado'] = false;
 			$atributos ['tamanno'] = 57;
 			$atributos ['maximoTamanno'] = '15';
-			$atributos ['anchoEtiqueta'] = 280;
+			$atributos ['anchoEtiqueta'] = 305;
 			$tab ++;
 				
 			// Aplica atributos globales al control
@@ -509,7 +600,7 @@ class FormularioRegistro {
 			$atributos ['deshabilitado'] = true;
 			$atributos ['tamanno'] = 57;
 			$atributos ['maximoTamanno'] = '';
-			$atributos ['anchoEtiqueta'] = 280;
+			$atributos ['anchoEtiqueta'] = 305;
 			$tab ++;
 				
 			// Aplica atributos globales al control
@@ -542,7 +633,7 @@ class FormularioRegistro {
 			$atributos ['deshabilitado'] = false;
 			$atributos ['tamanno'] = 57;
 			$atributos ['maximoTamanno'] = '6';
-			$atributos ['anchoEtiqueta'] = 280;
+			$atributos ['anchoEtiqueta'] = 305;
 			$tab ++;
 				
 			// Aplica atributos globales al control

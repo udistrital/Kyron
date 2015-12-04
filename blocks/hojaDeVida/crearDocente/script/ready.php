@@ -16,7 +16,14 @@ $(function() {
 });
 
 var $formValidar = $("#crearDocenteRegistrar");
-       
+
+ $formValidar.validationEngine({
+                //validateNonVisibleFields: true,
+                promptPosition : "topRight", 
+                scroll: false,
+                autoHidePrompt: true,
+                autoHideDelay: 2000
+            });        
             
 $("#crearDocenteRegistrar").validationEngine({
 	promptPosition : "centerRight", 
@@ -25,15 +32,15 @@ $("#crearDocenteRegistrar").validationEngine({
 	autoHideDelay: 2000
 });
 
+
 $formValidar.formToWizard({
-                submitButton: 'botonGuardarA',
+                submitButton: '<?php echo $this->campoSeguro('botonRegistrar')?>A',
                 showProgress: true, 
                 nextBtnName: 'Siguiente >>',
                 prevBtnName: '<< Anterior',
                 showStepNo: true,                
                 validateBeforeNext: function() {
-                
-                    return true;
+                	return $formValidar.validationEngine( 'validate' );
                 }
             });
             

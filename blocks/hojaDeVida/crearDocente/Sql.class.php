@@ -117,6 +117,25 @@ class Sql extends \Sql {
 				$cadenaSql .= " FROM ";
 				$cadenaSql .= " docencia.tipo_documento";
 				break;
+				
+			case "categoria_actual_docente" :
+				$cadenaSql = "SELECT";
+				$cadenaSql .= " id_categoria_actual_docente,";
+				$cadenaSql .= "	categoria_actual";
+				$cadenaSql .= " FROM ";
+				$cadenaSql .= " docencia.categoria_actual_docente";
+				$cadenaSql .= " WHERE estado=true";
+				
+				break;
+				
+			case "tipo_dedicacion" :
+				$cadenaSql = "SELECT";
+				$cadenaSql .= " id_tipo_dedicacion,";
+				$cadenaSql .= "	dedicacion";
+				$cadenaSql .= " FROM ";
+				$cadenaSql .= " docencia.tipo_dedicacion";
+				$cadenaSql .= " WHERE estado=true";
+				break;
 					
 			case "entidadInstitucion" :
 				$cadenaSql = "SELECT";
