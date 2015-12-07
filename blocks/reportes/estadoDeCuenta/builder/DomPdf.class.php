@@ -10,12 +10,18 @@ if (! isset ( $GLOBALS ['autorizado'] )) {
 include_once ("HtmlBaseMod.class.php");
 /**
  * Para calendario:
- * $atributos['destino'] String Identificador del objeto HTML
- * $atributos['id'] TipoVariable Comentario
+ * $atributos['destino'] Nombre del archivo destino
+ * $atributos['origin'] Nombre del html de origen
  */
 class DomPdf extends HtmlBaseMod{
-
-    function calendario($atributos) {
+	
+	var $miConfigurador;
+	/*
+	 * Este nombre no puede ser igual al de la clase
+	 */
+    function pdf($atributos) {
+    	
+    	$this->miConfigurador = \Configurador::singleton();
         
         $this->setAtributos ( $atributos );
         
@@ -25,18 +31,19 @@ class DomPdf extends HtmlBaseMod{
         
         $final='';
     
-        $this->cadenaHTML .= $this->createCalendar();
+        $this->cadenaHTML .= $this->createDomPdf();
         
         return $this->cadenaHTML.$final;
     
     }
     
-	private function createCalendar(){    
+	private function createDomPdf(){    
     	// $htmlModal = file_get_contents('page-content-wrapper.html.php', true);
-    	$html = $this->parsePhpHtml('html/dompdf.html.php');
+    	$html = $this->parsePhpHtml('html/'.$this->atributos['origen']);
     	
     	$rutaSara = $this->miConfigurador->getVariableConfiguracion ( 'raizDocumento' );
     	$rutaBloque = $this->miConfigurador->getVariableConfiguracion ( 'rutaBloque' );
+    	$rutaUrlBloque = $this->miConfigurador->getVariableConfiguracion ( 'rutaUrlBloque' );
     	
     	require_once( $rutaSara."/plugin/dompdf/dompdf_config.inc.php");
     	
@@ -44,9 +51,15 @@ class DomPdf extends HtmlBaseMod{
     	$dompdf->load_html($html);
     	$dompdf->render();
     	//$dompdf->stream("sample.pdf");
-    	file_put_contents($this->atributos['destino'], $dompdf->output());
-		echo $rutaBloque.'Brochure.pdf';
+    	$rutaPDF = $rutaSara.'builder/pdf'.$this->atributos['destino'];
     	
+    	file_put_contents($rutaPDF, $dompdf->output());
+    	
+    	$html = '<object data=""'.$rutaPDF.'" type="application/pdf">
+	        <embed src=""'.$rutaPDF.'" type="application/pdf" />
+	    </object>';
+		$html .= '<a href="'.$rutaPDF.'">Descargar Reporte</a>';
+		    	
     	return $html;
     }  
     

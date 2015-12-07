@@ -22,7 +22,8 @@ if (class_exists ( '\FormularioHtml' )) {
 			// use blocks\docentes\planDeTrabajo\builder\componentes;
 			//Se llama a la clase constructor del padre
 			parent::__construct ();
-			$this->aggregate ( 'dompdf' );
+			//Se llama a las funciones que están dentro de la clase y se agregan al formulario
+			$this->aggregate ( 'DomPdf' );
 			//Se termina la agregación
 		}
 	}

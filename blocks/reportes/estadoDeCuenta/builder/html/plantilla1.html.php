@@ -21,6 +21,7 @@
 </head>
 
 <body text="#000000">
+<div id='<?php echo $this->atributos['id']?>'></div>
 <table align="left" cellspacing="0" border="0">
 	<colgroup span="4" width="85"></colgroup>
 	<colgroup width="112"></colgroup>

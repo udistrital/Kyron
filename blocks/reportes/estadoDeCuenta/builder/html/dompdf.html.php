@@ -95,7 +95,7 @@
 </table>
 <img src="/usr/local/apache/htdocs/kyron/blocks/reportes/estadoDeCuenta/plantilla_estado_de_cuenta.png" width=82 height=75>
 <br clear=left>
-<!-- ************************************************************************** -->
+
 </body>
 
 </html>
