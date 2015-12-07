@@ -1,55 +1,172 @@
-.fxfamilynav-header.dark #tabzilla::before {
-    background-color: #0c99d5;
+body{
+	width: 100%;
+	height: 100%;
+	background-image: url("../imagenes/img_1.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
 }
-#tabzilla::before {
-    background-color: #0c99d5;
-}
-#tabzilla::before {
-    background-color: transparent;
-    content: "";
-    display: block;
-    height: 26px;
-    left: 28px;
-    position: absolute;
-    top: 0;
-    width: 88px;
-    z-index: 1;
-}
-#tabzilla {
-    position: absolute;
-    right: 0;
-    top: -2px;
-}
-#tabzilla {
-    float: right;
+/* Main */
+#menu {
+	position: absolute;
+	z-index: 5;
+    width: 40%;
+    margin: 0;
+    margin-top: 1%;
+    margin-left: 55%;
+    padding: 5px 0 0 0;
+    list-style: none;  
+    background-color: #101010;
+} 
+
+#menu li {
+    float: left;
+    padding: 0 0 10px 0;
     position: relative;
 }
 
-#tabzilla a {
-    background-image: url("../img/tab.png");
-    background-repeat: no-repeat;
+#menu a {
+    float: left;
+    height: 25px;
+    padding: 0 15px;
+    color: #fff;
+    text-transform: uppercase;
+    font: bold 12px/25px Arial, Helvetica;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #000;
+}
+
+#menu li:hover > a {
+    color: #fafafa;
+}
+
+*html #menu li a:hover { /* IE6 */
+    color: #fafafa;
+}
+
+#menu li:hover > ul {
     display: block;
-    height: 37px;
-    overflow: hidden;
-    position: relative;
-    text-indent: 120%;
+}
+
+/* Sub-menu */
+#menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;    
+    display: none;
+    position: absolute;
+    top: 35px;
+    left: 0;
+    z-index: 99999;    
+    background-color: #101010;   
+    background-image: linear-gradient(#444, #101010);    
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#menu ul li {
+    float: none;
+    margin: 0;
+    padding: 0;
+    display: block;  
+    box-shadow: 0 1px 0 #111111, 
+                0 2px 0 #777777;
+}
+
+#menu ul li:last-child { 
+    box-shadow: none;    
+}
+
+#menu ul a {    
+    padding: 10px;
+    height: auto;
+    line-height: 1;
+    display: block;
     white-space: nowrap;
-    width: 147px;
-    z-index: 2;
+    float: none;
+    text-transform: none;
 }
-#marco-principal {
-	max-width: 100%;
-	width: 100%;
-	max-height: 100%;
-	height: 100%;
+
+*html #menu ul a { /* IE6 */   
+    height: 10px;
+    width: 150px;
 }
+
+*:first-child+html #menu ul a { /* IE7 */    
+    height: 10px;
+    width: 150px;
+}
+
+#menu ul a:hover {
+    background-color: #0184ff;
+    background-image: linear-gradient(#04acec, #0184ff);
+}
+
+#menu ul li:first-child a {
+    border-radius: 5px 5px 0 0;
+}
+
+#menu ul li:first-child a:after {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: -8px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #444;
+}
+
+#menu ul li:first-child a:hover:after {
+    border-bottom-color: #04acec; 
+}
+
+#menu ul li:last-child a {
+    border-radius: 0 0 5px 5px;
+}
+
+/* Clear floated elements */
+#menu:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+#menu ul li:first-child a:after {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: -8px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #444;
+}
+
+#menu ul li:first-child a:hover:after {
+    border-bottom-color: #04acec; 
+}
+
+
+/*juusechec*/
+
+
 #submit-btn{
 	cursor: pointer;
+	padding: 11px;
+	padding-left: 50px;
+	padding-right: 50px;
+	border-radius: 5px;
 }
 .button-row{
 	position: absolute;
 	margin: auto;
-	right: 5%;
+	left: 75px;
 	top: 50px;
 	z-index: 10;
 }
@@ -74,4 +191,46 @@
 	text-shadow: 1px 1px 2px black, 0 0 0.3em red, 0 0 0.2em darkred;
 	overflow: hidden;
 	left: -10px;
+}
+.button-row .button, .links a {
+    text-decoration: none;
+}
+.button-row .button, .button-row button, .select-row select {
+    cursor: pointer;
+    font-family: "Clear Sans",Helvetica,Arial,sans-serif;
+}
+.button-row .button, .button-row button {
+    background: #0095dd none repeat scroll 0 0;
+    border: 0 none;
+    color: #fff;
+    transition-duration: 150ms;
+    transition-property: background-color;
+    width: 100%;
+}
+.button-row .button:active, .button-row .button:focus, .button-row .button:hover, .button-row button:active, .button-row button:focus, .button-row button:hover {
+    background: #08c none repeat scroll 0 0;
+}
+.button-row button.disabled, .button-row button:disabled {
+    background: #8a9ba8 none repeat scroll 0 0;
+    cursor: auto;
+}
+button::-moz-focus-inner {
+    border: 0 none;
+    padding: 0;
+}
+.button-row .settings-button, .settings-button {
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: "Clear Sans",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    transition-duration: 150ms;
+    transition-property: background-color;
+}
+.button-row .settings-button {
+    margin: 0;
+    padding: 0;
+}
+section.avatar-panel .button-row {
+    margin-bottom: 0;
+    text-align: left;
 }

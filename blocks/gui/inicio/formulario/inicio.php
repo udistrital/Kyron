@@ -42,7 +42,7 @@ class Form {
 			$enlace = $directorio.'='.$valorCodificado;
 			header('Location: '.$enlace);
 		}
-		include $this->site.'formulario/paginaInicio.html.php';
+		include $this->site.'formulario/paginaInicioVieja.html.php';
 	}
 
 	function mensaje() {
