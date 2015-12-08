@@ -12,6 +12,8 @@ include_once ("core/manager/Configurador.class.php");
 /*
  * Sirve para agregar al core de SARA la funcionalidad de plantillas con domPDF
  */
+include_once("core/builder/FormularioHtml.class.php");
+
 if (class_exists ( '\FormularioHtml' )) {
 	class FormularioHtml extends \FormularioHtml {
 		function __construct() {
@@ -23,7 +25,7 @@ if (class_exists ( '\FormularioHtml' )) {
 			//Se llama a la clase constructor del padre
 			parent::__construct ();
 			//Se llama a las funciones que están dentro de la clase y se agregan al formulario
-			$this->aggregate ( 'DomPdf' );
+			$this->aggregate ( 'DomPdfPlugin' );
 			//Se termina la agregación
 		}
 	}
@@ -69,11 +71,8 @@ class Frontera {
 
     function html() {
 
-        include_once("core/builder/FormularioHtml.class.php");
-
         $this->ruta = $this->miConfigurador->getVariableConfiguracion("rutaBloque");
-        $this->miFormulario = new \FormularioHtml();
-
+        $this->miFormulario = new FormularioHtml();
 
         if (isset($_REQUEST['opcion'])) {
 

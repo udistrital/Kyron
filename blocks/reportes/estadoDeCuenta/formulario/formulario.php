@@ -104,7 +104,8 @@ class registrarForm {
 		
 		$atributos ['id'] = 'formSaraData'; // No cambiar este nombre
 		$atributos ['origen'] = 'plantilla1.html.php';
-		$atributos ['destino'] = $documento.'pdf';
+		$randomName = $this->miConfigurador->fabricaConexiones->crypto->codificar (time());
+		$atributos ['destino'] = $documento.'-'.$randomName.'.pdf';
 		echo $this->miFormulario->pdf ( $atributos );
 		unset ( $atributos );
 		

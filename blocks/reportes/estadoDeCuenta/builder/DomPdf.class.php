@@ -13,13 +13,13 @@ include_once ("HtmlBaseMod.class.php");
  * $atributos['destino'] Nombre del archivo destino
  * $atributos['origin'] Nombre del html de origen
  */
-class DomPdf extends HtmlBaseMod{
+class DomPdfPlugin extends HtmlBaseMod{
 	
 	var $miConfigurador;
 	/*
 	 * Este nombre no puede ser igual al de la clase
 	 */
-    function pdf($atributos) {
+    public function pdf($atributos) {
     	
     	$this->miConfigurador = \Configurador::singleton();
         
@@ -51,14 +51,16 @@ class DomPdf extends HtmlBaseMod{
     	$dompdf->load_html($html);
     	$dompdf->render();
     	//$dompdf->stream("sample.pdf");
-    	$rutaPDF = $rutaSara.'builder/pdf'.$this->atributos['destino'];
+    	$rutaPDF = $rutaBloque.'/builder/pdf/'.$this->atributos['destino'];
     	
     	file_put_contents($rutaPDF, $dompdf->output());
     	
-    	$html = '<object data=""'.$rutaPDF.'" type="application/pdf">
-	        <embed src=""'.$rutaPDF.'" type="application/pdf" />
+    	$rutaUrlPDF = $rutaUrlBloque.'/builder/pdf/'.$this->atributos['destino'];
+    	
+    	$html = '<object data="'.$rutaUrlPDF.'" type="application/pdf">
+	        <embed src="'.$rutaUrlPDF.'" type="application/pdf" />
 	    </object>';
-		$html .= '<a href="'.$rutaPDF.'">Descargar Reporte</a>';
+		$html .= '<br /><a href="'.$rutaUrlPDF.'">Descargar Reporte</a>';
 		    	
     	return $html;
     }  
