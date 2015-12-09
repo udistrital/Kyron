@@ -168,7 +168,7 @@ echo $formulario;
 			<p>Informaci&oacute;n de conexi&oacute;n a la base de datos principal
 				del aplicativo.</p>
 			<label>Tipo: <span class="textoPequenno">Motor de DB a utilizar</span></label>
-			<select id="dbsys" name="dbsys">
+			<select id="dbsys" name="dbsys" onchange='cambiarPuerto(this);'>
 				<option value="mysql">Mysql</option>
 				<option value="pgsql">PostgreSQL</option>
 				<option value="oracle">Oracle</option>
@@ -188,7 +188,7 @@ echo $formulario;
     if (isset ( $_REQUEST ["dbpuerto"] )) {
         echo $_REQUEST ["dbpuerto"];
     } else {
-        echo "0";
+        echo "3306";
     }
     ?>" /> <label>Esquema <span class="textoPequenno">Dejar vacio si hay un único esquema
     </span></label> <input type="text"

@@ -1,3 +1,23 @@
+function cambiarPuerto (select) {
+            var selectedOption = select.options[select.selectedIndex];
+            var control= document.getElementsByName("dbpuerto");
+            switch(selectedOption.value){
+            
+            case 'mysql':
+            	control[0].setAttribute("value","3306");
+            	break;
+            case 'pgsql':
+            	control[0].setAttribute("value","5432");
+            	break;
+            
+            case 'oracle':
+            	control[0].setAttribute("value","1521");
+            	break;
+            
+            	
+            }
+}
+
 function abrir_ventana(url,nombre)
 {
 	
