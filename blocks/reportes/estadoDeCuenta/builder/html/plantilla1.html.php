@@ -6,12 +6,12 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<title></title>
 	<meta name="generator" content="LibreOffice 4.2.6.3 (Linux)">
-	<meta name="author" content="Ana Luna">
+	<meta name="author" content="Jorge Useche">
 	<meta name="created" content="20151201;185736568309838">
-	<meta name="changedby" content="Ana Luna">
+	<meta name="changedby" content="Jorge Useche">
 	<meta name="changed" content="20151201;191211489508442">
 	<!-- Información del documento -->
-	<!-- Impreso: de Ana Luna en 01/12/2015, 19:11:32 -->
+	<!-- Impreso: de Jorge Useche en 01/12/2015, 19:11:32 -->
 	
 	<style type="text/css"><!-- 
 		body,div,table,thead,tbody,tfoot,tr,th,td,p { font-family:"Liberation Sans"; font-size:x-small }
