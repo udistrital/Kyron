@@ -1,7 +1,6 @@
 <?php
 
-require_once ('/var/simplesamlphp/lib/_autoload.php');
-require_once ("core/log/logger.class.php");
+require_once ('core/log/logger.class.php');
 
 class SesionSSO {
 	
@@ -26,9 +25,10 @@ class SesionSSO {
     function __construct() {
     	$this->sesionUsuario = Sesion::singleton ();
     	$this->configurador = \Configurador::singleton ();
-    	$this->site = $this->configurador->getVariableConfiguracion ( "site" );
-    	$this->hostSSO = $this->configurador->getVariableConfiguracion ( "hostSSO" );
-    	$this->SPSSO = $this->configurador->getVariableConfiguracion ( "SPSSO" );// Fuente de autenticación definida en el authsources del SP
+    	$this->site = $this->configurador->getVariableConfiguracion ( 'site' );
+    	$this->hostSSO = $this->configurador->getVariableConfiguracion ( 'hostSSO' );
+    	$this->SPSSO = $this->configurador->getVariableConfiguracion ( 'SPSSO' );// Fuente de autenticación definida en el authsources del SP
+    	require_once ($this->configurador->getVariableConfiguracion ( 'direccionSSOAutoloader' ));
     	$this->authnRequest = new SimpleSAML_Auth_Simple ( $this->SPSSO );// Se pasa como parametro la fuente de autenticación
     	$this->logger = new logger ();
     }
@@ -132,7 +132,7 @@ class SesionSSO {
 		/*
 		 * No USADA
 		 */
-        $cadenaSql = $cadenaSql = $this->miSql->getCadenaSql("borrarSesionesExpiradas");
+        $cadenaSql = $cadenaSql = $this->miSql->getCadenaSql('borrarSesionesExpiradas');
 
         return !$this->miConexion->ejecutarAcceso($cadenaSql);
     }
@@ -159,9 +159,9 @@ class SesionSSO {
     // Fin del método terminar_sesion
     
     function verificarRolesPagina($perfiles,$pagina){
-    	$cadenaSql = $this->sesionUsuario->miSql->getCadenaSql("verificarEnlaceUsuario", $pagina);
+    	$cadenaSql = $this->sesionUsuario->miSql->getCadenaSql('verificarEnlaceUsuario', $pagina);
     	//Se busca en la tabla _menu_rol_enlace si la página pertenece al perfil.
-    	$roles = $this->sesionUsuario->miConexion->ejecutarAcceso($cadenaSql,"busqueda");
+    	$roles = $this->sesionUsuario->miConexion->ejecutarAcceso($cadenaSql,'busqueda');
     	if($roles){//Si la página tiene roles en el menú
 	    	foreach ($perfiles as $perfil){
 	    		foreach ($roles as $rol){

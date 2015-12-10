@@ -48,7 +48,6 @@ class Autenticador {
         $this->sesionUsuario->setConexion ( $this->configurador->fabricaConexiones->getRecursoDB ( "configuracion" ) );
         $this->sesionUsuario->setTiempoExpiracion ( $this->configurador->getVariableConfiguracion ( "expiracion" ) );
         $this->sesionUsuario->setPrefijoTablas ( $this->configurador->getVariableConfiguracion ( "prefijo" ) );        
-        
     
     }
     
@@ -66,7 +65,7 @@ class Autenticador {
         
         $respuesta = '';
         $resultado = $this->verificarExistenciaPagina ();
-        if ($resultado) {        	
+        if ($resultado) {
             $resultado = $this->cargarSesionUsuario ();
             
             if ($resultado) {
@@ -181,7 +180,7 @@ class Autenticador {
     function verificarAutenticacionSSO(){
     	
     	if($this->configurador->getVariableConfiguracion ('singleSignOn')==true){
-    		require_once ($this->configurador->getVariableConfiguracion ( "raizDocumento" ) . "/core/auth/SesionSso.class.php");
+    		require_once ('SesionSso.class.php');
     		$this->sesionSso = SesionSso::singleton ();
     		return true;    		
     	}
