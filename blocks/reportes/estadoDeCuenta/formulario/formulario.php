@@ -101,6 +101,29 @@ class registrarForm {
 		
 		$documento = '79708124';
 		
+		$cadenaSql = $this->miSql->getCadenaSql ( 'datos_docente', $documento );
+		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );		
+		$atributos['datos_docente'] = $resultado[0];
+		
+		$cadenaSql = $this->miSql->getCadenaSql ( 'titulos_docente', $documento );
+		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );		
+		$atributos['titulos_docente'] = $resultado;
+		
+		$cadenaSql = $this->miSql->getCadenaSql ( 'experiencia_calificada', $documento );
+		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );		
+		$atributos['experiencia_calificada'] = $resultado;
+		
+		$cadenaSql = $this->miSql->getCadenaSql ( 'direccion_de_trabajos', $documento );
+		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$atributos['direccion_de_trabajos'] = $resultado;
+		
+		$cadenaSql = $this->miSql->getCadenaSql ( 'experiencia_actividades_administrativas', $documento );
+		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$atributos['experiencia_actividades_administrativas'] = $resultado;
+		
+// 		$cadenaSql = $this->miSql->getCadenaSql ( 'novedades', $documento );
+// 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+// 		$atributos['novedades'] = $resultado;
 		
 		$atributos ['id'] = 'formSaraData'; // No cambiar este nombre
 		$atributos ['origen'] = 'plantilla1.html.php';

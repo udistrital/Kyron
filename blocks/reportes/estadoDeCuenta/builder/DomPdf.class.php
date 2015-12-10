@@ -49,7 +49,12 @@ class DomPdfPlugin extends HtmlBaseMod{
     	
 		$dompdf = new DOMPDF();
     	$dompdf->load_html($html);
+    	try{
     	$dompdf->render();
+    	}catch(Exception $e){
+    		echo $html;
+    		die($e->getMessage());
+    	}
     	//$dompdf->stream("sample.pdf");
     	$rutaPDF = $rutaBloque.'/builder/pdf/'.$this->atributos['destino'];
     	

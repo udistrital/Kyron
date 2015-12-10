@@ -155,18 +155,21 @@ body{
 
 /*juusechec*/
 
-
-#submit-btn{
-	cursor: pointer;
-	padding: 11px;
-	padding-left: 50px;
-	padding-right: 50px;
-	border-radius: 5px;
-}
-.button-row{
+#submit-btn {
 	position: absolute;
 	margin: auto;
-	left: 75px;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 150px;
+	height: 50px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.button-row{
+	margin: auto;
 	top: 50px;
 	z-index: 10;
 }
