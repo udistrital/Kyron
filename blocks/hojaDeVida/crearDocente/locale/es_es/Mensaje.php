@@ -1,7 +1,7 @@
 <?php
 
-$this->idioma["tabIngresar"] = "Crear Docentes";
-$this->idioma["tipoDocumento"] = "Seleccione el Tipo de Documento";
+$this->idioma["tabIngresar"] = "Crear Docentes - Datos Básicos";
+$this->idioma["tipoDocumento"] = "Tipo de Documento";
 $this->idioma["identificacionFuncionario"] = "Número de Identificación del Funcionario:";
 $this->idioma["mensajeValidacion"] = "<center> Para registrar el docente, primero debe realizar la validación del funcionario.<br> Por favor seleccione el tipo documento y digite el número de documento y <br> de click en 'Validar'.</center>"; 
 
@@ -59,24 +59,47 @@ $this->idioma["fechaIngreso"] = "Fecha Ingreso:";
 $this->idioma["fechaInicioPrueba"] = "Fecha de Inicio del Año de Prueba:";
 $this->idioma["dedicacion"] = "Dedicación:";
 
+$this->idioma["primerNombre"] = "Primer Nombre:";
+$this->idioma["segundoNombre"] = "Segundo Nombre:";
+$this->idioma["primerApellido"] = "Primer Apellido:";
+$this->idioma["segundoApellido"] = "Segundo Apellido:";
+
+$this->idioma["correoPersonal"] = "Correo Personal";
+
+$this->idioma["direccionResidencia"] = "Dirección de Residencia:";
+$this->idioma["direccionResidenciaTitulo"] = "Ingrese la Direccion de Residencia.";
+
+$this->idioma["telefonoDocente"] = "Telefono Fijo:";
+$this->idioma["telefonoDocenteTitulo"] = "Ingrese el número de telefono fijo del docente.";
+
+$this->idioma["celularDocente"] = "Telefono Celular:";
+$this->idioma["celularDocenteTitulo"] = "Ingrese el número de celular del docente.";
+
+
+$this->idioma["primerNombreTitulo"] = "Ingrese el Primer Nombre.";
+$this->idioma["segundoNombreTitulo"] = "Ingrese el Segundo Nombre, Si Tiene.";
+$this->idioma["primerApellidoTitulo"] = "Ingrese el Primer Apellido.";
+$this->idioma["segundoApellidoTitulo"] = "Ingrese el Segundo Apellido, Si Tiene.";
+
 $this->idioma["documentoResolucion"] = "Documento Resolucion Nombramiento:";
 $this->idioma["documentoPropuestaPrueba"] = "Documento propuesta para año de prueba:";
 $this->idioma["documentoFinPrueba"] = "Documento final de año de prueba:";
 $this->idioma["documentoConceptoPares"] = "Documento concepto de pares:";
 
 
-$this->idioma["facultadTitulo"] = "Seleccione la Facultad";
-$this->idioma["proyectoCurricularTitulo"] = "Seleccione el Proyecto Curricular";
-$this->idioma["numeroActaTitulo"] = "Ingrese el Número de Acta CIARP-UD";
-$this->idioma["fechaActaTitulo"] = "Seleccione laFecha de Acta CIARP-UD";
-$this->idioma["numeroCasoActaTitulo"] = "Ingrese el Número de Caso de Acta";
-$this->idioma["correoInstitucionalTitulo"] = "Ingrese el Correo Institucional";
-$this->idioma["categoriaActualDocenteTitulo"] = "Seleccione la Categoria Actual del Docente";
-$this->idioma["resolucionTitulo"] = "Ingrese el Número de Resolución Nombramiento";
-$this->idioma["fechaIngresoTitulo"] = "Seleccione la Fecha Ingreso";
-$this->idioma["fechaInicioPruebaTitulo"] = "Seleccione la Fecha de Inicio del Año de Prueba";
-$this->idioma["dedicacionTitulo"] = "Seleccione la Dedicación del Docente";
-$this->idioma["identificacionFuncionarioTitulo"] = "Ingrese Número de Identificación del Funcionario";
+$this->idioma["facultadTitulo"] = "Seleccione la Facultad.";
+$this->idioma["proyectoCurricularTitulo"] = "Seleccione el Proyecto Curricular.";
+$this->idioma["numeroActaTitulo"] = "Ingrese el Número de Acta CIARP-UD.";
+$this->idioma["fechaActaTitulo"] = "Seleccione laFecha de Acta CIARP-UD.";
+$this->idioma["numeroCasoActaTitulo"] = "Ingrese el Número de Caso de Acta.";
+$this->idioma["correoInstitucionalTitulo"] = "Ingrese el Correo Institucional.";
+$this->idioma["correoPersonalTitulo"] = "Ingrese el Correo Personal.";
+$this->idioma["categoriaActualDocenteTitulo"] = "Seleccione la Categoria Actual del Docente.";
+$this->idioma["resolucionTitulo"] = "Ingrese el Número de Resolución Nombramiento.";
+$this->idioma["fechaIngresoTitulo"] = "Seleccione la Fecha Ingreso.";
+$this->idioma["fechaInicioPruebaTitulo"] = "Seleccione la Fecha de Inicio del Año de Prueba.";
+$this->idioma["dedicacionTitulo"] = "Seleccione la Dedicación del Docente.";
+$this->idioma["identificacionFuncionarioTitulo"] = "Ingrese Número de Identificación del Funcionario.";
 
 ////////////////////////////////////////////////////////////////
 

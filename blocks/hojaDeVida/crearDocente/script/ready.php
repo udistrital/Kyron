@@ -1,80 +1,47 @@
 $("#crearDocente").validationEngine({
-promptPosition : "centerRight", 
-scroll: false,
-autoHidePrompt: true,
-autoHideDelay: 2000
-});
-
-$(function() {
-	$("#crearDocente").submit(function() {
-		$resultado=$("#crearDocente").validationEngine("validate");
-		if ($resultado) {
-			return true;
-		}
-		return false;
-	});
-});
-
-var $formValidar = $("#crearDocenteRegistrar");
-
- $formValidar.validationEngine({
-                //validateNonVisibleFields: true,
-                promptPosition : "topRight", 
-                scroll: false,
-                autoHidePrompt: true,
-                autoHideDelay: 2000
-            });        
-            
-$("#crearDocenteRegistrar").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000
 });
 
+$("#crearDocente").submit(function() {
+	$resultado=$("#crearDocente").validationEngine("validate");
+	if ($resultado) {
+		return true;
+	}
+	return false;
+});
 
-$formValidar.formToWizard({
-                submitButton: '<?php echo $this->campoSeguro('botonRegistrar')?>A',
-                showProgress: true, 
-                nextBtnName: 'Siguiente >>',
-                prevBtnName: '<< Anterior',
-                showStepNo: true,                
-                validateBeforeNext: function() {
-                	return $formValidar.validationEngine( 'validate' );
-                }
-            });
-            
+$("#crearDocenteRegistrar").validationEngine({
+	promptPosition : "bottomRight:-150", 
+	scroll: false,
+	autoHidePrompt: true,
+	autoHideDelay: 2000
+});
 
-$(function() {
 $("#crearDocenteRegistrar").submit(function() {
-$resultado=$("#crearDocenteRegistrar").validationEngine("validate");
-
-if ($resultado) {
-
-return true;
-}
-return false;
-});
+	$resultado=$("#crearDocenteRegistrar").validationEngine("validate");		
+	if ($resultado) {
+		return true;
+	}
+	return false;
 });
 
-$(function () {
-    $("button").button().click(function (event) { 
-        event.preventDefault();
-    });
+$("button").button().click(function (event) { 
+    event.preventDefault();
 });
 
-$(function() {
-	$("#crearDocenteModificar").submit(function() {
-		$resultado=$("#crearDocenteModificar").validationEngine("validate");
-		if ($resultado) {
-			return true;
-		}
-		return false;
-	});
+$("#crearDocenteModificar").submit(function() {
+	$resultado=$("#crearDocenteModificar").validationEngine("validate");
+	if ($resultado) {
+		return true;
+	}
+	return false;
 });
 
 $("#crearDocenteModificar").validationEngine({
-	promptPosition : "centerRight", 
+	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
 	autoHideDelay: 2000
@@ -84,11 +51,21 @@ $('#tablaTitulos').dataTable( {
 	"sPaginationType": "full_numbers"
 });
         
-////////////Función que organiza los tabs en la interfaz gráfica//////////////
+/*
+ * Función que organiza los tabs en la interfaz gráfica
+ */
 $(function() {
 	$("#tabs").tabs();
 }); 
-//////////////////////////////////////////////////////////////////////////////
+
+/*
+ * Asociar el widget de validación al formulario
+ */
+
+/*
+ * Se define el ancho de los campos de listas desplegables
+ */
+
 
 // Asociar el widget de validación al formulario
 
