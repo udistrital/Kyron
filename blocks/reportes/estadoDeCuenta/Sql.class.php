@@ -93,55 +93,6 @@ class Sql extends \Sql {
 				break;
 			
 			/* Consultas del desarrollo */
-			case "facultad" :
-				$cadenaSql = "SELECT";
-				$cadenaSql .= " id_facultad,";
-				$cadenaSql .= "	nombre";
-				$cadenaSql .= " FROM ";
-				$cadenaSql .= " docencia.facultad";
-				break;
-				
-			case "proyectoCurricular" :
-				$cadenaSql = "SELECT";
-				$cadenaSql .= " id_proyectocurricular,";
-				$cadenaSql .= "	nombre";
-				$cadenaSql .= " FROM ";
-				$cadenaSql .= " docencia.proyectocurricular";
-				$cadenaSql .= " WHERE estado=true";
-				break;
-				
-			case "contexto" :
-				$cadenaSql = "select";
-				$cadenaSql .= " id_contexto,";
-				$cadenaSql .= "	descripcion";
-				$cadenaSql .= " FROM ";
-				$cadenaSql .= " docencia.contexto";
-				$cadenaSql .= " WHERE id_contexto != -1";
-				break;
-				
-			case "pais" :
-				$cadenaSql = "SELECT";
-				$cadenaSql .= " paiscodigo,";
-				$cadenaSql .= "	paisnombre";
-				$cadenaSql .= " FROM ";
-				$cadenaSql .= " docencia.pais";
-				if($variable == 1){
-					$cadenaSql .= " WHERE paiscodigo = 'COL'";
-				}elseif ($variable == 2){
-					$cadenaSql .= " WHERE paiscodigo != 'COL'";
-				}
-				$cadenaSql .= "order by paisnombre";
-				break;
-				
-			case "categoria_revista" :
-				$cadenaSql = "select";
-				$cadenaSql .= " id_tipo_indexacion,";
-				$cadenaSql .= "	descripcion";
-				$cadenaSql .= " FROM ";
-				$cadenaSql .= " docencia.tipo_indexacion";
-				$cadenaSql .= " WHERE";
-				$cadenaSql .= " id_contexto =" . $variable;
-				break;
 				
 			case "datos_docente" :
 				$cadenaSql=" SELECT";
@@ -172,21 +123,53 @@ class Sql extends \Sql {
 				$cadenaSql.=" ;";
 				break;
 				
-			case "experiencia_calificada" :
+			case "revistas_indexadas" :
 				$cadenaSql=" SELECT";
-				$cadenaSql.=" tec.descripcion AS tipo_experiencia_calificada,";
-				$cadenaSql.=" ec.fecha_acta AS fecha_acta,";
-				$cadenaSql.=" ec.numero_acta AS numero_acta,";
-				$cadenaSql.=" ec.puntaje AS puntaje,";
-				$cadenaSql.=" ter.descripcion AS tipo_emisor_resolucion";
-				$cadenaSql.=" FROM docencia.experiencia_calificada AS ec";
-				$cadenaSql.=" LEFT JOIN docencia.tipo_experiencia_calificada AS tec ON tec.id_tipo_experiencia_calificada = ec.id_tipo_experiencia_calificada";
-				$cadenaSql.=" LEFT JOIN docencia.tipo_emisor_resolucion AS ter ON ter.id_tipo_emisor_resolucion = ec.id_tipo_emisor_resolucion";
-				$cadenaSql.=" WHERE ec.documento_docente='". $variable."'";
-				$cadenaSql.=" ORDER BY ec.id_tipo_emisor_resolucion ASC";
+				$cadenaSql.=" b.descripcion AS tipo_contexto,";
+				$cadenaSql.=" c.descripcion AS tipo_indexacion,";
+				$cadenaSql.=" a.nombre_revista AS nombre_revista,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.revista_indexada AS a";
+				$cadenaSql.=" LEFT JOIN docencia.contexto AS b ON b.id_contexto = a.id_contexto";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_indexacion AS c ON c.id_tipo_indexacion = a.id_tipo_indexacion";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY b.descripcion ASC";
 				$cadenaSql.=" ;";
 				break;
-			
+				
+			case "capitulos_libros" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" b.nombre_editorial AS editorial,";
+				$cadenaSql.=" c.tipo_libro AS tipo_libro,";
+				$cadenaSql.=" a.titulo_capitulo AS titulo_capitulo,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.capitulo_libro AS a";
+				$cadenaSql.=" LEFT JOIN docencia.editorial AS b ON b.id_editorial = a.id_editorial";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_libro AS c ON c.id_tipo_libro = a.id_tipo_libro";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY c.tipo_libro ASC";
+				$cadenaSql.=" ;";
+				break;
+				
+			case "cartas_editor" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" b.descripcion AS editorial,";
+				$cadenaSql.=" c.descripcion AS tipo_libro,";
+				$cadenaSql.=" a.nombre_revista AS nombre_revista,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.cartas_editor AS a";
+				$cadenaSql.=" LEFT JOIN docencia.contexto AS b ON b.id_contexto = a.id_contexto";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_indexacion AS c ON c.id_tipo_indexacion = a.id_tipo_indexacion";
+				$cadenaSql.=" ORDER BY c.descripcion ASC";
+				$cadenaSql.=" ;";
+				break;
+				
 			case "direccion_de_trabajos" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" ttg.nombre_tipo_trabajogrado AS tipo_trabajogrado,";
@@ -203,7 +186,81 @@ class Sql extends \Sql {
 				$cadenaSql.=" ;";
 				break;
 				
-			case "experiencia_actividades_administrativas" :
+			case "experiencia_direccion_academica" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" b.nombre_tipo_entidad AS nombre_tipo_entidad,";
+				$cadenaSql.=" c.nombre_universidad AS nombre_universidad,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.experiencia_direccion_academica AS a";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_entidad AS b ON b.id_tipo_entidad = a.id_tipo_entidad";
+				$cadenaSql.=" LEFT JOIN docencia.universidad AS c ON c.id_universidad = a.id_universidad";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY nombre_tipo_entidad ASC";
+				$cadenaSql.=" ;";
+				break;
+				
+			case "experiencia_investigacion" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" b.descripcion AS tipo_experiencia_investigacion,";
+				$cadenaSql.=" c.nombre_universidad AS nombre_universidad,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.experiencia_investigacion AS a";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_experiencia_investigacion AS b ON b.id_tipo_experiencia_investigacion = a.id_tipo_experiencia_investigacion";
+				$cadenaSql.=" LEFT JOIN docencia.universidad AS c ON c.id_universidad = a.id_universidad";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY tipo_experiencia_investigacion ASC";
+				$cadenaSql.=" ;";
+				break;
+				
+			case "experiencia_docencia" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" b.nombre_tipo_entidad AS nombre_tipo_entidad,";
+				$cadenaSql.=" c.nombre_universidad AS nombre_universidad,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.experiencia_docencia AS a";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_entidad AS b ON b.id_tipo_entidad = a.id_tipo_entidad";
+				$cadenaSql.=" LEFT JOIN docencia.universidad AS c ON c.id_universidad = a.id_universidad";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY nombre_tipo_entidad ASC";
+				$cadenaSql.=" ;";
+				break;
+				
+			case "experiencia_profesional" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" a.cargo AS cargo,";
+				$cadenaSql.=" b.nombre_universidad AS nombre_universidad,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.experiencia_profesional AS a";
+				$cadenaSql.=" LEFT JOIN docencia.universidad AS b ON b.id_universidad = a.id_universidad";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY nombre_universidad ASC";
+				$cadenaSql.=" ;";
+				break;
+				
+			case "experiencia_calificada" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" tec.descripcion AS tipo_experiencia_calificada,";
+				$cadenaSql.=" ec.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" ec.numero_acta AS numero_acta,";
+				$cadenaSql.=" ec.puntaje AS puntaje,";
+				$cadenaSql.=" ter.descripcion AS tipo_emisor_resolucion";
+				$cadenaSql.=" FROM docencia.experiencia_calificada AS ec";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_experiencia_calificada AS tec ON tec.id_tipo_experiencia_calificada = ec.id_tipo_experiencia_calificada";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_emisor_resolucion AS ter ON ter.id_tipo_emisor_resolucion = ec.id_tipo_emisor_resolucion";
+				$cadenaSql.=" WHERE ec.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY ec.id_tipo_emisor_resolucion ASC";
+				$cadenaSql.=" ;";
+				break;
+				
+			case "experiencia_direccion_academica" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" u.nombre_universidad AS nombre_universidad,";
 				$cadenaSql.=" eda.fecha_acta AS fecha_acta,";
@@ -213,128 +270,221 @@ class Sql extends \Sql {
 				$cadenaSql.=" FROM docencia.experiencia_direccion_academica AS eda";
 				$cadenaSql.=" LEFT JOIN docencia.tipo_entidad AS te ON te.id_tipo_entidad = eda.id_tipo_entidad";
 				$cadenaSql.=" LEFT JOIN docencia.universidad AS u ON u.id_universidad = eda.id_universidad";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
 				$cadenaSql.=" ORDER BY te.nombre_tipo_entidad ASC";
 				$cadenaSql.=" ;";
 				break;
 				
+			case "comunicacion_corta" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" a.nombre_revista AS nombre_revista,";
+				$cadenaSql.=" b.descripcion AS contexto,";
+				$cadenaSql.=" c.descripcion AS tipo_indexacion,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.comunicacion_corta AS a";
+				$cadenaSql.=" LEFT JOIN docencia.contexto AS b ON b.id_contexto = a.id_contexto";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_indexacion AS c ON c.id_tipo_indexacion = a.id_tipo_indexacion";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY contexto ASC";
+				$cadenaSql.=" ;";
+				break;
+				
+			case "obras_artisticas" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" a.titulo_obra AS titulo_obra,";
+				$cadenaSql.=" b.descripcion AS contexto,";
+				$cadenaSql.=" c.descripcion AS tipo_obra_artistica,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.obra_artistica AS a";
+				$cadenaSql.=" LEFT JOIN docencia.contexto AS b ON b.id_contexto = a.id_contexto";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_obra_artistica AS c ON c.id_tipo_obra_artistica = a.id_tipo_obra_artistica";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY contexto ASC";
+				$cadenaSql.=" ;";
+				break;
+				
+			case "patentes" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" a.titulo_patente AS titulo_patente,";
+				$cadenaSql.=" b.descripcion AS tipo_patente,";
+				$cadenaSql.=" c.nombre_universidad AS universidad,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.patente AS a";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_patente AS b ON b.id_tipo_patente = a.id_tipo_patente";
+				$cadenaSql.=" LEFT JOIN docencia.universidad AS c ON c.id_universidad = a.id_universidad";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY tipo_patente ASC";
+				$cadenaSql.=" ;";
+				break;
+				
+			case "premios_docente" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" b.descripcion AS contexto,";
+				$cadenaSql.=" c.nombre_tipo_entidad AS nombre_tipo_entidad,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.premio_docente AS a";
+				$cadenaSql.=" LEFT JOIN docencia.contexto AS b ON b.id_contexto = a.id_contexto";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_entidad AS c ON c.id_tipo_entidad = a.id_tipo_entidad";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY contexto ASC";
+				$cadenaSql.=" ;";
+				break;
+				
+			case "produccion_videos" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" a.titulo_video AS titulo_video,";
+				$cadenaSql.=" b.descripcion AS caracter_video,";
+				$cadenaSql.=" c.descripcion AS contexto,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.produccion_video AS a";
+				$cadenaSql.=" LEFT JOIN docencia.caracter_video AS b ON b.id_caracter_video = a.id_caracter_video";
+				$cadenaSql.=" LEFT JOIN docencia.contexto AS c ON c.id_contexto = a.id_contexto";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY contexto ASC";
+				$cadenaSql.=" ;";
+				break;
+				
+			case "produccion_libros" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" a.titulo AS titulo,";
+				$cadenaSql.=" b.tipo_libro AS tipo_libro,";
+				$cadenaSql.=" c.nombre_universidad AS universidad,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.libro_docente AS a";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_libro AS b ON b.id_tipo_libro = a.id_tipo_libro";
+				$cadenaSql.=" LEFT JOIN docencia.universidad AS c ON c.id_universidad = a.id_universidad";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY tipo_libro ASC";
+				$cadenaSql.=" ;";
+				break;
+				
+			case "traduccion_libros" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" a.titulo AS titulo,";
+				$cadenaSql.=" a.normatividad AS normatividad,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.traduccion_libro AS a";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY normatividad ASC";
+				$cadenaSql.=" ;";
+				break;
+				
+			case "produccion_tecnicaysoftware" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" a.nombre AS nombre,";
+				$cadenaSql.=" b.nombre AS tipo_tecnicaysoftware,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.produccion_tecnicaysoftware AS a";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_tecnicaysoftware AS b ON b.id_tipo_tecnicaysoftware = a.id_tipo_tecnicaysoftware";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY tipo_tecnicaysoftware ASC";
+				$cadenaSql.=" ;";
+				break;
+				
+			case "publicaciones_impresas_universitarias" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" a.titulo AS titulo,";
+				$cadenaSql.=" b.descripcion AS tipo_indexacion,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.publicacion_impresa AS a";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_indexacion AS b ON b.id_tipo_indexacion = a.id_tipo_indexacion";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY tipo_indexacion ASC";
+				$cadenaSql.=" ;";
+				break;
+				
+			case "estudios_post_doctorales" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" a.titulo_obtenido AS titulo_obtenido,";
+				$cadenaSql.=" b.nombre_universidad AS nombre_universidad,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.estudio_postdoctoral_docente AS a";
+				$cadenaSql.=" LEFT JOIN docencia.universidad AS b ON b.id_universidad = a.id_universidad";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY nombre_universidad ASC";
+				$cadenaSql.=" ;";
+				break;
+				
+			case "resena_critica" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" a.titulo AS titulo,";
+				$cadenaSql.=" b.descripcion AS tipo_indexacion,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.resena_critica AS a";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_indexacion AS b ON b.id_tipo_indexacion = a.id_tipo_indexacion";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY tipo_indexacion ASC";
+				$cadenaSql.=" ;";
+				break;
+				
+			case "traduccion_articulos" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" a.titulo_traduccion AS titulo_traduccion,";
+				$cadenaSql.=" a.titulo_publicacion AS titulo_publicacion,";
+				$cadenaSql.=" b.descripcion AS tipo_traduccion_articulo,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.traduccion_articulo AS a";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_traduccion_articulo AS b ON b.id_tipo_traduccion_articulo = a.id_tipo_traduccion_articulo";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY tipo_traduccion_articulo ASC";
+				$cadenaSql.=" ;";
+				break;
+				
+			case "ponencias" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" a.titulo AS titulo,";
+				$cadenaSql.=" b.descripcion AS contexto_ponencia,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.ponencia AS a";
+				$cadenaSql.=" LEFT JOIN docencia.contexto_ponencia AS b ON b.id_contexto_ponencia = a.id_contexto_ponencia";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY contexto_ponencia ASC";
+				$cadenaSql.=" ;";
+				break;
+							
 			case "novedades" :
-				
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" a.descripcion AS descripcion,";
+				$cadenaSql.=" b.descripcion AS tipo_novedad,";
+				$cadenaSql.=" c.categoria_novedad AS categoria_novedad,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" FROM docencia.novedad AS a";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_novedad AS b ON b.id_tipo_novedad = a.id_tipo_novedad";
+				$cadenaSql.=" LEFT JOIN docencia.categoria_novedad AS c ON c.id_categoria_novedad = b.id_categoria_novedad";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY categoria_novedad,tipo_novedad ASC";
+				$cadenaSql.=" ;";
 				break;
 				
-			case "consultar" :			
-				$cadenaSql=" select ";
-				$cadenaSql.=" ce.documento_docente, ";
-				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
-				$cadenaSql.=" ce.nombre_revista, ce.titulo_articulo, pi.paisnombre, ti.descripcion as tipo_indexacion,";
-				$cadenaSql.=" ce.numero_issn, ce.anno_publicacion,";
-				$cadenaSql.=" ce.volumen_revista, ce.numero_revista,";
-				$cadenaSql.=" ce.paginas_revista,";
-				$cadenaSql.=" ce.fecha_publicacion ";
-				$cadenaSql.=" from ";
-				$cadenaSql.=" docencia.cartas_editor ce ";
-				$cadenaSql.=" left join docencia.docente dc on ce.documento_docente=dc.documento_docente ";
-				$cadenaSql.=" left join docencia.docente_proyectocurricular dc_pc on ce.documento_docente=dc_pc.documento_docente ";
-				$cadenaSql.=" left join docencia.proyectocurricular pc on dc_pc.id_proyectocurricular=pc.id_proyectocurricular ";
-				$cadenaSql.=" left join docencia.facultad fc on pc.id_facultad=fc.id_facultad ";
-				$cadenaSql.=" left join docencia.pais pi on ce.paiscodigo=pi.paiscodigo ";
-				$cadenaSql.=" left join docencia.tipo_indexacion ti ON ti.id_tipo_indexacion = ce.id_tipo_indexacion";
-				$cadenaSql.=" where ce.estado=true";
-				$cadenaSql.=" and dc.estado=true";
-				$cadenaSql.=" and pc.estado=true";
-				$cadenaSql.=" and dc_pc.estado=true";
-				if ($variable ['documento_docente'] != '') {
-					$cadenaSql .= " AND dc.documento_docente = '" . $variable ['documento_docente'] . "'";
-				}
-				if ($variable ['id_facultad'] != '') {
-					$cadenaSql .= " AND fc.id_facultad = '" . $variable ['id_facultad'] . "'";
-				}
-				if ($variable ['id_proyectocurricular'] != '') {
-					$cadenaSql .= " AND pc.id_proyectocurricular = '" . $variable ['id_proyectocurricular'] . "'";
-				}
-				break;
-				
-			case "registrar" :
-				$cadenaSql = "INSERT INTO docencia.cartas_editor( ";
-				$cadenaSql .= "documento_docente, nombre_revista, id_contexto, paiscodigo, ";
-				$cadenaSql .= "id_tipo_indexacion, ";
-				$cadenaSql .= "numero_issn, anno_publicacion, volumen_revista, numero_revista, paginas_revista, ";
-				$cadenaSql .= "titulo_articulo, numero_autores, numero_autores_ud, fecha_publicacion, ";
-				$cadenaSql .= "numero_acta, fecha_acta, numero_caso, puntaje, normatividad) ";
-				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
-				$cadenaSql .= " '" . $variable ['nombre'] . "',";
-				$cadenaSql .= " '" . $variable ['contexto'] . "',";
-				$cadenaSql .= "'" . $variable ['pais'] . "',";
-				$cadenaSql .= " '" . $variable ['categoria'] . "',";
-				$cadenaSql .= " '" . $variable ['identificadorColeccion'] . "',";
-				$cadenaSql .= " '" . $variable ['anno'] . "',";
-				$cadenaSql .= " '" . $variable ['volumen'] . "',";
-				$cadenaSql .= " '" . $variable ['numero'] . "',";
-				$cadenaSql .= " '" . $variable ['paginas'] . "',";
-				$cadenaSql .= " '" . $variable ['tituloArticulo'] . "',";
-				$cadenaSql .= " '" . $variable ['numeroAutores'] . "',";
-				$cadenaSql .= " '" . $variable ['numeroAutoresUniversidad'] . "',";
-				$cadenaSql .= "' " . $variable ['fechaPublicacion'] . "' ,";
-				$cadenaSql .= "' " . $variable ['numeroActa'] . "',";
-				$cadenaSql .= " '" . $variable ['fechaActa'] . "',";
-				$cadenaSql .= "' " . $variable ['numeroCasoActa'] . "',";
-				$cadenaSql .= "' " . $variable ['puntaje'] . "',";
-				$cadenaSql .= " '" . $variable ['normatividad'] . "')";
-				break;
-				
-			case "publicacionActualizar" :
-				$cadenaSql=" SELECT ce.documento_docente,";
-				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
-				$cadenaSql.=" ce.nombre_revista, ";
-				$cadenaSql.=" ce.id_contexto, ";
-				$cadenaSql.=" ce.paiscodigo, ";
-				$cadenaSql.=" ce.id_tipo_indexacion, ";
-				$cadenaSql.=" ce.numero_issn, ";
-				$cadenaSql.=" ce.anno_publicacion, ";
-				$cadenaSql.=" ce.volumen_revista, ";
-				$cadenaSql.=" ce.numero_revista, ";
-				$cadenaSql.=" ce.paginas_revista, ";
-				$cadenaSql.=" ce.titulo_articulo, ";
-				$cadenaSql.=" ce.numero_autores, ";
-				$cadenaSql.=" ce.numero_autores_ud, ";
-				$cadenaSql.=" ce.fecha_publicacion, ";
-				$cadenaSql.=" ce.numero_acta, ";
-				$cadenaSql.=" ce.fecha_acta, ";
-				$cadenaSql.=" ce.numero_caso, ";
-				$cadenaSql.=" ce.puntaje, ";
-				$cadenaSql.=" ce.normatividad ";
-				$cadenaSql.=" FROM docencia.cartas_editor ce ";
-				$cadenaSql.=" left join docencia.docente dc on ce.documento_docente=dc.documento_docente ";
-				$cadenaSql.=" WHERE ce.documento_docente ='" . $variable['documento_docente']. "'";
-				$cadenaSql.=" and ce.estado=true";
-				$cadenaSql.=" and ce.numero_issn ='" . $variable['identificadorColeccion']. "'";
-				break;
-				
-			case "actualizar" :
-				$cadenaSql = "UPDATE ";
-				$cadenaSql .= "docencia.cartas_editor ";
-				$cadenaSql .= "SET ";
-				$cadenaSql .= "nombre_revista = '" . $variable ['nombre'] . "', ";
-				$cadenaSql .= "id_contexto = '" . $variable ['contexto'] . "', ";
-				$cadenaSql .= "paiscodigo = '" . $variable ['pais'] . "', ";
-				$cadenaSql .= "id_tipo_indexacion = '" . $variable ['categoria'] . "', ";
-				$cadenaSql .= "numero_issn = '" . $variable ['identificadorColeccion'] . "', ";
-				$cadenaSql .= "anno_publicacion = '" . $variable ['anno'] . "', ";
-				$cadenaSql .= "volumen_revista = '" . $variable ['volumen'] . "', ";
-				$cadenaSql .= "numero_revista = '" . $variable ['numero'] . "', ";
-				$cadenaSql .= "paginas_revista = '" . $variable ['paginas'] . "', ";
-				$cadenaSql .= "titulo_articulo = '" . $variable ['tituloArticulo'] . "', ";
-				$cadenaSql .= "numero_autores = '" . $variable ['numeroAutores'] . "', ";
-				$cadenaSql .= "numero_autores_ud = '" . $variable ['numeroAutoresUniversidad'] . "', ";
-				$cadenaSql .= "fecha_publicacion = '" . $variable ['fechaPublicacion'] . "', ";
-				$cadenaSql .= "numero_acta = '" . $variable ['numeroActa'] . "', ";
-				$cadenaSql .= "fecha_acta = '" . $variable ['fechaActa'] . "', ";
-				$cadenaSql .= "numero_caso = '" . $variable ['numeroCasoActa'] . "', ";
-				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "', ";
-				$cadenaSql .= "normatividad = '" . $variable ['normatividad'] . "'";
-				$cadenaSql .= "WHERE ";
-				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";
-				$cadenaSql .= "and numero_issn ='" . $variable ['identificadorColeccion_old'] . "' ";
-				break;
+			
 		}
 		
 		return $cadenaSql;

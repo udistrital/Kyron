@@ -38,8 +38,11 @@ class DomPdfPlugin extends HtmlBaseMod{
     }
     
 	private function createDomPdf(){    
-    	// $htmlModal = file_get_contents('page-content-wrapper.html.php', true);
     	$html = $this->parsePhpHtml('html/'.$this->atributos['origen']);
+    	
+    	if(!(isset($this->atributos['soloHTML'])&&$this->atributos['soloHTML']==true)){
+    		$html = '';
+    	}
     	
     	$rutaSara = $this->miConfigurador->getVariableConfiguracion ( 'raizDocumento' );
     	$rutaBloque = $this->miConfigurador->getVariableConfiguracion ( 'rutaBloque' );
@@ -50,7 +53,7 @@ class DomPdfPlugin extends HtmlBaseMod{
 		$dompdf = new DOMPDF();
     	$dompdf->load_html($html);
     	try{
-    	$dompdf->render();
+    		$dompdf->render();
     	}catch(Exception $e){
     		echo $html;
     		die($e->getMessage());
@@ -62,7 +65,7 @@ class DomPdfPlugin extends HtmlBaseMod{
     	
     	$rutaUrlPDF = $rutaUrlBloque.'/builder/pdf/'.$this->atributos['destino'];
     	
-    	$html = '<object data="'.$rutaUrlPDF.'" type="application/pdf">
+    	$html .= '<object data="'.$rutaUrlPDF.'" type="application/pdf">
 	        <embed src="'.$rutaUrlPDF.'" type="application/pdf" />
 	    </object>';
 		$html .= '<br /><a href="'.$rutaUrlPDF.'">Descargar Reporte</a>';
