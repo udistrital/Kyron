@@ -427,14 +427,15 @@ class registrarForm {
 				'titulo1' => 'Novedad',
 				'llavevalor1' => 'tipo_trabajogrado',
 				'llavevalor2' => 'titulo_trabajogrado'
-		);
-		
+		);		
 		
 		$atributos ['id'] = 'formSaraData'; // No cambiar este nombre
-		$atributos ['plantilla'] = 'plantilla1.html.php';
+		$atributos ['origen'] = 'plantilla1.html.php';
 		$atributos ['datos_docente'] = $datosDocente;
 		$atributos ['items'] = $items;
-		$atributos ['onlyHTML'] = true;
+		$atributos ['showHTML'] = true;
+		
+		$atributos ['destino'] = $documento;
 		echo '<div style="max-width:1024px;margin: 0 auto;">';
 		echo $this->miFormulario->pdf ( $atributos );
 		echo '</div>';
