@@ -430,7 +430,7 @@ class registrarForm {
 		);		
 		
 		$atributos ['id'] = 'formSaraData'; // No cambiar este nombre
-		$atributos ['origen'] = 'plantilla1.html.php';
+		$atributos ['plantilla'] = 'plantilla1.html.php';
 		$atributos ['datos_docente'] = $datosDocente;
 		$atributos ['items'] = $items;
 		$atributos ['showHTML'] = true;
