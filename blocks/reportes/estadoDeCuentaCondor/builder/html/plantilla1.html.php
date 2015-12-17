@@ -90,11 +90,11 @@
 			</tr>
 			<tr>
 				<td>Fecha de Vinculación</td>
-				<td colspan='5'>2007-05-15</td>
+				<td colspan='5'><!-- 2007-05-15 --></td>
 			</tr>
 			<tr>
 				<td>Estado Docente</td>
-				<td colspan='5'>ACTIVO</td>
+				<td colspan='5'><!-- ACTIVO --></td>
 			</tr>
 		</table>
 	</center>
