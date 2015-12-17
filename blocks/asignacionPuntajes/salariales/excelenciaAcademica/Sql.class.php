@@ -140,11 +140,13 @@ class Sql extends \Sql {
 				$cadenaSql.=" ea.id_excelencia_academica as id_excelencia, ";
 				$cadenaSql.=" ea.documento_docente, ";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente, ";
+				$cadenaSql.=" ea.annio_otorgamiento,";
 				$cadenaSql.=" ea.numero_resolucion,";
 				$cadenaSql.=" ea.fecha_resolucion,";
 				$cadenaSql.=" ea.numero_acta,";
 				$cadenaSql.=" ea.fecha_acta,";
-				$cadenaSql.=" ea.puntaje as puntaje ";
+				$cadenaSql.=" ea.puntaje as puntaje,";
+				$cadenaSql.=" ea.normatividad as normatividad";
 				$cadenaSql.=" from ";
 				$cadenaSql.=" docencia.excelencia_academica ea ";
 				$cadenaSql.=" left join docencia.docente dc on ea.documento_docente=dc.documento_docente ";
@@ -169,9 +171,10 @@ class Sql extends \Sql {
 				
 			case "registrar" :
 				$cadenaSql = "INSERT INTO docencia.excelencia_academica( ";
-				$cadenaSql .= "documento_docente, numero_resolucion, ";
+				$cadenaSql .= "documento_docente, annio_otorgamiento, numero_resolucion, ";
 				$cadenaSql .= "fecha_resolucion, numero_acta, fecha_acta, puntaje, normatividad) ";
 				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
+				$cadenaSql .= " '" . $variable ['annioOtorgamiento'] . "',";
 				$cadenaSql .= " '" . $variable ['numeroResolucion'] . "',";
 				$cadenaSql .= " '" . $variable ['fechaResolucion'] . "',";
 				$cadenaSql .= " '" . $variable ['numeroActa'] . "',";
@@ -183,6 +186,7 @@ class Sql extends \Sql {
 			case "publicacionActualizar" :
 				$cadenaSql=" SELECT ea.id_excelencia_academica, ea.documento_docente,";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
+				$cadenaSql.=" ea.annio_otorgamiento, ";
 				$cadenaSql.=" ea.numero_resolucion, ";
 				$cadenaSql.=" ea.fecha_resolucion, ";
 				$cadenaSql.=" ea.numero_acta, ";
@@ -199,6 +203,7 @@ class Sql extends \Sql {
 				$cadenaSql = "UPDATE ";
 				$cadenaSql .= "docencia.excelencia_academica ";
 				$cadenaSql .= "SET ";
+				$cadenaSql .= "annio_otorgamiento = '" . $variable ['annioOtorgamiento'] . "', ";
 				$cadenaSql .= "numero_resolucion = '" . $variable ['numeroResolucion'] . "', ";
 				$cadenaSql .= "fecha_resolucion = '" . $variable ['fechaResolucion'] . "', ";
 				$cadenaSql .= "numero_acta = '" . $variable ['numeroActa'] . "', ";

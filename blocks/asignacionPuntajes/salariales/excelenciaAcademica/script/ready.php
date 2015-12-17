@@ -77,12 +77,14 @@ $('#<?php echo $this->campoSeguro('proyectoCurricular')?>').width(450);
 $('#<?php echo $this->campoSeguro('docenteRegistrar')?>').width(465);
 $('#<?php echo $this->campoSeguro('tipoExperiencia')?>').width(450);
 $('#<?php echo $this->campoSeguro('resolucionEmitidaPor')?>').width(450);
+$('#<?php echo $this->campoSeguro('annio_otorgamiento')?>').width(450);
+
 
 //////////////////**********Se definen los campos que requieren campos de select2**********////////////////
 
 $("#<?php echo $this->campoSeguro('facultad')?>").select2();
 $("#<?php echo $this->campoSeguro('proyectoCurricular')?>").select2();
-
+$("#<?php echo $this->campoSeguro('annio_otorgamiento')?>").select2();
 $("#<?php echo $this->campoSeguro('tipoExperiencia')?>").select2();
 $("#<?php echo $this->campoSeguro('resolucionEmitidaPor')?>").select2();
 

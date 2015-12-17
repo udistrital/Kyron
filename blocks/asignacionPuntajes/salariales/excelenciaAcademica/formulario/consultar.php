@@ -196,11 +196,13 @@ class registrarForm {
 	                   
 	                    <th>Identificación</th>
 	                    <th>Nombres y Apellidos</th>
+						<th>Año de Otorgamiento</th>
 						<th>Número de Resolución</th>
 						<th>Fecha de Resolución</th>
 						<th>Número de Acta CIARP-UD</th>
 						<th>Fecha de Acta CIARP-UD</th>
 						<th>Puntaje</th>
+						<th>Normatividad</th>
 						<th>Modificar</th>
 							
 	                </tr>
@@ -220,11 +222,13 @@ class registrarForm {
 						$mostrarHtml = "<tr>
 	                    <td><center>" . $excelenciaAcademica [$i] ['documento_docente'] . "</center></td>
 	                    <td><center>" . $excelenciaAcademica [$i] ['nombre_docente'] . "</center></td>
+	                    <td><center>" . $excelenciaAcademica [$i] ['annio_otorgamiento'] . "</center></td>
 	                    <td><center>" . $excelenciaAcademica [$i] ['numero_resolucion'] . "</center></td>
 	                  	<td><center>" . $excelenciaAcademica [$i] ['fecha_resolucion'] . "</center></td>
 	                  	<td><center>" . $excelenciaAcademica [$i] ['numero_acta'] . "</center></td>
 	                    <td><center>" . $excelenciaAcademica [$i] ['fecha_acta'] . "</center></td>
-	                    <td><center>" . $excelenciaAcademica [$i] ['puntaje'] . "</center></td>
+	                    <td><center>" . $excelenciaAcademica [$i] ['nombre_docente'] . "</center></td>
+	                    <td><center>" . $excelenciaAcademica [$i] ['normatividad'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>
 	                            <img src='" . $rutaBloque . "/css/images/Entrada.png' width='15px'>

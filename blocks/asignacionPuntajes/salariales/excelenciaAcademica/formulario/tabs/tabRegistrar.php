@@ -141,6 +141,50 @@ class FormularioRegistro {
 		
 		// ----------------FIN CONTROL: Lista Docente--------------------------------------------------------
 			
+		// ----------------INICIO CONTROL: Campo de Texto Año Otorgamiento Excelencia Academica--------------------------------------------------------
+		
+		$esteCampo = "annio_otorgamiento";
+		$atributos ['nombre'] = $esteCampo;
+		$atributos ['id'] = $esteCampo;
+		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+		$atributos ["etiquetaObligatorio"] = true;
+		$atributos ['tab'] = $tab ++;
+		$atributos ['anchoEtiqueta'] = 280;
+		$atributos ['evento'] = '';
+		if (isset ( $_REQUEST [$esteCampo] )) {
+			$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+		} else {
+			$atributos ['seleccion'] = 0;
+		}
+		$atributos ['deshabilitado'] = false;
+		$atributos ['columnas'] = 1;
+		$atributos ['tamanno'] = 1;
+		$atributos ['ajax_function'] = "";
+		$atributos ['ajax_control'] = $esteCampo;
+		$atributos ['estilo'] = "jqueryui";
+		$atributos ['validar'] = "required, custom[onlyNumberSp], maxSize[4]";
+		$atributos ['limitar'] = false;
+		$atributos ['anchoCaja'] = 60;
+		$atributos ['miEvento'] = '';
+		
+		$matrizItems = array();
+			
+		for($i=date ("Y"); $i >= date ("Y")-50;   $i--){
+			$anno = array(
+					$i,
+					$i
+			);
+			array_push($matrizItems, $anno);
+		}
+		
+		$atributos ['matrizItems'] = $matrizItems;
+			
+		$atributos = array_merge ( $atributos, $atributosGlobales );
+		echo $this->miFormulario->campoCuadroLista ( $atributos );
+		unset ( $atributos );
+		
+		// ----------------FIN CONTROL: Campo de Texto Año Otorgamiento Excelencia Academica--------------------------------------------------------
+		
 		// ----------------INICIO CONTROL: Campo de Texto Texto Número de Resolución--------------------------------------------------------
 		$esteCampo = 'numeroResolucion';
 		$atributos ['id'] = $esteCampo;
@@ -154,7 +198,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, maxSize[6], minSize[2], custom[integer]';
+		$atributos ['validar'] = 'required, maxSize[6], minSize[1], custom[integer]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -330,7 +374,7 @@ class FormularioRegistro {
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
 		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '10';
+		$atributos ['maximoTamanno'] = '200';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
 			
