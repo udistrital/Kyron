@@ -202,7 +202,10 @@ class registrarForm {
 						<th>Entidad</th>
 						<th>País</th>
 						<th>Año</th>
+						<th>Número de Acta</th>
+						<th>Fecha de Acta</th>
 						<th>Puntaje</th>
+						<th>Normatividad</th>
 						<th>Modificar</th>
 							
 	                </tr>
@@ -227,7 +230,10 @@ class registrarForm {
 	                    <td><center>" . $patentes [$i] ['entidad'] . "</center></td>
 	                    <td><center>" . $patentes [$i] ['pais'] . "</center></td>
 	                    <td><center>" . $patentes [$i] ['anno_obtencion'] . "</center></td>
+	                    <td><center>" . $patentes [$i] ['numero_acta'] . "</center></td>
+	                    <td><center>" . $patentes [$i] ['fecha_acta'] . "</center></td>
 	                    <td><center>" . $patentes [$i] ['puntaje'] . "</center></td>
+	                    <td><center>" . $patentes [$i] ['normatividad'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>
 	                            <img src='" . $rutaBloque . "/css/images/Entrada.png' width='15px'>

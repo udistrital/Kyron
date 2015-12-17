@@ -160,7 +160,10 @@ class Sql extends \Sql {
 				$cadenaSql.=" un.nombre_universidad as entidad,";
 				$cadenaSql.=" pi.paisnombre as pais,";
 				$cadenaSql.=" pat.anno_obtencion,";
-				$cadenaSql.=" pat.puntaje";
+				$cadenaSql.=" pat.numero_acta,";
+				$cadenaSql.=" pat.fecha_acta,";
+				$cadenaSql.=" pat.puntaje,";
+				$cadenaSql.=" pat.normatividad";
 				$cadenaSql.=" from ";
 				$cadenaSql.=" docencia.patente pat ";
 				$cadenaSql.=" left join docencia.docente dc on pat.documento_docente=dc.documento_docente ";
