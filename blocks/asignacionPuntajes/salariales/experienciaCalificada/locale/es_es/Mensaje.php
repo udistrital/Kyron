@@ -15,7 +15,7 @@ $this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el re
 
 //* SECCIÓN ELEMENTOS QUE SU NOMBRE POSIBLEMENTE VARIA DENTRO DEL FORMULARIO *//
 
-$this->idioma["annio"] = "Año de Experiencia";
+$this->idioma["annio_experiencia"] = "Año de Experiencia";
 $this->idioma["fechaResolucion"] = "Fecha de Resolución";
 $this->idioma["annoResolucion"] = "Año de Resolución";
 $this->idioma["fechaResolucionTitulo"] = "Seleccione la Fecha de Resolución.";

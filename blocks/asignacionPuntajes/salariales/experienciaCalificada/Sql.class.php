@@ -143,12 +143,14 @@ class Sql extends \Sql {
 				$cadenaSql.=" ec.documento_docente, ";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente, ";
 				$cadenaSql.=" tec.descripcion as tipó_experiencia,";
+				$cadenaSql.=" ec.annio_experiencia as annio_experiencia,";
 				$cadenaSql.=" ec.numero_resolucion,";
 				$cadenaSql.=" ter.descripcion emisor_resolucion,";
 				$cadenaSql.=" ec.fecha_resolucion,";
 				$cadenaSql.=" ec.numero_acta,";
 				$cadenaSql.=" ec.fecha_acta,";
-				$cadenaSql.=" ec.puntaje as puntaje ";
+				$cadenaSql.=" ec.puntaje as puntaje, ";
+				$cadenaSql.=" ec.normatividad as normatividad ";
 				$cadenaSql.=" from ";
 				$cadenaSql.=" docencia.experiencia_calificada ec ";
 				$cadenaSql.=" left join docencia.docente dc on ec.documento_docente=dc.documento_docente ";
@@ -175,10 +177,11 @@ class Sql extends \Sql {
 				
 			case "registrar" :
 				$cadenaSql = "INSERT INTO docencia.experiencia_calificada( ";
-				$cadenaSql .= "documento_docente, id_tipo_experiencia_calificada, numero_resolucion, ";
+				$cadenaSql .= "documento_docente, id_tipo_experiencia_calificada, annio_experiencia, numero_resolucion, ";
 				$cadenaSql .= "id_tipo_emisor_resolucion, fecha_resolucion, numero_acta, fecha_acta, puntaje, normatividad) ";
 				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
 				$cadenaSql .= " " . $variable ['tipoExperiencia'] . ",";
+				$cadenaSql .= " " . $variable ['annioExperiencia'] . ",";
 				$cadenaSql .= " '" . $variable ['numeroResolucion'] . "',";
 				$cadenaSql .= "'" . $variable ['resolucionEmitidaPor'] . "',";
 				$cadenaSql .= " '" . $variable ['annoResolucion'] . "',";
@@ -194,6 +197,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ec.id_tipo_experiencia_calificada tipo_experiencia, ";
 				$cadenaSql.=" ec.numero_resolucion, ";
 				$cadenaSql.=" ec.id_tipo_emisor_resolucion emisor_resolucion, ";
+				$cadenaSql.=" ec.annio_experiencia as annio_experiencia, ";
 				$cadenaSql.=" ec.fecha_resolucion, ";
 				$cadenaSql.=" ec.numero_acta, ";
 				$cadenaSql.=" ec.fecha_acta, ";
@@ -210,6 +214,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "docencia.experiencia_calificada ";
 				$cadenaSql .= "SET ";
 				$cadenaSql .= "id_tipo_experiencia_calificada = " . $variable ['tipoExperiencia'] . ", ";
+				$cadenaSql .= "annio_experiencia = " . $variable ['annioExperiencia'] . ", ";
 				$cadenaSql .= "numero_resolucion = '" . $variable ['numeroResolucion'] . "', ";
 				$cadenaSql .= "id_tipo_emisor_resolucion = '" . $variable ['resolucionEmitidaPor'] . "', ";
 				$cadenaSql .= "fecha_resolucion = '" . $variable ['annoResolucion'] . "', ";

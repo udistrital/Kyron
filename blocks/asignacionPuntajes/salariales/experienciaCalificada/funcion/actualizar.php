@@ -39,6 +39,7 @@ class Actualizar {
 		$arregloDatos = array (
 			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
 			'tipoExperiencia' => $_REQUEST['tipoExperiencia'],
+			'annioExperiencia' => $_REQUEST['annio_experiencia'],
 			'numeroResolucion' => $_REQUEST['numeroResolucion'],
 			'resolucionEmitidaPor' => $_REQUEST['resolucionEmitidaPor'],
 			'annoResolucion' => $_REQUEST['fechaResolucion'],

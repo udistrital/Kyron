@@ -197,12 +197,14 @@ class registrarForm {
 	                    <th>Identificación</th>
 	                    <th>Nombres y Apellidos</th>
 						<th>Tipo de Experiencia</th>
+						<th>Año de la Experiencia</th>
 						<th>Número de Resolución</th>
 						<th>Emisor de Resolución</th>
 						<th>Fecha de Resolución</th>
 						<th>Número de Acta CIARP-UD</th>
 						<th>Fecha de Acta CIARP-UD</th>
 						<th>Puntaje</th>
+						<th>Normatividad</th>
 						<th>Modificar</th>
 							
 	                </tr>
@@ -223,12 +225,14 @@ class registrarForm {
 	                    <td><center>" . $experiencia [$i] ['documento_docente'] . "</center></td>
 	                    <td><center>" . $experiencia [$i] ['nombre_docente'] . "</center></td>
 	                    <td><center>" . $experiencia [$i] ['tipó_experiencia'] . "</center></td>
+	                    <td><center>" . $experiencia [$i] ['annio_experiencia'] . "</center></td>
 	                    <td><center>" . $experiencia [$i] ['numero_resolucion'] . "</center></td>
 	                    <td><center>" . $experiencia [$i] ['emisor_resolucion'] . "</center></td>
 	                  	<td><center>" . $experiencia [$i] ['fecha_resolucion'] . "</center></td>
 	                  	<td><center>" . $experiencia [$i] ['numero_acta'] . "</center></td>
 	                    <td><center>" . $experiencia [$i] ['fecha_acta'] . "</center></td>
 	                    <td><center>" . $experiencia [$i] ['puntaje'] . "</center></td>
+	                    <td><center>" . $experiencia [$i] ['normatividad'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>
 	                            <img src='" . $rutaBloque . "/css/images/Entrada.png' width='15px'>

@@ -106,6 +106,7 @@ class FormularioModificar {
 		$_REQUEST['docenteRegistrar'] =  $resultadoExperienciaCalificada[0]['documento_docente'] . " - " . $resultadoExperienciaCalificada[0]['nombre_docente'];
 		$_REQUEST['id_docenteRegistrar'] =  $resultadoExperienciaCalificada[0]['documento_docente'];
 		$_REQUEST['tipoExperiencia'] =  $resultadoExperienciaCalificada[0]['tipo_experiencia'];
+		$_REQUEST['annio_experiencia'] =  $resultadoExperienciaCalificada[0]['annio_experiencia'];
 		$_REQUEST['numeroResolucion'] =  $resultadoExperienciaCalificada[0]['numero_resolucion'];
 		$_REQUEST['resolucionEmitidaPor'] =  $resultadoExperienciaCalificada[0]['emisor_resolucion'];
 		$_REQUEST['fechaResolucion'] =  $resultadoExperienciaCalificada[0]['fecha_resolucion'];
@@ -207,49 +208,49 @@ class FormularioModificar {
 				unset ( $atributos );
 				// ----------------FIN CONTROL:  Lista Tipo Experiencia Calificada--------------------------------------------------------
 						
-// 				// ----------------INICIO CONTROL: Campo de Texto Año de experiencia calificada--------------------------------------------------------
+				// ----------------INICIO CONTROL: Campo de Texto Año de experiencia calificada--------------------------------------------------------
 				
-// 				$esteCampo = "annio";
-// 				$atributos ['nombre'] = $esteCampo;
-// 				$atributos ['id'] = $esteCampo;
-// 				$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-// 				$atributos ["etiquetaObligatorio"] = true;
-// 				$atributos ['tab'] = $tab ++;
-// 				$atributos ['anchoEtiqueta'] = 280;
-// 				$atributos ['evento'] = '';
-// 				if (isset ( $_REQUEST [$esteCampo] )) {
-// 					$atributos ['seleccion'] = $_REQUEST [$esteCampo];
-// 				} else {
-// 					$atributos ['seleccion'] = 0;
-// 				}
-// 				$atributos ['deshabilitado'] = false;
-// 				$atributos ['columnas'] = 1;
-// 				$atributos ['tamanno'] = 1;
-// 				$atributos ['ajax_function'] = "";
-// 				$atributos ['ajax_control'] = $esteCampo;
-// 				$atributos ['estilo'] = "jqueryui";
-// 				$atributos ['validar'] = "required, custom[onlyNumberSp], maxSize[4]";
-// 				$atributos ['limitar'] = false;
-// 				$atributos ['anchoCaja'] = 60;
-// 				$atributos ['miEvento'] = '';
+				$esteCampo = "annio_experiencia";
+				$atributos ['nombre'] = $esteCampo;
+				$atributos ['id'] = $esteCampo;
+				$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+				$atributos ["etiquetaObligatorio"] = true;
+				$atributos ['tab'] = $tab ++;
+				$atributos ['anchoEtiqueta'] = 280;
+				$atributos ['evento'] = '';
+				if (isset ( $_REQUEST [$esteCampo] )) {
+					$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+				} else {
+					$atributos ['seleccion'] = 0;
+				}
+				$atributos ['deshabilitado'] = false;
+				$atributos ['columnas'] = 1;
+				$atributos ['tamanno'] = 1;
+				$atributos ['ajax_function'] = "";
+				$atributos ['ajax_control'] = $esteCampo;
+				$atributos ['estilo'] = "jqueryui";
+				$atributos ['validar'] = "required, custom[onlyNumberSp], maxSize[4]";
+				$atributos ['limitar'] = false;
+				$atributos ['anchoCaja'] = 60;
+				$atributos ['miEvento'] = '';
 				
-// 				$matrizItems = array();
+				$matrizItems = array();
 					
-// 				for($i=date ("Y"); $i >= date ("Y")-50;   $i--){
-// 					$anno = array(
-// 							$i,
-// 							$i
-// 					);
-// 					array_push($matrizItems, $anno);
-// 				}
+				for($i=date ("Y"); $i >= date ("Y")-50;   $i--){
+					$anno = array(
+							$i,
+							$i
+					);
+					array_push($matrizItems, $anno);
+				}
 				
-// 				$atributos ['matrizItems'] = $matrizItems;
+				$atributos ['matrizItems'] = $matrizItems;
 					
-// 				$atributos = array_merge ( $atributos, $atributosGlobales );
-// 				echo $this->miFormulario->campoCuadroLista ( $atributos );
-// 				unset ( $atributos );
+				$atributos = array_merge ( $atributos, $atributosGlobales );
+				echo $this->miFormulario->campoCuadroLista ( $atributos );
+				unset ( $atributos );
 				
-// 				// ----------------FIN CONTROL: Campo de Texto Año de experiencia calificada--------------------------------------------------------
+				// ----------------FIN CONTROL: Campo de Texto Año de experiencia calificada--------------------------------------------------------
 				
 				// ----------------INICIO CONTROL: Campo de Texto Texto Número de Resolución--------------------------------------------------------
 				$esteCampo = 'numeroResolucion';
@@ -264,7 +265,7 @@ class FormularioModificar {
 				$atributos ['dobleLinea'] = 0;
 				$atributos ['tabIndex'] = $tab;
 				$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-				$atributos ['validar'] = 'required, maxSize[6], minSize[2]';
+				$atributos ['validar'] = 'required, maxSize[6], minSize[1]';
 					
 				if (isset ( $_REQUEST [$esteCampo] )) {
 					$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -474,7 +475,7 @@ class FormularioModificar {
 				$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 				$atributos ['deshabilitado'] = false;
 				$atributos ['tamanno'] = 57;
-				$atributos ['maximoTamanno'] = '10';
+				$atributos ['maximoTamanno'] = '200';
 				$atributos ['anchoEtiqueta'] = 280;
 				$tab ++;
 					
