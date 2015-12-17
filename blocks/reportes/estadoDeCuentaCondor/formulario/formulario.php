@@ -9,7 +9,7 @@ if (! isset ( $GLOBALS ['autorizado'] )) {
  * Se deben realizar peticiones de la forma pagina=estadoDeCuentaCondor&docente=79211280&expiracion=1450226796
  * Ejemplo: http://10.20.0.38/kyron/index.php?data=####
  */
-if (! isset ( $_REQUEST ['expiracion'] ) && time() - $_REQUEST ['expiracion'] >= 3600 ) {
+if (! isset ( $_REQUEST ['expiracion'] ) || time() - $_REQUEST ['expiracion'] >= 3600 ) {
 	include ('../index.php');
 	exit ();
 }
