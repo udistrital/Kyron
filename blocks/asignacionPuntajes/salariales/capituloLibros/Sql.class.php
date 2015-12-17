@@ -213,7 +213,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" cl.numero_acta AS numero_acta,";
 				$cadenaSql.=" cl.fecha_acta AS fecha_acta,";
 				$cadenaSql.=" cl.numero_caso AS numero_caso,";
-				$cadenaSql.=" cl.puntaje AS puntaje";
+				$cadenaSql.=" cl.puntaje AS puntaje,";
+				$cadenaSql.=" cl.normatividad AS normatividad";
 				$cadenaSql.=" FROM docencia.capitulo_libro AS cl";
 				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON dc.documento_docente = cl.documento_docente";
 				$cadenaSql.=" LEFT JOIN docencia.tipo_libro AS tl ON tl.id_tipo_libro = cl.id_tipo_libro";
