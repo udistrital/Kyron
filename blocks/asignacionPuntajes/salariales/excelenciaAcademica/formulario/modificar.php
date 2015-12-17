@@ -231,7 +231,7 @@ class FormularioModificar {
 				$atributos ['dobleLinea'] = 0;
 				$atributos ['tabIndex'] = $tab;
 				$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-				$atributos ['validar'] = 'required, maxSize[6], minSize[2], custom[integer]';
+				$atributos ['validar'] = 'required, maxSize[6], minSize[1], custom[integer]';
 					
 				if (isset ( $_REQUEST [$esteCampo] )) {
 					$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -408,7 +408,7 @@ class FormularioModificar {
 				$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 				$atributos ['deshabilitado'] = false;
 				$atributos ['tamanno'] = 57;
-				$atributos ['maximoTamanno'] = '10';
+				$atributos ['maximoTamanno'] = '200';
 				$atributos ['anchoEtiqueta'] = 280;
 				$tab ++;
 					
