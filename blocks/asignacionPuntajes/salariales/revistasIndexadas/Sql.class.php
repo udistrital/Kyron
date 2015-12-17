@@ -150,7 +150,11 @@ class Sql extends \Sql {
 				$cadenaSql.=" ri.nombre_revista, ri.titulo_articulo, pi.paisnombre, ti.descripcion as tipo_indexacion,";
 				$cadenaSql.=" ri.numero_issn, ri.anno_publicacion,";
 				$cadenaSql.=" ri.volumen_revista, ri.numero_revista,";
-				$cadenaSql.=" ri.paginas_revista ";
+				$cadenaSql.=" ri.paginas_revista,";
+				$cadenaSql.=" ri.numero_acta,";
+				$cadenaSql.=" ri.fecha_acta,";				
+				$cadenaSql.=" ri.puntaje,";
+				$cadenaSql.=" ri.normatividad";
 				$cadenaSql.=" from ";
 				$cadenaSql.=" docencia.revista_indexada ri ";
 				$cadenaSql.=" left join docencia.docente dc on ri.documento_docente=dc.documento_docente ";

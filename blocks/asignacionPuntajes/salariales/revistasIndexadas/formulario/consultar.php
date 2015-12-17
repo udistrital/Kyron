@@ -202,6 +202,10 @@ class registrarForm {
 						<th>Año</th>
 						<th>Volumen</th>
 						<th>Número Paginas</th>
+						<th>Número de Acta</th>
+						<th>Fecha de Acta</th>						
+						<th>Puntaje</th>
+						<th>Normatividad</th>
 						<th>Modificar</th>
 							
 	                </tr>
@@ -228,6 +232,10 @@ class registrarForm {
 	                    <td><center>" . $indexacion [$i] ['anno_publicacion'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['volumen_revista'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['paginas_revista'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['numero_acta'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['fecha_acta'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['puntaje'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['normatividad'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>
 	                            <img src='" . $rutaBloque . "/css/images/Entrada.png' width='15px'>
