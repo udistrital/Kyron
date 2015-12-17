@@ -144,7 +144,10 @@ class Sql extends \Sql {
 				$cadenaSql.=" ctg.nombre_categoria_trabajogrado as categoria,";
 				$cadenaSql.=" ttg.nombre_tipo_trabajogrado as tipo, ";
 				$cadenaSql.=" dtg.anno_direccion as anno,";
-				$cadenaSql.=" dtg.puntaje as puntaje";
+				$cadenaSql.=" dtg.numero_acta as numero_acta,";
+				$cadenaSql.=" dtg.fecha_acta as fecha_acta,";
+				$cadenaSql.=" dtg.puntaje as puntaje,";
+				$cadenaSql.=" dtg.normatividad as normatividad";
 				$cadenaSql.=" from ";
 				$cadenaSql.=" docencia.direccion_trabajogrado dtg ";
 				$cadenaSql.=" left join docencia.docente dc on dtg.documento_docente=dc.documento_docente ";

@@ -199,7 +199,10 @@ class registrarForm {
 						<th>Categoría</th>
 						<th>Tipo de Trabajo</th>
 						<th>Año</th>
+						<th>Número de Acta</th>
+						<th>Fecha de Acta</th>							
 						<th>Puntaje</th>
+						<th>Normatividad</th>
 						<th>Modificar</th>
 							
 	                </tr>
@@ -222,7 +225,10 @@ class registrarForm {
 	                    <td><center>" . $indexacion [$i] ['categoria'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['tipo'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['anno'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['numero_acta'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['fecha_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['puntaje'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['normatividad'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>
 	                            <img src='" . $rutaBloque . "/css/images/Entrada.png' width='15px'>
