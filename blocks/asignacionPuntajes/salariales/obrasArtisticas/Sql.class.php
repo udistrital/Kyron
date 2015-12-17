@@ -147,7 +147,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" oad.numero_acta, ";
 				$cadenaSql.=" oad.fecha_acta, ";
 				$cadenaSql.=" oad.numero_caso, ";
-				$cadenaSql.=" oad.puntaje ";
+				$cadenaSql.=" oad.puntaje, ";
+				$cadenaSql.=" oad.normatividad ";
 				$cadenaSql.=" from ";
 				$cadenaSql.=" docencia.obra_artistica AS oad ";
 				$cadenaSql.=" left join docencia.docente dc on oad.documento_docente=dc.documento_docente ";

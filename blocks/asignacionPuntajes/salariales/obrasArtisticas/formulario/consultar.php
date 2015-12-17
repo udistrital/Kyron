@@ -205,6 +205,7 @@ class registrarForm {
 						<th>Fecha de Acta CIARP-UD</th>
 						<th>Número de Caso de Acta</th>
 						<th>Puntaje</th>
+						<th>Normatividad</th>
 						<th>Modificar</th>
 							
 	                </tr>
@@ -232,6 +233,7 @@ class registrarForm {
 	                    <td><center>" . $obraArtistica [$i] ['fecha_acta'] . "</center></td>
 	                    <td><center>" . $obraArtistica [$i] ['numero_caso'] . "</center></td>
 	                    <td><center>" . $obraArtistica [$i] ['puntaje'] . "</center></td>
+	                    <td><center>" . $obraArtistica [$i] ['normatividad'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>
 	                            <img src='" . $rutaBloque . "/css/images/Entrada.png' width='15px'>
