@@ -174,6 +174,7 @@ class registrarForm {
 						<th>Fecha Acta</th>
 						<th>Número Caso</th>
 						<th>Puntaje</th>
+						<th>Normatividad</th>
 						<th>Modificar</th>
 	                </tr>
 	            </thead>
@@ -202,6 +203,7 @@ class registrarForm {
 	                    <td><center>" . $indexacion [$i] ['fecha_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_caso'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['puntaje'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['normatividad'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>
 	                            <img src='" . $rutaBloque . "/css/images/Entrada.png' width='15px'>
