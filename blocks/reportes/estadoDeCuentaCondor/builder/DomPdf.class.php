@@ -91,7 +91,7 @@ class DomPdfPlugin extends HtmlBaseMod{
     	
     	//Se muestra un botón en pantalla con el cual se puede descargar el pdf generado
 		$html .= '<br /><div class="marcoBotones">
-					<a class="ui-button ui-state-default ui-corner-all ui-button-text-only" href="'.$rutaUrlPDF.'">Descargar Reporte en PDF</a>
+					<a target="_blank" class="ui-button ui-state-default ui-corner-all ui-button-text-only" href="'.$rutaUrlPDF.'">Descargar Reporte en PDF</a>
 				</div>';
 		    	
     	return $html;
