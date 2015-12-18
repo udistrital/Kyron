@@ -138,7 +138,7 @@ class Sql extends \Sql {
 				break;
 								
 			case "consultar" :			
-				$cadenaSql=" select dtg.id_direccion_trabajogrado as id_direccion, dtg.documento_docente,";
+				$cadenaSql=" select distinct dtg.id_direccion_trabajogrado as id_direccion, dtg.documento_docente,";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente, ";
 				$cadenaSql.=" dtg.titulo_trabajogrado as titulo, ";
 				$cadenaSql.=" ctg.nombre_categoria_trabajogrado as categoria,";

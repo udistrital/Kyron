@@ -209,7 +209,7 @@ class registrarForm {
 	            </thead>
 	            <tbody>";
 					
-					for($i = 0; $i < count ( $indexacion ); $i ++) {
+					for($i=0; $i<count ( $indexacion ); $i++) {
 						$variable = "pagina=" . $miPaginaActual; // pendiente la pagina para modificar parametro
 						$variable .= "&opcion=modificar";
 						$variable .= "&arreglo=" . $arreglo;
