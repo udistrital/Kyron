@@ -166,6 +166,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" FROM docencia.cartas_editor AS a";
 				$cadenaSql.=" LEFT JOIN docencia.contexto AS b ON b.id_contexto = a.id_contexto";
 				$cadenaSql.=" LEFT JOIN docencia.tipo_indexacion AS c ON c.id_tipo_indexacion = a.id_tipo_indexacion";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
 				$cadenaSql.=" ORDER BY c.descripcion ASC";
 				$cadenaSql.=" ;";
 				break;
