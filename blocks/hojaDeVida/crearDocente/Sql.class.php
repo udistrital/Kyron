@@ -93,6 +93,27 @@ class Sql extends \Sql {
 				break;
 			
 			/* Consultas del desarrollo */
+				
+				case "pais" :
+					$cadenaSql = "SELECT";
+					$cadenaSql .= " paiscodigo,";
+					$cadenaSql .= "	paisnombre";
+					$cadenaSql .= " FROM ";
+					$cadenaSql .= " docencia.pais";	
+					$cadenaSql .= " WHERE paiscodigo != '-1'";
+					$cadenaSql .= " order by paisnombre";
+					break;
+				
+				case "ciudad" :
+					$cadenaSql = "SELECT";
+					$cadenaSql .= " ciudadid,";
+					$cadenaSql .= "	ciudadnombre";
+					$cadenaSql .= " FROM ";
+					$cadenaSql .= " docencia.ciudad";
+					$cadenaSql .= " WHERE paiscodigo ='" . $variable ."'";
+					$cadenaSql .= " order by ciudadnombre";
+					break;
+					
 			case "facultad" :
 				$cadenaSql = "SELECT";
 				$cadenaSql .= " id_facultad,";

@@ -8,6 +8,8 @@ $( document ).ready(function() {
 	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroCasoActa')?>";
 	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroRegistro')?>";
 	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('identificacionFuncionario')?>";
+	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('telefonoDocente')?>";
+	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('celularDocente')?>";
 	
 	campoValidarPunto[IPunto++] = "#<?php echo $this->campoSeguro('puntaje')?>";
 	

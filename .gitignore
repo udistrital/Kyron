@@ -7,3 +7,4 @@ blocks/reportico/script/reportico/projects/zoe/config.php
 blocks/reportico/script/reportico/projects/admin/config.php
 blocks/reportico/script/reportico/projects/*/config.php
 blocks/reportes/estadoDeCuentaCondor/builder/pdf/*
+plugin/dompdf/lib/fonts/*

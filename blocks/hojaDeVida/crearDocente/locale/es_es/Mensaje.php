@@ -2,7 +2,7 @@
 
 $this->idioma["tabIngresar"] = "Crear Docentes - Datos Básicos";
 $this->idioma["tipoDocumento"] = "Tipo de Documento";
-$this->idioma["identificacionFuncionario"] = "Número de Identificación del Funcionario:";
+$this->idioma["identificacionDocente"] = "Número de Identificación del Docente:";
 $this->idioma["mensajeValidacion"] = "<center> Para registrar el docente, primero debe realizar la validación del funcionario.<br> Por favor seleccione el tipo documento y digite el número de documento y <br> de click en 'Validar'.</center>"; 
 
 $this->idioma["botonValidar"] = "Validar";
@@ -31,6 +31,13 @@ $this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el re
 
 $this->idioma["marcoConsultaGeneral"] = "Consulta Títulos Académicos Registradas";
 $this->idioma["marcoModificarRegistro"] = "Modificar Información de Títulos Académicos";
+
+$this->idioma["marcoNombre"] = "Nombres y Apellidos";
+$this->idioma["marcoLugarExpedicion"] = "Lugar de Expedición";
+
+$this->idioma["pais"] = "País";
+$this->idioma["ciudad"] = "Ciudad";
+
 
 //***************** SECCIÓN BOTONES ******************//
 $this->idioma["botonRegresar"] = "Regresar";
@@ -67,12 +74,12 @@ $this->idioma["segundoApellido"] = "Segundo Apellido:";
 $this->idioma["correoPersonal"] = "Correo Personal";
 
 $this->idioma["direccionResidencia"] = "Dirección de Residencia:";
-$this->idioma["direccionResidenciaTitulo"] = "Ingrese la Direccion de Residencia.";
+$this->idioma["direccionResidenciaTitulo"] = "Ingrese la Dirección de Residencia.";
 
-$this->idioma["telefonoDocente"] = "Telefono Fijo:";
-$this->idioma["telefonoDocenteTitulo"] = "Ingrese el número de telefono fijo del docente.";
+$this->idioma["telefonoDocente"] = "Teléfono Fijo:";
+$this->idioma["telefonoDocenteTitulo"] = "Ingrese el número telefónico del docente.";
 
-$this->idioma["celularDocente"] = "Telefono Celular:";
+$this->idioma["celularDocente"] = "Teléfono Celular:";
 $this->idioma["celularDocenteTitulo"] = "Ingrese el número de celular del docente.";
 
 
@@ -90,16 +97,16 @@ $this->idioma["documentoConceptoPares"] = "Documento concepto de pares:";
 $this->idioma["facultadTitulo"] = "Seleccione la Facultad.";
 $this->idioma["proyectoCurricularTitulo"] = "Seleccione el Proyecto Curricular.";
 $this->idioma["numeroActaTitulo"] = "Ingrese el Número de Acta CIARP-UD.";
-$this->idioma["fechaActaTitulo"] = "Seleccione laFecha de Acta CIARP-UD.";
+$this->idioma["fechaActaTitulo"] = "Seleccione la Fecha de Acta CIARP-UD.";
 $this->idioma["numeroCasoActaTitulo"] = "Ingrese el Número de Caso de Acta.";
 $this->idioma["correoInstitucionalTitulo"] = "Ingrese el Correo Institucional.";
 $this->idioma["correoPersonalTitulo"] = "Ingrese el Correo Personal.";
 $this->idioma["categoriaActualDocenteTitulo"] = "Seleccione la Categoria Actual del Docente.";
-$this->idioma["resolucionTitulo"] = "Ingrese el Número de Resolución Nombramiento.";
+$this->idioma["resolucionTitulo"] = "Ingrese el Número de Resolución del Nombramiento.";
 $this->idioma["fechaIngresoTitulo"] = "Seleccione la Fecha Ingreso.";
 $this->idioma["fechaInicioPruebaTitulo"] = "Seleccione la Fecha de Inicio del Año de Prueba.";
 $this->idioma["dedicacionTitulo"] = "Seleccione la Dedicación del Docente.";
-$this->idioma["identificacionFuncionarioTitulo"] = "Ingrese Número de Identificación del Funcionario.";
+$this->idioma["identificacionDocenteTitulo"] = "Ingrese el Número de Identificación del Funcionario.";
 
 ////////////////////////////////////////////////////////////////
 

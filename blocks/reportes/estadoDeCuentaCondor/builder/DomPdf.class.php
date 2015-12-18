@@ -55,44 +55,47 @@ class DomPdfPlugin extends HtmlBaseMod{
     		echo $html;
     		die($e->getMessage());
     	}
-    	//$dompdf->stream("sample.pdf");
+    	//Se convierte el pdf a base 64
+    	$pdfBase64 = base64_encode($dompdf->output());
+    	//Se crea un nombre de variable base 64 para javascript 	
+    	$idComponenteBase64 = 'base64'.$this->atributos['id'];
     	
-    	//Se eliminan los archivos pdf que comiencen con el índice del archivo destino
-    	//los archivos se guardan en el directorio builder/pdf
-    	$rutaPDF = $this->atributos['rutaBloque'].'/builder/pdf/';
-    	$files = glob($rutaPDF.$this->atributos['destino'].'*.pdf');
-    	foreach ($files as $file){
-    		unlink($file);
+    	/*
+    	 * Si esta variable está establecida, se imprime el pdf en pantalla junto con un botón de descarga,
+    	 * de lo contrario simplemente se ve el html y el botón de descarga.
+    	 */
+    	if(!(isset($this->atributos['showHTML'])&&$this->atributos['showHTML']==true)){			
+    		$html = '
+    		<object id="'.$this->atributos['id'].'" style="width:100%;min-height:1058px;height:100%;" data="" type="application/pdf">
+ 		        <embed style="width:100%;min-height:1058px;height:100%;" src="" type="application/pdf" />
+ 		    </object>';
+    		//Se muestra un botón en pantalla con el cual se puede descargar el pdf generado
+    		$html .= '<br />
+    		<div class="marcoBotones">
+				<a id="boton'.$this->atributos['id'].'" target="_blank" class="ui-button ui-state-default ui-corner-all ui-button-text-only" href="">Descargar Reporte en PDF</a>
+			</div>';
+    		$html .= '
+    		<script type="text/javascript">
+    			var '.$idComponenteBase64.'="data:application/pdf;base64,'.$pdfBase64.'";
+    			document.getElementById("boton'.$this->atributos['id'].'").setAttribute("href",'.$idComponenteBase64.');
+    			document.getElementById("'.$this->atributos['id'].'").setAttribute("data",'.$idComponenteBase64.');
+    			if(document.getElementById("'.$this->atributos['id'].'").getElementsByTagName("embed")[0]){
+    				document.getElementById("'.$this->atributos['id'].'").getElementsByTagName("embed")[0].setAttribute("src",'.$idComponenteBase64.');
+    			}
+    		</script>';
+    	} else {
+    		//Se muestra un botón en pantalla con el cual se puede descargar el pdf generado
+    		$html .= '<br />
+    		<div class="marcoBotones">
+				<a id="boton'.$this->atributos['id'].'" target="_blank" class="ui-button ui-state-default ui-corner-all ui-button-text-only" href="">Descargar Reporte en PDF</a>
+			</div>';
+    		
+    		$html .= '
+    		<script type="text/javascript">
+    			var '.$idComponenteBase64.'="data:application/pdf;base64,'.$pdfBase64.'";
+    			document.getElementById("boton'.$this->atributos['id'].'").setAttribute("href",'.$idComponenteBase64.');
+    		</script>';
     	}
-    	//Como forma de resguardar recursos de disco, se pretende eliminar los archivos que tienen más de una hora de creados
-    	foreach (glob($rutaPDF."*") as $file) {    	
-    		/*** if file is 1 hours (3600 seconds) old then delete it ***/
-    		if (filemtime($file) < time() - 3600) {
-    			unlink($file);
-    		}
-    	}
-    	
-    	//Se crea un nombre aleatorio volviendo al "destino" un índice del nombre del pdf
-    	$randomName = $this->miConfigurador->fabricaConexiones->crypto->codificar (time());
-    	$randomName = $this->atributos['destino'].'-'.$randomName.'.pdf';
-    	
-    	//Se guarda el pdf en la ruta especificada y con el nombre especificado
-    	$rutaPDF = $rutaPDF.$randomName;
-    	file_put_contents($rutaPDF, $dompdf->output());    	
-    	
-    	//Si se elige mostrar el html, se imprime éste en pantalla, de lo contrario imprimirá un frame con el pdf
-    	$rutaUrlPDF = $this->atributos['rutaUrlBloque'].'builder/pdf/'.$randomName;
-    	
-    	if(!(isset($this->atributos['showHTML'])&&$this->atributos['showHTML']==true)){
-    		$html = '<object style="width:100%;min-height:1058px;height:100%;" data="'.$rutaUrlPDF.'" type="application/pdf">
-		        <embed style="width:100%;height:100%;" src="'.$rutaUrlPDF.'" type="application/pdf" />
-		    </object>';
-    	}
-    	
-    	//Se muestra un botón en pantalla con el cual se puede descargar el pdf generado
-		$html .= '<br /><div class="marcoBotones">
-					<a target="_blank" class="ui-button ui-state-default ui-corner-all ui-button-text-only" href="'.$rutaUrlPDF.'">Descargar Reporte en PDF</a>
-				</div>';
 		    	
     	return $html;
     }  

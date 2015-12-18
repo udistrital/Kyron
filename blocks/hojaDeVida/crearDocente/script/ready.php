@@ -74,10 +74,11 @@ $('#<?php echo $this->campoSeguro('docente')?>').width(465);
 $('#<?php echo $this->campoSeguro('facultad')?>').width(450);      
 $('#<?php echo $this->campoSeguro('proyectoCurricular')?>').width(450);      
 $('#<?php echo $this->campoSeguro('dedicacion')?>').width(450);      
-
 $('#<?php echo $this->campoSeguro('docenteRegistrar')?>').width(465);
 $('#<?php echo $this->campoSeguro('tipoDocumento')?>').width(450);
 $('#<?php echo $this->campoSeguro('categoriaActualDocente')?>').width(450);
+$('#<?php echo $this->campoSeguro('pais')?>').width(310);
+$('#<?php echo $this->campoSeguro('ciudad')?>').width(310);
 
 //////////////////**********Se definen los campos que requieren campos de select2**********////////////////
 
@@ -86,5 +87,7 @@ $("#<?php echo $this->campoSeguro('proyectoCurricular')?>").select2();
 $("#<?php echo $this->campoSeguro('tipoDocumento')?>").select2();
 $('#<?php echo $this->campoSeguro('categoriaActualDocente')?>').select2();
 $('#<?php echo $this->campoSeguro('dedicacion')?>').select2();
+$('#<?php echo $this->campoSeguro('pais')?>').select2();
+$('#<?php echo $this->campoSeguro('ciudad')?>').select2();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -130,7 +130,20 @@
                 },
                 "validate2fields": {
                     "alertText": "* Por favor entrar HELLO"
-                }
+                },
+                "firstDate":  {
+                    "func": function(field, rules, i, options){
+                    	fechaInicio = field.val();
+                    	return (field.val() == '') ? false : true;
+                    },
+                    "alertText": ""
+                },
+                "greaterThan":  {
+                    "func": function(field, rules, i, options){
+                    	return ((new Date(field.val()).getTime() > new Date(fechaInicio).getTime())) ? true : false;
+                    },
+                    "alertText": "La Fecha de Finalización no puede ser anterior a la Fecha de Inicio"
+                },
             };
             
         }
