@@ -29,7 +29,7 @@ class SesionSSO {
     	$this->hostSSO = $this->configurador->getVariableConfiguracion ( 'hostSSO' );
     	$this->SPSSO = $this->configurador->getVariableConfiguracion ( 'SPSSO' );// Fuente de autenticación definida en el authsources del SP
     	require_once ($this->configurador->getVariableConfiguracion ( 'direccionSSOAutoloader' ));
-    	$this->authnRequest = new SimpleSAML_Auth_Simple ( $this->SPSSO );// Se pasa como parametro la fuente de autenticación
+		$this->authnRequest = new SimpleSAML_Auth_Simple ( $this->SPSSO );// Se pasa como parametro la fuente de autenticación
     	$this->logger = new logger ();
     }
     
