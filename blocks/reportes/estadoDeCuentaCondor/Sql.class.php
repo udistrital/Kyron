@@ -111,15 +111,15 @@ class Sql extends \Sql {
 				
 			case "titulos_docente" :
 				$cadenaSql=" SELECT";
-				$cadenaSql.=" ta.titulo AS titulo,";
-				$cadenaSql.=" ta.fecha_acta AS fecha_acta,";
-				$cadenaSql.=" ta.numero_acta AS numero_acta,";
-				$cadenaSql.=" ta.puntaje AS puntaje,";
-				$cadenaSql.=" tta.tipo AS tipo_titulo_academico";
-				$cadenaSql.=" FROM docencia.titulo_academico AS ta";
-				$cadenaSql.=" LEFT JOIN docencia.tipo_titulo_academico AS tta ON tta.id_tipo_titulo_academico = ta.id_tipo_titulo_academico";
-				$cadenaSql.=" WHERE ta.documento_docente='". $variable."'";
-				$cadenaSql.=" ORDER BY ta.id_tipo_titulo_academico ASC";				
+				$cadenaSql.=" a.titulo AS titulo,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje,";
+				$cadenaSql.=" b.tipo AS tipo_titulo_academico";
+				$cadenaSql.=" FROM docencia.titulo_academico AS a";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_titulo_academico AS b ON b.id_tipo_titulo_academico = a.id_tipo_titulo_academico";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY a.id_tipo_titulo_academico ASC";				
 				$cadenaSql.=" ;";
 				break;
 				
@@ -173,17 +173,17 @@ class Sql extends \Sql {
 				
 			case "direccion_de_trabajos" :
 				$cadenaSql=" SELECT";
-				$cadenaSql.=" ttg.nombre_tipo_trabajogrado AS tipo_trabajogrado,";
-				$cadenaSql.=" dtg.fecha_acta AS fecha_acta,";
-				$cadenaSql.=" dtg.numero_acta AS numero_acta,";
-				$cadenaSql.=" dtg.puntaje AS puntaje,";
-				$cadenaSql.=" dtg.titulo_trabajogrado AS titulo_trabajogrado,";
-				$cadenaSql.=" ctg.nombre_categoria_trabajogrado AS nombre_categoria_trabajogrado";
-				$cadenaSql.=" FROM docencia.direccion_trabajogrado AS dtg";
-				$cadenaSql.=" LEFT JOIN docencia.tipo_trabajogrado AS ttg ON ttg.id_tipo_trabajogrado = dtg.id_tipo_trabajogrado";
-				$cadenaSql.=" LEFT JOIN docencia.categoria_trabajogrado AS ctg ON ctg.id_categoria_trabajogrado = dtg.id_categoria_trabajogrado";
-				$cadenaSql.=" WHERE dtg.documento_docente='". $variable."'";
-				$cadenaSql.=" ORDER BY ttg.nombre_tipo_trabajogrado ASC";
+				$cadenaSql.=" b.nombre_tipo_trabajogrado AS tipo_trabajogrado,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje,";
+				$cadenaSql.=" a.titulo_trabajogrado AS titulo_trabajogrado,";
+				$cadenaSql.=" c.nombre_categoria_trabajogrado AS nombre_categoria_trabajogrado";
+				$cadenaSql.=" FROM docencia.direccion_trabajogrado AS a";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_trabajogrado AS b ON b.id_tipo_trabajogrado = a.id_tipo_trabajogrado";
+				$cadenaSql.=" LEFT JOIN docencia.categoria_trabajogrado AS c ON c.id_categoria_trabajogrado = a.id_categoria_trabajogrado";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY b.nombre_tipo_trabajogrado ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -248,31 +248,31 @@ class Sql extends \Sql {
 				
 			case "experiencia_calificada" :
 				$cadenaSql=" SELECT";
-				$cadenaSql.=" tec.descripcion AS tipo_experiencia_calificada,";
-				$cadenaSql.=" ec.fecha_acta AS fecha_acta,";
-				$cadenaSql.=" ec.numero_acta AS numero_acta,";
-				$cadenaSql.=" ec.puntaje AS puntaje,";
-				$cadenaSql.=" ter.descripcion AS tipo_emisor_resolucion";
-				$cadenaSql.=" FROM docencia.experiencia_calificada AS ec";
-				$cadenaSql.=" LEFT JOIN docencia.tipo_experiencia_calificada AS tec ON tec.id_tipo_experiencia_calificada = ec.id_tipo_experiencia_calificada";
-				$cadenaSql.=" LEFT JOIN docencia.tipo_emisor_resolucion AS ter ON ter.id_tipo_emisor_resolucion = ec.id_tipo_emisor_resolucion";
-				$cadenaSql.=" WHERE ec.documento_docente='". $variable."'";
-				$cadenaSql.=" ORDER BY ec.id_tipo_emisor_resolucion ASC";
+				$cadenaSql.=" b.descripcion AS tipo_experiencia_calificada,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje,";
+				$cadenaSql.=" c.descripcion AS tipo_emisor_resolucion";
+				$cadenaSql.=" FROM docencia.experiencia_calificada AS a";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_experiencia_calificada AS b ON b.id_tipo_experiencia_calificada = a.id_tipo_experiencia_calificada";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_emisor_resolucion AS c ON c.id_tipo_emisor_resolucion = a.id_tipo_emisor_resolucion";
+				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
+				$cadenaSql.=" ORDER BY a.id_tipo_emisor_resolucion ASC";
 				$cadenaSql.=" ;";
 				break;
 				
 			case "experiencia_direccion_academica" :
 				$cadenaSql=" SELECT";
-				$cadenaSql.=" u.nombre_universidad AS nombre_universidad,";
-				$cadenaSql.=" eda.fecha_acta AS fecha_acta,";
-				$cadenaSql.=" eda.numero_acta AS numero_acta,";
-				$cadenaSql.=" eda.puntaje AS puntaje,";
-				$cadenaSql.=" te.nombre_tipo_entidad AS nombre_tipo_entidad";
-				$cadenaSql.=" FROM docencia.experiencia_direccion_academica AS eda";
-				$cadenaSql.=" LEFT JOIN docencia.tipo_entidad AS te ON te.id_tipo_entidad = eda.id_tipo_entidad";
-				$cadenaSql.=" LEFT JOIN docencia.universidad AS u ON u.id_universidad = eda.id_universidad";
+				$cadenaSql.=" c.nombre_universidad AS nombre_universidad,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.puntaje AS puntaje,";
+				$cadenaSql.=" b.nombre_tipo_entidad AS nombre_tipo_entidad";
+				$cadenaSql.=" FROM docencia.experiencia_direccion_academica AS a";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_entidad AS b ON b.id_tipo_entidad = a.id_tipo_entidad";
+				$cadenaSql.=" LEFT JOIN docencia.universidad AS c ON c.id_universidad = a.id_universidad";
 				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
-				$cadenaSql.=" ORDER BY te.nombre_tipo_entidad ASC";
+				$cadenaSql.=" ORDER BY b.nombre_tipo_entidad ASC";
 				$cadenaSql.=" ;";
 				break;
 				

@@ -66,318 +66,561 @@ class registrarForm {
 		//Almacena todos los resultados del docente
 		//$items = array();
 		
+		// ---------------- CONSULTA: títulos docente --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'titulos_docente', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Tipo',
+				'nombre_campo' => 'tipo_titulo_academico',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Título',
+				'nombre_campo' => 'titulo',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '1',
 				'tituloTipo' => 'Hoja de Vida',
 				'titulo' => 'Títulos Académicos',
-				'titulo1' => 'Titulo',
-				'llavevalor1' => 'tipo_titulo_academico',
-				'llavevalor2' => 'titulo'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: títulos docente --------------------------------------------------------
 		
+		// ---------------- CONSULTA: revistas indexadas --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'revistas_indexadas', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Contexto',
+				'nombre_campo' => 'tipo_contexto',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Nombre',
+				'nombre_campo' => 'nombre_revista',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Revistas Indexadas',
-				'titulo1' => 'Contexto',
-				'llavevalor1' => 'tipo_contexto',
-				'llavevalor2' => 'nombre_revista'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: revistas indexadas --------------------------------------------------------
 		
+		// ---------------- CONSULTA: capítulos libros --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'capitulos_libros', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Tipo',
+				'nombre_campo' => 'tipo_libro',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Titulo',
+				'nombre_campo' => 'titulo_capitulo',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Capítulos de Libros',
-				'titulo1' => 'Titulo',
-				'llavevalor1' => 'tipo_libro',
-				'llavevalor2' => 'titulo_capitulo'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: capítulos libros --------------------------------------------------------
 		
+		// ---------------- CONSULTA: cartas editor --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'cartas_editor', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Tipo',
+				'nombre_campo' => 'tipo_libro',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Nombre',
+				'nombre_campo' => 'nombre_revista',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Cartas al Editor',
-				'titulo1' => 'Titulo',
-				'llavevalor1' => 'tipo_libro',
-				'llavevalor2' => 'nombre_revista'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: cartas editor --------------------------------------------------------
 		
+		// ---------------- CONSULTA: direccion de trabajos --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'direccion_de_trabajos', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Tipo',
+				'nombre_campo' => 'tipo_trabajogrado',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Titulo',
+				'nombre_campo' => 'titulo_trabajogrado',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Dirección de Trabajos de Grado',
-				'titulo1' => 'Dirección',
-				'llavevalor1' => 'tipo_trabajogrado',
-				'llavevalor2' => 'titulo_trabajogrado'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: direccion de trabajos --------------------------------------------------------
 		
+		// ---------------- CONSULTA: experiencia dirección académica --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'experiencia_direccion_academica', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Tipo',
+				'nombre_campo' => 'nombre_tipo_entidad',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Universidad',
+				'nombre_campo' => 'nombre_universidad',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Experiencia Dirección Académica',
-				'titulo1' => 'Dirección',
-				'llavevalor1' => 'nombre_tipo_entidad',
-				'llavevalor2' => 'nombre_universidad'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: experiencia dirección académica --------------------------------------------------------
 		
+		// ---------------- CONSULTA: experiencia investigación --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'experiencia_investigacion', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Tipo',
+				'nombre_campo' => 'tipo_experiencia_investigacion',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Universidad',
+				'nombre_campo' => 'nombre_universidad',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Experiencia En Investigación',
-				'titulo1' => 'Dirección',
-				'llavevalor1' => 'tipo_experiencia_investigacion',
-				'llavevalor2' => 'nombre_universidad'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: experiencia investigación --------------------------------------------------------
 		
+		// ---------------- CONSULTA: experiencia en docencia --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'experiencia_docencia', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Tipo Universidad',
+				'nombre_campo' => 'nombre_tipo_entidad',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Universidad',
+				'nombre_campo' => 'nombre_universidad',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Experiencia En Docencia',
-				'titulo1' => 'Dirección',
-				'llavevalor1' => 'nombre_tipo_entidad',
-				'llavevalor2' => 'nombre_universidad'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: experiencia en docencia --------------------------------------------------------
 		
+		// ---------------- CONSULTA: experiencia profesional --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'experiencia_profesional', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Cargo',
+				'nombre_campo' => 'cargo',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Universidad',
+				'nombre_campo' => 'nombre_universidad',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Experiencia Profesional',
-				'titulo1' => 'Dirección',
-				'llavevalor1' => 'nombre_universidad',
-				'llavevalor2' => 'cargo'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: experiencia profesional --------------------------------------------------------
 		
+		// ---------------- CONSULTA: experiencia calificada --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'experiencia_calificada', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Tipo Experiencia',
+				'nombre_campo' => 'tipo_experiencia_calificada',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Tipo Emisor',
+				'nombre_campo' => 'tipo_emisor_resolucion',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Experiencia Calificada',
-				'titulo1' => 'Categoría',
-				'llavevalor1' => 'tipo_experiencia_calificada',
-				'llavevalor2' => 'tipo_emisor_resolucion'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: experiencia calificada --------------------------------------------------------
 		
+		// ---------------- CONSULTA: experiencia dirección académica --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'experiencia_direccion_academica', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Tipo Universidad',
+				'nombre_campo' => 'nombre_tipo_entidad',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Universidad',
+				'nombre_campo' => 'nombre_universidad',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Experiencia Dirección Académica',
-				'titulo1' => 'Dirección',
-				'llavevalor1' => 'nombre_tipo_entidad',
-				'llavevalor2' => 'nombre_universidad'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: experiencia dirección académica --------------------------------------------------------
 		
+		// ---------------- CONSULTA: comunicación corta --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'comunicacion_corta', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Contexto',
+				'nombre_campo' => 'contexto',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Revista',
+				'nombre_campo' => 'nombre_revista',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Comunicación Corta',
-				'titulo1' => 'Comunicación',
-				'llavevalor1' => 'contexto',
-				'llavevalor2' => 'nombre_revista'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: comunicación corta --------------------------------------------------------
 		
+		// ---------------- CONSULTA: obras artísticas --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'obras_artisticas', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Contexto',
+				'nombre_campo' => 'contexto',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Título',
+				'nombre_campo' => 'titulo_obra',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Obras Artísticas',
-				'titulo1' => 'Obra',
-				'llavevalor1' => 'contexto',
-				'llavevalor2' => 'titulo_obra'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: obras artísticas --------------------------------------------------------
 		
+		// ---------------- CONSULTA: patentes --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'patentes', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Tipo',
+				'nombre_campo' => 'tipo_patente',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Título',
+				'nombre_campo' => 'titulo_patente',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Patentes',
-				'titulo1' => 'Patente',
-				'llavevalor1' => 'tipo_patente',
-				'llavevalor2' => 'titulo_patente'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: patentes --------------------------------------------------------
 		
+		// ---------------- CONSULTA: premios docente --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'premios_docente', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Contexto',
+				'nombre_campo' => 'contexto',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Tipo entidad',
+				'nombre_campo' => 'nombre_tipo_entidad',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Premios Docente',
-				'titulo1' => 'Premio',
-				'llavevalor1' => 'contexto',
-				'llavevalor2' => 'nombre_tipo_entidad'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: premios docente --------------------------------------------------------
 		
+		// ---------------- CONSULTA: producción vídeos --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'produccion_videos', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Contexto',
+				'nombre_campo' => 'contexto',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Título',
+				'nombre_campo' => 'titulo_video',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Producción de Vídeos',
-				'titulo1' => 'Producción',
-				'llavevalor1' => 'contexto',
-				'llavevalor2' => 'titulo_video'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: producción vídeos --------------------------------------------------------
 		
+		// ---------------- CONSULTA: producción libros --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'produccion_libros', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Tipo',
+				'nombre_campo' => 'tipo_libro',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Título',
+				'nombre_campo' => 'titulo',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Producción de Libros',
-				'titulo1' => 'Producción',
-				'llavevalor1' => 'tipo_libro',
-				'llavevalor2' => 'titulo'
+				'descripcion' => $campos
 		);
-		
+		unset($campos);
+		// ---------------- FIN CONSULTA: producción libros --------------------------------------------------------
+				
+		// ---------------- CONSULTA: traducción libros --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'traduccion_libros', $documento );
-		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );		
+		$campos[] = array(
+				'alias_campo' => 'Título',
+				'nombre_campo' => 'titulo',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Normatividad',
+				'nombre_campo' => 'normatividad',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Traducción de Libros',
-				'titulo1' => 'Traducción',
-				'llavevalor1' => 'normatividad',
-				'llavevalor2' => 'titulo'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: traducción libros --------------------------------------------------------
 		
+		// ---------------- CONSULTA: producción técnica y software --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'produccion_tecnicaysoftware', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Tipo',
+				'nombre_campo' => 'tipo_tecnicaysoftware',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Nombre',
+				'nombre_campo' => 'nombre',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Producción Técnica y Software Docente',
-				'titulo1' => 'Producción',
-				'llavevalor1' => 'tipo_tecnicaysoftware',
-				'llavevalor2' => 'nombre'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: producción técnica y software --------------------------------------------------------
 		
+		// ---------------- CONSULTA: publicaciones impresas universitarias --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'publicaciones_impresas_universitarias', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Tipo',
+				'nombre_campo' => 'tipo_indexacion',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Título',
+				'nombre_campo' => 'titulo',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '2',
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Publicaciones Impresas Universitarias',
-				'titulo1' => 'Publicación',
-				'llavevalor1' => 'tipo_indexacion',
-				'llavevalor2' => 'titulo'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: publicaciones impresas universitarias --------------------------------------------------------
 		
+		// ---------------- CONSULTA: estudios post doctorales --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'estudios_post_doctorales', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Universidad',
+				'nombre_campo' => 'nombre_universidad',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Título',
+				'nombre_campo' => 'titulo_obtenido',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '2',
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Estudios Post Doctorales',
-				'titulo1' => 'Estudio',
-				'llavevalor1' => 'nombre_universidad',
-				'llavevalor2' => 'titulo_obtenido'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: estudios post doctorales --------------------------------------------------------
 		
+		// ---------------- CONSULTA: reseña crítica --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'resena_critica', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Tipo',
+				'nombre_campo' => 'tipo_indexacion',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Título',
+				'nombre_campo' => 'titulo',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '2',
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Reseña Crítica',
-				'titulo1' => 'Reseña',
-				'llavevalor1' => 'tipo_indexacion',
-				'llavevalor2' => 'titulo'
+				'descripcion' => $campos
 		);
-		
+		unset($campos);
+		// ---------------- FIN CONSULTA: reseña crítica --------------------------------------------------------
+				
+		// ---------------- CONSULTA: traducción artículos --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'traduccion_articulos', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Tipo',
+				'nombre_campo' => 'tipo_traduccion_articulo',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Título',
+				'nombre_campo' => 'titulo_traduccion',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '2',
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Traducción de Artículos',
-				'titulo1' => 'Artículo',
-				'llavevalor1' => 'tipo_traduccion_articulo',
-				'llavevalor2' => 'titulo_traduccion'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: traducción artículos --------------------------------------------------------
 		
+		// ---------------- CONSULTA: ponencias --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'ponencias', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Contexto',
+				'nombre_campo' => 'contexto_ponencia',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Título',
+				'nombre_campo' => 'titulo',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '2',
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Ponencias',
-				'titulo1' => 'Ponencia',
-				'llavevalor1' => 'contexto_ponencia',
-				'llavevalor2' => 'titulo'
+				'descripcion' => $campos
 		);
-		
+		unset($campos);
+		// ---------------- FIN CONSULTA: ponencias --------------------------------------------------------
+				
+		// ---------------- CONSULTA: novedades salariales --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'novedades_salariales', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Tipo',
+				'nombre_campo' => 'tipo_novedad',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Categoría',
+				'nombre_campo' => 'categoria_novedad',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Título',
+				'nombre_campo' => 'descripcion',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
-				'tipo' => '2',
+				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Novedades',
-				'titulo1' => 'Novedad',
-				'llavevalor1' => 'contexto_ponencia',
-				'llavevalor2' => 'titulo'
+				'descripcion' => $campos
 		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: novedades salariales --------------------------------------------------------
 		
+		// ---------------- CONSULTA: novedades bonificación --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'novedades_bonificacion', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Tipo',
+				'nombre_campo' => 'tipo_novedad',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Categoría',
+				'nombre_campo' => 'categoria_novedad',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Título',
+				'nombre_campo' => 'descripcion',
+		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '2',
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Novedades',
-				'titulo1' => 'Novedad',
-				'llavevalor1' => 'tipo_trabajogrado',
-				'llavevalor2' => 'titulo_trabajogrado'
+				'descripcion' => $campos
 		);
-		
+		unset($campos);
+		// ---------------- FIN CONSULTA: novedades bonificación --------------------------------------------------------
+				
+		// ---------------- CONTROL: reporte pdf --------------------------------------------------------
 		$atributos ['id'] = 'reportePDFDocente'; // No cambiar este nombre
 		$atributos ['plantilla'] = 'plantilla1.html.php';
 		$atributos ['datos_docente'] = $datosDocente;
@@ -389,7 +632,45 @@ class registrarForm {
 		echo $this->miFormulario->pdf ( $atributos );
 		echo '</div>';
 		unset ( $atributos );
+		// ---------------- FIN CONTROL: reporte pdf --------------------------------------------------------
 		
+		// ---------------- CONTROL: data tables --------------------------------------------------------
+		unset ($items);
+		$campos[] = array(
+			'nombre_campo' => 'tipo_puntaje',
+			'alias_campo' => 'Tipo Puntaje',
+		);
+		$campos[] = array(
+			'nombre_campo' => 'producto',
+			'alias_campo' => 'Producto',
+		);
+		$campos[] = array(
+			'nombre_campo' => 'descripcion',
+			'alias_campo' => 'Descripción',
+		);
+		$campos[] = array(
+			'nombre_campo' => 'observaciones',
+			'alias_campo' => 'Observaciones',
+		);
+		$campos[] = array(
+			'nombre_campo' => 'verficiacion',
+			'alias_campo' => 'Verificación',
+		);
+		
+		$items[] = array(
+				'tipo_puntaje' => '($resultado)?$resultado:array()',
+				'producto' => '2',
+				'descripcion' => 'Salariales',
+				'observaciones' => 'Novedades',
+				'verficiacion' => 'Novedad'
+		);
+		
+		$atributos ['id'] = 'tablaPuntajeDocente';
+		$atributos ['campos'] = $campos;
+		$atributos ['items'] = $items;
+		echo $this->miFormulario->tabla ( $atributos );
+		unset ( $atributos );
+		// ---------------- FIN CONTROL: data tables --------------------------------------------------------
 	}
 }
 

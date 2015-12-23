@@ -21,11 +21,13 @@ if (class_exists ( '\FormularioHtml' )) {
 			 * Se agregan los componentes hechos con Boostrap para SARA
 			 */
 			require_once ($this->ruta . "builder/DomPdf.class.php");
+			require_once ($this->ruta . "builder/DataTables.class.php");
 			// use blocks\docentes\planDeTrabajo\builder\componentes;
 			//Se llama a la clase constructor del padre
 			parent::__construct ();
 			//Se llama a las funciones que están dentro de la clase y se agregan al formulario
 			$this->aggregate ( 'DomPdfPlugin' );
+			$this->aggregate ( 'DataTablesPlugin' );
 			//Se termina la agregación
 		}
 	}
