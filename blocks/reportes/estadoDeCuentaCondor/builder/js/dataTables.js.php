@@ -7,15 +7,15 @@
  * o
  * function cargarElemento (){***Funciones que inicializan el elemento***}
  * !Importante¡ No genere código de ejecución que necesite las bibliotecas Javascript que están en el archivo "Script.php" fuera de una función bien definida.
+ * ¡¡¡ OJO !!! Para que todo esto cargue al finalizar la página recuerde agregar en el archivo ready.php
+ * $.each(_arregloCreacionElementos,function(){ this(); });
  */
 ?>
 <script type='text/javascript'>
 //Importante que la función se llame cargar elemento.
 var cargarElemento = function() {
-	//En esta configuración no se aceptan los "allDayEvent", "Repeating Event" por lo tanto darán error porque no tienen "end" time moment
-	//	{
-	//		"title": "All Day Event",
-	//		"start": "2015-02-01"
-	//	}
+	$('#<?php echo $this->atributos['id'];?>').dataTable( {
+		"sPaginationType": "full_numbers"
+	});
 };
 </script>

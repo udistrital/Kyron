@@ -54,6 +54,8 @@ class registrarForm {
 		
 		// -------------------------------------------------------------------------------------------------
 		
+		$_REQUEST['tiempo'] = time();
+		
 		$documento = $_REQUEST['docente'];		
 		
 		$conexion = 'docencia';
@@ -589,7 +591,7 @@ class registrarForm {
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
-				'titulo' => 'Novedades',
+				'titulo' => 'Novedades Salariales',
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -614,18 +616,19 @@ class registrarForm {
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '2',
 				'tituloTipo' => 'Bonificación',
-				'titulo' => 'Novedades',
+				'titulo' => 'Novedades Bonificación',
 				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: novedades bonificación --------------------------------------------------------
-				
+			
 		// ---------------- CONTROL: reporte pdf --------------------------------------------------------
 		$atributos ['id'] = 'reportePDFDocente'; // No cambiar este nombre
 		$atributos ['plantilla'] = 'plantilla1.html.php';
 		$atributos ['datos_docente'] = $datosDocente;
 		$atributos ['items'] = $items;
-		$atributos ['showHTML'] = true;
+		//$atributos ['showHTML'] = true;
+		$atributos ['onlyButton'] = true;
 		
 		$atributos ['destino'] = $documento;
 		echo '<div style="max-width:1024px;margin: 0 auto;">';
@@ -634,40 +637,49 @@ class registrarForm {
 		unset ( $atributos );
 		// ---------------- FIN CONTROL: reporte pdf --------------------------------------------------------
 		
+		$itemsTabla = array();
+		foreach($items as $item){
+			foreach($item['resultados'] as $resultado){
+				$valoresPrincipales = $item;
+				unset($valoresPrincipales['resultados']);
+				$resultado['observaciones'] = '<a href="">
+				<img src="css/images/Entrada.png" width="15px">
+				</a>';
+				$resultado['verificacion'] = '<a href="">
+				<img src="css/images/Entrada.png" width="15px">
+				</a>';
+				$itemsTabla[] = array_merge($resultado,$valoresPrincipales);
+			}
+		}
+		unset($items);
 		// ---------------- CONTROL: data tables --------------------------------------------------------
-		unset ($items);
+		
 		$campos[] = array(
-			'nombre_campo' => 'tipo_puntaje',
+			'nombre_campo' => 'tituloTipo',
 			'alias_campo' => 'Tipo Puntaje',
 		);
 		$campos[] = array(
-			'nombre_campo' => 'producto',
+			'nombre_campo' => 'titulo',
 			'alias_campo' => 'Producto',
 		);
 		$campos[] = array(
 			'nombre_campo' => 'descripcion',
 			'alias_campo' => 'Descripción',
+			'es_arreglo' => true,
 		);
 		$campos[] = array(
 			'nombre_campo' => 'observaciones',
 			'alias_campo' => 'Observaciones',
 		);
 		$campos[] = array(
-			'nombre_campo' => 'verficiacion',
+			'nombre_campo' => 'verificacion',
 			'alias_campo' => 'Verificación',
-		);
-		
-		$items[] = array(
-				'tipo_puntaje' => '($resultado)?$resultado:array()',
-				'producto' => '2',
-				'descripcion' => 'Salariales',
-				'observaciones' => 'Novedades',
-				'verficiacion' => 'Novedad'
 		);
 		
 		$atributos ['id'] = 'tablaPuntajeDocente';
 		$atributos ['campos'] = $campos;
-		$atributos ['items'] = $items;
+		//$atributos['campoSeguro'] = true;
+		$atributos ['items'] = $itemsTabla;
 		echo $this->miFormulario->tabla ( $atributos );
 		unset ( $atributos );
 		// ---------------- FIN CONTROL: data tables --------------------------------------------------------
@@ -677,4 +689,4 @@ class registrarForm {
 $miSeleccionador = new registrarForm ( $this->lenguaje, $this->miFormulario, $this->sql );
 
 $miSeleccionador->miForm ();
-?>	
+?>

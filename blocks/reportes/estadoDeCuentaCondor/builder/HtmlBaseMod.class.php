@@ -27,7 +27,7 @@ class HtmlBaseMod {
     //Recupera el html con sus reemplazos de PHP
     function parsePhpFile($filename){
     	ob_start();
-    	include($filename);
+    	require ($filename);
     	return trim(ob_get_clean());
     }
     //Recupera el html con sus reemplazos de PHP
@@ -37,27 +37,26 @@ class HtmlBaseMod {
     //Recupera el html con sus reemplazos de PHP
     function parsePhpJs($filename){
     	$js = "\n".$this->parsePhpFile($filename)."\n";
-    	$js .= "<script type='text/javascript'>\n";
-    	$js .= "var _arregloCreacionElementos = (typeof(_arregloCreacionElementos)=='object')?_arregloCreacionElementos:(new Array()); \n";
-    	$js .= "_arregloCreacionElementos.push(cargarElemento);\n";
+    	$js .= "<script type='text/javascript'";
+		$srcjs = "var _arregloCreacionElementos=(typeof(_arregloCreacionElementos)=='object')?";
+		$srcjs .= "_arregloCreacionElementos:(new Array());";
+		$srcjs .= "_arregloCreacionElementos.push(cargarElemento);";
+    	$js .= " src='data:text/javascript;base64,".base64_encode($srcjs)."'>";
     	$js .="</script>\n";    			
     	return $js;
     }
-    //Campo seguro que por ahora no hace nada
+    //Retorna el campo seguro con el id como codificación del id y tiempo
     function campoSeguro($campo = '') {
         
         if (isset ( $_REQUEST ['tiempo'] )) {
             $this->atributos ['tiempo'] = $_REQUEST ['tiempo'];
         }
         
-        if (isset ( $this->atributos ['campoSeguro'] ) && $this->atributos ['campoSeguro'] && $this->atributos [self::ID] != 'formSaraData') {
-            $this->atributos [self::ID] = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $this->atributos [self::ID] . $this->atributos ['tiempo'] );
-            $this->atributos [self::NOMBRE] = $this->atributos [self::ID];
-            if ($campo == 'form') {
-                $_REQUEST ['formSecureId'] = $this->atributos [self::ID];
-            }
+        if ($campo != '') {
+            return $this->miConfigurador->fabricaConexiones->crypto->codificar ( $campo . $this->atributos ['tiempo'] );
+        } else {
+        	return $this->miConfigurador->fabricaConexiones->crypto->codificar ( $this->atributos ['id'] . $this->atributos ['tiempo'] );
         }
-        
     }    
 }
 ?>

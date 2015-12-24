@@ -29,8 +29,10 @@ class DataTablesPlugin extends HtmlBaseMod{
     	$this->atributos['rutaBloque'] = $this->miConfigurador->getVariableConfiguracion ( 'rutaBloque' );
     	$this->atributos['rutaUrlBloque'] = $this->miConfigurador->getVariableConfiguracion ( 'rutaUrlBloque' );
         
-        $this->campoSeguro();
-        
+    	if(isset($this->atributos['campoSeguro'])&&$this->atributos['campoSeguro']==true){
+        	$this->atributos['id'] = $this->campoSeguro();
+    	}
+    	
         $this->cadenaHTML = '';
         
         $final='';
@@ -44,6 +46,7 @@ class DataTablesPlugin extends HtmlBaseMod{
 	private function createDataTables(){
 		//Se carga la plantilla de un archivo html.php    	
     	$html = $this->parsePhpHtml('html/dataTables.html.php');
+    	$html .= $this->parsePhpJs('js/dataTables.js.php');
     	return $html;
     }  
     

@@ -64,7 +64,30 @@ class DomPdfPlugin extends HtmlBaseMod{
     	 * Si esta variable está establecida, se imprime el pdf en pantalla junto con un botón de descarga,
     	 * de lo contrario simplemente se ve el html y el botón de descarga.
     	 */
-    	if(!(isset($this->atributos['showHTML'])&&$this->atributos['showHTML']==true)){			
+    	if(isset($this->atributos['showHTML'])&&$this->atributos['showHTML']==true){			
+    		//Se muestra un botón en pantalla con el cual se puede descargar el pdf generado
+    		$html .= '<br />
+    		<div class="marcoBotones">
+				<a id="boton'.$this->atributos['id'].'" target="_blank" class="ui-button ui-state-default ui-corner-all ui-button-text-only" href="">Descargar Reporte en PDF</a>
+			</div>';
+    		
+    		$html .= '
+    		<script type="text/javascript">
+    			var '.$idComponenteBase64.'="data:application/pdf;base64,'.$pdfBase64.'";
+    			document.getElementById("boton'.$this->atributos['id'].'").setAttribute("href",'.$idComponenteBase64.');
+    		</script>';
+    	} else if(isset($this->atributos['onlyButton'])&&$this->atributos['onlyButton']==true) {   		
+    		$html = '<br />
+    		<div class="marcoBotones">
+				<a id="boton'.$this->atributos['id'].'" target="_blank" class="ui-button ui-state-default ui-corner-all ui-button-text-only" href="">Descargar Reporte en PDF</a>
+			</div>';
+    		
+    		$html .= '
+    		<script type="text/javascript">
+    			var '.$idComponenteBase64.'="data:application/pdf;base64,'.$pdfBase64.'";
+    			document.getElementById("boton'.$this->atributos['id'].'").setAttribute("href",'.$idComponenteBase64.');
+    		</script>';
+    	} else {
     		$html = '
     		<object id="'.$this->atributos['id'].'" style="width:100%;min-height:1058px;height:100%;" data="" type="application/pdf">
  		        <embed style="width:100%;min-height:1058px;height:100%;" src="" type="application/pdf" />
@@ -83,20 +106,8 @@ class DomPdfPlugin extends HtmlBaseMod{
     				document.getElementById("'.$this->atributos['id'].'").getElementsByTagName("embed")[0].setAttribute("src",'.$idComponenteBase64.');
     			}
     		</script>';
-    	} else {
-    		//Se muestra un botón en pantalla con el cual se puede descargar el pdf generado
-    		$html .= '<br />
-    		<div class="marcoBotones">
-				<a id="boton'.$this->atributos['id'].'" target="_blank" class="ui-button ui-state-default ui-corner-all ui-button-text-only" href="">Descargar Reporte en PDF</a>
-			</div>';
-    		
-    		$html .= '
-    		<script type="text/javascript">
-    			var '.$idComponenteBase64.'="data:application/pdf;base64,'.$pdfBase64.'";
-    			document.getElementById("boton'.$this->atributos['id'].'").setAttribute("href",'.$idComponenteBase64.');
-    		</script>';
     	}
-		    	
+    	
     	return $html;
     }  
     
