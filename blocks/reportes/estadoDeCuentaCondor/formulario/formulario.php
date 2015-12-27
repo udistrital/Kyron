@@ -408,44 +408,32 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'experiencia_investigacion', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
+				'alias_campo' => 'Universidad',
+				'nombre_campo' => 'universidad',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Otra Universidad',
+				'nombre_campo' => 'otra_entidad',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Tipo',
 				'nombre_campo' => 'tipo_experiencia_investigacion',
 		);
 		$campos[] = array(
-				'alias_campo' => 'Universidad',
-				'nombre_campo' => 'nombre_universidad',
+				'alias_campo' => 'Horas por Semana',
+				'nombre_campo' => 'horas_semana',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Fecha Inicio',
+				'nombre_campo' => 'fecha_inicio',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Fecha Finalización',
+				'nombre_campo' => 'fecha_finalizacion',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Normatividad',
+				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
@@ -461,44 +449,36 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'experiencia_docencia', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
-				'alias_campo' => 'Tipo Universidad',
-				'nombre_campo' => 'nombre_tipo_entidad',
-		);
-		$campos[] = array(
 				'alias_campo' => 'Universidad',
-				'nombre_campo' => 'nombre_universidad',
+				'nombre_campo' => 'universidad',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Otra Entidad',
+				'nombre_campo' => 'otra_entidad',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Tipo Entidad',
+				'nombre_campo' => 'tipo_entidad',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Horas Semana',
+				'nombre_campo' => 'horas_semana',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Fecha Inicio',
+				'nombre_campo' => 'fecha_inicio',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Fecha Finalización',
+				'nombre_campo' => 'fecha_finalizacion',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Días Experiencia',
+				'nombre_campo' => 'dias_experiencia',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Normatividad',
+				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
@@ -514,44 +494,32 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'experiencia_profesional', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
+				'alias_campo' => 'Universidad',
+				'nombre_campo' => 'universidad',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Otra Entidad',
+				'nombre_campo' => 'otra_entidad',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Cargo',
 				'nombre_campo' => 'cargo',
 		);
 		$campos[] = array(
-				'alias_campo' => 'Universidad',
-				'nombre_campo' => 'nombre_universidad',
+				'alias_campo' => 'Fecha Inicio',
+				'nombre_campo' => 'fecha_inicio',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Fecha Finalización',
+				'nombre_campo' => 'fecha_finalizacion',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Días Experiencia',
+				'nombre_campo' => 'dias_experiencia',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Normatividad',
+				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
@@ -571,40 +539,24 @@ class registrarForm {
 				'nombre_campo' => 'tipo_experiencia_calificada',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Año Experiencia',
+				'nombre_campo' => 'annio_experiencia',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Número Resolución',
+				'nombre_campo' => 'numero_resolucion',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Tipo Emisor',
 				'nombre_campo' => 'tipo_emisor_resolucion',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Fecha Resolución',
+				'nombre_campo' => 'fecha_resolucion',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Normatividad',
+				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
@@ -620,44 +572,36 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'experiencia_direccion_academica', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
-				'alias_campo' => 'Tipo Universidad',
-				'nombre_campo' => 'nombre_tipo_entidad',
-		);
-		$campos[] = array(
 				'alias_campo' => 'Universidad',
-				'nombre_campo' => 'nombre_universidad',
+				'nombre_campo' => 'universidad',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Otra Entidad',
+				'nombre_campo' => 'otra_entidad',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Tipo Entidad',
+				'nombre_campo' => 'tipo_entidad',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Horas por Semana',
+				'nombre_campo' => 'horas_semana',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Fecha Inicio',
+				'nombre_campo' => 'fecha_inicio',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Fecha Finalización',
+				'nombre_campo' => 'fecha_finalizacion',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Días Experiencia',
+				'nombre_campo' => 'dias_experiencia',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Normatividad',
+				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),

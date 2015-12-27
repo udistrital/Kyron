@@ -297,8 +297,6 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY universidad ASC";
 				$cadenaSql.=" ;";
 				break;
-			
-			/**Voy Acá**/
 			/**
 			 * 
 			 SELECT column_name, column_name FROM information_schema.columns
@@ -311,75 +309,126 @@ WHERE constraint_name LIKE '%experiencia_investigacion%'
 			 */
 			case "experiencia_investigacion" :
 				$cadenaSql=" SELECT";
+				//$cadenaSql.=" a.id_experiencia_investigacion AS id_experiencia_investigacion,";
+				//$cadenaSql.=" a.documento_docente AS documento_docente,";
+				$cadenaSql.=" c.nombre_universidad AS universidad,";
+				$cadenaSql.=" a.otra_entidad AS otra_entidad,";
 				$cadenaSql.=" b.descripcion AS tipo_experiencia_investigacion,";
-				$cadenaSql.=" c.nombre_universidad AS nombre_universidad,";
-				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.horas_semana AS horas_semana,";
+				$cadenaSql.=" a.fecha_inicio AS fecha_inicio,";
+				$cadenaSql.=" a.fecha_finalizacion AS fecha_finalizacion,";
 				$cadenaSql.=" a.numero_acta AS numero_acta,";
-				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.caso_acta AS numero_caso,";
+				$cadenaSql.=" a.puntaje AS puntaje,";
+				$cadenaSql.=" a.normatividad AS normatividad";
+				//$cadenaSql.=" a.estado AS estado";
 				$cadenaSql.=" FROM docencia.experiencia_investigacion AS a";
 				$cadenaSql.=" LEFT JOIN docencia.tipo_experiencia_investigacion AS b ON b.id_tipo_experiencia_investigacion = a.id_tipo_experiencia_investigacion";
 				$cadenaSql.=" LEFT JOIN docencia.universidad AS c ON c.id_universidad = a.id_universidad";
 				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
-				$cadenaSql.=" ORDER BY tipo_experiencia_investigacion ASC";
+				$cadenaSql.=" AND a.estado = true";
+				$cadenaSql.=" ORDER BY universidad ASC";
 				$cadenaSql.=" ;";
 				break;
 				
 			case "experiencia_docencia" :
 				$cadenaSql=" SELECT";
-				$cadenaSql.=" b.nombre_tipo_entidad AS nombre_tipo_entidad,";
-				$cadenaSql.=" c.nombre_universidad AS nombre_universidad,";
-				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				//$cadenaSql.=" a.id_experiencia_docencia AS id_experiencia_docencia,";
+				//$cadenaSql.=" a.documento_docente AS documento_docente,";
+				$cadenaSql.=" c.nombre_universidad AS universidad,";
+				$cadenaSql.=" a.otra_entidad AS otra_entidad,";
+				$cadenaSql.=" b.nombre_tipo_entidad AS tipo_entidad,";
+				$cadenaSql.=" a.horas_semana AS horas_semana,";
+				$cadenaSql.=" a.fecha_inicio AS fecha_inicio,";
+				$cadenaSql.=" a.fecha_finalizacion AS fecha_finalizacion,";
+				$cadenaSql.=" a.dias_experiencia AS dias_experiencia,";
 				$cadenaSql.=" a.numero_acta AS numero_acta,";
-				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.caso_acta AS numero_caso,";
+				$cadenaSql.=" a.puntaje AS puntaje,";
+				$cadenaSql.=" a.normatividad AS normatividad";
+				//$cadenaSql.=" a.estado AS estado";
 				$cadenaSql.=" FROM docencia.experiencia_docencia AS a";
 				$cadenaSql.=" LEFT JOIN docencia.tipo_entidad AS b ON b.id_tipo_entidad = a.id_tipo_entidad";
 				$cadenaSql.=" LEFT JOIN docencia.universidad AS c ON c.id_universidad = a.id_universidad";
 				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
-				$cadenaSql.=" ORDER BY nombre_tipo_entidad ASC";
+				$cadenaSql.=" AND a.estado = true";
+				$cadenaSql.=" ORDER BY universidad ASC";
 				$cadenaSql.=" ;";
 				break;
 				
 			case "experiencia_profesional" :
 				$cadenaSql=" SELECT";
+				//$cadenaSql.=" a.id_experiencia_profesional AS id_experiencia_profesional,";
+				//$cadenaSql.=" a.documento_docente AS documento_docente,";
+				$cadenaSql.=" b.nombre_universidad AS universidad,";
+				$cadenaSql.=" a.otra_entidad AS otra_entidad,";
 				$cadenaSql.=" a.cargo AS cargo,";
-				$cadenaSql.=" b.nombre_universidad AS nombre_universidad,";
-				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.fecha_inicio AS fecha_inicio,";
+				$cadenaSql.=" a.fecha_finalizacion AS fecha_finalizacion,";
+				$cadenaSql.=" a.dias_experiencia AS dias_experiencia,";
 				$cadenaSql.=" a.numero_acta AS numero_acta,";
-				$cadenaSql.=" a.puntaje AS puntaje";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.caso_acta AS numero_caso,";
+				$cadenaSql.=" a.puntaje AS puntaje,";
+				$cadenaSql.=" a.normatividad AS normatividad";
+				//$cadenaSql.=" a.estado AS estado";
 				$cadenaSql.=" FROM docencia.experiencia_profesional AS a";
 				$cadenaSql.=" LEFT JOIN docencia.universidad AS b ON b.id_universidad = a.id_universidad";
 				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
-				$cadenaSql.=" ORDER BY nombre_universidad ASC";
+				$cadenaSql.=" AND a.estado = true";
+				$cadenaSql.=" ORDER BY universidad ASC";
 				$cadenaSql.=" ;";
 				break;
 				
 			case "experiencia_calificada" :
 				$cadenaSql=" SELECT";
+				//$cadenaSql.=" a.id_experiencia_calificada AS id_experiencia_calificada,";
+				//$cadenaSql.=" a.documento_docente AS documento_docente,";
 				$cadenaSql.=" b.descripcion AS tipo_experiencia_calificada,";
-				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.annio_experiencia AS annio_experiencia,";
+				$cadenaSql.=" a.numero_resolucion AS numero_resolucion,";
+				$cadenaSql.=" b.descripcion AS tipo_emisor_resolucion,";
+				$cadenaSql.=" a.fecha_resolucion AS fecha_resolucion,";
 				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" '' AS numero_caso,";
 				$cadenaSql.=" a.puntaje AS puntaje,";
-				$cadenaSql.=" c.descripcion AS tipo_emisor_resolucion";
+				$cadenaSql.=" a.normatividad AS normatividad";
+				//$cadenaSql.=" a.estado AS estado";
 				$cadenaSql.=" FROM docencia.experiencia_calificada AS a";
-				$cadenaSql.=" LEFT JOIN docencia.tipo_experiencia_calificada AS b ON b.id_tipo_experiencia_calificada = a.id_tipo_experiencia_calificada";
-				$cadenaSql.=" LEFT JOIN docencia.tipo_emisor_resolucion AS c ON c.id_tipo_emisor_resolucion = a.id_tipo_emisor_resolucion";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_emisor_resolucion AS b ON b.id_tipo_emisor_resolucion = a.id_tipo_emisor_resolucion";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_experiencia_calificada AS c ON c.id_tipo_experiencia_calificada = a.id_tipo_experiencia_calificada";
 				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
-				$cadenaSql.=" ORDER BY a.id_tipo_emisor_resolucion ASC";
+				$cadenaSql.=" AND a.estado = true";
+				$cadenaSql.=" ORDER BY tipo_experiencia_calificada ASC";
 				$cadenaSql.=" ;";
 				break;
 				
 			case "experiencia_direccion_academica" :
 				$cadenaSql=" SELECT";
-				$cadenaSql.=" c.nombre_universidad AS nombre_universidad,";
-				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				//$cadenaSql.=" a.id_experiencia_direccion_academica AS id_experiencia_direccion_academica,";
+				//$cadenaSql.=" a.documento_docente AS documento_docente,";
+				$cadenaSql.=" c.nombre_universidad AS universidad,";
+				$cadenaSql.=" a.otra_entidad AS otra_entidad,";
+				$cadenaSql.=" b.nombre_tipo_entidad AS nombre_tipo_entidad,";
+				$cadenaSql.=" a.horas_semana AS horas_semana,";
+				$cadenaSql.=" a.fecha_inicio AS fecha_inicio,";
+				$cadenaSql.=" a.fecha_finalizacion AS fecha_finalizacion,";
+				$cadenaSql.=" a.dias_experiencia AS dias_experiencia,";
 				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.caso_acta AS numero_caso,";
 				$cadenaSql.=" a.puntaje AS puntaje,";
-				$cadenaSql.=" b.nombre_tipo_entidad AS nombre_tipo_entidad";
+				$cadenaSql.=" a.normatividad AS normatividad";
+				//$cadenaSql.=" a.estado AS estado";
 				$cadenaSql.=" FROM docencia.experiencia_direccion_academica AS a";
 				$cadenaSql.=" LEFT JOIN docencia.tipo_entidad AS b ON b.id_tipo_entidad = a.id_tipo_entidad";
 				$cadenaSql.=" LEFT JOIN docencia.universidad AS c ON c.id_universidad = a.id_universidad";
 				$cadenaSql.=" WHERE a.documento_docente='". $variable."'";
-				$cadenaSql.=" ORDER BY b.nombre_tipo_entidad ASC";
+				$cadenaSql.=" AND a.estado = true";
+				$cadenaSql.=" ORDER BY universidad ASC";
 				$cadenaSql.=" ;";
 				break;
 				
