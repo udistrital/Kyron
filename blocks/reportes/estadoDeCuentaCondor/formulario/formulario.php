@@ -10,8 +10,9 @@ if (! isset ( $GLOBALS ['autorizado'] )) {
  * Ejemplo: http://10.20.0.38/kyron/index.php?data=####
  */
 if (! isset ( $_REQUEST ['expiracion'] ) || time() - $_REQUEST ['expiracion'] >= 3600 ) {
-	echo '<br/><h1>¡Enlace expiró!</h1><br/>';
-	sleep(1);
+	echo '<br/><h1>¡Recurso expiró su sesión!</h1><br/>';
+	echo '<br/><h1>Recargue la página.</h1><br/>';
+	sleep(2);
 	include ('../index.php');
 	exit ();
 }
@@ -320,7 +321,7 @@ class registrarForm {
 		
 		// ---------------- CONSULTA: dirección de trabajos --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'direccion_de_trabajos', $documento );
-		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );//var_dump($resultado);die;
+		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Titulo',
 				'nombre_campo' => 'titulo_trabajogrado',
@@ -617,44 +618,56 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'comunicacion_corta', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
-				'alias_campo' => 'Contexto',
-				'nombre_campo' => 'contexto',
-		);
-		$campos[] = array(
 				'alias_campo' => 'Revista',
 				'nombre_campo' => 'nombre_revista',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Contexto',
+				'nombre_campo' => 'contexto',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'País',
+				'nombre_campo' => 'pais',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Tipo Indexación',
+				'nombre_campo' => 'tipo_indexacion',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Número ISSN',
+				'nombre_campo' => 'numero_issn',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Año Publicación',
+				'nombre_campo' => 'anno_publicacion',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Volúmen Revista',
+				'nombre_campo' => 'volumen_revista',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Número Revista',
+				'nombre_campo' => 'numero_revista',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Páginas Revista',
+				'nombre_campo' => 'paginas_revista',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Título Artículo',
+				'nombre_campo' => 'titulo_articulo',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Número Autores',
+				'nombre_campo' => 'numero_autores',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Número Autores UD',
+				'nombre_campo' => 'numero_autores_ud',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Normatividad',
+				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
@@ -670,44 +683,28 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'obras_artisticas', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
+				'alias_campo' => 'Título Obra',
+				'nombre_campo' => 'titulo_obra',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Tipo Obra Artística',
+				'nombre_campo' => 'tipo_obra_artistica',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Certificador',
+				'nombre_campo' => 'certificador',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Contexto',
 				'nombre_campo' => 'contexto',
 		);
 		$campos[] = array(
-				'alias_campo' => 'Título',
-				'nombre_campo' => 'titulo_obra',
+				'alias_campo' => 'Año Obra',
+				'nombre_campo' => 'anno_obra',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Normatividad',
+				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
@@ -723,44 +720,36 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'patentes', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
-				'alias_campo' => 'Tipo',
-				'nombre_campo' => 'tipo_patente',
-		);
-		$campos[] = array(
 				'alias_campo' => 'Título',
 				'nombre_campo' => 'titulo_patente',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Tipo',
+				'nombre_campo' => 'tipo_patente',
+		);		
+		$campos[] = array(
+				'alias_campo' => 'Universidad',
+				'nombre_campo' => 'universidad',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'País',
+				'nombre_campo' => 'pais',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Año Obtención',
+				'nombre_campo' => 'anno_obtencion',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Concepto Patente',
+				'nombre_campo' => 'concepto_patente',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Número Registro',
+				'nombre_campo' => 'numero_registro',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Normatividad',
+				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
@@ -776,44 +765,48 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'premios_docente', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
+				'alias_campo' => 'Universidad',
+				'nombre_campo' => 'universidad',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Otra Entidad',
+				'nombre_campo' => 'otra_entidad',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Tipo Entidad',
+				'nombre_campo' => 'tipo_entidad',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Contexto',
 				'nombre_campo' => 'contexto',
 		);
 		$campos[] = array(
-				'alias_campo' => 'Tipo entidad',
-				'nombre_campo' => 'nombre_tipo_entidad',
+				'alias_campo' => 'País',
+				'nombre_campo' => 'pais',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Ciudad',
+				'nombre_campo' => 'ciudad',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Concepto Premio',
+				'nombre_campo' => 'concepto_premio',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Fecha Premio',
+				'nombre_campo' => 'fecha_premio',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Número Condecorados',
+				'nombre_campo' => 'numero_condecorados',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Año Premio',
+				'nombre_campo' => 'anno_premio',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Normatividad',
+				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
@@ -829,44 +822,40 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'produccion_videos', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
-				'alias_campo' => 'Contexto',
-				'nombre_campo' => 'contexto',
-		);
-		$campos[] = array(
 				'alias_campo' => 'Título',
 				'nombre_campo' => 'titulo_video',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Número Autores',
+				'nombre_campo' => 'numero_autores',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Número Autores UD',
+				'nombre_campo' => 'numero_autores_ud',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Fecha Realización',
+				'nombre_campo' => 'fecha_realizacion',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Contexto',
+				'nombre_campo' => 'contexto',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Carácter Vídeo',
+				'nombre_campo' => 'caracter_video',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Número Evaluadores',
+				'nombre_campo' => 'numero_evaluadores',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Normatividad',
+				'nombre_campo' => 'normatividad',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Evaluadores',
+				'nombre_campo' => 'evaluadores',
 		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
@@ -882,44 +871,44 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'produccion_libros', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
-				'alias_campo' => 'Tipo',
-				'nombre_campo' => 'tipo_libro',
-		);
-		$campos[] = array(
 				'alias_campo' => 'Título',
 				'nombre_campo' => 'titulo',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Tipo Libro',
+				'nombre_campo' => 'tipo_libro',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Universidad',
+				'nombre_campo' => 'universidad',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Código ISBN',
+				'nombre_campo' => 'codigo_isbn',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Año Publicación',
+				'nombre_campo' => 'anno_publicacion',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Número Autores',
+				'nombre_campo' => 'numero_autores',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Número Autores UD',
+				'nombre_campo' => 'numero_autores_ud',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Editorial',
+				'nombre_campo' => 'editorial',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Normatividad',
+				'nombre_campo' => 'normatividad',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Evaluadores',
+				'nombre_campo' => 'evaluadores',
 		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
@@ -939,40 +928,24 @@ class registrarForm {
 				'nombre_campo' => 'titulo',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Autor Original',
+				'nombre_campo' => 'nombre_autor_original',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Año Traducción',
+				'nombre_campo' => 'anno_traduccion',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Año Publicación',
+				'nombre_campo' => 'anno_publicacion',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Volúmen',
+				'nombre_campo' => 'volumen',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
 		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
@@ -988,44 +961,28 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'produccion_tecnicaysoftware', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
-				'alias_campo' => 'Tipo',
-				'nombre_campo' => 'tipo_tecnicaysoftware',
-		);
-		$campos[] = array(
 				'alias_campo' => 'Nombre',
 				'nombre_campo' => 'nombre',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Tipo',
+				'nombre_campo' => 'tipo_tecnicaysoftware',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Número Certificado',
+				'nombre_campo' => 'numero_certificado',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Año Producción',
+				'nombre_campo' => 'anno_produccion',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Normatividad',
+				'nombre_campo' => 'normatividad',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Evaluadores',
+				'nombre_campo' => 'evaluadores',
 		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
@@ -1041,44 +998,36 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'publicaciones_impresas_universitarias', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
-				'alias_campo' => 'Tipo',
-				'nombre_campo' => 'tipo_indexacion',
-		);
-		$campos[] = array(
 				'alias_campo' => 'Título',
 				'nombre_campo' => 'titulo',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Número ISSN',
+				'nombre_campo' => 'numero_issn',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Nombre Revista',
+				'nombre_campo' => 'nombre_revista',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Número Revista',
+				'nombre_campo' => 'numero_revista',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Volúmen Revista',
+				'nombre_campo' => 'volumen_revista',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Año Revista',
+				'nombre_campo' => 'anno_revista',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Tipo Indexación',
+				'nombre_campo' => 'tipo_indexacion',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Normatividad',
+				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
@@ -1094,44 +1043,28 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'estudios_post_doctorales', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
-				'alias_campo' => 'Universidad',
-				'nombre_campo' => 'nombre_universidad',
-		);
-		$campos[] = array(
-				'alias_campo' => 'Título',
+				'alias_campo' => 'Título Obtenido',
 				'nombre_campo' => 'titulo_obtenido',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Fecha Obtención',
+				'nombre_campo' => 'fecha_obtencion',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Universidad',
+				'nombre_campo' => 'universidad',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Otra Entidad',
+				'nombre_campo' => 'otra_entidad',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Años Doctorado',
+				'nombre_campo' => 'annos_doctorado',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Normatividad',
+				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
@@ -1147,44 +1080,24 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'resena_critica', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
-				'alias_campo' => 'Tipo',
-				'nombre_campo' => 'tipo_indexacion',
-		);
-		$campos[] = array(
 				'alias_campo' => 'Título',
 				'nombre_campo' => 'titulo',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Revista',
+				'nombre_campo' => 'revista',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Tipo Indexación',
+				'nombre_campo' => 'tipo_indexacion',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Año',
+				'nombre_campo' => 'anno',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Normatividad',
+				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
@@ -1200,44 +1113,25 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'traduccion_articulos', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
-				'alias_campo' => 'Tipo',
-				'nombre_campo' => 'tipo_traduccion_articulo',
-		);
-		$campos[] = array(
-				'alias_campo' => 'Título',
+				'alias_campo' => 'Título Traducción',
 				'nombre_campo' => 'titulo_traduccion',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Título Publicación',
+				'nombre_campo' => 'titulo_publicacion',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Tipo Traducción Artículo',
+				'nombre_campo' => 'tipo_traduccion_articulo',
+		);
+		
+		$campos[] = array(
+				'alias_campo' => 'Fecha Traducción',
+				'nombre_campo' => 'fecha_traduccion',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Normatividad',
+				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
@@ -1253,44 +1147,36 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'ponencias', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
-				'alias_campo' => 'Contexto',
-				'nombre_campo' => 'contexto_ponencia',
-		);
-		$campos[] = array(
 				'alias_campo' => 'Título',
 				'nombre_campo' => 'titulo',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Número Autores',
+				'nombre_campo' => 'numero_autores',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Número Autores UD',
+				'nombre_campo' => 'numero_autores',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Año',
+				'nombre_campo' => 'anno',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Contexto',
+				'nombre_campo' => 'contexto_ponencia',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Evento de la Presentación',
+				'nombre_campo' => 'evento_presentacion',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Institución Certificadora',
+				'nombre_campo' => 'institucion_certificadora',
 		);
 		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Normatividad',
+				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
@@ -1306,6 +1192,10 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'novedades_salariales', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
+				'alias_campo' => 'Título',
+				'nombre_campo' => 'descripcion',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Tipo',
 				'nombre_campo' => 'tipo_novedad',
 		);
@@ -1314,40 +1204,8 @@ class registrarForm {
 				'nombre_campo' => 'categoria_novedad',
 		);
 		$campos[] = array(
-				'alias_campo' => 'Título',
-				'nombre_campo' => 'descripcion',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Normatividad',
+				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
@@ -1363,6 +1221,10 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'novedades_bonificacion', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
+				'alias_campo' => 'Título',
+				'nombre_campo' => 'descripcion',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Tipo',
 				'nombre_campo' => 'tipo_novedad',
 		);
@@ -1371,40 +1233,8 @@ class registrarForm {
 				'nombre_campo' => 'categoria_novedad',
 		);
 		$campos[] = array(
-				'alias_campo' => 'Título',
-				'nombre_campo' => 'descripcion',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
-		);
-		$campos[] = array(
-				'alias_campo' => 'aaa',
-				'nombre_campo' => 'aaa',
+				'alias_campo' => 'Normatividad',
+				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
 				'resultados' => ($resultado)?$resultado:array(),
@@ -1415,22 +1245,12 @@ class registrarForm {
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: novedades bonificación --------------------------------------------------------
-			
-		// ---------------- CONTROL: reporte pdf --------------------------------------------------------
-		$atributos ['id'] = 'reportePDFDocente'; // No cambiar este nombre
-		$atributos ['plantilla'] = 'plantilla1.html.php';
-		$atributos ['datos_docente'] = $datosDocente;
-		$atributos ['items'] = $items;
-		//$atributos ['showHTML'] = true;
-		$atributos ['onlyButton'] = true;
 		
-		$atributos ['destino'] = $documento;
-		echo '<div style="max-width:1024px;margin: 0 auto;">';
-		echo $this->miFormulario->pdf ( $atributos );
-		echo '</div>';
-		unset ( $atributos );
-		// ---------------- FIN CONTROL: reporte pdf --------------------------------------------------------
 		
+		/**
+		 * Estos ítems de la tabla se adecuan para poder mostrar
+		 * las carácterísticas que sólo se ven allí
+		 */
 		$itemsTabla = array();
 		foreach($items as $item){
 			foreach($item['resultados'] as $resultado){
@@ -1445,7 +1265,8 @@ class registrarForm {
 				$itemsTabla[] = array_merge($resultado,$valoresPrincipales);
 			}
 		}
-		unset($items);
+		//unset($items);
+		
 		// ---------------- CONTROL: data tables --------------------------------------------------------
 		
 		$campos[] = array(
@@ -1477,6 +1298,23 @@ class registrarForm {
 		echo $this->miFormulario->tabla ( $atributos );
 		unset ( $atributos );
 		// ---------------- FIN CONTROL: data tables --------------------------------------------------------
+		
+		// ---------------- CONTROL: reporte pdf --------------------------------------------------------
+		$atributos ['id'] = 'reportePDFDocente'; // No cambiar este nombre
+		$atributos ['plantilla'] = 'plantilla1.html.php';
+		$atributos ['datos_docente'] = $datosDocente;
+		$atributos ['items'] = $items;
+		//$atributos ['showHTML'] = true;
+		$atributos ['onlyButton'] = true;
+		$atributos ['destino'] = $documento;
+		echo '<div style="max-width: 1024px; margin: 0 auto;">';
+		echo $this->miFormulario->pdf ( $atributos );
+		echo '</div>';
+		unset ( $atributos );
+		// ---------------- FIN CONTROL: reporte pdf --------------------------------------------------------
+		
+		 
+	
 	}
 }
 
