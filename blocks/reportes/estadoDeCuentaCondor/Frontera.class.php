@@ -1,6 +1,6 @@
 <?php
 
-namespace reportes\estadoDeCuenta;
+namespace reportes\estadoDeCuentaCondor;
 
 if (!isset($GLOBALS ["autorizado"])) {
     include ("../index.php");
@@ -18,7 +18,7 @@ if (class_exists ( '\FormularioHtml' )) {
 	class FormularioHtml extends \FormularioHtml {
 		function __construct() {
 			/**
-			 * Se agregan los componentes hechos con Boostrap para SARA
+			 * Se agregan los componentes hechos para SARA
 			 */
 			require_once ($this->ruta . "builder/DomPdf.class.php");
 			require_once ($this->ruta . "builder/DataTables.class.php");

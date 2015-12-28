@@ -1,8 +1,8 @@
 <?php
 
-namespace reportes\estadoDeCuenta;
+namespace reportes\estadoDeCuentaCondor;
 
-use reportes\estadoDeCuenta\funcion\redireccion;
+use reportes\estadoDeCuentaCondor\funcion\redireccion;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -39,9 +39,6 @@ class Funcion {
 	
 	function procesarAjax() {
 		include_once ($this->ruta . "funcion/procesarAjax.php");
-	}
-	function registrar() {
-		include_once ($this->ruta . "/funcion/registrar.php");
 	}
 	function actualizar() {
 		include_once ($this->ruta . "/funcion/actualizar.php");

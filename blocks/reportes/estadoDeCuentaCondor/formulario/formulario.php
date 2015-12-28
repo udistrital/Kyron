@@ -74,6 +74,8 @@ class registrarForm {
 		// ---------------- CONSULTA: títulos docente --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'titulos_docente', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'titulo_academico' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Tipo',
 				'nombre_campo' => 'tipo_titulo_academico',
@@ -115,6 +117,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Hoja de Vida',
 				'titulo' => 'Títulos Académicos',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -123,6 +126,8 @@ class registrarForm {
 		// ---------------- CONSULTA: revistas indexadas --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'revistas_indexadas', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'revista_indexada' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Nombre Revista',
 				'nombre_campo' => 'nombre_revista',
@@ -172,6 +177,10 @@ class registrarForm {
 				'nombre_campo' => 'numero_autores_ud',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -180,6 +189,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Revistas Indexadas',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -188,6 +198,8 @@ class registrarForm {
 		// ---------------- CONSULTA: capítulos libros --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'capitulos_libros', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'capitulo_libro' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Título Capítulo',
 				'nombre_campo' => 'titulo_capitulo',
@@ -233,6 +245,10 @@ class registrarForm {
 				'nombre_campo' => 'numero_autores_libro_ud',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -245,6 +261,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Capítulos de Libros',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -253,6 +270,8 @@ class registrarForm {
 		// ---------------- CONSULTA: cartas editor --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'cartas_editor', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'cartas_editor' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Nombre Revista',
 				'nombre_campo' => 'nombre_revista',
@@ -306,6 +325,10 @@ class registrarForm {
 				'nombre_campo' => 'fecha_publicacion',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -314,6 +337,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Cartas al Editor',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -322,6 +346,8 @@ class registrarForm {
 		// ---------------- CONSULTA: dirección de trabajos --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'direccion_de_trabajos', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'direccion_trabajogrado' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Titulo',
 				'nombre_campo' => 'titulo_trabajogrado',
@@ -343,6 +369,10 @@ class registrarForm {
 				'nombre_campo' => 'anno_direccion',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -355,6 +385,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Dirección de Trabajos de Grado',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -363,6 +394,8 @@ class registrarForm {
 		// ---------------- CONSULTA: experiencia dirección académica --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'experiencia_direccion_academica', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'experiencia_direccion_academica' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Universidad',
 				'nombre_campo' => 'universidad',
@@ -392,6 +425,10 @@ class registrarForm {
 				'nombre_campo' => 'dias_experiencia',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -400,6 +437,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Experiencia Dirección Académica',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -408,6 +446,8 @@ class registrarForm {
 		// ---------------- CONSULTA: experiencia investigación --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'experiencia_investigacion', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'experiencia_investigacion' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Universidad',
 				'nombre_campo' => 'universidad',
@@ -433,6 +473,10 @@ class registrarForm {
 				'nombre_campo' => 'fecha_finalizacion',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -441,6 +485,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Experiencia En Investigación',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -449,6 +494,8 @@ class registrarForm {
 		// ---------------- CONSULTA: experiencia en docencia --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'experiencia_docencia', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'experiencia_docencia' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Universidad',
 				'nombre_campo' => 'universidad',
@@ -478,6 +525,10 @@ class registrarForm {
 				'nombre_campo' => 'dias_experiencia',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -486,6 +537,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Experiencia En Docencia',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -494,6 +546,8 @@ class registrarForm {
 		// ---------------- CONSULTA: experiencia profesional --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'experiencia_profesional', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'experiencia_profesional' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Universidad',
 				'nombre_campo' => 'universidad',
@@ -519,6 +573,10 @@ class registrarForm {
 				'nombre_campo' => 'dias_experiencia',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -527,6 +585,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Experiencia Profesional',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -535,6 +594,8 @@ class registrarForm {
 		// ---------------- CONSULTA: experiencia calificada --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'experiencia_calificada', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'experiencia_calificada' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Tipo Experiencia',
 				'nombre_campo' => 'tipo_experiencia_calificada',
@@ -556,6 +617,10 @@ class registrarForm {
 				'nombre_campo' => 'fecha_resolucion',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -564,14 +629,17 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Experiencia Calificada',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: experiencia calificada --------------------------------------------------------
-		
-		// ---------------- CONSULTA: experiencia dirección académica --------------------------------------------------------
-		$cadenaSql = $this->miSql->getCadenaSql ( 'experiencia_direccion_academica', $documento );
+		/*****NOOOOOOOOOOOOOOOOOOOOOOOOOOTAAAAAAAAAAAA***/ //BLoque que falta por corrregirorrrrr SQL y Campos
+		// ---------------- CONSULTA: excelencia académica --------------------------------------------------------
+		$cadenaSql = $this->miSql->getCadenaSql ( 'excelencia_academica', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'excelencia_academica' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Universidad',
 				'nombre_campo' => 'universidad',
@@ -601,6 +669,10 @@ class registrarForm {
 				'nombre_campo' => 'dias_experiencia',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -608,15 +680,18 @@ class registrarForm {
 				'resultados' => ($resultado)?$resultado:array(),
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
-				'titulo' => 'Experiencia Dirección Académica',
+				'titulo' => 'Excelencia Académica',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
-		// ---------------- FIN CONSULTA: experiencia dirección académica --------------------------------------------------------
+		// ---------------- FIN CONSULTA: excelencia académica --------------------------------------------------------
 		
 		// ---------------- CONSULTA: comunicación corta --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'comunicacion_corta', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'comunicacion_corta' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Revista',
 				'nombre_campo' => 'nombre_revista',
@@ -666,6 +741,10 @@ class registrarForm {
 				'nombre_campo' => 'numero_autores_ud',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -674,6 +753,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Comunicación Corta',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -682,6 +762,8 @@ class registrarForm {
 		// ---------------- CONSULTA: obras artísticas --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'obras_artisticas', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'obra_artistica' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Título Obra',
 				'nombre_campo' => 'titulo_obra',
@@ -703,6 +785,10 @@ class registrarForm {
 				'nombre_campo' => 'anno_obra',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -711,6 +797,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Obras Artísticas',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -719,6 +806,8 @@ class registrarForm {
 		// ---------------- CONSULTA: patentes --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'patentes', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'patente' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Título',
 				'nombre_campo' => 'titulo_patente',
@@ -748,6 +837,10 @@ class registrarForm {
 				'nombre_campo' => 'numero_registro',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -756,6 +849,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Patentes',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -764,6 +858,8 @@ class registrarForm {
 		// ---------------- CONSULTA: premios docente --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'premios_docente', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'premio_docente' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Universidad',
 				'nombre_campo' => 'universidad',
@@ -805,6 +901,10 @@ class registrarForm {
 				'nombre_campo' => 'anno_premio',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -813,6 +913,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Premios Docente',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -821,6 +922,8 @@ class registrarForm {
 		// ---------------- CONSULTA: producción vídeos --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'produccion_videos', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'produccion_video' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Título',
 				'nombre_campo' => 'titulo_video',
@@ -850,6 +953,10 @@ class registrarForm {
 				'nombre_campo' => 'numero_evaluadores',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -862,6 +969,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Producción de Vídeos',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -870,6 +978,8 @@ class registrarForm {
 		// ---------------- CONSULTA: producción libros --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'produccion_libros', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'libro_docente' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Título',
 				'nombre_campo' => 'titulo',
@@ -903,6 +1013,10 @@ class registrarForm {
 				'nombre_campo' => 'editorial',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -915,6 +1029,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Producción de Libros',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -922,7 +1037,9 @@ class registrarForm {
 				
 		// ---------------- CONSULTA: traducción libros --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'traduccion_libros', $documento );
-		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );		
+		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'traduccion_libro' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Título',
 				'nombre_campo' => 'titulo',
@@ -944,6 +1061,10 @@ class registrarForm {
 				'nombre_campo' => 'volumen',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -952,6 +1073,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Traducción de Libros',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -960,6 +1082,8 @@ class registrarForm {
 		// ---------------- CONSULTA: producción técnica y software --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'produccion_tecnicaysoftware', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'produccion_tecnicaysoftware' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Nombre',
 				'nombre_campo' => 'nombre',
@@ -977,6 +1101,10 @@ class registrarForm {
 				'nombre_campo' => 'anno_produccion',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -989,6 +1117,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Producción Técnica y Software Docente',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -997,6 +1126,8 @@ class registrarForm {
 		// ---------------- CONSULTA: publicaciones impresas universitarias --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'publicaciones_impresas_universitarias', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'publicacion_impresa' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Título',
 				'nombre_campo' => 'titulo',
@@ -1026,6 +1157,10 @@ class registrarForm {
 				'nombre_campo' => 'tipo_indexacion',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -1034,6 +1169,7 @@ class registrarForm {
 				'tipo' => '2',
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Publicaciones Impresas Universitarias',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -1042,6 +1178,8 @@ class registrarForm {
 		// ---------------- CONSULTA: estudios post doctorales --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'estudios_post_doctorales', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'estudio_postdoctoral_docente' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Título Obtenido',
 				'nombre_campo' => 'titulo_obtenido',
@@ -1063,6 +1201,10 @@ class registrarForm {
 				'nombre_campo' => 'annos_doctorado',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -1071,6 +1213,7 @@ class registrarForm {
 				'tipo' => '2',
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Estudios Post Doctorales',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -1079,6 +1222,8 @@ class registrarForm {
 		// ---------------- CONSULTA: reseña crítica --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'resena_critica', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'resena_critica' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Título',
 				'nombre_campo' => 'titulo',
@@ -1096,6 +1241,10 @@ class registrarForm {
 				'nombre_campo' => 'anno',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -1104,6 +1253,7 @@ class registrarForm {
 				'tipo' => '2',
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Reseña Crítica',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -1112,6 +1262,8 @@ class registrarForm {
 		// ---------------- CONSULTA: traducción artículos --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'traduccion_articulos', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'traduccion_articulo' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Título Traducción',
 				'nombre_campo' => 'titulo_traduccion',
@@ -1130,6 +1282,10 @@ class registrarForm {
 				'nombre_campo' => 'fecha_traduccion',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -1138,6 +1294,7 @@ class registrarForm {
 				'tipo' => '2',
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Traducción de Artículos',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -1146,6 +1303,8 @@ class registrarForm {
 		// ---------------- CONSULTA: ponencias --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'ponencias', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'ponencia' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Título',
 				'nombre_campo' => 'titulo',
@@ -1175,6 +1334,10 @@ class registrarForm {
 				'nombre_campo' => 'institucion_certificadora',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -1183,6 +1346,7 @@ class registrarForm {
 				'tipo' => '2',
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Ponencias',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -1191,6 +1355,8 @@ class registrarForm {
 		// ---------------- CONSULTA: novedades salariales --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'novedades_salariales', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'novedad' );
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
 				'alias_campo' => 'Título',
 				'nombre_campo' => 'descripcion',
@@ -1204,6 +1370,10 @@ class registrarForm {
 				'nombre_campo' => 'categoria_novedad',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -1212,6 +1382,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Novedades Salariales',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -1233,6 +1404,10 @@ class registrarForm {
 				'nombre_campo' => 'categoria_novedad',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Normatividad',
 				'nombre_campo' => 'normatividad',
 		);
@@ -1241,6 +1416,7 @@ class registrarForm {
 				'tipo' => '2',
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Novedades Bonificación',
+				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
 		unset($campos);
@@ -1254,13 +1430,20 @@ class registrarForm {
 		$itemsTabla = array();
 		foreach($items as $item){
 			foreach($item['resultados'] as $resultado){
+				/**
+				 * Se quiere agregar los valores principales (de las consultas por módulo) a cada uno de los resultados,
+				 * esto quiere decir a todas las filas de todos las consultas. Para ello se usa una variable auxiliar
+				 * y se le quitan los resultados para que no queden duplicados. Luego se le adicionan parámetros adicionales.
+				 */
 				$valoresPrincipales = $item;
+				$valoresPrincipales['llavesPrimarias'] = json_encode($valoresPrincipales['llavesPrimarias']);
 				unset($valoresPrincipales['resultados']);
+				
 				$resultado['observaciones'] = '<a href="">
-				<img src="css/images/Entrada.png" width="15px">
+				<img src="" width="15px">
 				</a>';
 				$resultado['verificacion'] = '<a href="">
-				<img src="css/images/Entrada.png" width="15px">
+				<img src="" width="15px">
 				</a>';
 				$itemsTabla[] = array_merge($resultado,$valoresPrincipales);
 			}
@@ -1270,25 +1453,41 @@ class registrarForm {
 		// ---------------- CONTROL: data tables --------------------------------------------------------
 		
 		$campos[] = array(
-			'nombre_campo' => 'tituloTipo',
 			'alias_campo' => 'Tipo Puntaje',
+			'nombre_campo' => 'tituloTipo',			
 		);
 		$campos[] = array(
-			'nombre_campo' => 'titulo',
 			'alias_campo' => 'Producto',
+			'nombre_campo' => 'titulo',
 		);
 		$campos[] = array(
-			'nombre_campo' => 'descripcion',
 			'alias_campo' => 'Descripción',
+			'nombre_campo' => 'descripcion',			
 			'es_arreglo' => true,
 		);
 		$campos[] = array(
-			'nombre_campo' => 'observaciones',
-			'alias_campo' => 'Observaciones',
+			'alias_campo' => 'Fecha',
+			'nombre_campo' => 'fecha_acta',
 		);
 		$campos[] = array(
-			'nombre_campo' => 'verificacion',
+			'alias_campo' => 'Acta No.',
+			'nombre_campo' => 'numero_acta',
+		);
+		$campos[] = array(
+			'alias_campo' => 'Puntos',
+			'nombre_campo' => 'puntaje',
+		);
+		$campos[] = array(
+			'alias_campo' => 'Observaciones',
+			'nombre_campo' => 'observaciones',			
+		);
+		$campos[] = array(
 			'alias_campo' => 'Verificación',
+			'nombre_campo' => 'verificacion',			
+		);		
+		$campos[] = array(
+			'alias_campo' => 'LLaves Primarias',
+			'nombre_campo' => 'llavesPrimarias',			
 		);
 		
 		$atributos ['id'] = 'tablaPuntajeDocente';
@@ -1302,11 +1501,31 @@ class registrarForm {
 		// ---------------- CONTROL: reporte pdf --------------------------------------------------------
 		$atributos ['id'] = 'reportePDFDocente'; // No cambiar este nombre
 		$atributos ['plantilla'] = 'plantilla1.html.php';
+		$atributos ['showHTML'] = true;
+		$atributos ['showPDF'] = true;
+		$atributos ['showButton'] = true;
+		
+		$enlace = "action=index.php";
+		$enlace .= "&bloqueNombre=" . $esteBloque ["nombre"];
+		$enlace .= "&bloqueGrupo=" . $esteBloque ["grupo"];
+		$enlace .= "&procesarAjax=true";
+		$enlace .= "&funcion=descargarPDF";
+		$directorio = $this->miConfigurador->getVariableConfiguracion ( "host" );
+        $directorio .= $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/index.php?";
+        $directorio .= $this->miConfigurador->getVariableConfiguracion ( "enlace" );
+        $enlace = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlace, $directorio );
+		/**
+		 * Opcional para carga asíncrona, es incompatible con las opciones 
+		 *	$atributos ['showHTML']
+		 *	$atributos ['showPDF']
+		 *	$atributos ['showButton']
+		 */
+		$atributos ['enlaceAjax'] = $enlace;
+		
+		//Propios de la plantilla
 		$atributos ['datos_docente'] = $datosDocente;
 		$atributos ['items'] = $items;
-		//$atributos ['showHTML'] = true;
-		$atributos ['onlyButton'] = true;
-		$atributos ['destino'] = $documento;
+				
 		echo '<div style="max-width: 1024px; margin: 0 auto;">';
 		echo $this->miFormulario->pdf ( $atributos );
 		echo '</div>';

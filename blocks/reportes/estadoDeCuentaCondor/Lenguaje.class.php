@@ -1,5 +1,5 @@
 <?php
-namespace reportes\estadoDeCuenta;
+namespace reportes\estadoDeCuentaCondor;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
     include ("../index.php");
