@@ -218,7 +218,7 @@ class InspectorHTML {
 	 * Permite saltar la restricción de validación SQL, PHP y HTML en los campos para enviar datos sin alteración.
 	 */
 	function codificarCampos($valor){
-    	return base64_encode(serialize($valor));
+    	return serialize($valor);
     }
 	
 	/*
@@ -226,7 +226,8 @@ class InspectorHTML {
 	 * con la funcion "codificarCampos" del las instancias FormularioHtml.class.php.
 	 */
 	function decodificarCampos($valor) {
-		return unserialize(base64_decode($valor));
+		$valor = str_replace('\_', '_', $valor);
+		return unserialize($valor);
 	}
 
 }
