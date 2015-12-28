@@ -158,7 +158,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.facultad AS fc ON pc.id_facultad=fc.id_facultad";
 				$cadenaSql.=" WHERE";
 				$cadenaSql.=" no.estado=true";
-				$cadenaSql.=" AND tn.id_categoria_novedad='1'";
+				$cadenaSql.=" AND tn.id_categoria_puntaje='1'";
 				$cadenaSql.=" AND dc.estado=true";
 				$cadenaSql.=" AND pc.estado=true";
 				$cadenaSql.=" AND dc_pc.estado=true";
@@ -181,7 +181,7 @@ class Sql extends \Sql {
 				$cadenaSql .= " FROM ";
 				$cadenaSql .= " docencia.tipo_novedad";
 				$cadenaSql .= " WHERE";
-				$cadenaSql .= " id_categoria_novedad =" . $variable;
+				$cadenaSql .= " id_categoria_puntaje =" . $variable;
 				$cadenaSql .= " order by tipo_novedad asc";
 				break;
 				
