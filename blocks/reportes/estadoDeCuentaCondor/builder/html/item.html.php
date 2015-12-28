@@ -10,8 +10,8 @@
 		</tr>
 		<tr>
 			<th>DESCRIPCIÓN</th>
-			<th>FECHA</th>
-			<th>ACTA No.</th>
+			<th width='50px'>FECHA</th>
+			<th width='50px'>ACTA No.</th>
 			<th width='50px'>PUNTOS</th>
 		</tr>
 		<?php $index = 1;
@@ -24,13 +24,13 @@
 					<?php echo $descripcion['alias_campo'] . ': ' . $resultado[$descripcion['nombre_campo']]. ';'; ?>
 				<?php endforeach;?>
 			</td>
-			<td>
+			<td width='100px'>
 				<?php echo $resultado['fecha_acta']; ?>
 			</td>
-			<td>
+			<td width='75px'>
 				<?php echo $resultado['numero_acta']; ?>
 			</td>
-			<td>
+			<td width='50px'>
 				<?php echo $resultado['puntaje'];
 				$puntajeTotal += $resultado['puntaje'];
 			?>

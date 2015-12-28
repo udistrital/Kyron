@@ -1,5 +1,5 @@
 <style type="text/css">
-	<!--
+	/*Propiedades de la página*/
 	@page {
 		margin: 2cm
 	}
@@ -13,14 +13,15 @@
 	a:link {
 		so-language: zxx
 	}
-	-- > body {
+	/*Termina*/
+	body {
 		font-size: 12px;
 		font-family: "Arial", Verdana, Trebuchet MS, Helvetica, sans-serif;
 	}
 	table {
 		color: #333; /* Lighten up font color */
 		font-family: Helvetica, Arial, sans-serif; /* Nicer font */
-		table-layout: fixed;
+		/*table-layout: fixed;*/
 		border-collapse: collapse;
 		border-spacing: 3px;
 	}
@@ -63,24 +64,26 @@
 	<table width='100%'>
 		<thead>
 			<tr>
-				<th width='15%' colspan='1' rowspan='1'> <?php
-				$image = $this -> atributos['rutaBloque'] . '/css/images/escudo_ud.png';
-				$picture = base64_encode(file_get_contents($image));
-				echo '<img style="width:100%;max-width:100px;" src="data:image/jpg;base64,' . $picture . '" />';
-				?> </th>
-				<th colspan='5' style='font-size: 12px;'>
-				<br>
-				UNIVERSIDAD DISTRITAL FRANCISCO JOSÉ DE CALDAS
-				<br>
-				NIT 899999230-7
-				<br>
-				<br>
-				Oficina de Docencia
-				<br>
-				<br>
-				ESTADO DE CUENTA INDIVIDUAL
-				<br>
-				<br>
+				<th width='15%' colspan='1' rowspan='1'>
+					<?php
+					$image = $this -> atributos['rutaBloque'] . '/css/images/escudo_ud.png';
+					$picture = base64_encode(file_get_contents($image));
+					echo '<img style="margin: 0 auto;height: 110px;width: 110px;" src="data:image/jpg;base64,' . $picture . '" />';
+					?>
+				</th>
+				<th colspan='5' rowspan='1' style='font-size: 12px;'>
+					<br>
+					UNIVERSIDAD DISTRITAL FRANCISCO JOSÉ DE CALDAS
+					<br>
+					NIT 899999230-7
+					<br>
+					<br>
+					Oficina de Docencia
+					<br>
+					<br>
+					ESTADO DE CUENTA INDIVIDUAL
+					<br>
+					<br>
 				</th>
 			</tr>
 		</thead>
