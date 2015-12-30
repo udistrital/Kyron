@@ -641,36 +641,16 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'excelencia_academica' );
 		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
-				'alias_campo' => 'Universidad',
-				'nombre_campo' => 'universidad',
+				'alias_campo' => 'Año Otorgamiento',
+				'nombre_campo' => 'annio_otorgamiento',
 		);
 		$campos[] = array(
-				'alias_campo' => 'Otra Entidad',
-				'nombre_campo' => 'otra_entidad',
+				'alias_campo' => 'Número Resolución',
+				'nombre_campo' => 'numero_resolucion',
 		);
 		$campos[] = array(
-				'alias_campo' => 'Tipo Entidad',
-				'nombre_campo' => 'tipo_entidad',
-		);
-		$campos[] = array(
-				'alias_campo' => 'Horas por Semana',
-				'nombre_campo' => 'horas_semana',
-		);
-		$campos[] = array(
-				'alias_campo' => 'Fecha Inicio',
-				'nombre_campo' => 'fecha_inicio',
-		);
-		$campos[] = array(
-				'alias_campo' => 'Fecha Finalización',
-				'nombre_campo' => 'fecha_finalizacion',
-		);
-		$campos[] = array(
-				'alias_campo' => 'Días Experiencia',
-				'nombre_campo' => 'dias_experiencia',
-		);
-		$campos[] = array(
-				'alias_campo' => 'Número Caso Acta',
-				'nombre_campo' => 'numero_caso',
+				'alias_campo' => 'Fecha Resolución',
+				'nombre_campo' => 'fecha_resolucion',
 		);
 		$campos[] = array(
 				'alias_campo' => 'Normatividad',
@@ -1422,7 +1402,41 @@ class registrarForm {
 		unset($campos);
 		// ---------------- FIN CONSULTA: novedades bonificación --------------------------------------------------------
 		
+		// ---------------- CONSULTA: observaciones de todos los módulos --------------------------------------------------------
+		$cadenaSql = $this->miSql->getCadenaSql ( 'observaciones', $documento );
+		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );		
+		$observaciones = ($resultado)?$resultado:array();
+		unset($resultado);
+		// ---------------- FIN CONSULTA: observaciones de todos los módulos --------------------------------------------------------
 		
+		$observacionesPorLLaveValor = null;
+		
+		foreach ($observaciones as $observacion) {
+			$observacionesPorLLaveValor[$observacion['llaves_primarias_valor']] = $observacion;
+		}
+		unset($observaciones);
+		
+		function obtenerLLavesValor($llaves,$valores,&$documento){
+			foreach ($llaves as $llave) {
+				if($llave['primarykey']=='documento_docente'){
+					$arregloLLaveValor[$llave['primarykey']] = $documento;
+				} else {
+					$arregloLLaveValor[$llave['primarykey']] = $valores[$llave['primarykey']];										
+				}				
+			}
+			return json_encode($arregloLLaveValor);
+		}
+		function consultarPorLLavesValor($llaves_primarias_valor,&$observacionesPorLLaveValor){
+			return (isset($observacionesPorLLaveValor[$llaves_primarias_valor]))
+				?$observacionesPorLLaveValor[$llaves_primarias_valor]
+				:false;
+		}
+		// var_dump(consultarPorLLavesValor(
+					// array(['primarykey'=>'id_titulo_academico']),
+					// array('id_titulo_academico'=>'5'),
+					// $documento,
+					// $observacionesPorLLaveValor
+				// ));die;
 		/**
 		 * Estos ítems de la tabla se adecuan para poder mostrar
 		 * las carácterísticas que sólo se ven allí
@@ -1436,15 +1450,19 @@ class registrarForm {
 				 * y se le quitan los resultados para que no queden duplicados. Luego se le adicionan parámetros adicionales.
 				 */
 				$valoresPrincipales = $item;
-				$valoresPrincipales['llavesPrimarias'] = json_encode($valoresPrincipales['llavesPrimarias']);
-				unset($valoresPrincipales['resultados']);
+				$nombreObservacion = obtenerLLavesValor($valoresPrincipales['llavesPrimarias'],$resultado,$documento);
+				$observacion = consultarPorLLavesValor(
+					$nombreObservacion,
+					$observacionesPorLLaveValor
+				);
 				
-				$resultado['observaciones'] = '<a href="">
-				<img src="" width="15px">
-				</a>';
-				$resultado['verificacion'] = '<a href="">
-				<img src="" width="15px">
-				</a>';
+				unset($valoresPrincipales['resultados']);
+				unset($valoresPrincipales['llavesPrimarias']);
+				$resultado['observaciones'] = ($observacion)?$observacion['observacion']:'';
+				
+				$nombreObservacion = $this->miConfigurador->fabricaConexiones->crypto->codificar($nombreObservacion);
+				$checked = ($observacion)?($observacion['verificado']==true)?'checked':'':'';
+				$resultado['verificacion'] = '<input type="checkbox" name="'.$nombreObservacion.'" value="validado" '.$checked.'>';
 				$itemsTabla[] = array_merge($resultado,$valoresPrincipales);
 			}
 		}
@@ -1484,10 +1502,6 @@ class registrarForm {
 		$campos[] = array(
 			'alias_campo' => 'Verificación',
 			'nombre_campo' => 'verificacion',			
-		);		
-		$campos[] = array(
-			'alias_campo' => 'LLaves Primarias',
-			'nombre_campo' => 'llavesPrimarias',			
 		);
 		
 		$atributos ['id'] = 'tablaPuntajeDocente';
