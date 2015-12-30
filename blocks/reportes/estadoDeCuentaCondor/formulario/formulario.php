@@ -117,6 +117,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Hoja de Vida',
 				'titulo' => 'Títulos Académicos',
+				'tipoObservacion' => '26',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -189,6 +190,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Revistas Indexadas',
+				'tipoObservacion' => '1',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -261,6 +263,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Capítulos de Libros',
+				'tipoObservacion' => '13',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -337,6 +340,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Cartas al Editor',
+				'tipoObservacion' => '3',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -385,6 +389,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Dirección de Trabajos de Grado',
+				'tipoObservacion' => '4',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -437,6 +442,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Experiencia Dirección Académica',
+				'tipoObservacion' => '5',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -485,6 +491,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Experiencia En Investigación',
+				'tipoObservacion' => '7',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -537,6 +544,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Experiencia En Docencia',
+				'tipoObservacion' => '9',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -585,6 +593,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Experiencia Profesional',
+				'tipoObservacion' => '10',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -629,6 +638,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Experiencia Calificada',
+				'tipoObservacion' => '11',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -661,6 +671,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Excelencia Académica',
+				'tipoObservacion' => '12',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -733,6 +744,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Comunicación Corta',
+				'tipoObservacion' => '18',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -777,6 +789,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Obras Artísticas',
+				'tipoObservacion' => '14',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -829,6 +842,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Patentes',
+				'tipoObservacion' => '15',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -893,6 +907,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Premios Docente',
+				'tipoObservacion' => '16',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -949,6 +964,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Producción de Vídeos',
+				'tipoObservacion' => '17',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1009,6 +1025,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Producción de Libros',
+				'tipoObservacion' => '2',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1053,6 +1070,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Traducción de Libros',
+				'tipoObservacion' => '6',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1097,6 +1115,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Producción Técnica y Software Docente',
+				'tipoObservacion' => '8',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1149,6 +1168,7 @@ class registrarForm {
 				'tipo' => '2',
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Publicaciones Impresas Universitarias',
+				'tipoObservacion' => '19',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1193,6 +1213,7 @@ class registrarForm {
 				'tipo' => '2',
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Estudios Post Doctorales',
+				'tipoObservacion' => '20',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1233,6 +1254,7 @@ class registrarForm {
 				'tipo' => '2',
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Reseña Crítica',
+				'tipoObservacion' => '21',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1274,6 +1296,7 @@ class registrarForm {
 				'tipo' => '2',
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Traducción de Artículos',
+				'tipoObservacion' => '22',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1326,6 +1349,7 @@ class registrarForm {
 				'tipo' => '2',
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Ponencias',
+				'tipoObservacion' => '23',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1362,6 +1386,7 @@ class registrarForm {
 				'tipo' => '1',
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Novedades Salariales',
+				'tipoObservacion' => '24',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1396,6 +1421,7 @@ class registrarForm {
 				'tipo' => '2',
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Novedades Bonificación',
+				'tipoObservacion' => '25',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1426,6 +1452,7 @@ class registrarForm {
 			}
 			return json_encode($arregloLLaveValor);
 		}
+		
 		function consultarPorLLavesValor($llaves_primarias_valor,&$observacionesPorLLaveValor){
 			return (isset($observacionesPorLLaveValor[$llaves_primarias_valor]))
 				?$observacionesPorLLaveValor[$llaves_primarias_valor]
@@ -1455,14 +1482,18 @@ class registrarForm {
 					$nombreObservacion,
 					$observacionesPorLLaveValor
 				);
-				
+				//Se quitan del arreglo general para liberar memoria
 				unset($valoresPrincipales['resultados']);
 				unset($valoresPrincipales['llavesPrimarias']);
-				$resultado['observaciones'] = ($observacion)?$observacion['observacion']:'';
 				
 				$nombreObservacion = $this->miConfigurador->fabricaConexiones->crypto->codificar($nombreObservacion);
-				$checked = ($observacion)?($observacion['verificado']==true)?'checked':'':'';
-				$resultado['verificacion'] = '<input type="checkbox" name="'.$nombreObservacion.'" value="validado" '.$checked.'>';
+				$tipoObservacion = $valoresPrincipales['tipoObservacion'];
+				
+				$resultado['observaciones'] = ($observacion)?$observacion['observacion']:'';
+				$resultado['observaciones'] = '<input type="text" class="text-observacion noselected" placeholder="Escriba su observación" name="'.$nombreObservacion.'" value="'.$resultado['observaciones'].'">';
+				
+				$checked = ($observacion)?($observacion['verificado']=='t')?'checked':'':'';
+				$resultado['verificacion'] = '<input type="checkbox" class="checkbox-verificacion" name="'.$nombreObservacion.'" value="'.$tipoObservacion.'" '.$checked.'>';
 				$itemsTabla[] = array_merge($resultado,$valoresPrincipales);
 			}
 		}

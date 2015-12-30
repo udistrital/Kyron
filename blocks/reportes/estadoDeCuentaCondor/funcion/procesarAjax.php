@@ -1,5 +1,6 @@
 <?php
 namespace reportes\estadoDeCuentaCondor\funcion;
+use reportes\estadoDeCuentaCondor\Sql;
 
 $_REQUEST['tiempo'] = time();
 $rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "rutaBloque" );
@@ -37,6 +38,22 @@ switch ($_REQUEST ['funcion']) {
 		$atributos ['destino'] = 'reporteEstadoDeCuenta.pdf';
 		//Imprime el PDF en pantalla
 		$miFormulario->downloadPdf ( $atributos );
+        break;
+	case 'guardarObservacion':
+		$_REQUEST['llaves_primarias_valor'] = str_replace('\\_', '_', $_REQUEST['llaves_primarias_valor']);
+		$_REQUEST['llaves_primarias_valor'] = $this->miConfigurador->fabricaConexiones->crypto->decodificar($_REQUEST['llaves_primarias_valor']);
+		$conexion = "docencia";
+		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+		$cadenaSql = $this->sql->getCadenaSql ( 'registrar_observacion', $_REQUEST );echo $cadenaSql;
+		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
+		if ($resultado) {
+			exit ();
+		} else {
+			$cadenaSql = $this->sql->getCadenaSql ( 'actualizar_observacion', $_REQUEST );
+			$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
+			exit ();
+		}
+		return true;
         break;
     default:
         die('Asigne la variable \'funcion\'');

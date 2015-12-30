@@ -844,8 +844,36 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY id_tipo_observacion ASC";
 				$cadenaSql.=" ;";
 				break;
-				
 			
+			case 'registrar_observacion':
+				$cadenaSql=" INSERT INTO docencia.observacion_verificacion";
+				$cadenaSql.=" (";
+				$cadenaSql.=" llaves_primarias_valor,";
+				$cadenaSql.=" documento_docente,";
+				$cadenaSql.=" id_tipo_observacion,";
+				$cadenaSql.=" observacion,";
+				$cadenaSql.=" verificado";
+				$cadenaSql.=" )";
+				$cadenaSql.=" VALUES";
+				$cadenaSql.=" (";
+				$cadenaSql.=" '" . $variable ['llaves_primarias_valor'] . "',";
+				$cadenaSql.=" '" . $variable ['docente'] . "',";
+				$cadenaSql.=" '" . $variable ['id_tipo_observacion'] . "',";
+				$cadenaSql.=" '" . $variable ['observacion'] . "',";
+				$cadenaSql.=" '" . $variable ['verificado'] . "'";
+				$cadenaSql.=" )";
+				$cadenaSql.=" ;";
+				break;
+				
+			case 'actualizar_observacion' :
+				$cadenaSql=" UPDATE docencia.observacion_verificacion";
+				$cadenaSql.=" SET";
+				$cadenaSql.=" observacion='" . $variable ['observacion'] . "',";
+				$cadenaSql.=" verificado='" . $variable ['verificado'] . "'";
+				$cadenaSql.=" WHERE";
+				$cadenaSql.=" llaves_primarias_valor ='" . $variable ['llaves_primarias_valor'] . "'";
+				$cadenaSql.=" ;";
+				break;
 		}
 		
 		return $cadenaSql;

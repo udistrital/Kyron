@@ -12,10 +12,12 @@
 <script type='text/javascript'>
 //Importante que la función se llame cargar elemento.
 var cargarElemento = function() {
-	//En esta configuración no se aceptan los "allDayEvent", "Repeating Event" por lo tanto darán error porque no tienen "end" time moment
-	//	{
-	//		"title": "All Day Event",
-	//		"start": "2015-02-01"
-	//	}
+	// $.ajax({
+	  // type: "POST",
+	  // url: url,
+	  // data: data,
+	  // success: success,
+	  // dataType: dataType
+	// });
 };
 </script>
