@@ -21,10 +21,6 @@ if (class_exists ( '\FormularioHtml' )) {
 	}
 }
 
-// 
-// $conexion = "docencia";
-// $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
-
 
 //Estas funciones se llaman desde ajax.php y estas a la vez realizan las consultas de Sql.class.php
 
@@ -44,7 +40,7 @@ switch ($_REQUEST ['funcion']) {
 		$_REQUEST['llaves_primarias_valor'] = $this->miConfigurador->fabricaConexiones->crypto->decodificar($_REQUEST['llaves_primarias_valor']);
 		$conexion = "docencia";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
-		$cadenaSql = $this->sql->getCadenaSql ( 'registrar_observacion', $_REQUEST );echo $cadenaSql;
+		$cadenaSql = $this->sql->getCadenaSql ( 'registrar_observacion', $_REQUEST );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
 		if ($resultado) {
 			exit ();

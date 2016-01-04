@@ -1,6 +1,6 @@
 <?php
 $indice = 0;
-$funcion = array();
+//$funcion = array();
 // $funcion [$indice ++] = "select2.js";
 // $funcion [$indice ++] = "select2_locale_es.js";
 $funcion [$indice ++] = "jquery.dataTables.js";

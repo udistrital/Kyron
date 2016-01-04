@@ -1,7 +1,4 @@
-//Se utiliza para cargar elementos del builder
-$.each(_arregloCreacionElementos,function(){
-	this();
-});
+
 
 <?php
 $esteBloque = $this->miConfigurador->getVariableConfiguracion ( 'esteBloque' );
@@ -21,7 +18,7 @@ $enlace = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enl
 function guardarObservacion(name){	
 	var llaves_primarias_valor = name;
 	var id_tipo_observacion = $("[name="+name+"]:checkbox").val();
-	var observacion = $("[name="+name+"]:text").val();
+	var observacion = $("textarea[name="+name+"]").val();
 	var verificado = $("[name="+name+"]:checkbox").is(":checked");
 	var data = {
 	  	"llaves_primarias_valor":llaves_primarias_valor,
@@ -61,4 +58,9 @@ $(".text-observacion").keypress(function(e) {
     if(e.which == 13) {
     	$(':focus').blur();
     }
+});
+
+//Se utiliza para cargar elementos del builder
+$.each(_arregloCreacionElementos,function(){
+	this();
 });

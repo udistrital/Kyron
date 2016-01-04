@@ -1490,7 +1490,7 @@ class registrarForm {
 				$tipoObservacion = $valoresPrincipales['tipoObservacion'];
 				
 				$resultado['observaciones'] = ($observacion)?$observacion['observacion']:'';
-				$resultado['observaciones'] = '<input type="text" class="text-observacion noselected" placeholder="Escriba su observación" name="'.$nombreObservacion.'" value="'.$resultado['observaciones'].'">';
+				$resultado['observaciones'] = '<textarea class="text-observacion noselected" placeholder="Escriba su observación" name="'.$nombreObservacion.'">'.$resultado['observaciones'].'</textarea>';
 				
 				$checked = ($observacion)?($observacion['verificado']=='t')?'checked':'':'';
 				$resultado['verificacion'] = '<input type="checkbox" class="checkbox-verificacion" name="'.$nombreObservacion.'" value="'.$tipoObservacion.'" '.$checked.'>';

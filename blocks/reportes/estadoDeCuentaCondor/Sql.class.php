@@ -99,12 +99,16 @@ class Sql extends \Sql {
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido AS nombre_docente,";
 				$cadenaSql.=" pc.nombre AS proyecto_curricular,";
 				$cadenaSql.=" fc.nombre AS facultad,";
+				$cadenaSql.=" dc.codigo_docente AS codigo_docente,";
+				$cadenaSql.=" ge.genero AS genero,";
+				$cadenaSql.=" dc.estado AS estado,";
 				$cadenaSql.=" dc.documento_docente AS documento_docente";
 				$cadenaSql.=" FROM";
 				$cadenaSql.=" docencia.docente AS dc";
 				$cadenaSql.=" LEFT JOIN docencia.docente_proyectocurricular AS dc_pc ON dc_pc.documento_docente = dc.documento_docente";
 				$cadenaSql.=" LEFT JOIN docencia.proyectocurricular AS pc ON pc.id_proyectocurricular = dc_pc.id_proyectocurricular";
 				$cadenaSql.=" LEFT JOIN docencia.facultad AS fc ON fc.id_facultad = pc.id_facultad";
+				$cadenaSql.=" LEFT JOIN docencia.genero AS ge ON ge.id_genero = dc.id_genero";
 				$cadenaSql.=" WHERE dc.documento_docente='". $variable."'";
 				$cadenaSql.=" AND dc.estado = true";
 				$cadenaSql.=" ;";
