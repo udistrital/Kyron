@@ -5,11 +5,11 @@ $( document ).ready(function() {
 	var INumero = 0; 
 	var IPunto = 0;
 	
-	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroCasoActaRevista')?>";
+	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroCasoActa')?>";
 	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroAutoresUniversidad')?>";
-	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroAutoresRevista')?>";
+	campoValidar[INumero++] = "#<?php echo $this->campoSeguro('numeroAutores')?>";
 	
-	campoValidarPunto[IPunto++] = "#<?php echo $this->campoSeguro('puntajeRevista')?>";
+	campoValidarPunto[IPunto++] = "#<?php echo $this->campoSeguro('puntaje')?>";
 	
 	$(campoValidar).each(function(){
 		$(this.valueOf()).keydown(function(tecla) {
