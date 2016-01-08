@@ -61,6 +61,7 @@ class Registrar {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'registrar', $arregloDatos );
 		$id_direccion_trabajogrado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 
+		
 		for($i=1; $i<= $_REQUEST['numeroAutores']; $i++){
 			$arregloEstudiante = array (
 					'id_direccion_trabajogrado' => $id_direccion_trabajogrado[0]['id_direccion_trabajogrado'],

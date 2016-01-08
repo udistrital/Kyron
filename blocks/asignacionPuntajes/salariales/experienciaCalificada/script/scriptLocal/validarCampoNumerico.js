@@ -7,6 +7,7 @@ $( document ).ready(function() {
 	var IPunto = 0;
 	
 	campoValidarPunto[IPunto++] = "#<?php echo $this->campoSeguro('puntaje')?>";
+	campoValidarPunto[IPunto++] = "#<?php echo $this->campoSeguro('numeroResolucion')?>";
 	
 	$(campoValidar).each(function(){
 		$(this.valueOf()).keydown(function(tecla) {

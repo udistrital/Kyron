@@ -87,7 +87,7 @@ if (!isset($GLOBALS["autorizado"])) {
         $valorCodificado.="&opcion=consultar";
         $valorCodificado.="&bloque=" . $esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=" . $esteBloque["grupo"];
-       
+        
     }else if($_REQUEST['mensaje'] == 'noActualizo') {
         $tipo = 'error';
         $mensaje = $this->lenguaje->getCadena('mensajeNoActualizo') . $_REQUEST ['docente'] . ".";

@@ -63,7 +63,8 @@ class Frontera {
                     include_once($this->ruta . "/formulario/mensaje.php");
                     break;
                 
-                case "consultar":
+                case "consultar":        
+                	
                     include_once($this->ruta . "/formulario/consultar.php");
                     break;
                 

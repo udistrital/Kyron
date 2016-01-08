@@ -75,7 +75,8 @@ class Frontera {
                      include_once($this->ruta . "/formulario/modificar.php");
                     break;
             }
-        } else {
+        } else {		
+        	
             $_REQUEST['opcion'] = "mostrar";
             include_once($this->ruta . "/formulario/formulario.php");
         }

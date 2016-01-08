@@ -58,6 +58,7 @@ class Registrar {
 			'normatividad' => $_REQUEST['normatividad']
 		);
 		
+		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'registrar', $arregloDatos );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "registrar" );
 

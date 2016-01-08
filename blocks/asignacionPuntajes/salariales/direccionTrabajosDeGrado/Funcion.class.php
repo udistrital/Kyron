@@ -80,7 +80,8 @@ class Funcion {
 		 */
 		if(isset($_REQUEST['validadorCampos']) && !(isset($_REQUEST ["botonRegresar"]) && $_REQUEST ["botonRegresar"] == 'true')){
 			$validadorCampos = $this->miInspectorHTML->decodificarCampos($_REQUEST['validadorCampos']);
-			$respuesta = $this->miInspectorHTML->validacionCampos($_REQUEST,$validadorCampos,false,true);
+			echo($_REQUEST['validadorCampos']);
+			$respuesta = $this->miInspectorHTML->validacionCampos($_REQUEST,$validadorCampos,false,false);
 			if ($respuesta != false){
 				$_REQUEST = $respuesta;
 			} else {
