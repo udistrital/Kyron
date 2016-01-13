@@ -1,6 +1,7 @@
 <?php
 namespace reportes\estadoDeCuentaCondor\funcion;
 use reportes\estadoDeCuentaCondor\Sql;
+use core\general\ValidadorCampos;
 
 $host = $this->miConfigurador->getVariableConfiguracion ( "host" );
 
@@ -42,6 +43,19 @@ switch ($_REQUEST ['funcion']) {
 	case 'guardarObservacion':
 		$_REQUEST['llaves_primarias_valor'] = str_replace('\\_', '_', $_REQUEST['llaves_primarias_valor']);
 		$_REQUEST['llaves_primarias_valor'] = $this->miConfigurador->fabricaConexiones->crypto->decodificar($_REQUEST['llaves_primarias_valor']);
+		
+		include_once ('core/general/ValidadorCampos.class.php');
+		$miValidador = new ValidadorCampos();
+		
+		$valido = $miValidador->validarTipo($_REQUEST['observacion'],'onlyLetterNumberSp');
+		$valido = $valido && $miValidador->validarTipo($_REQUEST['verificado'],'boleano');
+		
+		if (!$valido) {
+			header('Content-Type: text/json; charset=utf-8');
+			echo json_encode(array("errorType"=>"custom","errorMessage"=>"El campo observacion sólo debe contener elementos alfanuméricos y espacios."));
+			exit ();
+		}
+		
 		$conexion = "docencia";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		$cadenaSql = $this->sql->getCadenaSql ( 'registrar_observacion', $_REQUEST );

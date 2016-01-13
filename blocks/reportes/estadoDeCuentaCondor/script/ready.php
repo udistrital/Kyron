@@ -32,8 +32,10 @@ function guardarObservacion(name){
 	  data: data,
 	  success: registroGuardado
 	});
-	function registroGuardado(){
-		
+	function registroGuardado(data){
+		if(data.errorType){
+			alert(data.errorMessage);
+		}
 	}
 }
 
