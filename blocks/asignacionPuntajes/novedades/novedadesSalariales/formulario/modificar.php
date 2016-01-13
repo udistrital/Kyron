@@ -364,7 +364,8 @@ class FormularioModificar {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required,min[0.1],max[180],custom[number]';
+		//$atributos ['validar'] = 'required,min[0.1],max[180],custom[number]';
+		$atributos ['validar'] = 'required,min[-180],max[180],custom[number]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
