@@ -36,7 +36,8 @@ class Tipos {
 				'integer' => 'Entero',
 				'onlyNumberSp' => 'NumerosYEspacios',
 				'onlyLetterSp' => 'LetrasYEspacios',
-				'onlyLetterNumber' => 'LetrasYNumeros'
+				'onlyLetterNumber' => 'LetrasYNumeros',
+				'onlyLetterNumberSp' => 'LetrasNumerosYEspacios'
 		);
 	}
 	/**
@@ -45,12 +46,12 @@ class Tipos {
 	 * ejecución alguno de los alias del tipo de dato.
 	 */
 	private function validarBoleano($valor) {
-		$valor = ( bool ) $valor;
-		return is_bool ( $valor );
+		$valoresPosibles = array(TRUE,'t','true','y','yes','1',FALSE,'f','false','n','no','0');
+		return in_array($valor, $valoresPosibles);
 	}
 	private function evaluarBoleano($valor) {
-		$valor = ( bool ) $valor;
-		return $valor;
+		$valoresPosibles = array(TRUE,'t','true','y','yes','1',FALSE,'f','false','n','no','0');
+		return in_array($valor, $valoresPosibles) ? $valor : false;
 	}
 	private function validarEntero($valor) {
 		$entero = ( int ) $valor;
@@ -152,7 +153,23 @@ class Tipos {
 		}
 	}
 	
-	private function evaluarLetrasYNumeros($valor){
+	private function evaluarLetrasNumeros($valor){
+		if (preg_match('/^([[:alnum:]]|[[:space:]])*$/',$valor)) {
+			return $valor;
+		} else {
+			return false;
+		}
+	}
+	
+	private function validarLetrasNumerosYEspacios($valor){
+		if (preg_match('/^([[:alnum:]]|[[:space:]])*$/',$valor)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	private function evaluarLetrasNumerosYEspacios($valor){
 		if (preg_match('/^([[:alnum:]])*$/',$valor)) {
 			return $valor;
 		} else {
