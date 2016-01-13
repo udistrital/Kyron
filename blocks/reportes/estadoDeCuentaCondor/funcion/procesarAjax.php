@@ -2,6 +2,10 @@
 namespace reportes\estadoDeCuentaCondor\funcion;
 use reportes\estadoDeCuentaCondor\Sql;
 
+$host = $this->miConfigurador->getVariableConfiguracion ( "host" );
+
+header('Access-Control-Allow-Origin: '.$host.'');
+
 $_REQUEST['tiempo'] = time();
 $rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "rutaBloque" );
 require_once ($rutaBloque."builder/DomPdf.class.php");
