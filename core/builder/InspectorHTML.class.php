@@ -195,7 +195,7 @@ class InspectorHTML {
 			}
 			return $parametros;
 		}
-
+		
 		foreach ($validadorCampos as $nombreCampo => $validador) {
 			if (isset($variables[$nombreCampo])) {
 				$parametros = separarParametros($validador);
@@ -204,7 +204,7 @@ class InspectorHTML {
 					return false;
 				}
 				if (isset($validez['errorType'])) {
-					return "El campo \"".$nombreCampo."\" con valor \"".$variables[$nombreCampo]."\" arroja el error: \"".$validez['errorMessage']."\"";
+					return 'El campo "'.$nombreCampo.'" con valor "'.$variables[$nombreCampo].'" arroja el error: "'.$validez['errorMessage'].'"';
 				}
 				$variables[$nombreCampo] = $validez;
 			}
@@ -226,6 +226,7 @@ class InspectorHTML {
 	 * con la funcion "codificarCampos" del las instancias FormularioHtml.class.php.
 	 */
 	function decodificarCampos($valor) {
+		$valor = str_replace('\\_', '_', $valor);
 		$valor = str_replace('\_', '_', $valor);
 		return unserialize($valor);
 	}
