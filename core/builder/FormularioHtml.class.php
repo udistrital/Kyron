@@ -38,6 +38,7 @@ class FormularioHtml extends Agregador{
 	 * Hasta donde se deja la funcionalidad se hace con una instanacia de core/builder/InspectorHTML.class.php
      */
     function decodificarCampos($valor){
+    	$valor = str_replace('\\_', '_', $valor);
     	$valor = str_replace('\_', '_', $valor);
     	return unserialize($valor);
     }
