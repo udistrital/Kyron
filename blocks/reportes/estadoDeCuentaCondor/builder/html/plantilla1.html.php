@@ -104,18 +104,18 @@
 			<td colspan='3'><?php echo $this -> atributos['datos_docente']['proyecto_curricular']; ?></td>
 			<td>Facultad</td>
 			<td colspan='1'><?php echo $this -> atributos['datos_docente']['facultad']; ?></td>
-		</tr>
-		<!-- 
-		<tr>
-			<td>Fecha de Vinculación</td>
-			<td colspan='5'>2007-05-15</td>
-		</tr>
-		-->
+		</tr>		
 		<tr>
 			<td>Estado Docente</td>
 			<td colspan='2'><?php echo ($this -> atributos['datos_docente']['estado']=='t')?'ACTIVO':'INACTIVO'; ?></td>
 			<td>Género</td>
 			<td colspan='2'><?php echo $this -> atributos['datos_docente']['genero']; ?></td>
+		</tr>
+		<tr>
+			<td>Fecha de Vinculación</td>
+			<td colspan='2'></td>
+			<td>Categoría</td>
+			<td colspan='2'></td>
 		</tr>
 	</table>
 </center>

@@ -3,6 +3,7 @@
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
 $this->idioma["tabConsultar"] = "Consultar Capítulo de Libros";
 $this->idioma["tabIngresar"] = "Ingresar Capítulo de Libros";
+$this->idioma["marcoConsultaGeneral"] = "Resultado consulta";
 //////////////////////////////////////////////////////////////
 
 //************ MENSAJES *********
