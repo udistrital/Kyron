@@ -76,7 +76,7 @@ $this->idioma["fechaPublicacionrevistaTitulo"] = "Fecha de Publicación del Art�
 $this->idioma["numeroActaRevistaTitulo"] = "Ingrese el Número de Acta CIARP-UD.";
 $this->idioma["fechaActaRevistaTitulo"] = "Seleccione la Fecha de Acta CIARP-UD.";
 $this->idioma["numeroCasoActaRevistaTitulo"] = "Ingrese el Número de Caso de Acta.";
-$this->idioma["puntajeRevistasTitulo"] = "Ingrese Puntaje.";
+$this->idioma["puntajeRevistaTitulo"] = "Ingrese Puntaje.";
 
 $this->idioma["marcoConsultaGeneral"] = "Registros de Revistas Indexadas";
 

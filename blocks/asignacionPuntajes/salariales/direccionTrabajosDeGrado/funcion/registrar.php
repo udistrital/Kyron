@@ -27,6 +27,7 @@ class Registrar {
 		$this->miFuncion = $funcion;
 	}
 	function procesarFormulario() {
+		
 		$conexion = "docencia";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		

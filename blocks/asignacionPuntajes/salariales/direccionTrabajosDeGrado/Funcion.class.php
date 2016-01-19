@@ -47,7 +47,6 @@ class Funcion {
 		include_once ($this->ruta . "/funcion/actualizar.php");
 	}
 	function action() {
-		
 		// Evitar que se ingrese codigo HTML y PHP en los campos de texto
 		// Campos que se quieren excluir de la limpieza de código. Formato: nombreCampo1|nombreCampo2|nombreCampo3
 		$excluir = "";
@@ -91,10 +90,22 @@ class Funcion {
 				$variable .= "&paginaError=".$miPaginaActual;
 				$variable .= "&parametros=".$this->miInspectorHTML->codificarCampos($_REQUEST);
 				$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $variable );
-				$url = $this->miConfigurador->configuracion ["host"] . $this->miConfigurador->configuracion ["site"] . "/index.php?";
+				$url = $this->miConfigurador->configuracion ["host"] . $this->miConfigurador->configuracion ["site"] . "/index.php";
 				$enlace = $this->miConfigurador->configuracion ['enlace'];				
 				$redireccion = $url . $enlace . '=' . $variable;
-				echo "<script>location.replace('" . $redireccion . "')</script>";
+				echo '<!DOCTYPE html><html><body></body><html><script>
+				var form = document.createElement("form");
+				form.setAttribute("method", "POST");
+				form.setAttribute("action", "'.$url.'");
+				var hiddenField = document.createElement("input");
+				hiddenField.setAttribute("type", "hidden");
+				hiddenField.setAttribute("name", "'.$enlace.'");
+				hiddenField.setAttribute("value", "'.$variable.'");
+				form.appendChild(hiddenField);
+				document.body.appendChild(form);
+				form.submit();
+				</script>';
+				return 0;
 			}
 		}
 		
