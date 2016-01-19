@@ -29,7 +29,7 @@ class FormularioHtml extends Agregador{
      */
     function codificarCampos($valor=''){
     	$valor=($valor=='')?$this->validadorCampos:'';
-    	return serialize($valor);
+    	return base64_encode(serialize($valor));
     }
     /*
      * Permite decodificar los campos de $_REQUEST que hayan sido enviados codificados
@@ -38,9 +38,7 @@ class FormularioHtml extends Agregador{
 	 * Hasta donde se deja la funcionalidad se hace con una instanacia de core/builder/InspectorHTML.class.php
      */
     function decodificarCampos($valor){
-    	$valor = str_replace('\\_', '_', $valor);
-    	$valor = str_replace('\_', '_', $valor);
-    	return unserialize($valor);
+    	return unserialize(base64_decode($valor));
     }
     
     function __construct(){

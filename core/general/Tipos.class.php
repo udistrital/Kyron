@@ -246,7 +246,11 @@ class Tipos {
 					$valor 
 			) );
 		}
-		return false;
+		/**
+		 * Si el tipo de dato que se desea evaluar no existe, se retorna verdadero en vez de falso
+		 * para mejorar compatibilidad con campos custom
+		 */
+		return true;
 	}
 	/*
 	 * Evalua el tipo de dato especificando el valor del dato y el alias del tipo de dato de PHP
@@ -264,7 +268,11 @@ class Tipos {
 					$valor 
 			) );
 		}
-		return false;
+		/**
+		 * Si el tipo de dato que se desea evaluar no existe, se retorna verdadero en vez de falso
+		 * para mejorar compatibilidad con campos custom
+		 */
+		return true;
 	}
 }
 
