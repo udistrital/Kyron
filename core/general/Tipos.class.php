@@ -37,7 +37,8 @@ class Tipos {
 				'onlyNumberSp' => 'NumerosYEspacios',
 				'onlyLetterSp' => 'LetrasYEspacios',
 				'onlyLetterNumber' => 'LetrasYNumeros',
-				'onlyLetterNumberSp' => 'LetrasNumerosYEspacios'
+				'onlyLetterNumberSp' => 'LetrasNumerosYEspacios',
+				'onlyLetterNumberSpPunt' => 'LetrasNumerosEspacioYPuntuacion'
 		);
 	}
 	/**
@@ -130,7 +131,7 @@ class Tipos {
 	}
 	
 	private function validarLetrasYEspacios($valor){
-		if (preg_match('/^([[:alpha:]]|[[:space:]]|[áéíóú])*$/',$valor)) {
+		if (preg_match('/^([[:alpha:]]|[[:space:]]|[áéíóúÁÉÍÓÚ])*$/',$valor)) {
 			return true;
 		} else {
 			return false;
@@ -138,7 +139,7 @@ class Tipos {
 	}
 	
 	private function evaluarLetrasYEspacios($valor){
-		if (preg_match('/^([[:alpha:]]|[[:space:]])*$/',$valor)) {
+		if (preg_match('/^([[:alpha:]]|[[:space:]]|[áéíóúÁÉÍÓÚ])*$/',$valor)) {
 			return $valor;
 		} else {
 			return false;
@@ -146,7 +147,7 @@ class Tipos {
 	}
 	
 	private function validarLetrasYNumeros($valor){
-		if (preg_match('/^([[:alnum:]])*$/',$valor)) {
+		if (preg_match('/^([[:alnum:]]|[áéíóúÁÉÍÓÚ])*$/',$valor)) {
 			return true;
 		} else {
 			return false;
@@ -154,7 +155,7 @@ class Tipos {
 	}
 	
 	private function evaluarLetrasNumeros($valor){
-		if (preg_match('/^([[:alnum:]]|[[:space:]])*$/',$valor)) {
+		if (preg_match('/^([[:alnum:]]|[áéíóúÁÉÍÓÚ])*$/',$valor)) {
 			return $valor;
 		} else {
 			return false;
@@ -162,7 +163,7 @@ class Tipos {
 	}
 	
 	private function validarLetrasNumerosYEspacios($valor){
-		if (preg_match('/^([[:alnum:]]|[[:space:]])*$/',$valor)) {
+		if (preg_match('/^([[:alnum:]]|[[:space:]]|[áéíóúÁÉÍÓÚ])*$/',$valor)) {
 			return true;
 		} else {
 			return false;
@@ -170,12 +171,29 @@ class Tipos {
 	}
 	
 	private function evaluarLetrasNumerosYEspacios($valor){
-		if (preg_match('/^([[:alnum:]])*$/',$valor)) {
+		if (preg_match('/^([[:alnum:]]|[[:space:]]|[áéíóúÁÉÍÓÚ])*$/',$valor)) {
 			return $valor;
 		} else {
 			return false;
 		}
 	}
+	
+	private function validarLetrasNumerosEspacioYPuntuacion($valor){
+		if (preg_match('/^([[:alnum:]]|[[:space:]]|[áéíóúÁÉÍÓÚ]|[.,])*$/',$valor)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	private function evaluarLetrasNumerosEspacioYPuntuacion($valor){
+		if (preg_match('/^([[:alnum:]]|[[:space:]]|[áéíóúÁÉÍÓÚ]|[.,])*$/',$valor)) {
+			return $valor;
+		} else {
+			return false;
+		}
+	}
+	
 	
 	// http://www.sergiomejias.com/2007/09/validar-una-fecha-con-expresiones-regulares-en-php/
 	public function validarStringFecha($fecha) {
