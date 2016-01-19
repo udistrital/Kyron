@@ -66,6 +66,10 @@ class registrarForm {
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'datos_docente', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		if(!$resultado){
+			echo '<h1>No hay datos sobre este Docente</h1>';
+			return 0;
+		}
 		$datosDocente = $resultado[0];
 		
 		//Almacena todos los resultados del docente

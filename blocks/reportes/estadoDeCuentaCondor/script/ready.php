@@ -33,6 +33,7 @@ function guardarObservacion(name){
 	  success: registroGuardado
 	});
 	function registroGuardado(data){
+		//Si hay un error de validación
 		if(data.errorType){
 			alert(data.errorMessage);
 		}

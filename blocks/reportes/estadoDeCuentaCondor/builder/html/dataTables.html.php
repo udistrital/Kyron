@@ -18,7 +18,7 @@
 						echo $item[$campo['nombre_campo']];
 					} else {
 						foreach ($item[$campo['nombre_campo']] as $itemarreglo){
-							echo $itemarreglo['alias_campo'] . ': ' . $item[$itemarreglo['nombre_campo']] . ';';
+							echo $itemarreglo['alias_campo'] . ': ' . $item[$itemarreglo['nombre_campo']] . '; ';
 						}
 					}
 					?>

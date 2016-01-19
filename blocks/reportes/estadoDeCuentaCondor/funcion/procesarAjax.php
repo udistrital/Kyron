@@ -47,12 +47,12 @@ switch ($_REQUEST ['funcion']) {
 		include_once ('core/general/ValidadorCampos.class.php');
 		$miValidador = new ValidadorCampos();
 		
-		$valido = $miValidador->validarTipo($_REQUEST['observacion'],'onlyLetterNumberSp');
+		$valido = $miValidador->validarTipo($_REQUEST['observacion'],'onlyLetterNumberSpPunt');
 		$valido = $valido && $miValidador->validarTipo($_REQUEST['verificado'],'boleano');
 		
 		if (!$valido) {
 			header('Content-Type: text/json; charset=utf-8');
-			echo json_encode(array("errorType"=>"custom","errorMessage"=>"El campo observacion sólo debe contener elementos alfanuméricos y espacios."));
+			echo json_encode(array("errorType"=>"custom","errorMessage"=>"El campo observacion sólo debe contener elementos alfanuméricos, espacios, comas y punto."));
 			exit ();
 		}
 		
@@ -61,10 +61,18 @@ switch ($_REQUEST ['funcion']) {
 		$cadenaSql = $this->sql->getCadenaSql ( 'registrar_observacion', $_REQUEST );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
 		if ($resultado) {
+			header('Content-Type: text/json; charset=utf-8');
+			echo json_encode(true);
 			exit ();
 		} else {
 			$cadenaSql = $this->sql->getCadenaSql ( 'actualizar_observacion', $_REQUEST );
 			$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
+			header('Content-Type: text/json; charset=utf-8');
+			if ($resultado) {
+				echo json_encode(true);
+			} else {
+				echo json_encode(array("errorType"=>"registry or update","errorMessage"=>"Algo anda mal, no se pudo realizar el registro de la observación."));
+			}
 			exit ();
 		}
 		return true;
