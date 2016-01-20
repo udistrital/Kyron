@@ -436,7 +436,7 @@ class FormularioRegistro {
 			unset ( $atributos );
 			// ----------------FIN CONTROL: Campo de Texto Resolución de Nombramiento--------------------------------------------------------
 					
-			// ----------------INICIO CONTROL: Lista Tipo de Documento--------------------------------------------------------
+			// ----------------INICIO CONTROL: Lista Tipo de Dedicación--------------------------------------------------------
 			$esteCampo = 'dedicacion';
 			$atributos ['nombre'] = $esteCampo;
 			$atributos ['id'] = $esteCampo;
@@ -467,7 +467,7 @@ class FormularioRegistro {
 			$atributos = array_merge ( $atributos, $atributosGlobales );
 			echo $this->miFormulario->campoCuadroLista ( $atributos );
 			unset ( $atributos );
-			// ----------------FIN CONTROL: Lista Tipo de Documento--------------------------------------------------------
+			// ----------------FIN CONTROL: Lista Tipo de Dedicación--------------------------------------------------------
 			
 			// ----------------INICIO CONTROL: Lista Categoria Actual del Docente--------------------------------------------------------
 			$esteCampo = 'categoriaActualDocente';
