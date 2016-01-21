@@ -1,0 +1,12 @@
+body{
+	font-family: sans-serif,Helvetica,Arial;
+}
+.checkbox-verificacion.selected{
+	color: #000;
+}
+
+.text-observacion.selected{
+	color: #000;
+	/*border-style: double;
+    border-width: 0 0 2px;*/
+}
