@@ -66,7 +66,7 @@ switch ($_REQUEST ['funcion']) {
 			exit ();
 		} else {
 			$cadenaSql = $this->sql->getCadenaSql ( 'actualizar_observacion', $_REQUEST );
-			$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
+			$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
 			header('Content-Type: text/json; charset=utf-8');
 			if ($resultado) {
 				echo json_encode(true);
