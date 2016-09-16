@@ -294,6 +294,7 @@ class registrarForm {
 				'tituloTipo' => 'Hoja de Vida',
 				'titulo' => 'Títulos Académicos',
 				'tipoObservacion' => '26',
+				'paginaSARA' => 'titulosAcademicos',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -367,6 +368,7 @@ class registrarForm {
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Revistas Indexadas',
 				'tipoObservacion' => '1',
+				'paginaSARA' => 'revistasIndexadas',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -440,6 +442,7 @@ class registrarForm {
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Capítulos de Libros',
 				'tipoObservacion' => '13',
+				'paginaSARA' => 'capituloLibros',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -517,6 +520,7 @@ class registrarForm {
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Cartas al Editor',
 				'tipoObservacion' => '3',
+				'paginaSARA' => 'cartasEditor',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -566,6 +570,7 @@ class registrarForm {
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Dirección de Trabajos de Grado',
 				'tipoObservacion' => '4',
+				'paginaSARA' => 'direccionTrabajosDeGrado',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -619,6 +624,7 @@ class registrarForm {
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Experiencia Dirección Académica',
 				'tipoObservacion' => '5',
+				'paginaSARA' => 'experienciaDireccionAcademica',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -668,6 +674,7 @@ class registrarForm {
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Experiencia En Investigación',
 				'tipoObservacion' => '7',
+				'paginaSARA' => 'experienciaInvestigacion',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -721,6 +728,7 @@ class registrarForm {
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Experiencia En Docencia',
 				'tipoObservacion' => '9',
+				'paginaSARA' => 'experienciaDocencia',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -770,6 +778,7 @@ class registrarForm {
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Experiencia Profesional',
 				'tipoObservacion' => '10',
+				'paginaSARA' => 'experienciaProfesional',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -815,6 +824,7 @@ class registrarForm {
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Experiencia Calificada',
 				'tipoObservacion' => '11',
+				'paginaSARA' => 'experienciaCalificada',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -848,6 +858,7 @@ class registrarForm {
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Excelencia Académica',
 				'tipoObservacion' => '12',
+				'paginaSARA' => 'excelenciaAcademica',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -921,6 +932,7 @@ class registrarForm {
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Comunicación Corta',
 				'tipoObservacion' => '18',
+				'paginaSARA' => 'comunicacionCorta',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -966,6 +978,7 @@ class registrarForm {
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Obras Artísticas',
 				'tipoObservacion' => '14',
+				'paginaSARA' => 'obrasArtisticas',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1019,6 +1032,7 @@ class registrarForm {
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Patentes',
 				'tipoObservacion' => '15',
+				'paginaSARA' => 'patentes',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1084,6 +1098,7 @@ class registrarForm {
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Premios Docente',
 				'tipoObservacion' => '16',
+				'paginaSARA' => 'premiosDocente',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1141,6 +1156,7 @@ class registrarForm {
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Producción de Vídeos',
 				'tipoObservacion' => '17',
+				'paginaSARA' => 'produccionDeVideos',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1202,6 +1218,7 @@ class registrarForm {
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Producción de Libros',
 				'tipoObservacion' => '2',
+				'paginaSARA' => 'produccionDeLibros',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1247,6 +1264,7 @@ class registrarForm {
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Traducción de Libros',
 				'tipoObservacion' => '6',
+				'paginaSARA' => 'traduccionesDeLibros',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1292,6 +1310,7 @@ class registrarForm {
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Producción Técnica y Software Docente',
 				'tipoObservacion' => '8',
+				'paginaSARA' => 'produccionTecnicaYSoftware',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1345,6 +1364,7 @@ class registrarForm {
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Publicaciones Impresas Universitarias',
 				'tipoObservacion' => '19',
+				'paginaSARA' => 'publicacionesImpresas',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1390,6 +1410,7 @@ class registrarForm {
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Estudios Post Doctorales',
 				'tipoObservacion' => '20',
+				'paginaSARA' => 'estudiosPostDoctorales',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1431,6 +1452,7 @@ class registrarForm {
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Reseña Crítica',
 				'tipoObservacion' => '21',
+				'paginaSARA' => 'resenaCritica',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1473,6 +1495,7 @@ class registrarForm {
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Traducción de Artículos',
 				'tipoObservacion' => '22',
+				'paginaSARA' => 'traduccionDeArticulos',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1526,6 +1549,7 @@ class registrarForm {
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Ponencias',
 				'tipoObservacion' => '23',
+				'paginaSARA' => 'ponenciasDocente',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1563,6 +1587,7 @@ class registrarForm {
 				'tituloTipo' => 'Salariales',
 				'titulo' => 'Novedades Salariales',
 				'tipoObservacion' => '24',
+				'paginaSARA' => 'novedadesSalariales',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1598,6 +1623,7 @@ class registrarForm {
 				'tituloTipo' => 'Bonificación',
 				'titulo' => 'Novedades Bonificación',
 				'tipoObservacion' => '25',
+				'paginaSARA' => 'novedadesBonificacion',
 				'llavesPrimarias' => $llavesPrimarias,
 				'descripcion' => $campos
 		);
@@ -1606,7 +1632,7 @@ class registrarForm {
 		
 		// ---------------- CONSULTA: observaciones de todos los módulos --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'observaciones', $documento );
-		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );		
+		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$observaciones = ($resultado)?$resultado:array();
 		unset($resultado);
 		// ---------------- FIN CONSULTA: observaciones de todos los módulos --------------------------------------------------------
@@ -1640,6 +1666,25 @@ class registrarForm {
 					// $documento,
 					// $observacionesPorLLaveValor
 				// ));die;
+		function getAliasLLavePrimaria($nombreLlavePrimaria) {
+			$alias['numero_issn'] = 'identificadorColeccion';
+			$alias['id_direccion_trabajogrado'] = 'identificadorDireccionTrabajo';
+			$alias['id_experiencia_direccion_academica'] = 'identificadorExperiencia';
+			$alias['id_experiencia_investigacion'] = 'identificadorExperiencia';
+			$alias['id_experiencia_docencia'] = 'identificadorExperiencia';
+			$alias['id_experiencia_profesional'] = 'identificadorExperiencia';
+			$alias['id_experiencia_calificada'] = 'identificadorExperiencia';
+			$alias['id_excelencia_academica'] = 'identificadorExcelenciaAcad';
+			$alias['id_obra_artistica'] = 'identificadorObra';
+			$alias['id_patente'] = 'identificadorPatente';
+			$alias['id_premio_docente'] = 'identificadorPremioDocente';
+			$alias['id_produccion_video'] = 'identificadorProduccionVideo';
+			if(isset($alias[$nombreLlavePrimaria])) {
+				return $alias[$nombreLlavePrimaria];
+			} else {
+				return $nombreLlavePrimaria;
+			}
+		}
 		/**
 		 * Estos ítems de la tabla se adecuan para poder mostrar
 		 * las carácterísticas que sólo se ven allí
@@ -1658,6 +1703,38 @@ class registrarForm {
 					$nombreObservacion,
 					$observacionesPorLLaveValor
 				);
+				//Se genera un string al estilo GET con las llaves primarias
+				$textoGET = '';
+				foreach ($valoresPrincipales['llavesPrimarias'] as $llavesTabla) {
+					$nombreLlavePrimaria = $llavesTabla['primarykey'];
+					if($nombreLlavePrimaria=='documento_docente'){
+						//Ninguna consulta de elementos retorna documento_docente, pero en veces es una llave primaria del elemento
+						//Se le pone el documento del docente
+						$valorLlave=$documento;
+					} else {
+						$valorLlave=$resultado[$nombreLlavePrimaria];
+						if(
+							$nombreLlavePrimaria == 'numero_issn' && 
+							(
+							$valoresPrincipales['paginaSARA'] == 'comunicacionCorta' ||
+							$valoresPrincipales['paginaSARA'] == 'publicacionesImpresas' ||
+							$valoresPrincipales['paginaSARA'] == 'revistasIndexadas'
+							)
+						){
+							//NO hace ninguna reescritura.
+						} else {
+							//Se sobreescribe el nombre a uno que posee el bloque internamente
+							$nombreLlavePrimaria = getAliasLLavePrimaria($nombreLlavePrimaria);
+						}
+						
+					}					
+					if($valorLlave!=NULL){
+						$textoGET = $textoGET.$nombreLlavePrimaria.'='.$valorLlave.'&';
+					}
+				}
+				$textoGET = substr($textoGET, 0, -1);//Quita el ultimo &
+				//BUG FIX: algunos bloques modificar necesitan un argumento en el REQUEST llamado arreglo
+				$textoGET .= '&arreglo=true';
 				//Se quitan del arreglo general para liberar memoria
 				unset($valoresPrincipales['resultados']);
 				unset($valoresPrincipales['llavesPrimarias']);
@@ -1670,6 +1747,11 @@ class registrarForm {
 				
 				$checked = ($observacion)?($observacion['verificado']=='t')?'checked':'':'';
 				$resultado['verificacion'] = '<input type="checkbox" class="checkbox-verificacion" name="'.$nombreObservacion.'" value="'.$tipoObservacion.'" '.$checked.'>';
+				//Se arma un arreglo con las llaves primarias para modificar el elemento:
+				
+				$enlaceModificar = 'pagina='.$valoresPrincipales['paginaSARA'].'&opcion=modificar&documento_docente='.$documento.'&'.$textoGET;
+				$enlaceModificar = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceModificar, $directorio );
+				$resultado['enlace_modificacion'] = '<a href="'.$enlaceModificar.'"><span class="icon-modificar"></span></a>';
 				$itemsTabla[] = array_merge($resultado,$valoresPrincipales);
 			}
 		}
@@ -1710,6 +1792,10 @@ class registrarForm {
 			'alias_campo' => 'Verificación',
 			'nombre_campo' => 'verificacion',			
 		);
+		$campos[] = array(
+                'alias_campo' => 'Modificar',
+                'nombre_campo' => 'enlace_modificacion',
+        );
 		
 		$atributos ['id'] = 'tablaPuntajeDocente';
 		$atributos ['campos'] = $campos;

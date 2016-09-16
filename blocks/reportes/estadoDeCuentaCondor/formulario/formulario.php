@@ -57,9 +57,14 @@ class registrarForm {
 		
 		// -------------------------------------------------------------------------------------------------
 		
+		echo '<script>alert("Estimado Docente,\n'
+		.'La información que se presenta a continuación está en proceso de depuración y no corresponde a la información utilizada en la liquidación de salarios de los docentes.\n'
+		.'Por favor revise la información y reporte sus observaciones en el campo destinado para tal fin o al correo docencia@udistrital.edu.co.\n'
+		.'Tenga en cuenta que en el presente reporte no se han incluido los puntos por Títulos Académicos ni por Categoría. Próximamente estos serán incluidos. ");</script>';
+		
 		$_REQUEST['tiempo'] = time();
 		
-		$documento = $_REQUEST['docente'];		
+		$documento = $_REQUEST['docente'];
 		
 		$conexion = 'docencia';
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
