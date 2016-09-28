@@ -224,7 +224,7 @@ class registrarForm {
 
 				} else {
 					
-					$mensaje = "No Se Encontraron<br> Registros.";
+					$mensaje = $this->lenguaje->getCadena('mensajeNoRegistros');
 					
 					// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
 					$esteCampo = 'mensajeRegistro';
