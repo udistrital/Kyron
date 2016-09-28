@@ -153,7 +153,7 @@ require_once 'item.html.php';
 		<tr>
 			<td style='font-size: 14px;text-align: center;' colspan='9'>
 			<br>
-			<b>JOSE EUGENIO CELY FAJARDO</b>
+			<b>GERARDO CASTANG MONTIEL</b>
 			<br>
 			</td>
 		</tr>

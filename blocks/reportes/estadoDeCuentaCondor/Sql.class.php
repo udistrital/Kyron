@@ -781,7 +781,6 @@ class Sql extends \Sql {
 				$cadenaSql.=" AND a.estado = true";
 				$cadenaSql.=" ORDER BY titulo ASC";
 				$cadenaSql.=" ;";
-				break;
 							
 			case "novedades_salariales" :
 				$cadenaSql=" SELECT";
