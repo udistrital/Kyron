@@ -122,14 +122,13 @@ class registrarForm {
 				'nombre_campo' => 'entidad_convalidacion',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '1',
-				'_tituloTipo' => 'Hoja de Vida',
-				'_titulo' => 'Títulos Académicos',
-				'_tipoObservacion' => '26',
-				'_paginaSARA' => 'titulosAcademicos',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '1',
+				'tituloTipo' => 'Hoja de Vida',
+				'titulo' => 'Títulos Académicos',
+				'tipoObservacion' => '26',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: títulos docente --------------------------------------------------------
@@ -196,14 +195,13 @@ class registrarForm {
 				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '1',
-				'_tituloTipo' => 'Salariales',
-				'_titulo' => 'Revistas Indexadas',
-				'_tipoObservacion' => '1',
-				'_paginaSARA' => 'revistasIndexadas',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '1',
+				'tituloTipo' => 'Salariales',
+				'titulo' => 'Revistas Indexadas',
+				'tipoObservacion' => '1',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: revistas indexadas --------------------------------------------------------
@@ -270,14 +268,13 @@ class registrarForm {
 				'nombre_campo' => 'evaluadores',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '1',
-				'_tituloTipo' => 'Salariales',
-				'_titulo' => 'Capítulos de Libros',
-				'_tipoObservacion' => '13',
-				'_paginaSARA' => 'capituloLibros',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '1',
+				'tituloTipo' => 'Salariales',
+				'titulo' => 'Capítulos de Libros',
+				'tipoObservacion' => '13',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: capítulos libros --------------------------------------------------------
@@ -348,14 +345,13 @@ class registrarForm {
 				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '1',
-				'_tituloTipo' => 'Salariales',
-				'_titulo' => 'Cartas al Editor',
-				'_tipoObservacion' => '3',
-				'_paginaSARA' => 'cartasEditor',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '1',
+				'tituloTipo' => 'Salariales',
+				'titulo' => 'Cartas al Editor',
+				'tipoObservacion' => '3',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: cartas editor --------------------------------------------------------
@@ -398,14 +394,13 @@ class registrarForm {
 				'nombre_campo' => 'estudiantes',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '1',
-				'_tituloTipo' => 'Salariales',
-				'_titulo' => 'Dirección de Trabajos de Grado',
-				'_tipoObservacion' => '4',
-				'_paginaSARA' => 'direccionTrabajosDeGrado',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '1',
+				'tituloTipo' => 'Salariales',
+				'titulo' => 'Dirección de Trabajos de Grado',
+				'tipoObservacion' => '4',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: dirección de trabajos --------------------------------------------------------
@@ -452,14 +447,13 @@ class registrarForm {
 				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '1',
-				'_tituloTipo' => 'Salariales',
-				'_titulo' => 'Experiencia Dirección Académica',
-				'_tipoObservacion' => '5',
-				'_paginaSARA' => 'experienciaDireccionAcademica',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '1',
+				'tituloTipo' => 'Salariales',
+				'titulo' => 'Experiencia Dirección Académica',
+				'tipoObservacion' => '5',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: experiencia dirección académica --------------------------------------------------------
@@ -502,14 +496,13 @@ class registrarForm {
 				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '1',
-				'_tituloTipo' => 'Salariales',
-				'_titulo' => 'Experiencia En Investigación',
-				'_tipoObservacion' => '7',
-				'_paginaSARA' => 'experienciaInvestigacion',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '1',
+				'tituloTipo' => 'Salariales',
+				'titulo' => 'Experiencia En Investigación',
+				'tipoObservacion' => '7',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: experiencia investigación --------------------------------------------------------
@@ -556,14 +549,13 @@ class registrarForm {
 				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '1',
-				'_tituloTipo' => 'Salariales',
-				'_titulo' => 'Experiencia En Docencia',
-				'_tipoObservacion' => '9',
-				'_paginaSARA' => 'experienciaDocencia',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '1',
+				'tituloTipo' => 'Salariales',
+				'titulo' => 'Experiencia En Docencia',
+				'tipoObservacion' => '9',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: experiencia en docencia --------------------------------------------------------
@@ -606,14 +598,13 @@ class registrarForm {
 				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '1',
-				'_tituloTipo' => 'Salariales',
-				'_titulo' => 'Experiencia Profesional',
-				'_tipoObservacion' => '10',
-				'_paginaSARA' => 'experienciaProfesional',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '1',
+				'tituloTipo' => 'Salariales',
+				'titulo' => 'Experiencia Profesional',
+				'tipoObservacion' => '10',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: experiencia profesional --------------------------------------------------------
@@ -652,14 +643,13 @@ class registrarForm {
 				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '1',
-				'_tituloTipo' => 'Salariales',
-				'_titulo' => 'Experiencia Calificada',
-				'_tipoObservacion' => '11',
-				'_paginaSARA' => 'experienciaCalificada',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '1',
+				'tituloTipo' => 'Salariales',
+				'titulo' => 'Experiencia Calificada',
+				'tipoObservacion' => '11',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: experiencia calificada --------------------------------------------------------
@@ -686,14 +676,13 @@ class registrarForm {
 				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '1',
-				'_tituloTipo' => 'Salariales',
-				'_titulo' => 'Excelencia Académica',
-				'_tipoObservacion' => '12',
-				'_paginaSARA' => 'excelenciaAcademica',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '1',
+				'tituloTipo' => 'Salariales',
+				'titulo' => 'Excelencia Académica',
+				'tipoObservacion' => '12',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: excelencia académica --------------------------------------------------------
@@ -760,14 +749,13 @@ class registrarForm {
 				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '1',
-				'_tituloTipo' => 'Salariales',
-				'_titulo' => 'Comunicación Corta',
-				'_tipoObservacion' => '18',
-				'_paginaSARA' => 'comunicacionCorta',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '1',
+				'tituloTipo' => 'Salariales',
+				'titulo' => 'Comunicación Corta',
+				'tipoObservacion' => '18',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: comunicación corta --------------------------------------------------------
@@ -806,14 +794,13 @@ class registrarForm {
 				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '1',
-				'_tituloTipo' => 'Salariales',
-				'_titulo' => 'Obras Artísticas',
-				'_tipoObservacion' => '14',
-				'_paginaSARA' => 'obrasArtisticas',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '1',
+				'tituloTipo' => 'Salariales',
+				'titulo' => 'Obras Artísticas',
+				'tipoObservacion' => '14',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: obras artísticas --------------------------------------------------------
@@ -860,14 +847,13 @@ class registrarForm {
 				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '1',
-				'_tituloTipo' => 'Salariales',
-				'_titulo' => 'Patentes',
-				'_tipoObservacion' => '15',
-				'_paginaSARA' => 'patentes',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '1',
+				'tituloTipo' => 'Salariales',
+				'titulo' => 'Patentes',
+				'tipoObservacion' => '15',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: patentes --------------------------------------------------------
@@ -926,14 +912,13 @@ class registrarForm {
 				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '1',
-				'_tituloTipo' => 'Salariales',
-				'_titulo' => 'Premios Docente',
-				'_tipoObservacion' => '16',
-				'_paginaSARA' => 'premiosDocente',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '1',
+				'tituloTipo' => 'Salariales',
+				'titulo' => 'Premios Docente',
+				'tipoObservacion' => '16',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: premios docente --------------------------------------------------------
@@ -984,14 +969,13 @@ class registrarForm {
 				'nombre_campo' => 'evaluadores',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '1',
-				'_tituloTipo' => 'Salariales',
-				'_titulo' => 'Producción de Vídeos',
-				'_tipoObservacion' => '17',
-				'_paginaSARA' => 'produccionDeVideos',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '1',
+				'tituloTipo' => 'Salariales',
+				'titulo' => 'Producción de Vídeos',
+				'tipoObservacion' => '17',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: producción vídeos --------------------------------------------------------
@@ -1046,14 +1030,13 @@ class registrarForm {
 				'nombre_campo' => 'evaluadores',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '1',
-				'_tituloTipo' => 'Salariales',
-				'_titulo' => 'Producción de Libros',
-				'_tipoObservacion' => '2',
-				'_paginaSARA' => 'produccionDeLibros',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '1',
+				'tituloTipo' => 'Salariales',
+				'titulo' => 'Producción de Libros',
+				'tipoObservacion' => '2',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: producción libros --------------------------------------------------------
@@ -1092,14 +1075,13 @@ class registrarForm {
 				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '1',
-				'_tituloTipo' => 'Salariales',
-				'_titulo' => 'Traducción de Libros',
-				'_tipoObservacion' => '6',
-				'_paginaSARA' => 'traduccionesDeLibros',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '1',
+				'tituloTipo' => 'Salariales',
+				'titulo' => 'Traducción de Libros',
+				'tipoObservacion' => '6',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: traducción libros --------------------------------------------------------
@@ -1138,14 +1120,13 @@ class registrarForm {
 				'nombre_campo' => 'evaluadores',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '1',
-				'_tituloTipo' => 'Salariales',
-				'_titulo' => 'Producción Técnica y Software Docente',
-				'_tipoObservacion' => '8',
-				'_paginaSARA' => 'produccionTecnicaYSoftware',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '1',
+				'tituloTipo' => 'Salariales',
+				'titulo' => 'Producción Técnica y Software Docente',
+				'tipoObservacion' => '8',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: producción técnica y software --------------------------------------------------------
@@ -1192,14 +1173,13 @@ class registrarForm {
 				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '2',
-				'_tituloTipo' => 'Bonificación',
-				'_titulo' => 'Publicaciones Impresas Universitarias',
-				'_tipoObservacion' => '19',
-				'_paginaSARA' => 'publicacionesImpresas',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '2',
+				'tituloTipo' => 'Bonificación',
+				'titulo' => 'Publicaciones Impresas Universitarias',
+				'tipoObservacion' => '19',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: publicaciones impresas universitarias --------------------------------------------------------
@@ -1238,14 +1218,13 @@ class registrarForm {
 				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '2',
-				'_tituloTipo' => 'Bonificación',
-				'_titulo' => 'Estudios Post Doctorales',
-				'_tipoObservacion' => '20',
-				'_paginaSARA' => 'estudiosPostDoctorales',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '2',
+				'tituloTipo' => 'Bonificación',
+				'titulo' => 'Estudios Post Doctorales',
+				'tipoObservacion' => '20',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: estudios post doctorales --------------------------------------------------------
@@ -1280,14 +1259,13 @@ class registrarForm {
 				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '2',
-				'_tituloTipo' => 'Bonificación',
-				'_titulo' => 'Reseña Crítica',
-				'_tipoObservacion' => '21',
-				'_paginaSARA' => 'resenaCritica',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '2',
+				'tituloTipo' => 'Bonificación',
+				'titulo' => 'Reseña Crítica',
+				'tipoObservacion' => '21',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: reseña crítica --------------------------------------------------------
@@ -1323,14 +1301,13 @@ class registrarForm {
 				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '2',
-				'_tituloTipo' => 'Bonificación',
-				'_titulo' => 'Traducción de Artículos',
-				'_tipoObservacion' => '22',
-				'_paginaSARA' => 'traduccionDeArticulos',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '2',
+				'tituloTipo' => 'Bonificación',
+				'titulo' => 'Traducción de Artículos',
+				'tipoObservacion' => '22',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: traducción artículos --------------------------------------------------------
@@ -1377,14 +1354,13 @@ class registrarForm {
 				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '2',
-				'_tituloTipo' => 'Bonificación',
-				'_titulo' => 'Ponencias',
-				'_tipoObservacion' => '23',
-				'_paginaSARA' => 'ponenciasDocente',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '2',
+				'tituloTipo' => 'Bonificación',
+				'titulo' => 'Ponencias',
+				'tipoObservacion' => '23',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: ponencias --------------------------------------------------------
@@ -1395,7 +1371,7 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table', 'novedad' );
 		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
-				'alias_campo' => 'Descripción',
+				'alias_campo' => 'Título',
 				'nombre_campo' => 'descripcion',
 		);
 		$campos[] = array(
@@ -1404,7 +1380,7 @@ class registrarForm {
 		);
 		$campos[] = array(
 				'alias_campo' => 'Categoría',
-				'nombre_campo' => 'categoria_puntaje',
+				'nombre_campo' => 'categoria_novedad',
 		);
 		$campos[] = array(
 				'alias_campo' => 'Número Caso Acta',
@@ -1415,14 +1391,13 @@ class registrarForm {
 				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '1',
-				'_tituloTipo' => 'Salariales',
-				'_titulo' => 'Novedades Salariales',
-				'_tipoObservacion' => '24',
-				'_paginaSARA' => 'novedadesSalariales',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '1',
+				'tituloTipo' => 'Salariales',
+				'titulo' => 'Novedades Salariales',
+				'tipoObservacion' => '24',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: novedades salariales --------------------------------------------------------
@@ -1431,7 +1406,7 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'novedades_bonificacion', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 		$campos[] = array(
-				'alias_campo' => 'Descripción',
+				'alias_campo' => 'Título',
 				'nombre_campo' => 'descripcion',
 		);
 		$campos[] = array(
@@ -1440,7 +1415,7 @@ class registrarForm {
 		);
 		$campos[] = array(
 				'alias_campo' => 'Categoría',
-				'nombre_campo' => 'categoria_puntaje',
+				'nombre_campo' => 'categoria_novedad',
 		);
 		$campos[] = array(
 				'alias_campo' => 'Número Caso Acta',
@@ -1451,21 +1426,20 @@ class registrarForm {
 				'nombre_campo' => 'normatividad',
 		);
 		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '2',
-				'_tituloTipo' => 'Bonificación',
-				'_titulo' => 'Novedades Bonificación',
-				'_tipoObservacion' => '25',
-				'_paginaSARA' => 'novedadesBonificacion',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos
+				'resultados' => ($resultado)?$resultado:array(),
+				'tipo' => '2',
+				'tituloTipo' => 'Bonificación',
+				'titulo' => 'Novedades Bonificación',
+				'tipoObservacion' => '25',
+				'llavesPrimarias' => $llavesPrimarias,
+				'descripcion' => $campos
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: novedades bonificación --------------------------------------------------------
 		
 		// ---------------- CONSULTA: observaciones de todos los módulos --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'observaciones', $documento );
-		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );		
 		$observaciones = ($resultado)?$resultado:array();
 		unset($resultado);
 		// ---------------- FIN CONSULTA: observaciones de todos los módulos --------------------------------------------------------
@@ -1499,92 +1473,36 @@ class registrarForm {
 					// $documento,
 					// $observacionesPorLLaveValor
 				// ));die;
-		function getAliasLLavePrimaria($nombreLlavePrimaria) {
-			$alias['numero_issn'] = 'identificadorColeccion';
-			$alias['id_direccion_trabajogrado'] = 'identificadorDireccionTrabajo';
-			$alias['id_experiencia_direccion_academica'] = 'identificadorExperiencia';
-			$alias['id_experiencia_investigacion'] = 'identificadorExperiencia';
-			$alias['id_experiencia_docencia'] = 'identificadorExperiencia';
-			$alias['id_experiencia_profesional'] = 'identificadorExperiencia';
-			$alias['id_experiencia_calificada'] = 'identificadorExperiencia';
-			$alias['id_excelencia_academica'] = 'identificadorExcelenciaAcad';
-			$alias['id_obra_artistica'] = 'identificadorObra';
-			$alias['id_patente'] = 'identificadorPatente';
-			$alias['id_premio_docente'] = 'identificadorPremioDocente';
-			$alias['id_produccion_video'] = 'identificadorProduccionVideo';
-			if(isset($alias[$nombreLlavePrimaria])) {
-				return $alias[$nombreLlavePrimaria];
-			} else {
-				return $nombreLlavePrimaria;
-			}
-		}
 		/**
 		 * Estos ítems de la tabla se adecuan para poder mostrar
 		 * las carácterísticas que sólo se ven allí
 		 */
 		$itemsTabla = array();
 		foreach($items as $item){
-			foreach($item['_resultados'] as $resultado){
+			foreach($item['resultados'] as $resultado){
 				/**
 				 * Se quiere agregar los valores principales (de las consultas por módulo) a cada uno de los resultados,
 				 * esto quiere decir a todas las filas de todos las consultas. Para ello se usa una variable auxiliar
 				 * y se le quitan los resultados para que no queden duplicados. Luego se le adicionan parámetros adicionales.
 				 */
 				$valoresPrincipales = $item;
-				$nombreObservacion = obtenerLLavesValor($valoresPrincipales['_llavesPrimarias'],$resultado,$documento);
+				$nombreObservacion = obtenerLLavesValor($valoresPrincipales['llavesPrimarias'],$resultado,$documento);
 				$observacion = consultarPorLLavesValor(
 					$nombreObservacion,
 					$observacionesPorLLaveValor
 				);
-				//Se genera un string al estilo GET con las llaves primarias
-				$textoGET = '';
-				foreach ($valoresPrincipales['_llavesPrimarias'] as $llavesTabla) {
-					$nombreLlavePrimaria = $llavesTabla['primarykey'];
-					if($nombreLlavePrimaria=='documento_docente'){
-						//Ninguna consulta de elementos retorna documento_docente, pero en veces es una llave primaria del elemento
-						//Se le pone el documento del docente
-						$valorLlave=$documento;
-					} else {
-						$valorLlave=$resultado[$nombreLlavePrimaria];
-						if(
-							$nombreLlavePrimaria == 'numero_issn' && 
-							(
-							$valoresPrincipales['_paginaSARA'] == 'comunicacionCorta' ||
-							$valoresPrincipales['_paginaSARA'] == 'publicacionesImpresas' ||
-							$valoresPrincipales['_paginaSARA'] == 'revistasIndexadas'
-							)
-						){
-							//NO hace ninguna reescritura.
-						} else {
-							//Se sobreescribe el nombre a uno que posee el bloque internamente
-							$nombreLlavePrimaria = getAliasLLavePrimaria($nombreLlavePrimaria);
-						}
-						
-					}					
-					if($valorLlave!=NULL){
-						$textoGET = $textoGET.$nombreLlavePrimaria.'='.$valorLlave.'&';
-					}
-				}
-				$textoGET = substr($textoGET, 0, -1);//Quita el ultimo &
-				//BUG FIX: algunos bloques modificar necesitan un argumento en el REQUEST llamado arreglo
-				$textoGET .= '&arreglo=true';
 				//Se quitan del arreglo general para liberar memoria
-				unset($valoresPrincipales['_resultados']);
-				unset($valoresPrincipales['_llavesPrimarias']);
+				unset($valoresPrincipales['resultados']);
+				unset($valoresPrincipales['llavesPrimarias']);
 				
 				$nombreObservacion = $this->miConfigurador->fabricaConexiones->crypto->codificar($nombreObservacion);
-				$tipoObservacion = $valoresPrincipales['_tipoObservacion'];
+				$tipoObservacion = $valoresPrincipales['tipoObservacion'];
 				
 				$resultado['observaciones'] = ($observacion)?$observacion['observacion']:'';
 				$resultado['observaciones'] = '<textarea class="text-observacion noselected" placeholder="Escriba su observación" name="'.$nombreObservacion.'">'.$resultado['observaciones'].'</textarea>';
 				
 				$checked = ($observacion)?($observacion['verificado']=='t')?'checked':'':'';
 				$resultado['verificacion'] = '<input type="checkbox" class="checkbox-verificacion" name="'.$nombreObservacion.'" value="'.$tipoObservacion.'" '.$checked.'>';
-				//Se arma un arreglo con las llaves primarias para modificar el elemento:
-				
-				$enlaceModificar = 'pagina='.$valoresPrincipales['_paginaSARA'].'&opcion=modificar&documento_docente='.$documento.'&'.$textoGET;
-				$enlaceModificar = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceModificar, $directorio );
-				$resultado['enlace_modificacion'] = '<a href="'.$enlaceModificar.'"><span class="icon-modificar"></span></a>';
 				$itemsTabla[] = array_merge($resultado,$valoresPrincipales);
 			}
 		}
@@ -1594,15 +1512,15 @@ class registrarForm {
 		
 		$campos[] = array(
 			'alias_campo' => 'Tipo Puntaje',
-			'nombre_campo' => '_tituloTipo',			
+			'nombre_campo' => 'tituloTipo',			
 		);
 		$campos[] = array(
 			'alias_campo' => 'Producto',
-			'nombre_campo' => '_titulo',
+			'nombre_campo' => 'titulo',
 		);
 		$campos[] = array(
 			'alias_campo' => 'Descripción',
-			'nombre_campo' => '_descripcion',			
+			'nombre_campo' => 'descripcion',			
 			'es_arreglo' => true,
 		);
 		$campos[] = array(

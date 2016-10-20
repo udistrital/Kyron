@@ -195,7 +195,6 @@ class registrarForm {
 						<th>Número Revista</th>
 						<th>Volúmen Revista</th>
 						<th>Año Revista</th>
-						<th>Categoría Revista</th>
 						<th>Número Acta</th>
 						<th>Fecha Acta</th>
 						<th>Caso Acta</th>
@@ -225,7 +224,6 @@ class registrarForm {
 	                    <td><center>" . $indexacion [$i] ['numero_revista'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['volumen_revista'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['anno_revista'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['tipo_indexacion'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['fecha_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_caso'] . "</center></td>

@@ -342,42 +342,42 @@ class FormularioRegistro {
 		// ----------------FIN CONTROL: Campo de Texto Año Publicación de la Revista--------------------------------------------------------
 				
 		// ---------------- CONTROL: Lista Categoria Revista--------------------------------------------------------		
-     	$esteCampo = "categoria";
-		$atributos ['nombre'] = $esteCampo;
-		$atributos ['id'] = $esteCampo;
-		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ["etiquetaObligatorio"] = true;
-		$atributos ['tab'] = $tab ++;
-		$atributos ['anchoEtiqueta'] = 280;
-		$atributos ['evento'] = '';
-		if (isset ( $_REQUEST [$esteCampo] )) {
-			$atributos ['seleccion'] = $_REQUEST [$esteCampo];
-		} else {
-			$atributos ['seleccion'] = - 1;
-		}
-		$atributos ['deshabilitado'] = false;
-		$atributos ['columnas'] = 1;
-		$atributos ['tamanno'] = 1;
-		$atributos ['ajax_function'] = "";
-		$atributos ['ajax_control'] = $esteCampo;
-		$atributos ['estilo'] = "jqueryui";
-		$atributos ['validar'] = "required,custom[integer]";
-		$atributos ['limitar'] = false;
-		$atributos ['anchoCaja'] = 60;
-		$atributos ['miEvento'] = '';
-		$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "categoria_revista", 1 );
-		$matrizItems = array (
-				array (
-						0,
-						' '
-				)
-		);
-		$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
-		$atributos ['matrizItems'] = $matrizItems;
-			
-		$atributos = array_merge ( $atributos, $atributosGlobales );
-		echo $this->miFormulario->campoCuadroLista ( $atributos );
-		unset ( $atributos );
+     	// $esteCampo = "categoria";
+		// $atributos ['nombre'] = $esteCampo;
+		// $atributos ['id'] = $esteCampo;
+		// $atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+		// $atributos ["etiquetaObligatorio"] = false;
+		// $atributos ['tab'] = $tab ++;
+		// $atributos ['anchoEtiqueta'] = 280;
+		// $atributos ['evento'] = '';
+		// if (isset ( $_REQUEST [$esteCampo] )) {
+			// $atributos ['seleccion'] = $_REQUEST [$esteCampo];
+		// } else {
+			// $atributos ['seleccion'] = - 1;
+		// }
+		// $atributos ['deshabilitado'] = false;
+		// $atributos ['columnas'] = 1;
+		// $atributos ['tamanno'] = 1;
+		// $atributos ['ajax_function'] = "";
+		// $atributos ['ajax_control'] = $esteCampo;
+		// $atributos ['estilo'] = "jqueryui";
+		// $atributos ['validar'] = "custom[integer]";
+		// $atributos ['limitar'] = false;
+		// $atributos ['anchoCaja'] = 60;
+		// $atributos ['miEvento'] = '';
+		// $atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "categoria_revista", 1 );
+		// $matrizItems = array (
+				// array (
+						// 0,
+						// ' '
+				// )
+		// );
+		// $matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
+		// $atributos ['matrizItems'] = $matrizItems;
+// 			
+		// $atributos = array_merge ( $atributos, $atributosGlobales );
+		// echo $this->miFormulario->campoCuadroLista ( $atributos );
+		// unset ( $atributos );
 		
 		// ----------------FIN CONTROL: Lista Categoria Revista--------------------------------------------------------
 			

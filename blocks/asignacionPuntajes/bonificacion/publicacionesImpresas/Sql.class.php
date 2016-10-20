@@ -146,8 +146,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" pi.numero_revista AS numero_revista,";
 				$cadenaSql.=" pi.volumen_revista AS volumen_revista,";
 				$cadenaSql.=" pi.anno_revista AS anno_revista,";
-				$cadenaSql.=" pi.id_tipo_indexacion AS id_tipo_indexacion,";
-				$cadenaSql.=" ti.descripcion AS tipo_indexacion,";
+				//$cadenaSql.=" pi.id_tipo_indexacion AS id_tipo_indexacion,";
+				//$cadenaSql.=" ti.descripcion AS tipo_indexacion,";
 				$cadenaSql.=" pi.numero_acta AS numero_acta,";
 				$cadenaSql.=" pi.fecha_acta AS fecha_acta,";
 				$cadenaSql.=" pi.numero_caso AS numero_caso,";
@@ -155,7 +155,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" pi.normatividad AS normatividad";
 				$cadenaSql.=" FROM";
 				$cadenaSql.=" docencia.publicacion_impresa AS pi";
-				$cadenaSql.=" LEFT JOIN docencia.tipo_indexacion AS ti ON ti.id_tipo_indexacion=pi.id_tipo_indexacion";
+				//$cadenaSql.=" LEFT JOIN docencia.tipo_indexacion AS ti ON ti.id_tipo_indexacion=pi.id_tipo_indexacion";
 				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON pi.documento_docente=dc.documento_docente";
 				$cadenaSql.=" LEFT JOIN docencia.docente_proyectocurricular AS dc_pc ON pi.documento_docente=dc_pc.documento_docente";
 				$cadenaSql.=" LEFT JOIN docencia.proyectocurricular AS pc ON dc_pc.id_proyectocurricular=pc.id_proyectocurricular";
@@ -197,7 +197,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" numero_revista,";
 				$cadenaSql.=" volumen_revista,";
 				$cadenaSql.=" anno_revista,";
-				$cadenaSql.=" id_tipo_indexacion,";
+				//$cadenaSql.=" id_tipo_indexacion,";
 				$cadenaSql.=" numero_acta,";
 				$cadenaSql.=" fecha_acta,";
 				$cadenaSql.=" numero_caso,";
@@ -213,7 +213,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" '" . $variable['numeroRevista']. "',";
 				$cadenaSql.=" '" . $variable['volumenRevista']. "',";
 				$cadenaSql.=" '" . $variable['annoRevista']. "',";
-				$cadenaSql.=" '" . $variable['categoria']. "',";
+				//$cadenaSql.=" '" . $variable['categoria']. "',";
 				$cadenaSql.=" '" . $variable['numeroActa']. "',";
 				$cadenaSql.=" '" . $variable['fechaActa']. "',";
 				$cadenaSql.=" '" . $variable['numeroCasoActa']. "',";
@@ -232,8 +232,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" pi.numero_revista AS numero_revista,";
 				$cadenaSql.=" pi.volumen_revista AS volumen_revista,";
 				$cadenaSql.=" pi.anno_revista AS anno_revista,";
-				$cadenaSql.=" pi.id_tipo_indexacion AS id_tipo_indexacion,";
-				$cadenaSql.=" ti.descripcion AS tipo_indexacion,";
+				//$cadenaSql.=" pi.id_tipo_indexacion AS id_tipo_indexacion,";
+				//$cadenaSql.=" ti.descripcion AS tipo_indexacion,";
 				$cadenaSql.=" pi.numero_acta AS numero_acta,";
 				$cadenaSql.=" pi.fecha_acta AS fecha_acta,";
 				$cadenaSql.=" pi.numero_caso AS numero_caso,";
@@ -241,7 +241,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" pi.normatividad AS normatividad";
 				$cadenaSql.=" FROM";
 				$cadenaSql.=" docencia.publicacion_impresa AS pi";
-				$cadenaSql.=" LEFT JOIN docencia.tipo_indexacion AS ti ON ti.id_tipo_indexacion=pi.id_tipo_indexacion";
+				//$cadenaSql.=" LEFT JOIN docencia.tipo_indexacion AS ti ON ti.id_tipo_indexacion=pi.id_tipo_indexacion";
 				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON dc.documento_docente=pi.documento_docente";
 				$cadenaSql.=" WHERE pi.numero_issn ='" . $variable['numero_issn']. "'";
 				$cadenaSql.=" AND pi.documento_docente ='" . $variable['documento_docente']. "'";
@@ -258,7 +258,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" numero_revista='" . $variable['numeroRevista']. "',";
 				$cadenaSql.=" volumen_revista='" . $variable['volumenRevista']. "',";
 				$cadenaSql.=" anno_revista='" . $variable['annoRevista']. "',";
-				$cadenaSql.=" id_tipo_indexacion='" . $variable['categoria']. "',";
+				//$cadenaSql.=" id_tipo_indexacion='" . $variable['categoria']. "',";
 				$cadenaSql.=" numero_acta='" . $variable['numeroActa']. "',";
 				$cadenaSql.=" fecha_acta='" . $variable['fechaActa']. "',";
 				$cadenaSql.=" numero_caso='" . $variable['numeroCasoActa']. "',";

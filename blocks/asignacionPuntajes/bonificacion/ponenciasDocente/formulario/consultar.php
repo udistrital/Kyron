@@ -269,7 +269,7 @@ class registrarForm {
 
 				} else {
 					
-					$mensaje = $this->lenguaje->getCadena('mensajeNoRegistros');
+					$mensaje = "No Se Encontraron<br> Registros de Revistas Indexadas.";
 					
 					// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
 					$esteCampo = 'mensajeRegistro';

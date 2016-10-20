@@ -1,0 +1,3962 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.8.1" last-position="0,0" last-zoom="0.6"
+	 default-schema="public" default-owner="postgres">
+<role name="usuariokyron"
+      superuser="true"
+      encrypted="true"
+      password="********">
+</role>
+
+<role name="kyron_frame"
+      inherit="true"
+      encrypted="true"
+      password="********">
+</role>
+
+<database name="kyron" encoding="UTF8" lc-collate="en_US" lc-ctype="en_US">
+	<role name="usuariokyron"/>
+	<tablespace name="pg_default"/>
+</database>
+
+<schema name="public" protected="true" rect-visible="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<schema name="docencia" rect-visible="true" fill-color="#1df290">
+	<role name="usuariokyron"/>
+</schema>
+
+<schema name="kyron" rect-visible="true" fill-color="#ae3b4a">
+	<role name="usuariokyron"/>
+</schema>
+
+<table name="capitulo_libro">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="50" y="50"/>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="titulo_capitulo" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="titulo_libro" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_tipo_libro" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="codigo_isbn" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_editorial" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="anno_publicacion" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="volumen" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="numero_autores_capitulo" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_autores_capitulo_ud" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_autores_libro" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_autores_libro_ud" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="numero_caso" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="capitulo_libro_pkey" type="pk-constr" table="docencia.capitulo_libro">
+		<columns names="documento_docente,codigo_isbn" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="caracter_video">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="406.922" y="50"/>
+	<column name="id_caracter_video" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="caracter_video" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="descripcion">
+		<type name="text"/>
+	</column>
+	<constraint name="caracter_video_pkey" type="pk-constr" table="docencia.caracter_video">
+		<columns names="id_caracter_video" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="cartas_editor">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="698.672" y="50"/>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="nombre_revista" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_contexto" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="paiscodigo" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_tipo_indexacion" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_issn" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="anno_publicacion" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="volumen_revista" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_revista" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="paginas_revista" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="titulo_articulo" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="numero_autores" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_autores_ud" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="fecha_publicacion" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="numero_caso" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<column name="normatividad">
+		<type name="text"/>
+	</column>
+	<constraint name="cartas_editor_pkey" type="pk-constr" table="docencia.cartas_editor">
+		<columns names="documento_docente,numero_issn" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="categoria_actual_docente">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1023.78" y="50"/>
+	<column name="id_categoria_actual_docente" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="categoria_actual" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="categoria_actual_docente_pkey" type="pk-constr" table="docencia.categoria_actual_docente">
+		<columns names="id_categoria_actual_docente" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="categoria_puntaje">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1388.69" y="50"/>
+	<column name="id_categoria_puntaje" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="categoria_puntaje" not-null="true">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="character varying" length="200"/>
+	</column>
+	<constraint name="categoria_puntaje_pkey" type="pk-constr" table="docencia.categoria_puntaje">
+		<columns names="id_categoria_puntaje" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="categoria_trabajogrado">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="50" y="403.4"/>
+	<column name="id_categoria_trabajogrado" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="nombre_categoria_trabajogrado" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="descripcion_categoria_trabajogrado" not-null="true">
+		<type name="text"/>
+	</column>
+	<constraint name="categoria_trabajogrado_pkey" type="pk-constr" table="docencia.categoria_trabajogrado">
+		<columns names="id_categoria_trabajogrado" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="ciudad">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="438.594" y="403.4"/>
+	<column name="ciudadid" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="ciudadnombre" not-null="true" default-value="'bpchar'::bpchar">
+		<type name="character" length="35"/>
+	</column>
+	<column name="paiscodigo" not-null="true" default-value="'bpchar'::bpchar">
+		<type name="character" length="35"/>
+	</column>
+	<column name="ciudaddistrito" not-null="true" default-value="'bpchar'::bpchar">
+		<type name="character" length="20"/>
+	</column>
+	<column name="ciudadpoblacion" not-null="true" default-value="0">
+		<type name="integer"/>
+	</column>
+	<constraint name="ciudad_pkey" type="pk-constr" table="docencia.ciudad">
+		<columns names="ciudadid" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="comunicacion_corta">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="747.797" y="403.4"/>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="nombre_revista" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_contexto" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="paiscodigo" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_tipo_indexacion" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_issn" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="anno_publicacion" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="volumen_revista" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="numero_revista" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="paginas_revista" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="titulo_articulo" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="numero_autores" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_autores_ud" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="numero_caso" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="comunicacion_corta_pkey" type="pk-constr" table="docencia.comunicacion_corta">
+		<columns names="documento_docente,numero_issn" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="contexto">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1072.91" y="403.4"/>
+	<column name="id_contexto" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="text"/>
+	</column>
+	<constraint name="contexto_pkey" type="pk-constr" table="docencia.contexto">
+		<columns names="id_contexto" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="contexto_ponencia">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1325.16" y="403.4"/>
+	<column name="id_contexto_ponencia" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="contexto" not-null="true">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="character varying" length="100"/>
+	</column>
+	<constraint name="contexto_ponencia_pkey" type="pk-constr" table="docencia.contexto_ponencia">
+		<columns names="id_contexto_ponencia" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="direccion_trabajogrado_id_direccion_trabajogrado_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="direccion_trabajogrado_estudiante">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="408.516" y="742.8"/>
+	<column name="id_direccion_trabajogrado" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="nombre_estudiante" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="codigo_estudiante" not-null="true">
+		<type name="bigint"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="direccion_trabajogrado_estudiante_pkey" type="pk-constr" table="docencia.direccion_trabajogrado_estudiante">
+		<columns names="id_direccion_trabajogrado,codigo_estudiante" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="direccion_trabajogrado">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="50" y="742.8"/>
+	<column name="id_direccion_trabajogrado" not-null="true" default-value="nextval('direccion_trabajogrado_id_direccion_trabajogrado_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_tipo_trabajogrado" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="id_categoria_trabajogrado" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_autores" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="titulo_trabajogrado" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="anno_direccion" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="caso_acta" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="direccion_trabajogrado_pkey" type="pk-constr" table="docencia.direccion_trabajogrado">
+		<columns names="id_direccion_trabajogrado" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="docente">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="766.391" y="742.8"/>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_tipo_documento" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="codigo_docente" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="primer_apellido" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="segundo_apellido">
+		<type name="text"/>
+	</column>
+	<column name="primer_nombre" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="segundo_nombre">
+		<type name="text"/>
+	</column>
+	<column name="id_genero" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="docente_pkey" type="pk-constr" table="docencia.docente">
+		<columns names="documento_docente" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="docente_proyectocurricular">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1091.5" y="742.8"/>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_proyectocurricular" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="docente_proyectocurricular_pkey" type="pk-constr" table="docencia.docente_proyectocurricular">
+		<columns names="documento_docente,id_proyectocurricular" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="editorial">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1424.69" y="742.8"/>
+	<column name="id_editorial" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="nit_editorial" not-null="true">
+		<type name="character varying"/>
+	</column>
+	<column name="nombre_editorial" not-null="true">
+		<type name="character varying"/>
+	</column>
+	<column name="estado">
+		<type name="boolean"/>
+	</column>
+	<constraint name="pk_editorial" type="pk-constr" table="docencia.editorial">
+		<columns names="id_editorial" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="estudio_postdoctoral_docente_id_estudio_postdoctoral_docent_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="estudio_postdoctoral_docente">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="50" y="998.2"/>
+	<column name="id_estudio_postdoctoral_docente" not-null="true" default-value="nextval('estudio_postdoctoral_docente_id_estudio_postdoctoral_docent_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="titulo_obtenido" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_obtencion" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_universidad">
+		<type name="smallint"/>
+	</column>
+	<column name="otra_entidad">
+		<type name="text"/>
+	</column>
+	<column name="annos_doctorado" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="caso_acta" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="estudio_postdoctoral_docente_pkey" type="pk-constr" table="docencia.estudio_postdoctoral_docente">
+		<columns names="id_estudio_postdoctoral_docente" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="evaluador_capitulo_libro">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="455.141" y="998.2"/>
+	<column name="documento_evaluador" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="codigo_isbn" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_universidad" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="evaluador_capitulo_libro_pkey" type="pk-constr" table="docencia.evaluador_capitulo_libro">
+		<columns names="documento_evaluador,codigo_isbn,documento_docente" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="evaluador_libro_docente">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="789.078" y="998.2"/>
+	<column name="documento_evaluador" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="codigo_isbn" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_universidad" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="evaluador_libro_docente_pkey" type="pk-constr" table="docencia.evaluador_libro_docente">
+		<columns names="documento_evaluador,codigo_isbn,documento_docente" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="evaluador_produccion_tecnicaysoftware">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1123.02" y="998.2"/>
+	<column name="documento_evaluador" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="numero_certificado" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_universidad" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="evaluador_produccion_tecnicaysoftware_pkey" type="pk-constr" table="docencia.evaluador_produccion_tecnicaysoftware">
+		<columns names="documento_evaluador,numero_certificado,documento_docente" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="evaluador_produccion_video_id_evaluador_produccion_video_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="evaluador_produccion_video">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1510.76" y="998.2"/>
+	<column name="id_evaluador_produccion_video" not-null="true" default-value="nextval('evaluador_produccion_video_id_evaluador_produccion_video_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="id_produccion_video" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="nombre_evaluador" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_universidad" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="evaluador_produccion_video_pkey" type="pk-constr" table="docencia.evaluador_produccion_video">
+		<columns names="id_evaluador_produccion_video" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="excelencia_academica_id_excelencia_academica_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="excelencia_academica">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="50" y="1253.6"/>
+	<column name="id_excelencia_academica" not-null="true" default-value="nextval('excelencia_academica_id_excelencia_academica_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="annio_otorgamiento" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_resolucion" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="fecha_resolucion" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="excelencia_academica_pkey" type="pk-constr" table="docencia.excelencia_academica">
+		<columns names="id_excelencia_academica" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="experiencia_calificada_id_experiencia_calificada_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="experiencia_calificada">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="401.547" y="1253.6"/>
+	<column name="id_experiencia_calificada" not-null="true" default-value="nextval('experiencia_calificada_id_experiencia_calificada_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_tipo_experiencia_calificada" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="annio_experiencia" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_resolucion" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="id_tipo_emisor_resolucion" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="fecha_resolucion" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="experiencia_calificada_pkey" type="pk-constr" table="docencia.experiencia_calificada">
+		<columns names="id_experiencia_calificada" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="experiencia_direccion_academi_id_experiencia_direccion_acad_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="experiencia_direccion_academica">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="764.297" y="1253.6"/>
+	<column name="id_experiencia_direccion_academica" not-null="true" default-value="nextval('experiencia_direccion_academi_id_experiencia_direccion_acad_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_universidad">
+		<type name="smallint"/>
+	</column>
+	<column name="otra_entidad">
+		<type name="text"/>
+	</column>
+	<column name="id_tipo_entidad" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="horas_semana" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="fecha_inicio" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="fecha_finalizacion" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="dias_experiencia" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="caso_acta" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="experiencia_direccion_academica_pkey" type="pk-constr" table="docencia.experiencia_direccion_academica">
+		<columns names="id_experiencia_direccion_academica" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="experiencia_docencia_id_experiencia_docencia_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="experiencia_docencia">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1191.03" y="1253.6"/>
+	<column name="id_experiencia_docencia" not-null="true" default-value="nextval('experiencia_docencia_id_experiencia_docencia_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_universidad">
+		<type name="smallint"/>
+	</column>
+	<column name="otra_entidad">
+		<type name="text"/>
+	</column>
+	<column name="id_tipo_entidad">
+		<type name="smallint"/>
+	</column>
+	<column name="horas_semana" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="fecha_inicio" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="fecha_finalizacion" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="dias_experiencia" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="caso_acta" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="experiencia_docencia_pkey" type="pk-constr" table="docencia.experiencia_docencia">
+		<columns names="id_experiencia_docencia" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="experiencia_investigacion_id_experiencia_investigacion_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="experiencia_investigacion">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1538.03" y="1253.6"/>
+	<column name="id_experiencia_investigacion" not-null="true" default-value="nextval('experiencia_investigacion_id_experiencia_investigacion_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_universidad">
+		<type name="smallint"/>
+	</column>
+	<column name="otra_entidad">
+		<type name="text"/>
+	</column>
+	<column name="id_tipo_experiencia_investigacion" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="horas_semana" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="fecha_inicio" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="fecha_finalizacion" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="caso_acta" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="experiencia_investigacion_pkey" type="pk-constr" table="docencia.experiencia_investigacion">
+		<columns names="id_experiencia_investigacion" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="experiencia_profesional_id_experiencia_profesional_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="experiencia_profesional">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="50" y="1537"/>
+	<column name="id_experiencia_profesional" not-null="true" default-value="nextval('experiencia_profesional_id_experiencia_profesional_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_universidad">
+		<type name="smallint"/>
+	</column>
+	<column name="otra_entidad">
+		<type name="text"/>
+	</column>
+	<column name="cargo" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_inicio" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="fecha_finalizacion" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="dias_experiencia" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="caso_acta" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="experiencia_profesional_pkey" type="pk-constr" table="docencia.experiencia_profesional">
+		<columns names="id_experiencia_profesional" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="facultad">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="414.391" y="1537"/>
+	<column name="id_facultad" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="abreviatura" not-null="true">
+		<type name="text"/>
+	</column>
+	<constraint name="facultad_pkey" type="pk-constr" table="docencia.facultad">
+		<columns names="id_facultad" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="genero">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="662.672" y="1537"/>
+	<column name="id_genero" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="genero" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="descripcion">
+		<type name="text"/>
+	</column>
+	<constraint name="genero_pkey" type="pk-constr" table="docencia.genero">
+		<columns names="id_genero" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="libro_docente">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="905.328" y="1537"/>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="titulo" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_tipo_libro" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="id_universidad">
+		<type name="integer"/>
+	</column>
+	<column name="codigo_isbn" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="anno_publicacion" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_autores" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_autores_ud" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="id_editorial" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="numero_caso" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="libro_docente_pkey" type="pk-constr" table="docencia.libro_docente">
+		<columns names="documento_docente,codigo_isbn" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="modalidad_titulo_academico">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1225.22" y="1537"/>
+	<column name="id_modalidad_titulo_academico" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="modalidad" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="text"/>
+	</column>
+	<constraint name="modalidad_titulo_academico_pkey" type="pk-constr" table="docencia.modalidad_titulo_academico">
+		<columns names="id_modalidad_titulo_academico" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="novedad_id_novedad_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="novedad">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="50" y="1820.4"/>
+	<column name="id_novedad" not-null="true" default-value="nextval('novedad_id_novedad_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_tipo_novedad" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="numero_caso" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="novedad_pkey" type="pk-constr" table="docencia.novedad">
+		<columns names="id_novedad" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="obra_artistica_id_obra_artistica_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="obra_artistica">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="356.266" y="1820.4"/>
+	<column name="id_obra_artistica" not-null="true" default-value="nextval('obra_artistica_id_obra_artistica_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_tipo_obra_artistica" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="titulo_obra" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="certificador" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_contexto" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="anno_obra" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="numero_caso" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="obra_artistica_pkey" type="pk-constr" table="docencia.obra_artistica">
+		<columns names="id_obra_artistica" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="observacion_verificacion">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="667.766" y="1820.4"/>
+	<column name="llaves_primarias_valor" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_tipo_observacion" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="observacion" not-null="true">
+		<type name="character varying" length="200"/>
+	</column>
+	<column name="verificado" not-null="true" default-value="false">
+		<type name="boolean"/>
+	</column>
+	<constraint name="observacion_verificacion_pkey" type="pk-constr" table="docencia.observacion_verificacion">
+		<columns names="llaves_primarias_valor" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="pais">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1108.14" y="1820.4"/>
+	<column name="paiscodigo" not-null="true">
+		<type name="character" length="3"/>
+	</column>
+	<column name="paisnombre">
+		<type name="character" length="52"/>
+	</column>
+	<column name="paiscontinente">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="paisregion">
+		<type name="character varying" length="26"/>
+	</column>
+	<column name="paisarea">
+		<type name="double precision"/>
+	</column>
+	<column name="paisindependencia">
+		<type name="smallint"/>
+	</column>
+	<column name="paispoblacion">
+		<type name="integer"/>
+	</column>
+	<column name="paisexpectativadevida">
+		<type name="double precision"/>
+	</column>
+	<column name="paisproductointernobruto">
+		<type name="double precision"/>
+	</column>
+	<column name="paisproductointernobrutoantiguo">
+		<type name="double precision"/>
+	</column>
+	<column name="paisnombrelocal">
+		<type name="character varying" length="45"/>
+	</column>
+	<column name="paisgobierno">
+		<type name="character varying" length="45"/>
+	</column>
+	<column name="paisjefedeestado">
+		<type name="character varying" length="60"/>
+	</column>
+	<column name="paiscapital">
+		<type name="integer"/>
+	</column>
+	<column name="paiscodigo2">
+		<type name="character" length="2"/>
+	</column>
+	<constraint name="pais_k_pkey" type="pk-constr" table="docencia.pais">
+		<columns names="paiscodigo" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="patente_id_patente_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="patente">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1572.3" y="1820.4"/>
+	<column name="id_patente" not-null="true" default-value="nextval('patente_id_patente_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_tipo_patente" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="titulo_patente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_universidad" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="paiscodigo" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="anno_obtencion" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="concepto_patente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="numero_registro" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="numero_caso" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="patente_pkey" type="pk-constr" table="docencia.patente">
+		<columns names="id_patente" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="ponencia_id_ponencia_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="ponencia">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="50" y="2103.8"/>
+	<column name="id_ponencia" not-null="true" default-value="nextval('ponencia_id_ponencia_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="titulo" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="numero_autores" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_autores_ud" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="anno" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="id_contexto_ponencia" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="evento_presentacion" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="institucion_certificadora" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="caso_acta" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="ponencia_pkey" type="pk-constr" table="docencia.ponencia">
+		<columns names="id_ponencia" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="premio_docente_id_premio_docente_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="premio_docente">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="377.828" y="2103.8"/>
+	<column name="id_premio_docente" not-null="true" default-value="nextval('premio_docente_id_premio_docente_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_universidad">
+		<type name="smallint"/>
+	</column>
+	<column name="otra_entidad">
+		<type name="text"/>
+	</column>
+	<column name="id_tipo_entidad" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="id_contexto" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="paiscodigo" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="ciudadid" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="concepto_premio" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_premio" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="numero_condecorados" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="anno_premio" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="caso_acta" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="premio_docente_pkey" type="pk-constr" table="docencia.premio_docente">
+		<columns names="id_premio_docente" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="produccion_tecnicaysoftware">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="698.078" y="2103.8"/>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_tipo_tecnicaysoftware" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_certificado" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="anno_produccion" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="numero_caso" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="produccion_tecnicaysoftware_pkey" type="pk-constr" table="docencia.produccion_tecnicaysoftware">
+		<columns names="documento_docente,numero_certificado" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="produccion_video_id_produccion_video_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="produccion_video">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1035.66" y="2103.8"/>
+	<column name="id_produccion_video" not-null="true" default-value="nextval('produccion_video_id_produccion_video_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="titulo_video" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="numero_autores" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_autores_ud" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="fecha_realizacion" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="id_contexto" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="id_caracter_video" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_evaluadores" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="caso_acta" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="produccion_video_pkey" type="pk-constr" table="docencia.produccion_video">
+		<columns names="id_produccion_video" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="proyectocurricular">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1356" y="2103.8"/>
+	<column name="id_proyectocurricular" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="id_facultad" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="proyectocurricular_pkey" type="pk-constr" table="docencia.proyectocurricular">
+		<columns names="id_proyectocurricular" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="publicacion_impresa">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="50" y="2429.2"/>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="titulo" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="numero_issn" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="nombre_revista" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="numero_revista" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="volumen_revista" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="anno_revista" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="numero_caso" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="publicacion_impresa_pkey" type="pk-constr" table="docencia.publicacion_impresa">
+		<columns names="documento_docente,numero_issn" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="resena_critica_id_resena_critica_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="resena_critica">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="374.469" y="2429.2"/>
+	<column name="id_resena_critica" not-null="true" default-value="nextval('resena_critica_id_resena_critica_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="titulo" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="revista" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_tipo_indexacion" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="anno" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="caso_acta" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="resena_critica_pkey" type="pk-constr" table="docencia.resena_critica">
+		<columns names="id_resena_critica" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="revista_indexada">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="680.734" y="2429.2"/>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="nombre_revista" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_contexto" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="paiscodigo" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_tipo_indexacion" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_issn" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="anno_publicacion" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="volumen_revista" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="numero_revista" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="paginas_revista" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="titulo_articulo" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="numero_autores" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_autores_ud" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="numero_caso" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="revista_indexada_pkey" type="pk-constr" table="docencia.revista_indexada">
+		<columns names="documento_docente,numero_issn" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tipo_dedicacion">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1005.84" y="2429.2"/>
+	<column name="id_tipo_dedicacion" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="dedicacion" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="tipo_dedicacion_pkey" type="pk-constr" table="docencia.tipo_dedicacion">
+		<columns names="id_tipo_dedicacion" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tipo_documento">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1303.89" y="2429.2"/>
+	<column name="id_tipo_documento" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="abreviatura" not-null="true">
+		<type name="text"/>
+	</column>
+	<constraint name="tipo_documento_pkey" type="pk-constr" table="docencia.tipo_documento">
+		<columns names="id_tipo_documento" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tipo_emisor_resolucion">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="50" y="2768.6"/>
+	<column name="id_tipo_emisor_resolucion" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="text"/>
+	</column>
+	<constraint name="tipo_emisor_resolucion_pkey" type="pk-constr" table="docencia.tipo_emisor_resolucion">
+		<columns names="id_tipo_emisor_resolucion" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tipo_entidad">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="397.516" y="2768.6"/>
+	<column name="id_tipo_entidad" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="nombre_tipo_entidad" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="descripción_tipo_entidad" not-null="true">
+		<type name="text"/>
+	</column>
+	<constraint name="tipo_entidad_pkey" type="pk-constr" table="docencia.tipo_entidad">
+		<columns names="id_tipo_entidad" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tipo_experiencia_calificada">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="720.703" y="2768.6"/>
+	<column name="id_tipo_experiencia_calificada" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="text"/>
+	</column>
+	<constraint name="tipo_experiencia_calificada_pkey" type="pk-constr" table="docencia.tipo_experiencia_calificada">
+		<columns names="id_tipo_experiencia_calificada" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tipo_experiencia_investigacio_id_tipo_experiencia_investiga_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="tipo_experiencia_investigacion">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1095.34" y="2768.6"/>
+	<column name="id_tipo_experiencia_investigacion" not-null="true" default-value="nextval('tipo_experiencia_investigacio_id_tipo_experiencia_investiga_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="text"/>
+	</column>
+	<constraint name="tipo_experiencia_investigacion_pkey" type="pk-constr" table="docencia.tipo_experiencia_investigacion">
+		<columns names="id_tipo_experiencia_investigacion" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tipo_indexacion">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1490.36" y="2768.6"/>
+	<column name="id_tipo_indexacion" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_contexto" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<constraint name="tipo_indexacion_pkey" type="pk-constr" table="docencia.tipo_indexacion">
+		<columns names="id_tipo_indexacion" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tipo_libro">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="50" y="2884"/>
+	<column name="id_tipo_libro" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="tipo_libro" not-null="true">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="character varying" length="100"/>
+	</column>
+	<constraint name="tipo_libro_pkey" type="pk-constr" table="docencia.tipo_libro">
+		<columns names="id_tipo_libro" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tipo_novedad">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="406.703" y="2884"/>
+	<column name="id_tipo_novedad" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="tipo_novedad" not-null="true">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="id_categoria_puntaje" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="character varying" length="200"/>
+	</column>
+	<constraint name="tipo_novedad_pkey" type="pk-constr" table="docencia.tipo_novedad">
+		<columns names="id_tipo_novedad" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tipo_obra_artistica">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="821.125" y="2884"/>
+	<column name="id_tipo_obra_artistica" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="text"/>
+	</column>
+	<constraint name="tipo_obra_artistica_pkey" type="pk-constr" table="docencia.tipo_obra_artistica">
+		<columns names="id_tipo_obra_artistica" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tipo_observacion">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1139.44" y="2884"/>
+	<column name="id_tipo_observacion" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="tipo_observacion" not-null="true">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="id_categoria_puntaje" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="character varying" length="200"/>
+	</column>
+	<constraint name="tipo_observacion_pkey" type="pk-constr" table="docencia.tipo_observacion">
+		<columns names="id_tipo_observacion" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tipo_patente">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1562.05" y="2884"/>
+	<column name="id_tipo_patente" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="text"/>
+	</column>
+	<constraint name="tipo_patente_pkey" type="pk-constr" table="docencia.tipo_patente">
+		<columns names="id_tipo_patente" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tipo_tecnicaysoftware">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="50" y="3013.4"/>
+	<column name="id_tipo_tecnicaysoftware" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="text"/>
+	</column>
+	<constraint name="tipo_tecnicaysoftware_pkey" type="pk-constr" table="docencia.tipo_tecnicaysoftware">
+		<columns names="id_tipo_tecnicaysoftware" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tipo_titulo_academico">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="391.625" y="3013.4"/>
+	<column name="id_tipo_titulo_academico" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="tipo" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="text"/>
+	</column>
+	<constraint name="tipo_titulo_academico_pkey" type="pk-constr" table="docencia.tipo_titulo_academico">
+		<columns names="id_tipo_titulo_academico" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tipo_trabajogrado">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="731.5" y="3013.4"/>
+	<column name="id_tipo_trabajogrado" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="nombre_tipo_trabajogrado" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="descripcion_tipo_trabajogrado" not-null="true">
+		<type name="text"/>
+	</column>
+	<constraint name="tipo_trabajogrado_pkey" type="pk-constr" table="docencia.tipo_trabajogrado">
+		<columns names="id_tipo_trabajogrado" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tipo_traduccion_articulo">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1086.52" y="3013.4"/>
+	<column name="id_tipo_traduccion_articulo" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="character varying" length="50"/>
+	</column>
+	<constraint name="tipo_traduccion_articulo_pkey" type="pk-constr" table="docencia.tipo_traduccion_articulo">
+		<columns names="id_tipo_traduccion_articulo" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="titulo_academico_id_titulo_academico_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="titulo_academico">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="1533.7" y="3013.4"/>
+	<column name="id_titulo_academico" not-null="true" default-value="nextval('titulo_academico_id_titulo_academico_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_tipo_titulo_academico" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="titulo" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_universidad" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="paiscodigo" not-null="true">
+		<type name="character" length="3"/>
+	</column>
+	<column name="anno" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="id_modalidad_titulo_academico" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="resolucion" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="fecha_resolucion" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="entidad_convalidacion" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="numero_caso" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad" default-value="'N.D.'::text">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="titulo_academico_pkey" type="pk-constr" table="docencia.titulo_academico">
+		<columns names="id_titulo_academico" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="traduccion_articulo_id_traduccion_articulo_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="traduccion_articulo">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="50" y="3324.8"/>
+	<column name="id_traduccion_articulo" not-null="true" default-value="nextval('traduccion_articulo_id_traduccion_articulo_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="titulo_publicacion" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="titulo_traduccion" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="id_tipo_traduccion_articulo" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="fecha_traduccion" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="numero_caso" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="traduccion_articulo_pkey" type="pk-constr" table="docencia.traduccion_articulo">
+		<columns names="id_traduccion_articulo" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="traduccion_libro_id_traduccion_libro_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="traduccion_libro">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="394.531" y="3324.8"/>
+	<column name="id_traduccion_libro" not-null="true" default-value="nextval('traduccion_libro_id_traduccion_libro_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="documento_docente" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="titulo" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="nombre_autor_original" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="anno_traduccion" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="anno_publicacion" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="numero_acta" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha_acta" not-null="true">
+		<type name="date"/>
+	</column>
+	<column name="numero_caso" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="volumen" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="puntaje" not-null="true">
+		<type name="real"/>
+	</column>
+	<column name="normatividad" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="traduccion_libro_pkey" type="pk-constr" table="docencia.traduccion_libro">
+		<columns names="id_traduccion_libro" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="universidad">
+	<schema name="docencia"/>
+	<role name="usuariokyron"/>
+	<position x="714.594" y="3324.8"/>
+	<column name="id_universidad" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="nombre_universidad">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="caracter_universidad">
+		<type name="integer"/>
+	</column>
+	<column name="ciudad">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="id_pais">
+		<type name="integer"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="universidades_pkey" type="pk-constr" table="docencia.universidad">
+		<columns names="id_universidad" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="kyron_bloque_id_bloque_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="kyron_bloque">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+	<position x="1952.7" y="50"/>
+	<column name="id_bloque" not-null="true" default-value="nextval('kyron_bloque_id_bloque_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="character" length="50"/>
+	</column>
+	<column name="descripcion" default-value="NULL::bpchar">
+		<type name="character" length="255"/>
+	</column>
+	<column name="grupo" not-null="true">
+		<type name="character" length="200"/>
+	</column>
+	<constraint name="kyron_bloque_pkey" type="pk-constr" table="kyron.kyron_bloque">
+		<columns names="id_bloque" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="kyron_bloque_pagina_idrelacion_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="kyron_bloque_pagina">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+	<position x="2240.64" y="50"/>
+	<column name="idrelacion" not-null="true" default-value="nextval('kyron_bloque_pagina_idrelacion_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="id_pagina" not-null="true" default-value="0">
+		<type name="integer"/>
+	</column>
+	<column name="id_bloque" not-null="true" default-value="0">
+		<type name="integer"/>
+	</column>
+	<column name="seccion" not-null="true">
+		<type name="character"/>
+	</column>
+	<column name="posicion" not-null="true" default-value="0">
+		<type name="integer"/>
+	</column>
+	<constraint name="kyron_bloque_pagina_pkey" type="pk-constr" table="kyron.kyron_bloque_pagina">
+		<columns names="idrelacion" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="kyron_configuracion_id_parametro_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="kyron_configuracion">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+	<position x="2491.95" y="50"/>
+	<column name="id_parametro" not-null="true" default-value="nextval('kyron_configuracion_id_parametro_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="parametro" not-null="true">
+		<type name="character" length="255"/>
+	</column>
+	<column name="valor" not-null="true">
+		<type name="character" length="255"/>
+	</column>
+	<constraint name="kyron_configuracion_pkey" type="pk-constr" table="kyron.kyron_configuracion">
+		<columns names="id_parametro" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="kyron_dbms_idconexion_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="kyron_dbms">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+	<position x="2801.22" y="50"/>
+	<column name="idconexion" not-null="true" default-value="nextval('kyron_dbms_idconexion_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="dbms" not-null="true">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="servidor" not-null="true">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="puerto" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="conexionssh" not-null="true">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="db" not-null="true">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="esquema" not-null="true">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="usuario" not-null="true">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="password" not-null="true">
+		<type name="character varying" length="200"/>
+	</column>
+	<constraint name="kyron_dbms_pkey" type="pk-constr" table="kyron.kyron_dbms">
+		<columns names="idconexion" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="kyron_estilo">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+	<position x="3149.97" y="50"/>
+	<column name="usuario" not-null="true" default-value="'0'::bpchar">
+		<type name="character" length="50"/>
+	</column>
+	<column name="estilo" not-null="true">
+		<type name="character" length="50"/>
+	</column>
+	<constraint name="kyron_estilo_pkey" type="pk-constr" table="kyron.kyron_estilo">
+		<columns names="usuario,estilo" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="kyron_log_usuario_id_registro_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="kyron_log_usuario">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+	<position x="1952.7" y="263.4"/>
+	<column name="id_registro" not-null="true" default-value="nextval('kyron_log_usuario_id_registro_seq'::regclass)">
+		<type name="bigint"/>
+	</column>
+	<column name="id_usuario" not-null="true">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="accion" not-null="true">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="fecha_log" not-null="true">
+		<type name="timestamp"/>
+	</column>
+	<column name="datos" not-null="true">
+		<type name="text"/>
+	</column>
+	<constraint name="kyron_log_usuario_pkey" type="pk-constr" table="kyron.kyron_log_usuario">
+		<columns names="id_registro" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="kyron_logger_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="kyron_logger">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+	<position x="2299.55" y="263.4"/>
+	<column name="id" not-null="true" default-value="nextval('kyron_logger_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="evento" not-null="true">
+		<type name="character" length="255"/>
+	</column>
+	<column name="fecha" not-null="true">
+		<type name="character" length="50"/>
+	</column>
+</table>
+
+<sequence name="kyron_menu_id_menu_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="kyron_menu_clase_enlace">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+	<position x="2797.86" y="263.4"/>
+	<column name="id_clase_enlace" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="text"/>
+	</column>
+	<constraint name="kyron_menu_clase_enlace_pkey" type="pk-constr" table="kyron.kyron_menu_clase_enlace">
+		<columns names="id_clase_enlace" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="kyron_menu_enlace_id_enlace_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="kyron_menu_enlace">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+	<position x="3075.34" y="263.4"/>
+	<column name="id_enlace" not-null="true" default-value="nextval('kyron_menu_enlace_id_enlace_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="id_menu" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="titulo" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="columna">
+		<type name="smallint"/>
+	</column>
+	<column name="orden" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="id_tipo_enlace" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="id_clase_enlace" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="enlace">
+		<type name="text"/>
+	</column>
+	<column name="descripcion">
+		<type name="text"/>
+	</column>
+	<column name="parametros">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="kyron_menu_enlace_pkey" type="pk-constr" table="kyron.kyron_menu_enlace">
+		<columns names="id_enlace" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="kyron_menu">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+	<position x="2560.42" y="263.4"/>
+	<column name="id_menu" not-null="true" default-value="nextval('kyron_menu_id_menu_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="descripcion">
+		<type name="text"/>
+	</column>
+	<column name="estado" not-null="true" default-value="true">
+		<type name="boolean"/>
+	</column>
+	<constraint name="kyron_menu_pkey" type="pk-constr" table="kyron.kyron_menu">
+		<columns names="id_menu" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="kyron_menu_rol_enlace_id_relacion_seq"
+	 start="1" increment="1"
+	 min-value="0" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="kyron_menu_rol_enlace">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+	<position x="1952.7" y="490.8"/>
+	<column name="id_relacion" not-null="true" default-value="nextval('kyron_menu_rol_enlace_id_relacion_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="id_rol" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="id_enlace" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="descripcion">
+		<type name="text"/>
+	</column>
+	<constraint name="kyron_menu_rol_enlace_pkey" type="pk-constr" table="kyron.kyron_menu_rol_enlace">
+		<columns names="id_relacion" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="kyron_menu_tipo_enlace">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+	<position x="2206.48" y="490.8"/>
+	<column name="id_tipo_enlace" not-null="true">
+		<type name="smallint"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="text"/>
+	</column>
+	<constraint name="kyron_menu_tipo_enlace_pkey" type="pk-constr" table="kyron.kyron_menu_tipo_enlace">
+		<columns names="id_tipo_enlace" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="kyron_pagina_id_pagina_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="kyron_pagina">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+	<position x="2476.04" y="490.8"/>
+	<column name="id_pagina" not-null="true" default-value="nextval('kyron_pagina_id_pagina_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="nombre" not-null="true" default-value="''::bpchar">
+		<type name="character" length="50"/>
+	</column>
+	<column name="descripcion" not-null="true" default-value="''::bpchar">
+		<type name="character" length="250"/>
+	</column>
+	<column name="modulo" not-null="true" default-value="''::bpchar">
+		<type name="character" length="50"/>
+	</column>
+	<column name="nivel" not-null="true" default-value="0">
+		<type name="integer"/>
+	</column>
+	<column name="parametro" not-null="true">
+		<type name="character" length="255"/>
+	</column>
+	<constraint name="kyron_pagina_pkey" type="pk-constr" table="kyron.kyron_pagina">
+		<columns names="id_pagina" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="kyron_rol">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+	<position x="2763.98" y="490.8"/>
+	<column name="id_rol" not-null="true">
+		<type name="integer"/>
+		<comment><![CDATA[Número del perfil o rol dentro de cóndor.]]></comment>
+	</column>
+	<column name="nombre">
+		<type name="text"/>
+	</column>
+	<column name="descripcion">
+		<type name="text"/>
+	</column>
+	<constraint name="kyron_rol_pkey" type="pk-constr" table="kyron.kyron_rol">
+		<columns names="id_rol" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="kyron_subsistema_id_subsistema_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="kyron_subsistema">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+	<position x="3000.77" y="490.8"/>
+	<column name="id_subsistema" not-null="true" default-value="nextval('kyron_subsistema_id_subsistema_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="character varying" length="250"/>
+	</column>
+	<column name="etiqueta" not-null="true">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="id_pagina" not-null="true" default-value="0">
+		<type name="integer"/>
+	</column>
+	<column name="observacion">
+		<type name="text"/>
+	</column>
+	<constraint name="kyron_subsistema_pkey" type="pk-constr" table="kyron.kyron_subsistema">
+		<columns names="id_subsistema" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="kyron_tempformulario">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+	<position x="1952.7" y="648.2"/>
+	<column name="id_sesion" not-null="true">
+		<type name="character" length="32"/>
+	</column>
+	<column name="formulario" not-null="true">
+		<type name="character" length="100"/>
+	</column>
+	<column name="campo" not-null="true">
+		<type name="character" length="100"/>
+	</column>
+	<column name="valor" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="fecha" not-null="true">
+		<type name="character" length="50"/>
+	</column>
+</table>
+
+<sequence name="kyron_usuario_id_usuario_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+</sequence>
+
+<table name="kyron_usuario">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+	<position x="2234.11" y="648.2"/>
+	<column name="id_usuario" not-null="true" default-value="nextval('kyron_usuario_id_usuario_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="nombre" not-null="true" default-value="''::character varying">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="apellido" not-null="true" default-value="''::character varying">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="correo" not-null="true" default-value="''::character varying">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="telefono" not-null="true" default-value="''::character varying">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="imagen" not-null="true">
+		<type name="character" length="255"/>
+	</column>
+	<column name="clave" not-null="true" default-value="''::character varying">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="tipo" not-null="true" default-value="''::character varying">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="estilo" not-null="true" default-value="'basico'::character varying">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="idioma" not-null="true" default-value="'es_es'::character varying">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="estado" not-null="true" default-value="0">
+		<type name="integer"/>
+	</column>
+	<constraint name="kyron_usuario_pkey" type="pk-constr" table="kyron.kyron_usuario">
+		<columns names="id_usuario" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="kyron_usuario_subsistema">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+	<position x="2577.77" y="648.2"/>
+	<column name="id_usuario" not-null="true" default-value="0">
+		<type name="integer"/>
+	</column>
+	<column name="id_subsistema" not-null="true" default-value="0">
+		<type name="integer"/>
+	</column>
+	<column name="estado" not-null="true" default-value="0">
+		<type name="integer"/>
+	</column>
+</table>
+
+<table name="kyron_valor_sesion">
+	<schema name="kyron"/>
+	<role name="usuariokyron"/>
+	<position x="2853.15" y="648.2"/>
+	<column name="sesionid" not-null="true">
+		<type name="character" length="32"/>
+	</column>
+	<column name="variable" not-null="true">
+		<type name="character" length="20"/>
+	</column>
+	<column name="valor" not-null="true">
+		<type name="character" length="255"/>
+	</column>
+	<column name="expiracion" not-null="true" default-value="0">
+		<type name="bigint"/>
+	</column>
+	<constraint name="kyron_valor_sesion_pkey" type="pk-constr" table="kyron.kyron_valor_sesion">
+		<columns names="sesionid,variable" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<constraint name="capitulo_libro_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.capitulo_libro">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="capitulo_libro_id_editorial_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.editorial" table="docencia.capitulo_libro">
+	<columns names="id_editorial" ref-type="src-columns"/>
+	<columns names="id_editorial" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="capitulo_libro_id_tipo_libro_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.tipo_libro" table="docencia.capitulo_libro">
+	<columns names="id_tipo_libro" ref-type="src-columns"/>
+	<columns names="id_tipo_libro" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="cartas_editor_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.cartas_editor">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="cartas_editor_id_contexto_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.contexto" table="docencia.cartas_editor">
+	<columns names="id_contexto" ref-type="src-columns"/>
+	<columns names="id_contexto" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="cartas_editor_id_tipo_indexacion_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.tipo_indexacion" table="docencia.cartas_editor">
+	<columns names="id_tipo_indexacion" ref-type="src-columns"/>
+	<columns names="id_tipo_indexacion" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="cartas_editor_paiscodigo_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.pais" table="docencia.cartas_editor">
+	<columns names="paiscodigo" ref-type="src-columns"/>
+	<columns names="paiscodigo" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="comunicacion_corta_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.comunicacion_corta">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="comunicacion_corta_id_contexto_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.contexto" table="docencia.comunicacion_corta">
+	<columns names="id_contexto" ref-type="src-columns"/>
+	<columns names="id_contexto" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="comunicacion_corta_id_tipo_indexacion_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.tipo_indexacion" table="docencia.comunicacion_corta">
+	<columns names="id_tipo_indexacion" ref-type="src-columns"/>
+	<columns names="id_tipo_indexacion" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="comunicacion_corta_paiscodigo_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.pais" table="docencia.comunicacion_corta">
+	<columns names="paiscodigo" ref-type="src-columns"/>
+	<columns names="paiscodigo" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="direccion_trabajogrado_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.direccion_trabajogrado">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="direccion_trabajogrado_id_categoria_trabajogrado_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.categoria_trabajogrado" table="docencia.direccion_trabajogrado">
+	<columns names="id_categoria_trabajogrado" ref-type="src-columns"/>
+	<columns names="id_categoria_trabajogrado" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="direccion_trabajogrado_id_tipo_trabajogrado_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.tipo_trabajogrado" table="docencia.direccion_trabajogrado">
+	<columns names="id_tipo_trabajogrado" ref-type="src-columns"/>
+	<columns names="id_tipo_trabajogrado" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="direccion_trabajogrado_estudiant_id_direccion_trabajogrado_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.direccion_trabajogrado" table="docencia.direccion_trabajogrado_estudiante">
+	<columns names="id_direccion_trabajogrado" ref-type="src-columns"/>
+	<columns names="id_direccion_trabajogrado" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="docente_id_genero_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.genero" table="docencia.docente">
+	<columns names="id_genero" ref-type="src-columns"/>
+	<columns names="id_genero" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="docente_id_tipo_documento_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.tipo_documento" table="docencia.docente">
+	<columns names="id_tipo_documento" ref-type="src-columns"/>
+	<columns names="id_tipo_documento" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="docente_proyectocurricular_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.docente_proyectocurricular">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="docente_proyectocurricular_id_proyectocurricular_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.proyectocurricular" table="docencia.docente_proyectocurricular">
+	<columns names="id_proyectocurricular" ref-type="src-columns"/>
+	<columns names="id_proyectocurricular" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="estudio_postdoctoral_docente_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.estudio_postdoctoral_docente">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="estudio_postdoctoral_docente_id_universidad_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.universidad" table="docencia.estudio_postdoctoral_docente">
+	<columns names="id_universidad" ref-type="src-columns"/>
+	<columns names="id_universidad" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="evaluador_capitulo_libro_codigo_isbn_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="NO ACTION" ref-table="docencia.capitulo_libro" table="docencia.evaluador_capitulo_libro">
+	<columns names="codigo_isbn,documento_docente" ref-type="src-columns"/>
+	<columns names="codigo_isbn,documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="evaluador_capitulo_libro_id_universidad_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.universidad" table="docencia.evaluador_capitulo_libro">
+	<columns names="id_universidad" ref-type="src-columns"/>
+	<columns names="id_universidad" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="evaluador_libro_docente_codigo_isbn_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.libro_docente" table="docencia.evaluador_libro_docente">
+	<columns names="codigo_isbn,documento_docente" ref-type="src-columns"/>
+	<columns names="codigo_isbn,documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="evaluador_libro_docente_id_universidad_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.universidad" table="docencia.evaluador_libro_docente">
+	<columns names="id_universidad" ref-type="src-columns"/>
+	<columns names="id_universidad" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="evaluador_produccion_tecnicaysoftware_id_universidad_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.universidad" table="docencia.evaluador_produccion_tecnicaysoftware">
+	<columns names="id_universidad" ref-type="src-columns"/>
+	<columns names="id_universidad" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="evaluador_produccion_tecnicaysoftware_numero_certificado_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="NO ACTION" ref-table="docencia.produccion_tecnicaysoftware" table="docencia.evaluador_produccion_tecnicaysoftware">
+	<columns names="numero_certificado,documento_docente" ref-type="src-columns"/>
+	<columns names="numero_certificado,documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="evaluador_produccion_video_id_produccion_video_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.produccion_video" table="docencia.evaluador_produccion_video">
+	<columns names="id_produccion_video" ref-type="src-columns"/>
+	<columns names="id_produccion_video" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="excelencia_academica_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.excelencia_academica">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="experiencia_calificada_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.experiencia_calificada">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="experiencia_calificada_id_tipo_emisor_resolucion_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.tipo_emisor_resolucion" table="docencia.experiencia_calificada">
+	<columns names="id_tipo_emisor_resolucion" ref-type="src-columns"/>
+	<columns names="id_tipo_emisor_resolucion" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="experiencia_calificada_id_tipo_experiencia_calificada_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.tipo_experiencia_calificada" table="docencia.experiencia_calificada">
+	<columns names="id_tipo_experiencia_calificada" ref-type="src-columns"/>
+	<columns names="id_tipo_experiencia_calificada" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="experiencia_direccion_academica_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.experiencia_direccion_academica">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="experiencia_direccion_academica_id_tipo_entidad_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.tipo_entidad" table="docencia.experiencia_direccion_academica">
+	<columns names="id_tipo_entidad" ref-type="src-columns"/>
+	<columns names="id_tipo_entidad" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="experiencia_direccion_academica_id_universidad_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.universidad" table="docencia.experiencia_direccion_academica">
+	<columns names="id_universidad" ref-type="src-columns"/>
+	<columns names="id_universidad" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="experiencia_docencia_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.experiencia_docencia">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="experiencia_docencia_id_tipo_entidad_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.tipo_entidad" table="docencia.experiencia_docencia">
+	<columns names="id_tipo_entidad" ref-type="src-columns"/>
+	<columns names="id_tipo_entidad" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="experiencia_docencia_id_universidad_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.universidad" table="docencia.experiencia_docencia">
+	<columns names="id_universidad" ref-type="src-columns"/>
+	<columns names="id_universidad" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="experiencia_investigacion_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.experiencia_investigacion">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="experiencia_investigacion_id_tipo_experiencia_investigacio_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.tipo_experiencia_investigacion" table="docencia.experiencia_investigacion">
+	<columns names="id_tipo_experiencia_investigacion" ref-type="src-columns"/>
+	<columns names="id_tipo_experiencia_investigacion" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="experiencia_investigacion_id_universidad_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.universidad" table="docencia.experiencia_investigacion">
+	<columns names="id_universidad" ref-type="src-columns"/>
+	<columns names="id_universidad" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="experiencia_profesional_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.experiencia_profesional">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="experiencia_profesional_id_universidad_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.universidad" table="docencia.experiencia_profesional">
+	<columns names="id_universidad" ref-type="src-columns"/>
+	<columns names="id_universidad" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="libro_docente_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.libro_docente">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="libro_docente_id_editorial_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.editorial" table="docencia.libro_docente">
+	<columns names="id_editorial" ref-type="src-columns"/>
+	<columns names="id_editorial" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="libro_docente_id_tipo_libro_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.tipo_libro" table="docencia.libro_docente">
+	<columns names="id_tipo_libro" ref-type="src-columns"/>
+	<columns names="id_tipo_libro" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="libro_docente_id_universidad_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.universidad" table="docencia.libro_docente">
+	<columns names="id_universidad" ref-type="src-columns"/>
+	<columns names="id_universidad" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="novedad_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.novedad">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="novedad_id_tipo_novedad_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.tipo_novedad" table="docencia.novedad">
+	<columns names="id_tipo_novedad" ref-type="src-columns"/>
+	<columns names="id_tipo_novedad" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="obra_artistica_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.obra_artistica">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="obra_artistica_id_contexto_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.contexto" table="docencia.obra_artistica">
+	<columns names="id_contexto" ref-type="src-columns"/>
+	<columns names="id_contexto" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="obra_artistica_id_tipo_obra_artistica_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.tipo_obra_artistica" table="docencia.obra_artistica">
+	<columns names="id_tipo_obra_artistica" ref-type="src-columns"/>
+	<columns names="id_tipo_obra_artistica" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="observacion_verificacion_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.observacion_verificacion">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="observacion_verificacion_id_tipo_observacion_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.tipo_observacion" table="docencia.observacion_verificacion">
+	<columns names="id_tipo_observacion" ref-type="src-columns"/>
+	<columns names="id_tipo_observacion" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="patente_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.patente">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="patente_id_tipo_patente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.tipo_patente" table="docencia.patente">
+	<columns names="id_tipo_patente" ref-type="src-columns"/>
+	<columns names="id_tipo_patente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="patente_id_universidad_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.universidad" table="docencia.patente">
+	<columns names="id_universidad" ref-type="src-columns"/>
+	<columns names="id_universidad" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="patente_paiscodigo_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.pais" table="docencia.patente">
+	<columns names="paiscodigo" ref-type="src-columns"/>
+	<columns names="paiscodigo" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="ponencia_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.ponencia">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="ponencia_id_contexto_ponencia_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.contexto_ponencia" table="docencia.ponencia">
+	<columns names="id_contexto_ponencia" ref-type="src-columns"/>
+	<columns names="id_contexto_ponencia" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="premio_docente_ciudadid_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.ciudad" table="docencia.premio_docente">
+	<columns names="ciudadid" ref-type="src-columns"/>
+	<columns names="ciudadid" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="premio_docente_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.premio_docente">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="premio_docente_id_contexto_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.contexto" table="docencia.premio_docente">
+	<columns names="id_contexto" ref-type="src-columns"/>
+	<columns names="id_contexto" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="premio_docente_id_tipo_entidad_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.tipo_entidad" table="docencia.premio_docente">
+	<columns names="id_tipo_entidad" ref-type="src-columns"/>
+	<columns names="id_tipo_entidad" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="premio_docente_id_universidad_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.universidad" table="docencia.premio_docente">
+	<columns names="id_universidad" ref-type="src-columns"/>
+	<columns names="id_universidad" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="premio_docente_paiscodigo_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.pais" table="docencia.premio_docente">
+	<columns names="paiscodigo" ref-type="src-columns"/>
+	<columns names="paiscodigo" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="produccion_tecnicaysoftware_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.produccion_tecnicaysoftware">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="produccion_tecnicaysoftware_id_tipo_tecnicaysoftware_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.tipo_tecnicaysoftware" table="docencia.produccion_tecnicaysoftware">
+	<columns names="id_tipo_tecnicaysoftware" ref-type="src-columns"/>
+	<columns names="id_tipo_tecnicaysoftware" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="produccion_video_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.produccion_video">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="produccion_video_id_caracter_video_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.caracter_video" table="docencia.produccion_video">
+	<columns names="id_caracter_video" ref-type="src-columns"/>
+	<columns names="id_caracter_video" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="produccion_video_id_contexto_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.contexto" table="docencia.produccion_video">
+	<columns names="id_contexto" ref-type="src-columns"/>
+	<columns names="id_contexto" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="proyectocurricular_id_facultad_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.facultad" table="docencia.proyectocurricular">
+	<columns names="id_facultad" ref-type="src-columns"/>
+	<columns names="id_facultad" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="publicacion_impresa_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.publicacion_impresa">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="resena_critica_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.resena_critica">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="resena_critica_id_tipo_indexacion_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.tipo_indexacion" table="docencia.resena_critica">
+	<columns names="id_tipo_indexacion" ref-type="src-columns"/>
+	<columns names="id_tipo_indexacion" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="revista_indexada_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.revista_indexada">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="revista_indexada_id_contexto_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.contexto" table="docencia.revista_indexada">
+	<columns names="id_contexto" ref-type="src-columns"/>
+	<columns names="id_contexto" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="revista_indexada_id_tipo_indexacion_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.tipo_indexacion" table="docencia.revista_indexada">
+	<columns names="id_tipo_indexacion" ref-type="src-columns"/>
+	<columns names="id_tipo_indexacion" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="revista_indexada_paiscodigo_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.pais" table="docencia.revista_indexada">
+	<columns names="paiscodigo" ref-type="src-columns"/>
+	<columns names="paiscodigo" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="tipo_indexacion_id_contexto_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.contexto" table="docencia.tipo_indexacion">
+	<columns names="id_contexto" ref-type="src-columns"/>
+	<columns names="id_contexto" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="tipo_novedad_id_categoria_puntaje_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.categoria_puntaje" table="docencia.tipo_novedad">
+	<columns names="id_categoria_puntaje" ref-type="src-columns"/>
+	<columns names="id_categoria_puntaje" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="tipo_observacion_id_categoria_puntaje_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.categoria_puntaje" table="docencia.tipo_observacion">
+	<columns names="id_categoria_puntaje" ref-type="src-columns"/>
+	<columns names="id_categoria_puntaje" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="titulo_academico_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.titulo_academico">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="titulo_academico_id_modalidad_titulo_academico_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.modalidad_titulo_academico" table="docencia.titulo_academico">
+	<columns names="id_modalidad_titulo_academico" ref-type="src-columns"/>
+	<columns names="id_modalidad_titulo_academico" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="titulo_academico_id_tipo_titulo_academico_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.tipo_titulo_academico" table="docencia.titulo_academico">
+	<columns names="id_tipo_titulo_academico" ref-type="src-columns"/>
+	<columns names="id_tipo_titulo_academico" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="titulo_academico_id_universidad_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.universidad" table="docencia.titulo_academico">
+	<columns names="id_universidad" ref-type="src-columns"/>
+	<columns names="id_universidad" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="titulo_academico_paiscodigo_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.pais" table="docencia.titulo_academico">
+	<columns names="paiscodigo" ref-type="src-columns"/>
+	<columns names="paiscodigo" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="traduccion_articulo_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.traduccion_articulo">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="traduccion_articulo_id_tipo_traduccion_articulo_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.tipo_traduccion_articulo" table="docencia.traduccion_articulo">
+	<columns names="id_tipo_traduccion_articulo" ref-type="src-columns"/>
+	<columns names="id_tipo_traduccion_articulo" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="traduccion_libro_documento_docente_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="docencia.docente" table="docencia.traduccion_libro">
+	<columns names="documento_docente" ref-type="src-columns"/>
+	<columns names="documento_docente" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="kyron_menu_enlace_id_clase_enlace_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="kyron.kyron_menu_clase_enlace" table="kyron.kyron_menu_enlace">
+	<columns names="id_clase_enlace" ref-type="src-columns"/>
+	<columns names="id_clase_enlace" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="kyron_menu_enlace_id_menu_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="kyron.kyron_menu" table="kyron.kyron_menu_enlace">
+	<columns names="id_menu" ref-type="src-columns"/>
+	<columns names="id_menu" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="kyron_menu_enlace_id_tipo_enlace_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="kyron.kyron_menu_tipo_enlace" table="kyron.kyron_menu_enlace">
+	<columns names="id_tipo_enlace" ref-type="src-columns"/>
+	<columns names="id_tipo_enlace" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_capitulo_libro_docente" type="relfk"
+	 custom-color="#a15d87"
+	 src-table="docencia.capitulo_libro"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_capitulo_libro_editorial" type="relfk"
+	 custom-color="#972ebc"
+	 src-table="docencia.capitulo_libro"
+	 dst-table="docencia.editorial"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_capitulo_libro_tipo_libro" type="relfk"
+	 custom-color="#c2c381"
+	 src-table="docencia.capitulo_libro"
+	 dst-table="docencia.tipo_libro"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_cartas_editor_docente" type="relfk"
+	 custom-color="#0559d7"
+	 src-table="docencia.cartas_editor"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_cartas_editor_contexto" type="relfk"
+	 custom-color="#375630"
+	 src-table="docencia.cartas_editor"
+	 dst-table="docencia.contexto"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_cartas_editor_tipo_indexacion" type="relfk"
+	 custom-color="#e98f4e"
+	 src-table="docencia.cartas_editor"
+	 dst-table="docencia.tipo_indexacion"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_cartas_editor_pais" type="relfk"
+	 custom-color="#c0cf0d"
+	 src-table="docencia.cartas_editor"
+	 dst-table="docencia.pais"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_comunicacion_corta_docente" type="relfk"
+	 custom-color="#f671b6"
+	 src-table="docencia.comunicacion_corta"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_comunicacion_corta_contexto" type="relfk"
+	 custom-color="#13eebd"
+	 src-table="docencia.comunicacion_corta"
+	 dst-table="docencia.contexto"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_comunicacion_corta_tipo_indexacion" type="relfk"
+	 custom-color="#ef8f12"
+	 src-table="docencia.comunicacion_corta"
+	 dst-table="docencia.tipo_indexacion"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_comunicacion_corta_pais" type="relfk"
+	 custom-color="#7e44d0"
+	 src-table="docencia.comunicacion_corta"
+	 dst-table="docencia.pais"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_direccion_trabajogrado_docente" type="relfk"
+	 custom-color="#11c11d"
+	 src-table="docencia.direccion_trabajogrado"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_direccion_trabajogrado_categoria_trabajogrado" type="relfk"
+	 custom-color="#bcd5ca"
+	 src-table="docencia.direccion_trabajogrado"
+	 dst-table="docencia.categoria_trabajogrado"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_direccion_trabajogrado_tipo_trabajogrado" type="relfk"
+	 custom-color="#05c088"
+	 src-table="docencia.direccion_trabajogrado"
+	 dst-table="docencia.tipo_trabajogrado"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_direccion_trabajogrado_estudiante_direccion_trabajogrado" type="relfk"
+	 custom-color="#646aca"
+	 src-table="docencia.direccion_trabajogrado_estudiante"
+	 dst-table="docencia.direccion_trabajogrado"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_docente_genero" type="relfk"
+	 custom-color="#79e3f0"
+	 src-table="docencia.docente"
+	 dst-table="docencia.genero"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_docente_tipo_documento" type="relfk"
+	 custom-color="#1c35bc"
+	 src-table="docencia.docente"
+	 dst-table="docencia.tipo_documento"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_docente_proyectocurricular_docente" type="relfk"
+	 custom-color="#be770c"
+	 src-table="docencia.docente_proyectocurricular"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_docente_proyectocurricular_proyectocurricular" type="relfk"
+	 custom-color="#32ccaa"
+	 src-table="docencia.docente_proyectocurricular"
+	 dst-table="docencia.proyectocurricular"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_estudio_postdoctoral_docente_docente" type="relfk"
+	 custom-color="#c592f9"
+	 src-table="docencia.estudio_postdoctoral_docente"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_estudio_postdoctoral_docente_universidad" type="relfk"
+	 custom-color="#a9ab19"
+	 src-table="docencia.estudio_postdoctoral_docente"
+	 dst-table="docencia.universidad"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_evaluador_capitulo_libro_capitulo_libro" type="relfk"
+	 custom-color="#c0e316"
+	 src-table="docencia.evaluador_capitulo_libro"
+	 dst-table="docencia.capitulo_libro"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_evaluador_capitulo_libro_universidad" type="relfk"
+	 custom-color="#876bcf"
+	 src-table="docencia.evaluador_capitulo_libro"
+	 dst-table="docencia.universidad"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_evaluador_libro_docente_libro_docente" type="relfk"
+	 custom-color="#6d26b9"
+	 src-table="docencia.evaluador_libro_docente"
+	 dst-table="docencia.libro_docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_evaluador_libro_docente_universidad" type="relfk"
+	 custom-color="#962334"
+	 src-table="docencia.evaluador_libro_docente"
+	 dst-table="docencia.universidad"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_evaluador_produccion_tecnicaysoftware_universidad" type="relfk"
+	 custom-color="#7153f2"
+	 src-table="docencia.evaluador_produccion_tecnicaysoftware"
+	 dst-table="docencia.universidad"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_evaluador_produccion_tecnicaysoftware_produccion_tecnicayso" type="relfk"
+	 custom-color="#440b85"
+	 src-table="docencia.evaluador_produccion_tecnicaysoftware"
+	 dst-table="docencia.produccion_tecnicaysoftware"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_evaluador_produccion_video_produccion_video" type="relfk"
+	 custom-color="#dd5e75"
+	 src-table="docencia.evaluador_produccion_video"
+	 dst-table="docencia.produccion_video"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_excelencia_academica_docente" type="relfk"
+	 custom-color="#01c535"
+	 src-table="docencia.excelencia_academica"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_experiencia_calificada_docente" type="relfk"
+	 custom-color="#078c19"
+	 src-table="docencia.experiencia_calificada"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_experiencia_calificada_tipo_emisor_resolucion" type="relfk"
+	 custom-color="#308b34"
+	 src-table="docencia.experiencia_calificada"
+	 dst-table="docencia.tipo_emisor_resolucion"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_experiencia_calificada_tipo_experiencia_calificada" type="relfk"
+	 custom-color="#1c4497"
+	 src-table="docencia.experiencia_calificada"
+	 dst-table="docencia.tipo_experiencia_calificada"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_experiencia_direccion_academica_docente" type="relfk"
+	 custom-color="#eb6ff9"
+	 src-table="docencia.experiencia_direccion_academica"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_experiencia_direccion_academica_tipo_entidad" type="relfk"
+	 custom-color="#39981e"
+	 src-table="docencia.experiencia_direccion_academica"
+	 dst-table="docencia.tipo_entidad"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_experiencia_direccion_academica_universidad" type="relfk"
+	 custom-color="#81b7b4"
+	 src-table="docencia.experiencia_direccion_academica"
+	 dst-table="docencia.universidad"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_experiencia_docencia_docente" type="relfk"
+	 custom-color="#416b5e"
+	 src-table="docencia.experiencia_docencia"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_experiencia_docencia_tipo_entidad" type="relfk"
+	 custom-color="#ff858f"
+	 src-table="docencia.experiencia_docencia"
+	 dst-table="docencia.tipo_entidad"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_experiencia_docencia_universidad" type="relfk"
+	 custom-color="#cb9497"
+	 src-table="docencia.experiencia_docencia"
+	 dst-table="docencia.universidad"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_experiencia_investigacion_docente" type="relfk"
+	 custom-color="#04c419"
+	 src-table="docencia.experiencia_investigacion"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_experiencia_investigacion_tipo_experiencia_investigacion" type="relfk"
+	 custom-color="#2fc681"
+	 src-table="docencia.experiencia_investigacion"
+	 dst-table="docencia.tipo_experiencia_investigacion"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_experiencia_investigacion_universidad" type="relfk"
+	 custom-color="#f973ec"
+	 src-table="docencia.experiencia_investigacion"
+	 dst-table="docencia.universidad"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_experiencia_profesional_docente" type="relfk"
+	 custom-color="#25a5aa"
+	 src-table="docencia.experiencia_profesional"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_experiencia_profesional_universidad" type="relfk"
+	 custom-color="#4e8e28"
+	 src-table="docencia.experiencia_profesional"
+	 dst-table="docencia.universidad"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_libro_docente_docente" type="relfk"
+	 custom-color="#e86fcc"
+	 src-table="docencia.libro_docente"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_libro_docente_editorial" type="relfk"
+	 custom-color="#51a2e7"
+	 src-table="docencia.libro_docente"
+	 dst-table="docencia.editorial"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_libro_docente_tipo_libro" type="relfk"
+	 custom-color="#5b5ad9"
+	 src-table="docencia.libro_docente"
+	 dst-table="docencia.tipo_libro"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_libro_docente_universidad" type="relfk"
+	 custom-color="#f486fc"
+	 src-table="docencia.libro_docente"
+	 dst-table="docencia.universidad"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_novedad_docente" type="relfk"
+	 custom-color="#c15942"
+	 src-table="docencia.novedad"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_novedad_tipo_novedad" type="relfk"
+	 custom-color="#248780"
+	 src-table="docencia.novedad"
+	 dst-table="docencia.tipo_novedad"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_obra_artistica_docente" type="relfk"
+	 custom-color="#0cec23"
+	 src-table="docencia.obra_artistica"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_obra_artistica_contexto" type="relfk"
+	 custom-color="#e9eae0"
+	 src-table="docencia.obra_artistica"
+	 dst-table="docencia.contexto"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_obra_artistica_tipo_obra_artistica" type="relfk"
+	 custom-color="#305cd7"
+	 src-table="docencia.obra_artistica"
+	 dst-table="docencia.tipo_obra_artistica"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_observacion_verificacion_docente" type="relfk"
+	 custom-color="#d7b8d3"
+	 src-table="docencia.observacion_verificacion"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_observacion_verificacion_tipo_observacion" type="relfk"
+	 custom-color="#a9a4e6"
+	 src-table="docencia.observacion_verificacion"
+	 dst-table="docencia.tipo_observacion"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_patente_docente" type="relfk"
+	 custom-color="#7cf1d2"
+	 src-table="docencia.patente"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_patente_tipo_patente" type="relfk"
+	 custom-color="#a878e3"
+	 src-table="docencia.patente"
+	 dst-table="docencia.tipo_patente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_patente_universidad" type="relfk"
+	 custom-color="#830710"
+	 src-table="docencia.patente"
+	 dst-table="docencia.universidad"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_patente_pais" type="relfk"
+	 custom-color="#0f1f9a"
+	 src-table="docencia.patente"
+	 dst-table="docencia.pais"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ponencia_docente" type="relfk"
+	 custom-color="#0710d2"
+	 src-table="docencia.ponencia"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_ponencia_contexto_ponencia" type="relfk"
+	 custom-color="#c68976"
+	 src-table="docencia.ponencia"
+	 dst-table="docencia.contexto_ponencia"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_premio_docente_ciudad" type="relfk"
+	 custom-color="#3065cd"
+	 src-table="docencia.premio_docente"
+	 dst-table="docencia.ciudad"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_premio_docente_docente" type="relfk"
+	 custom-color="#7dedee"
+	 src-table="docencia.premio_docente"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_premio_docente_contexto" type="relfk"
+	 custom-color="#64f238"
+	 src-table="docencia.premio_docente"
+	 dst-table="docencia.contexto"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_premio_docente_tipo_entidad" type="relfk"
+	 custom-color="#cfca9c"
+	 src-table="docencia.premio_docente"
+	 dst-table="docencia.tipo_entidad"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_premio_docente_universidad" type="relfk"
+	 custom-color="#dd588b"
+	 src-table="docencia.premio_docente"
+	 dst-table="docencia.universidad"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_premio_docente_pais" type="relfk"
+	 custom-color="#55b231"
+	 src-table="docencia.premio_docente"
+	 dst-table="docencia.pais"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_produccion_tecnicaysoftware_docente" type="relfk"
+	 custom-color="#3d21dd"
+	 src-table="docencia.produccion_tecnicaysoftware"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_produccion_tecnicaysoftware_tipo_tecnicaysoftware" type="relfk"
+	 custom-color="#c69236"
+	 src-table="docencia.produccion_tecnicaysoftware"
+	 dst-table="docencia.tipo_tecnicaysoftware"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_produccion_video_docente" type="relfk"
+	 custom-color="#de0058"
+	 src-table="docencia.produccion_video"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_produccion_video_caracter_video" type="relfk"
+	 custom-color="#b2ec49"
+	 src-table="docencia.produccion_video"
+	 dst-table="docencia.caracter_video"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_produccion_video_contexto" type="relfk"
+	 custom-color="#0f4737"
+	 src-table="docencia.produccion_video"
+	 dst-table="docencia.contexto"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_proyectocurricular_facultad" type="relfk"
+	 custom-color="#f4f3dd"
+	 src-table="docencia.proyectocurricular"
+	 dst-table="docencia.facultad"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_publicacion_impresa_docente" type="relfk"
+	 custom-color="#13f13b"
+	 src-table="docencia.publicacion_impresa"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_resena_critica_docente" type="relfk"
+	 custom-color="#f44b84"
+	 src-table="docencia.resena_critica"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_resena_critica_tipo_indexacion" type="relfk"
+	 custom-color="#83fed6"
+	 src-table="docencia.resena_critica"
+	 dst-table="docencia.tipo_indexacion"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_revista_indexada_docente" type="relfk"
+	 custom-color="#821e7e"
+	 src-table="docencia.revista_indexada"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_revista_indexada_contexto" type="relfk"
+	 custom-color="#406787"
+	 src-table="docencia.revista_indexada"
+	 dst-table="docencia.contexto"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_revista_indexada_tipo_indexacion" type="relfk"
+	 custom-color="#62fd13"
+	 src-table="docencia.revista_indexada"
+	 dst-table="docencia.tipo_indexacion"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_revista_indexada_pais" type="relfk"
+	 custom-color="#0ab953"
+	 src-table="docencia.revista_indexada"
+	 dst-table="docencia.pais"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_tipo_indexacion_contexto" type="relfk"
+	 custom-color="#f60851"
+	 src-table="docencia.tipo_indexacion"
+	 dst-table="docencia.contexto"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_tipo_novedad_categoria_puntaje" type="relfk"
+	 custom-color="#a6b663"
+	 src-table="docencia.tipo_novedad"
+	 dst-table="docencia.categoria_puntaje"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_tipo_observacion_categoria_puntaje" type="relfk"
+	 custom-color="#cb9b81"
+	 src-table="docencia.tipo_observacion"
+	 dst-table="docencia.categoria_puntaje"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_titulo_academico_docente" type="relfk"
+	 custom-color="#5cbe1b"
+	 src-table="docencia.titulo_academico"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_titulo_academico_modalidad_titulo_academico" type="relfk"
+	 custom-color="#7a3484"
+	 src-table="docencia.titulo_academico"
+	 dst-table="docencia.modalidad_titulo_academico"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_titulo_academico_tipo_titulo_academico" type="relfk"
+	 custom-color="#0d7b50"
+	 src-table="docencia.titulo_academico"
+	 dst-table="docencia.tipo_titulo_academico"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_titulo_academico_universidad" type="relfk"
+	 custom-color="#f9d5bc"
+	 src-table="docencia.titulo_academico"
+	 dst-table="docencia.universidad"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_titulo_academico_pais" type="relfk"
+	 custom-color="#daf540"
+	 src-table="docencia.titulo_academico"
+	 dst-table="docencia.pais"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_traduccion_articulo_docente" type="relfk"
+	 custom-color="#12d275"
+	 src-table="docencia.traduccion_articulo"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_traduccion_articulo_tipo_traduccion_articulo" type="relfk"
+	 custom-color="#1af6c8"
+	 src-table="docencia.traduccion_articulo"
+	 dst-table="docencia.tipo_traduccion_articulo"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_traduccion_libro_docente" type="relfk"
+	 custom-color="#9c65fc"
+	 src-table="docencia.traduccion_libro"
+	 dst-table="docencia.docente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_kyron_menu_enlace_kyron_menu_clase_enlace" type="relfk"
+	 custom-color="#52f084"
+	 src-table="kyron.kyron_menu_enlace"
+	 dst-table="kyron.kyron_menu_clase_enlace"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_kyron_menu_enlace_kyron_menu" type="relfk"
+	 custom-color="#179b18"
+	 src-table="kyron.kyron_menu_enlace"
+	 dst-table="kyron.kyron_menu"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_kyron_menu_enlace_kyron_menu_tipo_enlace" type="relfk"
+	 custom-color="#4f56d6"
+	 src-table="kyron.kyron_menu_enlace"
+	 dst-table="kyron.kyron_menu_tipo_enlace"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>

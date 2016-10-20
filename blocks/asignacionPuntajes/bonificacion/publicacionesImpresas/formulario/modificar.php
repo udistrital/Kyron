@@ -111,7 +111,6 @@ class FormularioModificar {
 		$_REQUEST['numeroRevista'] =  $resultado[0]['numero_revista'];
 		$_REQUEST['volumenRevista'] =  $resultado[0]['volumen_revista'];
 		$_REQUEST['annoRevista'] =  $resultado[0]['anno_revista'];
-		$_REQUEST['categoria'] =  $resultado[0]['id_tipo_indexacion'];
 		$_REQUEST['numeroActa'] =  $resultado[0]['numero_acta'];
 		$_REQUEST['fechaActa'] =  $resultado[0]['fecha_acta'];
 		$_REQUEST['numeroCasoActa'] =  $resultado[0]['numero_caso'];
@@ -232,7 +231,7 @@ class FormularioModificar {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, minSize[8],maxSize[8]';
+		$atributos ['validar'] = 'required, minSize[8],maxSize[30]';
 	
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -396,43 +395,43 @@ class FormularioModificar {
 		// ----------------FIN CONTROL: Campo de Texto Año Publicación de la Revista--------------------------------------------------------
 				
 		// ---------------- CONTROL: Lista Categoria Revista--------------------------------------------------------		
-     	$esteCampo = "categoria";
-		$atributos ['nombre'] = $esteCampo;
-		$atributos ['id'] = $esteCampo;
-		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ["etiquetaObligatorio"] = true;
-		$atributos ['tab'] = $tab ++;
-		$atributos ['anchoEtiqueta'] = 280;
-		$atributos ['evento'] = '';
-		if (isset ( $_REQUEST [$esteCampo] )) {
-			$atributos ['seleccion'] = $_REQUEST [$esteCampo];
-		} else {
-			$atributos ['seleccion'] = - 1;
-		}
-		$atributos ['deshabilitado'] = false;
-		$atributos ['columnas'] = 1;
-		$atributos ['tamanno'] = 1;
-		$atributos ['ajax_function'] = "";
-		$atributos ['ajax_control'] = $esteCampo;
-		$atributos ['estilo'] = "jqueryui";
-		$atributos ['validar'] = "required,custom[integer]";
-		$atributos ['limitar'] = false;
-		$atributos ['anchoCaja'] = 60;
-		$atributos ['miEvento'] = '';
-		$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "categoria_revista", 1 );
-		$matrizItems = array (
-				array (
-						0,
-						' '
-				)
-		);
-		$matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
-		$atributos ['matrizItems'] = $matrizItems;
-			
-		$atributos = array_merge ( $atributos, $atributosGlobales );
-		echo $this->miFormulario->campoCuadroLista ( $atributos );
-		unset ( $atributos );
-		
+     	// $esteCampo = "categoria";
+		// $atributos ['nombre'] = $esteCampo;
+		// $atributos ['id'] = $esteCampo;
+		// $atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+		// $atributos ["etiquetaObligatorio"] = true;
+		// $atributos ['tab'] = $tab ++;
+		// $atributos ['anchoEtiqueta'] = 280;
+		// $atributos ['evento'] = '';
+		// if (isset ( $_REQUEST [$esteCampo] )) {
+			// $atributos ['seleccion'] = $_REQUEST [$esteCampo];
+		// } else {
+			// $atributos ['seleccion'] = - 1;
+		// }
+		// $atributos ['deshabilitado'] = false;
+		// $atributos ['columnas'] = 1;
+		// $atributos ['tamanno'] = 1;
+		// $atributos ['ajax_function'] = "";
+		// $atributos ['ajax_control'] = $esteCampo;
+		// $atributos ['estilo'] = "jqueryui";
+		// $atributos ['validar'] = "required,custom[integer]";
+		// $atributos ['limitar'] = false;
+		// $atributos ['anchoCaja'] = 60;
+		// $atributos ['miEvento'] = '';
+		// $atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "categoria_revista", 1 );
+		// $matrizItems = array (
+				// array (
+						// 0,
+						// ' '
+				// )
+		// );
+		// $matrizItems = $esteRecursoDB->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
+		// $atributos ['matrizItems'] = $matrizItems;
+// 			
+		// $atributos = array_merge ( $atributos, $atributosGlobales );
+		// echo $this->miFormulario->campoCuadroLista ( $atributos );
+		// unset ( $atributos );
+// 		
 		// ----------------FIN CONTROL: Lista Categoria Revista--------------------------------------------------------
 			
 		// ----------------INICIO CONTROL: Campo de Texto Número Acta Publicaciones Impresas--------------------------------------------------------
