@@ -887,6 +887,12 @@ class Sql extends \Sql {
 				$cadenaSql.=" llaves_primarias_valor ='" . $variable ['llaves_primarias_valor'] . "'";
 				$cadenaSql.=" ;";
 				break;
+			case 'eliminar_de_tabla' :
+				$cadenaSql=" DELETE FROM docencia.".$variable['tabla'];
+				$cadenaSql.=" WHERE";
+				$cadenaSql.=" ".$variable['condicion'];
+				$cadenaSql.=" ;";
+				break;
 		}
 		
 		return $cadenaSql;

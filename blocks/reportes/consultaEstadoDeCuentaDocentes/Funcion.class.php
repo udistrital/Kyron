@@ -43,6 +43,9 @@ class Funcion {
 	function actualizar() {
 		include_once ($this->ruta . "/funcion/actualizar.php");
 	}
+	function eliminarDeTabla() {
+		include_once ($this->ruta . "/funcion/eliminar_registro.php");
+	}
 	function action() {
 		
 		// Evitar que se ingrese codigo HTML y PHP en los campos de texto
@@ -112,6 +115,10 @@ class Funcion {
 		} else if (isset ( $_REQUEST ["opcion"] )) {
 			
 			switch ($_REQUEST ["opcion"]) {
+				case 'eliminar' :
+					$this->eliminarDeTabla ();
+					break;
+					
 				case 'consultar' :
 					$this->consultarContrato ();
 					break;

@@ -3,6 +3,7 @@ $indice = -1;
 //$funcion = array();
 // $funcion [$indice ++] = "select2.js";
 // $funcion [$indice ++] = "select2_locale_es.js";
+$funcion [$indice ++] = "custom.js";
 $funcion [$indice ++] = "jquery.dataTables.js";
 // $funcion [$indice ++] = "timepicker.js";
 $funcion [$indice ++] = "jquery.autocomplete.js";

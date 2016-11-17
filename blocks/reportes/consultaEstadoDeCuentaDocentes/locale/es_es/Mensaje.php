@@ -4,35 +4,35 @@ $this->idioma ['noDefinido'] = 'No definido';
 $this->idioma[$esteBloque ['nombre']] = "";
 
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
-$this->idioma["tabConsultar"] = "Consultar Cartas al Editor";
-$this->idioma["tabIngresar"] = "Ingresar Cartas al Editor";
+$this->idioma["tabConsultar"] = "Estado de Cuenta Individual";
+$this->idioma["tabIngresar"] = "Ingresar Estado de Cuenta Individual";
 //////////////////////////////////////////////////////////////
 
 //************ MENSAJES *********
-$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Carta al Editor para el docente <br>";
-$this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado la Carta al Editor para el docente <br>" ;
-$this->idioma["mensajeError"] =  "Error al tratar de registrar la Carta al Editor.";
-$this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Cartas al Editor Para los Criterios Ingresados";
-$this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de Cartas al Editor Para el Docente </br>";
+$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de Estado de Cuenta Individual <br>";
+$this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado Estado de Cuenta Individual <br>" ;
+$this->idioma["mensajeError"] =  "Error al tratar de registrar Estado de Cuenta Individual.";
+$this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Estado de Cuenta Individual Para los Criterios Ingresados";
+$this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de Estado de Cuenta Individual Para el Docente </br>";
 /////////////////////////////////
 
 //* SECCIÓN ELEMENTOS QUE SU NOMBRE POSIBLEMENTE VARIA DENTRO DEL FORMULARIO *//
-$this->idioma["nombre"] = "Nombre de la Revista";
-$this->idioma["contexto"] = "Contexto de la Revista";
+$this->idioma["nombre"] = "Nombre de la Estado de Cuenta Individual";
+$this->idioma["contexto"] = "Contexto de la Estado de Cuenta Individual";
 $this->idioma["identificadorColeccion"] = "ISSN";
 $this->idioma["categoria0"] = "Categorías";
 $this->idioma["categoria1"] = "Tipo de Indexación";
-$this->idioma["numero"] = "Número de Revista";
+$this->idioma["numero"] = "Número de Estado de Cuenta Individual";
 $this->idioma["marcoConsultaGeneral"] = "Consulta Cartas al Editor Registradas";
 $this->idioma["marcoModificarRegistro"] = "Modificar Información de Cartas al Editor";
 
-$this->idioma["nombreTitulo"] = "Nombre de Revista Públicada.";
-$this->idioma["contextoTitulo"] = "Contexto de la Revista.";
+$this->idioma["nombreTitulo"] = "Nombre de Estado de Cuenta Individual Públicada.";
+$this->idioma["contextoTitulo"] = "Contexto de la Estado de Cuenta Individual.";
 $this->idioma["identificadorColeccionTitulo"] = "International Standard Serial Number, Número Internacional Normalizado de Publicaciones Seriado.";
-$this->idioma["numeroTitulo"] = "Número de Publicación en Revista.";
-$this->idioma["paginasTitulo"] = "Páginas de la Publicación en Revista.";
-$this->idioma["annoTitulo"] = "Año de Publicación de la Revista.";
-$this->idioma["volumenTitulo"] = "Volumen de la Revista.";
+$this->idioma["numeroTitulo"] = "Número de Publicación en Estado de Cuenta Individual.";
+$this->idioma["paginasTitulo"] = "Páginas de la Publicación en Estado de Cuenta Individual.";
+$this->idioma["annoTitulo"] = "Año de Publicación de la Estado de Cuenta Individual.";
+$this->idioma["volumenTitulo"] = "Volumen de la Estado de Cuenta Individual.";
 $this->idioma["tituloArticuloTitulo"] = "Título del Artículo Indexado";
 $this->idioma["numeroAutoresTitulo"] = "Número de Autores del Artículo.";
 $this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";
