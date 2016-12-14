@@ -5,7 +5,6 @@ import csv
 from unicodedata import normalize
 import re
 
-
 def slq(id_titulo_academico,
         documento_docente,
         id_tipo_titulo_academico,
@@ -71,7 +70,25 @@ puntaje
            numero_caso,
            puntaje)
     # print(sql)
-    return sql
+    row_text = "%d\t%s\t%d\t%s\t%d\t%d\t%d\t%d\t%s\t%s\t%s\t%s\t%s\t%s\t%f\n" % (
+       id_titulo_academico,
+       documento_docente,
+       id_tipo_titulo_academico,
+       titulo,
+       id_universidad,
+       paiscodigo,
+       anno,
+       id_modalidad_titulo_academico,
+       resolucion,
+       fecha_resolucion,
+       entidad_convalidacion,
+       numero_acta,
+       fecha_acta,
+       numero_caso,
+       puntaje)
+    # print(sql)
+    #return sql
+    return row_text
 
 # https://gist.github.com/minichiello/194817
 
@@ -150,7 +167,7 @@ class pregrado_especial:
         self.es_especial = False
         self.puntaje = 178
         pregrado = elimina_acentos(pregrado).upper()
-        if pregrado.find('MUSICA') > -1 or pregrado.find('MEDICIN'):
+        if pregrado.find('MUSICA') > -1 or pregrado.find('MEDICIN') > -1:
             self.es_especial = True
             self.puntaje = 183
 
@@ -245,9 +262,9 @@ with open('kyron - Tabla Títulos Académicos - datos titulo_academico.tsv', 'r'
     num_titulo = 0
     for row in rows:
         # print(row)
-        num_titulo += 1
         if row['PREGRADO']:
             # print(row['PREGRADO'])
+            num_titulo += 1
             universidad = ''
             id_universidad = buscar_universidad(row['INSTITUCION PREGRADO'])
             if id_universidad is False:
@@ -260,7 +277,7 @@ with open('kyron - Tabla Títulos Académicos - datos titulo_academico.tsv', 'r'
             sql = slq(
                 num_titulo,
                 row['id_docente'],
-                1,  # pregrado
+                1,  # pregrado id_tipo_titulo_academico
                 row['PREGRADO'],  # titulo
                 id_universidad,  # id_universidad
                 -1,  # paiscodigo
@@ -278,6 +295,7 @@ with open('kyron - Tabla Títulos Académicos - datos titulo_academico.tsv', 'r'
             escribir_archivo(sql)
         if row['ESPECIALIZACION']:
             # print(row['ESPECIALIZACION'])
+            num_titulo += 1
             universidad = ''
             id_universidad = buscar_universidad(
                 row['INSTITUCION ESPECIALIZACION'])
@@ -293,12 +311,12 @@ with open('kyron - Tabla Títulos Académicos - datos titulo_academico.tsv', 'r'
             sql = slq(
                 num_titulo,
                 row['id_docente'],
-                1,  # pregrado
+                2,  # especializacion id_tipo_titulo_academico
                 row['ESPECIALIZACION'],  # titulo
                 id_universidad,  # id_universidad
                 -1,  # paiscodigo
                 anno,  # anno
-                2,  # id_modalidad_titulo_academico
+                1,  # id_modalidad_titulo_academico
                 resolucion,
                 fecha_resolucion,
                 universidad,  # entidad_convalidacion
@@ -311,6 +329,7 @@ with open('kyron - Tabla Títulos Académicos - datos titulo_academico.tsv', 'r'
             escribir_archivo(sql)
         if row['MAESTRIA']:
             # print(row['MAESTRIA'])
+            num_titulo += 1
             universidad = ''
             id_universidad = buscar_universidad(
                 row['INSTITUCION MAESTRIA'])
@@ -326,12 +345,12 @@ with open('kyron - Tabla Títulos Académicos - datos titulo_academico.tsv', 'r'
             sql = slq(
                 num_titulo,
                 row['id_docente'],
-                1,  # pregrado
+                3,  # maestria id_tipo_titulo_academico
                 row['MAESTRIA'],  # titulo
                 id_universidad,  # id_universidad
                 -1,  # paiscodigo
                 anno,  # anno
-                3,  # id_modalidad_titulo_academico
+                1,  # id_modalidad_titulo_academico
                 resolucion,
                 fecha_resolucion,
                 universidad,  # entidad_convalidacion
@@ -344,6 +363,7 @@ with open('kyron - Tabla Títulos Académicos - datos titulo_academico.tsv', 'r'
             escribir_archivo(sql)
         if row['DOCTORADO']:
             # print(row['DOCTORADO'])
+            num_titulo += 1
             universidad = ''
             id_universidad = buscar_universidad(
                 row['INSTITUCION DOCTORADO'])
@@ -359,12 +379,12 @@ with open('kyron - Tabla Títulos Académicos - datos titulo_academico.tsv', 'r'
             sql = slq(
                 num_titulo,
                 row['id_docente'],
-                1,  # pregrado
+                4,  # doctorado id_tipo_titulo_academico
                 row['DOCTORADO'],  # titulo
                 id_universidad,  # id_universidad
                 -1,  # paiscodigo
                 anno,  # anno
-                4,  # id_modalidad_titulo_academico
+                1,  # id_modalidad_titulo_academico
                 resolucion,
                 fecha_resolucion,
                 universidad,  # entidad_convalidacion
