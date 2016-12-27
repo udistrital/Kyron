@@ -94,6 +94,15 @@ class Sql extends \Sql {
 			
 			/* Consultas del desarrollo */
 				
+			case "docente" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" documento_docente||' - '||primer_nombre||' '||segundo_nombre||' '||primer_apellido||' '||segundo_apellido AS value, ";
+				$cadenaSql.=" documento_docente AS data ";
+				$cadenaSql.=" FROM ";
+				$cadenaSql.=" docencia.docente WHERE documento_docente||' - '||primer_nombre||' '||segundo_nombre||' '||primer_apellido||' '||segundo_apellido ";
+				$cadenaSql.=" LIKE '%" . $variable . "%' AND estado = true LIMIT 10;";
+				break;
+				
 			case "datos_docente" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido AS nombre_docente,";
@@ -781,6 +790,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" AND a.estado = true";
 				$cadenaSql.=" ORDER BY titulo ASC";
 				$cadenaSql.=" ;";
+				break;
 							
 			case "novedades_salariales" :
 				$cadenaSql=" SELECT";
@@ -876,6 +886,12 @@ class Sql extends \Sql {
 				$cadenaSql.=" verificado='" . $variable ['verificado'] . "'";
 				$cadenaSql.=" WHERE";
 				$cadenaSql.=" llaves_primarias_valor ='" . $variable ['llaves_primarias_valor'] . "'";
+				$cadenaSql.=" ;";
+				break;
+			case 'eliminar_de_tabla' :
+				$cadenaSql=" DELETE FROM docencia.".$variable['tabla'];
+				$cadenaSql.=" WHERE";
+				$cadenaSql.=" ".$variable['condicion'];
 				$cadenaSql.=" ;";
 				break;
 		}
