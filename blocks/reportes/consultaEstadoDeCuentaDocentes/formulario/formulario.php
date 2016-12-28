@@ -254,6 +254,7 @@ class registrarForm {
 		//Almacena todos los resultados del docente
 		//$items = array();
 		
+		// ---------------- OJO: copiar desde acá a bloque reportes/estadoDeCuentaCondor/formulario/formulario.php ------
 		// ---------------- CONSULTA: títulos docente --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'titulos_docente', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
@@ -1393,10 +1394,6 @@ class registrarForm {
 				'nombre_campo' => 'anno_revista',
 		);
 		$campos[] = array(
-				'alias_campo' => 'Tipo Indexación',
-				'nombre_campo' => 'tipo_indexacion',
-		);
-		$campos[] = array(
 				'alias_campo' => 'Número Caso Acta',
 				'nombre_campo' => 'numero_caso',
 		);
@@ -1821,7 +1818,7 @@ class registrarForm {
 				$enlaceModificar = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceModificar, $directorio );
 				
 				$resultado['_enlace_modificacion'] = '<a href="'.$enlaceModificar.'"><span class="icon-modificar"></span></a>';
-				if (in_array('88', $perfiles)){//88 es Jefe Docencia
+				if (isset($perfiles) && in_array('88', $perfiles)){//88 es Jefe Docencia
 					$enlaceEliminar = 'action=' . $esteBloque ['nombre'];
 					$enlaceEliminar .= '&pagina=' . $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
 					$enlaceEliminar .= '&bloque=' . $esteBloque ['nombre'];
@@ -1876,6 +1873,7 @@ class registrarForm {
 			'alias_campo' => 'Verificación',
 			'nombre_campo' => 'verificacion',			
 		);
+		// ---------------- OJO: Quitar controles desde acá para el bloque reportes/estadoDeCuentaCondor/formulario/formulario.php ------
 		$campos[] = array(
                 'alias_campo' => 'Modificar',
                 'nombre_campo' => '_enlace_modificacion',
@@ -1884,7 +1882,8 @@ class registrarForm {
                 'alias_campo' => 'Eliminar',
                 'nombre_campo' => '_enlace_eliminacion',
         );
-		
+		// ---------------- OJO: Quitar controles hasta acá para el bloque reportes/estadoDeCuentaCondor/formulario/formulario.php ------
+			
 		$atributos ['id'] = 'tablaPuntajeDocente';
 		$atributos ['campos'] = $campos;
 		//$atributos['campoSeguro'] = true;
@@ -1927,7 +1926,8 @@ class registrarForm {
 		unset ( $atributos );
 		// ---------------- FIN CONTROL: reporte pdf --------------------------------------------------------
 		
-		 
+		// ---------------- OJO: copiar hasta acá en bloque reportes/estadoDeCuentaCondor/formulario/formulario.php ------
+		// ---------------- OJO: elimine los registros de eliminación del bloque
 	
 	}
 }

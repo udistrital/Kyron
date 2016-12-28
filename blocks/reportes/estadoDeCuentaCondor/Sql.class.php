@@ -685,7 +685,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" a.numero_revista AS numero_revista,";
 				$cadenaSql.=" a.volumen_revista AS volumen_revista,";
 				$cadenaSql.=" a.anno_revista AS anno_revista,";
-				$cadenaSql.=" b.descripcion AS tipo_indexacion,";
+				//$cadenaSql.=" b.descripcion AS tipo_indexacion,";
 				$cadenaSql.=" a.numero_acta AS numero_acta,";
 				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
 				$cadenaSql.=" a.numero_caso AS numero_caso,";
@@ -693,7 +693,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" a.normatividad AS normatividad";
 				//$cadenaSql.=" a.estado AS estado";
 				$cadenaSql.=" FROM docencia.publicacion_impresa AS a";
-				$cadenaSql.=" LEFT JOIN docencia.tipo_indexacion AS b ON b.id_tipo_indexacion = a.id_tipo_indexacion";
+				//$cadenaSql.=" LEFT JOIN docencia.tipo_indexacion AS b ON b.id_tipo_indexacion = a.id_tipo_indexacion";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
 				$cadenaSql.=" ORDER BY titulo ASC";
