@@ -57,11 +57,6 @@ class registrarForm {
 		
 		// -------------------------------------------------------------------------------------------------
 		
-		echo '<script>alert("Estimado Docente,\n'
-		.'La información que se presenta a continuación está en proceso de depuración y no corresponde a la información utilizada en la liquidación de salarios de los docentes.\n'
-		.'Por favor revise la información y reporte sus observaciones en el campo destinado para tal fin o al correo docencia@udistrital.edu.co.\n'
-		.'Tenga en cuenta que en el presente reporte no se han incluido los puntos por Títulos Académicos ni por Categoría. Próximamente estos serán incluidos. ");</script>';
-		
 		$_REQUEST['tiempo'] = time();
 		
 		$documento = $_REQUEST['docente'];
@@ -1709,6 +1704,43 @@ class registrarForm {
                 // 'nombre_campo' => '_enlace_eliminacion',
         // );
 		// ---------------- OJO: Quitar controles hasta acá para el bloque reportes/estadoDeCuentaCondor/formulario/formulario.php ------
+		
+		// ---------------- SECCION: WebService Puntaje
+		/**
+		 * Para consumir el web service del puntaje se debe hacer
+		 * La petición de la forma pagina=estadoDeCuentaCondor&bloqueNombre=estadoDeCuentaCondor&bloqueGrupo=reportes&docente=79708124&expiracion=1483946906&procesarAjax=true&action=query&format=json
+		 * Ejemplo: http://10.20.0.38/kyron/index.php?data=####
+		 */
+		if(isset($_REQUEST['format']) && $_REQUEST['format'] == 'json'){
+			//$cadenaSql = $this -> sql -> getCadenaSql('actualizar_observacion', $_REQUEST);
+			//$resultado = $esteRecursoDB -> ejecutarAcceso($cadenaSql, "actualizar");
+			$puntosSalariales = 0;
+			$puntosBonificacion = 0;
+			foreach($itemsTabla as $item){
+				//var_dump($item);
+				$puntaje = $item['puntaje'];
+				if ($item['_tipo'] == '1') {//Salarial
+					$puntosSalariales += $puntaje;
+				} elseif ($item['_tipo'] == '2') {//Bonficación
+					$puntosBonificacion += $puntaje;
+				}
+			}
+			$resultado = true;
+			header('Content-Type: text/json; charset=utf-8');
+			if ($resultado) {
+				echo json_encode(array("puntos_salariales" => $puntosSalariales, "puntos_bonificacion" => $puntosBonificacion));
+			} else {
+				echo json_encode(array("errorType" => "retrieve", "errorMessage" => "La consulta no retorna resultados."));
+			}
+			exit();
+		}
+		// ---------------- END SECCION: WebService Puntaje
+		
+		echo '<script>alert("Estimado Docente,\n'
+		.'La información que se presenta a continuación está en proceso de depuración y no corresponde a la información utilizada en la liquidación de salarios de los docentes.\n'
+		.'Por favor revise la información y reporte sus observaciones en el campo destinado para tal fin o al correo docencia@udistrital.edu.co.\n'
+		.'Tenga en cuenta que en el presente reporte no se han incluido los puntos por Títulos Académicos ni por Categoría. Próximamente estos serán incluidos. ");</script>';
+		
 		
 		$atributos ['id'] = 'tablaPuntajeDocente';
 		$atributos ['campos'] = $campos;

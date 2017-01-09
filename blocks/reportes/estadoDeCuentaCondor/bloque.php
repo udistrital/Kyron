@@ -80,7 +80,10 @@ if (! class_exists ( '\\reportes\\estadoDeCuenta\\Bloque' )) {
 					// echo "bloque";exit;
 					$this->miFrontera->frontera ();
 				} else {
-					
+					if (isset($_REQUEST['format'])){
+						$this->miFrontera->frontera ();
+						exit();
+					}
 					$respuesta = $this->miFuncion->action ();
 					
 					// Si $respuesta==false, entonces se debe recargar el formulario y mostrar un mensaje de error.
