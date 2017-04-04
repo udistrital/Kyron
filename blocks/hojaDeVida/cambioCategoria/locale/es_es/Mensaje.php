@@ -1,32 +1,30 @@
 <?php
-$this->idioma["novedadesSalarialesRegistrar"] = "";
-$this->idioma["novedadesSalariales"] = "";
 $this->idioma["marcoConsultaGeneral"] = "Consulta ";
 $this->idioma["marcoModificarRegistro"] = "";
 ///************ SECCIÓN DE NOMBRES DE TABS *****************//
-$this->idioma["tabConsultar"] = "Consultar Novedades Salariales";
-$this->idioma["tabIngresar"] = "Ingresar Novedades Salariales";
+$this->idioma["tabConsultar"] = "Consultar Categoría Docente";
+$this->idioma["tabIngresar"] = "Ingresar Categoría Docente";
 //Tooltip formulario
 $this->idioma["resenaCriticaRegistrar"] = "";
 //////////////////////////////////////////////////////////////
 
 //************ MENSAJES *********
-$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Novedades Salariales <br>";
-$this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado la Novedades Salariales para el docente <br>" ;
-$this->idioma["mensajeError"] =  "Error al tratar de registrar la Novedades Salariales.";
-$this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Novedades Salariales </br> Para los Criterios Ingresados";
-$this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de Novedades Salariales Para el Docente </br>";
+$this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de la Categoría Docente <br>";
+$this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado la Categoría Docente para el docente <br>" ;
+$this->idioma["mensajeError"] =  "Error al tratar de registrar la Categoría Docente.";
+$this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Categoría Docente </br> Para los Criterios Ingresados";
+$this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de Categoría Docente Para el Docente </br>";
 /////////////////////////////////
 
 //* SECCIÓN ELEMENTOS QUE SU NOMBRE POSIBLEMENTE VARIA DENTRO DEL FORMULARIO *//
-$this->idioma["descripcion"] = "Descripción de la novedad:";
+$this->idioma["descripcion"] = "Descripción de la categoría:";
 $this->idioma["tipo"] = "Asignación Puntaje:";
 
-$this->idioma["descripcionTitulo"] = "Ingrese el título de la novedad.";
-$this->idioma["tipoTitulo"] = "Ingrese el item o módulo para el que se reporta la novedad.";
+$this->idioma["descripcionTitulo"] = "Ingrese el título de la categoría.";
+$this->idioma["tipoTitulo"] = "Ingrese el item o módulo para el que se reporta la categoría.";
 
-$this->idioma["marcoConsultaGeneral"] = "Consulta Novedades Salariales";
-$this->idioma["marcoModificarRegistro"] = "Modificar Información de la Novedades Salariales";
+$this->idioma["marcoConsultaGeneral"] = "Consulta Categoría Docente";
+$this->idioma["marcoModificarRegistro"] = "Modificar Información de la Categoría Docente";
 $this->idioma["marcoModificarRegistroTitulo"] = "";
 
 $this->idioma["docenteRegistrarTitulo"] = "Identificación o Nombre del Docente.";
@@ -62,8 +60,8 @@ $this->idioma["puntaje"] = "Puntaje: (-)Derroga o (+)Asigna.";
 $this->idioma["normatividad"] = "Normatividad:";
 ////////////////////////////////////////////////////////////////
 
-$this->idioma['novedadesSalariales'] = '';
-$this->idioma['novedadesSalarialesRegistrar'] = '';
-$this->idioma['novedadesSalarialesModificar'] = '';
+$this->idioma['categoria'] = '';
+$this->idioma['categoriaRegistrar'] = '';
+$this->idioma['categoriaModificar'] = '';
 
 ?>
