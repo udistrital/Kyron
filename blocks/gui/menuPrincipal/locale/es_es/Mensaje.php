@@ -20,6 +20,7 @@ $this->idioma ['crearDocente'] = 'Crear Docente';
 $this->idioma ['titulosAcademicos'] = 'Títulos Académicos';
 $this->idioma ['sinTitulosAcademicos'] = 'Docentes Sin Títulos Académicos';
 $this->idioma ['consultarActividadDocente'] = 'Consultar Actividad Académica Docente';
+$this->idioma ['cambioCategoria'] = 'Cambio de Categoría Docente';
 //Fin Hoja de Vida//////////////////////////////
 
 //Asignación de Puntajes////////////////////////

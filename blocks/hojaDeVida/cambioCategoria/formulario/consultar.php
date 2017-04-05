@@ -203,14 +203,19 @@ class registrarForm {
 					echo "<table id='tablaTitulos'>";
 					
 					echo "<thead>
-	                <tr>	                   
+	                <tr>
+	                   
 	                    <th>Identificación</th>
 	                    <th>Nombres y Apellidos</th>
-						<th>Tipo de Categoría</th>
+						<th>Descripción de Novedad</th>
+						<th>Tipo de novedad</th>
 						<th>Número Acta</th>
 						<th>Fecha Acta</th>
 						<th>Caso Acta</th>
-						<th>Puntaje</th>	
+						<th>Puntaje</th>
+						<th>Puntaje</th>
+						<th>Normatividad</th>	
+							
 	                </tr>
 	            </thead>
 	            <tbody>";
@@ -227,11 +232,13 @@ class registrarForm {
 						$mostrarHtml = "<tr>
 	                    <td><center>" . $indexacion [$i] ['documento_docente'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['nombre_docente'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['tipo_categoria_docente'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['descripcion'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['tipo_novedad'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['fecha_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_caso'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['puntaje'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['normatividad'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>
 	                            <img src='" . $rutaBloque . "/css/images/Entrada.png' width='15px'>
