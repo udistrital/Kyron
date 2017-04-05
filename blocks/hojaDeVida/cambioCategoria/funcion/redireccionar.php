@@ -1,6 +1,6 @@
 <?php
 
-namespace asignacionPuntajes\novedades\novedadesSalariales\funcion;
+namespace hojaDeVida\cambioCategoria\funcion;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("index.php");

@@ -139,6 +139,7 @@ class registrarForm {
 
 		$cadenaSql = $this->miSql->getCadenaSql ( 'consultar', $arreglo );
 		$indexacion = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+		
 		$arreglo=serialize($arregloSerialize);
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
 		$esteCampo = $esteBloque ['nombre'];
@@ -203,19 +204,15 @@ class registrarForm {
 					echo "<table id='tablaTitulos'>";
 					
 					echo "<thead>
-	                <tr>
-	                   
+	                <tr>	                   
 	                    <th>Identificación</th>
 	                    <th>Nombres y Apellidos</th>
-						<th>Descripción de Novedad</th>
-						<th>Tipo de novedad</th>
+						<th>Tipo de Categoría</th>
 						<th>Número Acta</th>
 						<th>Fecha Acta</th>
 						<th>Caso Acta</th>
 						<th>Puntaje</th>
-						<th>Puntaje</th>
-						<th>Normatividad</th>	
-							
+						<th>Modificar</th>	
 	                </tr>
 	            </thead>
 	            <tbody>";
@@ -226,19 +223,17 @@ class registrarForm {
 						$variable .= "&arreglo=" . $arreglo;
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
 						$variable .= "&documento_docente=" . $indexacion [$i] ['documento_docente'];
-						$variable .= "&id_novedad=" . $indexacion [$i] ['id_novedad'];
+						$variable .= "&id=" . $indexacion [$i] ['id'];
 						$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 						
 						$mostrarHtml = "<tr>
 	                    <td><center>" . $indexacion [$i] ['documento_docente'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['nombre_docente'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['descripcion'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['tipo_novedad'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['tipo_categoria_docente'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['fecha_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_caso'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['puntaje'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['normatividad'] . "</center></td>
 	                    <td><center>
 	                    	<a href='" . $variable . "'>
 	                            <img src='" . $rutaBloque . "/css/images/Entrada.png' width='15px'>

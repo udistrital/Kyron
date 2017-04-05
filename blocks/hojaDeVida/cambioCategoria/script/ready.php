@@ -6,7 +6,7 @@ autoHideDelay: 2000
 });
 
 $(function() {
-	$("#novedadesSalariales").submit(function() {
+	$("#cambioCategoria").submit(function() {
 		$resultado=$("#novedadesSalariales").validationEngine("validate");
 		if ($resultado) {
 			return true;
@@ -15,7 +15,7 @@ $(function() {
 	});
 });
 
-$("#novedadesSalarialesRegistrar").validationEngine({
+$("#cambioCategoria").validationEngine({
 	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
@@ -23,8 +23,8 @@ $("#novedadesSalarialesRegistrar").validationEngine({
 });
 
 $(function() {
-$("#novedadesSalarialesRegistrar").submit(function() {
-$resultado=$("#novedadesSalarialesRegistrar").validationEngine("validate");
+$("#cambioCategoriaRegistrar").submit(function() {
+$resultado=$("#cambioCategoriaRegistrar").validationEngine("validate");
 
 if ($resultado) {
 
@@ -41,7 +41,7 @@ $(function () {
 });
 
 $(function() {
-	$("#novedadesSalarialesModificar").submit(function() {
+	$("#cambioCategoriaModificar").submit(function() {
 		$resultado=$("#novedadesSalarialesModificar").validationEngine("validate");
 		if ($resultado) {
 			return true;
@@ -50,7 +50,7 @@ $(function() {
 	});
 });
 
-$("#novedadesSalarialesModificar").validationEngine({
+$("#cambioCategoriaModificar").validationEngine({
 	promptPosition : "bottomRight:-150", 
 	scroll: false,
 	autoHidePrompt: true,
@@ -76,12 +76,13 @@ $('#<?php echo $this->campoSeguro('facultad')?>').width(450);
 $('#<?php echo $this->campoSeguro('proyectoCurricular')?>').width(450);      
 
 $('#<?php echo $this->campoSeguro('docenteRegistrar')?>').width(465);
-$('#<?php echo $this->campoSeguro('tipo')?>').width(450);
-
+$('#<?php $cat = $this->campoSeguro('categoriaDocente'); echo $cat ?>').width(450);
 
 ///*********El ancho (width) de los siguientes campos es mayor debido a que se encuentran dentro de un div****///
 //$('#<?php echo $this->campoSeguro('pais')?>').width(470);
 //$('#<?php echo $this->campoSeguro('categoria')?>').width(470);
+
+$("#<?php echo $cat?>").select2();
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -91,7 +92,7 @@ $('#<?php echo $this->campoSeguro('tipo')?>').width(450);
 $("#<?php echo $this->campoSeguro('facultad')?>").select2();
 $("#<?php echo $this->campoSeguro('proyectoCurricular')?>").select2();
 
-$("#<?php echo $this->campoSeguro('tipo')?>").select2();
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
