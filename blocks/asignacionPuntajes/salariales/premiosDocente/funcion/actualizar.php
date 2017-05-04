@@ -37,10 +37,14 @@ class RegistrarIndexacionRevista {
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
 
 		if($_REQUEST['entidad']==''){
-			$_REQUEST['entidad'] = 'null';
+			$_REQUEST['entidad'] = 'NULL';
+		} else {
+			$_REQUEST['entidad'] = '\'' . $_REQUEST['entidad'] . '\'';
 		}
 		if (!isset($_REQUEST['otraEntidad'])){
-			$_REQUEST['otraEntidad'] = null;
+			$_REQUEST['otraEntidad'] = 'NULL';
+		} else {
+			$_REQUEST['otraEntidad'] = '\'' . $_REQUEST['otraEntidad'] . '\'';
 		}
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizar', $_REQUEST );

@@ -231,8 +231,8 @@ class Sql extends \Sql {
 				$cadenaSql .= "numero_condecorados, anno_premio, ";
 				$cadenaSql .= "numero_acta, fecha_acta, caso_acta, puntaje, normatividad) ";
 				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
-				$cadenaSql .= " '" . $variable ['entidad'] . "',";
-				$cadenaSql .= " '" . $variable ['otraEntidad'] . "',";
+				$cadenaSql .= " " . $variable ['entidad'] . ",";
+				$cadenaSql .= " " . $variable ['otraEntidad'] . ",";
 				$cadenaSql .= "'" . $variable ['tipoEntidad'] . "',";
 				$cadenaSql .= " '" . $variable ['contexto'] . "',";
 				$cadenaSql .= " '" . $variable ['pais'] . "',";
@@ -278,8 +278,8 @@ class Sql extends \Sql {
 				$cadenaSql .= "docencia.premio_docente ";
 				$cadenaSql .= "SET ";
 				$cadenaSql .= "id_universidad = " . $variable ['entidad'] . ", ";
-				$cadenaSql .= "otra_entidad = '" . $variable ['otraEntidad'] . "', ";
-				$cadenaSql .= "id_tipo_entidad = '" . $variable ['tipoEntidad'] . "', ";
+				$cadenaSql .= "otra_entidad = " . $variable ['otraEntidad'] . ", ";
+				$cadenaSql .= "id_tipo_entidad = " . $variable ['tipoEntidad'] . ", ";
 				$cadenaSql .= "id_contexto = '" . $variable ['contexto'] . "', ";
 				$cadenaSql .= "paiscodigo = '" . $variable ['pais'] . "', ";
 				$cadenaSql .= "ciudadid = '" . $variable ['ciudad'] . "', ";
