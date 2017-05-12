@@ -91,7 +91,8 @@ class Sql extends \Sql {
 				$cadenaSql .= "WHERE ";
 				$cadenaSql .= "id_sesion='" . $idSesion . "'";
 				break;
-			
+		
+			// ---------------- OJO: copiar desde acá a bloque reportes/estadoDeCuentaCondor/formulario/formulario.php ------
 			/* Consultas del desarrollo */
 				
 			case "docente" :
@@ -155,6 +156,7 @@ class Sql extends \Sql {
 			case "revistas_indexadas" :
 				$cadenaSql=" SELECT";
 				//$cadenaSql.=" a.documento_docente AS documento_docente,";
+				$cadenaSql.=" a.id_revista_indexada AS id_revista_indexada,";
 				$cadenaSql.=" a.nombre_revista AS nombre_revista,";
 				$cadenaSql.=" b.descripcion AS contexto,";
 				$cadenaSql.=" d.paisnombre AS pais,";
@@ -227,6 +229,7 @@ class Sql extends \Sql {
 			case "cartas_editor" :
 				$cadenaSql=" SELECT";
 				//$cadenaSql.=" a.documento_docente AS documento_docente,";
+				$cadenaSql.=" a.id_cartas_editor AS id_cartas_editor,";
 				$cadenaSql.=" a.nombre_revista AS nombre_revista,";
 				$cadenaSql.=" b.descripcion AS contexto,";
 				$cadenaSql.=" d.paisnombre AS pais,";
@@ -393,7 +396,8 @@ class Sql extends \Sql {
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.id_experiencia_calificada AS id_experiencia_calificada,";
 				//$cadenaSql.=" a.documento_docente AS documento_docente,";
-				$cadenaSql.=" b.descripcion AS tipo_experiencia_calificada,";
+				$cadenaSql.=" b.descripcion AS tipo_emisor_resolucion,";
+				$cadenaSql.=" c.descripcion AS tipo_experiencia_calificada,";
 				$cadenaSql.=" a.annio_experiencia AS annio_experiencia,";
 				$cadenaSql.=" a.numero_resolucion AS numero_resolucion,";
 				$cadenaSql.=" b.descripcion AS tipo_emisor_resolucion,";
@@ -435,6 +439,7 @@ class Sql extends \Sql {
 			case "comunicacion_corta" :
 				$cadenaSql=" SELECT";
 				//$cadenaSql.=" a.documento_docente AS documento_docente,";
+				$cadenaSql.=" a.id_comunicacion_corta AS id_comunicacion_corta,";
 				$cadenaSql.=" a.nombre_revista AS nombre_revista,";
 				$cadenaSql.=" b.descripcion AS contexto,";
 				$cadenaSql.=" d.paisnombre AS pais,";
@@ -679,6 +684,7 @@ class Sql extends \Sql {
 			case "publicaciones_impresas_universitarias" :
 				$cadenaSql=" SELECT";
 				//$cadenaSql.=" a.documento_docente AS documento_docente,";
+				$cadenaSql.=" a.id_publicacion_impresa AS id_comunicacion_corta,";
 				$cadenaSql.=" a.titulo AS titulo,";
 				$cadenaSql.=" a.numero_issn AS numero_issn,";
 				$cadenaSql.=" a.nombre_revista AS nombre_revista,";
@@ -894,6 +900,16 @@ class Sql extends \Sql {
 				$cadenaSql.=" ".$variable['condicion'];
 				$cadenaSql.=" ;";
 				break;
+			case 'tablas_restricciones_de_tabla' :
+				$cadenaSql="SELECT DISTINCT table_name";
+				$cadenaSql.=" FROM information_schema.constraint_column_usage";
+				$cadenaSql.=" WHERE";
+				$cadenaSql.=" ".$variable['condicion_column_name'];
+				$cadenaSql.=" AND table_name<>'".$variable['tabla']."'";
+				$cadenaSql.=" ;";
+				break;
+			// ---------------- OJO: copiar hasta acá en bloque reportes/estadoDeCuentaCondor/formulario/formulario.php ------	
+			
 		}
 		
 		return $cadenaSql;

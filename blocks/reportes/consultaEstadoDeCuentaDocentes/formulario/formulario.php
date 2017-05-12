@@ -822,6 +822,10 @@ class registrarForm {
 				'nombre_campo' => 'tipo_experiencia_calificada',
 		);
 		$campos[] = array(
+				'alias_campo' => 'Tipo Emisor Resolución',
+				'nombre_campo' => 'tipo_emisor_resolucion',
+		);
+		$campos[] = array(
 				'alias_campo' => 'Año Experiencia',
 				'nombre_campo' => 'annio_experiencia',
 		);
