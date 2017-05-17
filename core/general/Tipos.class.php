@@ -131,7 +131,7 @@ class Tipos {
 	}
 	
 	private function validarLetrasYEspacios($valor){
-		if (preg_match('/^([[:alpha:]]|[[:space:]]|[áéíóúÁÉÍÓÚ])*$/',$valor)) {
+		if (preg_match('/^([[:alpha:]]|[[:space:]]|[áéíóúñÁÉÍÓÚÑ])*$/',$valor)) {
 			return true;
 		} else {
 			return false;
@@ -139,7 +139,7 @@ class Tipos {
 	}
 	
 	private function evaluarLetrasYEspacios($valor){
-		if (preg_match('/^([[:alpha:]]|[[:space:]]|[áéíóúÁÉÍÓÚ])*$/',$valor)) {
+		if (preg_match('/^([[:alpha:]]|[[:space:]]|[áéíóúñÁÉÍÓÚÑ])*$/',$valor)) {
 			return $valor;
 		} else {
 			return false;
@@ -147,7 +147,7 @@ class Tipos {
 	}
 	
 	private function validarLetrasYNumeros($valor){
-		if (preg_match('/^([[:alnum:]]|[áéíóúÁÉÍÓÚ])*$/',$valor)) {
+		if (preg_match('/^([[:alnum:]]|[áéíóúñÁÉÍÓÚÑ])*$/',$valor)) {
 			return true;
 		} else {
 			return false;
@@ -155,7 +155,7 @@ class Tipos {
 	}
 	
 	private function evaluarLetrasNumeros($valor){
-		if (preg_match('/^([[:alnum:]]|[áéíóúÁÉÍÓÚ])*$/',$valor)) {
+		if (preg_match('/^([[:alnum:]]|[áéíóúñÁÉÍÓÚÑ])*$/',$valor)) {
 			return $valor;
 		} else {
 			return false;
@@ -163,7 +163,7 @@ class Tipos {
 	}
 	
 	private function validarLetrasNumerosYEspacios($valor){
-		if (preg_match('/^([[:alnum:]]|[[:space:]]|[áéíóúÁÉÍÓÚ])*$/',$valor)) {
+		if (preg_match('/^([[:alnum:]]|[[:space:]]|[áéíóúñÁÉÍÓÚÑ])*$/',$valor)) {
 			return true;
 		} else {
 			return false;
@@ -171,7 +171,7 @@ class Tipos {
 	}
 	
 	private function evaluarLetrasNumerosYEspacios($valor){
-		if (preg_match('/^([[:alnum:]]|[[:space:]]|[áéíóúÁÉÍÓÚ])*$/',$valor)) {
+		if (preg_match('/^([[:alnum:]]|[[:space:]]|[áéíóúñÁÉÍÓÚÑ])*$/',$valor)) {
 			return $valor;
 		} else {
 			return false;
@@ -179,7 +179,7 @@ class Tipos {
 	}
 	
 	private function validarLetrasNumerosEspacioYPuntuacion($valor){
-		if (preg_match('/^([[:alnum:]]|[[:space:]]|[áéíóúÁÉÍÓÚ]|[.,])*$/',$valor)) {
+		if (preg_match('/^([[:alnum:]]|[[:space:]]|[áéíóúñÁÉÍÓÚÑ]|[.,])*$/',$valor)) {
 			return true;
 		} else {
 			return false;
@@ -187,7 +187,7 @@ class Tipos {
 	}
 	
 	private function evaluarLetrasNumerosEspacioYPuntuacion($valor){
-		if (preg_match('/^([[:alnum:]]|[[:space:]]|[áéíóúÁÉÍÓÚ]|[.,])*$/',$valor)) {
+		if (preg_match('/^([[:alnum:]]|[[:space:]]|[áéíóúñÁÉÍÓÚÑ]|[.,])*$/',$valor)) {
 			return $valor;
 		} else {
 			return false;
