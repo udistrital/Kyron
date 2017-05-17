@@ -177,36 +177,36 @@ class FormularioRegistro {
 			
 				
 		// ----------------INICIO CONTROL: Campo Texto Otra Entidad o Institución --------------------------------------------------------
-		$esteCampo = 'otraEntidad';
-		$atributos ['id'] = $esteCampo;
-		$atributos ['nombre'] = $esteCampo;
-		$atributos ['tipo'] = 'text';
-		$atributos ['estilo'] = 'jqueryui';
-		$atributos ['marco'] = true;
-		$atributos ['estiloMarco'] = '';
-		$atributos ["etiquetaObligatorio"] = true;
-		$atributos ['columnas'] = 1;
-		$atributos ['dobleLinea'] = 0;
-		$atributos ['tabIndex'] = $tab;
-		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = ""; // 'required';
-		if (isset ( $_REQUEST [$esteCampo] )) {
-			$atributos ['valor'] = $_REQUEST [$esteCampo];
-		} else {
-			$atributos ['valor'] = '';
-		}
-		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-		$atributos ['deshabilitado'] = false;
-		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '';
-		$atributos ['anchoEtiqueta'] = 280;
-		$tab ++;
+// 		$esteCampo = 'otraEntidad';
+// 		$atributos ['id'] = $esteCampo;
+// 		$atributos ['nombre'] = $esteCampo;
+// 		$atributos ['tipo'] = 'text';
+// 		$atributos ['estilo'] = 'jqueryui';
+// 		$atributos ['marco'] = true;
+// 		$atributos ['estiloMarco'] = '';
+// 		$atributos ["etiquetaObligatorio"] = true;
+// 		$atributos ['columnas'] = 1;
+// 		$atributos ['dobleLinea'] = 0;
+// 		$atributos ['tabIndex'] = $tab;
+// 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+// 		$atributos ['validar'] = ""; // 'required';
+// 		if (isset ( $_REQUEST [$esteCampo] )) {
+// 			$atributos ['valor'] = $_REQUEST [$esteCampo];
+// 		} else {
+// 			$atributos ['valor'] = '';
+// 		}
+// 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+// 		$atributos ['deshabilitado'] = false;
+// 		$atributos ['tamanno'] = 57;
+// 		$atributos ['maximoTamanno'] = '';
+// 		$atributos ['anchoEtiqueta'] = 280;
+// 		$tab ++;
 		
-		// Aplica atributos globales al control
-		$atributos = array_merge ( $atributos, $atributosGlobales );
-		// var_dump($atributos);
-		echo $this->miFormulario->campoCuadroTexto ( $atributos );
-		unset ( $atributos );
+// 		// Aplica atributos globales al control
+// 		$atributos = array_merge ( $atributos, $atributosGlobales );
+// 		// var_dump($atributos);
+// 		echo $this->miFormulario->campoCuadroTexto ( $atributos );
+// 		unset ( $atributos );
 		// ----------------FIN CONTROL: Campo Texto Otra Entidad o Institución  --------------------------------------------------------
 				
 		// ----------------INICIO CONTROL: Lista Tipo de Entidad --------------------------------------------------------
