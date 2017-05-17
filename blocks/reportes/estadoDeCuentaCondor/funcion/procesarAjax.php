@@ -56,6 +56,23 @@ switch ($_REQUEST ['funcion']) {
 			echo json_encode(array("errorType" => "custom", "errorMessage" => "El campo observacion sólo debe contener elementos alfanuméricos, espacios, comas y punto."));
 			exit();
 		}
+		
+		// Enviar email temporal?
+		// the message
+		$msg = 'Docente: ' . $_REQUEST['docente'] . "\r\n"
+				. 'Tipo Observación: ' . $_REQUEST['id_tipo_observacion'] . "\r\n"
+				. 'Id: ' . $_REQUEST['llaves_primarias_valor'] . "\r\n"
+				. 'Verificado: ' . $_REQUEST['verificado'] . "\r\n"
+		 		. 'Observación: ' . $_REQUEST['observacion'] . "\r\n";
+		 
+		
+		// use wordwrap() if lines are longer than 70 characters
+		$msg = wordwrap($msg,70);
+		
+		$sub = 'Nuevo mensaje de docente: ' . $_REQUEST['docente'];
+		
+		// send email
+		mail("kyron@udistrital.edu.co",$sub,$msg);
 
 		$conexion = "docencia";
 		$esteRecursoDB = $this -> miConfigurador -> fabricaConexiones -> getRecursoDB($conexion);

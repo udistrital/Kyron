@@ -400,7 +400,6 @@ class Sql extends \Sql {
 				$cadenaSql.=" c.descripcion AS tipo_experiencia_calificada,";
 				$cadenaSql.=" a.annio_experiencia AS annio_experiencia,";
 				$cadenaSql.=" a.numero_resolucion AS numero_resolucion,";
-				$cadenaSql.=" b.descripcion AS tipo_emisor_resolucion,";
 				$cadenaSql.=" a.fecha_resolucion AS fecha_resolucion,";
 				$cadenaSql.=" a.numero_acta AS numero_acta,";
 				$cadenaSql.=" a.fecha_acta AS fecha_acta,";

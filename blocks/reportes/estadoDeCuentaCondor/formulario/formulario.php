@@ -1750,14 +1750,14 @@ class registrarForm {
 			'nombre_campo' => 'verificacion',			
 		);
 		// ---------------- OJO: Quitar controles desde acá para el bloque reportes/estadoDeCuentaCondor/formulario/formulario.php ------
-		$campos[] = array(
-                'alias_campo' => 'Modificar',
-                'nombre_campo' => '_enlace_modificacion',
-        );
-		$campos[] = array(
-                'alias_campo' => 'Eliminar',
-                'nombre_campo' => '_enlace_eliminacion',
-        );
+// 		$campos[] = array(
+//                 'alias_campo' => 'Modificar',
+//                 'nombre_campo' => '_enlace_modificacion',
+//         );
+// 		$campos[] = array(
+//                 'alias_campo' => 'Eliminar',
+//                 'nombre_campo' => '_enlace_eliminacion',
+//         );
 		// ---------------- OJO: Quitar controles hasta acá para el bloque reportes/estadoDeCuentaCondor/formulario/formulario.php ------
 			
 		$atributos ['id'] = 'tablaPuntajeDocente';
