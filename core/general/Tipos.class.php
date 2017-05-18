@@ -194,7 +194,6 @@ class Tipos {
 		}
 	}
 	
-	
 	// http://www.sergiomejias.com/2007/09/validar-una-fecha-con-expresiones-regulares-en-php/
 	public function validarStringFecha($fecha) {
 		$fecha = explode('-', $fecha);
@@ -218,6 +217,25 @@ class Tipos {
 			return false;
 		}
 	}
+	
+	private function validarCorreo($valor){
+		$valor = str_replace('\\_', '_', $valor);
+		if (preg_match("/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/",$valor)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	private function evaluarCorreo($valor){
+		$valor = str_replace('\\_', '_', $valor);
+		if (preg_match("/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/",$valor)) {
+			return $valor;
+		} else {
+			return false;
+		}
+	}
+	
 	/*
 	 * Permite asignar alias a las funciones. Por ejemplo permite que a la función evaluarFecha
 	 * se pueda llamar al decir que el tipo de dato es "fecha", "date", "Date" o cualquier otra asignación
