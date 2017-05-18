@@ -24,15 +24,16 @@ $(campoFecha).each(function(){
 		dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','Sab'],
 		dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
 		onSelect: function(dateText, inst) {
+		    window.checkearFechaVieja();
 			var lockDate = new Date($(this.valueOf()).datepicker('getDate'));
 			$(campoFechaInput[cont]).datepicker('option', 'minDate', lockDate);
-		}, onClose: function() { 
-				if ($(campoFechaInput[cont]).val()!=''){
-	                $(this.valueOf()).attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required]");
-	            }else {
-	            	$(this.valueOf()).attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all ");
-	            }
-			}
+		}, onClose: function() {
+			if ($(campoFechaInput[cont]).val()!=''){
+                $(this.valueOf()).attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required]");
+            }else {
+            	$(this.valueOf()).attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all ");
+            }
+		}
 	})
 	cont++;
 });

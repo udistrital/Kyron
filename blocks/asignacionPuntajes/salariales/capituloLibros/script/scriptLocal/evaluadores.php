@@ -123,5 +123,15 @@ $("#botonAgregarEvaluador").click(function( event ) {
 		$("#marcoEvaluador"+ numEvaluadores).show(); 			
 	}
 });
+
+window.checkearFechaVieja = function(){
+	console.log('Cambió fecha', evaluadorRequerido);
+	var fechaSeleccionada = $("#<?php echo $this->campoSeguro('fechaActaLibro')?>").datepicker("getDate");
+	if (fechaSeleccionada < new Date('2016-01-01')){
+		window.alert('Está en el modo sin restricciones.');
+		evaluadorRequerido = 0;
+	}
+	return evaluadorRequerido;
+}
 		
 });

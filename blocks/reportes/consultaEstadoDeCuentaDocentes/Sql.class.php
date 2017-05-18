@@ -683,7 +683,7 @@ class Sql extends \Sql {
 			case "publicaciones_impresas_universitarias" :
 				$cadenaSql=" SELECT";
 				//$cadenaSql.=" a.documento_docente AS documento_docente,";
-				$cadenaSql.=" a.id_publicacion_impresa AS id_comunicacion_corta,";
+				$cadenaSql.=" a.id_publicacion_impresa AS id_publicacion_impresa,";
 				$cadenaSql.=" a.titulo AS titulo,";
 				$cadenaSql.=" a.numero_issn AS numero_issn,";
 				$cadenaSql.=" a.nombre_revista AS nombre_revista,";

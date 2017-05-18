@@ -23,7 +23,12 @@ $( document ).ready(function() {
 		
 		diasExperiencia = $("#<?php echo $this->campoSeguro('duracionExperiencia')?>").val();
 		puntajeMaximo = redondeo(diasExperiencia*(puntajeAnnio/365), 3);
-		$("#<?php echo $this->campoSeguro('puntaje')?>").attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required, custom[number],min[0.1],max["+puntajeMaximo+"]");
+		var fechaSeleccionada = $("#<?php echo $this->campoSeguro('fechaActaLibro')?>").datepicker("getDate");
+		if (fechaSeleccionada < new Date('2016-01-01')){
+			window.alert('Está en el modo sin restricciones.');
+			puntajeMaximo = 4;
+		}
+		$("#<?php echo $this->campoSeguro('puntaje')?>").attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required, custom[number],min[0.0],max["+puntajeMaximo+"]");
 	}
 	
 	function redondeo(numero, decimales)

@@ -72,6 +72,7 @@ $this->idioma ['tituloConsultaReportes'] = 'CONSULTA REPORTES DOCENCIA';
 	$this->idioma ['consultaReportes'] = 'Gestor de Reportes';
 	$this->idioma ['estadoCuentaDocente'] = 'Estado de Cuenta Individual Docente';
 	
+	
 
 $this->idioma ['usuario'] = 'Usuarios';
 $this->idioma ['sesion'] = 'Sesión';
