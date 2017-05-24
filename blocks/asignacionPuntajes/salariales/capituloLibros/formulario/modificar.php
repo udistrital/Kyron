@@ -566,6 +566,7 @@ class FormularioModificar {
 			$atributos ['estilo'] = 'jqueryui';
 			$atributos ['marco'] = true;
 			$atributos ['estiloMarco'] = '';
+			$atributos ["etiquetaObligatorio"] = false;
 			$atributos ['columnas'] = 1;
 			$atributos ['dobleLinea'] = 0;
 			$atributos ['tabIndex'] = $tab;
