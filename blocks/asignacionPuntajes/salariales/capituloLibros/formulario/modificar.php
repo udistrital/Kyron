@@ -500,12 +500,12 @@ class FormularioModificar {
 			$atributos ['estilo'] = 'jqueryui';
 			$atributos ['marco'] = true;
 			$atributos ['estiloMarco'] = '';
-			$atributos ["etiquetaObligatorio"] = true;
+			$atributos ['etiquetaObligatorio'] = false;
 			$atributos ['columnas'] = 1;
 			$atributos ['dobleLinea'] = 0;
 			$atributos ['tabIndex'] = $tab;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ['validar'] = 'required, custom[onlyNumberSp], maxSize[3]';
+			$atributos ['validar'] = 'custom[onlyNumberSp], maxSize[3]';
 				
 			if (isset ( $_REQUEST [$esteCampo] )) {
 				$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -566,12 +566,11 @@ class FormularioModificar {
 			$atributos ['estilo'] = 'jqueryui';
 			$atributos ['marco'] = true;
 			$atributos ['estiloMarco'] = '';
-			$atributos ["etiquetaObligatorio"] = true;
 			$atributos ['columnas'] = 1;
 			$atributos ['dobleLinea'] = 0;
 			$atributos ['tabIndex'] = $tab;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ['validar'] = 'required, custom[onlyNumberSp], maxSize[3]';
+			$atributos ['validar'] = 'custom[onlyNumberSp], maxSize[3]';
 				
 			if (isset ( $_REQUEST [$esteCampo] )) {
 				$atributos ['valor'] = $_REQUEST [$esteCampo];
