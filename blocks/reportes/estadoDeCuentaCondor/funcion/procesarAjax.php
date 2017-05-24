@@ -2,6 +2,7 @@
 namespace reportes\estadoDeCuentaCondor\funcion;
 use reportes\estadoDeCuentaCondor\Sql;
 use core\general\ValidadorCampos;
+use reportes\estadoDeCuenta\funcion\correo;
 
 $host = $this -> miConfigurador -> getVariableConfiguracion("host");
 
@@ -71,9 +72,16 @@ switch ($_REQUEST ['funcion']) {
 		
 		$sub = 'Nuevo mensaje de docente: ' . $_REQUEST['docente'];
 		
-		// send email
-		mail("kyron@udistrital.edu.co",$sub,$msg);
-
+		include('correo.php');
+		$miMail = new correo( $this->lenguaje, $this->sql, $this->funcion );
+		$resultado = $miMail->enviarCorreo ($sub, $msg, array('kyron@udistrital.edu.co'));
+		// Validar envio correo		
+		if (!$resultado) {
+			header('Content-Type: text/json; charset=utf-8');
+			echo json_encode(array("errorType" => "send mail", "errorMessage" => "Algo anda mal, no se pudo enviar el correo."));
+			exit();
+		}
+		
 		$conexion = "docencia";
 		$esteRecursoDB = $this -> miConfigurador -> fabricaConexiones -> getRecursoDB($conexion);
 		$cadenaSql = $this -> sql -> getCadenaSql('registrar_observacion', $_REQUEST);
