@@ -75,8 +75,7 @@ switch ($_REQUEST ['funcion']) {
 			
 			include('correo.php');
 			$miMail = new correo( $this->lenguaje, $this->sql, $this->funcion );
-			//$resultado = $miMail->enviarCorreo ($sub, $msg, array('kyron@udistrital.edu.co'));
-			$resultado = $miMail->enviarCorreo ($sub, $msg, array('jorgenator2@yahoo.es'));
+			$resultado = $miMail->enviarCorreo ($sub, $msg, array('kyron@udistrital.edu.co'));
 			// Validar envio correo
 			if (!$resultado) {
 				header('Content-Type: text/json; charset=utf-8');
