@@ -59,27 +59,30 @@ switch ($_REQUEST ['funcion']) {
 		}
 		
 		// Enviar email temporal?
-		// the message
-		$msg = 'Docente: ' . $_REQUEST['docente'] . "\r\n"
+		if(json_decode($_REQUEST['verificado']) == false || ($_REQUEST['observacion'] !== '' && $_REQUEST['observacion'] !== "\n")){
+			// the message
+			$msg = 'Docente: ' . $_REQUEST['docente'] . "\r\n"
 				. 'Tipo Observación: ' . $_REQUEST['id_tipo_observacion'] . "\r\n"
 				. 'Id: ' . $_REQUEST['llaves_primarias_valor'] . "\r\n"
 				. 'Verificado: ' . $_REQUEST['verificado'] . "\r\n"
-		 		. 'Observación: ' . $_REQUEST['observacion'] . "\r\n";
-		 
-		
-		// use wordwrap() if lines are longer than 70 characters
-		$msg = wordwrap($msg,70);
-		
-		$sub = 'Nuevo mensaje de docente: ' . $_REQUEST['docente'];
-		
-		include('correo.php');
-		$miMail = new correo( $this->lenguaje, $this->sql, $this->funcion );
-		$resultado = $miMail->enviarCorreo ($sub, $msg, array('kyron@udistrital.edu.co'));
-		// Validar envio correo		
-		if (!$resultado) {
-			header('Content-Type: text/json; charset=utf-8');
-			echo json_encode(array("errorType" => "send mail", "errorMessage" => "Algo anda mal, no se pudo enviar el correo."));
-			exit();
+				. 'Observación: ' . $_REQUEST['observacion'] . "\r\n";
+				
+			
+			// use wordwrap() if lines are longer than 70 characters
+			$msg = wordwrap($msg,70);
+			
+			$sub = 'Nuevo mensaje de docente: ' . $_REQUEST['docente'];
+			
+			include('correo.php');
+			$miMail = new correo( $this->lenguaje, $this->sql, $this->funcion );
+			//$resultado = $miMail->enviarCorreo ($sub, $msg, array('kyron@udistrital.edu.co'));
+			$resultado = $miMail->enviarCorreo ($sub, $msg, array('jorgenator2@yahoo.es'));
+			// Validar envio correo
+			if (!$resultado) {
+				header('Content-Type: text/json; charset=utf-8');
+				echo json_encode(array("errorType" => "send mail", "errorMessage" => "Algo anda mal, no se pudo enviar el correo."));
+				exit();
+			}
 		}
 		
 		$conexion = "docencia";
