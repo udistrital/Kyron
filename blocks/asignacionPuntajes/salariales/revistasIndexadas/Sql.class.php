@@ -188,7 +188,7 @@ class Sql extends \Sql {
 				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
 				$cadenaSql .= " '" . $variable ['nombreRevista'] . "',";
 				$cadenaSql .= " '" . $variable ['contextoRevista'] . "',";
-				$cadenaSql .= "'" . $variable ['pais'] . "',";
+				$cadenaSql .= " '" . $variable ['pais'] . "',";
 				$cadenaSql .= " '" . $variable ['categoria'] . "',";
 				$cadenaSql .= " '" . $variable ['issnRevista'] . "',";
 				$cadenaSql .= " '" . $variable ['annoRevista'] . "',";
@@ -197,11 +197,11 @@ class Sql extends \Sql {
 				$cadenaSql .= " '" . $variable ['paginasRevista'] . "',";
 				$cadenaSql .= " '" . $variable ['tituloArticuloRevista'] . "',";
 				$cadenaSql .= " '" . $variable ['numeroAutoresRevista'] . "',";
-				$cadenaSql .= " '" . $variable ['numeroAutoresUniversidad'] . "',";
-				$cadenaSql .= "' " . $variable ['numeroActaRevista'] . "',";
+				$cadenaSql .= " " . $variable ['numeroAutoresUniversidad'] . ",";
+				$cadenaSql .= " '" . $variable ['numeroActaRevista'] . "',";
 				$cadenaSql .= " '" . $variable ['fechaActaRevista'] . "',";
-				$cadenaSql .= "' " . $variable ['numeroCasoActaRevista'] . "',";
-				$cadenaSql .= "' " . $variable ['puntajeRevista'] . "',";
+				$cadenaSql .= " '" . $variable ['numeroCasoActaRevista'] . "',";
+				$cadenaSql .= " '" . $variable ['puntajeRevista'] . "',";
 				$cadenaSql .= " '" . $variable ['normatividad'] . "')";
 				break;
 				
@@ -247,7 +247,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "paginas_revista = '" . $variable ['paginasRevista'] . "', ";
 				$cadenaSql .= "titulo_articulo = '" . $variable ['tituloArticuloRevista'] . "', ";
 				$cadenaSql .= "numero_autores = '" . $variable ['numeroAutoresRevista'] . "', ";
-				$cadenaSql .= "numero_autores_ud = '" . $variable ['numeroAutoresUniversidad'] . "', ";
+				$cadenaSql .= "numero_autores_ud = " . $variable ['numeroAutoresUniversidad'] . ", ";
 				$cadenaSql .= "numero_acta = '" . $variable ['numeroActaRevista'] . "', ";
 				$cadenaSql .= "fecha_acta = '" . $variable ['fechaActaRevista'] . "', ";
 				$cadenaSql .= "numero_caso = '" . $variable ['numeroCasoActaRevista'] . "', ";

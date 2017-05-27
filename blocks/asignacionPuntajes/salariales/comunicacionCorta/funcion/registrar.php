@@ -26,6 +26,13 @@ class RegistrarIndexacionRevista {
 		$this->miSql = $sql;
 		$this->miFuncion = $funcion;
 	}
+	function nullify($param){
+		if($param==''){
+			return 'NULL';
+		} else {
+			return '\'' . $param . '\'';
+		}
+	}
 	function procesarFormulario() {
 		$conexion = "docencia";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
@@ -38,6 +45,8 @@ class RegistrarIndexacionRevista {
 		
 		$_REQUEST['contextoRevista'] = 1;
 		$_REQUEST['pais'] = 'COL';
+		
+		$_REQUEST['numeroAutoresUniversidad'] = $this->nullify($_REQUEST['numeroAutoresUniversidad']);
 			
 		$cadenaSql = $this->miSql->getCadenaSql ( 'registrar', $_REQUEST );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );

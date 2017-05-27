@@ -194,7 +194,7 @@ class Sql extends \Sql {
 				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
 				$cadenaSql .= " '" . $variable ['nombre'] . "',";
 				$cadenaSql .= " '" . $variable ['contexto'] . "',";
-				$cadenaSql .= "'" . $variable ['pais'] . "',";
+				$cadenaSql .= " '" . $variable ['pais'] . "',";
 				$cadenaSql .= " '" . $variable ['categoria'] . "',";
 				$cadenaSql .= " '" . $variable ['identificadorColeccion'] . "',";
 				$cadenaSql .= " '" . $variable ['anno'] . "',";
@@ -203,12 +203,12 @@ class Sql extends \Sql {
 				$cadenaSql .= " '" . $variable ['paginas'] . "',";
 				$cadenaSql .= " '" . $variable ['tituloArticulo'] . "',";
 				$cadenaSql .= " '" . $variable ['numeroAutores'] . "',";
-				$cadenaSql .= " '" . $variable ['numeroAutoresUniversidad'] . "',";
-				$cadenaSql .= "' " . $variable ['fechaPublicacion'] . "' ,";
-				$cadenaSql .= "' " . $variable ['numeroActa'] . "',";
+				$cadenaSql .= " " . $variable ['numeroAutoresUniversidad'] . ",";
+				$cadenaSql .= " '" . $variable ['fechaPublicacion'] . "' ,";
+				$cadenaSql .= " '" . $variable ['numeroActa'] . "',";
 				$cadenaSql .= " '" . $variable ['fechaActa'] . "',";
-				$cadenaSql .= "' " . $variable ['numeroCasoActa'] . "',";
-				$cadenaSql .= "' " . $variable ['puntaje'] . "',";
+				$cadenaSql .= " '" . $variable ['numeroCasoActa'] . "',";
+				$cadenaSql .= " '" . $variable ['puntaje'] . "',";
 				$cadenaSql .= " '" . $variable ['normatividad'] . "')";
 				break;
 				
@@ -255,7 +255,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "paginas_revista = '" . $variable ['paginas'] . "', ";
 				$cadenaSql .= "titulo_articulo = '" . $variable ['tituloArticulo'] . "', ";
 				$cadenaSql .= "numero_autores = '" . $variable ['numeroAutores'] . "', ";
-				$cadenaSql .= "numero_autores_ud = '" . $variable ['numeroAutoresUniversidad'] . "', ";
+				$cadenaSql .= "numero_autores_ud = " . $variable ['numeroAutoresUniversidad'] . ", ";
 				$cadenaSql .= "fecha_publicacion = '" . $variable ['fechaPublicacion'] . "', ";
 				$cadenaSql .= "numero_acta = '" . $variable ['numeroActa'] . "', ";
 				$cadenaSql .= "fecha_acta = '" . $variable ['fechaActa'] . "', ";

@@ -277,9 +277,9 @@ class Sql extends \Sql {
 						$cadenaSql.=" '" . $variable ['annoLibro'] . "',";
 						$cadenaSql.=" '" . $variable ['volumenLibro'] . "',";
 						$cadenaSql.=" '" . $variable ['numeroAutoresCapitulo'] . "',";
-						$cadenaSql.=" '" . $variable ['numeroAutoresCapituloUniversidad'] . "',";
+						$cadenaSql.=" " . $variable ['numeroAutoresCapituloUniversidad'] . ",";
 						$cadenaSql.=" '" . $variable ['numeroAutoresLibro'] . "',";
-						$cadenaSql.=" '" . $variable ['numeroAutoresLibroUniversidad'] . "',";
+						$cadenaSql.=" " . $variable ['numeroAutoresLibroUniversidad'] . ",";
 						$cadenaSql.=" '" . $variable ['numeroActaLibro'] . "',";
 						$cadenaSql.=" '" . $variable ['fechaActaLibro'] . "',";
 						$cadenaSql.=" '" . $variable ['numeroCasoActaLibro'] . "',";
@@ -326,9 +326,9 @@ class Sql extends \Sql {
 				$cadenaSql.=" anno_publicacion = '" . $variable ['annoLibro'] . "',";
 				$cadenaSql.=" volumen = '" . $variable ['volumenLibro'] . "',";
 				$cadenaSql.=" numero_autores_capitulo = '" . $variable ['numeroAutoresCapitulo'] . "',";
-				$cadenaSql.=" numero_autores_capitulo_ud = '" . $variable ['numeroAutoresCapituloUniversidad'] . "',";
+				$cadenaSql.=" numero_autores_capitulo_ud = " . $variable ['numeroAutoresCapituloUniversidad'] . ",";
 				$cadenaSql.=" numero_autores_libro = '" . $variable ['numeroAutoresLibro'] . "',";
-				$cadenaSql.=" numero_autores_libro_ud = '" . $variable ['numeroAutoresLibroUniversidad'] . "',";
+				$cadenaSql.=" numero_autores_libro_ud = " . $variable ['numeroAutoresLibroUniversidad'] . ",";
 				$cadenaSql.=" numero_acta = '" . $variable ['numeroActaLibro'] . "',";
 				$cadenaSql.=" fecha_acta = '" . $variable ['fechaActaLibro'] . "', ";
 				$cadenaSql.=" numero_caso = '" . $variable ['numeroCasoActaLibro'] . "', ";

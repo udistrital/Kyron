@@ -207,7 +207,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" '" . $variable ['id_docenteRegistrar'] . "',";
 				$cadenaSql.=" '" . $variable ['titulo'] . "',";
 				$cadenaSql.=" '" . $variable ['numeroAutores'] . "',";
-				$cadenaSql.=" '" . $variable ['numeroAutoresUniversidad'] . "',";
+				$cadenaSql.=" " . $variable ['numeroAutoresUniversidad'] . ",";
 				$cadenaSql.=" '" . $variable ['anno'] . "',";
 				$cadenaSql.=" '" . $variable ['categoria'] . "',";
 				$cadenaSql.=" '" . $variable ['evento'] . "',";
@@ -251,7 +251,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" documento_docente='" . $variable['id_docenteRegistrar']. "',";
 				$cadenaSql.=" titulo='" . $variable['titulo']. "',";
 				$cadenaSql.=" numero_autores='" . $variable['numeroAutores']. "',";
-				$cadenaSql.=" numero_autores_ud='" . $variable['numeroAutoresUniversidad']. "',";
+				$cadenaSql.=" numero_autores_ud=" . $variable['numeroAutoresUniversidad']. ",";
 				$cadenaSql.=" anno='" . $variable['anno']. "',";
 				$cadenaSql.=" id_contexto_ponencia='" . $variable['categoria']. "',";
 				$cadenaSql.=" evento_presentacion='" . $variable['evento']. "',";

@@ -26,7 +26,13 @@ class Registrar {
 		$this->miSql = $sql;
 		$this->miFuncion = $funcion;
 	}
-	
+	function nullify($param){
+		if($param==''){
+			return 'NULL';
+		} else {
+			return '\'' . $param . '\'';
+		}
+	}
 	function procesarFormulario() {
 		
 		$conexion = "docencia";
@@ -37,7 +43,9 @@ class Registrar {
 		$rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "raizDocumento" ) . "/blocks/asignacionPuntajes/salariales/";
 		$rutaBloque .= $esteBloque ['nombre'];
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
-				
+		
+		$_REQUEST['numeroAutoresUniversidad'] = $this->nullify($_REQUEST['numeroAutoresUniversidad']);
+		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'registrar', $_REQUEST );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
 		

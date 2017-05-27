@@ -26,6 +26,13 @@ class Registrar {
 		$this->miSql = $sql;
 		$this->miFuncion = $funcion;
 	}
+	function nullify($param){
+		if($param==''){
+			return 'NULL';
+		} else {
+			return '\'' . $param . '\'';
+		}
+	}
 	function procesarFormulario() {
 		$conexion = "docencia";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
@@ -38,6 +45,8 @@ class Registrar {
 
 		$_REQUEST['contextoRevista'] = 1;
 		$_REQUEST['pais'] = 'COL';
+		
+		$_REQUEST['numeroAutoresUniversidad'] = $this->nullify($_REQUEST['numeroAutoresUniversidad']);
 		
 		$arregloDatos = array (
 			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],

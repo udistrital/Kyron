@@ -26,6 +26,13 @@ class RegistrarIndexacionRevista {
 		$this->miSql = $sql;
 		$this->miFuncion = $funcion;
 	}
+	function nullify($param){
+		if($param==''){
+			return 'NULL';
+		} else {
+			return '\'' . $param . '\'';
+		}
+	}
 	function procesarFormulario() {
 
 		$conexion = "docencia";
@@ -36,6 +43,10 @@ class RegistrarIndexacionRevista {
 		$rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "raizDocumento" ) . "/blocks/asignacionPuntajes/salariales/";
 		$rutaBloque .= $esteBloque ['nombre'];
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
+		
+		$_REQUEST['numeroAutoresCapituloUniversidad'] = $this->nullify($_REQUEST['numeroAutoresCapituloUniversidad']);
+		$_REQUEST['numeroAutoresLibroUniversidad'] = $this->nullify($_REQUEST['numeroAutoresLibroUniversidad']);
+		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'insertarCapituloLibro', $_REQUEST );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
 		

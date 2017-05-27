@@ -272,7 +272,7 @@ class Sql extends \Sql {
 						$cadenaSql.=" '" . $variable ['isbnLibro'] . "',";
 						$cadenaSql.=" '" . $variable ['annoLibro'] . "',";
 						$cadenaSql.=" '" . $variable ['numeroAutoresLibro'] . "',";
-						$cadenaSql.=" '" . $variable ['numeroAutoresUniversidad'] . "',";
+						$cadenaSql.=" " . $variable ['numeroAutoresUniversidad'] . ",";
 						$cadenaSql.=" '" . $variable ['editorial'] . "',";
 						$cadenaSql.=" '" . $variable ['numeroActaLibro'] . "',";
 						$cadenaSql.=" '" . $variable ['fechaActaLibro'] . "',";
@@ -321,7 +321,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" codigo_isbn = '" . $variable ['isbnLibro'] . "',";
 				$cadenaSql.=" anno_publicacion = '" . $variable ['annoLibro'] . "',";
 				$cadenaSql.=" numero_autores = '" . $variable ['numeroAutoresLibro'] . "',";
-				$cadenaSql.=" numero_autores_ud = '" . $variable ['numeroAutoresUniversidad'] . "',";
+				$cadenaSql.=" numero_autores_ud = " . $variable ['numeroAutoresUniversidad'] . ",";
 				$cadenaSql.=" id_editorial = '" . $variable ['editorial'] . "',";
 				$cadenaSql.=" numero_acta = '" . $variable ['numeroActaLibro'] . "',";
 				$cadenaSql.=" fecha_acta = '" . $variable ['fechaActaLibro'] . "', ";
