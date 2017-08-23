@@ -149,7 +149,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.pais AS e ON e.paiscodigo = a.paiscodigo";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY titulo ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -181,7 +181,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.pais AS d ON d.paiscodigo = a.paiscodigo";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY nombre_revista ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -222,7 +222,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.tipo_libro AS c ON c.id_tipo_libro = a.id_tipo_libro";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY titulo_capitulo ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -255,7 +255,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.pais AS d ON d.paiscodigo = a.paiscodigo";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY nombre_revista ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -287,7 +287,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.tipo_trabajogrado AS c ON c.id_tipo_trabajogrado = a.id_tipo_trabajogrado";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY titulo_trabajogrado ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -313,7 +313,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.universidad AS c ON c.id_universidad = a.id_universidad";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY universidad ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 
@@ -338,7 +338,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.universidad AS c ON c.id_universidad = a.id_universidad";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY universidad ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -364,7 +364,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.universidad AS c ON c.id_universidad = a.id_universidad";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY universidad ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -388,7 +388,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.universidad AS b ON b.id_universidad = a.id_universidad";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY universidad ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -412,7 +412,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.tipo_experiencia_calificada AS c ON c.id_tipo_experiencia_calificada = a.id_tipo_experiencia_calificada";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY tipo_experiencia_calificada ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -431,7 +431,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" FROM docencia.excelencia_academica AS a";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY annio_otorgamiento ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -463,7 +463,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.pais AS d ON d.paiscodigo = a.paiscodigo";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY nombre_revista ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -487,7 +487,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.tipo_obra_artistica AS c ON c.id_tipo_obra_artistica = a.id_tipo_obra_artistica";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY titulo_obra ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -514,7 +514,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.pais AS d ON d.paiscodigo = a.paiscodigo";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY titulo_patente ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -546,7 +546,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.ciudad AS f ON f.ciudadid = a.ciudadid";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY universidad ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -582,7 +582,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.contexto AS c ON c.id_contexto = a.id_contexto";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY titulo_video ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -621,7 +621,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.universidad AS d ON d.id_universidad = a.id_universidad";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY titulo ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -643,7 +643,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" FROM docencia.traduccion_libro AS a";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY titulo ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -676,7 +676,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.tipo_tecnicaysoftware AS b ON b.id_tipo_tecnicaysoftware = a.id_tipo_tecnicaysoftware";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY nombre ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -701,7 +701,7 @@ class Sql extends \Sql {
 				//$cadenaSql.=" LEFT JOIN docencia.tipo_indexacion AS b ON b.id_tipo_indexacion = a.id_tipo_indexacion";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY titulo ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -724,7 +724,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.universidad AS b ON b.id_universidad = a.id_universidad";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY titulo_obtenido ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -746,7 +746,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.tipo_indexacion AS b ON b.id_tipo_indexacion = a.id_tipo_indexacion";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY titulo ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -768,7 +768,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.tipo_traduccion_articulo AS b ON b.id_tipo_traduccion_articulo = a.id_tipo_traduccion_articulo";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY titulo_publicacion ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -793,7 +793,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.contexto_ponencia AS b ON b.id_contexto_ponencia = a.id_contexto_ponencia";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY titulo ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 							
@@ -816,7 +816,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND c.id_categoria_puntaje = '1'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY descripcion ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -839,7 +839,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
 				$cadenaSql.=" AND c.id_categoria_puntaje = '2'";
 				$cadenaSql.=" AND a.estado = true";
-				$cadenaSql.=" ORDER BY descripcion ASC";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
 			
