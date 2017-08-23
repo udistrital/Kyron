@@ -67,7 +67,7 @@ class Registrar {
 			'numeroCasoActaRevista' => $_REQUEST['numeroCasoActaRevista'],
 			'puntajeRevista' => $_REQUEST['puntajeRevista'],
 			'normatividad' => $_REQUEST['normatividad'],
-			'numero_issn_old' => $_REQUEST['numero_issn_old']
+			'id_comunicacion_corta' => $_REQUEST['id_comunicacion_corta']
 		);
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizar', $arregloDatos );

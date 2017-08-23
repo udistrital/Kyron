@@ -212,7 +212,7 @@ class registrarForm {
 						$variable .= "&arreglo=" . $arreglo;
 						// $variable .= "&usuario=" . $miSesion->getSesionUsuarioId ();
 						$variable .= "&documento_docente=" . $indexacion [$i] ['documento_docente'];
-						$variable .= "&numero_issn=" . $indexacion [$i] ['numero_issn'];
+						$variable .= "&id_publicacion_impresa=" . $indexacion [$i] ['id_publicacion_impresa'];
 						$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 						
 						$mostrarHtml = "<tr>

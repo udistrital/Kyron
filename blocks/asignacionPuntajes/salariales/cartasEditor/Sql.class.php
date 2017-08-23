@@ -154,6 +154,7 @@ class Sql extends \Sql {
 								
 			case "consultar" :			
 				$cadenaSql=" select ";
+				$cadenaSql.=" ce.id_cartas_editor, ";
 				$cadenaSql.=" ce.documento_docente, ";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
 				$cadenaSql.=" ce.nombre_revista, ce.titulo_articulo, pi.paisnombre, ti.descripcion as tipo_indexacion,";
@@ -215,6 +216,7 @@ class Sql extends \Sql {
 			case "publicacionActualizar" :
 				$cadenaSql=" SELECT ce.documento_docente,";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
+				$cadenaSql.=" ce.id_cartas_editor, ";
 				$cadenaSql.=" ce.nombre_revista, ";
 				$cadenaSql.=" ce.id_contexto, ";
 				$cadenaSql.=" ce.paiscodigo, ";
@@ -235,9 +237,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" ce.normatividad ";
 				$cadenaSql.=" FROM docencia.cartas_editor ce ";
 				$cadenaSql.=" left join docencia.docente dc on ce.documento_docente=dc.documento_docente ";
-				$cadenaSql.=" WHERE ce.documento_docente ='" . $variable['documento_docente']. "'";
-				$cadenaSql.=" and ce.estado=true";
-				$cadenaSql.=" and ce.numero_issn ='" . $variable['identificadorColeccion']. "'";
+				$cadenaSql.=" WHERE ce.estado=true";
+				$cadenaSql.=" and ce.id_cartas_editor ='" . $variable['id_cartas_editor']. "'";
 				break;
 				
 			case "actualizar" :
@@ -263,8 +264,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "puntaje = '" . $variable ['puntaje'] . "', ";
 				$cadenaSql .= "normatividad = '" . $variable ['normatividad'] . "'";
 				$cadenaSql .= "WHERE ";
-				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";
-				$cadenaSql .= "and numero_issn ='" . $variable ['identificadorColeccion_old'] . "' ";
+				$cadenaSql .= "id_cartas_editor ='" . $variable ['id_cartas_editor'] . "' ";
 				break;
 		}
 		

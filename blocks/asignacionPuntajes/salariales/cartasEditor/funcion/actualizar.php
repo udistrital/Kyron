@@ -65,7 +65,7 @@ class RegistrarIndexacionRevista {
 			'numeroCasoActa' => $_REQUEST['numeroCasoActa'],
 			'puntaje' => $_REQUEST['puntaje'],
 			'normatividad' => $_REQUEST['normatividad'],
-			'identificadorColeccion_old' => $_REQUEST['identificadorColeccion_old']
+			'id_cartas_editor' => $_REQUEST['id_cartas_editor']
 		);
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'actualizar', $arregloDatos );

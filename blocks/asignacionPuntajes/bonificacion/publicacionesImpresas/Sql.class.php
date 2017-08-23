@@ -140,6 +140,7 @@ class Sql extends \Sql {
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" dc.documento_docente AS documento_docente,";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido AS nombre_docente,";
+				$cadenaSql.=" pi.id_publicacion_impresa AS id_publicacion_impresa,";
 				$cadenaSql.=" pi.titulo AS titulo,";
 				$cadenaSql.=" pi.numero_issn AS numero_issn,";
 				$cadenaSql.=" pi.nombre_revista AS nombre_revista,";
@@ -226,6 +227,7 @@ class Sql extends \Sql {
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" dc.documento_docente AS documento_docente,";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido AS nombre_docente,";
+				$cadenaSql.=" pi.id_publicacion_impresa AS id_publicacion_impresa,";
 				$cadenaSql.=" pi.titulo AS titulo,";
 				$cadenaSql.=" pi.numero_issn AS numero_issn,";
 				$cadenaSql.=" pi.nombre_revista AS nombre_revista,";
@@ -243,8 +245,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" docencia.publicacion_impresa AS pi";
 				//$cadenaSql.=" LEFT JOIN docencia.tipo_indexacion AS ti ON ti.id_tipo_indexacion=pi.id_tipo_indexacion";
 				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON dc.documento_docente=pi.documento_docente";
-				$cadenaSql.=" WHERE pi.numero_issn ='" . $variable['numero_issn']. "'";
-				$cadenaSql.=" AND pi.documento_docente ='" . $variable['documento_docente']. "'";
+				$cadenaSql.=" WHERE pi.id_publicacion_impresa ='" . $variable['id_publicacion_impresa']. "'";
 				$cadenaSql.=" ;";
 				break;
 				
@@ -265,8 +266,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" puntaje='" . $variable['puntaje']. "',";
 				$cadenaSql.=" normatividad='" . $variable['normatividad']. "'";
 				$cadenaSql.=" WHERE";
-				$cadenaSql.=" numero_issn='" . $variable['old_issn']. "'";
-				$cadenaSql.=" AND documento_docente='" . $variable['old_id_docenteRegistrar']. "'";
+				$cadenaSql.=" id_publicacion_impresa='" . $variable['id_publicacion_impresa']. "'";
 				$cadenaSql.=" AND estado=true";
 				$cadenaSql.=" ;";
 				break;

@@ -86,8 +86,7 @@ class FormularioModificar {
 
 		// ---------------- CONTROL: Lista Docente--------------------------------------------------------
 		$datos = array(
-				'documento_docente' =>  $_REQUEST ['documento_docente'],
-				'numero_issn' => $_REQUEST ['numero_issn'],
+				'id_revista_indexada' =>  $_REQUEST ['id_revista_indexada']
 		
 		);
 		 
@@ -890,7 +889,7 @@ class FormularioModificar {
 				$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 				$valorCodificado .= "&opcion=actualizar";
 				$valorCodificado .= "&arreglo=".$_REQUEST['arreglo'];
-				$valorCodificado .= "&numero_issn_old=".$_REQUEST['numero_issn'];
+				$valorCodificado .= "&id_revista_indexada=".$_REQUEST['id_revista_indexada'];
 				
 				/*
 				 * Sara permite validar los campos en el formulario o funcion destino.

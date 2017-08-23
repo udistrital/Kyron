@@ -95,9 +95,7 @@ class FormularioModificar {
 
 		// ---------------- INICIO: Lista Variables Modificar--------------------------------------------------------
 		$datos = array(
-				'documento_docente' =>  $_REQUEST ['documento_docente'],
-				'numero_issn' => $_REQUEST ['numero_issn'],
-		
+				'id_publicacion_impresa' => $_REQUEST ['id_publicacion_impresa']
 		);
 		 
 		$cadena_sql = $this->miSql->getCadenaSql ( "consultaActualizar", $datos );
@@ -677,8 +675,7 @@ class FormularioModificar {
 				$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 				$valorCodificado .= "&opcion=actualizar";
 				$valorCodificado .= "&arreglo=".$_REQUEST['arreglo'];
-				$valorCodificado .= "&old_id_docenteRegistrar=".$_REQUEST['documento_docente'];
-				$valorCodificado .= "&old_issn=".$_REQUEST['numero_issn'];
+				$valorCodificado .= "&id_publicacion_impresa=".$_REQUEST['id_publicacion_impresa'];
 				
 				/*
 				 * Sara permite validar los campos en el formulario o funcion destino.

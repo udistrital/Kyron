@@ -147,6 +147,7 @@ class Sql extends \Sql {
 				$cadenaSql=" select ";
 				$cadenaSql.=" ri.documento_docente, ";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
+				$cadenaSql.=" ri.id_revista_indexada,";
 				$cadenaSql.=" ri.nombre_revista, ri.titulo_articulo, pi.paisnombre, ti.descripcion as tipo_indexacion,";
 				$cadenaSql.=" ri.numero_issn, ri.anno_publicacion,";
 				$cadenaSql.=" ri.volumen_revista, ri.numero_revista,";
@@ -208,6 +209,7 @@ class Sql extends \Sql {
 			case "consultarRevistas" :
 				$cadenaSql=" SELECT ri.documento_docente,";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
+				$cadenaSql.=" ri.id_revista_indexada,";
 				$cadenaSql.=" ri.nombre_revista, ";
 				$cadenaSql.=" ri.id_contexto, ";
 				$cadenaSql.=" ri.paiscodigo, ";
@@ -227,8 +229,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ri.normatividad ";
 				$cadenaSql.=" FROM docencia.revista_indexada ri ";
 				$cadenaSql.=" left join docencia.docente dc on ri.documento_docente=dc.documento_docente ";
-				$cadenaSql.=" WHERE ri.documento_docente ='" . $variable['documento_docente']. "'";
-				$cadenaSql.=" and ri.numero_issn ='" . $variable['numero_issn']. "'";
+				$cadenaSql.=" WHERE ri.id_revista_indexada ='" . $variable['id_revista_indexada']. "'";
 				$cadenaSql.=" and ri.estado=true";
 				break;
 				
@@ -254,8 +255,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "puntaje = '" . $variable ['puntajeRevista'] . "', ";
 				$cadenaSql .= "normatividad = '" . $variable ['normatividad'] . "'";
 				$cadenaSql .= "WHERE ";
-				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";
-				$cadenaSql .= "and numero_issn ='" . $variable ['numero_issn_old'] . "' ";
+				$cadenaSql .= "id_revista_indexada ='" . $variable ['id_revista_indexada'] . "' ";
 				break;
 		}
 		

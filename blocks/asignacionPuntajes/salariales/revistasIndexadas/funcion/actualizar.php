@@ -67,7 +67,7 @@ class RegistrarIndexacionRevista {
 			'numeroCasoActaRevista' => $_REQUEST['numeroCasoActaRevista'],
 			'puntajeRevista' => $_REQUEST['puntajeRevista'],
 			'normatividad' => $_REQUEST['normatividad'],
-			'numero_issn_old' => $_REQUEST['numero_issn_old']
+			'id_revista_indexada' => $_REQUEST['id_revista_indexada']
 		);
 		
 		

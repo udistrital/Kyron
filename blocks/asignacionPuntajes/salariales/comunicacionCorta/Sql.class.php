@@ -145,6 +145,7 @@ class Sql extends \Sql {
 								
 			case "consultar" :			
 				$cadenaSql=" select ";
+				$cadenaSql.=" ri.id_comunicacion_corta, ";
 				$cadenaSql.=" ri.documento_docente, ";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
 				$cadenaSql.=" ri.nombre_revista, ri.titulo_articulo, pi.paisnombre, ti.descripcion as tipo_indexacion,";
@@ -204,6 +205,7 @@ class Sql extends \Sql {
 			case "consultarPublicacion" :
 				$cadenaSql=" SELECT ri.documento_docente,";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente,";
+				$cadenaSql.=" ri.id_comunicacion_corta, ";
 				$cadenaSql.=" ri.nombre_revista, ";
 				$cadenaSql.=" ri.id_contexto, ";
 				$cadenaSql.=" ri.paiscodigo, ";
@@ -221,10 +223,9 @@ class Sql extends \Sql {
 				$cadenaSql.=" ri.numero_caso, ";
 				$cadenaSql.=" ri.puntaje, ";
 				$cadenaSql.=" ri.normatividad ";
-				$cadenaSql.=" FROM docencia.comunicacion_corta ri ";
-				$cadenaSql.=" left join docencia.docente dc on ri.documento_docente=dc.documento_docente ";
-				$cadenaSql.=" WHERE ri.documento_docente ='" . $variable['documento_docente']. "'";
-				$cadenaSql.=" and ri.numero_issn ='" . $variable['numero_issn']. "'";
+				$cadenaSql.=" FROM docencia.comunicacion_corta AS ri ";
+				$cadenaSql.=" LEFT JOIN docencia.docente dc on ri.documento_docente=dc.documento_docente ";
+				$cadenaSql.=" WHERE ri.id_comunicacion_corta ='" . $variable['id_comunicacion_corta']. "'";
 				$cadenaSql.=" and ri.estado=true";
 				break;
 				
@@ -250,8 +251,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "puntaje = '" . $variable ['puntajeRevista'] . "', ";
 				$cadenaSql .= "normatividad = '" . $variable ['normatividad'] . "'";
 				$cadenaSql .= "WHERE ";
-				$cadenaSql .= "documento_docente ='" . $variable ['id_docenteRegistrar'] . "' ";
-				$cadenaSql .= "and numero_issn ='" . $variable ['numero_issn_old'] . "' ";
+				$cadenaSql.=" id_comunicacion_corta ='" . $variable['id_comunicacion_corta']. "'";
 				break;
 		}
 		

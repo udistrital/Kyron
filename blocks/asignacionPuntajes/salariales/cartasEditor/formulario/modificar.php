@@ -86,9 +86,7 @@ class FormularioModificar {
 
 		// ---------------- CONTROL: Lista Docente--------------------------------------------------------
 		$datos = array(
-				'documento_docente' =>  $_REQUEST ['documento_docente'],
-				'identificadorColeccion' => $_REQUEST ['identificadorColeccion'],
-		
+				'id_cartas_editor' => $_REQUEST ['id_cartas_editor']		
 		);
 		 
 		$cadena_sql = $this->miSql->getCadenaSql ( "publicacionActualizar", $datos );		
@@ -896,7 +894,7 @@ class FormularioModificar {
 				$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 				$valorCodificado .= "&opcion=actualizar";
 				$valorCodificado .= "&arreglo=".$_REQUEST['arreglo'];
-				$valorCodificado .= "&identificadorColeccion_old=".$_REQUEST['identificadorColeccion'];
+				$valorCodificado .= "&id_cartas_editor=".$_REQUEST['id_cartas_editor'];
 				
 				/*
 				 * Sara permite validar los campos en el formulario o funcion destino.
