@@ -36,7 +36,7 @@ class logger extends loggerBase {
 	 * @return void
 	 * @access public
 	 */
-	function log_usuario($log) {
+	function log_usuario($log, $cadenaSQL="") {
 // 		if(isset($log['opcion']) && (/*$log['opcion']=="buscar" ||*/ $log['opcion']=="insertar" || $log['opcion']=="actualizar")){
 			if(strcmp($log['opcion'], "buscar")==0){
 				$log['opcion']= "CONSULTAR";
@@ -47,10 +47,14 @@ class logger extends loggerBase {
 			if(strcmp($log['opcion'], "actualizar")==0){
 				$log['opcion']= "MODIFICAR";
 			}
-			
+			$log ['cadenaSQLBase64'] = base64_encode($cadenaSQL);
 			$log ['host'] = $this->obtenerIP ();
 			$log ['machine'] = php_uname();
+			$log ['expiracionSesion'] = $this->sesionUsuario->getSesionExpiracion();
 			$registroLog ['usuario'] = $this->sesionUsuario->getSesionUsuarioId();
+			if ($registroLog['usuario'] == '' || $registroLog == null){
+				$registroLog ['usuario'] = $log ['usuario'];
+			}
 			$registroLog ['accion'] = $log['opcion'];
 			$registroLog ['fecha_log'] = date ( "F j, Y, g:i:s a" );
 			$registroLog ['datos'] = array();

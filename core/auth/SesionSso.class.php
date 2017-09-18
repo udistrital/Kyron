@@ -112,11 +112,15 @@ class SesionSSO {
 		
 		$this->authnRequest->requireAuth ( $login_params );
 		$atributos = $this->authnRequest->getAttributes();
+		$idUsuario = $atributos['usuario'][0]; // del arreglo del SSO
+		$this->sesionUsuario->crearSesion($idUsuario);
+		// begin log
 		$registro = $_REQUEST;
 		$registro['opcion'] = 'INGRESO';
+		$registro['atributosSSO'] = $atributos;
+		$registro['usuario'] = $idUsuario;
 		$this->logger->log_usuario($registro);
-		
-		$this->sesionUsuario->crearSesion($atributos['usuario'][0]);
+		// end log
 		return $atributos;
     }
 
@@ -150,6 +154,13 @@ class SesionSSO {
     	$this->sesionUsuario->terminarSesion($sesionUsuarioId);
     	// $aplication_base_url = 'http://10.20.0.38/splocal/';
     	$aplication_base_url = $this->hostSSO.$this->site.'/';
+    	
+    	// begin log
+    	$registro = $_REQUEST;
+    	$registro['opcion'] = 'SALIDA';
+    	$registro['usuario'] = $sesionUsuarioId;
+    	$this->logger->log_usuario($registro);
+    	// end log
     	
     	$respuesta = $this->authnRequest->logout ( $aplication_base_url . 'index.php' );
     	//Cerrar la sesión de SARA al salir.

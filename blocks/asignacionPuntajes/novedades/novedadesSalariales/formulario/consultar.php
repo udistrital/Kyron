@@ -211,10 +211,10 @@ class registrarForm {
 						<th>Tipo de novedad</th>
 						<th>Número Acta</th>
 						<th>Fecha Acta</th>
-						<th>Caso Acta</th>
+						<th>Número Caso</th>
 						<th>Puntaje</th>
-						<th>Puntaje</th>
-						<th>Normatividad</th>	
+						<th>Normatividad</th>
+						<th>Modificar</th>
 							
 	                </tr>
 	            </thead>

@@ -199,8 +199,8 @@ class Pgsql extends ConectorDb {
 		if (isset ( $esteRegistro ) && $esteRegistro != false) {
 			if(strcmp($tipo, "buscar")==0 || strcmp($tipo, "actualizar")==0 || strcmp($tipo, "insertar")==0 ){
 				$_REQUEST['opcion']=$tipo;
-				$registrarLog = new logger ();	
-				$registrarLog->log_usuario($_REQUEST);
+				$registrarLog = new logger ();
+				$registrarLog->log_usuario($_REQUEST, $cadena);
 			}
 		}
 		return $esteRegistro;
