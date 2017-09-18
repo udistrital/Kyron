@@ -47,10 +47,13 @@ class logger extends loggerBase {
 			if(strcmp($log['opcion'], "actualizar")==0){
 				$log['opcion']= "MODIFICAR";
 			}
-			$log ['cadenaSQLBase64'] = base64_encode($cadenaSQL);
-			$log ['host'] = $this->obtenerIP ();
-			$log ['machine'] = php_uname();
-			$log ['expiracionSesion'] = $this->sesionUsuario->getSesionExpiracion();
+			$json = [];
+			$json ['request'] = $log;
+			$json ['cadenaSQLBase64'] = base64_encode($cadenaSQL);
+			$json ['host'] = $this->obtenerIP ();
+			$json ['machine'] = php_uname();
+			$json ['server'] = $_SERVER;
+			$json ['expiracionSesion'] = $this->sesionUsuario->getSesionExpiracion();
 			$registroLog ['usuario'] = $this->sesionUsuario->getSesionUsuarioId();
 			if ($registroLog['usuario'] == '' || $registroLog == null){
 				$registroLog ['usuario'] = $log ['usuario'];
@@ -58,15 +61,16 @@ class logger extends loggerBase {
 			$registroLog ['accion'] = $log['opcion'];
 			$registroLog ['fecha_log'] = date ( "F j, Y, g:i:s a" );
 			$registroLog ['datos'] = array();
-			foreach (array_keys($log) as $llaves){
-				if($llaves != "tiempo" && $llaves != "campoSeguro" && $llaves != "validadorCampos" && $llaves != "action" && $llaves != "option" && $llaves != "opcion" && $llaves != "arreglo"){
-					$registroLog ['datos'][$llaves]=$log[$llaves];
-				}
+			foreach (array_keys($json) as $llaves){
+				$registroLog ['datos'][$llaves]=$json[$llaves];
 			}
 			$registroLog ['datos'] = json_encode($registroLog ['datos']);
 			
 			$cadenaSql = $this->miSql->getCadenaSql ( "registroLogUsuario", $registroLog );
 			$resultado = $this->miConexion->ejecutarAcceso ( $cadenaSql, self::ACCEDER);
+			if (!$resultado){
+				die('Error general del log');
+			}
 // 		}
 	}
 	function obtenerIP() {
