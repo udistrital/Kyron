@@ -415,58 +415,6 @@ class registrarForm {
 		unset($campos);
 		// ---------------- FIN CONSULTA: cartas editor --------------------------------------------------------
 		
-		// ---------------- CONSULTA: dirección de trabajos --------------------------------------------------------
-		$cadenaSql = $this->miSql->getCadenaSql ( 'direccion_de_trabajos', $documento );
-		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
-		$tabla = 'direccion_trabajogrado';
-		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table',  $tabla);
-		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
-		$campos[] = array(
-				'alias_campo' => 'Titulo',
-				'nombre_campo' => 'titulo_trabajogrado',
-		);
-		$campos[] = array(
-				'alias_campo' => 'Tipo',
-				'nombre_campo' => 'tipo_trabajogrado',
-		);
-		$campos[] = array(
-				'alias_campo' => 'Categoría',
-				'nombre_campo' => 'categoria_trabajogrado',
-		);
-		$campos[] = array(
-				'alias_campo' => 'Número Autores',
-				'nombre_campo' => 'numero_autores',
-		);
-		$campos[] = array(
-				'alias_campo' => 'Año Dirección',
-				'nombre_campo' => 'anno_direccion',
-		);
-		$campos[] = array(
-				'alias_campo' => 'Número Caso Acta',
-				'nombre_campo' => 'numero_caso',
-		);
-		$campos[] = array(
-				'alias_campo' => 'Normatividad',
-				'nombre_campo' => 'normatividad',
-		);
-		$campos[] = array(
-				'alias_campo' => 'Estudiantes',
-				'nombre_campo' => 'estudiantes',
-		);
-		$items[] = array(
-				'_resultados' => ($resultado)?$resultado:array(),
-				'_tipo' => '1',
-				'_tituloTipo' => 'Salariales',
-				'_titulo' => 'Dirección de Trabajos de Grado',
-				'_tipoObservacion' => '4',
-				'_paginaSARA' => 'direccionTrabajosDeGrado',
-				'_llavesPrimarias' => $llavesPrimarias,
-				'_descripcion' => $campos,
-				'_tablaDocencia' => $tabla
-		);
-		unset($campos);
-		// ---------------- FIN CONSULTA: dirección de trabajos --------------------------------------------------------
-		
 		// ---------------- CONSULTA: experiencia dirección académica --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'experiencia_direccion_academica', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
@@ -1483,7 +1431,60 @@ class registrarForm {
 		);
 		unset($campos);
 		// ---------------- FIN CONSULTA: ponencias --------------------------------------------------------
-				
+		
+		// ---------------- CONSULTA: dirección de trabajos --------------------------------------------------------
+		$cadenaSql = $this->miSql->getCadenaSql ( 'direccion_de_trabajos', $documento );
+		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$tabla = 'direccion_trabajogrado';
+		$cadenaSql = $this->miSql->getCadenaSql ( 'primary_key_table',  $tabla);
+		$llavesPrimarias = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+		$campos[] = array(
+				'alias_campo' => 'Titulo',
+				'nombre_campo' => 'titulo_trabajogrado',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Tipo',
+				'nombre_campo' => 'tipo_trabajogrado',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Categoría',
+				'nombre_campo' => 'categoria_trabajogrado',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Número Autores',
+				'nombre_campo' => 'numero_autores',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Año Dirección',
+				'nombre_campo' => 'anno_direccion',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Número Caso Acta',
+				'nombre_campo' => 'numero_caso',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Normatividad',
+				'nombre_campo' => 'normatividad',
+		);
+		$campos[] = array(
+				'alias_campo' => 'Estudiantes',
+				'nombre_campo' => 'estudiantes',
+		);
+		$items[] = array(
+				'_resultados' => ($resultado)?$resultado:array(),
+				'_tipo' => '2',
+				'_tituloTipo' => 'Bonificación',
+				'_titulo' => 'Dirección de Trabajos de Grado',
+				'_tipoObservacion' => '4',
+				'_paginaSARA' => 'direccionTrabajosDeGrado',
+				'_llavesPrimarias' => $llavesPrimarias,
+				'_descripcion' => $campos,
+				'_tablaDocencia' => $tabla
+		);
+		unset($campos);
+		// ---------------- FIN CONSULTA: dirección de trabajos --------------------------------------------------------
+		
+		
 		// ---------------- CONSULTA: novedades salariales --------------------------------------------------------
 		$cadenaSql = $this->miSql->getCadenaSql ( 'novedades_salariales', $documento );
 		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
@@ -1749,17 +1750,7 @@ class registrarForm {
 			'alias_campo' => 'Verificación',
 			'nombre_campo' => 'verificacion',			
 		);
-		// ---------------- OJO: Quitar controles desde acá para el bloque reportes/estadoDeCuentaCondor/formulario/formulario.php ------
-// 		$campos[] = array(
-//                 'alias_campo' => 'Modificar',
-//                 'nombre_campo' => '_enlace_modificacion',
-//         );
-// 		$campos[] = array(
-//                 'alias_campo' => 'Eliminar',
-//                 'nombre_campo' => '_enlace_eliminacion',
-//         );
-		// ---------------- OJO: Quitar controles hasta acá para el bloque reportes/estadoDeCuentaCondor/formulario/formulario.php ------
-			
+		
 		$atributos ['id'] = 'tablaPuntajeDocente';
 		$atributos ['campos'] = $campos;
 		//$atributos['campoSeguro'] = true;
