@@ -27,6 +27,7 @@ $( document ).ready(function() {
 			dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','Sab'],
 			dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
 			onSelect: function(dateText, inst) {
+				window.checkearFechaVieja();
 				var lockDate = new Date($(this.valueOf()).datepicker('getDate'));
 			}, onClose: function() { 
 				}

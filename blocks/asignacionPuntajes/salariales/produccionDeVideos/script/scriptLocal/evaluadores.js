@@ -107,8 +107,19 @@ $( document ).ready(function() {
 	 			$("#marcoEvaluador"+ numevaluador).show(); 			
 			}
 		});
-	}); 	
-				
+	});
+	
+	window.checkearFechaVieja = function(){
+		console.log('Cambió fecha', evaluadorRequerido);
+		var fechaSeleccionada = $("#<?php echo $this->campoSeguro('fechaActa')?>").datepicker("getDate");
+		console.log('fechaSeleccionada', fechaSeleccionada);
+		if (fechaSeleccionada !== null && fechaSeleccionada < new Date('2016-01-01')){
+			window.alert('Está en el modo sin restricciones.');
+			evaluadorRequerido = 0;
+		}
+		return evaluadorRequerido;
+	}
+	
 });
 
 String.prototype.insertAt=function(index, string) { 
