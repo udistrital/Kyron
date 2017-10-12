@@ -36,8 +36,7 @@ class Registrar {
 		$rutaBloque .= $esteBloque ['nombre'];
 		$host = $this->miConfigurador->getVariableConfiguracion ( "host" ) . $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/asignacionPuntajes/salariales/" . $esteBloque ['nombre'];
 		
-		$_REQUEST['numeroAutores'] = 0;
-		
+		$_REQUEST['numeroAutores'] = 0;		
 		for($i=1; $i<=3; $i++){
 			if($_REQUEST['nombreEvaluador' . $i] != "" && $_REQUEST['universidadEvaluador' . $i] != "" && $_REQUEST['puntajeEvaluador' . $i] != ""){
 				$_REQUEST['numeroAutores']++;
@@ -47,20 +46,27 @@ class Registrar {
 		$cadenaSql = $this->miSql->getCadenaSql ( 'registrar', $_REQUEST);
 		$id_produccion_video = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 		
-		for($i=1; $i<= $_REQUEST['numeroAutores']; $i++){
-			$arregloEvaluador = array (
-					'id_produccion_video' => $id_produccion_video[0]['id_produccion_video'],
-					'nombreEvaluador' => $_REQUEST['nombreEvaluador'.$i],
-					'UniversidadEvaluador' => $_REQUEST['universidadEvaluador'.$i],
-					'puntajeEvaluador' => $_REQUEST['puntajeEvaluador'.$i]
-			);
-			
-			$cadenaSql = $this->miSql->getCadenaSql ( 'registroEvaluador', $arregloEvaluador);
-			$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
-			
+		$resultadototal = true;
+		if ($_REQUEST['numeroAutores'] > 0){
+			for($i=1; $i<= $_REQUEST['numeroAutores']; $i++){
+				$arregloEvaluador = array (
+						'id_produccion_video' => $id_produccion_video[0]['id_produccion_video'],
+						'nombreEvaluador' => $_REQUEST['nombreEvaluador'.$i],
+						'UniversidadEvaluador' => $_REQUEST['universidadEvaluador'.$i],
+						'puntajeEvaluador' => $_REQUEST['puntajeEvaluador'.$i]
+				);
+					
+				$cadenaSql = $this->miSql->getCadenaSql ( 'registroEvaluador', $arregloEvaluador);
+				$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
+				if ($resultado){
+					$resultadototal = true;
+				} else {
+					$resultadototal = false;
+				}
+			}
 		}
 		
-		if ($resultado) {
+		if ($resultadototal) {
 			redireccion::redireccionar ( 'inserto',  $_REQUEST['docenteRegistrar']);
 			exit ();
 		} else {
