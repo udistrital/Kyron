@@ -64,7 +64,7 @@ class logger extends loggerBase {
 			foreach (array_keys($json) as $llaves){
 				$registroLog ['datos'][$llaves]=$json[$llaves];
 			}
-			$registroLog ['datos'] = json_encode($registroLog ['datos']);
+			$registroLog ['datos'] = pg_escape_literal(json_encode($registroLog ['datos']));// only for postgres?
 			
 			$cadenaSql = $this->miSql->getCadenaSql ( "registroLogUsuario", $registroLog );
 			$resultado = $this->miConexion->ejecutarAcceso ( $cadenaSql, self::ACCEDER);

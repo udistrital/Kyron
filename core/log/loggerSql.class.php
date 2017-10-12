@@ -35,7 +35,7 @@ class loggerSql {
 				$this->cadena_sql [$indice] .= "'" . $parametro ['usuario'] . "',  ";
 				$this->cadena_sql [$indice] .= "'" . $parametro ['accion'] . "',  ";
 				$this->cadena_sql [$indice] .= "'" . $parametro ['fecha_log'] . "',  ";
-				$this->cadena_sql [$indice] .= "'" . $parametro ['datos'] . "' ";
+				$this->cadena_sql [$indice] .= "" . $parametro ['datos'] . " ";
 				$this->cadena_sql [$indice] .= ")";
 				break;
 			
