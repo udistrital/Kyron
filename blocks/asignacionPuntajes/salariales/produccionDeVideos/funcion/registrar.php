@@ -42,11 +42,23 @@ class Registrar {
 				$_REQUEST['numeroAutores']++;
 			}
 		}
-				
+		$resultadototal = true;
+		
+		if ($_REQUEST['numeroAutoresUd'] == ''){
+			$_REQUEST['numeroAutoresUd'] = 'NULL';
+		} else {
+			$_REQUEST['numeroAutoresUd'] = "'" . $_REQUEST['numeroAutoresUd'] . "'";
+		}
+		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'registrar', $_REQUEST);
 		$id_produccion_video = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 		
-		$resultadototal = true;
+		if ($id_produccion_video){
+			$resultadototal = true;
+		} else {
+			$resultadototal = false;
+		}
+		
 		if ($_REQUEST['numeroAutores'] > 0){
 			for($i=1; $i<= $_REQUEST['numeroAutores']; $i++){
 				$arregloEvaluador = array (

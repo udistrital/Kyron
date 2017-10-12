@@ -202,7 +202,7 @@ class Sql extends \Sql {
 				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
 				$cadenaSql .= " '" . $variable ['tituloVideo'] . "',";
 				$cadenaSql .= " '" . $variable ['numeroAutores'] . "',";
-				$cadenaSql .= "'" . $variable ['numeroAutoresUd'] . "',";
+				$cadenaSql .= " " . $variable ['numeroAutoresUd'] . ",";
 				$cadenaSql .= " '" . $variable ['fechaRealizacion'] . "',";
 				$cadenaSql .= " '" . $variable ['impacto'] . "',";
 				$cadenaSql .= " '" . $variable ['caracter'] . "',";
