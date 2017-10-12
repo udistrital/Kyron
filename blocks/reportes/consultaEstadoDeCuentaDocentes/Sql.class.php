@@ -259,7 +259,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ;";
 				break;
 				
-			case "direccion_de_trabajos" :
+			case "direccion_de_trabajos_salariales" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.id_direccion_trabajogrado AS id_direccion_trabajogrado,";
 				//$cadenaSql.=" a.documento_docente AS documento_docente,";
@@ -286,6 +286,40 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.categoria_trabajogrado AS b ON b.id_categoria_trabajogrado = a.id_categoria_trabajogrado";
 				$cadenaSql.=" LEFT JOIN docencia.tipo_trabajogrado AS c ON c.id_tipo_trabajogrado = a.id_tipo_trabajogrado";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
+				$cadenaSql.=" AND a.id_categoria_puntaje = '1'";
+				$cadenaSql.=" AND a.estado = true";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
+				$cadenaSql.=" ;";
+				break;
+				
+			case "direccion_de_trabajos_bonificacion" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" a.id_direccion_trabajogrado AS id_direccion_trabajogrado,";
+				//$cadenaSql.=" a.documento_docente AS documento_docente,";
+				$cadenaSql.=" c.nombre_tipo_trabajogrado AS tipo_trabajogrado,";
+				$cadenaSql.=" b.nombre_categoria_trabajogrado AS categoria_trabajogrado,";
+				$cadenaSql.=" a.numero_autores AS numero_autores,";
+				$cadenaSql.=" a.titulo_trabajogrado AS titulo_trabajogrado,";
+				$cadenaSql.=" a.anno_direccion AS anno_direccion,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.caso_acta AS numero_caso,";
+				$cadenaSql.=" a.puntaje AS puntaje,";
+				//$cadenaSql.=" a.estado AS estado,";
+				$cadenaSql.=" a.normatividad AS normatividad,";
+				$cadenaSql.=" array_to_string(array(";
+				$cadenaSql.=" SELECT";
+				$cadenaSql.=" '( Código Estudiante: '||d.codigo_estudiante||', '||";
+				$cadenaSql.=" 'Nombre: '||d.nombre_estudiante||' )'";
+				$cadenaSql.=" FROM docencia.direccion_trabajogrado_estudiante AS d";
+				$cadenaSql.=" WHERE d.id_direccion_trabajogrado = a.id_direccion_trabajogrado";
+				$cadenaSql.=" AND d.estado = true";
+				$cadenaSql.=" ), ',') AS estudiantes";
+				$cadenaSql.=" FROM docencia.direccion_trabajogrado AS a";
+				$cadenaSql.=" LEFT JOIN docencia.categoria_trabajogrado AS b ON b.id_categoria_trabajogrado = a.id_categoria_trabajogrado";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_trabajogrado AS c ON c.id_tipo_trabajogrado = a.id_tipo_trabajogrado";
+				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
+				$cadenaSql.=" AND a.id_categoria_puntaje = '2'";
 				$cadenaSql.=" AND a.estado = true";
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
