@@ -56,7 +56,12 @@ class logger extends loggerBase {
 			$json ['expiracionSesion'] = $this->sesionUsuario->getSesionExpiracion();
 			$registroLog ['usuario'] = $this->sesionUsuario->getSesionUsuarioId();
 			if ($registroLog['usuario'] == '' || $registroLog == null){
-				$registroLog ['usuario'] = $log ['usuario'];
+				if (isset($log ['usuario']) && $log ['usuario'] != '' && $log ['usuario'] != null){
+					$registroLog ['usuario'] = $log ['usuario'];
+				} else {
+					$sesionSso = \SesionSso::singleton ();
+					$registroLog ['usuario'] = $sesionSso->getSesionUsuarioId();
+				}
 			}
 			$registroLog ['accion'] = $log['opcion'];
 			$registroLog ['fecha_log'] = date ( "F j, Y, g:i:s a" );

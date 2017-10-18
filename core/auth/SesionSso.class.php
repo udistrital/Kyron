@@ -111,8 +111,7 @@ class SesionSSO {
 		);
 		
 		$this->authnRequest->requireAuth ( $login_params );
-		$atributos = $this->authnRequest->getAttributes();
-		$idUsuario = $atributos['usuario'][0]; // del arreglo del SSO
+		$idUsuario = $this->getSesionUsuarioId(); // del arreglo del SSO
 		$this->sesionUsuario->crearSesion($idUsuario);
 		// begin log
 		$registro = $_REQUEST;
@@ -183,6 +182,13 @@ class SesionSSO {
 	    	}
     	}
     	return false;
+    }
+    
+    function getSesionUsuarioId(){
+    	$atributos = $this->authnRequest->getAttributes();
+    	$idUsuario = $atributos['usuario'][0];
+    	
+    	return $idUsuario;
     }
 }
 

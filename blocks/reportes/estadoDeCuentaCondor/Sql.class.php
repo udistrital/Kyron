@@ -91,10 +91,10 @@ class Sql extends \Sql {
 				$cadenaSql .= "WHERE ";
 				$cadenaSql .= "id_sesion='" . $idSesion . "'";
 				break;
-		
+
 			// ---------------- OJO: copiar desde acá a bloque reportes/estadoDeCuentaCondor/formulario/formulario.php ------
 			/* Consultas del desarrollo */
-				
+			
 			case "docente" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" documento_docente||' - '||primer_nombre||' '||segundo_nombre||' '||primer_apellido||' '||segundo_apellido AS value, ";
@@ -103,7 +103,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" docencia.docente WHERE documento_docente||' - '||primer_nombre||' '||segundo_nombre||' '||primer_apellido||' '||segundo_apellido ";
 				$cadenaSql.=" LIKE '%" . $variable . "%' AND estado = true LIMIT 10;";
 				break;
-				
+			
 			case "datos_docente" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido AS nombre_docente,";
@@ -123,7 +123,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" AND dc.estado = true";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "titulos_docente" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.id_titulo_academico AS id_titulo_academico,";
@@ -152,7 +152,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "revistas_indexadas" :
 				$cadenaSql=" SELECT";
 				//$cadenaSql.=" a.documento_docente AS documento_docente,";
@@ -184,7 +184,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "capitulos_libros" :
 				$cadenaSql=" SELECT";
 				//$cadenaSql.=" a.documento_docente AS documento_docente,";
@@ -225,7 +225,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "cartas_editor" :
 				$cadenaSql=" SELECT";
 				//$cadenaSql.=" a.documento_docente AS documento_docente,";
@@ -258,8 +258,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
-			case "direccion_de_trabajos" :
+			
+			case "direccion_de_trabajos_salariales" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.id_direccion_trabajogrado AS id_direccion_trabajogrado,";
 				//$cadenaSql.=" a.documento_docente AS documento_docente,";
@@ -286,11 +286,45 @@ class Sql extends \Sql {
 				$cadenaSql.=" LEFT JOIN docencia.categoria_trabajogrado AS b ON b.id_categoria_trabajogrado = a.id_categoria_trabajogrado";
 				$cadenaSql.=" LEFT JOIN docencia.tipo_trabajogrado AS c ON c.id_tipo_trabajogrado = a.id_tipo_trabajogrado";
 				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
+				$cadenaSql.=" AND a.id_categoria_puntaje = '1'";
 				$cadenaSql.=" AND a.estado = true";
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
+			case "direccion_de_trabajos_bonificacion" :
+				$cadenaSql=" SELECT";
+				$cadenaSql.=" a.id_direccion_trabajogrado AS id_direccion_trabajogrado,";
+				//$cadenaSql.=" a.documento_docente AS documento_docente,";
+				$cadenaSql.=" c.nombre_tipo_trabajogrado AS tipo_trabajogrado,";
+				$cadenaSql.=" b.nombre_categoria_trabajogrado AS categoria_trabajogrado,";
+				$cadenaSql.=" a.numero_autores AS numero_autores,";
+				$cadenaSql.=" a.titulo_trabajogrado AS titulo_trabajogrado,";
+				$cadenaSql.=" a.anno_direccion AS anno_direccion,";
+				$cadenaSql.=" a.numero_acta AS numero_acta,";
+				$cadenaSql.=" a.fecha_acta AS fecha_acta,";
+				$cadenaSql.=" a.caso_acta AS numero_caso,";
+				$cadenaSql.=" a.puntaje AS puntaje,";
+				//$cadenaSql.=" a.estado AS estado,";
+				$cadenaSql.=" a.normatividad AS normatividad,";
+				$cadenaSql.=" array_to_string(array(";
+				$cadenaSql.=" SELECT";
+				$cadenaSql.=" '( Código Estudiante: '||d.codigo_estudiante||', '||";
+				$cadenaSql.=" 'Nombre: '||d.nombre_estudiante||' )'";
+				$cadenaSql.=" FROM docencia.direccion_trabajogrado_estudiante AS d";
+				$cadenaSql.=" WHERE d.id_direccion_trabajogrado = a.id_direccion_trabajogrado";
+				$cadenaSql.=" AND d.estado = true";
+				$cadenaSql.=" ), ',') AS estudiantes";
+				$cadenaSql.=" FROM docencia.direccion_trabajogrado AS a";
+				$cadenaSql.=" LEFT JOIN docencia.categoria_trabajogrado AS b ON b.id_categoria_trabajogrado = a.id_categoria_trabajogrado";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_trabajogrado AS c ON c.id_tipo_trabajogrado = a.id_tipo_trabajogrado";
+				$cadenaSql.=" WHERE a.documento_docente='".$variable."'";
+				$cadenaSql.=" AND a.id_categoria_puntaje = '2'";
+				$cadenaSql.=" AND a.estado = true";
+				$cadenaSql.=" ORDER BY fecha_acta ASC";
+				$cadenaSql.=" ;";
+				break;
+			
 			case "experiencia_direccion_academica" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.id_experiencia_direccion_academica AS id_experiencia_direccion_academica,";
@@ -316,7 +350,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-
+			
 			case "experiencia_investigacion" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.id_experiencia_investigacion AS id_experiencia_investigacion,";
@@ -341,7 +375,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "experiencia_docencia" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.id_experiencia_docencia AS id_experiencia_docencia,";
@@ -367,7 +401,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "experiencia_profesional" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.id_experiencia_profesional AS id_experiencia_profesional,";
@@ -391,7 +425,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "experiencia_calificada" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.id_experiencia_calificada AS id_experiencia_calificada,";
@@ -415,7 +449,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "excelencia_academica" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.id_excelencia_academica AS id_excelencia_academica,";
@@ -434,7 +468,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "comunicacion_corta" :
 				$cadenaSql=" SELECT";
 				//$cadenaSql.=" a.documento_docente AS documento_docente,";
@@ -466,7 +500,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "obras_artisticas" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.id_obra_artistica AS id_obra_artistica,";
@@ -490,7 +524,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "patentes" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.id_patente AS id_patente,";
@@ -517,7 +551,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "premios_docente" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.id_premio_docente AS id_premio_docente,";
@@ -549,7 +583,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "produccion_videos" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.id_produccion_video AS id_produccion_video,";
@@ -585,7 +619,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "produccion_libros" :
 				$cadenaSql=" SELECT";
 				//$cadenaSql.=" a.documento_docente AS documento_docente,";
@@ -624,7 +658,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "traduccion_libros" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.id_traduccion_libro AS id_traduccion_libro,";
@@ -646,7 +680,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "produccion_tecnicaysoftware" :
 				$cadenaSql=" SELECT";
 				//$cadenaSql.=" a.documento_docente AS documento_docente,";
@@ -679,7 +713,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "publicaciones_impresas_universitarias" :
 				$cadenaSql=" SELECT";
 				//$cadenaSql.=" a.documento_docente AS documento_docente,";
@@ -704,7 +738,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "estudios_post_doctorales" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.id_estudio_postdoctoral_docente AS id_estudio_postdoctoral_docente,";
@@ -727,7 +761,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "resena_critica" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.id_resena_critica AS id_resena_critica,";
@@ -749,7 +783,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "traduccion_articulos" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.id_traduccion_articulo AS id_traduccion_articulo,";
@@ -771,7 +805,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "ponencias" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.id_ponencia AS id_ponencia,";
@@ -796,7 +830,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-							
+					
 			case "novedades_salariales" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.id_novedad AS id_novedad,";
@@ -819,7 +853,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case "novedades_bonificacion" :
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.id_novedad AS id_novedad,";
@@ -842,7 +876,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY fecha_acta ASC";
 				$cadenaSql.=" ;";
 				break;
-			
+					
 			case 'primary_key_table':
 				$cadenaSql=" SELECT a.attname AS primarykey";
 				$cadenaSql.=" FROM pg_index i";
@@ -851,7 +885,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" WHERE i.indrelid = 'docencia.".$variable."'::regclass";
 				$cadenaSql.=" AND i.indisprimary;";
 				break;
-				
+			
 			case 'observaciones':
 				$cadenaSql=" SELECT";
 				$cadenaSql.=" a.llaves_primarias_valor AS llaves_primarias_valor,";
@@ -863,7 +897,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" ORDER BY id_tipo_observacion ASC";
 				$cadenaSql.=" ;";
 				break;
-			
+					
 			case 'registrar_observacion':
 				$cadenaSql=" INSERT INTO docencia.observacion_verificacion";
 				$cadenaSql.=" (";
@@ -883,7 +917,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" )";
 				$cadenaSql.=" ;";
 				break;
-				
+			
 			case 'actualizar_observacion' :
 				$cadenaSql=" UPDATE docencia.observacion_verificacion";
 				$cadenaSql.=" SET";
@@ -907,7 +941,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" AND table_name<>'".$variable['tabla']."'";
 				$cadenaSql.=" ;";
 				break;
-			// ---------------- OJO: copiar hasta acá en bloque reportes/estadoDeCuentaCondor/formulario/formulario.php ------	
+				// ---------------- OJO: copiar hasta acá en bloque reportes/estadoDeCuentaCondor/formulario/formulario.php ------
+			
 			
 		}
 		
