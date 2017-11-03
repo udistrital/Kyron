@@ -141,6 +141,7 @@ class Sql extends \Sql {
 				$cadenaSql=" select distinct dtg.id_direccion_trabajogrado as id_direccion, dtg.documento_docente,";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido nombre_docente, ";
 				$cadenaSql.=" dtg.titulo_trabajogrado as titulo, ";
+				$cadenaSql.=" cp.categoria_puntaje as categoria_puntaje,";
 				$cadenaSql.=" ctg.nombre_categoria_trabajogrado as categoria,";
 				$cadenaSql.=" ttg.nombre_tipo_trabajogrado as tipo, ";
 				$cadenaSql.=" dtg.anno_direccion as anno,";
@@ -156,8 +157,10 @@ class Sql extends \Sql {
 				$cadenaSql.=" left join docencia.facultad fc on pc.id_facultad=fc.id_facultad ";
 				$cadenaSql.=" left join docencia.categoria_trabajogrado ctg on dtg.id_categoria_trabajogrado = ctg.id_categoria_trabajogrado ";
 				$cadenaSql.=" left join docencia.tipo_trabajogrado ttg on dtg.id_tipo_trabajogrado = ttg.id_tipo_trabajogrado ";
+				$cadenaSql.=" left join docencia.categoria_puntaje cp on dtg.id_categoria_puntaje = cp.id_categoria_puntaje ";
 				$cadenaSql.=" where ";
 				$cadenaSql.=" dtg.estado=true";
+				$cadenaSql.=" and dtg.id_categoria_puntaje='1'";
 				$cadenaSql.=" and dc.estado=true";
 				$cadenaSql.=" and pc.estado=true";
 				$cadenaSql.=" and dc_pc.estado=true";

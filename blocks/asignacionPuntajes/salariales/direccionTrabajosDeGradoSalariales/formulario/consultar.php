@@ -208,6 +208,7 @@ class registrarForm {
 	                    <th>Identificación</th>
 	                    <th>Nombres y Apellidos</th>
 						<th>Título Trabajo</th>
+						<th>Categoría Puntaje</th>
 						<th>Categoría</th>
 						<th>Tipo de Trabajo</th>
 						<th>Año</th>
@@ -234,6 +235,7 @@ class registrarForm {
 	                    <td><center>" . $indexacion [$i] ['documento_docente'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['nombre_docente'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['titulo'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['categoria_puntaje'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['categoria'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['tipo'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['anno'] . "</center></td>
