@@ -37,6 +37,7 @@ class correo {
 		$mail->Username = $this->miConfigurador->getVariableConfiguracion ( 'usuarioCorreo' );
 		$mail->Password = $this->miConfigurador->getVariableConfiguracion ( 'claveCorreo' );
 		$mail->Password = $this->miConfigurador->fabricaConexiones->crypto->decodificar ( $mail->Password );
+		$mail->Port = 587; // OJO, con la actualización del mail cambió de puerto 25 al 587
 		// $mail->Username = //usuario correo;
 		// $mail->Password = //clave correo;
 		$mail->Timeout = 120;
