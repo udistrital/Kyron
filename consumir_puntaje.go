@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"net/http"
-  "net/url"
-  "io/ioutil"
+	"net/url"
 )
 
 func main() {
@@ -14,16 +14,16 @@ func main() {
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
-  fmt.Println(string(body[:]))
+	fmt.Println(string(body[:]))
 
-  token := string(body[:])
+	token := string(body[:])
 
-  docente := "79708124"
-  resp, err = http.Get("http://10.20.0.127/kyron/index.php?data=" + token + "&docente=" + docente)
-  if err != nil {
+	docente := "79708124"
+	resp, err = http.Get("http://10.20.0.127/kyron/index.php?data=" + token + "&docente=" + docente)
+	if err != nil {
 		// handle error
 	}
 	defer resp.Body.Close()
 	body, err = ioutil.ReadAll(resp.Body)
-  fmt.Println(string(body[:]))
+	fmt.Println(string(body[:]))
 }
