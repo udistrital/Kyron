@@ -104,7 +104,7 @@ class FormularioModificar {
 		$_REQUEST['id'] =  $resultado[0]['id'];
 		$_REQUEST['docenteRegistrar'] =  $resultado[0]['documento_docente'] . " - " . $resultado[0]['nombre_docente'];
 		$_REQUEST['id_docenteRegistrar'] =  $resultado[0]['documento_docente'];
-		$_REQUEST['categoriaDocente'] =  $resultado[0]['id_tipo_categoria_docente'];
+		$_REQUEST['categoriaDocente'] =  $resultado[0]['tipo_categoria_docente'];
 		$_REQUEST['numeroActa'] =  $resultado[0]['numero_acta'];
 		$_REQUEST['fechaActa'] =  $resultado[0]['fecha_acta'];
 		$_REQUEST['numeroCasoActa'] =  $resultado[0]['numero_caso'];
@@ -341,7 +341,7 @@ class FormularioModificar {
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
 		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '6';
+		$atributos ['maximoTamanno'] = '10';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
 			

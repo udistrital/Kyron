@@ -141,7 +141,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" cd.id AS id,";
 				$cadenaSql.=" dc.documento_docente AS documento_docente,";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido AS nombre_docente,";
-				$cadenaSql.=" tcd.tipo AS tipo_categoria_docente,";
+				$cadenaSql.=" tcd.nombre AS tipo_categoria_docente,";
 				$cadenaSql.=" cd.numero_acta AS numero_acta,";
 				$cadenaSql.=" cd.fecha_acta AS fecha_acta,";
 				$cadenaSql.=" cd.numero_caso AS numero_caso,";
@@ -149,7 +149,7 @@ class Sql extends \Sql {
 				//$cadenaSql.=" cc.normatividad AS normatividad";
 				$cadenaSql.=" FROM";
 				$cadenaSql.=" docencia.categoria_docente AS cd";
-				$cadenaSql.=" LEFT JOIN docencia.tipo_categoria_docente AS tcd ON tcd.id=cd.id_tipo_categoria_docente";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_categoria_docente AS tcd ON tcd.id=cd.tipo_categoria_docente";
 				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON dc.documento_docente=cd.documento_docente";
 				$cadenaSql.=" LEFT JOIN docencia.docente_proyectocurricular AS dc_pc ON dc.documento_docente=dc_pc.documento_docente";
 				$cadenaSql.=" LEFT JOIN docencia.proyectocurricular AS pc ON dc_pc.id_proyectocurricular=pc.id_proyectocurricular";
@@ -174,19 +174,19 @@ class Sql extends \Sql {
 			case "tipo_categoria_docente" :
 				$cadenaSql = " SELECT";
 				$cadenaSql .= " id,";
-				$cadenaSql .= "	tipo";
+				$cadenaSql .= "	nombre";
 				$cadenaSql .= " FROM ";
 				$cadenaSql .= " docencia.tipo_categoria_docente";
 // 				$cadenaSql .= " WHERE";
 // 				$cadenaSql .= " id =" . $variable;
-				$cadenaSql .= " ORDER BY tipo ASC;";
+				$cadenaSql .= " ORDER BY nombre ASC;";
 				break;
 				
 			case "registrar" :
 				$cadenaSql=" INSERT INTO docencia.categoria_docente";
 				$cadenaSql.=" (";
 				$cadenaSql.=" documento_docente,";
-				$cadenaSql.=" id_tipo_categoria_docente,";
+				$cadenaSql.=" tipo_categoria_docente,";
 				$cadenaSql.=" numero_acta,";
 				$cadenaSql.=" fecha_acta,";
 				$cadenaSql.=" numero_caso,";
@@ -211,8 +211,8 @@ class Sql extends \Sql {
 				$cadenaSql.=" cd.id AS id,";
 				$cadenaSql.=" dc.documento_docente AS documento_docente,";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido AS nombre_docente,";
-				$cadenaSql.=" cd.id_tipo_categoria_docente AS id_tipo_categoria_docente,";
-				$cadenaSql.=" tcd.tipo AS tipo,";
+				$cadenaSql.=" cd.tipo_categoria_docente AS tipo_categoria_docente,";
+				$cadenaSql.=" tcd.nombre AS tipo,";
 				$cadenaSql.=" cd.numero_acta AS numero_acta,";
 				$cadenaSql.=" cd.fecha_acta AS fecha_acta,";
 				$cadenaSql.=" cd.numero_caso AS numero_caso,";
@@ -220,7 +220,7 @@ class Sql extends \Sql {
 				//$cadenaSql.=" cd.normatividad AS normatividad";
 				$cadenaSql.=" FROM";
 				$cadenaSql.=" docencia.categoria_docente AS cd";
-				$cadenaSql.=" LEFT JOIN docencia.tipo_categoria_docente AS tcd ON tcd.id=cd.id_tipo_categoria_docente";
+				$cadenaSql.=" LEFT JOIN docencia.tipo_categoria_docente AS tcd ON tcd.id=cd.tipo_categoria_docente";
 				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON dc.documento_docente=cd.documento_docente";
 				$cadenaSql.=" WHERE";
 				$cadenaSql.=" cd.estado=true";
@@ -233,7 +233,7 @@ class Sql extends \Sql {
 				$cadenaSql=" UPDATE docencia.categoria_docente";
 				$cadenaSql.=" SET";
 				$cadenaSql.=" documento_docente='" . $variable['id_docenteRegistrar']. "',";
-				$cadenaSql.=" id_tipo_categoria_docente='" . $variable['categoriaDocente']. "',";
+				$cadenaSql.=" tipo_categoria_docente='" . $variable['categoriaDocente']. "',";
 				$cadenaSql.=" numero_acta='" . $variable['numeroActa']. "',";
 				$cadenaSql.=" fecha_acta='" . $variable['fechaActa']. "',";
 				$cadenaSql.=" numero_caso='" . $variable['numeroCasoActa']. "',";
