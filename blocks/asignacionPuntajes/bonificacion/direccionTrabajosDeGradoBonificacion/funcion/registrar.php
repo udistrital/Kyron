@@ -39,15 +39,27 @@ class Registrar {
 		
 		$_REQUEST['numeroAutores'] = 0;
 		
-		for($i=1; $i<=3; $i++){
-			if($_REQUEST['nombreEstudiante' . $i] != "" && $_REQUEST['codigoEstudiante' . $i]){
-				$_REQUEST['numeroAutores']++;
-			}
+// 		for($i=1; $i<=3; $i++){
+// 			if($_REQUEST['nombreEstudiante' . $i] != "" && $_REQUEST['codigoEstudiante' . $i]){
+// 				$_REQUEST['numeroAutores']++;
+// 			}
+// 		}
+
+		// AQUI SE CONSULTA DE POLUX EL NUMERO DE AUTORES CONTANDO LOS ESTUDIANTES RELACIONADOS AL TRABAJO DE GRADO
+
+		$param = $_REQUEST ['id_trabajoGrado'];
+		$polux_api_trabajo_grado = $this->miConfigurador->getVariableConfiguracion ( 'polux_api_estudiante_trabajo_grado' );
+		$response = @file_get_contents($polux_api_trabajo_grado . '?query=TrabajoGrado.Id:' . $param);
+		if($response === FALSE) { // handle error here...
+			echo 'No consigo conectarme con Polux';
+			exit();
 		}
+		$response = json_decode($response);
+		$_REQUEST['numeroAutores']  = count($response);
 		
 		$arregloDatos = array (
 			'id_docenteRegistrar' => $_REQUEST['id_docenteRegistrar'],
-			'tituloTrabajo' => $_REQUEST['nombre'],
+			'id_trabajoGrado' => $_REQUEST['id_trabajoGrado'],
 			'anno' => $_REQUEST['anno'],
 			'tipoTrabajo' => $_REQUEST['tipo'],
 			'categoriaTrabajo' => $_REQUEST['categoria'],
@@ -60,19 +72,20 @@ class Registrar {
 		);
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'registrar', $arregloDatos );
-		$id_direccion_trabajogrado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+		//$id_direccion_trabajogrado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+		$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 
 		
-		for($i=1; $i<= $_REQUEST['numeroAutores']; $i++){
-			$arregloEstudiante = array (
-					'id_direccion_trabajogrado' => $id_direccion_trabajogrado[0]['id_direccion_trabajogrado'],
-					'nombre_estudiante' => $_REQUEST['nombreEstudiante'.$i],
-					'codigo_estudiante' => $_REQUEST['codigoEstudiante'.$i]
-			);
+// 		for($i=1; $i<= $_REQUEST['numeroAutores']; $i++){
+// 			$arregloEstudiante = array (
+// 					'id_direccion_trabajogrado' => $id_direccion_trabajogrado[0]['id_direccion_trabajogrado'],
+// 					'nombre_estudiante' => $_REQUEST['nombreEstudiante'.$i],
+// 					'codigo_estudiante' => $_REQUEST['codigoEstudiante'.$i]
+// 			);
 			
-			$cadenaSql = $this->miSql->getCadenaSql ( 'registroEstudiantes', $arregloEstudiante );
-			$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
-		}
+// 			$cadenaSql = $this->miSql->getCadenaSql ( 'registroEstudiantes', $arregloEstudiante );
+// 			$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "insertar" );
+// 		}
 		
 		if ($resultado) {
 			redireccion::redireccionar ( 'inserto',  $_REQUEST['docenteRegistrar']);

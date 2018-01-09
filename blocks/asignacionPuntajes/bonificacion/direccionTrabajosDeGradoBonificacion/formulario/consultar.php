@@ -211,6 +211,7 @@ class registrarForm {
 						<th>Categoría Puntaje</th>
 						<th>Categoría</th>
 						<th>Tipo de Trabajo</th>
+						<th>No. Autores</th>
 						<th>Año</th>
 						<th>Número de Acta</th>
 						<th>Fecha de Acta</th>							
@@ -231,13 +232,29 @@ class registrarForm {
 						$variable .= "&identificadorDireccionTrabajo=" . $indexacion [$i] ['id_direccion'];
 						$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
 						
+						// CONSULTAR DE POLUX EL TITULO DEL TRABAJO DE GRADO
+						$param = $indexacion [$i] ['titulo'];
+						$polux_api_trabajo_grado = $this->miConfigurador->getVariableConfiguracion ( 'polux_api_trabajo_grado' );
+						$response = @file_get_contents($polux_api_trabajo_grado . '/' . $param);
+						$response = json_decode($response);
+						
+						$trabajoGrado = $param;
+						if($response === FALSE) { // handle error here...
+							$trabajoGrado = '{"error":"No consigo conectarme con Polux"}';
+						} else {
+							if(! is_string($response)){
+								$trabajoGrado = $response->{'Titulo'};
+							}
+						}
+						
 						$mostrarHtml = "<tr>
 	                    <td><center>" . $indexacion [$i] ['documento_docente'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['nombre_docente'] . "</center></td>
-	                    <td><center>" . $indexacion [$i] ['titulo'] . "</center></td>
+	                    <td><center>" . $trabajoGrado . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['categoria_puntaje'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['categoria'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['tipo'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['numero_autores'] . "</center></td>	
 	                    <td><center>" . $indexacion [$i] ['anno'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['fecha_acta'] . "</center></td>
