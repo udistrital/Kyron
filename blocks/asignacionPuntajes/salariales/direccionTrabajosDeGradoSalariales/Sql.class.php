@@ -144,6 +144,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" cp.categoria_puntaje as categoria_puntaje,";
 				$cadenaSql.=" ctg.nombre_categoria_trabajogrado as categoria,";
 				$cadenaSql.=" ttg.nombre_tipo_trabajogrado as tipo, ";
+				$cadenaSql.=" dtg.numero_autores as numero_autores,";
 				$cadenaSql.=" dtg.anno_direccion as anno,";
 				$cadenaSql.=" dtg.numero_acta as numero_acta,";
 				$cadenaSql.=" dtg.fecha_acta as fecha_acta,";
@@ -180,7 +181,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "documento_docente, titulo_trabajogrado, anno_direccion, id_tipo_trabajogrado, id_categoria_puntaje,";
 				$cadenaSql .= "id_categoria_trabajogrado, numero_autores, numero_acta, fecha_acta, caso_acta, puntaje, normatividad) ";
 				$cadenaSql .= " VALUES (" . $variable ['id_docenteRegistrar'] . ",";
-				$cadenaSql .= " '" . $variable ['tituloTrabajo'] . "',";
+				$cadenaSql .= " '" . $variable ['id_trabajoGrado'] . "',";
 				$cadenaSql .= " '" . $variable ['anno'] . "',";
 				$cadenaSql .= "'" . $variable ['tipoTrabajo'] . "',";
 				$cadenaSql .= "'1',";
@@ -236,7 +237,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "SET ";
 				$cadenaSql .= "id_tipo_trabajogrado = '" . $variable ['tipoTrabajo'] . "', ";
 				$cadenaSql .= "id_categoria_trabajogrado = '" . $variable ['categoriaTrabajo'] . "', ";
-				$cadenaSql .= "titulo_trabajogrado = '" . $variable ['tituloTrabajo'] . "', ";
+				$cadenaSql .= "titulo_trabajogrado = '" . $variable ['id_trabajoGrado'] . "', ";
 				$cadenaSql .= "numero_autores = '" . $variable ['numeroAutores'] . "', ";
 				$cadenaSql .= "anno_direccion = '" . $variable ['anno'] . "', ";
 				$cadenaSql .= "numero_acta = '" . $variable ['numeroActa'] . "', ";
