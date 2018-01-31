@@ -41,6 +41,7 @@ class Form {
 			$valorCodificado = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $valorCodificado );
 			$enlace = $directorio.'='.$valorCodificado;
 			header('Location: '.$enlace);
+			exit();
 		}
 		include $this->site.'formulario/paginaInicioVieja.html.php';
 	}

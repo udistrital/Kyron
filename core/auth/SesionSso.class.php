@@ -15,7 +15,8 @@ class SesionSSO {
 	var $sesionUsuario;
 	var $sesionUsuarioId;
 	var $logger;
-    
+	var $atributosSSO;
+	
     /**
      *
      * @name sesiones
@@ -41,7 +42,7 @@ class SesionSSO {
     	}
     	return self::$instancia;
     }
-
+    
     /**
      *
      * @name sesiones Verifica la existencia de una sesion válida en la máquina del cliente
@@ -85,9 +86,12 @@ class SesionSSO {
     }
     
     function getParametrosSesionAbierta() {
-    	return $this->authnRequest->getAttributes();
+    	if (!isset($this->atributosSSO)){
+    		$this->atributosSSO = $this->authnRequest->getAttributes();
+    	}
+    	return $this->atributosSSO;
     }
-
+    
     /**
      * @METHOD crear_sesion
      *
@@ -111,8 +115,10 @@ class SesionSSO {
 		);
 		
 		$this->authnRequest->requireAuth ( $login_params );
+		$atributos = $this->getParametrosSesionAbierta();
 		$idUsuario = $this->getSesionUsuarioId(); // del arreglo del SSO
 		$this->sesionUsuario->crearSesion($idUsuario);
+		
 		// begin log
 		$registro = $_REQUEST;
 		$registro['opcion'] = 'INGRESO';
@@ -122,7 +128,7 @@ class SesionSSO {
 		// end log
 		return $atributos;
     }
-
+    
     // Fin del método crear_sesion
 
     /**
@@ -185,9 +191,7 @@ class SesionSSO {
     }
     
     function getSesionUsuarioId(){
-    	$atributos = $this->authnRequest->getAttributes();
-    	$idUsuario = $atributos['usuario'][0];
-    	
+    	$idUsuario = $this->getParametrosSesionAbierta()['usuario'][0];
     	return $idUsuario;
     }
 }
