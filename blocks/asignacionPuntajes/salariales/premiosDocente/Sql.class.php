@@ -118,6 +118,7 @@ class Sql extends \Sql {
 				$cadenaSql .= " docencia.universidad";
 				$cadenaSql .= " WHERE estado=true";
 				$cadenaSql .= " AND  id_universidad != -1";
+				$cadenaSql .= " ORDER by nombre_universidad";
 				break;
 				
 			case "tipoEntidadInstitucion" :
