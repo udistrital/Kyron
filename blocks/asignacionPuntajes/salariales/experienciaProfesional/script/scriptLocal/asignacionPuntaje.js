@@ -12,7 +12,7 @@ $( document ).ready(function() {
 	function asignarPuntaje(){
 		var diasExperiencia = calcularDias();			
 		puntajeMaximo = redondeo(diasExperiencia*(puntajeAnnio/365), 3);		
-		$("#<?php echo $this->campoSeguro('puntaje')?>").attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required, custom[number],min[0.1],max["+puntajeMaximo+"]");
+		$("#<?php echo $this->campoSeguro('puntaje')?>").attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required, custom[number],min[0.001],max["+puntajeMaximo+"]");
 	}
 	
 	function redondeo(numero, decimales)
