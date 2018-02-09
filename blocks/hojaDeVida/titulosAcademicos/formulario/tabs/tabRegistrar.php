@@ -361,7 +361,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, minSize[1],maxSize[10],custom[integer]';
+		$atributos ['validar'] = 'maxSize[100]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -371,7 +371,7 @@ class FormularioRegistro {
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
 		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '30';
+		$atributos ['maximoTamanno'] = '100';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
 			
@@ -395,7 +395,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, custom[date]';
+		$atributos ['validar'] = 'custom[date]';
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
 		} else {
@@ -428,7 +428,7 @@ class FormularioRegistro {
 		$atributos ['dobleLinea'] = 0;
 		$atributos ['tabIndex'] = $tab;
 		$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-		$atributos ['validar'] = 'required, minSize[10],maxSize[30],custom[onlyLetterSp]';
+		$atributos ['validar'] = 'minSize[10],maxSize[200],custom[onlyLetterSp]';
 			
 		if (isset ( $_REQUEST [$esteCampo] )) {
 			$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -438,7 +438,7 @@ class FormularioRegistro {
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
 		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '30';
+		$atributos ['maximoTamanno'] = '200';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
 			
@@ -570,7 +570,7 @@ class FormularioRegistro {
 		$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 		$atributos ['deshabilitado'] = false;
 		$atributos ['tamanno'] = 57;
-		$atributos ['maximoTamanno'] = '4';
+		$atributos ['maximoTamanno'] = '10';
 		$atributos ['anchoEtiqueta'] = 280;
 		$tab ++;
 			
