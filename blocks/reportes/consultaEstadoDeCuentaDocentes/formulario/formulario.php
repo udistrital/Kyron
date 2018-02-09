@@ -1975,6 +1975,7 @@ class registrarForm {
 		//Propios de la plantilla
 		$atributos ['datos_docente'] = $datosDocente;
 		$atributos ['items'] = $items;
+		$atributos ['nombreJefeDocencia'] = $this->miConfigurador->getVariableConfiguracion('nombreJefeDocencia');
 				
 		echo '<div style="max-width: 1024px; margin: 0 auto;">';
 		echo $this->miFormulario->pdf ( $atributos );

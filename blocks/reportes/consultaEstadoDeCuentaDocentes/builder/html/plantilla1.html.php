@@ -153,7 +153,7 @@ require_once 'item.html.php';
 		<tr>
 			<td style='font-size: 14px;text-align: center;' colspan='9'>
 			<br>
-			<b>GERARDO CASTANG MONTIEL</b>
+			<b><?php echo $this->atributos['nombreJefeDocencia']; ?></b>
 			<br>
 			</td>
 		</tr>
