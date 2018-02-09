@@ -208,6 +208,9 @@ class registrarForm {
 	                    <th>Identificación</th>
 	                    <th>Nombres y Apellidos</th>
 						<th>Tipo de Categoría</th>
+						<th>Motivo</th>
+						<th>Nombre Producción</th>
+						<th>Nombre Título</th>
 						<th>Número Acta</th>
 						<th>Fecha Acta</th>
 						<th>Caso Acta</th>
@@ -230,6 +233,9 @@ class registrarForm {
 	                    <td><center>" . $indexacion [$i] ['documento_docente'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['nombre_docente'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['tipo_categoria_docente'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['motivo_categoria_docente'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['nombre_produccion'] . "</center></td>
+	                    <td><center>" . $indexacion [$i] ['nombre_titulo'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['fecha_acta'] . "</center></td>
 	                    <td><center>" . $indexacion [$i] ['numero_caso'] . "</center></td>

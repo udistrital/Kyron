@@ -34,7 +34,15 @@ $this->idioma["fechaActaTitulo"] = "Seleccione la Fecha de Acta CIARP-UD.";
 $this->idioma["numeroCasoActaTitulo"] = "Ingrese el Número de Caso de Acta.";
 $this->idioma["puntajeTitulo"] = "Ingrese el Puntaje, si es negativo derroga o por el contrario si es positivo asigna puntos.";
 $this->idioma["normatividadTitulo"] = "Ingrese la normatividad.";
-$this->idioma["categoriaDocente"] = "Categoría.";
+$this->idioma["tipoCategoria"] = "Categoría:";
+$this->idioma["tipoCategoriaTitulo"] = "";
+$this->idioma["motivoCategoria"] = "Motivo:";
+$this->idioma["motivoCategoriaTitulo"] = "";
+
+$this->idioma["nombreProduccion"] = "Nombre producción:";
+$this->idioma["nombreProduccionTitulo"] = "";
+$this->idioma["nombreTitulo"] = "Nombre título:";
+$this->idioma["nombreTituloTitulo"] = "";
 
 ///////////////////////////////////////////////////////////////////
 

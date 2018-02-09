@@ -142,6 +142,9 @@ class Sql extends \Sql {
 				$cadenaSql.=" dc.documento_docente AS documento_docente,";
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido AS nombre_docente,";
 				$cadenaSql.=" tcd.nombre AS tipo_categoria_docente,";
+				$cadenaSql.=" mcd.nombre AS motivo_categoria_docente,";
+				$cadenaSql.=" cd.nombre_produccion AS nombre_produccion,";
+				$cadenaSql.=" cd.nombre_titulo AS nombre_titulo,";
 				$cadenaSql.=" cd.numero_acta AS numero_acta,";
 				$cadenaSql.=" cd.fecha_acta AS fecha_acta,";
 				$cadenaSql.=" cd.numero_caso AS numero_caso,";
@@ -150,6 +153,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" FROM";
 				$cadenaSql.=" docencia.categoria_docente AS cd";
 				$cadenaSql.=" LEFT JOIN docencia.tipo_categoria_docente AS tcd ON tcd.id=cd.tipo_categoria_docente";
+				$cadenaSql.=" LEFT JOIN docencia.motivo_categoria_docente AS mcd ON mcd.id=cd.motivo_categoria_docente";
 				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON dc.documento_docente=cd.documento_docente";
 				$cadenaSql.=" LEFT JOIN docencia.docente_proyectocurricular AS dc_pc ON dc.documento_docente=dc_pc.documento_docente";
 				$cadenaSql.=" LEFT JOIN docencia.proyectocurricular AS pc ON dc_pc.id_proyectocurricular=pc.id_proyectocurricular";
@@ -182,11 +186,25 @@ class Sql extends \Sql {
 				$cadenaSql .= " ORDER BY nombre ASC;";
 				break;
 				
+			case "motivo_categoria_docente" :
+				$cadenaSql = " SELECT";
+				$cadenaSql .= " id,";
+				$cadenaSql .= "	nombre";
+				$cadenaSql .= " FROM ";
+				$cadenaSql .= " docencia.motivo_categoria_docente";
+				// 				$cadenaSql .= " WHERE";
+				// 				$cadenaSql .= " id =" . $variable;
+				$cadenaSql .= " ORDER BY nombre ASC;";
+				break;
+				
 			case "registrar" :
 				$cadenaSql=" INSERT INTO docencia.categoria_docente";
 				$cadenaSql.=" (";
 				$cadenaSql.=" documento_docente,";
 				$cadenaSql.=" tipo_categoria_docente,";
+				$cadenaSql.=" motivo_categoria_docente,";
+				$cadenaSql.=" nombre_produccion,";
+				$cadenaSql.=" nombre_titulo,";
 				$cadenaSql.=" numero_acta,";
 				$cadenaSql.=" fecha_acta,";
 				$cadenaSql.=" numero_caso,";
@@ -196,8 +214,10 @@ class Sql extends \Sql {
 				$cadenaSql.=" VALUES";
 				$cadenaSql.=" (";
 				$cadenaSql.=" '" . $variable['id_docenteRegistrar']. "',";
-				$cadenaSql.=" '" . $variable['categoriaDocente']. "',";
-				
+				$cadenaSql.=" '" . $variable['tipoCategoria']. "',";
+				$cadenaSql.=" '" . $variable['motivoCategoria']. "',";
+				$cadenaSql.=" '" . $variable['nombreProduccion']. "',";
+				$cadenaSql.=" '" . $variable['nombreTitulo']. "',";
 				$cadenaSql.=" '" . $variable['numeroActa']. "',";
 				$cadenaSql.=" '" . $variable['fechaActa']. "',";
 				$cadenaSql.=" '" . $variable['numeroCasoActa']. "',";
@@ -213,6 +233,10 @@ class Sql extends \Sql {
 				$cadenaSql.=" dc.primer_nombre||' '||dc.segundo_nombre||' '||dc.primer_apellido||' '||dc.segundo_apellido AS nombre_docente,";
 				$cadenaSql.=" cd.tipo_categoria_docente AS tipo_categoria_docente,";
 				$cadenaSql.=" tcd.nombre AS tipo,";
+				$cadenaSql.=" cd.motivo_categoria_docente AS motivo_categoria_docente,";
+				$cadenaSql.=" mcd.nombre AS motivo,";
+				$cadenaSql.=" cd.nombre_produccion AS nombre_produccion,";
+				$cadenaSql.=" cd.nombre_titulo AS nombre_titulo,";
 				$cadenaSql.=" cd.numero_acta AS numero_acta,";
 				$cadenaSql.=" cd.fecha_acta AS fecha_acta,";
 				$cadenaSql.=" cd.numero_caso AS numero_caso,";
@@ -221,6 +245,7 @@ class Sql extends \Sql {
 				$cadenaSql.=" FROM";
 				$cadenaSql.=" docencia.categoria_docente AS cd";
 				$cadenaSql.=" LEFT JOIN docencia.tipo_categoria_docente AS tcd ON tcd.id=cd.tipo_categoria_docente";
+				$cadenaSql.=" LEFT JOIN docencia.motivo_categoria_docente AS mcd ON mcd.id=cd.motivo_categoria_docente";
 				$cadenaSql.=" LEFT JOIN docencia.docente AS dc ON dc.documento_docente=cd.documento_docente";
 				$cadenaSql.=" WHERE";
 				$cadenaSql.=" cd.estado=true";
@@ -233,7 +258,10 @@ class Sql extends \Sql {
 				$cadenaSql=" UPDATE docencia.categoria_docente";
 				$cadenaSql.=" SET";
 				$cadenaSql.=" documento_docente='" . $variable['id_docenteRegistrar']. "',";
-				$cadenaSql.=" tipo_categoria_docente='" . $variable['categoriaDocente']. "',";
+				$cadenaSql.=" tipo_categoria_docente='" . $variable['tipoCategoria']. "',";
+				$cadenaSql.=" motivo_categoria_docente='" . $variable['motivoCategoria']. "',";
+				$cadenaSql.=" nombre_produccion='" . $variable['nombreProduccion']. "',";
+				$cadenaSql.=" nombre_titulo='" . $variable['nombreTitulo']. "',";
 				$cadenaSql.=" numero_acta='" . $variable['numeroActa']. "',";
 				$cadenaSql.=" fecha_acta='" . $variable['fechaActa']. "',";
 				$cadenaSql.=" numero_caso='" . $variable['numeroCasoActa']. "',";

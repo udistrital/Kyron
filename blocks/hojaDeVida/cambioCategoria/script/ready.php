@@ -76,13 +76,15 @@ $('#<?php echo $this->campoSeguro('facultad')?>').width(450);
 $('#<?php echo $this->campoSeguro('proyectoCurricular')?>').width(450);      
 
 $('#<?php echo $this->campoSeguro('docenteRegistrar')?>').width(465);
-$('#<?php $cat = $this->campoSeguro('categoriaDocente'); echo $cat ?>').width(450);
+$('#<?php $tip = $this->campoSeguro('tipoCategoria'); echo $tip ?>').width(450);
+$('#<?php $mot = $this->campoSeguro('motivoCategoria'); echo $mot ?>').width(450);
 
 ///*********El ancho (width) de los siguientes campos es mayor debido a que se encuentran dentro de un div****///
 //$('#<?php echo $this->campoSeguro('pais')?>').width(470);
 //$('#<?php echo $this->campoSeguro('categoria')?>').width(470);
 
-$("#<?php echo $cat?>").select2();
+$("#<?php echo $tip?>").select2();
+$("#<?php echo $mot?>").select2();
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
