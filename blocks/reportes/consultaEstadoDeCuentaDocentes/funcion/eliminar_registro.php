@@ -95,9 +95,40 @@ class EliminarRegistro {
 
 				//Despues de eliminar las restricciones re intenta eliminar
 				$cadenaSql = $this->miSql->getCadenaSql ( 'eliminar_de_tabla', $arregloDatos );
-				$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );
-				
+				$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );				
 			} else {
+			    // Si aún el resultado es que NO puede eliminarlo, porque NO encontró tablas, se intenta con otro tipo de búsqueda de relaciones
+			    $cadenaSql = $this->miSql->getCadenaSql ( 'tablas_restricciones_de_tabla_2', $tabla );
+			    $resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
+			    if ($resultado) {
+			        //retorno muchas tablas
+			        for($i = 0; $i < count ( $resultado ); $i ++) {
+			            //Elimina los resultados en las tablas.
+			            $tabla2 = $resultado[$i]['table_name'];
+			            $column_name2 = $resultado[$i]['column_name'];
+			            $foreign_column_name = $resultado[$i]['foreign_column_name'];
+			            $condicion2 = str_replace($foreign_column_name, $column_name2, $condicion);
+			            $arregloDatos2 = array (
+			                'tabla' => $tabla2,
+			                'condicion' => $condicion2
+			            );
+			            $cadenaSql = $this->miSql->getCadenaSql ( 'eliminar_de_tabla', $arregloDatos2 );
+			            $resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'actualizar' );
+			            if (!$resultado) {
+			                // Si esta eliminacion falló.
+			                redireccion::redireccionar ( 'noActualizo', $condicion_column_name );
+			                exit ();
+			            }
+			            //Despues de eliminar las restricciones por SEGUNDA vez re intenta eliminar
+			            $cadenaSql = $this->miSql->getCadenaSql ( 'eliminar_de_tabla', $arregloDatos );
+			            $resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "actualizar" );	
+			        }
+			    } else {
+			        //no retorno tablas
+			        redireccion::redireccionar ( 'noActualizo', $condicion );
+			        exit ();
+			    }
+			    
 				//no retorno tablas
 				redireccion::redireccionar ( 'noActualizo', $condicion );
 				exit ();

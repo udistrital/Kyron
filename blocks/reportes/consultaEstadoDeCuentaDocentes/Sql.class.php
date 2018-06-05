@@ -941,6 +941,21 @@ class Sql extends \Sql {
 				$cadenaSql.=" AND table_name<>'".$variable['tabla']."'";
 				$cadenaSql.=" ;";
 				break;
+			case 'tablas_restricciones_de_tabla_2' :
+			    $cadenaSql="SELECT ";
+			    $cadenaSql.=" tc.constraint_name, tc.table_name, kcu.column_name, ";
+			    $cadenaSql.=" ccu.table_name AS foreign_table_name, ";
+			    $cadenaSql.=" ccu.column_name AS foreign_column_name ";
+			    $cadenaSql.=" FROM ";
+			    $cadenaSql.=" information_schema.table_constraints AS tc ";
+			    $cadenaSql.=" JOIN information_schema.key_column_usage AS kcu ";
+			    $cadenaSql.=" ON tc.constraint_name = kcu.constraint_name ";
+			    $cadenaSql.=" JOIN information_schema.constraint_column_usage AS ccu ";
+			    $cadenaSql.=" ON ccu.constraint_name = tc.constraint_name ";
+			    $cadenaSql.=" WHERE constraint_type = 'FOREIGN KEY' ";
+			    $cadenaSql.=" AND ccu.table_name = '".$variable."' ";//foreign key!!
+			    $cadenaSql.=" ; ";
+			    break;
 			// ---------------- OJO: copiar hasta acá en bloque reportes/estadoDeCuentaCondor/formulario/formulario.php ------	
 			
 		}
