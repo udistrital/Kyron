@@ -1,0 +1,28 @@
+body{
+	font-family: sans-serif,Helvetica,Arial;
+}
+.checkbox-verificacion.selected{
+	color: #000;
+}
+
+.text-observacion.selected{
+	color: #000;
+	/*border-style: double;
+    border-width: 0 0 2px;*/
+}
+
+.icon-modificar{
+	background-image: url('images/Entrada.png');
+	background-size: 100% 100%;
+	width: 15px;
+	height: 15px;
+	display: block;
+}
+
+.icon-eliminar{
+	background-image: url('images/eliminar.png');
+	background-size: 100% 100%;
+	width: 15px;
+	height: 15px;
+	display: block;
+}
