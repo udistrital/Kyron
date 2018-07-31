@@ -73,8 +73,8 @@ $this->idioma ['tituloConsultaReportes'] = 'CONSULTA REPORTES DOCENCIA';
 	//CONSULTA REPORTES DOCENCIA////////////////////////////////
 	$this->idioma ['consultaReportes'] = 'Gestor de Reportes';
 	$this->idioma ['estadoCuentaDocente'] = 'Estado de Cuenta Individual Docente';
-	
-	
+//CARGA MASIVA
+$this->idioma ['cargaMasiva'] = 'Carga Masiva';
 
 $this->idioma ['usuario'] = 'Usuarios';
 $this->idioma ['sesion'] = 'Sesión';
