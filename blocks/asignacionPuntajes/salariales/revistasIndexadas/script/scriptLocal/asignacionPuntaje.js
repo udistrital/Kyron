@@ -29,7 +29,7 @@ $( document ).ready(function() {
 		var contexto = $("#<?php echo $this->campoSeguro('contexto')?>").val();
 		var categoria = $("#<?php echo $this->campoSeguro('categoria')?>").val();
 		if(contexto == "" || categoria == ""){
-			$("#<?php echo $this->campoSeguro('puntajeRevista')?>").attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required, custom[number],min[0.1]");
+			$("#<?php echo $this->campoSeguro('puntajeRevista')?>").attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required, custom[number],min[0.05]");
 		}else{
 			if(categoria == 4 || categoria == 0){
 				$("#<?php echo $this->campoSeguro('puntajeRevista')?>").attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required, custom[number],min[0.05],max[15]]");
