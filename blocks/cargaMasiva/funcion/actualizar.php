@@ -1,8 +1,8 @@
 <?php
 
-namespace reportes\estadoDeCuenta\funcion;
+namespace cargaMasiva\funcion;
 
-use reportes\estadoDeCuenta\funcion\redireccionar;
+use cargaMasiva\funcion\redireccionar;
 
 include_once ('redireccionar.php');
 if (! isset ( $GLOBALS ["autorizado"] )) {

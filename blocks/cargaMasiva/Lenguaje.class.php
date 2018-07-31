@@ -1,5 +1,5 @@
 <?php
-namespace reportes\estadoDeCuentaCondor;
+namespace cargaMasiva;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
     include ("../index.php");

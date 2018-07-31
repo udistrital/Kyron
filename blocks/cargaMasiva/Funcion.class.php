@@ -1,8 +1,8 @@
 <?php
 
-namespace reportes\estadoDeCuentaCondor;
+namespace cargaMasiva;
 
-use reportes\estadoDeCuentaCondor\funcion\redireccion;
+use cargaMasiva\funcion\redireccion;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");

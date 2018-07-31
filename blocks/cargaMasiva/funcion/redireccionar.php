@@ -1,6 +1,6 @@
 <?php
 
-namespace reportes\estadoDeCuenta\funcion;
+namespace cargaMasiva\funcion;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("index.php");
