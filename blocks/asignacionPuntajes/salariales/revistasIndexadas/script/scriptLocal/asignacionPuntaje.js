@@ -32,13 +32,13 @@ $( document ).ready(function() {
 			$("#<?php echo $this->campoSeguro('puntajeRevista')?>").attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required, custom[number],min[0.1]");
 		}else{
 			if(categoria == 4 || categoria == 0){
-				$("#<?php echo $this->campoSeguro('puntajeRevista')?>").attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required, custom[number],min[0.1],max[15]]");
+				$("#<?php echo $this->campoSeguro('puntajeRevista')?>").attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required, custom[number],min[0.05],max[15]]");
 			}else if(categoria == 5 || categoria == 1 ){
-				$("#<?php echo $this->campoSeguro('puntajeRevista')?>").attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required, custom[number],min[0.1],max[12]]");
+				$("#<?php echo $this->campoSeguro('puntajeRevista')?>").attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required, custom[number],min[0.05],max[12]]");
 			}else if(categoria == 6 || categoria == 2){
-				$("#<?php echo $this->campoSeguro('puntajeRevista')?>").attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required, custom[number],min[0.1],max[8]]");
+				$("#<?php echo $this->campoSeguro('puntajeRevista')?>").attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required, custom[number],min[0.05],max[8]]");
 			}else if(categoria == 7 || categoria == 3){
-				$("#<?php echo $this->campoSeguro('puntajeRevista')?>").attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required, custom[number],min[0.1],max[3]]");
+				$("#<?php echo $this->campoSeguro('puntajeRevista')?>").attr("class", "cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required, custom[number],min[0.05],max[3]]");
 			}
 		}
 	}
