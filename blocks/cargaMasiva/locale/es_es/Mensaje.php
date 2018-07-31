@@ -10,8 +10,8 @@ $this->idioma["tabIngresar"] = "Ingresar Estado de Cuenta Individual";
 
 //************ MENSAJES *********
 $this->idioma["mensajeActualizar"] =  "Actualización Exitosa </br> Han sido actualizados los datos de Estado de Cuenta Individual <br>";
-$this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha registrado Estado de Cuenta Individual <br>" ;
-$this->idioma["mensajeError"] =  "Error al tratar de registrar Estado de Cuenta Individual.";
+$this->idioma["mensajeRegistro"] =  "Registro Exitoso.<br> Se ha realizado la migración masiva.<br>" ;
+$this->idioma["mensajeError"] =  "Error al tratar de realizar la migración masiva.";
 $this->idioma["mensajeNoRegistros"] =  "No Se Encontraron  </br> Registros de Estado de Cuenta Individual Para los Criterios Ingresados";
 $this->idioma["mensajeNoActualizo"] =  "Error al tratar de actualizar </br>el registro de Estado de Cuenta Individual Para el Docente </br>";
 /////////////////////////////////
@@ -84,5 +84,11 @@ $this->idioma["normatividadTitulo"] = "Normatividad";
 $this->idioma['cartasEditor'] = '';
 $this->idioma['cartasEditorRegistrar'] = '';
 $this->idioma['cartasEditorModificar'] = '';
+
+$this->idioma['tituloFieldset'] = 'Descarga o sube el formato de carga masiva';
+$this->idioma['botonDescargar'] = 'Descargar Formato carga Masiva';
+$this->idioma['inputDocumento'] = 'Sube el formato diligenciado';
+$this->idioma['inputDocumentoTitulo'] = 'Formato con algunos registros';
+
 
 ?>

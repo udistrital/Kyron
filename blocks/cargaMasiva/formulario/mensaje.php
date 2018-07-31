@@ -59,7 +59,7 @@ if (!isset($GLOBALS["autorizado"])) {
     if ($_REQUEST['mensaje'] == 'confirma') {
 
         $tipo = 'success';
-        $mensaje =  $this->lenguaje->getCadena('mensajeRegistro') . $_REQUEST ['docente'] . ".";
+        $mensaje =  $this->lenguaje->getCadena('mensajeRegistro');
         $boton = "continuar";
 		
         $valorCodificado = "pagina=".$esteBloque['nombre'];
@@ -80,7 +80,7 @@ if (!isset($GLOBALS["autorizado"])) {
        
     } else if($_REQUEST['mensaje'] == 'actualizo') {
         $tipo = 'success';
-        $mensaje = $this->lenguaje->getCadena('mensajeActualizar') . $_REQUEST ['docente'] . ".";
+        $mensaje = $this->lenguaje->getCadena('mensajeActualizar');
         $boton = "continuar";
 
         $valorCodificado = "pagina=".$esteBloque['nombre'];
@@ -90,7 +90,7 @@ if (!isset($GLOBALS["autorizado"])) {
        
     }else if($_REQUEST['mensaje'] == 'noActualizo') {
         $tipo = 'error';
-        $mensaje = $this->lenguaje->getCadena('mensajeNoActualizo') . $_REQUEST ['docente'] . ".";
+        $mensaje = $this->lenguaje->getCadena('mensajeNoActualizo');
         $boton = "continuar";
 
         $valorCodificado = "pagina=".$esteBloque['nombre'];

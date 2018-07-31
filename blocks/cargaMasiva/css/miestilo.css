@@ -26,3 +26,8 @@ body{
 	height: 15px;
 	display: block;
 }
+
+.centrado div {
+	text-align: center;
+	display: block;
+}

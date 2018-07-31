@@ -40,11 +40,8 @@ class Funcion {
 	function procesarAjax() {
 		include_once ($this->ruta . "funcion/procesarAjax.php");
 	}
-	function actualizar() {
-		include_once ($this->ruta . "/funcion/actualizar.php");
-	}
-	function eliminarDeTabla() {
-		include_once ($this->ruta . "/funcion/eliminar_registro.php");
+	function subirArchivo() {
+		include_once ($this->ruta . "/funcion/subirArchivo.php");
 	}
 	function action() {
 		
@@ -113,29 +110,9 @@ class Funcion {
 		if (isset ( $_REQUEST ['procesarAjax'] )) {
 			$this->procesarAjax ();
 		} else if (isset ( $_REQUEST ["opcion"] )) {
-			
-			switch ($_REQUEST ["opcion"]) {
-				case 'eliminar' :
-					$this->eliminarDeTabla ();
-					break;
-					
-				case 'consultar' :
-					$this->consultarContrato ();
-					break;
-				
-				case 'registrar' :
-					$this->registrar ();
-					break;
-				
-				case 'actualizar' :
-					case 'actualizar':
-					if (isset ( $_REQUEST ["botonRegresar"] ) && $_REQUEST ["botonRegresar"] == 'true') {
-						$arreglo = unserialize ( $_REQUEST ['arreglo'] );	
-						redireccion::redireccionar ( "paginaConsulta", $arreglo );
-						exit();
-					} else if (isset ( $_REQUEST ["botonGuardar"] ) && $_REQUEST ["botonGuardar"] == 'true') {
-						$this->actualizar();
-					}
+		    switch ($_REQUEST ["opcion"]) {
+				case 'subirArchivo' :
+				    $this->subirArchivo ();
 					break;
 			}
 		} else {

@@ -12,26 +12,26 @@ include_once ("core/manager/Configurador.class.php");
 /*
  * Sirve para agregar al core de SARA la funcionalidad de plantillas con domPDF
  */
-include_once("core/builder/FormularioHtml.class.php");
+//include_once("core/builder/FormularioHtml.class.php");
 
-if (class_exists ( '\FormularioHtml' )) {
-	class FormularioHtml extends \FormularioHtml {
-		function __construct() {
-			/**
-			 * Se agregan los componentes hechos para SARA
-			 */
-			require_once ($this->ruta . "builder/DomPdf.class.php");
-			require_once ($this->ruta . "builder/DataTables.class.php");
-			// use blocks\docentes\planDeTrabajo\builder\componentes;
-			//Se llama a la clase constructor del padre
-			parent::__construct ();
-			//Se llama a las funciones que están dentro de la clase y se agregan al formulario
-			$this->aggregate ( 'DomPdfPlugin' );
-			$this->aggregate ( 'DataTablesPlugin' );
-			//Se termina la agregación
-		}
-	}
-}
+// if (class_exists ( '\FormularioHtml' )) {
+// 	class FormularioHtml extends \FormularioHtml {
+// 		function __construct() {
+// 			/**
+// 			 * Se agregan los componentes hechos para SARA
+// 			 */
+// 			require_once ($this->ruta . "builder/DomPdf.class.php");
+// 			require_once ($this->ruta . "builder/DataTables.class.php");
+// 			// use blocks\docentes\planDeTrabajo\builder\componentes;
+// 			//Se llama a la clase constructor del padre
+// 			parent::__construct ();
+// 			//Se llama a las funciones que están dentro de la clase y se agregan al formulario
+// 			$this->aggregate ( 'DomPdfPlugin' );
+// 			$this->aggregate ( 'DataTablesPlugin' );
+// 			//Se termina la agregación
+// 		}
+// 	}
+// }
 
 class Frontera {
 
@@ -72,9 +72,11 @@ class Frontera {
     }
 
     function html() {
-
+        include_once("core/builder/FormularioHtml.class.php");
+        
         $this->ruta = $this->miConfigurador->getVariableConfiguracion("rutaBloque");
-        $this->miFormulario = new FormularioHtml();
+        $this->miFormulario = new \FormularioHtml();
+        //$this->miFormulario = new FormularioHtml();
 
         if (isset($_REQUEST['opcion'])) {
 

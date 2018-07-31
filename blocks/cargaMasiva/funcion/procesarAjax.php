@@ -1,6 +1,6 @@
 <?php
-namespace cargaMasiva\funcion;
-use cargaMasiva\Sql;
+namespace reportes\estadoDeCuentaCondor\funcion;
+use reportes\estadoDeCuentaCondor\Sql;
 use core\general\ValidadorCampos;
 
 $host = $this->miConfigurador->getVariableConfiguracion ( "host" );
