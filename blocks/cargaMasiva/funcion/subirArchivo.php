@@ -66,12 +66,12 @@ class RegistrarIndexacionRevista {
 	    
 	    $sheet = $objPHPExcel->getSheetByName('Categoría');
 	    if (!is_null($sheet)) {
-	        //$this->procesarCategoria($sheet);
+	        $this->procesarCategoria($sheet);
 	    }
 	    
 	    $sheet = $objPHPExcel->getSheetByName('Revista Nacional');
 	    if (!is_null($sheet)) {
-	        //$this->procesarRevistaIndexada($sheet);
+	        $this->procesarRevistaIndexada($sheet);
 	    }
 	    
 	    $sheet = $objPHPExcel->getSheetByName('Capítulo de Libros');
@@ -81,7 +81,7 @@ class RegistrarIndexacionRevista {
 	    
 	    $sheet = $objPHPExcel->getSheetByName('Cartas al Editor');
 	    if (!is_null($sheet)) {
-	        $this->procesarCartasAlEditor($sheet);
+	        $this->procesarCartaAlEditor($sheet);
 	    }
 	    
 	    $sheet = $objPHPExcel->getSheetByName('Experiencia Calificada');
@@ -103,17 +103,11 @@ class RegistrarIndexacionRevista {
 	
 	function procesarCategoria($sheet) {
 	    echo "Procesando página Categoría...<br>\n";
-	    $cabeceras = [
-	        $sheet->getCell('A1')->getCalculatedValue(),
-	        $sheet->getCell('B1')->getCalculatedValue(),
-	        $sheet->getCell('C1')->getCalculatedValue(),
-	        $sheet->getCell('D1')->getCalculatedValue(),
-	        $sheet->getCell('E1')->getCalculatedValue(),
-	        $sheet->getCell('F1')->getCalculatedValue(),
-	        $sheet->getCell('G1')->getCalculatedValue(),
-	        $sheet->getCell('H1')->getCalculatedValue(),
-	        $sheet->getCell('I1')->getCalculatedValue()
-	    ];
+	    $indicesColumnas = array('A','B','C','D','E','F','G','H','I');
+	    $cabeceras = [];
+	    foreach ($indicesColumnas as $clave => $valor) {
+	        $cabeceras[] = $sheet->getCell($valor . '1')->getCalculatedValue();
+	    }
 	    
 	    $cabecerasDeseadas = [
 	        'Cedula',
@@ -144,15 +138,9 @@ class RegistrarIndexacionRevista {
 	        }
 	        
 	        $datos = [];
-	        $datos[] = $sheet->getCell('A' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('B' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('C' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('D' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('E' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('F' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('G' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('H' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('I' . $indiceFila)->getCalculatedValue();
+	        foreach ($indicesColumnas as $clave => $valor) {
+	            $datos[] = $sheet->getCell($valor . $indiceFila)->getCalculatedValue();
+	        }
 	        //var_dump($datos);
 	        
 	        $columnasVacias = 0;
@@ -194,24 +182,12 @@ class RegistrarIndexacionRevista {
 	
 	function procesarRevistaIndexada($sheet) {
 	    echo "Procesando página Revista Indexada Nacional...<br>\n";
-	    $cabeceras = [
-	        $sheet->getCell('A1')->getCalculatedValue(),
-	        $sheet->getCell('B1')->getCalculatedValue(),
-	        $sheet->getCell('C1')->getCalculatedValue(),
-	        $sheet->getCell('D1')->getCalculatedValue(),
-	        $sheet->getCell('E1')->getCalculatedValue(),
-	        $sheet->getCell('F1')->getCalculatedValue(),
-	        $sheet->getCell('G1')->getCalculatedValue(),
-	        $sheet->getCell('H1')->getCalculatedValue(),
-	        $sheet->getCell('I1')->getCalculatedValue(),
-	        $sheet->getCell('J1')->getCalculatedValue(),
-	        $sheet->getCell('K1')->getCalculatedValue(),
-	        $sheet->getCell('L1')->getCalculatedValue(),
-	        $sheet->getCell('M1')->getCalculatedValue(),
-	        $sheet->getCell('N1')->getCalculatedValue(),
-	        $sheet->getCell('O1')->getCalculatedValue(),
-	        $sheet->getCell('P1')->getCalculatedValue()
-	    ];
+	    $indicesColumnas = array('A','B','C','D','E','F','G','H','I','J','K',
+	        'L','M','N','O','P');
+	    $cabeceras = [];
+	    foreach ($indicesColumnas as $clave => $valor) {
+	        $cabeceras[] = $sheet->getCell($valor . '1')->getCalculatedValue();
+	    }
 	    
 	    $cabecerasDeseadas = [
 	        'Cedula',
@@ -249,22 +225,9 @@ class RegistrarIndexacionRevista {
 	        }
 	        
 	        $datos = [];
-	        $datos[] = $sheet->getCell('A' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('B' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('C' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('D' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('E' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('F' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('G' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('H' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('I' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('J' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('K' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('L' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('M' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('N' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('O' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('P' . $indiceFila)->getCalculatedValue();
+	        foreach ($indicesColumnas as $clave => $valor) {
+	            $datos[] = $sheet->getCell($valor . $indiceFila)->getCalculatedValue();
+	        }
 	        //var_dump($datos);
 	        
 	        $columnasVacias = 0;
@@ -280,7 +243,7 @@ class RegistrarIndexacionRevista {
 	        }
 	        
 	        //Conversión de datos
-	        $datos[12] = \PHPExcel_Shared_Date::ExcelToPHPObject($datos[6])->format('Y/m/d');
+	        $datos[12] = \PHPExcel_Shared_Date::ExcelToPHPObject($datos[12])->format('Y/m/d');
 	        
 	        //echo "Validando datos<br>\n";
 	        $fila = [];
@@ -313,38 +276,27 @@ class RegistrarIndexacionRevista {
 	
 	function procesarCapituloDeLibros($sheet) {
 	    //// OJO NO ESTA TERMINADO
-	    echo "Procesando página Revista Indexada Nacional...<br>\n";
-	    $cabeceras = [
-	        $sheet->getCell('A1')->getCalculatedValue(),
-	        $sheet->getCell('B1')->getCalculatedValue(),
-	        $sheet->getCell('C1')->getCalculatedValue(),
-	        $sheet->getCell('D1')->getCalculatedValue(),
-	        $sheet->getCell('E1')->getCalculatedValue(),
-	        $sheet->getCell('F1')->getCalculatedValue(),
-	        $sheet->getCell('G1')->getCalculatedValue(),
-	        $sheet->getCell('H1')->getCalculatedValue(),
-	        $sheet->getCell('I1')->getCalculatedValue(),
-	        $sheet->getCell('J1')->getCalculatedValue(),
-	        $sheet->getCell('K1')->getCalculatedValue(),
-	        $sheet->getCell('L1')->getCalculatedValue(),
-	        $sheet->getCell('M1')->getCalculatedValue(),
-	        $sheet->getCell('N1')->getCalculatedValue(),
-	        $sheet->getCell('O1')->getCalculatedValue(),
-	        $sheet->getCell('P1')->getCalculatedValue()
-	    ];
+	    echo "Procesando página Capítulo de Libros...<br>\n";
+	    $indicesColumnas = array('A','B','C','D','E','F','G','H','I','J','K',
+	        'L','M','N','O','P','Q');
+	    $cabeceras = [];
+	    foreach ($indicesColumnas as $clave => $valor) {
+	        $cabeceras[] = $sheet->getCell($valor . '1')->getCalculatedValue();
+	    }
 	    
 	    $cabecerasDeseadas = [
 	        'Cedula',
-	        'Nombre de Revista',
-	        'Categoría',
-	        'ISSN',
-	        'Año',
+	        'Título del capítulo',
+	        'Título del libro',
+	        'Tipo de Libro',
+	        'ISBN',
+	        'Editorial',
+	        'Año de publicación',
 	        'Volumen',
-	        'Número de Revista',
-	        'Páginas',
-	        'Título del Artículo',
-	        'Número de Autores',
-	        'Número de Autores UD',
+	        'Número de Autores del Cap',
+	        'Número de Autores del Cap UD',
+	        'Número de Autores del Libro',
+	        'Número de Autores del Libro UD',
 	        'Número de Acta',
 	        'Fecha de Acta',
 	        'Número de Caso',
@@ -369,22 +321,9 @@ class RegistrarIndexacionRevista {
 	        }
 	        
 	        $datos = [];
-	        $datos[] = $sheet->getCell('A' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('B' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('C' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('D' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('E' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('F' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('G' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('H' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('I' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('J' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('K' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('L' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('M' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('N' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('O' . $indiceFila)->getCalculatedValue();
-	        $datos[] = $sheet->getCell('P' . $indiceFila)->getCalculatedValue();
+	        foreach ($indicesColumnas as $clave => $valor) {
+	            $datos[] = $sheet->getCell($valor . $indiceFila)->getCalculatedValue();
+	        }
 	        //var_dump($datos);
 	        
 	        $columnasVacias = 0;
@@ -400,39 +339,138 @@ class RegistrarIndexacionRevista {
 	        }
 	        
 	        //Conversión de datos
-	        $datos[12] = \PHPExcel_Shared_Date::ExcelToPHPObject($datos[6])->format('Y/m/d');
+	        $datos[13] = \PHPExcel_Shared_Date::ExcelToPHPObject($datos[13])->format('Y/m/d');
 	        
 	        //echo "Validando datos<br>\n";
 	        $fila = [];
 	        $fila['indice_fila'] = $indiceFila;
 	        $fila['documento_docente'] = $this->validar($datos[0], 'A' . $indiceFila ,'Entero', true); // NO usado
-	        $fila['nombre_revista'] = $this->validar($datos[1], 'B' . $indiceFila, 'LetrasNumerosEspacioYPuntuacion', true);
-	        $fila['tipo_indexacion'] = $this->validar($datos[2], 'C' . $indiceFila, 'LetrasNumerosEspacioYPuntuacion', true);
-	        $fila['numero_issn'] = $this->validar($datos[3], 'D' . $indiceFila, 'LetrasNumerosYEspacios', true);
-	        $fila['anno_publicacion'] = $this->validar($datos[4], 'E' . $indiceFila, 'LetrasNumerosYEspacios', true);
-	        $fila['volumen_revista'] = $this->validar($datos[5], 'F' . $indiceFila, 'Entero', true);
-	        $fila['numero_revista'] = $this->validar($datos[6], 'G' . $indiceFila, 'Entero', true);
-	        $fila['paginas_revista'] = $this->validar($datos[7], 'H' . $indiceFila, 'Entero', true);
-	        $fila['titulo_articulo'] = $this->validar($datos[8], 'I' . $indiceFila, 'LetrasNumerosEspacioYPuntuacion', true);
-	        $fila['numero_autores'] = $this->validar($datos[9], 'J' . $indiceFila, 'Entero', true);
-	        $fila['numero_autores_ud'] = $this->validar($datos[10], 'K' . $indiceFila, 'Entero', true);
-	        $fila['numero_acta'] = $this->validar($datos[11], 'L' . $indiceFila, 'Entero', true);
-	        $fila['fecha_acta'] = $this->validar($datos[12], 'M' . $indiceFila, 'FechaYmd', true);
-	        $fila['numero_caso'] = $this->validar($datos[13], 'N' . $indiceFila, 'LetrasNumerosYEspacios', true);
-	        $fila['puntaje'] = $this->validar($datos[14], 'O' . $indiceFila, 'Doble', true);
-	        $fila['normatividad'] = $this->validar($datos[15], 'P' . $indiceFila, 'LetrasNumerosEspacioYPuntuacion', true);
+	        $fila['titulo_capitulo'] = $this->validar($datos[1], 'B' . $indiceFila, 'LetrasNumerosEspacioYPuntuacion', true);
+	        $fila['titulo_libro'] = $this->validar($datos[2], 'C' . $indiceFila, 'LetrasNumerosEspacioYPuntuacion', true);
+	        $fila['tipo_libro'] = $this->validar($datos[3], 'D' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['codigo_isbn'] = $this->validar($datos[4], 'E' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['editorial'] = $this->validar($datos[5], 'F' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['anno_publicacion'] = $this->validar($datos[6], 'G' . $indiceFila, 'Entero', true);
+	        $fila['volumen'] = $this->validar($datos[7], 'H' . $indiceFila, 'Entero', true);
+	        $fila['numero_autores_capitulo'] = $this->validar($datos[8], 'I' . $indiceFila, 'Entero', true);
+	        $fila['numero_autores_capitulo_ud'] = $this->validar($datos[9], 'J' . $indiceFila, 'Entero', true);
+	        $fila['numero_autores_libro'] = $this->validar($datos[10], 'K' . $indiceFila, 'Entero', true);
+	        $fila['numero_autores_libro_ud'] = $this->validar($datos[11], 'L' . $indiceFila, 'Entero', true);
+	        $fila['numero_acta'] = $this->validar($datos[12], 'M' . $indiceFila, 'Entero', true);
+	        $fila['fecha_acta'] = $this->validar($datos[13], 'N' . $indiceFila, 'FechaYmd', true);
+	        $fila['numero_caso'] = $this->validar($datos[14], 'O' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['puntaje'] = $this->validar($datos[15], 'P' . $indiceFila, 'Doble', true);
+	        $fila['normatividad'] = $this->validar($datos[16], 'Q' . $indiceFila, 'LetrasNumerosEspacioYPuntuacion', true);
 	        
 	        $filasExtraidas[] = $fila;
 	        //var_dump($indiceFila, $fila);
 	        $indiceFila++;
 	    }
 	    
-	    $this->grabarFilasEnDB($filasExtraidas, 'buscarRevista', 'insertarRevista');
+	    $this->grabarFilasEnDB($filasExtraidas, 'buscarCapituloDeLibro', 'insertarCapituloDeLibro');
 	    exit();
 	}
 	
-	function procesarCartasAlEditor() {
+	function procesarCartaAlEditor($sheet) {
+	    //// OJO NO ESTA TERMINADO
+	    echo "Procesando página Cartas al Editor...<br>\n";
+	    $indicesColumnas = array('A','B','C','D','E','F','G','H','I','J','K',
+	        'L','M','N','O','P','Q','R','S');
+	    $cabeceras = [];
+	    foreach ($indicesColumnas as $clave => $valor) {
+	        $cabeceras[] = $sheet->getCell($valor . '1')->getCalculatedValue();
+	    }
 	    
+	    $cabecerasDeseadas = [
+	        'Cedula',
+	        'Nombre de la Revista',
+	        'Contexto de la Revista',
+	        'País',
+	        'Categorías',
+	        'ISSN',
+	        'Año',
+	        'Volumen',
+	        'Número de Revista',
+	        'Páginas',
+	        'Título del Artículo',
+	        'Número de Autores',
+	        'Número de Autores UD',
+	        'Fecha de Publicación',
+	        'Número de Acta',
+	        'Fecha de Acta',
+	        'Número de Caso',
+	        'Puntaje',
+	        'Normatividad'
+	    ];
+	    //var_dump($cabeceras, $cabecerasDeseadas, $cabeceras == $cabecerasDeseadas);
+	    
+	    if ($cabeceras != $cabecerasDeseadas) {
+	        $this->escribirError('Las titulos de las cabeceras del documento no corresponden, ¿ha subido el documento correcto?');
+	        exit();
+	    }
+	    //var_dump($cabeceras);
+	    
+	    $filasExtraidas = [];
+	    
+	    $indiceFila = 2;
+	    while (true) { // mientras las filas tengan datos
+	        if ($indiceFila >= 1000){
+	            echo "Son máximo 1000 registros<br>\n";
+	            break;
+	        }
+	        
+	        $datos = [];
+	        foreach ($indicesColumnas as $clave => $valor) {
+	            $datos[] = $sheet->getCell($valor . $indiceFila)->getCalculatedValue();
+	        }
+	        //var_dump($datos);
+	        
+	        $columnasVacias = 0;
+	        foreach ($datos as $columna) {
+	            if($columna == '' || $columna == null){
+	                $columnasVacias++;
+	            }
+	        }
+	        //var_dump('$columnasVacias', $columnasVacias);
+	        if ($columnasVacias == count($datos)){ // todas están vacias
+	            //echo "No hay más registros...<br>\n";
+	            break;
+	        }
+	        
+	        //Conversión de datos
+	        $datos[13] = \PHPExcel_Shared_Date::ExcelToPHPObject($datos[13])->format('Y/m/d');
+	        $datos[15] = \PHPExcel_Shared_Date::ExcelToPHPObject($datos[15])->format('Y/m/d');
+	        
+	        //echo "Validando datos<br>\n";
+	        $fila = [];
+	        $fila['indice_fila'] = $indiceFila;
+	        $fila['documento_docente'] = $this->validar($datos[0], 'A' . $indiceFila ,'Entero', true); // NO usado
+	        $fila['nombre_revista'] = $this->validar($datos[1], 'B' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['contexto'] = $this->validar($datos[2], 'C' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['paisnombre'] = $this->validar($datos[3], 'D' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['tipo_indexacion'] = $this->validar($datos[4], 'E' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['numero_issn'] = $this->validar($datos[5], 'F' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['anno_publicacion'] = $this->validar($datos[6], 'G' . $indiceFila, 'Entero', true);
+	        $fila['volumen_revista'] = $this->validar($datos[7], 'H' . $indiceFila, 'Entero', true);
+	        $fila['numero_revista'] = $this->validar($datos[8], 'I' . $indiceFila, 'Entero', true);
+	        $fila['paginas_revista'] = $this->validar($datos[9], 'J' . $indiceFila, 'Entero', true);
+	        $fila['titulo_articulo'] = $this->validar($datos[10], 'K' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['numero_autores'] = $this->validar($datos[11], 'L' . $indiceFila, 'Entero', true);
+	        $fila['numero_autores_ud'] = $this->validar($datos[12], 'M' . $indiceFila, 'Entero', true);
+	        $fila['fecha_publicacion'] = $this->validar($datos[13], 'N' . $indiceFila, 'FechaYmd', true);
+	        $fila['numero_acta'] = $this->validar($datos[14], 'O' . $indiceFila, 'Entero', true);
+	        $fila['fecha_acta'] = $this->validar($datos[15], 'P' . $indiceFila, 'FechaYmd', true);
+	        $fila['numero_caso'] = $this->validar($datos[16], 'Q' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['puntaje'] = $this->validar($datos[17], 'R' . $indiceFila, 'Doble', true);
+	        $fila['normatividad'] = $this->validar($datos[18], 'S' . $indiceFila, 'LetrasNumerosEspacioYPuntuacion', true);
+	        
+	        $filasExtraidas[] = $fila;
+	        //var_dump($indiceFila, $fila);
+	        $indiceFila++;
+	    }
+	    
+	    $this->grabarFilasEnDB($filasExtraidas, 'buscarCartaAlEditor', 'insertarCartaAlEditor');
+	    exit();
 	}
 	
 	function procesarExperienciaCalificada() {
@@ -461,7 +499,7 @@ class RegistrarIndexacionRevista {
 	        //echo 'SQL Search: ' . $cadenaSql . "<br>\n"; die;
 	        $resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 	        //var_dump($resultado);die;
-	        if ($resultado == 'error') {
+	        if ($resultado == false || $resultado == 'error') {
 	            $this->escribirError('Error al leer los registros de filas. ¿No tiene permisos sobre la base de datos?');
 	            exit();
 	        }
@@ -517,17 +555,17 @@ class RegistrarIndexacionRevista {
 	    $esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );
 	    
 	    $valorCodificado = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( 'pagina' ); // Frontera mostrar formulario
-	    $valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
-	    $valorCodificado .= "&bloqueGrupo=" . $esteBloque ['grupo'];
+	    //$valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
+	    //$valorCodificado .= "&bloqueGrupo=" . $esteBloque ['nombre'];
 	    //$valorCodificado .= "&usuario=" . $_REQUEST ['usuario'];
 	    //$valorCodificado .= "&perfiles=" . $_REQUEST['perfiles'];
-	    $valorCodificado .= "&opcion=continuar";
+	    //$valorCodificado .= "&opcion=continuar";
 	    // Paso 2: codificar la cadena resultante
 	    $valorCodificado = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $valorCodificado );
 	    
 	    $redireccion = $url . $enlace . '=' . $valorCodificado;
 	    //echo '<form><div align="center"><input type="button" value="VOLVER ATRÁS" name="Back2" onclick="history.back()" /></div></form>';
-	    echo '<div align="center"><input type="submit" value="VOLVER ATRÁS" name="Back2" onclick="window.location=\'' . $redireccion . '\'" /></div>';
+	    echo '<div align="center"><input type="submit" value="Volver Atrás" name="Back2" onclick="window.location=\'' . $redireccion . '\'" /></div>';
 	    
 	}
 	

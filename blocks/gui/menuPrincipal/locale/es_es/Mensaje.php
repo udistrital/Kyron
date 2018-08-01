@@ -21,6 +21,7 @@ $this->idioma ['titulosAcademicos'] = 'Títulos Académicos';
 $this->idioma ['sinTitulosAcademicos'] = 'Docentes Sin Títulos Académicos';
 $this->idioma ['consultarActividadDocente'] = 'Consultar Actividad Académica Docente';
 $this->idioma ['cambioCategoria'] = 'Cambio de Categoría Docente';
+$this->idioma ['hojaDeVidaJano'] = 'Hoja de Vida Jano';
 //Fin Hoja de Vida//////////////////////////////
 
 //Asignación de Puntajes////////////////////////
@@ -74,7 +75,7 @@ $this->idioma ['tituloConsultaReportes'] = 'CONSULTA REPORTES DOCENCIA';
 	$this->idioma ['consultaReportes'] = 'Gestor de Reportes';
 	$this->idioma ['estadoCuentaDocente'] = 'Estado de Cuenta Individual Docente';
 //CARGA MASIVA
-$this->idioma ['cargaMasiva'] = 'Carga Masiva';
+$this->idioma ['cargaMasiva'] = 'Carga Masiva con Formato Excel';
 
 $this->idioma ['usuario'] = 'Usuarios';
 $this->idioma ['sesion'] = 'Sesión';
