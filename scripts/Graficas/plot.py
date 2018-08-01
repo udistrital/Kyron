@@ -2,29 +2,34 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-df = pd.read_csv('resources/glucosa.csv', sep=';')
+#df = pd.read_csv('resources/data-log-test.csv', sep=',')
+df = pd.read_csv('resources/data-log-1532709448617.csv', sep=',')
 #df.describe()
+# df['fecha_log'].min() to df['fecha_log'].max()
+df['fecha_log'] = pd.to_datetime(df['fecha_log'])
+
+prob = df['accion'].value_counts(normalize=False)
+threshold = 0.02
+mask = prob > threshold
+tail_prob = prob.loc[~mask].sum()
+prob = prob.loc[mask]
+prob['other'] = tail_prob
+prob.plot(kind='bar')
+plt.xticks(rotation=25)
+plt.show()
+
+prob = df['accion'].value_counts(normalize=False)
+prob.plot(kind='bar')
+plt.xticks(rotation=25)
+plt.show()
+
+serief = df['fecha_log'].value_counts()
+serief.plot(kind='hist')
+plt.show()
+
+exit()
 
 #df.set_index('Year').plot()
-lasernm = 785
-lasercm1 =10000000.0 / lasernm
-
-def cm1tonm(cm1):
-    global lasercm1
-    deltacm1 = lasercm1 - cm1
-    nm = 10000000.0 / deltacm1
-    return nm
-
-velocidad_luz = 299792458
-
-def nmtofreq(nm):
-    global velocidad_luz
-    longitud_onda_m = nm / 1000000000.0
-    return velocidad_luz/(longitud_onda_m)
-
-def freqtoterahz(hz):
-    return hz / 1000000000000.0
-
 df[ 'longitud_onda_nm' ] = df[ 'cm-1' ].apply( lambda x: cm1tonm( x ) )
 
 df[ 'frecuencia' ] = df[ 'longitud_onda_nm' ].apply( lambda x: nmtofreq( x ) )
@@ -48,12 +53,6 @@ ax = df.plot(x='longitud_onda_nm', y='intensidad_normalizada', marker='.')
 #df.plot(x='frecuencia_tera_hz', y='intensidad', marker='.')
 
 #plt.show()
-
-#df2 = pd.read_csv('resources/BP 104 FS.csv', sep='\t')
-#df2 = pd.read_csv('resources/SFH 229.csv', sep='\t')
-#df2 = pd.read_csv('resources/SFH 229 FA.csv', sep='\t')
-#df2 = pd.read_csv('resources/TCS3200.csv', sep='\t')
-#df2 = pd.read_csv('resources/VEMD6060X01.csv', sep='\t')
 df2 = pd.read_csv('resources/OPR2101.csv', sep=';')
 
 # https://codepen.io/realjameal/pen/gpzZGw
