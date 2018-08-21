@@ -94,6 +94,22 @@ class Tipos {
 		$d = \DateTime::createFromFormat ( 'd/m/Y', $valor );
 		return $d && $d->format ( 'd/m/Y' ) == $valor ? $d : false;
 	}
+	private function validarFechaYmd($valor) {
+	    // Formato
+	    // 'Y/m/d'
+	    // 30/01/2014
+	    //
+	    $d = \DateTime::createFromFormat ( 'Y/m/d', $valor );
+	    return $d && $d->format ( 'Y/m/d' ) == $valor;
+	}
+	private function evaluarFechaYmd($valor) {
+	    // Formato
+	    // 'Y/m/d'
+	    // 30/01/2014
+	    //
+	    $d = \DateTime::createFromFormat ( 'Y/m/d', $valor );
+	    return $d && $d->format ( 'Y/m/d' ) == $valor ? $d : false;
+	}
 	private function validarTexto($valor) {
 		return is_string ( $valor );
 	}
@@ -254,7 +270,7 @@ class Tipos {
 	 * objetoInstanciado->evaluarTipo('09/09/2015','fecha');
 	 * Debería retornar el valor de la fecha como variable del tipo time de PHP.
 	 */
-	public static function evaluarTipo($valor = '', $tipo = '') {
+	public function evaluarTipo($valor = '', $tipo = '') {
 		$metodo = 'evaluar' . self::getAlias ( $tipo );
 		if (method_exists ( get_class (), $metodo )) {
 			return call_user_func_array ( array (
@@ -276,7 +292,7 @@ class Tipos {
 	 * objetoInstanciado->validarTipo('09/09/2015','fecha');
 	 * Debería retornar el valor true ya que se reconoce como un string de fecha.
 	 */
-	public static function validarTipo($valor = '', $tipo = '') {
+	public function validarTipo($valor = '', $tipo = '') {
 		$metodo = 'validar' . self::getAlias ( $tipo );
 		if (method_exists ( get_class (), $metodo )) {
 			return call_user_func_array ( array (
