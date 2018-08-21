@@ -165,7 +165,7 @@ class registrarForm {
 		echo $this->miFormulario->division ( "inicio", $atributos );
 		{
 			// -----------------CONTROL: Botón ----------------------------------------------------------------
-			$esteCampo = 'botonConsultar';
+			$esteCampo = 'botonCargar';
 			$atributos ["id"] = $esteCampo;
 			$atributos ["tabIndex"] = $tab;
 			$atributos ["tipo"] = 'boton';

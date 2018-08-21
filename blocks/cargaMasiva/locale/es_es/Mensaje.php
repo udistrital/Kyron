@@ -48,6 +48,7 @@ $this->idioma["puntajeTitulo"] = "Ingrese Puntaje.";
 //***************** SECCIÓN BOTONES ******************//
 $this->idioma["botonRegresar"] = "Regresar";
 $this->idioma["botonConsultar"] = "Consultar";
+$this->idioma["botonCargar"] = "Cargar Masivamente";
 $this->idioma["botonGuardar"] = "Guardar";
 $this->idioma["continuar"] = "Continuar";
 $this->idioma["botonAceptar"] = "Aceptar";

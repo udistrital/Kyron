@@ -64,39 +64,54 @@ class RegistrarIndexacionRevista {
 	    
 	    $objPHPExcel = \PHPExcel_IOFactory::load($_FILES[$fieldDocumento]['tmp_name']);
 	    
+	    $resultadoTotal = true;
+	    
 	    $sheet = $objPHPExcel->getSheetByName('Categoría');
 	    if (!is_null($sheet)) {
-	        $this->procesarCategoria($sheet);
+	        $resultadoTotal = $this->procesarCategoria($sheet);
 	    }
 	    
 	    $sheet = $objPHPExcel->getSheetByName('Revista Nacional');
 	    if (!is_null($sheet)) {
-	        $this->procesarRevistaIndexada($sheet);
+	        $resultadoTotal = $this->procesarRevistaIndexada($sheet);
 	    }
 	    
 	    $sheet = $objPHPExcel->getSheetByName('Capítulo de Libros');
 	    if (!is_null($sheet)) {
-	        $this->procesarCapituloDeLibros($sheet);
+	        $resultadoTotal = $this->procesarCapituloDeLibros($sheet);
 	    }
 	    
 	    $sheet = $objPHPExcel->getSheetByName('Cartas al Editor');
 	    if (!is_null($sheet)) {
-	        $this->procesarCartaAlEditor($sheet);
+	        $resultadoTotal = $this->procesarCartaAlEditor($sheet);
 	    }
 	    
 	    $sheet = $objPHPExcel->getSheetByName('Experiencia Calificada');
 	    if (!is_null($sheet)) {
-	        $this->procesarExperienciaCalificada($sheet);
+	        $resultadoTotal = $this->procesarExperienciaCalificada($sheet);
 	    }
 	    
-	    $sheet = $objPHPExcel->getSheetByName('Libros');
+	    $sheet = $objPHPExcel->getSheetByName('Libros Investigación');
 	    if (!is_null($sheet)) {
-	        $this->procesarLibros($sheet);
+	        $resultadoTotal = $this->procesarLibrosInvestigacion($sheet);
+	    }
+	    
+	    $sheet = $objPHPExcel->getSheetByName('Libros No Investigación');
+	    if (!is_null($sheet)) {
+	        $resultadoTotal = $this->procesarLibrosNoInvestigacion($sheet);
 	    }
 	    
 	    $sheet = $objPHPExcel->getSheetByName('Técnica y Software');
 	    if (!is_null($sheet)) {
-	        $this->procesarTecnicaYSoftware($sheet);
+	        $resultadoTotal = $this->procesarTecnicaYSoftware($sheet);
+	    }
+	    
+	    if ($resultadoTotal) {
+	        redireccion::redireccionar ( 'inserto', 5000 );
+	        exit ();
+	    } else {
+	        redireccion::redireccionar ( 'noInserto' );
+	        exit ();
 	    }
 	    
 	}
@@ -161,7 +176,7 @@ class RegistrarIndexacionRevista {
 	        //echo "Validando datos<br>\n";
 	        $fila = [];
 	        $fila['indice_fila'] = $indiceFila;
-	        $fila['documento_docente'] = $this->validar($datos[0], 'A' . $indiceFila ,'Entero', true); // NO usado
+	        $fila['documento_docente'] = $this->validar($datos[0], 'A' . $indiceFila ,'Entero', true);
 	        $fila['categoria_docente'] = $this->validar($datos[1], 'B' . $indiceFila, 'LetrasNumerosYEspacios', true);
 	        $fila['motivo_categoria_docente'] = $this->validar($datos[2], 'C' . $indiceFila, 'LetrasNumerosYEspacios', true);
 	        $fila['nombre_produccion'] = $this->validar($datos[3], 'D' . $indiceFila, 'LetrasNumerosEspacioYPuntuacion', true);
@@ -176,8 +191,7 @@ class RegistrarIndexacionRevista {
 	        $indiceFila++;
 	    }
 	    
-	    $this->grabarFilasEnDB($filasExtraidas, 'buscarCategoria', 'insertarCategoria');
-	    exit();
+	    return $this->grabarFilasEnDB($filasExtraidas, 'buscarCategoria', 'insertarCategoria');
 	}
 	
 	function procesarRevistaIndexada($sheet) {
@@ -248,7 +262,7 @@ class RegistrarIndexacionRevista {
 	        //echo "Validando datos<br>\n";
 	        $fila = [];
 	        $fila['indice_fila'] = $indiceFila;
-	        $fila['documento_docente'] = $this->validar($datos[0], 'A' . $indiceFila ,'Entero', true); // NO usado
+	        $fila['documento_docente'] = $this->validar($datos[0], 'A' . $indiceFila ,'Entero', true);
 	        $fila['nombre_revista'] = $this->validar($datos[1], 'B' . $indiceFila, 'LetrasNumerosEspacioYPuntuacion', true);
 	        $fila['tipo_indexacion'] = $this->validar($datos[2], 'C' . $indiceFila, 'LetrasNumerosEspacioYPuntuacion', true);
 	        $fila['numero_issn'] = $this->validar($datos[3], 'D' . $indiceFila, 'LetrasNumerosYEspacios', true);
@@ -270,12 +284,10 @@ class RegistrarIndexacionRevista {
 	        $indiceFila++;
 	    }
 	    
-	    $this->grabarFilasEnDB($filasExtraidas, 'buscarRevista', 'insertarRevista');
-	    exit();
+	    return $this->grabarFilasEnDB($filasExtraidas, 'buscarRevista', 'insertarRevista');
 	}
 	
 	function procesarCapituloDeLibros($sheet) {
-	    //// OJO NO ESTA TERMINADO
 	    echo "Procesando página Capítulo de Libros...<br>\n";
 	    $indicesColumnas = array('A','B','C','D','E','F','G','H','I','J','K',
 	        'L','M','N','O','P','Q');
@@ -344,7 +356,7 @@ class RegistrarIndexacionRevista {
 	        //echo "Validando datos<br>\n";
 	        $fila = [];
 	        $fila['indice_fila'] = $indiceFila;
-	        $fila['documento_docente'] = $this->validar($datos[0], 'A' . $indiceFila ,'Entero', true); // NO usado
+	        $fila['documento_docente'] = $this->validar($datos[0], 'A' . $indiceFila ,'Entero', true);
 	        $fila['titulo_capitulo'] = $this->validar($datos[1], 'B' . $indiceFila, 'LetrasNumerosEspacioYPuntuacion', true);
 	        $fila['titulo_libro'] = $this->validar($datos[2], 'C' . $indiceFila, 'LetrasNumerosEspacioYPuntuacion', true);
 	        $fila['tipo_libro'] = $this->validar($datos[3], 'D' . $indiceFila, 'LetrasNumerosYEspacios', true);
@@ -367,12 +379,10 @@ class RegistrarIndexacionRevista {
 	        $indiceFila++;
 	    }
 	    
-	    $this->grabarFilasEnDB($filasExtraidas, 'buscarCapituloDeLibro', 'insertarCapituloDeLibro');
-	    exit();
+	    return $this->grabarFilasEnDB($filasExtraidas, 'buscarCapituloDeLibro', 'insertarCapituloDeLibro');
 	}
 	
 	function procesarCartaAlEditor($sheet) {
-	    //// OJO NO ESTA TERMINADO
 	    echo "Procesando página Cartas al Editor...<br>\n";
 	    $indicesColumnas = array('A','B','C','D','E','F','G','H','I','J','K',
 	        'L','M','N','O','P','Q','R','S');
@@ -444,7 +454,7 @@ class RegistrarIndexacionRevista {
 	        //echo "Validando datos<br>\n";
 	        $fila = [];
 	        $fila['indice_fila'] = $indiceFila;
-	        $fila['documento_docente'] = $this->validar($datos[0], 'A' . $indiceFila ,'Entero', true); // NO usado
+	        $fila['documento_docente'] = $this->validar($datos[0], 'A' . $indiceFila ,'Entero', true);
 	        $fila['nombre_revista'] = $this->validar($datos[1], 'B' . $indiceFila, 'LetrasNumerosYEspacios', true);
 	        $fila['contexto'] = $this->validar($datos[2], 'C' . $indiceFila, 'LetrasNumerosYEspacios', true);
 	        $fila['paisnombre'] = $this->validar($datos[3], 'D' . $indiceFila, 'LetrasNumerosYEspacios', true);
@@ -469,20 +479,342 @@ class RegistrarIndexacionRevista {
 	        $indiceFila++;
 	    }
 	    
-	    $this->grabarFilasEnDB($filasExtraidas, 'buscarCartaAlEditor', 'insertarCartaAlEditor');
-	    exit();
+	    return $this->grabarFilasEnDB($filasExtraidas, 'buscarCartaAlEditor', 'insertarCartaAlEditor');
 	}
 	
-	function procesarExperienciaCalificada() {
+	function procesarExperienciaCalificada($sheet) {
+	    echo "Procesando página Experiencia Calificada...<br>\n";
+	    $indicesColumnas = array('A','B','C','D','E','F','G','H','I','J');
+	    $cabeceras = [];
+	    foreach ($indicesColumnas as $clave => $valor) {
+	        $cabeceras[] = $sheet->getCell($valor . '1')->getCalculatedValue();
+	    }
 	    
+	    $cabecerasDeseadas = [
+	        'Cedula',
+	        'Tipo de Experiencia',
+	        'Año de Experiencia',
+	        'Número de Resolución',
+	        'Resolución Emitida Por',
+	        'Fecha de Resolución',
+	        'Número de Acta',
+	        'Fecha de Acta',
+	        'Puntaje',
+	        'Normatividad'
+	    ];
+	    //var_dump($cabeceras, $cabecerasDeseadas, $cabeceras == $cabecerasDeseadas);
+	    
+	    if ($cabeceras != $cabecerasDeseadas) {
+	        $this->escribirError('Las titulos de las cabeceras del documento no corresponden, ¿ha subido el documento correcto?');
+	        exit();
+	    }
+	    //var_dump($cabeceras);
+	    
+	    $filasExtraidas = [];
+	    
+	    $indiceFila = 2;
+	    while (true) { // mientras las filas tengan datos
+	        if ($indiceFila >= 1000){
+	            echo "Son máximo 1000 registros<br>\n";
+	            break;
+	        }
+	        
+	        $datos = [];
+	        foreach ($indicesColumnas as $clave => $valor) {
+	            $datos[] = $sheet->getCell($valor . $indiceFila)->getCalculatedValue();
+	        }
+	        //var_dump($datos);
+	        
+	        $columnasVacias = 0;
+	        foreach ($datos as $columna) {
+	            if($columna == '' || $columna == null){
+	                $columnasVacias++;
+	            }
+	        }
+	        //var_dump('$columnasVacias', $columnasVacias);
+	        if ($columnasVacias == count($datos)){ // todas están vacias
+	            //echo "No hay más registros...<br>\n";
+	            break;
+	        }
+	        
+	        //Conversión de datos
+	        $datos[5] = \PHPExcel_Shared_Date::ExcelToPHPObject($datos[5])->format('Y/m/d');
+	        $datos[7] = \PHPExcel_Shared_Date::ExcelToPHPObject($datos[7])->format('Y/m/d');
+	        
+	        //echo "Validando datos<br>\n";
+	        $fila = [];
+	        $fila['indice_fila'] = $indiceFila;
+	        $fila['documento_docente'] = $this->validar($datos[0], 'A' . $indiceFila ,'Entero', true);
+	        $fila['tipo_experiencia_calificada'] = $this->validar($datos[1], 'B' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['annio_experiencia'] = $this->validar($datos[2], 'C' . $indiceFila, 'Entero', true);
+	        $fila['numero_resolucion'] = $this->validar($datos[3], 'D' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['tipo_emisor_resolucion'] = $this->validar($datos[4], 'E' . $indiceFila, 'LetrasNumerosYEspacios', true);      
+	        $fila['fecha_resolucion'] = $this->validar($datos[5], 'F' . $indiceFila, 'FechaYmd', true);	        
+	        $fila['numero_acta'] = $this->validar($datos[6], 'G' . $indiceFila, 'Entero', true);
+	        $fila['fecha_acta'] = $this->validar($datos[7], 'H' . $indiceFila, 'FechaYmd', true);
+	        $fila['puntaje'] = $this->validar($datos[8], 'I' . $indiceFila, 'Doble', true);
+	        $fila['normatividad'] = $this->validar($datos[9], 'J' . $indiceFila, 'LetrasNumerosEspacioYPuntuacion', true);
+	        
+	        $filasExtraidas[] = $fila;
+	        //var_dump($indiceFila, $fila);
+	        $indiceFila++;
+	    }
+	    
+	    return $this->grabarFilasEnDB($filasExtraidas, 'buscarExperienciaCalificada', 'insertarExperienciaCalificada');
 	}
 	
-	function procesarLibros() {
+	function procesarLibrosInvestigacion($sheet) {
+	    echo "Procesando página Libros Investigación...<br>\n";
+	    $indicesColumnas = array('A','B','C','D','E','F','G','H','I','J','K',
+	        'L','M');
+	    $cabeceras = [];
+	    foreach ($indicesColumnas as $clave => $valor) {
+	        $cabeceras[] = $sheet->getCell($valor . '1')->getCalculatedValue();
+	    }
 	    
+	    $cabecerasDeseadas = [
+	        'Cedula',
+	        'Título del libro',
+	        'Entidad que certifica',
+	        'Código de numeración (ISBN)',
+	        'Año de publicación',
+	        'Número de Autores',
+	        'Número de Autores UD',
+	        'Editorial',
+	        'Número de Acta',
+	        'Fecha de Acta',
+	        'Número de Caso',
+	        'Puntaje',
+	        'Normatividad'
+	    ];
+	    //var_dump($cabeceras, $cabecerasDeseadas, $cabeceras == $cabecerasDeseadas);
+	    
+	    if ($cabeceras != $cabecerasDeseadas) {
+	        $this->escribirError('Las titulos de las cabeceras del documento no corresponden, ¿ha subido el documento correcto?');
+	        exit();
+	    }
+	    //var_dump($cabeceras);
+	    
+	    $filasExtraidas = [];
+	    
+	    $indiceFila = 2;
+	    while (true) { // mientras las filas tengan datos
+	        if ($indiceFila >= 1000){
+	            echo "Son máximo 1000 registros<br>\n";
+	            break;
+	        }
+	        
+	        $datos = [];
+	        foreach ($indicesColumnas as $clave => $valor) {
+	            $datos[] = $sheet->getCell($valor . $indiceFila)->getCalculatedValue();
+	        }
+	        //var_dump($datos);
+	        
+	        $columnasVacias = 0;
+	        foreach ($datos as $columna) {
+	            if($columna == '' || $columna == null){
+	                $columnasVacias++;
+	            }
+	        }
+	        //var_dump('$columnasVacias', $columnasVacias);
+	        if ($columnasVacias == count($datos)){ // todas están vacias
+	            //echo "No hay más registros...<br>\n";
+	            break;
+	        }
+	        
+	        //Conversión de datos
+	        $datos[9] = \PHPExcel_Shared_Date::ExcelToPHPObject($datos[9])->format('Y/m/d');
+	        
+	        //echo "Validando datos<br>\n";
+	        $fila = [];
+	        $fila['indice_fila'] = $indiceFila;
+	        $fila['documento_docente'] = $this->validar($datos[0], 'A' . $indiceFila ,'Entero', true);
+	        $fila['titulo'] = $this->validar($datos[1], 'B' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['universidad'] = $this->validar($datos[2], 'C' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['codigo_isbn'] = $this->validar($datos[3], 'D' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['anno_publicacion'] = $this->validar($datos[4], 'E' . $indiceFila, 'Entero', true);
+	        $fila['numero_autores'] = $this->validar($datos[5], 'F' . $indiceFila, 'Entero', true);
+	        $fila['numero_autores_ud'] = $this->validar($datos[6], 'G' . $indiceFila, 'Entero', true);
+	        $fila['editorial'] = $this->validar($datos[7], 'H' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['numero_acta'] = $this->validar($datos[8], 'I' . $indiceFila, 'Entero', true);
+	        $fila['fecha_acta'] = $this->validar($datos[9], 'J' . $indiceFila, 'FechaYmd', true);
+	        $fila['numero_caso'] = $this->validar($datos[10], 'K' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['puntaje'] = $this->validar($datos[11], 'L' . $indiceFila, 'Doble', true);
+	        $fila['normatividad'] = $this->validar($datos[12], 'M' . $indiceFila, 'LetrasNumerosEspacioYPuntuacion', true);
+	        
+	        $filasExtraidas[] = $fila;
+	        //var_dump($indiceFila, $fila);
+	        $indiceFila++;
+	    }
+	    
+	    return $this->grabarFilasEnDB($filasExtraidas, 'buscarLibrosInvestigacion', 'insertarLibrosInvestigacion');
 	}
 	
-	function procesarTecnicaYSoftware() {
+	function procesarLibrosNoInvestigacion($sheet) {
+	    echo "Procesando página Libros No Investigación...<br>\n";
+	    $indicesColumnas = array('A','B','C','D','E','F','G','H','I','J','K',
+	        'L','M');
+	    $cabeceras = [];
+	    foreach ($indicesColumnas as $clave => $valor) {
+	        $cabeceras[] = $sheet->getCell($valor . '1')->getCalculatedValue();
+	    }
 	    
+	    $cabecerasDeseadas = [
+	        'Cedula',
+	        'Título del libro',
+	        'Tipo de libro',
+	        'Código de numeración (ISBN)',
+	        'Año de publicación',
+	        'Número de Autores',
+	        'Número de Autores UD',
+	        'Editorial',
+	        'Número de Acta',
+	        'Fecha de Acta',
+	        'Número de Caso',
+	        'Puntaje',
+	        'Normatividad'
+	    ];
+	    //var_dump($cabeceras, $cabecerasDeseadas, $cabeceras == $cabecerasDeseadas);
+	    
+	    if ($cabeceras != $cabecerasDeseadas) {
+	        $this->escribirError('Las titulos de las cabeceras del documento no corresponden, ¿ha subido el documento correcto?');
+	        exit();
+	    }
+	    //var_dump($cabeceras);
+	    
+	    $filasExtraidas = [];
+	    
+	    $indiceFila = 2;
+	    while (true) { // mientras las filas tengan datos
+	        if ($indiceFila >= 1000){
+	            echo "Son máximo 1000 registros<br>\n";
+	            break;
+	        }
+	        
+	        $datos = [];
+	        foreach ($indicesColumnas as $clave => $valor) {
+	            $datos[] = $sheet->getCell($valor . $indiceFila)->getCalculatedValue();
+	        }
+	        //var_dump($datos);
+	        
+	        $columnasVacias = 0;
+	        foreach ($datos as $columna) {
+	            if($columna == '' || $columna == null){
+	                $columnasVacias++;
+	            }
+	        }
+	        //var_dump('$columnasVacias', $columnasVacias);
+	        if ($columnasVacias == count($datos)){ // todas están vacias
+	            //echo "No hay más registros...<br>\n";
+	            break;
+	        }
+	        
+	        //Conversión de datos
+	        $datos[9] = \PHPExcel_Shared_Date::ExcelToPHPObject($datos[9])->format('Y/m/d');
+	        
+	        //echo "Validando datos<br>\n";
+	        $fila = [];
+	        $fila['indice_fila'] = $indiceFila;
+	        $fila['documento_docente'] = $this->validar($datos[0], 'A' . $indiceFila ,'Entero', true);
+	        $fila['titulo'] = $this->validar($datos[1], 'B' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['tipo_libro'] = $this->validar($datos[2], 'C' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['codigo_isbn'] = $this->validar($datos[3], 'E' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['anno_publicacion'] = $this->validar($datos[4], 'F' . $indiceFila, 'Entero', true);
+	        $fila['numero_autores'] = $this->validar($datos[5], 'G' . $indiceFila, 'Entero', true);
+	        $fila['numero_autores_ud'] = $this->validar($datos[6], 'H' . $indiceFila, 'Entero', true);
+	        $fila['editorial'] = $this->validar($datos[7], 'I' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['numero_acta'] = $this->validar($datos[8], 'J' . $indiceFila, 'Entero', true);
+	        $fila['fecha_acta'] = $this->validar($datos[9], 'K' . $indiceFila, 'FechaYmd', true);
+	        $fila['numero_caso'] = $this->validar($datos[10], 'L' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['puntaje'] = $this->validar($datos[11], 'M' . $indiceFila, 'Doble', true);
+	        $fila['normatividad'] = $this->validar($datos[12], 'N' . $indiceFila, 'LetrasNumerosEspacioYPuntuacion', true);
+	        
+	        $filasExtraidas[] = $fila;
+	        //var_dump($indiceFila, $fila);
+	        $indiceFila++;
+	    }
+	    
+	    return $this->grabarFilasEnDB($filasExtraidas, 'buscarLibrosNoInvestigacion', 'insertarLibrosNoInvestigacion');	    
+	}
+	
+	function procesarTecnicaYSoftware($sheet) {
+	    echo "Procesando página Técnica y Software...<br>\n";
+	    $indicesColumnas = array('A','B','C','D','E','F','G','H','I','J');
+	    $cabeceras = [];
+	    foreach ($indicesColumnas as $clave => $valor) {
+	        $cabeceras[] = $sheet->getCell($valor . '1')->getCalculatedValue();
+	    }
+	    
+	    $cabecerasDeseadas = [
+	        'Cedula',
+	        'Nombre de la producción',
+	        'Tipo de producción',
+	        'Número de certificado del producto',
+	        'Año de la producción',
+	        'Número de Acta',
+	        'Fecha de Acta',
+	        'Número de Caso',
+	        'Puntaje',
+	        'Normatividad'
+	    ];
+	    //var_dump($cabeceras, $cabecerasDeseadas, $cabeceras == $cabecerasDeseadas);
+	    
+	    if ($cabeceras != $cabecerasDeseadas) {
+	        $this->escribirError('Las titulos de las cabeceras del documento no corresponden, ¿ha subido el documento correcto?');
+	        exit();
+	    }
+	    //var_dump($cabeceras);
+	    
+	    $filasExtraidas = [];
+	    
+	    $indiceFila = 2;
+	    while (true) { // mientras las filas tengan datos
+	        if ($indiceFila >= 1000){
+	            echo "Son máximo 1000 registros<br>\n";
+	            break;
+	        }
+	        
+	        $datos = [];
+	        foreach ($indicesColumnas as $clave => $valor) {
+	            $datos[] = $sheet->getCell($valor . $indiceFila)->getCalculatedValue();
+	        }
+	        //var_dump($datos);
+	        
+	        $columnasVacias = 0;
+	        foreach ($datos as $columna) {
+	            if($columna == '' || $columna == null){
+	                $columnasVacias++;
+	            }
+	        }
+	        //var_dump('$columnasVacias', $columnasVacias);
+	        if ($columnasVacias == count($datos)){ // todas están vacias
+	            //echo "No hay más registros...<br>\n";
+	            break;
+	        }
+	        
+	        //Conversión de datos
+	        $datos[6] = \PHPExcel_Shared_Date::ExcelToPHPObject($datos[6])->format('Y/m/d');
+	        
+	        //echo "Validando datos<br>\n";
+	        $fila = [];
+	        $fila['indice_fila'] = $indiceFila;
+	        $fila['documento_docente'] = $this->validar($datos[0], 'A' . $indiceFila ,'Entero', true);
+	        $fila['nombre'] = $this->validar($datos[1], 'B' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['tipo_tecnicaysoftware'] = $this->validar($datos[2], 'C' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['numero_certificado'] = $this->validar($datos[3], 'D' . $indiceFila, 'Entero', true);
+	        $fila['anno_produccion'] = $this->validar($datos[4], 'E' . $indiceFila, 'Entero', true);
+	        $fila['numero_acta'] = $this->validar($datos[5], 'F' . $indiceFila, 'Entero', true);
+	        $fila['fecha_acta'] = $this->validar($datos[6], 'G' . $indiceFila, 'FechaYmd', true);
+	        $fila['numero_caso'] = $this->validar($datos[7], 'H' . $indiceFila, 'LetrasNumerosYEspacios', true);
+	        $fila['puntaje'] = $this->validar($datos[8], 'I' . $indiceFila, 'Doble', true);
+	        $fila['normatividad'] = $this->validar($datos[9], 'J' . $indiceFila, 'LetrasNumerosEspacioYPuntuacion', true);
+	        
+	        $filasExtraidas[] = $fila;
+	        //var_dump($indiceFila, $fila);
+	        $indiceFila++;
+	    }
+	    
+	    return $this->grabarFilasEnDB($filasExtraidas, 'buscarProduccionTecnicaYSoftware', 'insertarProduccionTecnicaYSoftware');
 	}
 	
 	function grabarFilasEnDB($filasExtraidas, $SQLBuscar, $SQLInsertar) {
@@ -496,10 +828,10 @@ class RegistrarIndexacionRevista {
 	    foreach ($filasExtraidas as $fila) {
 	        //var_dump($fila);
 	        $cadenaSql = $this->miSql->getCadenaSql ( $SQLBuscar, $fila );
-	        //echo 'SQL Search: ' . $cadenaSql . "<br>\n"; die;
+	        //echo 'SQL Search: ' . $cadenaSql . "<br>\n"; //die;
 	        $resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, 'busqueda' );
 	        //var_dump($resultado);die;
-	        if ($resultado == false || $resultado == 'error') {
+	        if ($resultado == 'error') { // if $resultado == false || -- esto pasa cuando la consulta no retorna resultados también
 	            $this->escribirError('Error al leer los registros de filas. ¿No tiene permisos sobre la base de datos?');
 	            exit();
 	        }
@@ -511,12 +843,9 @@ class RegistrarIndexacionRevista {
 	        }
 	        
 	        //Inicia para el log
-	        //////// OJO VOLVERLO A ACTIVAR
-	        //$this->logger = new \logger (); //Se agrega mas arriba
-	        //$registro['opcion'] = 'REGISTRA_PIN_DE_PAGO_ESTUDIANTE';
-	        //$registro['beneficiario'] = $fila['documento_identificacion'];
-	        //$registro['$cadenaSql_base64'] =  base64_encode($cadenaSql); // es OPCIONAL
-	        //$this->logger->log_usuario($registro);
+	        $this->logger = new \logger (); //Se agrega mas arriba
+	        $registro['opcion'] = 'insertar';
+	        $this->logger->log_usuario($registro, $cadenaSql);
 	        //Termina para el log
 	        
 	        $cadenaSql = $this->miSql->getCadenaSql ( $SQLInsertar, $fila );
@@ -529,14 +858,13 @@ class RegistrarIndexacionRevista {
 	            // todo salio bien
 	            echo 'Se insertó exitosamente el registro de la fila: ' . $fila['indice_fila'] . "<br>\n";
 	        } else {
-	            echo 'No insertó el registro de la fila: ' . $fila['indice_fila'] . ". Algo falló, intente de nuevo.<br>\n";
+	            $this->escribirError('No insertó el registro de la fila: ' . $fila['indice_fila'] . ". Algo falló, intente de nuevo. ¿Existe el docente u otros campos listados?. ¿Tal vez hay llaves o registros duplicados? Consulte y modifique si ya existe.<br>\n");
 	            exit ();
 	        }
 	    }
 	    //var_dump($resultadoTotal);die;
 	    if ($resultadoTotal) {
-	        redireccion::redireccionar ( 'inserto', 5000 );
-	        exit ();
+	        return true;
 	    } else {
 	        redireccion::redireccionar ( 'noInserto' );
 	        exit ();
